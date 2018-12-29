@@ -1,0 +1,25 @@
+Current Version: 1.4 (02/20/2018)
+
+1. Added FAQ page template
+
+2. Added 404 Not Found page template
+
+3. Minor css fixes
+
+Version: 1.3 (05/21/2017)
+
+1. 5 Edit profile pages added including basic information edit page, education and work edit page, add interest page, account settings page and update password page.
+
+2. Previously, raleway was the base font. It has been changed to "lato"
+
+3. Some minor css changes.
+
+4. Changed the logo
+
+/////////////////////////////////////////////////////////////////////////////
+
+Version: 1.2 (02/18/2017)
+
+1. New landing page added
+
+2. Minor css changes

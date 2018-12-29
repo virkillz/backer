@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="documentation" content="Documentation of Friend Finder HTML Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Friend Finder | Documentation</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/documentation.css">
+    <link rel="stylesheet" href="css/arta.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    
+    <script src="js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+	<header id="header">
+		<div class="navigation">
+			<div class="logo"><img src="images/logo.png" alt="" /></div>
+			<ul class="doc-menu">
+				<li><a href="#start"><i class="fa fa-paper-plane"></i> Getting Started</a></li>
+				<li><a href="#install"><i class="fa fa-cog" aria-hidden="true"></i> Installation</a></li>
+				<li>
+          <a href="#html"><i class="fa fa-code" aria-hidden="true"></i> HTML</a>
+          <ul class="sub-menu">
+          	<li><a href="#h-and-f">Header & Footer</a></li>
+          	<li><a href="#homepage">Landing Page</a></li>
+          	<li><a href="#newsfeed">Newsfeed</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#page-elements">Page Elements</a></li>
+          </ul>
+        </li>
+				<li><a href="#css"><i class="fa fa-css3" aria-hidden="true"></i> CSS</a></li>
+				<li><a href="#js"><i class="fa fa-paperclip" aria-hidden="true"></i> Javascript</a></li>
+        <li><a href="#fonts"><i class="fa fa-paperclip" aria-hidden="true"></i> Fonts</a></li>
+				<li><a href="#credits"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Credits</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="content-wrapper">
+    <section id="start">
+    	<h1>Friend Finder | Documentation</h1>
+    	<p class="max">Thank you for puchasing our template. If you need assistance beyond the scope of this document, please contact us via themeforest user contact form. We'll get back you within 24 hours. Also as you are reading this documentation, we expect you have basic knowledge on html, css and javascript. For basic questions, you may google or visit w3school website. <br /><br /> Best regards <br /> <strong>Thunder-Team</strong></p>
+    	<button><a href="https://themeforest.net/user/thunder-team" style="color: #fff;">Go to Themeforest</a></button>
+    </section>
+    <section id="install">
+    	<h1>Installation</h1>
+    	<p class="max">Follow the simple steps below to get started with Friend Finder.</p>
+      <ol>
+      	<li>Open <code>HTML</code> Folder whence you will find all the template files</li>
+      	<li>You can either work on your local PC or upload these files to your server</li>
+      	<li>
+          Make sure you've uploaded all the files listed below
+          <ul>
+          	<li><code>HTML/css</code> Stylesheet folder</li>
+          	<li><code>HTML/images</code> Images Folder</li>
+          	<li><code>HTML/fonts</code> Font Folder</li>
+          	<li><code>HTML/js</code> Javascript Folder</li>
+          	<li><code>HTML/videos</code> Video Folder</li>
+          	<li><code>HTML/index.html</code> index/homepage File</li>
+          </ul>
+        </li>
+      	<li>So now you should be okay to go with editing the template</li>
+      </ol>
+      </ul>
+    </section>
+    <section id="html">
+    	<h1>HTML Structure</h1>
+      <p>HTML structure of friend finder is very simple and it is based on responsive bootstrap. </p>
+      <div id="h-and-f">
+      <h3>1.1 HEADER</h3>
+      <p class="max">The header contains logo, navigation & page links (dropdowns). For homepage header, we included class <code>.lazy-load</code> so the header appears on scroll.</p>
+      <pre><code class="html">
+    &lt;header id=&quot;header&quot;&gt;
+      &lt;nav class=&quot;navbar navbar-default navbar-fixed-top menu&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+
+          &lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+          &lt;div class=&quot;navbar-header&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#bs-example-navbar-collapse-1&quot; aria-expanded=&quot;false&quot;&gt;
+              &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+              &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+              &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+              &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a class=&quot;navbar-brand&quot; href=&quot;index.html&quot;&gt;&lt;img src=&quot;images/logo.png&quot; alt=&quot;logo&quot; /&gt;&lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
+          &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;bs-example-navbar-collapse-1&quot;&gt;
+            &lt;ul class=&quot;nav navbar-nav navbar-right main-menu&quot;&gt;
+              &lt;li class=&quot;dropdown&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+              &lt;li class=&quot;dropdown&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Newsfeed &lt;span&gt;&lt;img src=&quot;images/down-arrow.png&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;&lt;/a&gt;
+                  &lt;ul class=&quot;dropdown-menu newsfeed-home&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed.html&quot;&gt;Newsfeed&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed-people-nearby.html&quot;&gt;Poeple Nearly&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed-friends.html&quot;&gt;My friends&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot;&gt;Chatroom&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed-images.html&quot;&gt;Images&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;newsfeed-videos.html&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+                  &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;dropdown&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Timeline &lt;span&gt;&lt;img src=&quot;images/down-arrow.png&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;&lt;/a&gt;
+                &lt;ul class=&quot;dropdown-menu login&quot;&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline.html&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-about.html&quot;&gt;Timeline About&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-album.html&quot;&gt;Timeline Album&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-friends.html&quot;&gt;Timeline Friends&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;dropdown&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle pages&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;All Pages &lt;span&gt;&lt;img src=&quot;images/down-arrow.png&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;&lt;/a&gt;
+                &lt;ul class=&quot;dropdown-menu page-list&quot;&gt;
+                  &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Landing Page&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed.html&quot;&gt;Newsfeed&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed-people-nearby.html&quot;&gt;Poeple Nearly&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed-friends.html&quot;&gt;My friends&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot;&gt;Chatroom&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed-images.html&quot;&gt;Images&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;newsfeed-videos.html&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline.html&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-about.html&quot;&gt;Timeline About&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-album.html&quot;&gt;Timeline Album&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;timeline-friends.html&quot;&gt;Timeline Friends&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;dropdown&quot;&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;form class=&quot;navbar-form navbar-right&quot;&gt;
+              &lt;div class=&quot;form-group&quot;&gt;
+                &lt;i class=&quot;icon ion-android-search&quot;&gt;&lt;/i&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Search friends, photos, videos&quot;&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;&lt;!-- /.navbar-collapse --&gt;
+        &lt;/div&gt;&lt;!-- /.container --&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+      </code></pre>
+      <p class="max"><code>.navbar-header</code> has logo inside of it, <code>.main-menu</code> contains all the menus (notifications, messages and pages) and <code>.navbar-form</code> is the search form.</code></p>
+      <h3>1.2 FOOTER</h3>
+      <p class="max">Footer comes with logo, social links, site map and contact information. Each has its own class.</p>
+      <pre><code class="html">
+    &lt;footer id=&quot;footer&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;footer-wrapper&quot;&gt;
+            &lt;div class=&quot;col-md-3 col-sm-3&quot;&gt;
+              &lt;a href=&quot;&quot;&gt;&lt;img src=&quot;images/logo-black.png&quot; alt=&quot;&quot; class=&quot;footer-logo&quot; /&gt;&lt;/a&gt;
+              &lt;ul class=&quot;list-inline social-icons&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon ion-social-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon ion-social-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon ion-social-googleplus&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon ion-social-pinterest&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon ion-social-linkedin&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-2 col-sm-2&quot;&gt;
+              &lt;h6&gt;For individuals&lt;/h6&gt;
+              &lt;ul class=&quot;footer-links&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Signup&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;login&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Explore&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Finder app&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Features&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Language settings&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-2 col-sm-2&quot;&gt;
+              &lt;h6&gt;For businesses&lt;/h6&gt;
+              &lt;ul class=&quot;footer-links&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Business signup&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Business login&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Benefits&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Resources&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Advertise&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Setup&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-2 col-sm-2&quot;&gt;
+              &lt;h6&gt;About&lt;/h6&gt;
+              &lt;ul class=&quot;footer-links&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;About us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Contact us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Terms&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;&quot;&gt;Help&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-3 col-sm-3&quot;&gt;
+              &lt;h6&gt;Contact Us&lt;/h6&gt;
+                &lt;ul class=&quot;contact&quot;&gt;
+                  &lt;li&gt;&lt;i class=&quot;icon ion-ios-telephone-outline&quot;&gt;&lt;/i&gt;+1 (234) 222 0754&lt;/li&gt;
+                  &lt;li&gt;&lt;i class=&quot;icon ion-ios-email-outline&quot;&gt;&lt;/i&gt;razor@exabytelab.com&lt;/li&gt;
+                  &lt;li&gt;&lt;i class=&quot;icon ion-ios-location-outline&quot;&gt;&lt;/i&gt;228 Park Ave S NY, USA&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &lt;p&gt;Thunder Team © 2016. All rights reserved&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+      </code></pre>
+      <p class="max"><code>.social-icons</code> links to your social pages, <code>.footer-links</code> is for sitemap links and <code>.contact</code> for contact information</p>
+      </div>
+      <div id="homepage">
+        <h3>2.1 Landing Page - 1</h3>
+        <p class="max">The landing page is divided into sections and each section has same basic structure as below: </p>
+        <pre><code class="html">
+      &lt;section id=&quot;section-id&quot;&gt;
+        &lt;div class=&quot;container wrapper&quot;&gt;
+          &lt;h1 class=&quot;section-title&quot;&gt;download&lt;/h1&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/section&gt;
+        </code></pre>
+        <h3>2.2 Landing Page - 2</h3>
+        <p class="max">Upon Clients' request, we have designed a second Landing Page that offers register and login options. The page has a basic structure as below</p>
+        <pre><code class="html">
+      &lt;div id=&quot;lp-register&quot;&gt;
+        &lt;div class=&quot;container wrapper&quot;&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+      </div>
+      <div id="newsfeed">
+        <h3>3. Newsfeed Structure</h3>
+        <p class="max">Newsfeed page templates have the following basic structure:</p>
+        <pre><code class="html">
+      &lt;header id=&quot;header&quot;&gt;...&lt;/header&gt;
+      &lt;div id=&quot;page-contents&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;footer id=&quot;footer&quot;&gt;...&lt;/footer&gt;
+        </code></pre>
+      </div>
+      <div id="timeline">
+        <h3>4. Timeline Structure</h3>
+        <p class="max">Basic structure for timeline pages is:</p>
+        <pre><code class="html">
+      &lt;header id=&quot;header&quot;&gt;...&lt;/div&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;timeline&quot;&gt;...&lt;/div&gt;
+        &lt;div id=&quot;page-contents&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;footer id=&quot;footer&quot;&gt;...&lt;/footer&gt;
+        </code></pre>
+      </div>
+      <div id="page-elements">
+      	<h3>5. Page Elements</h3>
+      	<p class="max">In this section, you will find all the html elements that were used to create the template.</p>
+        <h4>5.1 Newsfeed Sidebar</h4>
+        <p class="max">Newsfeed right sider contains 3 elements that include Profile Card, Nav and Chat Online.</p>
+        <h5>5.1.1. Profile Card</h5>
+        <p class="max">Profile Card has the following set of codes</p>
+        <pre><code class="html">
+      &lt;div class=&quot;profile-card&quot;&gt;
+        &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo&quot; /&gt;
+        &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;text-white&quot;&gt;Sarah Cruiz&lt;/a&gt;&lt;/h5&gt;
+        &lt;a href=&quot;#&quot; class=&quot;text-white&quot;&gt;&lt;i class=&quot;ion ion-android-person-add&quot;&gt;&lt;/i&gt; 1,299 followers&lt;/a&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h5>5.1.2 Newsfeed Nav</h5>
+        <p class="max">Newfeed nav that links to other sections of the newsfeed like images, videos, people etc</p>
+        <pre><code class="html">
+      &lt;ul class=&quot;nav-news-feed&quot;&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-ios-paper&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed.html&quot;&gt;My Newsfeed&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-ios-people&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed-people-nearby.html&quot;&gt;People Nearby&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-ios-people-outline&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed-friends.html&quot;&gt;Friends&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-chatboxes&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed-messages.html&quot;&gt;Messages&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-images&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed-images.html&quot;&gt;Images&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;icon ion-ios-videocam&quot;&gt;&lt;/i&gt;&lt;div&gt;&lt;a href=&quot;newsfeed-videos.html&quot;&gt;Videos&lt;/a&gt;&lt;/div&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+        </code></pre>
+        <h5>5.1.3 Chat Online Block</h5>
+        <p class="max">The following code is for online chat block which enables user to chat with friends</p>
+        <pre><code class="html">
+      &lt;div id=&quot;chat-block&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Chat online&lt;/div&gt;
+        &lt;ul class=&quot;online-users list-inline&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Linda Lohan&quot;&gt;&lt;img src=&quot;images/users/user-2.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Sophia Lee&quot;&gt;&lt;img src=&quot;images/users/user-3.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;John Doe&quot;&gt;&lt;img src=&quot;images/users/user-4.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Alexis Clark&quot;&gt;&lt;img src=&quot;images/users/user-5.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;James Carter&quot;&gt;&lt;img src=&quot;images/users/user-6.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Robert Cook&quot;&gt;&lt;img src=&quot;images/users/user-7.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Richard Bell&quot;&gt;&lt;img src=&quot;images/users/user-8.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Anna Young&quot;&gt;&lt;img src=&quot;images/users/user-9.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;newsfeed-messages.html&quot; title=&quot;Julia Cox&quot;&gt;&lt;img src=&quot;images/users/user-10.jpg&quot; alt=&quot;user&quot; class=&quot;img-responsive profile-photo&quot; /&gt;&lt;span class=&quot;online-dot&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.2 Friend Suggestion: sidebar</h4>
+        <p class="max">This sidebar is showed off as a right sidebar on the newsfeed page and has following code. <code>.sticky-sidebar</code>allows this div to scroll then fixed in the browser.</p>
+        <pre><code class="html">
+      &lt;div class=&quot;col-md-2 static&quot;&gt;
+        &lt;div class=&quot;suggestions&quot; id=&quot;sticky-sidebar&quot;&gt;
+          &lt;h4 class=&quot;grey&quot;&gt;Who to Follow&lt;/h4&gt;
+          &lt;div class=&quot;follow-user&quot;&gt;
+            &lt;img src=&quot;images/users/user-11.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+            &lt;div&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot;&gt;Diana Amber&lt;/a&gt;&lt;/h5&gt;
+              &lt;a href=&quot;#&quot; class=&quot;text-green&quot;&gt;Add friend&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;follow-user&quot;&gt;
+            &lt;img src=&quot;images/users/user-12.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+            &lt;div&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot;&gt;Cris Haris&lt;/a&gt;&lt;/h5&gt;
+              &lt;a href=&quot;#&quot; class=&quot;text-green&quot;&gt;Add friend&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;follow-user&quot;&gt;
+            &lt;img src=&quot;images/users/user-13.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+            &lt;div&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot;&gt;Brian Walton&lt;/a&gt;&lt;/h5&gt;
+              &lt;a href=&quot;#&quot; class=&quot;text-green&quot;&gt;Add friend&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;follow-user&quot;&gt;
+            &lt;img src=&quot;images/users/user-14.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+            &lt;div&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot;&gt;Olivia Steward&lt;/a&gt;&lt;/h5&gt;
+              &lt;a href=&quot;#&quot; class=&quot;text-green&quot;&gt;Add friend&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;follow-user&quot;&gt;
+            &lt;img src=&quot;images/users/user-15.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+            &lt;div&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot;&gt;Sophia Page&lt;/a&gt;&lt;/h5&gt;
+              &lt;a href=&quot;#&quot; class=&quot;text-green&quot;&gt;Add friend&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.3 Recent Activity</h4>
+        <p class="max">User's recent activity has been displayed on the landing page life feed section and also as a sidebar on the timeline page. It has the following code</p>
+        <pre><code class="html">
+      &lt;div class=&quot;feed-item&quot;&gt;
+        &lt;div class=&quot;live-activity&quot;&gt;
+          &lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;profile-link&quot;&gt;Sarah&lt;/a&gt; Commended on a Photo&lt;/p&gt;
+          &lt;p class=&quot;text-grey&quot;&gt;5 mins ago&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.4 Create Post Box</h4>
+        <p class="max">User will use this box to create post. It comes with the following set of codes:</p>
+        <pre><code class="html">
+      &lt;div class=&quot;create-post&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col-md-7 col-sm-7&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-md&quot; /&gt;
+              &lt;textarea name=&quot;texts&quot; id=&quot;exampleTextarea&quot; cols=&quot;30&quot; rows=&quot;1&quot; class=&quot;form-control&quot; placeholder=&quot;Write what you wish&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-md-5 col-sm-5&quot;&gt;
+            &lt;div class=&quot;tools&quot;&gt;
+              &lt;ul class=&quot;publishing-tools list-inline&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;ion-compose&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;ion-images&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;ion-ios-videocam&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;ion-map&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;button class=&quot;btn btn-primary pull-right&quot;&gt;Publish&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.5 Post Contents</h4>
+        <p class="max">You can inset images, texts, videos and maps to a post. See below for sample post contents. </p>
+        <pre><code class="html">
+      &lt;div class=&quot;post-content&quot;&gt;
+        &lt;img src=&quot;images/post-images/1.jpg&quot; alt=&quot;post-image&quot; class=&quot;img-responsive post-image&quot; /&gt;
+        &lt;div class=&quot;post-container&quot;&gt;
+          &lt;img src=&quot;images/users/user-5.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-md pull-left&quot; /&gt;
+          &lt;div class=&quot;post-detail&quot;&gt;
+            &lt;div class=&quot;user-info&quot;&gt;
+              &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Alexis Clark&lt;/a&gt; &lt;span class=&quot;following&quot;&gt;following&lt;/span&gt;&lt;/h5&gt; 
+              &lt;p class=&quot;text-muted&quot;&gt;Published a photo about 3 mins ago&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;reaction&quot;&gt;
+              &lt;a class=&quot;btn text-green&quot;&gt;&lt;i class=&quot;icon ion-thumbsup&quot;&gt;&lt;/i&gt; 13&lt;/a&gt;
+              &lt;a class=&quot;btn text-red&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt; 0&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;post-text&quot;&gt;
+              &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;post-comment&quot;&gt;
+              &lt;img src=&quot;images/users/user-11.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+              &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Diana &lt;/a&gt;&lt;i class=&quot;em em-laughing&quot;&gt;&lt;/i&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;post-comment&quot;&gt;
+              &lt;img src=&quot;images/users/user-4.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+              &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;John&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;post-comment&quot;&gt;
+              &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Post a comment&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.6 Nearby User List</h4>
+        <p class="max">Nearby user list has the following code. <code>.nearby-user</code> represents each nearby user.</p>
+        <pre><code class="html">
+      &lt;div class=&quot;people-nearby&quot;&gt;
+        &lt;div class=&quot;google-maps&quot;&gt;
+          &lt;iframe class=&quot;map&quot; src=&quot;http://maps.google.com/maps?q=12.927923,77.627108&amp;z=15&amp;output=embed&quot;&gt;&lt;/iframe&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;nearby-user&quot;&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-2 col-sm-2&quot;&gt;
+              &lt;img src=&quot;images/users/user-15.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-lg&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-7 col-sm-7&quot;&gt;
+              &lt;h5&gt;&lt;a href=&quot;#&quot; class=&quot;profile-link&quot;&gt;Sophia Page&lt;/a&gt;&lt;/h5&gt;
+              &lt;p&gt;Software Engineer&lt;/p&gt;
+              &lt;p class=&quot;text-muted&quot;&gt;500m away&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-3 col-sm-3&quot;&gt;
+              &lt;button class=&quot;btn btn-primary pull-right&quot;&gt;Add Friend&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;nearby-user&quot;&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-2 col-sm-2&quot;&gt;
+              &lt;img src=&quot;images/users/user-16.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-lg&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-7 col-sm-7&quot;&gt;
+              &lt;h5&gt;&lt;a href=&quot;#&quot; class=&quot;profile-link&quot;&gt;Emma Johnson&lt;/a&gt;&lt;/h5&gt;
+              &lt;p&gt;Model at Fashion&lt;/p&gt;
+              &lt;p class=&quot;text-muted&quot;&gt;800m away&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-3 col-sm-3&quot;&gt;
+              &lt;button class=&quot;btn btn-primary pull-right&quot;&gt;Add Friend&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.7 Friend List</h4>
+        <p class="max"><code>.friend-list</code> represents the entire friend list. We divided the list in 2 columns. You may want more columns you can do so by simply adding bootstrap grid classes. Each item has <code>.friend-card</code> class.</p>
+        <pre><code class="html">
+      &lt;div class=&quot;friend-list&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col-md-6 col-sm-6&quot;&gt;
+            &lt;div class=&quot;friend-card&quot;&gt;
+              &lt;img src=&quot;images/covers/1.jpg&quot; alt=&quot;profile-cover&quot; class=&quot;img-responsive cover&quot; /&gt;
+              &lt;div class=&quot;card-info&quot;&gt;
+                &lt;img src=&quot;images/users/user-3.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-lg&quot; /&gt;
+                &lt;div class=&quot;friend-info&quot;&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;pull-right text-green&quot;&gt;My Friend&lt;/a&gt;
+                  &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Sophia Lee&lt;/a&gt;&lt;/h5&gt;
+                  &lt;p&gt;Student at Harvard&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-md-6 col-sm-6&quot;&gt;
+            &lt;div class=&quot;friend-card&quot;&gt;
+              &lt;img src=&quot;images/covers/3.jpg&quot; alt=&quot;profile-cover&quot; class=&quot;img-responsive cover&quot; /&gt;
+              &lt;div class=&quot;card-info&quot;&gt;
+                &lt;img src=&quot;images/users/user-4.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-lg&quot; /&gt;
+                &lt;div class=&quot;friend-info&quot;&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;pull-right text-green&quot;&gt;My Friend&lt;/a&gt;
+                  &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;John Doe&lt;/a&gt;&lt;/h5&gt;
+                  &lt;p&gt;Traveler&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.8 Chat Room</h4>
+        <p class="max"><code>.chat-room</code> represents the entire chat room. <code>ul.contact-list</code> is contact list and <code>.tab-content</code> is where we put the chat body messages which have a class <code>.chat-body</code></p>
+        <pre><code class="html">
+      &lt;div class=&quot;chat-room&quot;&gt;
+        &lt;div  class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col-md-5&quot;&gt;
+          
+            &lt;!-- Contact List in Left--&gt;
+            &lt;ul class=&quot;nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer&quot;&gt;
+              &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;#contact-1&quot; data-toggle=&quot;tab&quot;&gt;
+                  &lt;div class=&quot;contact&quot;&gt;
+                    &lt;img src=&quot;images/users/user-2.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot;/&gt;
+                    &lt;div class=&quot;msg-preview&quot;&gt;
+                      &lt;h6&gt;Linda Lohan&lt;/h6&gt;
+                      &lt;p class=&quot;text-muted&quot;&gt;Hi there, how are you&lt;/p&gt;
+                      &lt;small class=&quot;text-muted&quot;&gt;a min ago&lt;/small&gt;
+                      &lt;div class=&quot;chat-alert&quot;&gt;1&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;&lt;!--Contact List in Left End--&gt;
+            
+          &lt;/div&gt;
+          &lt;div class=&quot;col-md-7&quot;&gt;
+          
+            &lt;!--Chat Messages in Right--&gt;
+            &lt;div class=&quot;tab-content scrollbar-wrapper wrapper scrollbar-outer&quot;&gt;
+              &lt;div class=&quot;tab-pane active&quot; id=&quot;contact-1&quot;&gt;
+                &lt;div class=&quot;chat-body&quot;&gt;
+                  &lt;ul class=&quot;chat-message&quot;&gt;
+                    &lt;li class=&quot;left&quot;&gt;
+                      &lt;img src=&quot;images/users/user-2.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Linda Lohan&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;Hi honey, how are you doing???? Long time no see. Where have you been?&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;right&quot;&gt;
+                      &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-right&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Sarah Cruiz&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;I have been on vacation&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;right&quot;&gt;
+                      &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-right&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Sarah Cruiz&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;it was a great time for me. we had a lot of fun &lt;i class=&quot;em em-blush&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;left&quot;&gt;
+                      &lt;img src=&quot;images/users/user-2.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Linda Lohan&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;that's cool I wish I were you &lt;i class=&quot;em em-expressionless&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;right&quot;&gt;
+                      &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-right&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Sarah Cruiz&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;&lt;i class=&quot;em em-hand&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;left&quot;&gt;
+                      &lt;img src=&quot;images/users/user-2.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+                      &lt;div class=&quot;chat-item&quot;&gt;
+                        &lt;div class=&quot;chat-item-header&quot;&gt;
+                          &lt;h5&gt;Linda Lohan&lt;/h5&gt;
+                          &lt;small class=&quot;text-muted&quot;&gt;a min ago&lt;/small&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;Hi there, how are you&lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;&lt;!--Chat Messages in Right End--&gt;
+            
+            &lt;div class=&quot;send-message&quot;&gt;
+              &lt;div class=&quot;input-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Type your message&quot;&gt;
+                &lt;span class=&quot;input-group-btn&quot;&gt;
+                  &lt;button class=&quot;btn btn-default&quot; type=&quot;button&quot;&gt;Send&lt;/button&gt;
+                &lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.8 Media</h4>
+        <p class="max">We created two separate pages for images and videos so that user can view images and videos separately. <code>.media</code> represents entire media contents. We divided media contents in 2 columns. The columns have a <code>.img-wrapper</code> class inside it. Insert image or video into this class. Clicking on <code>.img-wrapper</code> opens a modal whence we display detailed post contents with the class <code>.post-contents</code>. Sample code here:</p>
+        <pre><code class="html">
+      &lt;div class=&quot;media&quot;&gt;
+        &lt;div class=&quot;row js-masonry&quot; data-masonry='{ &quot;itemSelector&quot;: &quot;.grid-item&quot;, &quot;columnWidth&quot;: &quot;.grid-sizer&quot;, &quot;percentPosition&quot;: true }'&gt;
+          &lt;div class=&quot;grid-sizer col-md-6 col-sm-6&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;grid-item col-md-6 col-sm-6&quot;&gt;
+            &lt;div class=&quot;media-grid&quot;&gt;
+              &lt;div class=&quot;img-wrapper&quot; data-toggle=&quot;modal&quot; data-target=&quot;.modal-1&quot;&gt;
+                &lt;img src=&quot;images/post-images/6.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive post-image&quot; /&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;media-info&quot;&gt;
+                &lt;div class=&quot;reaction&quot;&gt;
+                  &lt;a class=&quot;btn text-green&quot;&gt;&lt;i class=&quot;fa fa-thumbs-up&quot;&gt;&lt;/i&gt; 63&lt;/a&gt;
+                  &lt;a class=&quot;btn text-red&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt; 12&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;user-info&quot;&gt;
+                  &lt;img src=&quot;images/users/user-8.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+                  &lt;div class=&quot;user&quot;&gt;
+                    &lt;h6&gt;&lt;a href=&quot;#&quot; class=&quot;profile-link&quot;&gt;Richard Bell&lt;/a&gt;&lt;/h6&gt;
+                    &lt;a class=&quot;text-green&quot; href=&quot;#&quot;&gt;Friend&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              
+              &lt;!--Popup--&gt;
+              &lt;div class=&quot;modal fade modal-1&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
+                &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+                  &lt;div class=&quot;modal-content&quot;&gt;
+                    &lt;div class=&quot;post-content&quot;&gt;
+                      &lt;img src=&quot;images/post-images/1.jpg&quot; alt=&quot;post-image&quot; class=&quot;img-responsive post-image&quot; /&gt;
+                      &lt;div class=&quot;post-container&quot;&gt;
+                        &lt;img src=&quot;images/users/user-5.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-md pull-left&quot; /&gt;
+                        &lt;div class=&quot;post-detail&quot;&gt;
+                          &lt;div class=&quot;user-info&quot;&gt;
+                            &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Alexis Clark&lt;/a&gt; &lt;span class=&quot;following&quot;&gt;following&lt;/span&gt;&lt;/h5&gt; 
+                            &lt;p class=&quot;text-muted&quot;&gt;Published a photo about 3 mins ago&lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;reaction&quot;&gt;
+                            &lt;a class=&quot;btn text-green&quot;&gt;&lt;i class=&quot;icon ion-thumbsup&quot;&gt;&lt;/i&gt; 13&lt;/a&gt;
+                            &lt;a class=&quot;btn text-red&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt; 0&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+                          &lt;div class=&quot;post-text&quot;&gt;
+                            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-11.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Diana &lt;/a&gt;&lt;i class=&quot;em em-laughing&quot;&gt;&lt;/i&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-4.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;John&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Post a comment&quot;&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;&lt;!--Popup End--&gt;
+              
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;grid-item col-md-6 col-sm-6&quot;&gt;
+            &lt;div class=&quot;media-grid&quot;&gt;
+              &lt;div class=&quot;img-wrapper&quot; data-toggle=&quot;modal&quot; data-target=&quot;.modal-2&quot;&gt;
+                &lt;img src=&quot;images/post-images/3.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive post-image&quot; /&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;media-info&quot;&gt;
+                &lt;div class=&quot;reaction&quot;&gt;
+                  &lt;a class=&quot;btn text-green&quot;&gt;&lt;i class=&quot;fa fa-thumbs-up&quot;&gt;&lt;/i&gt; 100&lt;/a&gt;
+                  &lt;a class=&quot;btn text-red&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt; 99&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;user-info&quot;&gt;
+                  &lt;img src=&quot;images/users/user-5.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm pull-left&quot; /&gt;
+                  &lt;div class=&quot;user&quot;&gt;
+                    &lt;h6&gt;&lt;a href=&quot;#&quot; class=&quot;profile-link&quot;&gt;Sarah Cruiz&lt;/a&gt;&lt;/h6&gt;
+                    &lt;a class=&quot;text-green&quot; href=&quot;#&quot;&gt;Friend&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              
+              &lt;!--Popup--&gt;
+              &lt;div class=&quot;modal fade modal-2&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
+                &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+                  &lt;div class=&quot;modal-content&quot;&gt;
+                    &lt;div class=&quot;post-content&quot;&gt;
+                      &lt;img src=&quot;images/post-images/1.jpg&quot; alt=&quot;post-image&quot; class=&quot;img-responsive post-image&quot; /&gt;
+                      &lt;div class=&quot;post-container&quot;&gt;
+                        &lt;img src=&quot;images/users/user-5.jpg&quot; alt=&quot;user&quot; class=&quot;profile-photo-md pull-left&quot; /&gt;
+                        &lt;div class=&quot;post-detail&quot;&gt;
+                          &lt;div class=&quot;user-info&quot;&gt;
+                            &lt;h5&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Alexis Clark&lt;/a&gt; &lt;span class=&quot;following&quot;&gt;following&lt;/span&gt;&lt;/h5&gt; 
+                            &lt;p class=&quot;text-muted&quot;&gt;Published a photo about 3 mins ago&lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;reaction&quot;&gt;
+                            &lt;a class=&quot;btn text-green&quot;&gt;&lt;i class=&quot;icon ion-thumbsup&quot;&gt;&lt;/i&gt; 13&lt;/a&gt;
+                            &lt;a class=&quot;btn text-red&quot;&gt;&lt;i class=&quot;fa fa-thumbs-down&quot;&gt;&lt;/i&gt; 0&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+                          &lt;div class=&quot;post-text&quot;&gt;
+                            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt; &lt;i class=&quot;em em-anguished&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;line-divider&quot;&gt;&lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-11.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;Diana &lt;/a&gt;&lt;i class=&quot;em em-laughing&quot;&gt;&lt;/i&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-4.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;p&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;profile-link&quot;&gt;John&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud &lt;/p&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;post-comment&quot;&gt;
+                            &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;profile-photo-sm&quot; /&gt;
+                            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Post a comment&quot;&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;&lt;!--Popup End--&gt;
+              
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.9 Timline Cover and Menus</h4>
+        <p class="max">The following code represents timeline cover and menus. We created two separate menus: <code>.timeline-nav-bar</code> for larger screens and <code>.navbar-mobile</code> for smaller screens such as mobile.</p>
+        <pre><code class="html">
+      &lt;div class=&quot;timeline-cover&quot;&gt;
+      
+        &lt;!--Timeline Menu for Large Screens--&gt;
+        &lt;div class=&quot;timeline-nav-bar hidden-sm hidden-xs&quot;&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-3&quot;&gt;
+              &lt;div class=&quot;profile-info&quot;&gt;
+                &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive profile-photo&quot; /&gt;
+                &lt;h3&gt;Sarah Cruiz&lt;/h3&gt;
+                &lt;p class=&quot;text-muted&quot;&gt;Creative Director&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+              &lt;ul class=&quot;list-inline profile-menu&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;timeline.html&quot; class=&quot;active&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;timeline-about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;timeline-album.html&quot;&gt;Album&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;timeline-friends.html&quot;&gt;Friends&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;ul class=&quot;follow-me list-inline&quot;&gt;
+                &lt;li&gt;1,299 people following her&lt;/li&gt;
+                &lt;li&gt;&lt;button class=&quot;btn-primary&quot;&gt;Add Friend&lt;/button&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;&lt;!--Timeline Menu for Large Screens End--&gt;
+        
+        &lt;!--Timeline Menu for Small Screens--&gt;
+        &lt;div class=&quot;navbar-mobile hidden-lg hidden-md&quot;&gt;
+          &lt;div class=&quot;profile-info&quot;&gt;
+            &lt;img src=&quot;images/users/user-1.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive profile-photo&quot; /&gt;
+            &lt;h4&gt;Sarah Cruiz&lt;/h4&gt;
+            &lt;p class=&quot;text-muted&quot;&gt;Creative Director&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;mobile-menu&quot;&gt;
+            &lt;ul class=&quot;list-inline&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;timline.html&quot; class=&quot;active&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;timeline-about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;timeline-album.html&quot;&gt;Album&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;timeline-friends.html&quot;&gt;Friends&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button class=&quot;btn-primary&quot;&gt;Add Friend&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;&lt;!--Timeline Menu for Small Screens End--&gt;
+        
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.10 About Timeline</h4>
+        <p class="max"><code>.about-profile</code> has <code>.about-content-block</code> within it. We inserted contents such as personal info, work experiences etc into separate <code>.about-content-block</code> classes</p>
+        <pre><code class="html">
+      &lt;div class=&quot;about-profile&quot;&gt;
+        &lt;div class=&quot;about-content-block&quot;&gt;
+          &lt;h4 class=&quot;grey&quot;&gt;&lt;i class=&quot;ion-ios-information-outline icon-in-title&quot;&gt;&lt;/i&gt;Personal Information&lt;/h4&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+        <h4>5.11 Timeline Album</h4>
+        <p class="max">The ul class <code>.album-photos</code> contains all the list items with photos. Modal has been added to display large photos.</p>
+        <pre><code class="html">
+      &lt;ul class=&quot;album-photos&quot;&gt;
+        &lt;li&gt;
+          &lt;div class=&quot;img-wrapper&quot; data-toggle=&quot;modal&quot; data-target=&quot;.photo-1&quot;&gt;
+            &lt;img src=&quot;images/album/1.jpg&quot; alt=&quot;photo&quot; /&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;modal fade photo-1&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+              &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;img src=&quot;images/album/1.jpg&quot; alt=&quot;photo&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+        </code></pre>
+        <h4>5.12 Contact Form</h4>
+        <p class="max">Following set of codes represents the contact us form</p>
+        <pre><code class="html">
+      &lt;form class=&quot;contact-form&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;i class=&quot;icon ion-person&quot;&gt;&lt;/i&gt;
+          &lt;input id=&quot;contact-name&quot; type=&quot;text&quot; name=&quot;name&quot; class=&quot;form-control&quot; placeholder=&quot;Enter your name *&quot; required=&quot;required&quot; data-error=&quot;Name is required.&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;i class=&quot;icon ion-email&quot;&gt;&lt;/i&gt;
+          &lt;input id=&quot;contact-email&quot; type=&quot;text&quot; name=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;Enter your email *&quot; required=&quot;required&quot; data-error=&quot;Email is required.&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;i class=&quot;icon ion-android-call&quot;&gt;&lt;/i&gt;
+          &lt;input id=&quot;contact-phone&quot; type=&quot;text&quot; name=&quot;phone&quot; class=&quot;form-control&quot; placeholder=&quot;Enter your phone *&quot; required=&quot;required&quot; data-error=&quot;Phone is required.&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;textarea id=&quot;form-message&quot; name=&quot;message&quot; class=&quot;form-control&quot; placeholder=&quot;Leave a message for us *&quot; rows=&quot;4&quot; required=&quot;required&quot; data-error=&quot;Please,leave us a message.&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+        </code></pre>
+        <h4>5.13 Google Map</h4>
+        <p class="max">For google map, use the code below</p>
+        <pre><code class="html">
+      &lt;div class=&quot;google-maps&quot;&gt;
+        &lt;div id=&quot;map&quot; class=&quot;map&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+        </code></pre>
+      </div>
+    </section>
+    <section id="css">
+    	<h1>CSS Files</h1>
+    	<p class="max">All CSS files can be found in <code>HTML/css</code> folder. Each file has been well commented so that you feel comfortable working with them. The files contains some general stylings like anchor tags, buttons etc so keep in mind that overriting those may change stylings somewhere else also. Below are the CSS files used in the template: </p>
+      <ol>
+      	<li><code>style.css</code> - main css file. You should be working on this file</li>
+      	<li><code>bootstrap.min.css</code> - framework css file. We do not recommend to edit it</li>
+        <li><code>ionicons.min.css</code> - Ion Icons CSS file</li>
+        <li><code>font-awesome.min.css</code> - Font Awesome CSS file</li>
+        <li><code>emoji.css</code> - CSS file for Emojis. For full emoji list, go to <a href="https://afeld.github.io/emoji-css/">https://afeld.github.io/emoji-css/</a></li>
+      	<li><code>jquery.mCustomScrollbar.css</code>, <code>jquery.scrollbar.css</code> - custom scrollbar css</li>
+      </ol>
+      <p>You may either edit <code>style.css</code> or create a new css and link it to html file</p>
+    </section>
+    <section id="js">
+    	<h1>Javascript</h1>
+    	<p class="max">All .js files are located in the <code>HTML/js</code> folder. You do not need to edit these files.</p>
+      <ol>
+        <li><code>jquery-3.1.1.min.js</code> - jQuery Local</li>
+      	<li><code>bootstrap.min.js</code> - Bootsrap framework js file</li>
+      	<li><code>jquery.incremental-counter.js</code> - counter used on the homepage</li>
+      	<li><code>script.js</code> - multiple script</li>
+      	<li><code>jquery.scrollbar.min.js</code> - custom scrollbar used in the chatroom</li>
+        <li><code>jquery.appear.min.js</code> - For 'appear'/'disappear' events</li>
+        <li><code>jquery.sticky-kit.min.js</code> - JS file for Sticky Sidebars</li>
+        <li><code>masonry.pkgd.min.js</code> - Masonry Layout</li>
+      </ol>
+    </section>
+    <section id="fonts">
+    	<h1>Fonts</h1>
+      <p class="max">In this section, we will learn the fonts we used to create this template. </p>
+      <ol>
+      	<li>
+          <strong>Icons:</strong> we used ion-icons for icons. You need to link <code>ionicons.min.css</code> files to the page head to get icons work. <br />You may wish to use font-awesome which is also included in the download.
+        </li>
+      	<li><strong>Section Titles:</strong> We used Agency Br TTF fonts in <code>.section-title</code> and <code>.sub-title</code></li>
+      	<li>
+          <strong>Google Fonts:</strong> Lato is the font used in the template. You may change it if you want. In that case, go to googles library and <br />link the font in the head as below
+          <pre><code class="html">&lt;link href='https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i' rel='stylesheet' type='text/css'&gt;</code></pre>
+        </li>
+      </ol>
+      
+    </section>
+    <section id="credits">
+      <h1>Sources & Credits</h1>
+      <p>https://www.pexels.com/</p>
+      <p>https://pixabay.com/</p>
+      <p>http://www.freepik.com/</p>
+      <p>http://www.flaticon.com/</p>
+      <p>https://afeld.github.io/emoji-css/</p>
+    </section>
+	</div>
+  </body>
+</html>
