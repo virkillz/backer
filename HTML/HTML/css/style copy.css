@@ -70,7 +70,7 @@ body{
     src: url("../fonts/agency-fb.ttf") /* TTF file for CSS3 browsers */
 }
 
-h1, h2, h3, h4, h5, h6{color: #F85D5D;}
+h1, h2, h3, h4, h5, h6{color: #27aae1;}
 
 h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
   color: #6d6e71;
@@ -93,7 +93,7 @@ h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
 
 .text-muted{color: #939598;}
 
-a{color: #F85D5D;}
+a{color: #27aae1;}
 
 a:hover{color: #149AC9;}
 
@@ -151,7 +151,7 @@ section .wrapper{
 }
 
 .btn-primary{
-	background: #F85D5D;
+	background: #27aae1;
 	padding: 7px 25px;
 	border: none;
 	font-size: 14px;
@@ -347,7 +347,7 @@ textarea{
 }
 
 .panel-body .label-primary{
-  background-color: #F85D5D !important;
+  background-color: #27aae1 !important;
 }
 
 .panel-body .label-success{
@@ -408,13 +408,13 @@ textarea{
 }
 
 .menu ul.main-menu li.dropdown a:hover, .menu ul.main-menu li.dropdown a:active, .menu ul.main-menu li.dropdown a:focus{
-  color: #F85D5D;
+  color: #27aae1;
   background: none;
 }
 
 .menu ul.main-menu li.open a, .menu ul.main-menu li.open a:active, .menu ul.main-menu li.open a:focus{
   background: transparent;
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 .menu ul.main-menu li ul.dropdown-menu{
@@ -521,7 +521,7 @@ textarea{
 
 .sign-up-form:after{
   content: "";
-  border-color: #F85D5D transparent transparent;
+  border-color: #27aae1 transparent transparent;
   border-style: solid;
   border-width: 40px 170px 0;
   bottom: -40px;
@@ -617,7 +617,7 @@ textarea{
 }
 
 #features .feature-item .feature-icon:hover{
-  background: #F85D5D;
+  background: #27aae1;
   transition: all 1s;
 }
 
@@ -630,7 +630,7 @@ textarea{
   background: #f8f8f8 none repeat scroll 0 0;
   border: 1px solid #fff;
   border-radius: 4px;
-  color: #F85D5D;
+  color: #27aae1;
   display: inline-block;
   height: 64px;
   line-height: 62px;
@@ -725,7 +725,7 @@ textarea{
 }
 
 #site-facts .circle{
-  background: #F85D5D;
+  background: #27aae1;
   width: 660px;
   height: 660px;
   border-radius: 50%;
@@ -1005,7 +1005,7 @@ textarea{
 }
 
 #lp-register ul.social-icons li a:hover{
-  color: #F85D5D;
+  color: #27aae1;
   transition: all .5s;
 }
 
@@ -1019,7 +1019,7 @@ textarea{
 /*Profile Card CSS*/
 
 .profile-card{
-  background: linear-gradient(to bottom, rgba(239,166,137,.8), rgba(218,104,98)), url("http://placehold.it/1030x430") no-repeat;
+  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url("http://placehold.it/1030x430") no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 90px;
@@ -1210,7 +1210,7 @@ ul.online-users li span.online-dot{
 }
 
 .create-post .tools ul.publishing-tools li a:hover{
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 
@@ -1584,11 +1584,11 @@ ul.online-users li span.online-dot{
 }
 
 .timeline-cover .timeline-nav-bar .profile-menu li a.active{
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 .timeline-cover .timeline-nav-bar .profile-menu li a:hover{
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 .timeline-cover .timeline-nav-bar ul.follow-me{
@@ -1649,7 +1649,7 @@ ul.online-users li span.online-dot{
 }
 
 .timeline-cover .navbar-mobile .mobile-menu ul li a.active{
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 
@@ -1743,7 +1743,7 @@ ul.online-users li span.online-dot{
 
 .about-profile .about-content-block h4 i.icon-in-title{
   margin-right: 15px;
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 .about-profile .about-content-block .organization img.img-org{
@@ -1855,7 +1855,7 @@ ul.edit-menu li.active a{
 
 .edit-profile-container h4 i{
   margin-right: 15px;
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 .edit-block{
@@ -2067,7 +2067,7 @@ input:checked + .slider:before{
   padding: 10px 30px;
   border-radius: 100px;
   height: 45px;
-  border: 2px solid #F85D5D;
+  border: 2px solid #27aae1;
 }
 
 .faq .page-search .search-form button.btn-primary{
@@ -2161,7 +2161,7 @@ input:checked + .slider:before{
 }
 
 .faq-headline .item-title i{
-  color: #F85D5D;
+  color: #27aae1;
   margin-right: 10px;
 }
 
@@ -2299,7 +2299,7 @@ ul.social-icons li a{
 }
 
 ul.social-icons li a:hover{
-  color: #F85D5D;
+  color: #27aae1;
   transition: all 1s;
 }
 
@@ -2312,7 +2312,7 @@ ul.footer-links li a{
 }
 
 ul.footer-links li a:hover{
-  color: #F85D5D;
+  color: #27aae1;
 }
 
 ul.contact{
@@ -2580,7 +2580,7 @@ ul.contact li i{
 }
 
 .arrows path {
-	stroke: #F85D5D;
+	stroke: #27aae1;
 	fill: transparent;
 	stroke-width: 1px;
 	animation: arrow 2s infinite;
@@ -2626,7 +2626,7 @@ ul.contact li i{
 .spinner {
   width: 40px;
   height: 40px;
-  background-color: #F85D5D;
+  background-color: #27aae1;
   position: absolute;
   top: 48%;
   left: 48%;
