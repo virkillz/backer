@@ -50,7 +50,7 @@ html, body {
 }
 
 body{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
   line-height: 26px;
 	color: #6d6e71;
 	font-size: 13px;
@@ -62,11 +62,11 @@ body{
   ==================================================*/
 
 @font-face {
-    font-family:"Agency FB";
+    font-family:"comfortaa";
     src: url("../fonts/agency-fb.eot") /* EOT file for IE */
 }
 @font-face {
-    font-family:"Agency FB";
+    font-family:"comfortaa";
     src: url("../fonts/agency-fb.ttf") /* TTF file for CSS3 browsers */
 }
 
@@ -100,14 +100,14 @@ a:hover{color: #149AC9;}
 a, a:active, a:focus {outline: none;}
 
 section h1.section-title{
-	font-family: 'Agency FB', sans-serif;
+	font-family: 'comfortaa', sans-serif;
 	font-size: 215px;
 	color: #E6E7E8;
 	margin-bottom: -55px;
 }
 
 section h2.sub-title{
-	font-family: 'Agency FB', sans-serif;
+	font-family: 'comfortaa', sans-serif;
 	color: #E6E7E8;
 	font-size: 50px;
 	margin: 40px 0;
@@ -142,7 +142,7 @@ section .wrapper{
 }
 
 .page-title-section h1{
-  font-family: 'Agency FB', sans-serif;
+  font-family: 'comfortaa', sans-serif;
   font-size: 50px;
 }
 
@@ -494,7 +494,7 @@ textarea{
   ==================================================*/
 
 #banner{
-	background: url("http://placehold.it/1920x900") fixed no-repeat;
+	background: url("https://images.pexels.com/photos/1212829/pexels-photo-1212829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
   background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -508,7 +508,7 @@ textarea{
   ==================================================*/
 
 .sign-up-form{
-  background: linear-gradient(to bottom, rgba(43,57,144,.8), rgba(39,170,225,1) 65%);
+  background: linear-gradient(to bottom, rgba(4,42,43,.8), rgba(4,42,43,1) 65%);
   position: absolute;
   width: 340px;
   min-height: 600px;
@@ -521,7 +521,7 @@ textarea{
 
 .sign-up-form:after{
   content: "";
-  border-color: #F85D5D transparent transparent;
+  border-color: #042A2B transparent transparent;
   border-style: solid;
   border-width: 40px 170px 0;
   bottom: -40px;
@@ -532,7 +532,7 @@ textarea{
 }
 
 .sign-up-form h2{
-  font-family:'Agency FB', sans-serif;
+  font-family:'comfortaa', sans-serif;
   margin: 100px 0 20px;
 }
 
@@ -622,7 +622,7 @@ textarea{
 }
 
 #features .feature-item h3{
-  font-family: 'Agency FB', sans-serif;
+  font-family: 'comfortaa', sans-serif;
   color: #939598;
 }
 
@@ -642,7 +642,7 @@ textarea{
   font-size: 45px;
   font-size: 3.72625em;
   font-weight: normal;
-  font-family: 'Agency FB', sans-serif;
+  font-family: 'comfortaa', sans-serif;
 }
 #incremental-counter .num::before {
   background: #00aae6;
@@ -836,7 +836,7 @@ textarea{
 }
 
 .intro-texts h1{
-  font-family: 'Agency FB', sans-serif;
+  font-family: 'comfortaa', sans-serif;
   margin-bottom: 30px;
   font-weight: 700;
 }
@@ -2085,7 +2085,7 @@ input:checked + .slider:before{
 .faq-cat-list{
   text-align: center;
   border: none;
-  font-family: 'Agency FB', sans-serif;
+  font-family: 'comfortaa', sans-serif;
   font-size: 0;
   margin-top: -90px;
   margin-bottom: 50px;
@@ -2230,7 +2230,7 @@ input:checked + .slider:before{
 }
 
 .error-page .error-content h1.error-title{
-  font-family: "Agency FB";
+  font-family: "comfortaa";
   color: #6d6e71;
   font-size: 60px;
 }
