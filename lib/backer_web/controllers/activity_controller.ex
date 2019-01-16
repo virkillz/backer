@@ -9,18 +9,17 @@ defmodule BackerWeb.ActivityController do
     render(conn, "index.html", activity: activity)
   end
 
-
   def create(conn, %{"activity" => activity_params}) do
     case Logging.create_activity(activity_params) do
       {:ok, activity} ->
         conn
         |> put_flash(:info, "Activity created successfully.")
         |> redirect(to: activity_path(conn, :show, activity))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
-
 
   def delete(conn, %{"id" => id}) do
     activity = Logging.get_activity!(id)

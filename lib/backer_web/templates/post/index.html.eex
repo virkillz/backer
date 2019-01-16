@@ -1,0 +1,91 @@
+
+       <div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Post List</h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/admin/Post">Post List</a>
+                  </li>                  
+                  <li class="breadcrumb-item active">Index
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>          
+        <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Post List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li>
+                          <%= link "New Post", to: post_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+<br>
+
+
+<div class="container">
+
+                            <table class="table">
+                                <thead class="bg-primary white">
+                                <tr>
+                                  <th>Like count</th>
+                                  <th>Title</th>
+                                  <th>Content</th>
+                                  <th>Min tier</th>
+                                  <th>Featured image</th>
+                                  <th>Featured link</th>
+                                  <th>Featured video</th>
+                            
+                                  <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <%= for post <- @posts do %>
+                                      <tr>
+                                        <td><%= post.like_count %></td>
+                                        <td><%= post.title %></td>
+                                        <td><%= post.content %></td>
+                                        <td><%= post.min_tier %></td>
+                                        <td><%= post.featured_image %></td>
+                                        <td><%= post.featured_link %></td>
+                                        <td><%= post.featured_video %></td>
+                                  
+                                        <td class="text-right">
+                                          <span><%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        </td>
+                                      </tr>
+                                  <% end %>
+                                </tbody>
+                            </table>
+
+</div>
+<br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+

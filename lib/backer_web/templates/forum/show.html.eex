@@ -1,0 +1,100 @@
+<!-- BATASSSSS --->
+
+<div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Show Forum</h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/admin/Forum">Forum</a>
+                  </li>                  
+                  <li class="breadcrumb-item active">Show
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>          
+        <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
+
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Forum List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="<%= forum_path(@conn, :edit, @forum) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Forum</button></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+
+
+
+<div class="container">
+                <form class="form-horizontal" role="form">                                     
+
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Title:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @forum.title %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Content:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @forum.content %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Is visible:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @forum.is_visible %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Status:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @forum.status %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Like count:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @forum.like_count %></p>
+                          </div>
+                        </div>  
+                    
+
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                          <a href="<%= forum_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                        </div>
+                    </div>                                                                                                                          
+                </form>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+

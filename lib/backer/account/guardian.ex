@@ -1,10 +1,8 @@
 defmodule Backer.Auth.Guardian do
   @moduledoc false
 
-
   use Guardian, otp_app: :backer
   import Ecto.Query, warn: false
-
 
   alias Backer.Auth.Guardian
   alias Backer.Account
@@ -30,5 +28,4 @@ defmodule Backer.Auth.Guardian do
     conn
     |> Guardian.Plug.sign_out()
   end
-
 end

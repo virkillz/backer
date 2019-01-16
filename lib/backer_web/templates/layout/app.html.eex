@@ -138,7 +138,11 @@
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="active nav-item"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
-          </li>          
+          </li>   
+          <li class="nav-item"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Backers</span></a>
+          </li>                    
+          <li class="nav-item"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
+          </li>            
           <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal management</span></a>
             <ul class="menu-content">
               <li><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
@@ -146,6 +150,19 @@
               <li><a class="menu-item" href="/admin/user" up-target=".main" up-transition="move-right">User management</a>
             </ul>
           </li>
+          <li class="nav-item"><a href="/admin/general_settings" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">General Settings</span></a>
+          </li>  
+          <li class="nav-item"><a href="/admin/badges" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Badge</span></a>
+          </li>   
+          <li class="nav-item"><a href="/admin/badges_members" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Badge members</span></a>
+          </li>                              
+          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Masterdata</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="/admin/categories" up-target=".main" up-transition="move-right">Category</a>
+              </li>
+              <li><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
+            </ul>
+          </li>          
         </ul>
       </div>
       <div class="navigation-background"></div>

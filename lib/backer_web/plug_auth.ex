@@ -15,6 +15,7 @@ defmodule BackerWeb.Plugs.SetCurrentUser do
         conn
         |> assign(:current_user, current_user)
         |> assign(:user_signed_in?, true)
+
       true ->
         conn
         |> assign(:current_user, nil)

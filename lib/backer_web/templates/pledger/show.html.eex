@@ -1,0 +1,149 @@
+<!-- BATASSSSS --->
+
+<div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Show Pledger</h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/admin/Pledger">Pledger</a>
+                  </li>                  
+                  <li class="breadcrumb-item active">Show
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>          
+        <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
+
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Pledger List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="<%= pledger_path(@conn, :edit, @pledger) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Pledger</button></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+
+
+
+<div class="container">
+                <form class="form-horizontal" role="form">                                     
+
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Pledger name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.backer.full_name %></p>
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Display name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.backer.display_name %></p>
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Backer ID:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.backer.id %></p>
+                          </div>
+                        </div>                                                  
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Category:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.category.name %></p>
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Title:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.title.name %></p>
+                          </div>
+                        </div> 
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Background:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.background %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Pledger overview:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.pledger_overview %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Bank name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.bank_name %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Bank book picture:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.bank_book_picture %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Account name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.account_name %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Account:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.account_id %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Status:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @pledger.status %></p>
+                          </div>
+                        </div>  
+                    
+
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                          <a href="<%= pledger_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                        </div>
+                    </div>                                                                                                                          
+                </form>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+

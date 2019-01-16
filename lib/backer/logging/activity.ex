@@ -2,10 +2,9 @@ defmodule Backer.Logging.Activity do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "activity" do
-    field :activity, :string
-    field :user_id, :id
+    field(:activity, :string)
+    field(:user_id, :id)
 
     timestamps()
   end

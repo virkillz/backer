@@ -1,0 +1,59 @@
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :like_count, class: "control-label" %>
+    <%= number_input f, :like_count, class: "form-control" %>
+    <%= error_tag f, :like_count %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :title, class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :content, class: "control-label" %>
+    <%= textarea f, :content, class: "form-control" %>
+    <%= error_tag f, :content %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :min_tier, class: "control-label" %>
+    <%= number_input f, :min_tier, class: "form-control" %>
+    <%= error_tag f, :min_tier %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :featured_image, class: "control-label" %>
+    <%= text_input f, :featured_image, class: "form-control" %>
+    <%= error_tag f, :featured_image %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :featured_link, class: "control-label" %>
+    <%= text_input f, :featured_link, class: "form-control" %>
+    <%= error_tag f, :featured_link %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :featured_video, class: "control-label" %>
+    <%= text_input f, :featured_video, class: "form-control" %>
+    <%= error_tag f, :featured_video %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <span><%= link "Cancel", to: post_path(@conn, :index), class: "btn btn-warning" %></span>
+  </div>
+<% end %>
+</div>
+</div>

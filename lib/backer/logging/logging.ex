@@ -22,11 +22,13 @@ defmodule Backer.Logging do
   end
 
   def get_last_x_activity(amount) do
-    Repo.all(from a in Activity, order_by: [desc: a.id], limit: ^amount)
-  end  
+    Repo.all(from(a in Activity, order_by: [desc: a.id], limit: ^amount))
+  end
 
   def get_last_x_activity(amount, user_id) do
-    Repo.all(from a in Activity, where: a.user_id == ^user_id, order_by: [desc: a.id], limit: ^amount)
+    Repo.all(
+      from(a in Activity, where: a.user_id == ^user_id, order_by: [desc: a.id], limit: ^amount)
+    )
   end
 
   @doc """

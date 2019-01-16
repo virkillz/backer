@@ -1,0 +1,77 @@
+
+       <div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Post like List</h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/admin/Post like">Post like List</a>
+                  </li>                  
+                  <li class="breadcrumb-item active">Index
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>          
+        <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Post like List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li>
+                          <%= link "New Post like", to: post_like_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+<br>
+
+
+<div class="container">
+
+                            <table class="table">
+                                <thead class="bg-primary white">
+                                <tr>
+                            
+                                  <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <%= for post_like <- @post_likes do %>
+                                      <tr>
+                                  
+                                        <td class="text-right">
+                                          <span><%= link "Show", to: post_like_path(@conn, :show, post_like), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: post_like_path(@conn, :edit, post_like), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: post_like_path(@conn, :delete, post_like), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        </td>
+                                      </tr>
+                                  <% end %>
+                                </tbody>
+                            </table>
+
+</div>
+<br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+

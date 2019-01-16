@@ -1,0 +1,200 @@
+<!-- BATASSSSS --->
+
+<div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Show Backer</h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/admin/Backer">Backer</a>
+                  </li>                  
+                  <li class="breadcrumb-item active">Show
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>          
+        <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
+
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Backer List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a href="<%= backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Backer</button></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+
+
+
+<div class="container">
+                <form class="form-horizontal" role="form">                                     
+
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Username:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.username %></p>
+                          </div>
+                        </div>  
+                   
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Display name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.display_name %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Backer bio:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.backer_bio %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Full name:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.full_name %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Email:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.email %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Phone:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.phone %></p>
+                          </div>
+                        </div>  
+                                          
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Birth date:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.birth_date %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Recover phone:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.recover_phone %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Id type:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.id_type %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Id number:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.id_number %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Id photo:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.id_photo %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Id photokyc:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.id_photokyc %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Is pledger:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.is_pledger %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Avatar:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.avatar %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Email verification code:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.email_verification_code %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Phone verification code:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.phone_verification_code %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Password recovery code:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.password_recovery_code %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Is email verified:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.is_email_verified %></p>
+                          </div>
+                        </div>  
+                    
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Is phone verified:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @backer.is_phone_verified %></p>
+                          </div>
+                        </div>  
+                    
+
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                          <a href="<%= backer_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                        </div>
+                    </div>                                                                                                                          
+                </form>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+

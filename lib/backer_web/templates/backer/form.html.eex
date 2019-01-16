@@ -1,0 +1,131 @@
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :username, class: "control-label" %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :display_name, class: "control-label" %>
+    <%= text_input f, :display_name, class: "form-control" %>
+    <%= error_tag f, :display_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :backer_bio, class: "control-label" %>
+    <%= textarea f, :backer_bio, class: "form-control" %>
+    <%= error_tag f, :backer_bio %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :full_name, class: "control-label" %>
+    <%= text_input f, :full_name, class: "form-control" %>
+    <%= error_tag f, :full_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :email, class: "control-label" %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :birth_date, class: "control-label" %>
+    <%= date_select f, :birth_date, class: "form-control" %>
+    <%= error_tag f, :birth_date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :phone, class: "control-label" %>
+    <%= text_input f, :phone, class: "form-control" %>
+    <%= error_tag f, :phone %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :recover_phone, class: "control-label" %>
+    <%= text_input f, :recover_phone, class: "form-control" %>
+    <%= error_tag f, :recover_phone %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :id_type, class: "control-label" %>
+    <%= text_input f, :id_type, class: "form-control" %>
+    <%= error_tag f, :id_type %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :id_number, class: "control-label" %>
+    <%= text_input f, :id_number, class: "form-control" %>
+    <%= error_tag f, :id_number %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :id_photo, class: "control-label" %>
+    <%= text_input f, :id_photo, class: "form-control" %>
+    <%= error_tag f, :id_photo %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :id_photokyc, class: "control-label" %>
+    <%= text_input f, :id_photokyc, class: "form-control" %>
+    <%= error_tag f, :id_photokyc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_pledger, class: "control-label" %>
+    <%= checkbox f, :is_pledger, class: "checkbox" %>
+    <%= error_tag f, :is_pledger %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :avatar, class: "control-label" %>
+    <%= text_input f, :avatar, class: "form-control" %>
+    <%= error_tag f, :avatar %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :email_verification_code, class: "control-label" %>
+    <%= text_input f, :email_verification_code, [class: "form-control", disabled: true] %>
+    <%= error_tag f, :email_verification_code %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :phone_verification_code, class: "control-label" %>
+    <%= text_input f, :phone_verification_code, [class: "form-control", disabled: true] %>
+    <%= error_tag f, :phone_verification_code %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password_recovery_code, class: "control-label" %>
+    <%= text_input f, :password_recovery_code, [class: "form-control", disabled: true] %>
+    <%= error_tag f, :password_recovery_code %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_email_verified, class: "control-label" %>
+    <%= checkbox f, :is_email_verified, class: "checkbox" %>
+    <%= error_tag f, :is_email_verified %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :is_phone_verified, class: "control-label" %>
+    <%= checkbox f, :is_phone_verified, class: "checkbox" %>
+    <%= error_tag f, :is_phone_verified %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <span><%= link "Cancel", to: backer_path(@conn, :index), class: "btn btn-warning" %></span>
+  </div>
+<% end %>
+</div>
+</div>
