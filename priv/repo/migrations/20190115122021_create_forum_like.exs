@@ -3,8 +3,8 @@ defmodule Backer.Repo.Migrations.CreateForumLike do
 
   def change do
     create table(:forum_like) do
-      add :forum_id, references(:forums, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
+      add :forum_id, references(:forums, on_delete: :delete_all)
+      add :backer_id, references(:backers, on_delete: :delete_all)
 
       timestamps()
     end

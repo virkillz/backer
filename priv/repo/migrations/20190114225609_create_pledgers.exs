@@ -10,9 +10,9 @@ defmodule Backer.Repo.Migrations.CreatePledgers do
       add :account_name, :string
       add :account_id, :string
       add :status, :string
-      add :backer_id, references(:backers, on_delete: :nothing)
-      add :category_id, references(:categories, on_delete: :nothing)
-      add :title_id, references(:titles, on_delete: :nothing)
+      add :backer_id, references(:backers, on_delete: :delete_all)
+      add :category_id, references(:categories, on_delete: :delete_all)
+      add :title_id, references(:titles, on_delete: :delete_all)
 
       timestamps()
     end

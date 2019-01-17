@@ -4,9 +4,9 @@ defmodule Backer.Repo.Migrations.CreatePcomments do
   def change do
     create table(:pcomments) do
       add :content, :text
-      add :post_id, references(:posts, on_delete: :nothing)
-      add :pcomment_id, references(:pcomments, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
+      add :post_id, references(:posts, on_delete: :delete_all)
+      add :pcomment_id, references(:pcomments, on_delete: :delete_all)
+      add :backer_id, references(:backers, on_delete: :delete_all)
 
       timestamps()
     end

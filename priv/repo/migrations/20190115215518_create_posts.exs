@@ -10,7 +10,7 @@ defmodule Backer.Repo.Migrations.CreatePosts do
       add :featured_image, :string
       add :featured_link, :string
       add :featured_video, :string
-      add :pledger_id, references(:pledgers, on_delete: :nothing)
+      add :pledger_id, references(:pledgers, on_delete: :delete_all)
 
       timestamps()
     end

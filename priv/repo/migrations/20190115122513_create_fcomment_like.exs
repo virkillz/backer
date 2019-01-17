@@ -3,8 +3,8 @@ defmodule Backer.Repo.Migrations.CreateFcommentLike do
 
   def change do
     create table(:fcomment_like) do
-      add :fcomment_id, references(:fcomments, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
+      add :fcomment_id, references(:fcomments, on_delete: :delete_all)
+      add :backer_id, references(:backers, on_delete: :delete_all)
 
       timestamps()
     end

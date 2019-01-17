@@ -6,7 +6,7 @@ defmodule Backer.Repo.Migrations.CreateTiers do
       add :title, :string
       add :description, :text
       add :amount, :integer
-      add :pledger_id, references(:pledgers, on_delete: :nothing)
+      add :pledger_id, references(:pledgers, on_delete: :delete_all)
 
       timestamps()
     end

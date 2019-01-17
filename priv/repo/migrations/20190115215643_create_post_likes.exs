@@ -3,8 +3,8 @@ defmodule Backer.Repo.Migrations.CreatePostLikes do
 
   def change do
     create table(:post_likes) do
-      add :post_id, references(:posts, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
+      add :post_id, references(:posts, on_delete: :delete_all)
+      add :backer_id, references(:backers, on_delete: :delete_all)
 
       timestamps()
     end

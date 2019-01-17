@@ -4,8 +4,8 @@ defmodule Backer.Repo.Migrations.CreateBadgeMembers do
   def change do
     create table(:badge_members) do
       add :award_date, :date
-      add :backer_id, references(:backers, on_delete: :nothing)
-      add :badge_id, references(:badges, on_delete: :nothing)
+      add :backer_id, references(:backers, on_delete: :delete_all)
+      add :badge_id, references(:badges, on_delete: :delete_all)
 
       timestamps()
     end

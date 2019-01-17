@@ -6,7 +6,7 @@ defmodule Backer.Repo.Migrations.CreateBadges do
       add :title, :string
       add :icon, :string
       add :description, :text
-      add :pledger_id, references(:pledgers, on_delete: :nothing)
+      add :pledger_id, references(:pledgers, on_delete: :delete_all)
 
       timestamps()
     end
