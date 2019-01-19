@@ -2,16 +2,19 @@ defmodule BackerWeb.BackerController do
   use BackerWeb, :controller
 
   alias Backer.Account
+  alias Backer.Constant  
   alias Backer.Account.Backer
 
   def index(conn, _params) do
     backers = Account.list_backers()
+    IO.inspect(conn.query_params)
     render(conn, "index.html", backers: backers)
   end
 
   def new(conn, _params) do
+    id_types = Constant.accepted_id_kyc
     changeset = Account.change_backer(%Backer{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, id_types: id_types)
   end
 
   def create(conn, %{"backer" => backer_params}) do
@@ -22,19 +25,22 @@ defmodule BackerWeb.BackerController do
         |> redirect(to: backer_path(conn, :show, backer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        id_types = Constant.accepted_id_kyc
+        render(conn, "new.html", changeset: changeset, id_types: id_types)
     end
   end
 
   def show(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
-    render(conn, "show.html", backer: backer)
+    pledger = Account.get_backers_pledger(id) |> IO.inspect
+    render(conn, "show.html", backer: backer, pledger: pledger)
   end
 
   def edit(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
+    id_types = Constant.accepted_id_kyc
     changeset = Account.change_backer(backer)
-    render(conn, "edit.html", backer: backer, changeset: changeset)
+    render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
   end
 
   def update(conn, %{"id" => id, "backer" => backer_params}) do
@@ -47,7 +53,8 @@ defmodule BackerWeb.BackerController do
         |> redirect(to: backer_path(conn, :show, backer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", backer: backer, changeset: changeset)
+        id_types = Constant.accepted_id_kyc
+        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
     end
   end
 

@@ -15,6 +15,18 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :backer_id, class: "control-label" %>
+    <%= select f, :backer_id, Enum.map(@backers, &{&1.email, &1.id}), class: "form-control" %>    
+    <%= error_tag f, :backer_id %>
+  </div>  
+
+  <div class="form-group">
+    <%= label f, :pledger_id, class: "control-label" %>
+    <%= select f, :pledger_id, Enum.map(@pledgers, &{&1.id, &1.id}), class: "form-control" %>    
+    <%= error_tag f, :pledger_id %>
+  </div> 
+
+  <div class="form-group">
     <%= label f, :content, class: "control-label" %>
     <%= textarea f, :content, class: "form-control" %>
     <%= error_tag f, :content %>

@@ -137,30 +137,37 @@
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class="active nav-item"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin") %>"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>   
-          <li class="nav-item"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Backers</span></a>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
-          <li class="nav-item"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
-          </li>            
-          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal management</span></a>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/pledgers") %>"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
+          </li>                      
+          <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Content</span></a>
             <ul class="menu-content">
-              <li><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
+              <li class="<%= activate(@conn.request_path, "/admin/forums") %>"><a class="menu-item" href="/admin/forums" up-target=".main" up-transition="move-right">Forum Posts</a>
               </li>
-              <li><a class="menu-item" href="/admin/user" up-target=".main" up-transition="move-right">User management</a>
+              <li class="<%= activate(@conn.request_path, "/admin/posts") %>"><a class="menu-item" href="/admin/posts" up-target=".main" up-transition="move-right">Pledger Posts</a>
             </ul>
           </li>
-          <li class="nav-item"><a href="/admin/general_settings" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">General Settings</span></a>
-          </li>  
-          <li class="nav-item"><a href="/admin/badges" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Badge</span></a>
-          </li>   
-          <li class="nav-item"><a href="/admin/badges_members" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Badge members</span></a>
-          </li>                              
-          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Masterdata</span></a>
+          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal management</span></a>
             <ul class="menu-content">
-              <li><a class="menu-item" href="/admin/categories" up-target=".main" up-transition="move-right">Category</a>
+              <li class="<%= activate(@conn.request_path, "/admin/activity") %>"><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
               </li>
-              <li><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
+              <li class="<%= activate(@conn.request_path, "/admin/user") %>"><a class="menu-item" href="/admin/user" up-target=".main" up-transition="move-right">User management</a>
+            </ul>
+          </li>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/general_settings") %>"><a href="/admin/general_settings" up-target=".main" up-transition="move-right"><i class="ft-settings"></i><span class="menu-title" data-i18n="">General Settings</span></a>
+          </li>  
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/badges") %>"><a href="/admin/badges" up-target=".main" up-transition="move-right"><i class="ft-shield"></i><span class="menu-title" data-i18n="">Badge</span></a>
+          </li>   
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/badge_members") %>"><a href="/admin/badge_members" up-target=".main" up-transition="move-right"><i class="ft-shield"></i><span class="menu-title" data-i18n="">Badge members</span></a>
+          </li>                              
+          <li class=" nav-item"><a href="#"><i class="ft-book"></i><span class="menu-title" data-i18n="">Masterdata</span></a>
+            <ul class="menu-content">
+              <li class="<%= activate(@conn.request_path, "/admin/categories") %>"><a class="menu-item" href="/admin/categories" up-target=".main" up-transition="move-right">Category</a>
+              </li>
+              <li class="<%= activate(@conn.request_path, "/admin/titles") %>"><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
             </ul>
           </li>          
         </ul>

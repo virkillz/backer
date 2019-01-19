@@ -10,11 +10,7 @@ defmodule Backer.Account.Pledger do
     field(:bank_name, :string)
     field(:pledger_overview, :string)
     field(:status, :string)
-    # field(:category_id, :id)
-    # field(:title_id, :id)
 
-
-    # has_one :backer, Backer.Account.Backer 
     belongs_to :backer, {"backers", Backer.Account.Backer}
     belongs_to :category, {"categories", Backer.Masterdata.Category } 
     belongs_to :title, {"titles", Backer.Masterdata.Title }     
@@ -42,5 +38,6 @@ defmodule Backer.Account.Pledger do
       :title_id,
       :category_id
     ])
+    |> unique_constraint(:backer_id, [name: :pledgers_backers, message: "This backer already a Pledger"])
   end
 end

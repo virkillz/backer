@@ -164,6 +164,7 @@ defmodule Backer.Account do
 
   """
   def get_backer!(id), do: Repo.get!(Backerz, id) 
+   
 
   @doc """
   Creates a backer.
@@ -197,7 +198,7 @@ defmodule Backer.Account do
   """
   def update_backer(%Backerz{} = backer, attrs) do
     backer
-    |> Backerz.changeset(attrs)
+    |> Backerz.create_changeset(attrs)
     |> Repo.update()
   end
 
@@ -320,6 +321,18 @@ defmodule Backer.Account do
   def delete_pledger(%Pledger{} = pledger) do
     Repo.delete(pledger)
   end
+
+
+  def get_backers_pledger(id) do
+    query = from p in Pledger,
+    where: p.backer_id == ^id
+    
+    case Repo.all(query) do
+      [] -> nil
+      [a] -> a
+      [h | _] -> h
+    end  
+  end  
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking pledger changes.

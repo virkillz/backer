@@ -44,13 +44,11 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
-                                  <th>Like count</th>
+                                  <th>#</th>
+                                  <th>Pledger ID</th>
                                   <th>Title</th>
                                   <th>Content</th>
                                   <th>Min tier</th>
-                                  <th>Featured image</th>
-                                  <th>Featured link</th>
-                                  <th>Featured video</th>
                             
                                   <th></th>
                                 </tr>
@@ -58,13 +56,11 @@
                                 <tbody>
                                   <%= for post <- @posts do %>
                                       <tr>
-                                        <td><%= post.like_count %></td>
+                                        <td><%= post.id %></td>
+                                        <td><%= post.pledger_id %></td>
                                         <td><%= post.title %></td>
                                         <td><%= post.content %></td>
                                         <td><%= post.min_tier %></td>
-                                        <td><%= post.featured_image %></td>
-                                        <td><%= post.featured_link %></td>
-                                        <td><%= post.featured_video %></td>
                                   
                                         <td class="text-right">
                                           <span><%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %></span>

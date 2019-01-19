@@ -20,7 +20,7 @@ defmodule Backer.Mixfile do
   def application do
     [
       mod: {Backer.Application, []},
-      extra_applications: [:logger, :runtime_tools, :timex]
+      extra_applications: [:logger, :runtime_tools, :timex, :scrivener_ecto]
     ]
   end
 
@@ -36,16 +36,19 @@ defmodule Backer.Mixfile do
       {:phoenix, "~> 1.3.2"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
+      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 1.0"},
       {:secure_random, "~> 0.5"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:scrivener_ecto, "~> 2.0"}
     ]
   end
 

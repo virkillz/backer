@@ -57,6 +57,7 @@ defmodule Backer.Account.Backer do
     |> validate_required([:email, :username, :phone, :birth_date])
   end
 
+
   @doc false
   def create_changeset(backer, attrs) do
     backer
@@ -116,7 +117,7 @@ defmodule Backer.Account.Backer do
     display_name = get_field(changeset, :display_name)
 
     return =
-      case Validate.validate_alphanumeric(display_name) do
+      case Validate.validate_alphanumeric_and_space(display_name) do
         {:ok, _} ->
           changeset
 
@@ -130,14 +131,18 @@ defmodule Backer.Account.Backer do
   end
 
   defp add_random_username(changeset) do
-    changeset |> change(username: Generator.random())
+    username = get_field(changeset, :username)
+    case username do
+      "" -> changeset |> change(username: Generator.random())
+      _ -> changeset
+    end
   end
 
   defp validate_full_name(changeset) do
     full_name = get_field(changeset, :full_name)
 
     return =
-      case Validate.validate_alphanumeric(full_name) do
+      case Validate.validate_alphanumeric_and_space(full_name) do
         {:ok, _} ->
           changeset
 

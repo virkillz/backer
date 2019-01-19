@@ -58,7 +58,7 @@
 
   <div class="form-group">
     <%= label f, :id_type, class: "control-label" %>
-    <%= text_input f, :id_type, class: "form-control" %>
+    <%= select f, :id_type, @id_types, class: "form-control" %>
     <%= error_tag f, :id_type %>
   </div>
 

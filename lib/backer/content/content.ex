@@ -17,8 +17,9 @@ defmodule Backer.Content do
       [%Forum{}, ...]
 
   """
-  def list_forums do
-    Repo.all(Forum)
+  def list_forums(params) do
+    Forum 
+    |> Repo.paginate(params)
   end
 
   @doc """
@@ -401,8 +402,9 @@ defmodule Backer.Content do
       [%Post{}, ...]
 
   """
-  def list_posts do
-    Repo.all(Post)
+  def list_posts(params) do
+    # Repo.all(Post)
+    Post |> Repo.paginate(params)
   end
 
   @doc """
@@ -419,8 +421,11 @@ defmodule Backer.Content do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
-
+  def get_post!(id) do 
+    Repo.get!(Post, id) 
+    |> Repo.preload(:pcomment) 
+    |> IO.inspect
+  end
   @doc """
   Creates a post.
 

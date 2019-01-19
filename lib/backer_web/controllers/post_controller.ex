@@ -2,6 +2,8 @@ defmodule BackerWeb.PostController do
   use BackerWeb, :controller
 
   alias Backer.Content
+  alias Backer.Account
+  alias Backer.Constant
   alias Backer.Content.Post
 
   def index(conn, _params) do
@@ -10,8 +12,10 @@ defmodule BackerWeb.PostController do
   end
 
   def new(conn, _params) do
+    pledgers = Account.list_pledgers()
+    tiers = Constant.standard_tier
     changeset = Content.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, pledgers: pledgers, tiers: tiers)
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -22,7 +26,9 @@ defmodule BackerWeb.PostController do
         |> redirect(to: post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+            pledgers = Account.list_pledgers()
+                tiers = Constant.standard_tier
+        render(conn, "new.html", changeset: changeset, pledgers: pledgers, tiers: tiers)
     end
   end
 
@@ -33,8 +39,10 @@ defmodule BackerWeb.PostController do
 
   def edit(conn, %{"id" => id}) do
     post = Content.get_post!(id)
+        pledgers = Account.list_pledgers()
     changeset = Content.change_post(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+        tiers = Constant.standard_tier
+    render(conn, "edit.html", post: post, changeset: changeset, pledgers: pledgers, tiers: tiers)
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
@@ -47,7 +55,9 @@ defmodule BackerWeb.PostController do
         |> redirect(to: post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", post: post, changeset: changeset)
+            pledgers = Account.list_pledgers()
+                tiers = Constant.standard_tier
+        render(conn, "edit.html", post: post, changeset: changeset, pledgers: pledgers, tiers: tiers)
     end
   end
 

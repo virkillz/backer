@@ -27,7 +27,10 @@ defmodule BackerWeb.PledgerController do
         |> redirect(to: pledger_path(conn, :show, pledger))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+                    backers = Account.list_backers()
+            titles = Masterdata.list_titles()
+            categories = Masterdata.list_categories()  
+        render(conn, "new.html", changeset: changeset, backers: backers, titles: titles, categories: categories)
     end
   end
 
@@ -37,9 +40,12 @@ defmodule BackerWeb.PledgerController do
   end
 
   def edit(conn, %{"id" => id}) do
+    backers = Account.list_backers()
+    titles = Masterdata.list_titles()
+    categories = Masterdata.list_categories()    
     pledger = Account.get_pledger!(id)
     changeset = Account.change_pledger(pledger)
-    render(conn, "edit.html", pledger: pledger, changeset: changeset)
+    render(conn, "edit.html", pledger: pledger, changeset: changeset, backers: backers, titles: titles, categories: categories)
   end
 
   def update(conn, %{"id" => id, "pledger" => pledger_params}) do
@@ -52,7 +58,10 @@ defmodule BackerWeb.PledgerController do
         |> redirect(to: pledger_path(conn, :show, pledger))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", pledger: pledger, changeset: changeset)
+            backers = Account.list_backers()
+            titles = Masterdata.list_titles()
+            categories = Masterdata.list_categories()   
+        render(conn, "edit.html", pledger: pledger, changeset: changeset, backers: backers, titles: titles, categories: categories)
     end
   end
 

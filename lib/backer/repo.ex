@@ -1,5 +1,6 @@
 defmodule Backer.Repo do
   use Ecto.Repo, otp_app: :backer
+  use Scrivener, page_size: 4
 
   @doc """
   Dynamically loads the repository url from the

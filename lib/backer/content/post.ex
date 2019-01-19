@@ -12,6 +12,8 @@ defmodule Backer.Content.Post do
     field(:title, :string)
     field(:pledger_id, :id)
 
+    has_many :pcomment, Backer.Content.PostComment
+
     timestamps()
   end
 
@@ -25,16 +27,13 @@ defmodule Backer.Content.Post do
       :min_tier,
       :featured_image,
       :featured_link,
-      :featured_video
+      :featured_video,
+      :pledger_id
     ])
     |> validate_required([
-      :like_count,
-      :title,
+      :pledger_id,
       :content,
-      :min_tier,
-      :featured_image,
-      :featured_link,
-      :featured_video
+      :min_tier
     ])
   end
 end

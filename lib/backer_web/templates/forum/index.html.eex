@@ -44,11 +44,12 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>#</th>
+                                  <th>Pledger</th>
                                   <th>Title</th>
                                   <th>Content</th>
                                   <th>Is visible</th>
                                   <th>Status</th>
-                                  <th>Like count</th>
                             
                                   <th></th>
                                 </tr>
@@ -56,11 +57,12 @@
                                 <tbody>
                                   <%= for forum <- @forums do %>
                                       <tr>
+                                        <td><%= forum.id %></td>
+                                        <td><%= forum.pledger_id %></td>
                                         <td><%= forum.title %></td>
                                         <td><%= forum.content %></td>
                                         <td><%= forum.is_visible %></td>
                                         <td><%= forum.status %></td>
-                                        <td><%= forum.like_count %></td>
                                   
                                         <td class="text-right">
                                           <span><%= link "Show", to: forum_path(@conn, :show, forum), class: "btn btn-default btn-xs" %></span>
