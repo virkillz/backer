@@ -30,6 +30,9 @@ config :backer, Backer.Auth.AuthAccessPipeline,
   module: Backer.Auth.Guardian,
   error_handler: Backer.Auth.AuthErrorHandler
 
+config :scrivener_html,
+  routes_helper: BackerWeb.Router.Helpers
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -20,7 +20,7 @@ defmodule Backer.Mixfile do
   def application do
     [
       mod: {Backer.Application, []},
-      extra_applications: [:logger, :runtime_tools, :timex, :scrivener_ecto]
+      extra_applications: [:logger, :runtime_tools, :timex, :scrivener_ecto, :scrivener_html]
     ]
   end
 
@@ -48,7 +48,8 @@ defmodule Backer.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:timex, "~> 3.0"},
-      {:scrivener_ecto, "~> 2.0"}
+      {:scrivener_ecto, "~> 2.0"},
+      {:scrivener_html, "~> 1.7"}
     ]
   end
 
