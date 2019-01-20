@@ -44,6 +44,7 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>Avatar</th>
                                   <th>Username</th>
                                   <th>Display name</th>
                                   <th>Full name</th>
@@ -56,6 +57,13 @@
                                 <tbody>
                                   <%= for backer <- @backers do %>
                                       <tr>
+                                        <th>
+
+<div class="mask">
+<img src="<%= backer.avatar %>" />
+</div>​
+
+                                        </th>
                                         <td><%= backer.username %></td>
                                         <td><%= backer.display_name %></td>
                                         <td><%= backer.full_name %></td>
@@ -71,7 +79,7 @@
                                   <% end %>
                                 </tbody>
                             </table>
-
+<%= pagination_links @conn, @backers, view_style: :bootstrap_v4, distance: 5, next: "next", previous: "prev", first: true, last: true %>
 </div>
 <br>
 

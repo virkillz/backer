@@ -96,5 +96,65 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Forum comment List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li>
+                          <%= link "Add Comment", to: "/admin/fcomments/new/" <> Integer.to_string(@forum.id), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+<br>
+
+
+<div class="container">
+
+                            <table class="table">
+                                <thead class="bg-primary white">
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Reply To</th>
+                                  <th>Backer ID</th>
+                                  <th>Content</th>
+                            
+                                  <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <%= for forum_comment <- @fcomments do %>
+                                      <tr>
+                                        <td><%= forum_comment.id %></td>
+                                        <td><%= forum_comment.reply_to %></td>
+                                        <td><%= forum_comment.backer_id %></td>
+                                        <td><%= forum_comment.content %></td>
+                                  
+                                        <td class="text-right">
+                                          <span><%= link "Show", to: forum_comment_path(@conn, :show, forum_comment), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: forum_comment_path(@conn, :edit, forum_comment), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: forum_comment_path(@conn, :delete, forum_comment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        </td>
+                                      </tr>
+                                  <% end %>
+                                </tbody>
+                            </table>
+
+</div>
+<br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 

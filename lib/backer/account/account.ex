@@ -149,6 +149,10 @@ defmodule Backer.Account do
     Repo.all(Backerz)
   end
 
+  def list_backers(params) do
+    Backerz |> Repo.paginate(params)
+  end  
+
   @doc """
   Gets a single backer.
 
@@ -245,9 +249,22 @@ defmodule Backer.Account do
   def list_pledgers do
     Repo.all(Pledger)
     |> Repo.preload(:backer) 
-     |> Repo.preload(:category) 
-   |> Repo.preload(:title)
+    |> Repo.preload(:category) 
+    |> Repo.preload(:title)
   end
+
+  def list_pledgers(params) do
+
+    query = from p in Pledger, preload: [:backer, :category, :title]
+
+    Repo.paginate(query, params)
+    # Pledger
+    # |> Repo.all
+    # |> Repo.preload(:backer) 
+    # |> Repo.preload(:category) 
+    # |> Repo.preload(:title)
+    # |> Repo.paginate(params)
+  end  
 
   @doc """
   Gets a single pledger.

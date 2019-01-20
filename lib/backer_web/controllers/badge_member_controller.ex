@@ -2,17 +2,19 @@ defmodule BackerWeb.BadgeMemberController do
   use BackerWeb, :controller
 
   alias Backer.Gamification
+  alias Backer.Account  
   alias Backer.Gamification.BadgeMember
-
-  def index(conn, _params) do
-    badge_members = Gamification.list_badge_members()
-    render(conn, "index.html", badge_members: badge_members)
-  end
 
   def new(conn, _params) do
     changeset = Gamification.change_badge_member(%BadgeMember{})
     render(conn, "new.html", changeset: changeset)
   end
+
+  def newmember(conn, %{"badgeid" => badgeid}) do
+    backers = Account.list_backers
+    changeset = Gamification.change_badge_member(%BadgeMember{})
+    render(conn, "new.html", changeset: changeset, id: badgeid, backers: backers)
+  end  
 
   def create(conn, %{"badge_member" => badge_member_params}) do
     case Gamification.create_badge_member(badge_member_params) do
@@ -33,8 +35,10 @@ defmodule BackerWeb.BadgeMemberController do
 
   def edit(conn, %{"id" => id}) do
     badge_member = Gamification.get_badge_member!(id)
+    id = badge_member.badge_id
+    backers = Account.list_backers    
     changeset = Gamification.change_badge_member(badge_member)
-    render(conn, "edit.html", badge_member: badge_member, changeset: changeset)
+    render(conn, "edit.html", badge_member: badge_member, id: id, changeset: changeset, backers: backers)
   end
 
   def update(conn, %{"id" => id, "badge_member" => badge_member_params}) do
@@ -57,6 +61,6 @@ defmodule BackerWeb.BadgeMemberController do
 
     conn
     |> put_flash(:info, "Badge member deleted successfully.")
-    |> redirect(to: badge_member_path(conn, :index))
+    |> redirect(to: badge_path(conn, :show, badge_member.badge_id))
   end
 end

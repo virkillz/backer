@@ -17,7 +17,7 @@ defmodule Backer.Content.PostComment do
   @doc false
   def changeset(post_comment, attrs) do
     post_comment
-    |> cast(attrs, [:content])
-    |> validate_required([:content])
+    |> cast(attrs, [:content, :post_id, :backer_id])
+    |> validate_required([:content, :post_id, :backer_id])
   end
 end

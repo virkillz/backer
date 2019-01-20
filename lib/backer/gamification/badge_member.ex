@@ -13,7 +13,7 @@ defmodule Backer.Gamification.BadgeMember do
   @doc false
   def changeset(badge_member, attrs) do
     badge_member
-    |> cast(attrs, [:award_date])
-    |> validate_required([:award_date])
+    |> cast(attrs, [:award_date, :backer_id, :badge_id])
+    |> validate_required([:award_date, :backer_id, :badge_id])
   end
 end

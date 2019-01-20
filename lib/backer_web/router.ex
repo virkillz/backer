@@ -40,18 +40,23 @@ defmodule BackerWeb.Router do
     resources("/backers", BackerController)
     resources("/pledgers", PledgerController)
     resources("/badges", BadgeController)
-    resources("/badge_members", BadgeMemberController)
+    resources("/badge_members", BadgeMemberController, except: [:index])
+    get("/badge_members/new/:badgeid", BadgeMemberController, :newmember)
 
     resources("/points", PointController)
     resources("/tiers", TierController)
-    resources("/forums", ForumController)
+    resources("/forums", ForumController)   
     resources("/forum_like", ForumLikeController)
     resources("/fcomments", ForumCommentController)
+    get("/fcomments/new/:forumid", ForumCommentController, :newcomment)     
     resources("/fcomment_like", FCommentLikeController)
     resources("/posts", PostController)
     resources("/post_likes", PostLikeController)
     resources("/pcomments", PostCommentController)
+    get("/pcomments/new/:post_id", PostCommentController, :newcomment)
     resources("/pcomment_likes", PCommentLikeController)
+
+    # get "/*path", DefaultController, :page_404
   end
 
   scope "/", BackerWeb do

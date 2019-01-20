@@ -117,6 +117,10 @@ defmodule Backer.Gamification do
     Repo.all(BadgeMember)
   end
 
+  def list_badge_members(%{"id" => id}) do
+    query = from m in BadgeMember, where: m.badge_id == ^id
+    Repo.all(query)
+  end
   @doc """
   Gets a single badge_member.
 

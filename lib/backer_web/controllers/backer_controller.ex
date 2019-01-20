@@ -5,9 +5,8 @@ defmodule BackerWeb.BackerController do
   alias Backer.Constant  
   alias Backer.Account.Backer
 
-  def index(conn, _params) do
-    backers = Account.list_backers()
-    IO.inspect(conn.query_params)
+  def index(conn, params) do
+    backers = Account.list_backers(params)
     render(conn, "index.html", backers: backers)
   end
 

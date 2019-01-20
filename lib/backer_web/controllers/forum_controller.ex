@@ -33,7 +33,8 @@ defmodule BackerWeb.ForumController do
 
   def show(conn, %{"id" => id}) do
     forum = Content.get_forum!(id)
-    render(conn, "show.html", forum: forum)
+    comments = Content.list_fcomments(%{"forum_id" => id})
+    render(conn, "show.html", forum: forum, fcomments: comments)
   end
 
   def edit(conn, %{"id" => id}) do

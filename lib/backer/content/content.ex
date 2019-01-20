@@ -214,6 +214,11 @@ defmodule Backer.Content do
     Repo.all(ForumComment)
   end
 
+  def list_fcomments(%{"forum_id" => id}) do
+    query = from f in ForumComment, where: f.forum_id == ^id
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single forum_comment.
 
@@ -601,6 +606,12 @@ defmodule Backer.Content do
   def list_pcomments do
     Repo.all(PostComment)
   end
+
+  def list_pcomments(%{"post_id" => post_id}) do
+    query = from p in PostComment, where: p.post_id == ^post_id
+
+    Repo.all(query)
+  end  
 
   @doc """
   Gets a single post_comment.

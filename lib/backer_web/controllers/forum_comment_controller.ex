@@ -1,6 +1,7 @@
 defmodule BackerWeb.ForumCommentController do
   use BackerWeb, :controller
 
+  alias Backer.Account
   alias Backer.Content
   alias Backer.Content.ForumComment
 
@@ -14,7 +15,14 @@ defmodule BackerWeb.ForumCommentController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  def newcomment(conn, %{"forumid" => forumid}) do
+    backers = Account.list_backers
+    changeset = Content.change_forum_comment(%ForumComment{})
+    render(conn, "new.html", changeset: changeset, backers: backers, id: forumid)
+  end  
+
   def create(conn, %{"forum_comment" => forum_comment_params}) do
+    forum_comment_params |> IO.inspect
     case Content.create_forum_comment(forum_comment_params) do
       {:ok, forum_comment} ->
         conn
@@ -32,9 +40,10 @@ defmodule BackerWeb.ForumCommentController do
   end
 
   def edit(conn, %{"id" => id}) do
+    backers = Account.list_backers
     forum_comment = Content.get_forum_comment!(id)
     changeset = Content.change_forum_comment(forum_comment)
-    render(conn, "edit.html", forum_comment: forum_comment, changeset: changeset)
+    render(conn, "edit.html", forum_comment: forum_comment, changeset: changeset, backers: backers, id: forum_comment.forum_id)
   end
 
   def update(conn, %{"id" => id, "forum_comment" => forum_comment_params}) do
@@ -57,6 +66,6 @@ defmodule BackerWeb.ForumCommentController do
 
     conn
     |> put_flash(:info, "Forum comment deleted successfully.")
-    |> redirect(to: forum_comment_path(conn, :index))
+    |> redirect(to: forum_path(conn, :show, forum_comment.forum_id))
   end
 end

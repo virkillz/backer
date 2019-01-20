@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= forum_comment_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= forum_path(@conn, :show, @forum_comment.forum_id) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                          
                 </form>

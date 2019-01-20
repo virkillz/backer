@@ -8,6 +8,14 @@
     </div>
   <% end %>
 
+<input class="form-control" id="post_comment_post_id" name="post_comment[post_id]" value="<%= @id %>" type="text" hidden="">  
+
+  <div class="form-group">
+    <%= label f, :backer_id, class: "control-label" %>
+    <%= select f, :backer_id, Enum.map(@backers, &{&1.email, &1.id}), class: "form-control" %>
+    <%= error_tag f, :backer_id %>
+  </div>
+
   <div class="form-group">
     <%= label f, :content, class: "control-label" %>
     <%= textarea f, :content, class: "form-control" %>

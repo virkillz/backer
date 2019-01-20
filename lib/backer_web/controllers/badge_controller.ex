@@ -28,7 +28,8 @@ defmodule BackerWeb.BadgeController do
 
   def show(conn, %{"id" => id}) do
     badge = Gamification.get_badge!(id)
-    render(conn, "show.html", badge: badge)
+    badge_members = Gamification.list_badge_members(%{"id" => id})
+    render(conn, "show.html", badge: badge, badge_members: badge_members)
   end
 
   def edit(conn, %{"id" => id}) do

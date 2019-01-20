@@ -6,8 +6,8 @@ defmodule BackerWeb.PledgerController do
 
   alias Backer.Masterdata
 
-  def index(conn, _params) do
-    pledgers = Account.list_pledgers()
+  def index(conn, params) do
+    pledgers = Account.list_pledgers(params) |> IO.inspect
     render(conn, "index.html", pledgers: pledgers)
   end
 

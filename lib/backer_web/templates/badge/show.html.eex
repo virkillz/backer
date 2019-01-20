@@ -10,7 +10,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="/admin/Badge">Badge</a>
+                  <li class="breadcrumb-item"><a href="/admin/badges">Badge</a>
                   </li>                  
                   <li class="breadcrumb-item active">Show
                   </li>
@@ -43,13 +43,27 @@
 <div class="container">
                 <form class="form-horizontal" role="form">                                     
 
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Badge ID:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @badge.id %></p>
+                          </div>
+                        </div>  
+
                     
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Title:</label>
                           <div class="col-sm-10">
                           <p class="form-control-static"><%= @badge.title %></p>
                           </div>
-                        </div>  
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Pledger:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @badge.pledger_id %></p>
+                          </div>
+                        </div>                          
                     
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Icon:</label>
@@ -74,6 +88,63 @@
                     </div>                                                                                                                          
                 </form>
 </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Badge member List</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li>
+                          <%= link "Add Badge member", to: "/admin/badge_members/new/" <> Integer.to_string(@badge.id), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+<br>
+
+
+<div class="container">
+
+                            <table class="table">
+                                <thead class="bg-primary white">
+                                <tr>
+                                  <th>Backer ID</th>                                    
+                                  <th>Award date</th>                                
+                            
+                                  <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <%= for badge_member <- @badge_members do %>
+                                      <tr>
+                                        <td><%= badge_member.backer_id %></td>
+                                        <td><%= badge_member.award_date %></td>
+                                  
+                                        <td class="text-right">
+                                          <span><%= link "Show", to: badge_member_path(@conn, :show, badge_member), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: badge_member_path(@conn, :edit, badge_member), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: badge_member_path(@conn, :delete, badge_member), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        </td>
+                                      </tr>
+                                  <% end %>                                  
+                                </tbody>
+                            </table>
+
+</div>
+<br>
 
 
                 </div>
