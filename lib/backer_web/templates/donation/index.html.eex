@@ -1,7 +1,7 @@
 
        <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title"><%= schema.human_singular %> List</h3>
+            <h3 class="content-header-title">Donation List</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -9,7 +9,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/admin>Home</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="/admin/<%= schema.plural %>"><%= schema.human_plural %> List</a>
+                  <li class="breadcrumb-item"><a href="/admin/donations">Donations List</a>
                   </li>                  
                   <li class="breadcrumb-item active">Index
                   </li>
@@ -24,12 +24,12 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title"><%= schema.human_singular %> List</h4>
+                <h4 class="card-title">Donation List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%%= link "New <%= schema.human_singular %>", to: <%= schema.route_helper %>_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Donation", to: donation_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
@@ -38,35 +38,41 @@
                 <div class="card-body p-0 pb-0">
 <br>
 
-<%# ======================== %>
+
 <div class="container">
 
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
-                            <%= for {k, _} <- schema.attrs do %>      <th><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
-                            <% end %>
+                                  <th>Amount</th>
+                                  <th>Tier</th>
+                                  <th>Month</th>
+                                  <th>Year</th>
+                            
                                   <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                  <%%= for <%= schema.singular %> <- @<%= schema.plural %> do %>
+                                  <%= for donation <- @donations do %>
                                       <tr>
-                                  <%= for {k, _} <- schema.attrs do %>      <td><%%= <%= schema.singular %>.<%= k %> %></td>
-                                  <% end %>
+                                        <td><%= donation.amount %></td>
+                                        <td><%= donation.tier %></td>
+                                        <td><%= donation.month %></td>
+                                        <td><%= donation.year %></td>
+                                  
                                         <td class="text-right">
-                                          <span><%%= link "Show", to: <%= schema.route_helper %>_path(@conn, :show, <%= schema.singular %>), class: "btn btn-default btn-xs" %></span>
-                                          <span><%%= link "Edit", to: <%= schema.route_helper %>_path(@conn, :edit, <%= schema.singular %>), class: "btn btn-default btn-xs" %></span>
-                                          <span><%%= link "Delete", to: <%= schema.route_helper %>_path(@conn, :delete, <%= schema.singular %>), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                          <span><%= link "Show", to: donation_path(@conn, :show, donation), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: donation_path(@conn, :edit, donation), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: donation_path(@conn, :delete, donation), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
-                                  <%% end %>
+                                  <% end %>
                                 </tbody>
                             </table>
 
 </div>
 <br>
-<%# ======================== %>
+
 
                 </div>
             </div>

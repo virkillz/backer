@@ -9,7 +9,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="/admin/<%= schema.plural %>"><%= schema.plural %></a>
+                  <li class="breadcrumb-item"><a href="/admin/<%= schema.plural %>"><%= schema.human_plural %></a>
                   </li>                  
                   <li class="breadcrumb-item active">New <%= schema.human_singular %>
                   </li>

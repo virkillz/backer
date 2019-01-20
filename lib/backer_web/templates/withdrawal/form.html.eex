@@ -1,0 +1,59 @@
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :amount, class: "control-label" %>
+    <%= number_input f, :amount, class: "form-control" %>
+    <%= error_tag f, :amount %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :fee, class: "control-label" %>
+    <%= number_input f, :fee, class: "form-control" %>
+    <%= error_tag f, :fee %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :net_ammount, class: "control-label" %>
+    <%= number_input f, :net_ammount, class: "form-control" %>
+    <%= error_tag f, :net_ammount %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :status, class: "control-label" %>
+    <%= text_input f, :status, class: "form-control" %>
+    <%= error_tag f, :status %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :tx_image, class: "control-label" %>
+    <%= text_input f, :tx_image, class: "form-control" %>
+    <%= error_tag f, :tx_image %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :tx_id, class: "control-label" %>
+    <%= text_input f, :tx_id, class: "form-control" %>
+    <%= error_tag f, :tx_id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :tx_details, class: "control-label" %>
+    <%= textarea f, :tx_details, class: "form-control" %>
+    <%= error_tag f, :tx_details %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <span><%= link "Cancel", to: withdrawal_path(@conn, :index), class: "btn btn-warning" %></span>
+  </div>
+<% end %>
+</div>
+</div>

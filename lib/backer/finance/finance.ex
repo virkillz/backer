@@ -101,4 +101,486 @@ defmodule Backer.Finance do
   def change_invoice(%Invoice{} = invoice) do
     Invoice.changeset(invoice, %{})
   end
+
+  alias Backer.Finance.IncomingPayment
+
+  @doc """
+  Returns the list of incoming_payments.
+
+  ## Examples
+
+      iex> list_incoming_payments()
+      [%IncomingPayment{}, ...]
+
+  """
+  def list_incoming_payments do
+    Repo.all(IncomingPayment)
+  end
+
+  @doc """
+  Gets a single incoming_payment.
+
+  Raises `Ecto.NoResultsError` if the Incoming payment does not exist.
+
+  ## Examples
+
+      iex> get_incoming_payment!(123)
+      %IncomingPayment{}
+
+      iex> get_incoming_payment!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_incoming_payment!(id), do: Repo.get!(IncomingPayment, id)
+
+  @doc """
+  Creates a incoming_payment.
+
+  ## Examples
+
+      iex> create_incoming_payment(%{field: value})
+      {:ok, %IncomingPayment{}}
+
+      iex> create_incoming_payment(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_incoming_payment(attrs \\ %{}) do
+    %IncomingPayment{}
+    |> IncomingPayment.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a incoming_payment.
+
+  ## Examples
+
+      iex> update_incoming_payment(incoming_payment, %{field: new_value})
+      {:ok, %IncomingPayment{}}
+
+      iex> update_incoming_payment(incoming_payment, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_incoming_payment(%IncomingPayment{} = incoming_payment, attrs) do
+    incoming_payment
+    |> IncomingPayment.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a IncomingPayment.
+
+  ## Examples
+
+      iex> delete_incoming_payment(incoming_payment)
+      {:ok, %IncomingPayment{}}
+
+      iex> delete_incoming_payment(incoming_payment)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_incoming_payment(%IncomingPayment{} = incoming_payment) do
+    Repo.delete(incoming_payment)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking incoming_payment changes.
+
+  ## Examples
+
+      iex> change_incoming_payment(incoming_payment)
+      %Ecto.Changeset{source: %IncomingPayment{}}
+
+  """
+  def change_incoming_payment(%IncomingPayment{} = incoming_payment) do
+    IncomingPayment.changeset(incoming_payment, %{})
+  end
+
+  alias Backer.Finance.InvoiceDetail
+
+  @doc """
+  Returns the list of invoice_details.
+
+  ## Examples
+
+      iex> list_invoice_details()
+      [%InvoiceDetail{}, ...]
+
+  """
+  def list_invoice_details do
+    Repo.all(InvoiceDetail)
+  end
+
+  @doc """
+  Gets a single invoice_detail.
+
+  Raises `Ecto.NoResultsError` if the Invoice detail does not exist.
+
+  ## Examples
+
+      iex> get_invoice_detail!(123)
+      %InvoiceDetail{}
+
+      iex> get_invoice_detail!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_invoice_detail!(id), do: Repo.get!(InvoiceDetail, id)
+
+  @doc """
+  Creates a invoice_detail.
+
+  ## Examples
+
+      iex> create_invoice_detail(%{field: value})
+      {:ok, %InvoiceDetail{}}
+
+      iex> create_invoice_detail(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_invoice_detail(attrs \\ %{}) do
+    %InvoiceDetail{}
+    |> InvoiceDetail.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a invoice_detail.
+
+  ## Examples
+
+      iex> update_invoice_detail(invoice_detail, %{field: new_value})
+      {:ok, %InvoiceDetail{}}
+
+      iex> update_invoice_detail(invoice_detail, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_invoice_detail(%InvoiceDetail{} = invoice_detail, attrs) do
+    invoice_detail
+    |> InvoiceDetail.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a InvoiceDetail.
+
+  ## Examples
+
+      iex> delete_invoice_detail(invoice_detail)
+      {:ok, %InvoiceDetail{}}
+
+      iex> delete_invoice_detail(invoice_detail)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_invoice_detail(%InvoiceDetail{} = invoice_detail) do
+    Repo.delete(invoice_detail)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking invoice_detail changes.
+
+  ## Examples
+
+      iex> change_invoice_detail(invoice_detail)
+      %Ecto.Changeset{source: %InvoiceDetail{}}
+
+  """
+  def change_invoice_detail(%InvoiceDetail{} = invoice_detail) do
+    InvoiceDetail.changeset(invoice_detail, %{})
+  end
+
+
+  alias Backer.Finance.Donation
+
+  @doc """
+  Returns the list of donations.
+
+  ## Examples
+
+      iex> list_donations()
+      [%Donation{}, ...]
+
+  """
+  def list_donations do
+    Repo.all(Donation)
+  end
+
+  @doc """
+  Gets a single donation.
+
+  Raises `Ecto.NoResultsError` if the Donation does not exist.
+
+  ## Examples
+
+      iex> get_donation!(123)
+      %Donation{}
+
+      iex> get_donation!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_donation!(id), do: Repo.get!(Donation, id)
+
+  @doc """
+  Creates a donation.
+
+  ## Examples
+
+      iex> create_donation(%{field: value})
+      {:ok, %Donation{}}
+
+      iex> create_donation(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_donation(attrs \\ %{}) do
+    %Donation{}
+    |> Donation.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a donation.
+
+  ## Examples
+
+      iex> update_donation(donation, %{field: new_value})
+      {:ok, %Donation{}}
+
+      iex> update_donation(donation, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_donation(%Donation{} = donation, attrs) do
+    donation
+    |> Donation.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Donation.
+
+  ## Examples
+
+      iex> delete_donation(donation)
+      {:ok, %Donation{}}
+
+      iex> delete_donation(donation)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_donation(%Donation{} = donation) do
+    Repo.delete(donation)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking donation changes.
+
+  ## Examples
+
+      iex> change_donation(donation)
+      %Ecto.Changeset{source: %Donation{}}
+
+  """
+  def change_donation(%Donation{} = donation) do
+    Donation.changeset(donation, %{})
+  end
+
+
+  alias Backer.Finance.Mutation
+
+  @doc """
+  Returns the list of mutations.
+
+  ## Examples
+
+      iex> list_mutations()
+      [%Mutation{}, ...]
+
+  """
+  def list_mutations do
+    Repo.all(Mutation)
+  end
+
+  @doc """
+  Gets a single mutation.
+
+  Raises `Ecto.NoResultsError` if the Mutation does not exist.
+
+  ## Examples
+
+      iex> get_mutation!(123)
+      %Mutation{}
+
+      iex> get_mutation!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_mutation!(id), do: Repo.get!(Mutation, id)
+
+  @doc """
+  Creates a mutation.
+
+  ## Examples
+
+      iex> create_mutation(%{field: value})
+      {:ok, %Mutation{}}
+
+      iex> create_mutation(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_mutation(attrs \\ %{}) do
+    %Mutation{}
+    |> Mutation.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a mutation.
+
+  ## Examples
+
+      iex> update_mutation(mutation, %{field: new_value})
+      {:ok, %Mutation{}}
+
+      iex> update_mutation(mutation, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_mutation(%Mutation{} = mutation, attrs) do
+    mutation
+    |> Mutation.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Mutation.
+
+  ## Examples
+
+      iex> delete_mutation(mutation)
+      {:ok, %Mutation{}}
+
+      iex> delete_mutation(mutation)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_mutation(%Mutation{} = mutation) do
+    Repo.delete(mutation)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking mutation changes.
+
+  ## Examples
+
+      iex> change_mutation(mutation)
+      %Ecto.Changeset{source: %Mutation{}}
+
+  """
+  def change_mutation(%Mutation{} = mutation) do
+    Mutation.changeset(mutation, %{})
+  end
+
+  alias Backer.Finance.Withdrawal
+
+  @doc """
+  Returns the list of withdrawals.
+
+  ## Examples
+
+      iex> list_withdrawals()
+      [%Withdrawal{}, ...]
+
+  """
+  def list_withdrawals do
+    Repo.all(Withdrawal)
+  end
+
+  @doc """
+  Gets a single withdrawal.
+
+  Raises `Ecto.NoResultsError` if the Withdrawal does not exist.
+
+  ## Examples
+
+      iex> get_withdrawal!(123)
+      %Withdrawal{}
+
+      iex> get_withdrawal!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_withdrawal!(id), do: Repo.get!(Withdrawal, id)
+
+  @doc """
+  Creates a withdrawal.
+
+  ## Examples
+
+      iex> create_withdrawal(%{field: value})
+      {:ok, %Withdrawal{}}
+
+      iex> create_withdrawal(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_withdrawal(attrs \\ %{}) do
+    %Withdrawal{}
+    |> Withdrawal.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a withdrawal.
+
+  ## Examples
+
+      iex> update_withdrawal(withdrawal, %{field: new_value})
+      {:ok, %Withdrawal{}}
+
+      iex> update_withdrawal(withdrawal, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_withdrawal(%Withdrawal{} = withdrawal, attrs) do
+    withdrawal
+    |> Withdrawal.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Withdrawal.
+
+  ## Examples
+
+      iex> delete_withdrawal(withdrawal)
+      {:ok, %Withdrawal{}}
+
+      iex> delete_withdrawal(withdrawal)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_withdrawal(%Withdrawal{} = withdrawal) do
+    Repo.delete(withdrawal)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking withdrawal changes.
+
+  ## Examples
+
+      iex> change_withdrawal(withdrawal)
+      %Ecto.Changeset{source: %Withdrawal{}}
+
+  """
+  def change_withdrawal(%Withdrawal{} = withdrawal) do
+    Withdrawal.changeset(withdrawal, %{})
+  end
 end

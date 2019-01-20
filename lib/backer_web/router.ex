@@ -57,6 +57,11 @@ defmodule BackerWeb.Router do
     resources("/pcomment_likes", PCommentLikeController)
 
     resources "/invoices", InvoiceController
+    resources "/incoming_payments", IncomingPaymentController
+    resources "/invoice_details", InvoiceDetailController
+    resources "/donations", DonationController
+    resources "/mutations", MutationController
+    resources "/withdrawals", WithdrawalController
 
     # get "/*path", DefaultController, :page_404
   end

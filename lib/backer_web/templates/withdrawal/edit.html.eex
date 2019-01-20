@@ -1,7 +1,7 @@
 
        <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Edit <%= schema.human_singular %></h3>
+            <h3 class="content-header-title">Edit Withdrawal</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -9,7 +9,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="/admin/<%= schema.plural %>"><%= schema.human_plural %> List</a>
+                  <li class="breadcrumb-item"><a href="/admin/withdrawals">Withdrawals List</a>
                   </li>                  
                   <li class="breadcrumb-item active">Edit
                   </li>
@@ -24,7 +24,7 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Edit <%= schema.human_singular %></h4>
+                <h4 class="card-title">Edit Withdrawal</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                 </div>
@@ -33,11 +33,11 @@
                 <div class="card-body p-0 pb-0">
 <div class="container">
 
-<%# ======================== %>
 
-<%%= render "form.html", Map.put(assigns, :action, <%= schema.route_helper %>_path(@conn, :update, @<%= schema.singular %>)) %>
 
-<%# ======================== %>
+<%= render "form.html", Map.put(assigns, :action, withdrawal_path(@conn, :update, @withdrawal)) %>
+
+
 </div>
                 </div>
             </div>
