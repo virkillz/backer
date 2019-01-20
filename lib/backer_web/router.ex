@@ -56,6 +56,8 @@ defmodule BackerWeb.Router do
     get("/pcomments/new/:post_id", PostCommentController, :newcomment)
     resources("/pcomment_likes", PCommentLikeController)
 
+    resources "/invoices", InvoiceController
+
     # get "/*path", DefaultController, :page_404
   end
 

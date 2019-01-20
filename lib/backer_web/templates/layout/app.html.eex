@@ -167,7 +167,9 @@
               </li>
               <li class="<%= activate(@conn.request_path, "/admin/titles") %>"><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
             </ul>
-          </li>          
+          </li>  
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/badges") %>"><a href="/admin/invoices" up-target=".main" up-transition="move-right"><i class="ft-shield"></i><span class="menu-title" data-i18n="">Invoices</span></a>
+          </li>                    
         </ul>
       </div>
       <div class="navigation-background"></div>
