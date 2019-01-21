@@ -59,7 +59,7 @@
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">         
-              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-default badge-up badge-glow">5</span></a>
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-default badge-up badge-glow"><%= @conn.assigns.approval_count %></span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                   <div class="arrow_box_right">
                     <li class="dropdown-menu-header">
@@ -69,8 +69,8 @@
                         <div class="media">
                           <div class="media-left align-self-center"><i class="ft-share info font-medium-4 mt-2"></i></div>
                           <div class="media-body">
-                            <h6 class="media-heading info">New Order Received</h6>
-                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit amet!</p><small>
+                            <h6 class="media-heading info">Incoming Payment Approval</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Need to proceed approved incoming payment</p><small>
                               <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">3:30 PM</time></small>
                           </div>
                         </div></a><a href="javascript:void(0)">
@@ -139,6 +139,8 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="nav-item <%= activate(@conn.request_path, "/admin") %>"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>   
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/approval") %>"><a href="/admin/approval" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Approval</span><span class="badge badge-pill badge-danger"><%= @conn.assigns.approval_count %></span></a>
+          </li>           
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
           <li class="nav-item <%= activate(@conn.request_path, "/admin/pledgers") %>"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
@@ -161,7 +163,7 @@
           </li>  
 
           <li class=" nav-item"><a href="#"><i class="ft-percent"></i><span class="menu-title" data-i18n="">Finance</span></a>
-            <ul class="menu-content">
+            <ul class="menu-content">              
           <li class="nav-item <%= activate(@conn.request_path, "/admin/invoices") %>"><a href="/admin/invoices" up-target=".main" up-transition="move-right">Invoices</a>
           </li>  
           <li class="nav-item <%= activate(@conn.request_path, "/admin/incoming_payments") %>"><a href="/admin/incoming_payments" up-target=".main" up-transition="move-right">Incoming Payments</a>

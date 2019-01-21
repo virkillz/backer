@@ -29,8 +29,11 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Invoice", to: invoice_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Invoice Deposit", to: invoice_path(@conn, :newdeposit), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
+                        <li>
+                          <%= link "New Invoice Backing", to: invoice_path(@conn, :newbacking), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        </li>                        
                     </ul>
                 </div>
             </div>
@@ -44,6 +47,9 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>Invoice date</th>
+                                  <th>#</th>
+                                  <th>Backer ID</th>
                                   <th>Amount</th>
                                   <th>Status</th>
                                   <th>Method</th>
@@ -54,8 +60,18 @@
                                 <tbody>
                                   <%= for invoice <- @invoices do %>
                                       <tr>
+                                        <td><%= invoice.inserted_at %></td>
+                                        <th><%= invoice.id %></th>
+                                        <td><%= invoice.backer_id %></td>
                                         <td><%= invoice.amount %></td>
-                                        <td><%= invoice.status %></td>
+                                        <td>
+                                          <%= if invoice.status == "paid" do %>
+                                          <span class="badge badge-pill badge-success"><%= invoice.status %></span>
+                                          <% else %>
+                                          <%= invoice.status %>
+                                          <% end %>
+
+                                        </td>
                                         <td><%= invoice.method %></td>
                                   
                                         <td class="text-right">

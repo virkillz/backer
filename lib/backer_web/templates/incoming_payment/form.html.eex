@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <%= label f, :source, class: "control-label" %>
-    <%= text_input f, :source, class: "form-control" %>
+    <%= select f, :source, @sources ,class: "form-control" %>
     <%= error_tag f, :source %>
   </div>
 
@@ -34,15 +34,27 @@
 
   <div class="form-group">
     <%= label f, :status, class: "control-label" %>
-    <%= text_input f, :status, class: "form-control" %>
+    <%= select f, :status, @statuses, class: "form-control" %>
     <%= error_tag f, :status %>
   </div>
 
   <div class="form-group">
     <%= label f, :action, class: "control-label" %>
-    <%= text_input f, :action, class: "form-control" %>
+    <%= select f, :action, @actions, [selected: "Draft", class: "form-control"] %>
     <%= error_tag f, :action %>
   </div>
+
+  <div class="form-group">
+    <%= label f, :invoice_id, class: "control-label" %>
+        <%= select f, :invoice_id, Enum.map(@unpaid_invoices, &{"#" <> Integer.to_string(&1.id) <> " - " <>Integer.to_string(&1.amount), &1.id}), class: "form-control" %>
+    <%= error_tag f, :invoice_id %>
+  </div> 
+
+  <div class="form-group">
+    <%= label f, :backer_id, class: "control-label" %>
+        <%= select f, :backer_id, Enum.map(@backers, &{&1.email, &1.id}), class: "form-control" %>
+    <%= error_tag f, :backer_id %>
+  </div>    
 
   <div class="form-group">
     <%= label f, :details, class: "control-label" %>
@@ -52,7 +64,7 @@
 
   <div class="form-group">
     <%= label f, :destination, class: "control-label" %>
-    <%= text_input f, :destination, class: "form-control" %>
+    <%= select f, :destination, @destination, class: "form-control" %>
     <%= error_tag f, :destination %>
   </div>
 

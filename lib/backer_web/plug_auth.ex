@@ -10,6 +10,7 @@ defmodule BackerWeb.Plugs.SetCurrentUser do
   def call(conn, _params) do
     user_id = Plug.Conn.get_session(conn, :current_user_id)
 
+
     cond do
       current_user = user_id && Repo.get(User, user_id) ->
         conn

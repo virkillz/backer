@@ -18,7 +18,7 @@ defmodule Backer.Finance.InvoiceDetail do
   @doc false
   def changeset(invoice_detail, attrs) do
     invoice_detail
-    |> cast(attrs, [:amount, :year, :month, :type])
-    |> validate_required([:amount, :year, :month, :type])
+    |> cast(attrs, [:amount, :year, :month, :type, :backer_id, :pledger_id, :invoice_id])
+    |> validate_required([:amount, :type, :backer_id, :invoice_id])
   end
 end

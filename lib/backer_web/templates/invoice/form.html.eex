@@ -8,26 +8,52 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :amount, class: "control-label" %>
-    <%= number_input f, :amount, class: "form-control" %>
-    <%= error_tag f, :amount %>
-  </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Invoice ID:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @invoice.id %></p>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Backer ID:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @invoice.backer_id %></p>
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Amount:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @invoice.amount %></p>
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Method:</label>
+                          <div class="col-sm-10">
+                          <p class="form-control-static"><%= @invoice.method %></p>
+                          </div>
+                        </div>                                                                         
+
 
   <div class="form-group">
     <%= label f, :status, class: "control-label" %>
-    <%= text_input f, :status, class: "form-control" %>
+<%= if @invoice.status != "paid" do %>    
+    <%= select f, :status, @invoice_status,class: "form-control" %>
+<% else %>  
+    <%= select f, :status, @invoice_status,[class: "form-control", disabled: true] %>
+    <p>Paid invoice cannot be changed.</p>
+<% end %>  
     <%= error_tag f, :status %>
   </div>
 
   <div class="form-group">
-    <%= label f, :method, class: "control-label" %>
-    <%= text_input f, :method, class: "form-control" %>
-    <%= error_tag f, :method %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+<%= if @invoice.status != "paid" do %>    
+        <%= submit "Submit", class: "btn btn-primary" %>
+<% else %>  
+        <%= submit "Submit", [class: "btn btn-primary", disabled: true] %>
+<% end %>      
     <span><%= link "Cancel", to: invoice_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>

@@ -21,6 +21,11 @@ defmodule Backer.Finance do
     Repo.all(Invoice)
   end
 
+  def list_invoices(%{"status" => "not_paid"}) do
+    query = from i in Invoice, where: i.status != "paid"
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single invoice.
 
@@ -53,7 +58,9 @@ defmodule Backer.Finance do
     %Invoice{}
     |> Invoice.changeset(attrs)
     |> Repo.insert()
+    |> create_invoice_detail_deposit
   end
+
 
   @doc """
   Updates a invoice.
@@ -117,6 +124,16 @@ defmodule Backer.Finance do
     Repo.all(IncomingPayment)
   end
 
+  def list_incoming_payments(%{"status" => status}) do
+    query = from i in IncomingPayment, where: i.status == ^status
+    Repo.all(query)
+  end 
+
+  def count_incoming_payment_approval do
+    query = from i in IncomingPayment, where: i.status == "Approved", select: count(i.id)
+    Repo.one(query)
+  end
+
   @doc """
   Gets a single incoming_payment.
 
@@ -169,6 +186,12 @@ defmodule Backer.Finance do
     |> Repo.update()
   end
 
+
+  def process_incoming_payment(%IncomingPayment{} = incoming_payment, attrs) do
+    incoming_payment
+    |> IncomingPayment.process_changeset(attrs)
+    |> Repo.update()
+  end
   @doc """
   Deletes a IncomingPayment.
 
@@ -229,6 +252,10 @@ defmodule Backer.Finance do
   """
   def get_invoice_detail!(id), do: Repo.get!(InvoiceDetail, id)
 
+  def get_invoice_detail(%{"invoice_id" => invoice_id}) do  
+   query = from i in InvoiceDetail, where: i.invoice_id == ^invoice_id
+   Repo.all(query)
+ end
   @doc """
   Creates a invoice_detail.
 
@@ -247,6 +274,17 @@ defmodule Backer.Finance do
     |> Repo.insert()
   end
 
+
+
+  defp create_invoice_detail_deposit({:ok, invoice}) do
+    IO.inspect(invoice)
+    attrs = %{"amount" => invoice.amount, "type" => "deposit", "backer_id" => invoice.backer_id, "invoice_id" => invoice.id}
+    %InvoiceDetail{}
+    |> InvoiceDetail.changeset(attrs)
+    |> Repo.insert()
+
+    {:ok, invoice}    
+  end
   @doc """
   Updates a invoice_detail.
 

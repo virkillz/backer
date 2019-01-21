@@ -27,11 +27,6 @@
                 <h4 class="card-title">Incoming payment List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Incoming payment", to: incoming_payment_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -44,42 +39,24 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
-                                  <th>Date</th>                                  
-                                  <th>Source</th>
+                                  <th>Date</th>
                                   <th>Amount</th>
-                                  <th>Status</th>
                                   <th>Action</th>
-                                  <th>Remark</th>
                                   <th>Destination</th>
                             
                                   <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                  <%= for incoming_payment <- @incoming_payments do %>
+                                  <%= for incoming_payment <- @incoming do %>
                                       <tr>
-                                        <td><%= incoming_payment.inserted_at %></td>                                        
-                                        <td><%= incoming_payment.source %></td>
+                                        <td><%= incoming_payment.inserted_at %></td>
                                         <td><%= incoming_payment.amount %></td>
-                                        <td>
-                                          
-                                            <%= if incoming_payment.status == "Revision Request" do %>
-                                              <span class="badge badge-danger">
-                                            <% else %>
-                                              <span>
-                                            <% end %>
-                                            
-                                          <%= incoming_payment.status %>
-                                            </span>
-                                          </td>
                                         <td><%= incoming_payment.action %></td>
-                                        <td><span class="text-danger"><%= incoming_payment.remark %></span></td>
                                         <td><%= incoming_payment.destination %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: incoming_payment_path(@conn, :show, incoming_payment), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: incoming_payment_path(@conn, :edit, incoming_payment), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: incoming_payment_path(@conn, :delete, incoming_payment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                          <span><%= link "Process", to: "/admin/approval/" <> Integer.to_string(incoming_payment.id), class: "btn btn-outline-success btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

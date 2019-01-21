@@ -10,6 +10,7 @@ defmodule BackerWeb.Router do
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
     plug(BackerWeb.Plugs.SetCurrentUser)
+    plug(BackerWeb.Plugs.SetNotification)
   end
 
   pipeline :api do
@@ -56,12 +57,19 @@ defmodule BackerWeb.Router do
     get("/pcomments/new/:post_id", PostCommentController, :newcomment)
     resources("/pcomment_likes", PCommentLikeController)
 
-    resources "/invoices", InvoiceController
+    get "/invoices/newbacking", InvoiceController, :newbacking
+    get "/invoices/newdeposit", InvoiceController, :newdeposit
+    post "/invoices/create_deposit", InvoiceController, :create_deposit    
+    resources "/invoices", InvoiceController, except: [:new]    
     resources "/incoming_payments", IncomingPaymentController
     resources "/invoice_details", InvoiceDetailController
     resources "/donations", DonationController
     resources "/mutations", MutationController
     resources "/withdrawals", WithdrawalController
+
+    get "/approval", FinanceController, :index
+    get "/approval/:id", FinanceController, :process
+    put "/approval/:id", FinanceController, :update
 
     # get "/*path", DefaultController, :page_404
   end
