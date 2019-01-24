@@ -7,8 +7,8 @@ defmodule BackerWeb.InvoiceController do
   alias Backer.Finance
   alias Backer.Finance.Invoice
 
-  def index(conn, _params) do
-    invoices = Finance.list_invoices()
+  def index(conn, params) do
+    invoices = Finance.list_invoices(params)
     render(conn, "index.html", invoices: invoices)
   end
 
@@ -20,41 +20,58 @@ defmodule BackerWeb.InvoiceController do
   end
 
   def newbacking(conn, _params) do
+    backers = Account.list_backers
+    pledgers = Account.list_pledgers
+    methods = Constant.payment_method_deposit
     changeset = Finance.change_invoice(%Invoice{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new_backing.html", changeset: changeset, backers: backers, pledgers: pledgers, methods: methods)
   end  
 
   def create_deposit(conn, %{"invoice" => params}) do
 
     invoice_params = params |> Map.put("type", "deposit")
 
-    case Finance.create_invoice(invoice_params) do
-      {:ok, invoice} ->
+    case Finance.create_deposit_invoice(invoice_params) do
+      {:ok, %{invoice: invoice}} ->
         conn
         |> put_flash(:info, "Invoice created successfully.")
         |> redirect(to: invoice_path(conn, :show, invoice))
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
       backers = Account.list_backers
       methods = Constant.payment_method_deposit     
-        render(conn, "new_deposit.html", changeset: changeset, backers: backers, methods: methods)
+      render(conn, "new_deposit.html", changeset: changeset, backers: backers, methods: methods)
+      other -> 
+        IO.inspect(other)
+        text(conn, "Ecto Multi give unhandled error, check your console")
     end
   end
 
+  def create_backing(conn, %{"invoice" => params}) do
 
-  def create(conn, %{"invoice" => invoice_params}) do
-    case Finance.create_invoice(invoice_params) do
-      {:ok, invoice} ->
+    invoice_params = 
+        params 
+        |> Map.put("type", "backing") 
+
+
+    case Finance.create_donation_invoice(invoice_params) do
+      {:ok, %{invoice: invoice}} ->
         conn
         |> put_flash(:info, "Invoice created successfully.")
-        |> redirect(to: invoice_path(conn, :show, invoice))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        |> redirect(to: invoice_path(conn, :index))
+      {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
+      backers = Account.list_backers
+      methods = Constant.payment_method_deposit  
+      pledgers = Account.list_pledgers   
+      render(conn, "new_backing.html", changeset: changeset, pledgers: pledgers, backers: backers, methods: methods)
+      other -> 
+        text(conn, "Ecto Multi give unhandled error, check your console")
     end
   end
+
 
   def show(conn, %{"id" => id}) do
     invoice = Finance.get_invoice!(id)
-    invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> IO.inspect
+    invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index |> IO.inspect
     render(conn, "show.html", invoice: invoice, invoice_details: invoice_details)
   end
 

@@ -2,7 +2,7 @@ defmodule BackerWeb.ActivityController do
   use BackerWeb, :controller
 
   alias Backer.Logging
-  alias Backer.Logging.Activity
+  # alias Backer.Logging.Activity
 
   def index(conn, _params) do
     activity = Logging.get_last_x_activity(100)

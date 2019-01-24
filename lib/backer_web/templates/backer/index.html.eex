@@ -49,7 +49,6 @@
                                   <th>Display name</th>
                                   <th>Full name</th>
                                   <th>Email</th>
-                                  <th>Birth date</th>
                             
                                   <th></th>
                                 </tr>
@@ -68,13 +67,21 @@
                                         <td><%= backer.display_name %></td>
                                         <td><%= backer.full_name %></td>
                                         <td><%= backer.email %></td>
-                                        <td><%= backer.birth_date %></td>
-                                  
+
                                         <td class="text-right">
-                                          <span><%= link "Show", to: backer_path(@conn, :show, backer), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: backer_path(@conn, :edit, backer), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: backer_path(@conn, :delete, backer), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        
+                                          <%= link to: backer_path(@conn, :show, backer) do %>
+                                           <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
+                                          <% end %>                                            
+                                          <%= link to: backer_path(@conn, :edit, backer) do %>
+                                           <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
+                                          <% end %>                                       
+                                          <%= link to: backer_path(@conn, :delete, backer), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
+                                          <% end %>
+
                                         </td>
+                                  
                                       </tr>
                                   <% end %>
                                 </tbody>

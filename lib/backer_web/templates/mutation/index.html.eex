@@ -27,11 +27,6 @@
                 <h4 class="card-title">Mutation List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Mutation", to: mutation_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -44,15 +39,15 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>#</th>
+                                  <th>Date</th>
                                   <th>Asset</th>
-                                  <th>Backer id string</th>
+                                  <th>Backer ID</th>
                                   <th>Debit</th>
                                   <th>Credit</th>
-                                  <th>Frozen amount</th>
+                                  <th>Frozen</th>
                                   <th>Balance</th>
-                                  <th>Action type</th>
                                   <th>Reason</th>
-                                  <th>Ref</th>
                             
                                   <th></th>
                                 </tr>
@@ -60,20 +55,25 @@
                                 <tbody>
                                   <%= for mutation <- @mutations do %>
                                       <tr>
+                                        <td><%= mutation.id %></td>
+                                        <td><%= mutation.inserted_at %></td>
                                         <td><%= mutation.asset %></td>
                                         <td><%= mutation.backer_id_string %></td>
                                         <td><%= mutation.debit %></td>
                                         <td><%= mutation.credit %></td>
                                         <td><%= mutation.frozen_amount %></td>
                                         <td><%= mutation.balance %></td>
-                                        <td><%= mutation.action_type %></td>
                                         <td><%= mutation.reason %></td>
-                                        <td><%= mutation.ref_id %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: mutation_path(@conn, :show, mutation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: mutation_path(@conn, :edit, mutation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: mutation_path(@conn, :delete, mutation), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        
+                                          <%= link to: mutation_path(@conn, :show, mutation) do %>
+                                           <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
+                                          <% end %>                                                            
+                                          <%= link to: mutation_path(@conn, :delete, mutation), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
+                                          <% end %>
+
                                         </td>
                                       </tr>
                                   <% end %>

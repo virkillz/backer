@@ -18,7 +18,7 @@ defmodule Backer.Finance.Donation do
   @doc false
   def changeset(donation, attrs) do
     donation
-    |> cast(attrs, [:amount, :tier, :month, :year])
-    |> validate_required([:amount, :tier, :month, :year])
+    |> cast(attrs, [:amount, :tier, :backer_id, :pledger_id, :invoice_id, :month, :year])
+    |> validate_required([:amount, :tier, :backer_id, :pledger_id, :invoice_id, :month, :year])
   end
 end

@@ -19,7 +19,8 @@ defmodule BackerWeb.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
-    case Content.create_post(post_params) do
+  
+    case Content.create_post(post_params |> convert_featured_atom) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
@@ -31,6 +32,43 @@ defmodule BackerWeb.PostController do
         render(conn, "new.html", changeset: changeset, pledgers: pledgers, tiers: tiers)
     end
   end
+
+  defp convert_featured_atom(%{"featured_select" => ""} = attr) do
+    attr
+  end
+
+  defp convert_featured_atom(%{"featured_select" => "image"} = attr) do
+    if attr["featured_content"] == "" do
+      attr
+      else
+      attr 
+      |> Map.put("featured_image", attr["featured_content"])
+      |> Map.put("featured_video", "")
+      |> Map.put("featured_link", "")        
+    end
+  end
+
+  defp convert_featured_atom(%{"featured_select" => "video"} = attr) do
+    if attr["featured_content"] == "" do
+      attr
+      else
+      attr 
+      |> Map.put("featured_video", attr["featured_content"])
+      |> Map.put("featured_link", "")
+      |> Map.put("featured_image", "")        
+    end
+  end
+
+  defp convert_featured_atom(%{"featured_select" => "link"} = attr) do
+    if attr["featured_content"] == "" do
+      attr
+      else
+      attr 
+      |> Map.put("featured_link", attr["featured_content"])
+      |> Map.put("featured_video", "")
+      |> Map.put("featured_image", "")      
+    end
+  end      
 
   def show(conn, %{"id" => id}) do
     pcomments = Content.list_pcomments(%{"post_id" => id}) |> IO.inspect
@@ -49,7 +87,7 @@ defmodule BackerWeb.PostController do
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Content.get_post!(id)
 
-    case Content.update_post(post, post_params) do
+    case Content.update_post(post, post_params |> convert_featured_atom) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")

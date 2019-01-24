@@ -2,6 +2,7 @@ defmodule Backer.Finance.Invoice do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Backer.Account.Backer, as: Backerz
   alias Backer.Constant
 
 
@@ -9,8 +10,11 @@ defmodule Backer.Finance.Invoice do
     field :amount, :integer
     field :method, :string
     field :status, :string, [default: "unpaid"]
-    field :backer_id, :id
     field :type, :string
+    field :pledger_id, :integer, virtual: true
+    field :month, :integer, virtual: true
+
+    belongs_to :backer, Backerz
 
     timestamps()
   end
@@ -24,6 +28,27 @@ defmodule Backer.Finance.Invoice do
     |> validate_paid(invoice)
   end
 
+  def change_status_changeset(invoice, attrs) do
+    invoice
+    |> cast(attrs, [:status])    
+    |> validate_required([:status])
+    |> IO.inspect
+  end  
+
+  def donation_changeset(invoice, attrs) do
+    invoice
+    |> cast(attrs, [:amount, :method, :backer_id, :pledger_id, :type, :month])
+    |> validate_number(:amount, greater_than_or_equal_to: Constant.minimum_tier)
+    |> validate_number(:month, greater_than_or_equal_to: 1) 
+    |> validate_required([:amount, :month, :pledger_id, :backer_id])
+    |> transform_donation_changeset
+  end
+
+def transform_donation_changeset(changeset) do
+  amount = get_field(changeset, :amount)
+  month = get_field(changeset, :month)
+  changeset |> change(amount: month * amount)
+end
 
     defp validate_paid(changeset, invoice) do
     status = get_field(changeset, :status)

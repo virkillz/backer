@@ -18,7 +18,7 @@
               </div>
             </div>
           </div>
-        </div>          
+        </div>      
         <div class="content-body"><!-- Revenue, Hit Rate & Deals -->  
 
 
@@ -30,9 +30,6 @@
                 <h4 class="card-title">Invoice detail List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a href="<%= invoice_detail_path(@conn, :edit, @invoice_detail) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Invoice detail</button></a></li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -88,6 +85,7 @@
         </div>
     </div>
 </div>
+
 
 </div>
 

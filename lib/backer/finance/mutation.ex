@@ -23,7 +23,7 @@ defmodule Backer.Finance.Mutation do
   @doc false
   def changeset(mutation, attrs) do
     mutation
-    |> cast(attrs, [:asset, :backer_id_string, :debit, :credit, :frozen_amount, :balance, :action_type, :reason, :ref_id])
-    |> validate_required([:asset, :backer_id_string, :debit, :credit, :frozen_amount, :balance, :action_type, :reason, :ref_id])
+    |> cast(attrs, [:asset, :backer_id, :backer_id_string, :debit, :credit, :frozen_amount, :balance, :action_type, :reason, :ref_id, :action_by, :approved_by])
+    |> validate_required([:asset, :backer_id, :backer_id_string, :balance, :action_type, :reason])
   end
 end

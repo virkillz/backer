@@ -27,11 +27,6 @@
                 <h4 class="card-title">Invoice detail List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Invoice detail", to: invoice_detail_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -44,6 +39,8 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>#</th>
+                                  <th>Invoice ID</th>
                                   <th>Amount</th>
                                   <th>Year</th>
                                   <th>Month</th>
@@ -55,6 +52,8 @@
                                 <tbody>
                                   <%= for invoice_detail <- @invoice_details do %>
                                       <tr>
+                                        <td><%= invoice_detail.id %></td>
+                                        <td><%= invoice_detail.invoice_id %></td>
                                         <td><%= invoice_detail.amount %></td>
                                         <td><%= invoice_detail.year %></td>
                                         <td><%= invoice_detail.month %></td>
@@ -62,8 +61,6 @@
                                   
                                         <td class="text-right">
                                           <span><%= link "Show", to: invoice_detail_path(@conn, :show, invoice_detail), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: invoice_detail_path(@conn, :edit, invoice_detail), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: invoice_detail_path(@conn, :delete, invoice_detail), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

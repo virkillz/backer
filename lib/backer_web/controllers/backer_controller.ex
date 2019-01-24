@@ -1,6 +1,7 @@
 defmodule BackerWeb.BackerController do
   use BackerWeb, :controller
 
+  alias Backer.Finance
   alias Backer.Account
   alias Backer.Constant  
   alias Backer.Account.Backer
@@ -31,8 +32,9 @@ defmodule BackerWeb.BackerController do
 
   def show(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
-    pledger = Account.get_backers_pledger(id) |> IO.inspect
-    render(conn, "show.html", backer: backer, pledger: pledger)
+    pledger = Account.get_backers_pledger(id)
+    mutations = Finance.list_mutations()    
+    render(conn, "show.html", backer: backer, pledger: pledger, mutations: mutations)
   end
 
   def edit(conn, %{"id" => id}) do

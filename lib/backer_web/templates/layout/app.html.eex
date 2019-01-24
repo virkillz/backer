@@ -59,7 +59,11 @@
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">         
-              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-default badge-up badge-glow"><%= @conn.assigns.approval_count %></span></a>
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i>
+                <%= if (@conn.assigns.approval_count + @conn.assigns.incoming_payment_pending_count)> 0 do %>
+                <span class="badge badge-pill badge-sm badge-danger badge-default badge-up badge-glow"><%= @conn.assigns.approval_count + @conn.assigns.incoming_payment_pending_count %></span>
+                <% end %>
+              </a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                   <div class="arrow_box_right">
                     <li class="dropdown-menu-header">
@@ -139,8 +143,32 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="nav-item <%= activate(@conn.request_path, "/admin") %>"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>   
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/approval") %>"><a href="/admin/approval" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Approval</span><span class="badge badge-pill badge-danger"><%= @conn.assigns.approval_count %></span></a>
-          </li>           
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/approval") %>"><a href="/admin/approval" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Approval</span>
+            <%= if @conn.assigns.approval_count > 0 do %>
+            <span class="badge badge-pill badge-danger"><%= @conn.assigns.approval_count %></span>
+            <% end %>
+          </a>
+          </li>
+          <li class=" nav-item"><a href="#"><i class="ft-percent"></i><span class="menu-title" data-i18n="">Finance</span></a>
+            <ul class="menu-content">              
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/invoices") %>"><a href="/admin/invoices" up-target=".main" up-transition="move-right">Invoices</a>
+          </li>  
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/incoming_payments") %>"><a href="/admin/incoming_payments" up-target=".main" up-transition="move-right">Incoming Payments
+            <%= if @conn.assigns.incoming_payment_pending_count > 0 do %>
+            <span class="badge badge-pill badge-danger"><%= @conn.assigns.incoming_payment_pending_count %></span>
+            <% end %>
+          </a>
+          </li> 
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/invoice_details") %>"><a href="/admin/invoice_details" up-target=".main" up-transition="move-right">Invoice Details</a>
+          </li> 
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/donations") %>"><a href="/admin/donations" up-target=".main" up-transition="move-right">Donations</a>
+          </li>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/mutations") %>"><a href="/admin/mutations" up-target=".main" up-transition="move-right">Mutation</a>
+          </li> 
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/withdrawals") %>"><a href="/admin/withdrawals" up-target=".main" up-transition="move-right">Withdrawals</a>
+          </li>                              
+            </ul>
+          </li>                      
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
           <li class="nav-item <%= activate(@conn.request_path, "/admin/pledgers") %>"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
@@ -162,23 +190,6 @@
             </ul>
           </li>  
 
-          <li class=" nav-item"><a href="#"><i class="ft-percent"></i><span class="menu-title" data-i18n="">Finance</span></a>
-            <ul class="menu-content">              
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/invoices") %>"><a href="/admin/invoices" up-target=".main" up-transition="move-right">Invoices</a>
-          </li>  
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/incoming_payments") %>"><a href="/admin/incoming_payments" up-target=".main" up-transition="move-right">Incoming Payments</a>
-          </li> 
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/invoice_details") %>"><a href="/admin/invoice_details" up-target=".main" up-transition="move-right">Invoice Details</a>
-          </li> 
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/donations") %>"><a href="/admin/donations" up-target=".main" up-transition="move-right">Donations</a>
-          </li>
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/mutations") %>"><a href="/admin/mutations" up-target=".main" up-transition="move-right">Mutation</a>
-          </li> 
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/withdrawals") %>"><a href="/admin/withdrawals" up-target=".main" up-transition="move-right">Withdrawals</a>
-          </li>                              
-            </ul>
-          </li> 
-
           <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal management</span></a>
             <ul class="menu-content">
               <li class="<%= activate(@conn.request_path, "/admin/activity") %>"><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
@@ -187,8 +198,7 @@
             </ul>
           </li>
           <li class="nav-item <%= activate(@conn.request_path, "/admin/general_settings") %>"><a href="/admin/general_settings" up-target=".main" up-transition="move-right"><i class="ft-settings"></i><span class="menu-title" data-i18n="">General Settings</span></a>
-          </li>            
-
+          </li>                      
                                      
         </ul>
       </div>
@@ -200,7 +210,8 @@
         <div class="content-wrapper-before main"></div>
      
 
-
+                  <p class="alert alert-success" role="alert"><%= get_flash(@conn, :info) %></p>
+                  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 <%= render @view_module, @view_template, assigns %>
 
 
@@ -221,12 +232,14 @@
     <!-- END PAGE VENDOR JS-->
 
     <script src="/app-assets/js/core/app-menu.js" type="text/javascript"></script>
+    <script src="/app-assets/vendors/js/editors/ckeditor/ckeditor.js" type="text/javascript"></script>
     <script src="/app-assets/js/core/app.js" type="text/javascript"></script>
     <script src="/js/app.js" type="text/javascript"></script>    
     <script src="/js/unpoly.min.js" type="text/javascript"></script>   
 
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="/app-assets/js/scripts/pages/dashboard-analytics.js" type="text/javascript"></script>
+    <script src="/app-assets/js/scripts/editors/editor-ckeditor.min.js" type="text/javascript"></script>  
     <!-- END PAGE LEVEL JS-->
   </body>
 </html>

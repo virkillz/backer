@@ -57,9 +57,17 @@
                                         <td><%= title.is_active %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: title_path(@conn, :show, title), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: title_path(@conn, :edit, title), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: title_path(@conn, :delete, title), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        
+                                          <%= link to: title_path(@conn, :show, title) do %>
+                                           <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
+                                          <% end %>                                            
+                                          <%= link to: title_path(@conn, :edit, title) do %>
+                                           <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
+                                          <% end %>                                       
+                                          <%= link to: title_path(@conn, :delete, title), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
+                                          <% end %>
+
                                         </td>
                                       </tr>
                                   <% end %>

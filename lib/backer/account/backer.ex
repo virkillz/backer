@@ -26,6 +26,8 @@ defmodule Backer.Account.Backer do
     field(:recover_phone, :string)
     field(:username, :string)
 
+
+    has_many :invoices, Backer.Invoice
     timestamps()
   end
 

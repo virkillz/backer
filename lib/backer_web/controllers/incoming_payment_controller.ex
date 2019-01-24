@@ -7,8 +7,10 @@ defmodule BackerWeb.IncomingPaymentController do
   alias Backer.Finance.IncomingPayment
 
   def index(conn, _params) do
-    incoming_payments = Finance.list_incoming_payments()
-    render(conn, "index.html", incoming_payments: incoming_payments)
+    incoming_payments = Finance.list_incoming_payments() |> IO.inspect
+    old = Enum.filter(incoming_payments, fn x -> x.status == "Executed" end)
+    new = Enum.filter(incoming_payments, fn x -> x.status != "Executed" end)
+    render(conn, "index.html", incoming_payments: incoming_payments, old: old, new: new)
   end
 
   def new(conn, _params) do
@@ -60,7 +62,7 @@ defmodule BackerWeb.IncomingPaymentController do
     if incoming_payment.status == "Executed" do
       
     conn
-    |> put_flash(:info, "Executed incoming payment cannot be deleted.")
+    |> put_flash(:error, "Executed incoming payment cannot be edited.")
     |> redirect(to: incoming_payment_path(conn, :index))  
 
     else
@@ -109,7 +111,7 @@ defmodule BackerWeb.IncomingPaymentController do
     if incoming_payment.status == "Executed" do
 
     conn
-    |> put_flash(:info, "Executed incoming payment cannot be deleted.")
+    |> put_flash(:error, "Executed incoming payment cannot be deleted.")
     |> redirect(to: incoming_payment_path(conn, :index))  
 
     else

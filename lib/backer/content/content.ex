@@ -7,6 +7,7 @@ defmodule Backer.Content do
   alias Backer.Repo
 
   alias Backer.Content.Forum
+  alias Backer.Account.Pledger
 
   @doc """
   Returns the list of forums.
@@ -18,8 +19,9 @@ defmodule Backer.Content do
 
   """
   def list_forums(params) do
-    Forum 
-    |> Repo.paginate(params)
+    pledger = from p in Pledger, preload: :backer
+    query = from f in Forum, preload: [:backer, pledger: ^pledger]
+    Repo.paginate(query, params)
   end
 
   @doc """

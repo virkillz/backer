@@ -45,9 +45,9 @@
                                 <thead class="bg-primary white">
                                 <tr>
                                   <th>#</th>
+                                  <th>Created</th>
                                   <th>Pledger ID</th>
                                   <th>Title</th>
-                                  <th>Content</th>
                                   <th>Min tier</th>
                             
                                   <th></th>
@@ -57,16 +57,23 @@
                                   <%= for post <- @posts do %>
                                       <tr>
                                         <td><%= post.id %></td>
+                                        <td><%= post.inserted_at %></td>
                                         <td><%= post.pledger_id %></td>
                                         <td><%= post.title %></td>
-                                        <td><%= post.content %></td>
                                         <td><%= post.min_tier %></td>
-                                  
                                         <td class="text-right">
-                                          <span><%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-                                        </td>
+                                        
+                                          <%= link to: post_path(@conn, :show, post) do %>
+                                           <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
+                                          <% end %>                                            
+                                          <%= link to: post_path(@conn, :edit, post) do %>
+                                           <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
+                                          <% end %>                                       
+                                          <%= link to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
+                                          <% end %>
+
+                                        </td>                                  
                                       </tr>
                                   <% end %>
                                 </tbody>

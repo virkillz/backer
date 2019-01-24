@@ -13,15 +13,19 @@ defmodule Backer.Constant do
   end
 
   def standard_tier() do
-  	[1,2,3,4,5]
+  	["Public": 0,"Tier 1": 1,"Tier 2": 2,"Tier 3": 3,"Tier 4": 4,"Tier 5": 5]
   end
 
   def minimum_deposit() do
   	10000
   end
 
+  def minimum_tier() do
+    10000
+  end  
+
   def invoice_status() do
-  	 ["Paid": "paid", "Unpaid": "unpaid", "Expired": "expired", "Cancelled": "cancelled"]
+  	 ["Unpaid": "unpaid", "Expired": "expired", "Cancelled": "cancelled"]
   end
 
   def incoming_payment_status() do
@@ -29,7 +33,7 @@ defmodule Backer.Constant do
   end
 
   def incoming_payment_action() do
-    ["Settle Invoice", "Manual Deposit", "Other"]
+    ["Settle Invoice", "Deposit", "Other"]
   end
 
   def incoming_payment_source() do
@@ -38,5 +42,22 @@ defmodule Backer.Constant do
 
   def incoming_payment_destination() do
     ["BCA 0372800516 Arif Yuliannur","BCA 0372800318 Nurlaelin Yuliani"]
+  end 
+
+
+  def try do
+    duplicate(5)
+  end
+
+  def duplicate(0) do
+    IO.puts("Habis 0!")
+  end
+
+  def duplicate(i) do
+    hasil = i - 1
+    IO.puts(i)
+    duplicate(hasil)
   end  
+
+
 end

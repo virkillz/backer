@@ -8,9 +8,11 @@ defmodule Backer.Content.Forum do
     field(:like_count, :integer)
     field(:status, :string)
     field(:title, :string)
-    field(:pledger_id, :id)
-    field(:backer_id, :id)
 
+
+
+    belongs_to :pledger, Backer.Account.Pledger
+    belongs_to :backer, Backer.Account.Backer    
     timestamps()
   end
 

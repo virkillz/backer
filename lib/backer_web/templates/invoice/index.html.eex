@@ -47,12 +47,12 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>#</th>                                  
                                   <th>Invoice date</th>
-                                  <th>#</th>
                                   <th>Backer ID</th>
+                                  <th>Type</th>
                                   <th>Amount</th>
                                   <th>Status</th>
-                                  <th>Method</th>
                             
                                   <th></th>
                                 </tr>
@@ -60,9 +60,10 @@
                                 <tbody>
                                   <%= for invoice <- @invoices do %>
                                       <tr>
+                                        <th><%= invoice.id %></th>                                        
                                         <td><%= invoice.inserted_at %></td>
-                                        <th><%= invoice.id %></th>
                                         <td><%= invoice.backer_id %></td>
+                                        <td><%= invoice.type %></td>
                                         <td><%= invoice.amount %></td>
                                         <td>
                                           <%= if invoice.status == "paid" do %>
@@ -72,18 +73,25 @@
                                           <% end %>
 
                                         </td>
-                                        <td><%= invoice.method %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: invoice_path(@conn, :show, invoice), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: invoice_path(@conn, :edit, invoice), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: invoice_path(@conn, :delete, invoice), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                        
+                                          <%= link to: invoice_path(@conn, :show, invoice) do %>
+                                           <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
+                                          <% end %>                                            
+                                          <%= link to: invoice_path(@conn, :edit, invoice) do %>
+                                           <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
+                                          <% end %>                                       
+                                          <%= link to: invoice_path(@conn, :delete, invoice), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
+                                          <% end %>
+
                                         </td>
                                       </tr>
                                   <% end %>
                                 </tbody>
                             </table>
-
+<%= pagination_links @conn, @invoices, view_style: :bootstrap_v4, distance: 5, next: "next", previous: "prev", first: true, last: true %>
 </div>
 <br>
 

@@ -6,7 +6,7 @@ defmodule BackerWeb.ForumController do
   alias Backer.Content.Forum
 
   def index(conn, params) do
-    forums = Content.list_forums(params)
+    forums = Content.list_forums(params) |> IO.inspect
     render(conn, "index.html", forums: forums)
   end
 

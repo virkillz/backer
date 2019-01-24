@@ -30,10 +30,10 @@ defmodule BackerWeb.PageController do
   end
 
   def createuser(conn, %{"user" => params}) do
-    changeset = Account.change_user(%User{})
+    # changeset = Account.change_user(%User{})
 
     case Account.create_user_frontend(params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User created successfully. You can login now")
         |> redirect(to: "/lgn")
@@ -66,10 +66,6 @@ defmodule BackerWeb.PageController do
     end
   end
 
-  def createuser(conn, params) do
-    IO.inspect(params)
-    text(conn, "mbel")
-  end
 
   def recover(conn, _params) do
     render(conn, "recover.html", layout: {BackerWeb.LayoutView, "fe.html"})

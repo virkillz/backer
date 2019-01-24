@@ -59,17 +59,20 @@ defmodule BackerWeb.Router do
 
     get "/invoices/newbacking", InvoiceController, :newbacking
     get "/invoices/newdeposit", InvoiceController, :newdeposit
-    post "/invoices/create_deposit", InvoiceController, :create_deposit    
-    resources "/invoices", InvoiceController, except: [:new]    
+    post "/invoices/create_deposit", InvoiceController, :create_deposit 
+    post "/invoices/create_backing", InvoiceController, :create_backing        
+    resources "/invoices", InvoiceController, except: [:new, :create]    
     resources "/incoming_payments", IncomingPaymentController
-    resources "/invoice_details", InvoiceDetailController
+    resources "/invoice_details", InvoiceDetailController, only: [:index, :show]
     resources "/donations", DonationController
-    resources "/mutations", MutationController
+    resources "/mutations", MutationController, only: [:index, :show, :delete]
     resources "/withdrawals", WithdrawalController
 
     get "/approval", FinanceController, :index
     get "/approval/:id", FinanceController, :process
     put "/approval/:id", FinanceController, :update
+
+    resources "/articles", ArticleController
 
     # get "/*path", DefaultController, :page_404
   end

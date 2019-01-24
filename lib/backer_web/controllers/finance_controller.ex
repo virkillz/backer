@@ -1,12 +1,13 @@
 defmodule BackerWeb.FinanceController do
   use BackerWeb, :controller
 
-  alias Backer.Constant
+  # alias Backer.Constant
   alias Backer.Finance
-  alias Backer.Account
+  # alias Backer.Account
 
-  def index(conn, params) do
+  def index(conn, _params) do
     incoming = Finance.list_incoming_payments(%{"status" => "Approved"})
+
     render(conn, "index.html", incoming: incoming)
   end
 
@@ -17,14 +18,17 @@ defmodule BackerWeb.FinanceController do
   end  
 
   def update(conn,  %{"id" => id, "incoming_payment" => params}) do
-  incoming_payment = Finance.get_incoming_payment!(id)  
-    case Finance.process_incoming_payment(incoming_payment, params) do
-      {:ok, incoming_payment} ->
+      user_id = conn.private.guardian_default_resource.id
+      incoming_payment = Finance.get_incoming_payment!(id) 
+    case Finance.process_incoming_payment(incoming_payment, Map.put(params, "excecutor_id", user_id)) do
+      {:ok, _incoming_payment} ->
         conn
         |> put_flash(:info, "Incoming payment updated successfully.")
         |> redirect(to: finance_path(conn, :index))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", changeset: changeset)
+      {:error, _any,%Ecto.Changeset{} = changeset, _} ->
+        render(conn, "edit.html", changeset: changeset, incoming_payment: incoming_payment)
+      {:error,%Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", changeset: changeset, incoming_payment: incoming_payment)        
     end    
   end
 

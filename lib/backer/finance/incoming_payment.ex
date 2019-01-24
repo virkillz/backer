@@ -2,6 +2,8 @@ defmodule Backer.Finance.IncomingPayment do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Backer.Finance
+
 
   schema "incoming_payments" do
     field :action, :string
@@ -22,13 +24,13 @@ defmodule Backer.Finance.IncomingPayment do
     timestamps()
   end
 
-  @doc false
   def changeset(incoming_payment, attrs) do
     incoming_payment
     |> cast(attrs, [:source, :amount, :evidence, :invoice_id, :tx_id, :status, :action, :remark, :maker_id, :checker_id, :excecutor_id,:details, :destination, :backer_id])
     |> validate_required([:source, :amount, :status, :action, :destination])
     |> validate_entry
-  end
+    |> validate_not_yet_executed
+  end  
 
 # case 1: if status not approved, cotinue to save, nothing to do.
 
@@ -47,27 +49,97 @@ defmodule Backer.Finance.IncomingPayment do
     else
       case action do
         "Settle Invoice" -> changeset |> put_change(:backer_id, nil) |> validate_required([:invoice_id])
-        "Manual Deposit" -> changeset |> put_change(:invoice_id, nil) |> validate_required([:backer_id])
+        "Deposit" -> changeset |> put_change(:invoice_id, nil) |> validate_required([:backer_id])
         "Other" -> changeset |> put_change(:backer_id, nil) |> put_change(:invoice_id, nil)
         _ -> add_error(changeset,:status,"Something is wrong. Tell developer there's constant inconsistency")
       end
     end
   end
 
-  @doc false
-  def process_changeset(incoming_payment, attrs) do
-    incoming_payment
-    |> cast(attrs, [:status,:remark, :excecutor_id])
-    |> validate_required([:status,:excecutor_id])
-    |> validate_process
+  defp validate_not_yet_executed(changeset) do
+    status = get_field(changeset, :status)
+
+    return =
+    if status != "Executed" do
+      changeset
+    else
+      add_error(changeset,:status,"This incoming payment cannot be edited because already executed")
+    end
   end  
 
+  @doc false
+  def process_executed_other_changeset(incoming_payment, attrs) do
+    incoming_payment
+    |> cast(attrs, [:status,:remark, :excecutor_id])
+    |> validate_required([:status, :remark, :excecutor_id])
+  end 
 
-  #if status = revision request, pass changeset.
-    # if status executed:
-        # if action is "Other" do nothing.
-        # if action is "manual deposit", validate backer_id not empty and fire command to deposit.
-        # IF action is "Settle invoice", validate invoice_id is not empty and fire command to settle invoice. This is the hard part.
+  @doc false
+  def process_revision_changeset(incoming_payment, attrs) do
+    incoming_payment
+    |> cast(attrs, [:status,:remark])
+    |> validate_required([:status,:remark])
+  end 
+
+  def process_executed_deposit_changeset(incoming_payment, attrs) do
+    incoming_payment
+    |> cast(attrs, [:status, :excecutor_id])
+    |> validate_required([:status, :excecutor_id])
+    |> validate_backer_id_exist(incoming_payment)
+  end
+
+  def process_executed_settle_invoice_changeset(incoming_payment, attrs) do
+    incoming_payment
+    |> cast(attrs, [:status,:remark, :excecutor_id])
+    |> validate_required([:status, :excecutor_id])
+    |> validate_invoice_id_exist(incoming_payment)
+    |> validate_invoice_exist(incoming_payment)
+    |> validate_same_invoice_amount(incoming_payment)
+  end  
+
+  defp validate_backer_id_exist(changeset, incoming_payment) do
+  result =
+    if incoming_payment.backer_id == nil or incoming_payment.backer_id == "" do
+      changeset |> add_error(:status,"Backer ID is empty on Incoming Payment")
+    else
+      changeset
+    end
+  end
+
+  defp validate_same_invoice_amount(changeset, incoming_payment) do
+     invoice = Finance.get_invoice!(incoming_payment.invoice_id) 
+
+  result =
+    if incoming_payment.amount != invoice.amount do
+      changeset |> add_error(:status,"The invoice amount is not the same with incoming payment")
+    else
+      changeset
+    end
+  end
+
+  defp validate_invoice_id_exist(changeset, incoming_payment) do
+  result =
+    if incoming_payment.invoice_id == nil or incoming_payment.invoice_id == "" do
+      changeset |> add_error(changeset,:status,"Invoice ID is empty on Incoming Payment")
+    else
+      changeset
+    end
+  end
+
+defp validate_invoice_exist(changeset, incoming_payment) do
+  invoice = Finance.get_invoice!(incoming_payment.invoice_id) 
+  result = 
+  if invoice == nil do
+    changeset |> add_error(:status,"Asscociated invoice cannot be founded")
+  else
+    if incoming_payment.amount != invoice.amount do
+      changeset |> add_error(:status,"Invoice amount and Incoming Payment amount does not match")
+    else 
+      changeset
+    end
+  end
+end
+
 
  defp validate_process(changeset) do
    changeset
