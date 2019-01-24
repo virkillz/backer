@@ -16,7 +16,7 @@ defmodule Backer.Account.Backer do
     field(:id_photo, :string)
     field(:id_photokyc, :string)
     field(:id_type, :string)
-    field(:is_email_verified, :boolean, default: false)
+    field(:is_email_verified, :boolean, default: true)
     field(:is_phone_verified, :boolean, default: false)
     field(:is_pledger, :boolean, default: false)
     field(:password_recovery_code, :string)
@@ -56,7 +56,7 @@ defmodule Backer.Account.Backer do
       :is_email_verified,
       :is_phone_verified
     ])
-    |> validate_required([:email, :username, :phone, :birth_date])
+    |> validate_required([:email, :display_name, :birth_date])
   end
 
 
@@ -85,11 +85,12 @@ defmodule Backer.Account.Backer do
       :is_email_verified,
       :is_phone_verified
     ])
-    |> validate_required([:email, :phone, :birth_date])
+    |> validate_required([:email, :display_name, :birth_date])
     |> add_random_username
-    |> validate_username
     |> validate_display_name
-    |> validate_full_name
+    |> unique_constraint(:email)
+    |> unique_constraint(:phone)
+    |> unique_constraint(:username)        
   end
 
   defp validate_username(changeset) do
@@ -135,10 +136,17 @@ defmodule Backer.Account.Backer do
   defp add_random_username(changeset) do
     username = get_field(changeset, :username)
     case username do
-      "" -> changeset |> change(username: Generator.random())
+      "" -> changeset |> put_change(:username, Generator.random())
       _ -> changeset
     end
   end
+
+  defp add_email_verification_code(changeset) do
+    random_string = Ecto.UUID.generate
+    verification_code = :crypto.hash(:md5, random_string) |> Base.encode16(case: :lower)
+
+    changeset |> change(email_verification_code: verification_code)
+  end  
 
   defp validate_full_name(changeset) do
     full_name = get_field(changeset, :full_name)

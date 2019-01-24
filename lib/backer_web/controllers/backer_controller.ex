@@ -25,8 +25,7 @@ defmodule BackerWeb.BackerController do
         |> redirect(to: backer_path(conn, :show, backer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        id_types = Constant.accepted_id_kyc
-        render(conn, "new.html", changeset: changeset, id_types: id_types)
+        render(conn, "new.html", changeset: changeset)
     end
   end
 

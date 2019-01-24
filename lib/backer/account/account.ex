@@ -8,6 +8,7 @@ defmodule Backer.Account do
 
   alias Backer.Account.User
   alias Comeonin.Bcrypt
+  alias Backer.Account.Backer, as: Backerz  
 
   @doc """
   Returns the list of user.
@@ -134,8 +135,6 @@ defmodule Backer.Account do
     User.changeset(user, %{})
   end
 
-  alias Backer.Account.Backer, as: Backerz
-
   @doc """
   Returns the list of backers.
 
@@ -183,6 +182,7 @@ defmodule Backer.Account do
 
   """
   def create_backer(attrs \\ %{}) do
+    attrs |> IO.inspect
     %Backerz{}
     |> Backerz.create_changeset(attrs)
     |> Repo.insert()

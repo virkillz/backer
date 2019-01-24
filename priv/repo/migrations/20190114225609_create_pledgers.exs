@@ -20,6 +20,6 @@ defmodule Backer.Repo.Migrations.CreatePledgers do
     create index(:pledgers, [:backer_id])
     create index(:pledgers, [:category_id])
     create index(:pledgers, [:title_id])
-    create unique_index(:pledgers, [:backer_id])    
+    # create unique_index(:pledgers, [:backer_id])   
   end
 end
