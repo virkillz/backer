@@ -27,7 +27,7 @@ defmodule Backer.Account.Backer do
     field(:username, :string)
 
 
-    has_many :invoices, Backer.Invoice
+    has_many :invoices, Backer.Finance.Invoice
     timestamps()
   end
 
@@ -86,11 +86,14 @@ defmodule Backer.Account.Backer do
       :is_phone_verified
     ])
     |> validate_required([:email, :display_name, :birth_date])
-    |> add_random_username
     |> validate_display_name
     |> unique_constraint(:email)
     |> unique_constraint(:phone)
-    |> unique_constraint(:username)        
+    |> unique_constraint(:username)
+    |> add_random_username
+    # |> apply_changes
+    # |> IO.inspect    
+    # |> IO.inspect 
   end
 
   defp validate_username(changeset) do
@@ -117,7 +120,7 @@ defmodule Backer.Account.Backer do
   end
 
   defp validate_display_name(changeset) do
-    display_name = get_field(changeset, :display_name)
+    display_name = get_field(changeset, :display_name, "")
 
     return =
       case Validate.validate_alphanumeric_and_space(display_name) do
@@ -136,8 +139,8 @@ defmodule Backer.Account.Backer do
   defp add_random_username(changeset) do
     username = get_field(changeset, :username)
     case username do
-      "" -> changeset |> put_change(:username, Generator.random())
-      _ -> changeset
+      nil -> changeset |> change(username: Generator.random())      
+      "" -> changeset |> change(username: Generator.random())
     end
   end
 

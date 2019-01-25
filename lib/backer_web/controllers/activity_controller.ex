@@ -4,8 +4,8 @@ defmodule BackerWeb.ActivityController do
   alias Backer.Logging
   # alias Backer.Logging.Activity
 
-  def index(conn, _params) do
-    activity = Logging.get_last_x_activity(100)
+  def index(conn, params) do
+    activity = Logging.list_activity(params)
     render(conn, "index.html", activity: activity)
   end
 

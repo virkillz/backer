@@ -30,7 +30,7 @@ defmodule BackerWeb.Router do
     get("/", UserController, :dashboard)
     get("/profile", UserController, :profile)
     get("/locked", UserController, :locked)
-    resources("/activity", ActivityController, only: [:index, :show, :delete])
+    resources("/activity", ActivityController, only: [:index, :delete])
     resources("/user", UserController)
     get("/logout", UserController, :logout)
 

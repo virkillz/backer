@@ -11,6 +11,10 @@ defmodule Backer.Finance.InvoiceDetail do
     field :backer_id, :id
     field :invoice_id, :id
     field :tier, :integer
+    field :is_settled, :boolean
+    field :settlement_date, :date
+    field :mutation_id, :id
+    field :donation_id, :id
 
     belongs_to :pledger, Backer.Account.Pledger
     timestamps()

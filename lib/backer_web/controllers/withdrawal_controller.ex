@@ -4,8 +4,8 @@ defmodule BackerWeb.WithdrawalController do
   alias Backer.Finance
   alias Backer.Finance.Withdrawal
 
-  def index(conn, _params) do
-    withdrawals = Finance.list_withdrawals()
+  def index(conn, params) do
+    withdrawals = Finance.list_withdrawals(params)
     render(conn, "index.html", withdrawals: withdrawals)
   end
 

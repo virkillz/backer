@@ -4,8 +4,8 @@ defmodule BackerWeb.DonationController do
   alias Backer.Finance
   alias Backer.Finance.Donation
 
-  def index(conn, _params) do
-    donations = Finance.list_donations()
+  def index(conn, params) do
+    donations = Finance.list_donations(params)
     render(conn, "index.html", donations: donations)
   end
 

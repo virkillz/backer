@@ -5,8 +5,8 @@ defmodule BackerWeb.FinanceController do
   alias Backer.Finance
   # alias Backer.Account
 
-  def index(conn, _params) do
-    incoming = Finance.list_incoming_payments(%{"status" => "Approved"})
+  def index(conn, params) do
+    incoming = Finance.list_incoming_payments(%{"status" => "Approved"}, params)
 
     render(conn, "index.html", incoming: incoming)
   end

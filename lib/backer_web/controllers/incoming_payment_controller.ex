@@ -6,11 +6,10 @@ defmodule BackerWeb.IncomingPaymentController do
   alias Backer.Finance
   alias Backer.Finance.IncomingPayment
 
-  def index(conn, _params) do
-    incoming_payments = Finance.list_incoming_payments() |> IO.inspect
-    old = Enum.filter(incoming_payments, fn x -> x.status == "Executed" end)
-    new = Enum.filter(incoming_payments, fn x -> x.status != "Executed" end)
-    render(conn, "index.html", incoming_payments: incoming_payments, old: old, new: new)
+  def index(conn, params) do
+    new = Finance.list_new_incoming_payments()
+    old = Finance.list_old_incoming_payments(params)    
+    render(conn, "index.html", old: old, new: new)
   end
 
   def new(conn, _params) do

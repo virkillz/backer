@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/chat-application.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/fonts/simple-line-icons/style.min.css">    
     <link rel="stylesheet" type="text/css" href="/css/unpoly.min.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">    
     
@@ -194,7 +195,7 @@
             <ul class="menu-content">
               <li class="<%= activate(@conn.request_path, "/admin/activity") %>"><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
               </li>
-              <li class="<%= activate(@conn.request_path, "/admin/user") %>"><a class="menu-item" href="/admin/user" up-target=".main" up-transition="move-right">User management</a>
+              <li class="<%= activate(@conn.request_path, "/admin/user") %>"><a class="menu-item" href="/admin/user" up-target=".main" up-transition="move-right">Staff management</a>
             </ul>
           </li>
           <li class="nav-item <%= activate(@conn.request_path, "/admin/general_settings") %>"><a href="/admin/general_settings" up-target=".main" up-transition="move-right"><i class="ft-settings"></i><span class="menu-title" data-i18n="">General Settings</span></a>

@@ -4,8 +4,8 @@ defmodule BackerWeb.MutationController do
   alias Backer.Finance
   # alias Backer.Finance.Mutation
 
-  def index(conn, _params) do
-    mutations = Finance.list_mutations()
+  def index(conn, params) do
+    mutations = Finance.list_mutations(params)
     render(conn, "index.html", mutations: mutations)
   end
 

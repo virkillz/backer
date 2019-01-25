@@ -4,8 +4,8 @@ defmodule BackerWeb.InvoiceDetailController do
   alias Backer.Finance
   # alias Backer.Finance.InvoiceDetail
 
-  def index(conn, _params) do
-    invoice_details = Finance.list_invoice_details()
+  def index(conn, params) do
+    invoice_details = Finance.list_invoice_details(params)
     render(conn, "index.html", invoice_details: invoice_details)
   end
 

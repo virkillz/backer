@@ -178,11 +178,20 @@ defmodule Backer.Finance do
     Repo.all(query)
   end
 
-  def list_incoming_payments(%{"status" => status}) do
+  def list_new_incoming_payments() do
+    query = from i in IncomingPayment,where: i.status != "Executed", order_by: [desc: :id]
+    Repo.all(query)
+  end  
 
+  def list_incoming_payments(%{"status" => status}) do
     query = from i in IncomingPayment, where: i.status == ^status, order_by: [desc: :id]
     Repo.all(query)
   end 
+
+  def list_old_incoming_payments(params) do
+    query = from i in IncomingPayment, where: i.status == "Executed", order_by: [desc: :id]
+    Repo.paginate(query)
+  end   
 
   def count_incoming_payment_approval do
     query = from i in IncomingPayment, where: i.status == "Approved", select: count(i.id)
@@ -350,8 +359,9 @@ defmodule Backer.Finance do
       [%InvoiceDetail{}, ...]
 
   """
-  def list_invoice_details do
-    Repo.all(InvoiceDetail)
+  def list_invoice_details(params) do
+    query = from i in InvoiceDetail, order_by: [desc: :id]
+    Repo.paginate(query, params)
   end
 
   def list_invoice_details(%{"invoice_id" => invoice_id}) do
@@ -472,8 +482,8 @@ defmodule Backer.Finance do
       [%Donation{}, ...]
 
   """
-  def list_donations do
-    Repo.all(Donation)
+  def list_donations(params) do
+    Repo.paginate(Donation, params)
   end
 
   @doc """
@@ -570,8 +580,10 @@ defmodule Backer.Finance do
 
   """
 
-  def list_mutations do
-    Repo.all(Mutation)
+  def list_mutations(params) do
+    query = from m in Mutation, order_by: [desc: :id]
+
+    Repo.paginate(query, params)
   end
 
 
@@ -687,8 +699,8 @@ defmodule Backer.Finance do
       [%Withdrawal{}, ...]
 
   """
-  def list_withdrawals do
-    Repo.all(Withdrawal)
+  def list_withdrawals(params) do
+    Repo.paginate(Withdrawal, params)
   end
 
   @doc """
