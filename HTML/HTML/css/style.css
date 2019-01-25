@@ -1,8 +1,8 @@
 /*==================================================
-  Template Name: Friend Finder
-  Description: A Social Network Template
-  Author: thunder-team
-  Version: 1.4
+  Style Name: Backer
+  Description: Sustainable donation platform
+  Author: virkill & team
+  Version: 1.1
 ==================================================*/
 
 /*==================================================
@@ -361,6 +361,11 @@ textarea{
 
 #header{
   min-height: 50px;
+}
+
+
+.navbar-brand{
+  padding-top: 7px;
 }
 
 .menu{
