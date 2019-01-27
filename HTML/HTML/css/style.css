@@ -58,6 +58,16 @@ body{
 
 
 /*==================================================
+  Quick Custom
+  ==================================================*/
+
+.btn-login {
+  border-radius: 17px;
+}
+
+
+
+/*==================================================
   Typography
   ==================================================*/
 
@@ -169,7 +179,7 @@ section .wrapper{
 }
 
 .btn-secondary{
-	background: linear-gradient(to bottom, rgba(109,110,113,1), rgba(0,0,0,1));
+/*	background: linear-gradient(to bottom, rgba(109,110,113,1), rgba(0,0,0,1));*/
 	padding: 0 40px;
 	border: none;
 	min-height: 36px;

@@ -90,6 +90,14 @@ defmodule BackerWeb.Router do
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PageController, :signout)
+    get("/backer/:username", BackerController, :profile)
+    get("/pledger/:username", PledgerController, :profile)  
+
+
+
+    get("/pledger", PledgerController, :featured)  
+    get("/404", PageController, :page404)
+    get("/:backer", PledgerController, :redirector) 
   end
 
   # Other scopes may use custom stacks.

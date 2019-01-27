@@ -5,9 +5,15 @@ defmodule BackerWeb.PageController do
   alias Backer.Account.User
 
   def index(conn, _params) do
+    # conn
+    # |> render("index.html", layout: {BackerWeb.LayoutView, "fe.html"})
     conn
-    |> IO.inspect()
-    |> render("index.html", layout: {BackerWeb.LayoutView, "fe.html"})
+    |> render("homepage.html", layout: {BackerWeb.LayoutView, "homepage_frontend_layout.html"})    
+  end
+
+
+  def page404(conn, _params) do
+    conn |> put_status(:not_found) |> render("404.html", layout: {BackerWeb.LayoutView, "header_footer_non_login_frontend.html"})       
   end
 
   def login(conn, _params) do

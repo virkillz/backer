@@ -7,9 +7,43 @@ defmodule BackerWeb.PledgerController do
   alias Backer.Masterdata
 
   def index(conn, params) do
-    pledgers = Account.list_pledgers(params) |> IO.inspect
+    pledgers = Account.list_pledgers(params)
     render(conn, "index.html", pledgers: pledgers)
   end
+
+  def featured(conn, params) do
+    pledgers = Account.list_pledgers(params) |> IO.inspect
+    conn |> render("public_pledger_list.html", pledgers: pledgers, layout: {BackerWeb.LayoutView, "header_footer_non_login_frontend.html"})      
+  end  
+
+
+  def profile(conn, %{"username" => username}) do
+    pledger = Account.get_pledger(%{"username" => username}) |> IO.inspect
+
+    case pledger do
+      nil -> redirect(conn, to: page_path(conn, :page404))
+      _ -> if pledger.pledger == nil do
+            redirect(conn, to: page_path(conn, :page404))
+          else
+            conn |> render("profile_public_overview.html", pledger: pledger, layout: {BackerWeb.LayoutView, "header_footer_non_login_frontend.html"})             
+      end
+    end
+      
+  end
+
+  def redirector(conn, %{"backer" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+    case backer do
+      nil -> redirect(conn, to: page_path(conn, :page404))
+
+      other -> if backer.is_pledger do
+                redirect(conn, to: "/pledger/" <> username)
+              else
+                redirect(conn, to: "/backer/" <> username)
+                end
+    end
+  end
+
 
   def new(conn, _params) do
     backers = Account.list_backers()

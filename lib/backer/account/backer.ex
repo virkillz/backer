@@ -28,6 +28,7 @@ defmodule Backer.Account.Backer do
 
 
     has_many :invoices, Backer.Finance.Invoice
+    has_one :pledger, Backer.Account.Pledger
     timestamps()
   end
 
@@ -141,6 +142,7 @@ defmodule Backer.Account.Backer do
     case username do
       nil -> changeset |> change(username: Generator.random())      
       "" -> changeset |> change(username: Generator.random())
+      other -> changeset
     end
   end
 

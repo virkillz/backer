@@ -11,6 +11,10 @@ defmodule BackerWeb.BackerController do
     render(conn, "index.html", backers: backers)
   end
 
+  def profile(conn, %{"username" => username}) do
+    text(conn, "to be build")
+  end  
+
   def new(conn, _params) do
     id_types = Constant.accepted_id_kyc
     changeset = Account.change_backer(%Backer{})
@@ -18,8 +22,7 @@ defmodule BackerWeb.BackerController do
   end
 
   def create(conn, %{"backer" => backer_params}) do
-    IO.inspect("SAMPAI SINI============")
-    case Account.create_backer(backer_params) |> IO.inspect do
+    case Account.create_backer(backer_params) do
       {:ok, backer} ->
         conn
         |> put_flash(:info, "Backer created successfully.")

@@ -173,9 +173,9 @@ defmodule Backer.Finance do
       [%IncomingPayment{}, ...]
 
   """
-  def list_incoming_payments do
+  def list_incoming_payments(params) do
     query = from i in IncomingPayment, order_by: [desc: :id]
-    Repo.all(query)
+    Repo.paginate(query)
   end
 
   def list_new_incoming_payments() do
@@ -579,6 +579,12 @@ defmodule Backer.Finance do
       [%Mutation{}, ...]
 
   """
+
+  def list_mutations() do
+    query = from m in Mutation, order_by: [desc: :id]
+
+    Repo.all(query)
+  end
 
   def list_mutations(params) do
     query = from m in Mutation, order_by: [desc: :id]

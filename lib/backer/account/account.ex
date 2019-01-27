@@ -167,6 +167,12 @@ defmodule Backer.Account do
 
   """
   def get_backer!(id), do: Repo.get!(Backerz, id) 
+
+  def get_backer(%{"username" => username}) do
+
+  query = from b in Backerz, where: b.username == ^username
+  Repo.one(query)
+  end
    
 
   @doc """
@@ -258,12 +264,6 @@ defmodule Backer.Account do
     query = from p in Pledger, preload: [:backer, :category, :title]
 
     Repo.paginate(query, params)
-    # Pledger
-    # |> Repo.all
-    # |> Repo.preload(:backer) 
-    # |> Repo.preload(:category) 
-    # |> Repo.preload(:title)
-    # |> Repo.paginate(params)
   end  
 
   @doc """
@@ -285,8 +285,13 @@ defmodule Backer.Account do
    |> Repo.preload(:backer) 
    |> Repo.preload(:category) 
    |> Repo.preload(:title)
-   |> IO.inspect
   end
+
+  def get_pledger(%{"username" => username}) do
+    query = from p in Backerz, where: p.username == ^username and p.is_pledger == true, preload: [pledger: :title]
+
+    Repo.one(query)
+  end  
   @doc """
   Creates a pledger.
 
