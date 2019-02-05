@@ -9,10 +9,8 @@ defmodule Backer.Content.Forum do
     field(:status, :string)
     field(:title, :string)
 
-
-
-    belongs_to :pledger, Backer.Account.Pledger
-    belongs_to :backer, Backer.Account.Backer    
+    belongs_to(:pledger, Backer.Account.Pledger)
+    belongs_to(:backer, Backer.Account.Backer)
     timestamps()
   end
 
@@ -21,6 +19,6 @@ defmodule Backer.Content.Forum do
     forum
     |> cast(attrs, [:title, :content, :is_visible, :status, :like_count, :backer_id, :pledger_id])
     |> validate_required([:pledger_id, :backer_id, :title, :content])
-    |> IO.inspect
+    |> IO.inspect()
   end
 end

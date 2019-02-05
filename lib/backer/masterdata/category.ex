@@ -9,6 +9,8 @@ defmodule Backer.Masterdata.Category do
     field(:name, :string)
 
     timestamps()
+
+    has_many(:pledger, Backer.Account.Pledger)
   end
 
   @doc false

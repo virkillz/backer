@@ -1,0 +1,15 @@
+    <!-- Top Banner
+    ================================================= -->
+		<section>
+			<div class="container">
+				<div style="min-height: 200px;" class="mtb100 text-center bg-white">
+					<div class="container">
+
+					<h1 class="text-dark"><%= @payload.title %></h1>
+					<h3 class="text-dark"><%= @payload.message %></h3>
+
+					</div>
+				</div>
+
+			</div>
+		</section>

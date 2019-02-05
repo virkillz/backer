@@ -1,31 +1,41 @@
 defmodule Backer.Constant do
-
   def accepted_id_kyc() do
-    ["KTP": "ktp", "Passport": "pasport"]
+    [KTP: "ktp", Passport: "pasport"]
   end
 
   def payment_method_deposit() do
     ["BCA Transfer": "transfer_bca"]
-  end  
+  end
 
   def payment_method_donate() do
-    ["Balance": "balance", "BCA Transfer": "transfer_bca"]
+    [Balance: "balance", "BCA Transfer": "transfer_bca"]
   end
 
   def standard_tier() do
-  	["Public": 0,"Tier 1": 1,"Tier 2": 2,"Tier 3": 3,"Tier 4": 4,"Tier 5": 5]
+    [Public: 0, "Tier 1": 1, "Tier 2": 2, "Tier 3": 3, "Tier 4": 4, "Tier 5": 5]
   end
 
   def minimum_deposit() do
-  	10000
+    10000
   end
 
   def minimum_tier() do
     10000
-  end  
+  end
 
   def invoice_status() do
-  	 ["Unpaid": "unpaid", "Expired": "expired", "Cancelled": "cancelled"]
+    [Unpaid: "unpaid", Expired: "expired", Cancelled: "cancelled"]
+  end
+
+  def profile_generator() do
+    [
+      "An Internet wanderer.",
+      "An Internet nomads.",
+      "Self proclaimed beautiful human.",
+      "A generous backer in the making",
+      "Looking for interesting project to be backed!",
+      "Show me an interesting Pledger to backed."
+    ]
   end
 
   def incoming_payment_status() do
@@ -41,9 +51,8 @@ defmodule Backer.Constant do
   end
 
   def incoming_payment_destination() do
-    ["BCA 0372800516 Arif Yuliannur","BCA 0372800318 Nurlaelin Yuliani"]
-  end 
-
+    ["BCA 0372800516 Arif Yuliannur", "BCA 0372800318 Nurlaelin Yuliani"]
+  end
 
   def try do
     duplicate(5)
@@ -57,7 +66,5 @@ defmodule Backer.Constant do
     hasil = i - 1
     IO.puts(i)
     duplicate(hasil)
-  end  
-
-
+  end
 end

@@ -14,6 +14,6 @@ defmodule Stringhelper do
         {:ok, "correct"}
       else
         {:error, "contain forbidden character"}
-      end  	
+      end
   end
 end

@@ -10,6 +10,7 @@ defmodule BackerWeb.Router do
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
     plug(BackerWeb.Plugs.SetCurrentUser)
+    plug(BackerWeb.Plugs.SetCurrentBacker)
     plug(BackerWeb.Plugs.SetNotification)
   end
 
@@ -21,10 +22,12 @@ defmodule BackerWeb.Router do
     plug(Backer.Auth.AuthAccessPipeline)
   end
 
-  # ----------------- scope route ----------------
+  pipeline :backer_sign_check do
+    plug(BackerWeb.Plugs.BackerSignCheck)
+  end
 
+  # This route area is for admin Portal
   scope "/admin", BackerWeb do
-    # Use the default browser stack
     pipe_through([:browser, :auth])
 
     get("/", UserController, :dashboard)
@@ -34,7 +37,6 @@ defmodule BackerWeb.Router do
     resources("/user", UserController)
     get("/logout", UserController, :logout)
 
-    # please make menu 
     resources("/categories", CategoryController)
     resources("/titles", TitleController)
     resources("/general_settings", SettingController)
@@ -46,10 +48,10 @@ defmodule BackerWeb.Router do
 
     resources("/points", PointController)
     resources("/tiers", TierController)
-    resources("/forums", ForumController)   
+    resources("/forums", ForumController)
     resources("/forum_like", ForumLikeController)
     resources("/fcomments", ForumCommentController)
-    get("/fcomments/new/:forumid", ForumCommentController, :newcomment)     
+    get("/fcomments/new/:forumid", ForumCommentController, :newcomment)
     resources("/fcomment_like", FCommentLikeController)
     resources("/posts", PostController)
     resources("/post_likes", PostLikeController)
@@ -57,32 +59,40 @@ defmodule BackerWeb.Router do
     get("/pcomments/new/:post_id", PostCommentController, :newcomment)
     resources("/pcomment_likes", PCommentLikeController)
 
-    get "/invoices/newbacking", InvoiceController, :newbacking
-    get "/invoices/newdeposit", InvoiceController, :newdeposit
-    post "/invoices/create_deposit", InvoiceController, :create_deposit 
-    post "/invoices/create_backing", InvoiceController, :create_backing        
-    resources "/invoices", InvoiceController, except: [:new, :create]    
-    resources "/incoming_payments", IncomingPaymentController
-    resources "/invoice_details", InvoiceDetailController, only: [:index, :show]
-    resources "/donations", DonationController
-    resources "/mutations", MutationController, only: [:index, :show, :delete]
-    resources "/withdrawals", WithdrawalController
+    get("/invoices/newbacking", InvoiceController, :newbacking)
+    get("/invoices/newdeposit", InvoiceController, :newdeposit)
+    post("/invoices/create_deposit", InvoiceController, :create_deposit)
+    post("/invoices/create_backing", InvoiceController, :create_backing)
+    resources("/invoices", InvoiceController, except: [:new, :create])
+    resources("/incoming_payments", IncomingPaymentController)
+    resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
+    resources("/donations", DonationController)
+    resources("/mutations", MutationController, only: [:index, :show, :delete])
+    resources("/withdrawals", WithdrawalController)
 
-    get "/approval", FinanceController, :index
-    get "/approval/:id", FinanceController, :process
-    put "/approval/:id", FinanceController, :update
+    get("/approval", FinanceController, :index)
+    get("/approval/:id", FinanceController, :process)
+    put("/approval/:id", FinanceController, :update)
 
-    resources "/articles", ArticleController
-
-    # get "/*path", DefaultController, :page_404
+    resources("/articles", ArticleController)
   end
 
+  # This route area is for signed in backer
+  scope "/", BackerWeb do
+    pipe_through([:browser, :backer_sign_check])
+
+    get("/backer/:username/timeline", BackerController, :timeline)
+    get("/backer/:username/finance", BackerController, :finance)
+    get("/backer/:username/backing-history", BackerController, :backing_history)
+    get("/backer/:username/profile-setting", BackerController, :profile_setting)
+  end
+
+  # This route area is for public route
   scope "/", BackerWeb do
     pipe_through(:browser)
 
     get("/", PageController, :index)
     get("/login", PageController, :login)
-    get("/lgn", PageController, :lgn)
     get("/register", PageController, :register)
     post("/login", PageController, :auth)
     post("/register", PageController, :createuser)
@@ -90,14 +100,33 @@ defmodule BackerWeb.Router do
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PageController, :signout)
-    get("/backer/:username", BackerController, :profile)
-    get("/pledger/:username", PledgerController, :profile)  
+    get("/backer", BackerController, :featured)
+    get("/pledger", PledgerController, :featured)
 
+    get("/backer/:username", BackerController, :overview)
+    get("/backer/:username/badges", BackerController, :badges)
+    get("/backer/:username/backerfor", BackerController, :backerfor)
 
+    get("/verify", PageController, :verify)
+    get("/resend-email", PageController, :resend)
+    get("/forgot-password", PageController, :forgot_password)
+    post("/forgot-password", PageController, :forgot_password_post)
+    get("/change-password", PageController, :change_password)
+    put("/change-password", PageController, :change_password_post)  
+    post("/change-password", PageController, :change_password_post)  
+    get("/pledger/:username", PledgerController, :overview)
+    get("/pledger/:username/posts", PledgerController, :posts)
+    get("/pledger/:username/backers", PledgerController, :backers)
+    get("/pledger/:username/forum", PledgerController, :forum)
+    get("/pledger/:username/tier", PledgerController, :tier)
+    get("/pledger/:username/checkout", PledgerController, :checkout)
 
-    get("/pledger", PledgerController, :featured)  
+    get("/page/:slug", PageController, :static_page)
+    get("/explore", PledgerController, :explore)
+    get("/category/:id", CategoryController, :list_pledger)
     get("/404", PageController, :page404)
-    get("/:backer", PledgerController, :redirector) 
+    get("/505", PageController, :page505)
+    get("/:backer", PledgerController, :redirector)
   end
 
   # Other scopes may use custom stacks.

@@ -7,9 +7,9 @@ defmodule Backer.Finance do
   alias Backer.Repo
 
   alias Backer.Finance.Invoice
-  alias Backer.Finance.IncomingPayment  
-  alias Backer.Finance.InvoiceDetail  
-  alias Backer.Account.Pledger  
+  alias Backer.Finance.IncomingPayment
+  alias Backer.Finance.InvoiceDetail
+  alias Backer.Account.Pledger
 
   @doc """
   Returns the list of invoices.
@@ -25,13 +25,13 @@ defmodule Backer.Finance do
   end
 
   def list_invoices(%{"status" => "not_paid"}) do
-    query = from i in Invoice, where: i.status != "paid"
+    query = from(i in Invoice, where: i.status != "paid")
     Repo.all(query)
   end
 
   def list_invoices(params) do
     Repo.paginate(Invoice, params)
-  end  
+  end
 
   @doc """
   Gets a single invoice.
@@ -49,8 +49,7 @@ defmodule Backer.Finance do
   """
   def get_invoice!(id), do: Repo.get!(Invoice, id) |> Repo.preload(:backer)
 
-
-  def get_invoice(id), do: Repo.get(Invoice, id)  
+  def get_invoice(id), do: Repo.get(Invoice, id)
 
   @doc """
   Creates a invoice.
@@ -65,35 +64,38 @@ defmodule Backer.Finance do
 
   """
   def create_deposit_invoice(attrs \\ %{}) do
-
     invoice_changeset = %Invoice{} |> Invoice.changeset(attrs)
 
     Ecto.Multi.new()
     |> Ecto.Multi.insert(:invoice, invoice_changeset)
     |> Ecto.Multi.run(:user, fn _repo, %{invoice: invoice} ->
-        create_invoice_detail_deposit(invoice)
-        end)
-    |> Repo.transaction
+      create_invoice_detail_deposit(invoice)
+    end)
+    |> Repo.transaction()
   end
 
   def create_donation_invoice(attrs \\ %{}) do
-
     invoice_changeset = %Invoice{} |> Invoice.donation_changeset(attrs)
 
     Ecto.Multi.new()
     |> Ecto.Multi.insert(:invoice, invoice_changeset)
     |> Ecto.Multi.run(:user, fn _repo, %{invoice: invoice} ->
-        create_invoice_detail_donation(invoice, attrs)
-        end)
-    |> Repo.transaction
-
+      create_invoice_detail_donation(invoice, attrs)
+    end)
+    |> Repo.transaction()
   end
 
   def create_invoice_detail_donation(invoice, attrs) do
-    attr = %{"amount" => attrs["amount"], "pledger_id" => attrs["pledger_id"], "type" => "donate", "backer_id" => attrs["backer_id"], "invoice_id" => invoice.id}
-        
-    {i, _} = attrs["month"] |> Integer.parse
-    insert_donation_detail(i, attr)   
+    attr = %{
+      "amount" => attrs["amount"],
+      "pledger_id" => attrs["pledger_id"],
+      "type" => "donate",
+      "backer_id" => attrs["backer_id"],
+      "invoice_id" => invoice.id
+    }
+
+    {i, _} = attrs["month"] |> Integer.parse()
+    insert_donation_detail(i, attr)
   end
 
   def insert_donation_detail(0, _attr) do
@@ -101,10 +103,9 @@ defmodule Backer.Finance do
   end
 
   def insert_donation_detail(i, attr) do
-
     next = i - 1
 
-    {year, month, _day} = Date.utc_today |> Date.add(30*next) |> Date.to_erl
+    {year, month, _day} = Date.utc_today() |> Date.add(30 * next) |> Date.to_erl()
 
     attrs = attr |> Map.put("month", month) |> Map.put("year", year)
 
@@ -112,9 +113,8 @@ defmodule Backer.Finance do
     |> InvoiceDetail.changeset(attrs)
     |> Repo.insert()
 
-
     insert_donation_detail(next, attr)
-  end  
+  end
 
   @doc """
   Updates a invoice.
@@ -163,7 +163,6 @@ defmodule Backer.Finance do
     Invoice.changeset(invoice, %{})
   end
 
-
   @doc """
   Returns the list of incoming_payments.
 
@@ -174,34 +173,39 @@ defmodule Backer.Finance do
 
   """
   def list_incoming_payments(params) do
-    query = from i in IncomingPayment, order_by: [desc: :id]
+    query = from(i in IncomingPayment, order_by: [desc: :id])
     Repo.paginate(query)
   end
 
   def list_new_incoming_payments() do
-    query = from i in IncomingPayment,where: i.status != "Executed", order_by: [desc: :id]
+    query = from(i in IncomingPayment, where: i.status != "Executed", order_by: [desc: :id])
     Repo.all(query)
-  end  
+  end
+
+  def list_incoming_payments(%{"status" => status}, params) do
+    query = from(i in IncomingPayment, where: i.status == ^status, order_by: [desc: :id])
+    Repo.paginate(query)
+  end
 
   def list_incoming_payments(%{"status" => status}) do
-    query = from i in IncomingPayment, where: i.status == ^status, order_by: [desc: :id]
+    query = from(i in IncomingPayment, where: i.status == ^status, order_by: [desc: :id])
     Repo.all(query)
-  end 
+  end
 
   def list_old_incoming_payments(params) do
-    query = from i in IncomingPayment, where: i.status == "Executed", order_by: [desc: :id]
+    query = from(i in IncomingPayment, where: i.status == "Executed", order_by: [desc: :id])
     Repo.paginate(query)
-  end   
+  end
 
   def count_incoming_payment_approval do
-    query = from i in IncomingPayment, where: i.status == "Approved", select: count(i.id)
+    query = from(i in IncomingPayment, where: i.status == "Approved", select: count(i.id))
     Repo.one(query)
   end
 
   def count_incoming_payment_pending do
-    query = from i in IncomingPayment, where: i.status == "Revision Request", select: count(i.id)
+    query = from(i in IncomingPayment, where: i.status == "Revision Request", select: count(i.id))
     Repo.one(query)
-  end  
+  end
 
   @doc """
   Gets a single incoming_payment.
@@ -255,54 +259,69 @@ defmodule Backer.Finance do
     |> Repo.update()
   end
 
-
-  def process_incoming_payment(%IncomingPayment{action: "Other"} = incoming_payment, %{"status" => "Executed"} = attrs) do
+  def process_incoming_payment(
+        %IncomingPayment{action: "Other"} = incoming_payment,
+        %{"status" => "Executed"} = attrs
+      ) do
     incoming_payment
     |> IncomingPayment.process_executed_other_changeset(attrs)
     |> Repo.update()
   end
 
-  def process_incoming_payment(%IncomingPayment{action: "Deposit"} = incoming_payment, %{"status" => "Executed"} = attrs) do
-
-    incoming_payment_changeset = incoming_payment |> IncomingPayment.process_executed_deposit_changeset(attrs)
+  def process_incoming_payment(
+        %IncomingPayment{action: "Deposit"} = incoming_payment,
+        %{"status" => "Executed"} = attrs
+      ) do
+    incoming_payment_changeset =
+      incoming_payment |> IncomingPayment.process_executed_deposit_changeset(attrs)
 
     Ecto.Multi.new()
     |> Ecto.Multi.update(:incoming_payment, incoming_payment_changeset)
     |> Ecto.Multi.run(:mutation, fn _repo, %{incoming_payment: updated_incoming_payment} ->
-        create_mutation_deposit(updated_incoming_payment, updated_incoming_payment.backer_id)
-        end)  
-    |> Repo.transaction
-  end  
+      create_mutation_deposit(updated_incoming_payment, updated_incoming_payment.backer_id)
+    end)
+    |> Repo.transaction()
+  end
 
- 
-   def process_incoming_payment(%IncomingPayment{action: "Settle Invoice"} = incoming_payment, %{"status" => "Executed"} = attrs) do
+  def process_incoming_payment(
+        %IncomingPayment{action: "Settle Invoice"} = incoming_payment,
+        %{"status" => "Executed"} = attrs
+      ) do
     pay_invoice_attr = %{"status" => "paid"}
     invoice = get_invoice(incoming_payment.invoice_id)
     invoice_changeset = Invoice.change_status_changeset(invoice, pay_invoice_attr)
 
     case invoice.type do
-      "deposit" ->     Ecto.Multi.new()
-                      |> Ecto.Multi.update(:incoming_payment, IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs))
-                      |> Ecto.Multi.update(:invoice, invoice_changeset)
-                      |> Ecto.Multi.run(:mutation, fn _repo, %{incoming_payment: _updated_incoming_payment} ->
-                          create_mutation_deposit(incoming_payment, invoice.backer_id)
-                          end)                         
-                      |> Repo.transaction
+      "deposit" ->
+        Ecto.Multi.new()
+        |> Ecto.Multi.update(
+          :incoming_payment,
+          IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs)
+        )
+        |> Ecto.Multi.update(:invoice, invoice_changeset)
+        |> Ecto.Multi.run(:mutation, fn _repo, %{incoming_payment: _updated_incoming_payment} ->
+          create_mutation_deposit(incoming_payment, invoice.backer_id)
+        end)
+        |> Repo.transaction()
 
-      "backing" ->    Ecto.Multi.new()
-                      |> Ecto.Multi.update(:incoming_payment, IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs))
-                      |> Ecto.Multi.update(:invoice, invoice_changeset)
-                      |> Ecto.Multi.run(:backing, fn _ -> 
-                          create_batch_donation(invoice.id)
-                         # {:error, %{"somehow" => "wrong again"}}
-                          end)
-                      |> Repo.transaction    
+      "backing" ->
+        Ecto.Multi.new()
+        |> Ecto.Multi.update(
+          :incoming_payment,
+          IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs)
+        )
+        |> Ecto.Multi.update(:invoice, invoice_changeset)
+        |> Ecto.Multi.run(:backing, fn _ ->
+          create_batch_donation(invoice.id)
+          # {:error, %{"somehow" => "wrong again"}}
+        end)
+        |> Repo.transaction()
     end
   end
 
   defp create_batch_donation(invoice_id) do
     invoice_details = list_invoice_details(%{"invoice_id" => invoice_id})
-    
+
     case Enum.each(invoice_details, fn x -> create_donation_from_invoice_detail(x) end) do
       :ok -> {:ok, "executed"}
       _other -> {:error, "failed to create"}
@@ -310,16 +329,27 @@ defmodule Backer.Finance do
   end
 
   defp create_donation_from_invoice_detail(x) do
-      attrs = %{"amount" => x.amount, "tier" => 1, "backer_id" => x.backer_id, "pledger_id" => x.pledger_id, "invoice_id" => x.invoice_id, "month" => x.month, "year" => x.year }
-      create_donation(attrs)
+    attrs = %{
+      "amount" => x.amount,
+      "tier" => 1,
+      "backer_id" => x.backer_id,
+      "pledger_id" => x.pledger_id,
+      "invoice_id" => x.invoice_id,
+      "month" => x.month,
+      "year" => x.year
+    }
+
+    create_donation(attrs)
   end
 
-  def process_incoming_payment(%IncomingPayment{} = incoming_payment, %{"status" => "Revision Request"} = attrs) do
+  def process_incoming_payment(
+        %IncomingPayment{} = incoming_payment,
+        %{"status" => "Revision Request"} = attrs
+      ) do
     incoming_payment
     |> IncomingPayment.process_revision_changeset(attrs)
     |> Repo.update()
-  end  
-
+  end
 
   @doc """
   Deletes a IncomingPayment.
@@ -360,12 +390,12 @@ defmodule Backer.Finance do
 
   """
   def list_invoice_details(params) do
-    query = from i in InvoiceDetail, order_by: [desc: :id]
+    query = from(i in InvoiceDetail, order_by: [desc: :id])
     Repo.paginate(query, params)
   end
 
   def list_invoice_details(%{"invoice_id" => invoice_id}) do
-    query = from i in InvoiceDetail, where: i.invoice_id == ^invoice_id
+    query = from(i in InvoiceDetail, where: i.invoice_id == ^invoice_id)
     Repo.all(query)
   end
 
@@ -386,9 +416,12 @@ defmodule Backer.Finance do
   def get_invoice_detail!(id), do: Repo.get!(InvoiceDetail, id)
 
   def get_invoice_detail(%{"invoice_id" => invoice_id}) do
-   pledger = from p in Pledger, preload: [:backer]
-   query = from i in InvoiceDetail, where: i.invoice_id == ^invoice_id, preload: [pledger: ^pledger]
-   Repo.all(query)   
+    pledger = from(p in Pledger, preload: [:backer])
+
+    query =
+      from(i in InvoiceDetail, where: i.invoice_id == ^invoice_id, preload: [pledger: ^pledger])
+
+    Repo.all(query)
   end
 
   # def test!(id) do 
@@ -415,14 +448,19 @@ defmodule Backer.Finance do
     |> Repo.insert()
   end
 
-
-
   defp create_invoice_detail_deposit(invoice) do
-    attrs = %{"amount" => invoice.amount, "type" => "deposit", "backer_id" => invoice.backer_id, "invoice_id" => invoice.id}
+    attrs = %{
+      "amount" => invoice.amount,
+      "type" => "deposit",
+      "backer_id" => invoice.backer_id,
+      "invoice_id" => invoice.id
+    }
+
     %InvoiceDetail{}
     |> InvoiceDetail.changeset(attrs)
-    |> Repo.insert()   
+    |> Repo.insert()
   end
+
   @doc """
   Updates a invoice_detail.
 
@@ -469,7 +507,6 @@ defmodule Backer.Finance do
   def change_invoice_detail(%InvoiceDetail{} = invoice_detail) do
     InvoiceDetail.changeset(invoice_detail, %{})
   end
-
 
   alias Backer.Finance.Donation
 
@@ -567,7 +604,6 @@ defmodule Backer.Finance do
     Donation.changeset(donation, %{})
   end
 
-
   alias Backer.Finance.Mutation
 
   @doc """
@@ -581,17 +617,16 @@ defmodule Backer.Finance do
   """
 
   def list_mutations() do
-    query = from m in Mutation, order_by: [desc: :id]
+    query = from(m in Mutation, order_by: [desc: :id])
 
     Repo.all(query)
   end
 
   def list_mutations(params) do
-    query = from m in Mutation, order_by: [desc: :id]
+    query = from(m in Mutation, order_by: [desc: :id])
 
     Repo.paginate(query, params)
   end
-
 
   @doc """
   Gets a single mutation.
@@ -630,21 +665,31 @@ defmodule Backer.Finance do
   defp create_mutation_deposit(incoming_payment, backer_id) do
     balance = get_last_balance(backer_id) + incoming_payment.amount
 
-    attrs = %{"asset" => "IDR", "backer_id" => backer_id, "backer_id_string" => Integer.to_string(backer_id), "debit" => incoming_payment.amount, "balance" => balance, "action_type" => "manual", "action_by" => incoming_payment.excecutor_id, "approved_by" => incoming_payment.checker_id, "reason" => "deposit"}
+    attrs = %{
+      "asset" => "IDR",
+      "backer_id" => backer_id,
+      "backer_id_string" => Integer.to_string(backer_id),
+      "debit" => incoming_payment.amount,
+      "balance" => balance,
+      "action_type" => "manual",
+      "action_by" => incoming_payment.excecutor_id,
+      "approved_by" => incoming_payment.checker_id,
+      "reason" => "deposit"
+    }
+
     %Mutation{}
     |> Mutation.changeset(attrs)
-    |> Repo.insert() 
-  end    
-
+    |> Repo.insert()
+  end
 
   def get_last_balance(backer_id) do
-    query = from m in Mutation, where: m.backer_id == ^backer_id, order_by: [desc: m.id], limit: 1
-    
+    query =
+      from(m in Mutation, where: m.backer_id == ^backer_id, order_by: [desc: m.id], limit: 1)
+
     case Repo.one(query) do
       nil -> 0
       result -> result.balance
     end
-
   end
 
   @doc """

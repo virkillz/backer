@@ -14,6 +14,16 @@ defmodule BackerWeb.CategoryController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  def list_pledger(conn, %{"id" => id}) do
+    category = Masterdata.get_category(id) |> IO.inspect()
+
+    conn
+    |> render("category_pledger_list.html",
+      category: category,
+      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+    )
+  end
+
   def create(conn, %{"category" => category_params}) do
     case Masterdata.create_category(category_params) do
       {:ok, category} ->

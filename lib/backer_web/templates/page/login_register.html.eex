@@ -1,0 +1,141 @@
+    <!-- Landing Page Contents
+    ================================================= -->
+    <div id="lp-register">
+    	<div class="container wrapper">
+        <div class="row">
+        	<div class="col-sm-5">
+            <div class="intro-texts">
+            	<h1 class="text-white">Build supporting society</h1>
+            	<p>We imagine people can do what they love as long as it creates value for other people. Moreover, it should be easy for other people to support what they love to support. Let's build that kind of society.</p>
+              <button class="btn btn-primary">Learn More</button>
+                              <p class="alert alert-danger alert-dismissible fade in" role="alert"><%= get_flash(@conn, :error) %></p>  
+              
+            </div>
+          </div>
+        	<div class="col-sm-6 col-sm-offset-1">
+            <div class="reg-form-container"> 
+            
+              <!-- Register/Login Tabs-->
+              <div class="reg-options">
+                <ul class="nav nav-tabs">
+                  <li class="
+                    <%= if @action == :register do %>
+                        active
+                    <% end %>
+                  "
+                  ><a href="#register" data-toggle="tab">Register</a></li>
+                  <li class="
+                    <%= if @action == :login do %>
+                        active
+                    <% end %>
+                  "><a href="#login" data-toggle="tab">Login</a></li>
+                </ul><!--Tabs End-->
+              </div>
+              
+              <!--Registration Form Contents-->
+              <div class="tab-content">
+                <div class="tab-pane
+                    <%= if @action == :register do %>
+                        active
+                    <% end %>
+                " id="register">
+                  <h3>Register</h3>
+                <%= if @changeset.action do %>
+                 <div class="alert alert-danger col-12">
+                                                  <p>Oops, something went wrong! Please check the errors below.</p>
+                                                </div>
+                                              <% end %>                     
+                  <p class="text-muted">First step to be part of supporting society</p>
+                  
+
+                    <%= form_for @changeset, "/register", [class: "form-inline", id: "registration_form"], fn f -> %>    
+
+                                <div class="row">                                 
+                                    <div class="form-group col-xs-12">
+                                    <%= text_input f, :display_name, [class: "form-control input-group-lg", placeholder: "Display Name"] %>
+                                        <%= error_tag f, :display_name %>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="form-group col-xs-12">
+                                    <%= email_input f, :email, [class: "form-control input-group-lg", placeholder: "Email Address"] %>                  
+                                        <%= error_tag f, :email %>
+                                    </div> 
+                                </div>
+                                <div class="row">                                    
+                                    <div class="form-group col-xs-12">
+                                    <%= password_input f, :password, [class: "form-control input-group-lg", placeholder: "Password"] %>
+                                        <%= error_tag f, :password %>
+                                    </div>
+                                </div>                            
+
+
+                    <div class="row"> 
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-primary type--uppercase">Create Account</button>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <span class="type--fine-print">By signing up, you agree to the
+                            <a href="#">Terms of Service</a>
+                        </span>
+                    </div>
+                                
+
+                <% end %>
+
+
+                  <p><a href="#">Already have an account?</a></p>
+                </div><!--Registration Form Contents Ends-->
+                
+                <!--Login-->
+                <div class="tab-pane 
+
+                    <%= if @action == :login do %>
+                        active
+                    <% end %>
+                  
+
+                " id="login">
+                  <h3>Login</h3>
+                  <p class="text-muted">Log into your account</p>
+                  
+                  <p class="alert alert-info alert-dismissible fade in" role="alert"><%= get_flash(@conn, :info) %></p>
+
+                  <!--Login Form-->
+                    <%= form_for @changeset, "/login", [class: "form-horizontal"], fn f -> %> 
+                     <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="my-email" class="sr-only">Email</label>
+                        <input id="my-email" class="form-control input-group-lg" type="text" name="email" title="Enter Email" placeholder="Your Email"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="my-password" class="sr-only">Password</label>
+                        <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                      </div>
+                    </div>
+                  <p><a href="/forgot-password">Forgot Password?</a></p>
+                  <button type="submit" class="btn btn-primary">Login Now</button>                    
+                  <% end %><!--Login Form Ends--> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-6">
+          
+            <!--Social Icons-->
+            <ul class="list-inline social-icons">
+              <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+              <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+              <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+              <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+              <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>

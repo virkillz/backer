@@ -1,0 +1,14 @@
+        <div class="timeline-cover" style="background: url(<%= @pledger.pledger.background %>) no-repeat">
+
+          <!--Timeline Menu for Large Screens-->
+          <div class="timeline-nav-bar hidden-sm hidden-xs">
+            <div class="row">
+                <div class="image-container">
+                  <img src="<%= @pledger.avatar %>" alt="" class="img-responsive profile-photo-tier" />
+                </div>                
+            </div><!--Timeline Menu for Large Screens End-->
+
+
+          </div>
+      </div>
+       

@@ -7,9 +7,9 @@ defmodule Backer.Content.PostComment do
     # field(:pcomment_id, :id)
     # field(:backer_id, :id)
 
-    belongs_to :post, {"posts", Backer.Content.Post}
-    belongs_to :pcomment, {"pcomments", Backer.Content.PostComment}
-    belongs_to :backer, {"backers", Backer.Account.Backer}        
+    belongs_to(:post, {"posts", Backer.Content.Post})
+    belongs_to(:pcomment, {"pcomments", Backer.Content.PostComment})
+    belongs_to(:backer, {"backers", Backer.Account.Backer})
 
     timestamps()
   end

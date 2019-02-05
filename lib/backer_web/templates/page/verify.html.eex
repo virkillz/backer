@@ -1,0 +1,26 @@
+    <!-- Top Banner
+    ================================================= -->
+		<section>
+			<div class="container">
+				<div style="min-height: 200px;" class="mtb100 text-center bg-white">
+					<div class="container">
+				<%= case @status do %>
+				<% :not_yet -> %>
+
+					<h1 class="text-dark">Verification Success</h1>
+					<h3 class="text-dark">Now you can login!</h3>
+					<a href="/login"> <button class="btn-primary">Login</button> </a>
+				<% :error -> %>
+
+						<h1 class="text-center">Verification code is incorrect </h1>
+
+				<% :already -> %>
+
+						<h1 class="text-center">Account already been verified </h1>
+
+				<% end %>
+					</div>
+				</div>
+
+			</div>
+		</section>

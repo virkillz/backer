@@ -19,8 +19,8 @@ defmodule Backer.Content do
 
   """
   def list_forums(params) do
-    pledger = from p in Pledger, preload: :backer
-    query = from f in Forum, preload: [:backer, pledger: ^pledger]
+    pledger = from(p in Pledger, preload: :backer)
+    query = from(f in Forum, preload: [:backer, pledger: ^pledger])
     Repo.paginate(query, params)
   end
 
@@ -217,7 +217,7 @@ defmodule Backer.Content do
   end
 
   def list_fcomments(%{"forum_id" => id}) do
-    query = from f in ForumComment, where: f.forum_id == ^id
+    query = from(f in ForumComment, where: f.forum_id == ^id)
     Repo.all(query)
   end
 
@@ -428,11 +428,12 @@ defmodule Backer.Content do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id) do 
-    Repo.get!(Post, id) 
-    |> Repo.preload(:pcomment) 
-    |> IO.inspect
+  def get_post!(id) do
+    Repo.get!(Post, id)
+    |> Repo.preload(:pcomment)
+    |> IO.inspect()
   end
+
   @doc """
   Creates a post.
 
@@ -610,10 +611,10 @@ defmodule Backer.Content do
   end
 
   def list_pcomments(%{"post_id" => post_id}) do
-    query = from p in PostComment, where: p.post_id == ^post_id
+    query = from(p in PostComment, where: p.post_id == ^post_id)
 
     Repo.all(query)
-  end  
+  end
 
   @doc """
   Gets a single post_comment.

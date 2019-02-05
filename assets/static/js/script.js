@@ -117,6 +117,22 @@ function attachSticky() {
         offset_top: 70
     });
 
+    $('#tier').stick_in_parent({
+        parent: '#page-contents',
+        offset_top: 70
+    });
+
+    // Sticky Chat Block
+    $('#backer-menu').stick_in_parent({
+        parent: '#page-contents',
+        offset_top: 70
+    });
+
+    $('#suggested-post').stick_in_parent({
+        parent: '#page-contents',
+        offset_top: 70
+    });
+
     // Sticky Right Sidebar
     $('#sticky-sidebar').stick_in_parent({
         parent: '#page-contents',

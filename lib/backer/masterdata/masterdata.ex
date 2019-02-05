@@ -7,6 +7,9 @@ defmodule Backer.Masterdata do
   alias Backer.Repo
 
   alias Backer.Masterdata.Category
+  alias Backer.Account.Pledger
+  alias Backer.Account.Backer, as: Backerz
+  alias Backer.Masterdata.Title
 
   @doc """
   Returns the list of categories.
@@ -36,6 +39,46 @@ defmodule Backer.Masterdata do
 
   """
   def get_category!(id), do: Repo.get!(Category, id)
+
+  def get_category(id) do
+    query_backer =
+      from(b in Backerz,
+        select: %{id: b.id, username: b.username, avatar: b.avatar, display_name: b.display_name}
+      )
+
+    query_title = from(t in Title, select: %{name: t.name})
+
+    query =
+      from(c in Category,
+        where: c.id == ^id,
+        preload: [pledger: [backer: ^query_backer, title: ^query_title]]
+      )
+
+    Repo.one(query)
+  end
+
+  # def get_category(id) do
+
+  #   # universities =
+  #   #   from u in University,
+  #   #     left_join: c in assoc(u, :city),
+  #   #     limit: 2,
+  #   #     select: %{title: u.title, city: %{title: c.title}}
+
+  #   query = from c in Category,
+  #   join: p in assoc(c, :pledger),
+  #   join: b in assoc(p, :backer), 
+  #   join: t in assoc(p, :title),        
+  #   where: c.id == ^id,
+  #   # select: []
+  #   # select: %{name: c.name, pledger: %{background: p.background, title: %{name: t.name},backer: %{display_name: b.display_name, avatar: b.avatar}}}
+  #   # select: [c.name]   
+  #   preload: [pledger: {p, backer: b, title: t}]
+  #   # select: %{id: c.id, pledger: p}
+
+  #   Repo.one(query)
+
+  # end  
 
   @doc """
   Creates a category.
@@ -101,8 +144,6 @@ defmodule Backer.Masterdata do
   def change_category(%Category{} = category) do
     Category.changeset(category, %{})
   end
-
-  alias Backer.Masterdata.Title
 
   @doc """
   Returns the list of titles.

@@ -188,6 +188,9 @@
               <li class="<%= activate(@conn.request_path, "/admin/categories") %>"><a class="menu-item" href="/admin/categories" up-target=".main" up-transition="move-right">Category</a>
               </li>
               <li class="<%= activate(@conn.request_path, "/admin/titles") %>"><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
+              </li>
+              <li class="<%= activate(@conn.request_path, "/admin/tiers") %>"><a class="menu-item" href="/admin/tiers" up-target=".main" up-transition="move-right">Tiers</a>
+              </li>              
             </ul>
           </li>  
 

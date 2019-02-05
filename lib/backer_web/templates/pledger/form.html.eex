@@ -39,6 +39,18 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :video_profile, class: "control-label" %>
+    <%= text_input f, :video_profile, class: "form-control" %>
+    <%= error_tag f, :video_profile %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :address_public, class: "control-label" %>
+    <%= text_input f, :address_public, class: "form-control" %>
+    <%= error_tag f, :address_public %>
+  </div>    
+
+  <div class="form-group">
     <%= label f, :bank_name, class: "control-label" %>
     <%= text_input f, :bank_name, class: "form-control" %>
     <%= error_tag f, :bank_name %>

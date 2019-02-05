@@ -3,7 +3,7 @@ defmodule BackerWeb.BackerController do
 
   alias Backer.Finance
   alias Backer.Account
-  alias Backer.Constant  
+  alias Backer.Constant
   alias Backer.Account.Backer
 
   def index(conn, params) do
@@ -11,12 +11,94 @@ defmodule BackerWeb.BackerController do
     render(conn, "index.html", backers: backers)
   end
 
-  def profile(conn, %{"username" => username}) do
-    text(conn, "to be build")
-  end  
+  def featured(conn, _params) do
+    backers = Account.list_backers()
+
+    conn
+    |> render("public_backer_list.html",
+      backers: backers,
+      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+    )
+  end
+
+  def timeline(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("public_backer_timeline.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        )
+    end
+  end
+
+  def badges(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("public_backer_badges.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        )
+    end
+  end
+
+  def backerfor(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("public_backer_backerfor.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        )
+    end
+  end
+
+  def finance(conn, %{"username" => username}) do
+    text(conn, "finance. put auth")
+  end
+
+  def backing_history(conn, %{"username" => username}) do
+    text(conn, "backing history. put auth")
+  end
+
+  def profile_setting(conn, %{"username" => username}) do
+    text(conn, "profile setting. put auth")
+  end
+
+  def overview(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("public_backer_overview.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        )
+    end
+  end
 
   def new(conn, _params) do
-    id_types = Constant.accepted_id_kyc
+    id_types = Constant.accepted_id_kyc()
     changeset = Account.change_backer(%Backer{})
     render(conn, "new.html", changeset: changeset, id_types: id_types)
   end
@@ -36,13 +118,13 @@ defmodule BackerWeb.BackerController do
   def show(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
     pledger = Account.get_backers_pledger(id)
-    mutations = Finance.list_mutations()    
+    mutations = Finance.list_mutations()
     render(conn, "show.html", backer: backer, pledger: pledger, mutations: mutations)
   end
 
   def edit(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
-    id_types = Constant.accepted_id_kyc
+    id_types = Constant.accepted_id_kyc()
     changeset = Account.change_backer(backer)
     render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
   end
@@ -57,7 +139,7 @@ defmodule BackerWeb.BackerController do
         |> redirect(to: backer_path(conn, :show, backer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        id_types = Constant.accepted_id_kyc
+        id_types = Constant.accepted_id_kyc()
         render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
     end
   end

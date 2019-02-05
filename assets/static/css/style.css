@@ -54,15 +54,149 @@ body{
   line-height: 26px;
 	color: #6d6e71;
 	font-size: 13px;
+  background-color: #F5F7F9;
+  /*background-color: #c6cace;*/
 }
 
 
 /*==================================================
   Quick Fix
   ==================================================*/
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.lh300 {
+  line-height: 300%;
+}
+
+.timeline-cover .timeline-nav-bar .profile-info{
+  position: absolute;
+  text-align: center;
+  padding: 0 20px;
+  top: -100px;
+  z-index: 999;
+}
+
+.profile-photo-tier{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.double-space {
+  line-height: 200%;
+}
+
+.pd-tb-15{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.pd-b-15{
+  padding-bottom: 15px;
+}
+
+.mb40{
+  margin-bottom: 40px;
+}
+
+.pd-lr-15{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pd-lr-25{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.text-dark{
+color:#042A2B;
+}
+
+.banner-category{
+  background: linear-gradient(to right, rgba(0,0,0, 0.1) , rgba(0,0,0, 0.7)), url("https://images.pexels.com/photos/1374360/pexels-photo-1374360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-height: 350px;
+  position: relative;
+  top: 0;
+}
+
+
+.avatar {
+  width: 35px;
+  height: 35px;
+}
+
+img.badge-photo{
+  height: 98px;
+  width: 98px;
+  border-radius: 50%;
+}
+
+.banner-categories{
+  background: linear-gradient(to right, rgba(0,0,0, 0.1) , rgba(0,0,0, 0.7)), url("https://images.pexels.com/photos/1374360/pexels-photo-1374360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-height: 450px;
+  position: relative;
+  top: 0;
+}
+
+.mh100 {
+  min-height: 100px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.category-card {
+  width: 100%;
+  min-height: 300px;
+  border-radius: 6px;
+}
+
+.bg--dark {
+  background: #000000;
+}
+
+.bg--secondary {
+  background: #e0e0e0;
+}
 
 .mt40 {
   margin-top: 40px !important;
+}
+
+.mtb100 {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
+.mlr20 {
+  margin-right: 20px !important;
+  margin-left: 20px !important;  
 }
 
 .mt80 {
@@ -73,8 +207,31 @@ body{
   margin-bottom: 60px !important;
 }
 
-.containerx {
-  max-width: 1500px;
+.img-category{
+  border-radius: 6px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-category {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.static-banner{
+  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("https://images.pexels.com/photos/1374360/pexels-photo-1374360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-height: 350px;
+  position: relative;
+  top: 0;
 }
 
 /*==================================================
@@ -115,7 +272,10 @@ h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
 
 a{color: #F85D5D;}
 
-a:hover{color: #149AC9;}
+a:hover{
+  color: #149AC9;
+text-decoration: none;
+}
 
 a, a:active, a:focus {outline: none;}
 
@@ -146,7 +306,7 @@ section h2.sub-title{
   ==================================================*/
 
 .container{
-  max-width: 1050px;
+  max-width: 1200px;
 }
 
 section .wrapper{
@@ -264,7 +424,8 @@ ul{
 }
 
 ul li{
-  list-style-image: url("../images/bullet.png");
+  /*list-style-image: url("../images/bullet.png");*/
+  list-style-type: none;
 }
 
 .line{
@@ -440,7 +601,7 @@ textarea{
 
 .menu ul.main-menu li.open a, .menu ul.main-menu li.open a:active, .menu ul.main-menu li.open a:focus{
   background: transparent;
-  color: #F85D5D;
+  color: #042A2B;
 }
 
 .menu ul.main-menu li ul.dropdown-menu{
@@ -520,10 +681,7 @@ textarea{
   ==================================================*/
 
 #banner{
-	background: linear-gradient(
-      rgba(0, 0, 0, 0.9), 
-      rgba(0, 0, 0, 0.9)
-    ), url("https://images.pexels.com/photos/1374360/pexels-photo-1374360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
+    background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("https://images.pexels.com/photos/1374360/pexels-photo-1374360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
   background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -728,12 +886,13 @@ textarea{
 }
 
 
+
 /*==================================================
   Homepage Image Divider
   ==================================================*/
 
 .img-divider{
-  background: url("http://placehold.it/1920x460") no-repeat;
+  background: url("https://images.pexels.com/photos/678637/pexels-photo-678637.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat;
   background-size: cover;
   text-align: center;
   min-height: 460px;
@@ -746,7 +905,7 @@ textarea{
   ==================================================*/
 
 #site-facts{
-	background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("http://placehold.it/1920x1280") fixed no-repeat;
+	background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("https://images.pexels.com/photos/159935/pexels-photo-159935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") fixed no-repeat;
 	background-size: cover;
 	height: 500px !important;
 	text-align: center;
@@ -844,7 +1003,7 @@ textarea{
   ==================================================*/  
 
 #lp-register{
-  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("http://placehold.it/1920x1280") fixed no-repeat;
+  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("https://images.unsplash.com/photo-1535103361068-aceb3935647a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80") fixed no-repeat;
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -1048,14 +1207,18 @@ textarea{
 /*Profile Card CSS*/
 
 .profile-card{
-  background: linear-gradient(to bottom, rgba(239,166,137,.8), rgba(218,104,98)), url("http://placehold.it/1030x430") no-repeat;
+  background: linear-gradient(to bottom, rgba(4,42,43,.1), rgba(4,42,43, 0.3)), url("https://www.publicdomainpictures.net/pictures/10000/nahled/brick-wallpaper-112768510349JN4.jpg") no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 90px;
   border-radius: 4px;
   padding: 10px 20px;
   color: #fff;
-  margin-bottom: 40px;
+  /*margin-bottom: 40px;*/
+}
+
+.profile-card:hover{
+  background: url("https://www.publicdomainpictures.net/pictures/10000/nahled/brick-wallpaper-112768510349JN4.jpg") no-repeat;
 }
 
 .profile-card img.profile-photo{
@@ -1069,6 +1232,12 @@ textarea{
   border-radius: 50%;
 }
 
+.profile-card img.profile-photo:hover{
+
+  height: 80px;
+  width: 80px;
+
+}
 /*Newsfeed Links CSS*/
 
 ul.nav-news-feed{
@@ -1248,7 +1417,7 @@ ul.online-users li span.online-dot{
   ==================================================*/
 
 .post-content{
-  background: #f8f8f8;
+  background: white;
   border-radius: 4px;
   width: 100%;
   border: 1px solid #f1f2f2;
@@ -1763,7 +1932,6 @@ ul.online-users li span.online-dot{
 }
 
 .about-profile .about-content-block{
-  padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #f1f2f2;
   line-height: 24px;

@@ -6,6 +6,7 @@ defmodule Backer.Masterdata.Title do
     field(:description, :string)
     field(:is_active, :boolean, default: false)
     field(:name, :string)
+    field(:default_background, :string)
 
     timestamps()
   end
@@ -13,7 +14,7 @@ defmodule Backer.Masterdata.Title do
   @doc false
   def changeset(title, attrs) do
     title
-    |> cast(attrs, [:name, :description, :is_active])
+    |> cast(attrs, [:name, :default_background, :description, :is_active])
     |> validate_required([:name])
   end
 end

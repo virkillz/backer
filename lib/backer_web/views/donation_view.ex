@@ -1,5 +1,5 @@
 defmodule BackerWeb.DonationView do
   use BackerWeb, :view
 
-   use Scrivener.HTML  
+  use Scrivener.HTML
 end

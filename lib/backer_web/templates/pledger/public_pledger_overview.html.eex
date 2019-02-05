@@ -1,0 +1,68 @@
+    <div class="container">
+
+      <!-- Timeline
+      ================================================= -->
+      <div class="timeline">
+
+              <%= render("component_cover.html", pledger: @pledger, active: @active) %>
+
+        <div id="page-contents">
+          <div class="row">
+            <div class="col-md-3" style="margin-top: 100px;">
+
+              <div class="row bg-white pd-tb-15">
+              <h4 class="pd15 text-center text-dark">Top Backer</h4>
+              </div>
+
+              <div class="row bg-white mt10 pd-tb-15">
+              <div id="chat-block bg-white">
+              <ul class="online-users list-inline">
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/37.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/35.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/34.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/31.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/36.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/41.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/42.jpg" alt="user" class="img-responsive profile-photo" /></a></li>                
+              </ul>
+              </div>
+            </div>
+
+            </div>
+            <div class="col-md-7">
+
+              <!-- About
+              ================================================= -->
+              <div class="about-profile bg-white">
+                <div class="about-content-block">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/<%= @pledger.pledger.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <div class="pd-lr-25 pd-tb-15 double-space"><p><%= @pledger.pledger.pledger_overview %></p></div>
+                </div>
+
+                <div class="about-content-block pd-tb-15 pd-lr-25">
+                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
+                  <p><%= @pledger.pledger.address_public %></p>
+                </div>
+
+                <div class="about-content-block pd-tb-15 pd-lr-25">
+                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Backer to</h4>
+              <ul class="online-users list-inline">
+                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.html" title="John Doe"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+              </ul>
+                </div>                
+              </div>
+            </div>
+            <div class="col-md-2 static">
+
+              <%# USE CONDITIONAL. IF BACKER THEN THIS ONE NOT SHOWN %>
+            <%= render("component_tier.html", pledger: @pledger) %>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  

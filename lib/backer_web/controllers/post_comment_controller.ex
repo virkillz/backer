@@ -16,10 +16,10 @@ defmodule BackerWeb.PostCommentController do
   end
 
   def newcomment(conn, %{"post_id" => post_id}) do
-    backers = Account.list_backers
+    backers = Account.list_backers()
     changeset = Content.change_post_comment(%PostComment{})
     render(conn, "new.html", changeset: changeset, backers: backers, id: post_id)
-  end  
+  end
 
   def create(conn, %{"post_comment" => post_comment_params}) do
     case Content.create_post_comment(post_comment_params) do
@@ -39,10 +39,16 @@ defmodule BackerWeb.PostCommentController do
   end
 
   def edit(conn, %{"id" => id}) do
-        backers = Account.list_backers
+    backers = Account.list_backers()
     post_comment = Content.get_post_comment!(id)
     changeset = Content.change_post_comment(post_comment)
-    render(conn, "edit.html", post_comment: post_comment, changeset: changeset, backers: backers, id: post_comment.post_id)
+
+    render(conn, "edit.html",
+      post_comment: post_comment,
+      changeset: changeset,
+      backers: backers,
+      id: post_comment.post_id
+    )
   end
 
   def update(conn, %{"id" => id, "post_comment" => post_comment_params}) do

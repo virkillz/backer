@@ -5,7 +5,7 @@ defmodule Backer.Content.ForumComment do
   schema "fcomments" do
     field(:content, :string)
     field(:forum_id, :id)
-    field(:reply_to, :id, [source: :fcomment_id])
+    field(:reply_to, :id, source: :fcomment_id)
     field(:backer_id, :id)
 
     timestamps()

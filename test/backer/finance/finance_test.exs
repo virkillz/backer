@@ -70,9 +70,36 @@ defmodule Backer.FinanceTest do
   describe "incoming_payments" do
     alias Backer.Finance.IncomingPayment
 
-    @valid_attrs %{action: "some action", amount: 42, destination: "some destination", details: "some details", evidence: "some evidence", source: "some source", status: "some status", tx_id: "some tx_id"}
-    @update_attrs %{action: "some updated action", amount: 43, destination: "some updated destination", details: "some updated details", evidence: "some updated evidence", source: "some updated source", status: "some updated status", tx_id: "some updated tx_id"}
-    @invalid_attrs %{action: nil, amount: nil, destination: nil, details: nil, evidence: nil, source: nil, status: nil, tx_id: nil}
+    @valid_attrs %{
+      action: "some action",
+      amount: 42,
+      destination: "some destination",
+      details: "some details",
+      evidence: "some evidence",
+      source: "some source",
+      status: "some status",
+      tx_id: "some tx_id"
+    }
+    @update_attrs %{
+      action: "some updated action",
+      amount: 43,
+      destination: "some updated destination",
+      details: "some updated details",
+      evidence: "some updated evidence",
+      source: "some updated source",
+      status: "some updated status",
+      tx_id: "some updated tx_id"
+    }
+    @invalid_attrs %{
+      action: nil,
+      amount: nil,
+      destination: nil,
+      details: nil,
+      evidence: nil,
+      source: nil,
+      status: nil,
+      tx_id: nil
+    }
 
     def incoming_payment_fixture(attrs \\ %{}) do
       {:ok, incoming_payment} =
@@ -94,7 +121,9 @@ defmodule Backer.FinanceTest do
     end
 
     test "create_incoming_payment/1 with valid data creates a incoming_payment" do
-      assert {:ok, %IncomingPayment{} = incoming_payment} = Finance.create_incoming_payment(@valid_attrs)
+      assert {:ok, %IncomingPayment{} = incoming_payment} =
+               Finance.create_incoming_payment(@valid_attrs)
+
       assert incoming_payment.action == "some action"
       assert incoming_payment.amount == 42
       assert incoming_payment.destination == "some destination"
@@ -111,7 +140,10 @@ defmodule Backer.FinanceTest do
 
     test "update_incoming_payment/2 with valid data updates the incoming_payment" do
       incoming_payment = incoming_payment_fixture()
-      assert {:ok, incoming_payment} = Finance.update_incoming_payment(incoming_payment, @update_attrs)
+
+      assert {:ok, incoming_payment} =
+               Finance.update_incoming_payment(incoming_payment, @update_attrs)
+
       assert %IncomingPayment{} = incoming_payment
       assert incoming_payment.action == "some updated action"
       assert incoming_payment.amount == 43
@@ -125,14 +157,20 @@ defmodule Backer.FinanceTest do
 
     test "update_incoming_payment/2 with invalid data returns error changeset" do
       incoming_payment = incoming_payment_fixture()
-      assert {:error, %Ecto.Changeset{}} = Finance.update_incoming_payment(incoming_payment, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Finance.update_incoming_payment(incoming_payment, @invalid_attrs)
+
       assert incoming_payment == Finance.get_incoming_payment!(incoming_payment.id)
     end
 
     test "delete_incoming_payment/1 deletes the incoming_payment" do
       incoming_payment = incoming_payment_fixture()
       assert {:ok, %IncomingPayment{}} = Finance.delete_incoming_payment(incoming_payment)
-      assert_raise Ecto.NoResultsError, fn -> Finance.get_incoming_payment!(incoming_payment.id) end
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Finance.get_incoming_payment!(incoming_payment.id)
+      end
     end
 
     test "change_incoming_payment/1 returns a incoming_payment changeset" do
@@ -168,7 +206,9 @@ defmodule Backer.FinanceTest do
     end
 
     test "create_invoice_detail/1 with valid data creates a invoice_detail" do
-      assert {:ok, %InvoiceDetail{} = invoice_detail} = Finance.create_invoice_detail(@valid_attrs)
+      assert {:ok, %InvoiceDetail{} = invoice_detail} =
+               Finance.create_invoice_detail(@valid_attrs)
+
       assert invoice_detail.amount == 42
       assert invoice_detail.month == 42
       assert invoice_detail.type == "some type"
@@ -191,7 +231,10 @@ defmodule Backer.FinanceTest do
 
     test "update_invoice_detail/2 with invalid data returns error changeset" do
       invoice_detail = invoice_detail_fixture()
-      assert {:error, %Ecto.Changeset{}} = Finance.update_invoice_detail(invoice_detail, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Finance.update_invoice_detail(invoice_detail, @invalid_attrs)
+
       assert invoice_detail == Finance.get_invoice_detail!(invoice_detail.id)
     end
 
@@ -206,7 +249,6 @@ defmodule Backer.FinanceTest do
       assert %Ecto.Changeset{} = Finance.change_invoice_detail(invoice_detail)
     end
   end
-
 
   describe "donations" do
     alias Backer.Finance.Donation
@@ -274,13 +316,42 @@ defmodule Backer.FinanceTest do
     end
   end
 
-
   describe "mutations" do
     alias Backer.Finance.Mutation
 
-    @valid_attrs %{action_type: "some action_type", asset: "some asset", backer_id_string: "some backer_id_string", balance: 42, credit: 42, debit: 42, frozen_amount: 42, reason: "some reason", ref_id: 42}
-    @update_attrs %{action_type: "some updated action_type", asset: "some updated asset", backer_id_string: "some updated backer_id_string", balance: 43, credit: 43, debit: 43, frozen_amount: 43, reason: "some updated reason", ref_id: 43}
-    @invalid_attrs %{action_type: nil, asset: nil, backer_id_string: nil, balance: nil, credit: nil, debit: nil, frozen_amount: nil, reason: nil, ref_id: nil}
+    @valid_attrs %{
+      action_type: "some action_type",
+      asset: "some asset",
+      backer_id_string: "some backer_id_string",
+      balance: 42,
+      credit: 42,
+      debit: 42,
+      frozen_amount: 42,
+      reason: "some reason",
+      ref_id: 42
+    }
+    @update_attrs %{
+      action_type: "some updated action_type",
+      asset: "some updated asset",
+      backer_id_string: "some updated backer_id_string",
+      balance: 43,
+      credit: 43,
+      debit: 43,
+      frozen_amount: 43,
+      reason: "some updated reason",
+      ref_id: 43
+    }
+    @invalid_attrs %{
+      action_type: nil,
+      asset: nil,
+      backer_id_string: nil,
+      balance: nil,
+      credit: nil,
+      debit: nil,
+      frozen_amount: nil,
+      reason: nil,
+      ref_id: nil
+    }
 
     def mutation_fixture(attrs \\ %{}) do
       {:ok, mutation} =
@@ -354,9 +425,33 @@ defmodule Backer.FinanceTest do
   describe "withdrawals" do
     alias Backer.Finance.Withdrawal
 
-    @valid_attrs %{amount: 42, fee: 42, net_ammount: 42, status: "some status", tx_details: "some tx_details", tx_id: "some tx_id", tx_image: "some tx_image"}
-    @update_attrs %{amount: 43, fee: 43, net_ammount: 43, status: "some updated status", tx_details: "some updated tx_details", tx_id: "some updated tx_id", tx_image: "some updated tx_image"}
-    @invalid_attrs %{amount: nil, fee: nil, net_ammount: nil, status: nil, tx_details: nil, tx_id: nil, tx_image: nil}
+    @valid_attrs %{
+      amount: 42,
+      fee: 42,
+      net_ammount: 42,
+      status: "some status",
+      tx_details: "some tx_details",
+      tx_id: "some tx_id",
+      tx_image: "some tx_image"
+    }
+    @update_attrs %{
+      amount: 43,
+      fee: 43,
+      net_ammount: 43,
+      status: "some updated status",
+      tx_details: "some updated tx_details",
+      tx_id: "some updated tx_id",
+      tx_image: "some updated tx_image"
+    }
+    @invalid_attrs %{
+      amount: nil,
+      fee: nil,
+      net_ammount: nil,
+      status: nil,
+      tx_details: nil,
+      tx_id: nil,
+      tx_image: nil
+    }
 
     def withdrawal_fixture(attrs \\ %{}) do
       {:ok, withdrawal} =
