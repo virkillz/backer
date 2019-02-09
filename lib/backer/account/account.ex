@@ -9,6 +9,9 @@ defmodule Backer.Account do
   alias Backer.Account.User
   alias Comeonin.Bcrypt
   alias Backer.Account.Backer, as: Backerz
+  alias Backer.Masterdata.Tier
+  alias Backer.Account.Pledger 
+
 
   @doc """
   Returns the list of user.
@@ -170,7 +173,7 @@ defmodule Backer.Account do
 
   def list_backers(params) do
     Backerz |> Repo.paginate(params)
-  end
+  end 
 
   @doc """
   Gets a single backer.
@@ -314,7 +317,7 @@ defmodule Backer.Account do
     Backerz.change_password_changeset(backer, %{})
   end
 
-  alias Backer.Account.Pledger
+
 
   @doc """
   Returns the list of pledgers.
@@ -351,15 +354,17 @@ defmodule Backer.Account do
       ** (Ecto.NoResultsError)
 
   """
+
+  def get_pledger(%{"backer_id" => backer_id}) do
+    query = from(p in Pledger, preload: [:backer, :category, :title, :tier], where: p.backer_id == ^backer_id)
+
+    Repo.one(query)
+  end
+
   def get_pledger!(id) do
     query = from(p in Pledger, preload: [:backer, :category, :title, :tier], where: p.id == ^id)
 
     Repo.one!(query)
-
-    # Repo.get!(Pledger, id)
-    # |> Repo.preload(:backer)
-    # |> Repo.preload(:category)
-    # |> Repo.preload(:title)
   end
 
   def get_pledger(%{"username" => username}) do
@@ -370,6 +375,24 @@ defmodule Backer.Account do
       )
 
     Repo.one(query)
+  end
+
+  def get_pledger(%{"category_id" => id}) do
+    query =
+      from(b in Backerz,
+        join: p in assoc(b, :pledger),
+        join: t in assoc(p, :title),
+        where: p.category_id == ^id and b.is_pledger == true,
+        select: %{
+          background: p.background,
+          display_name: b.display_name,
+          title: t.name,
+          avatar: b.avatar,
+          username: b.username
+        }
+      )
+
+    Repo.all(query)
   end
 
   @doc """
@@ -385,9 +408,24 @@ defmodule Backer.Account do
 
   """
   def create_pledger(attrs \\ %{}) do
-    %Pledger{}
-    |> Pledger.changeset(attrs)
-    |> Repo.insert()
+    pledger_changeset = %Pledger{} |> Pledger.changeset(attrs)
+
+    Ecto.Multi.new()
+    |> Ecto.Multi.insert(:pledger, pledger_changeset)
+    |> Ecto.Multi.run(:backer, fn _repo, %{pledger: pledger} ->
+      get_backer!(pledger.backer_id)
+      |> Backerz.update_changeset(%{"is_pledger" => true})
+      |> Repo.update()
+    end)
+    |> Ecto.Multi.run(:tier, fn _repo, %{pledger: pledger} ->
+      # get default tier from constant
+      tier_attr = Map.put(Backer.Constant.default_tier(), "pledger_id", pledger.id)
+
+      %Tier{}
+      |> Tier.changeset(tier_attr)
+      |> Repo.insert()
+    end)
+    |> Repo.transaction()
   end
 
   @doc """
@@ -421,7 +459,14 @@ defmodule Backer.Account do
 
   """
   def delete_pledger(%Pledger{} = pledger) do
-    Repo.delete(pledger)
+    backer_changeset =
+      get_backer!(pledger.backer_id) |> Backerz.update_changeset(%{"is_pledger" => false})
+
+    Ecto.Multi.new()
+    |> Ecto.Multi.delete(:pledger, pledger)
+    |> Ecto.Multi.update(:backer, backer_changeset)
+    |> Repo.transaction()
+    |> IO.inspect()
   end
 
   def get_backers_pledger(id) do

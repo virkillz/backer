@@ -46,6 +46,7 @@
                                 <tr>
                                   <th>Avatar</th>
                                   <th>Username</th>
+                                   <th>ID</th>
                                   <th>Display name</th>
                                   <th>Full name</th>
                                   <th>Email</th>
@@ -64,6 +65,7 @@
 
                                         </th>
                                         <td><%= backer.username %></td>
+                                        <td><%= backer.id %></td>
                                         <td><%= backer.display_name %></td>
                                         <td><%= backer.full_name %></td>
                                         <td><%= backer.email %></td>

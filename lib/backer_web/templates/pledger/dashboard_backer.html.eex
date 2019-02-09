@@ -1,0 +1,76 @@
+<div class="dashboard-content" style="margin-left: 300px;margin-top: 50px;margin-right: 30px;">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <h2>post</h2>
+
+            </div>
+        </div>
+        <div class="col-lg-9">
+
+
+
+
+
+
+
+
+            <div class="card" style="margin-left: auto; margin-right: auto; min-height: 80px; margin-bottom: 30px;max-width: 600px;">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for backer" title="Type in a name">
+            </div>
+
+            <ul id="myUL">
+
+            <%= for backer <- @backers do %>
+            <li> <a href="#">
+            <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 15px;max-width: 600px;">
+            <div style="display: inline-block; vertical-align: middle;">
+                <img src="<%= backer.avatar %>" alt="user" class="img-responsive profile-photo" alt="avatar" />
+            </div>
+
+            <div style="display: inline-block; vertical-align: middle;">
+                <div style="font-size: 1.7em; color: black; margin-left: 10px;"><%= backer.display_name %></div>
+              <div style="color: black; margin-left: 10px;">@<%= backer.username %></div>                
+            </div>
+
+            <div style="display: inline-block; vertical-align: middle;  float:right;">               
+              <button class="btn" type="button" data-toggle="collapse" data-target="#<%= backer.username %>" aria-expanded="false" aria-controls="<%= backer.username %>" style="outline: none; outline: 0;">
+                <i class="la la-ellipsis-v text-dark" style="font-size: 30px; margin-top: 15px;"></i>
+              </button> 
+
+            </div>
+
+            <div class="collapse" id="<%= backer.username %>">
+              <div class="text-dark" style="margin-top: 20px;">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+
+            </div>
+        </a>
+            </li>
+            <% end %>
+
+            </ul>
+        </div>    
+    </div>
+</div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>

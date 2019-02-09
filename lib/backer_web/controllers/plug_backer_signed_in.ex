@@ -11,7 +11,9 @@ defmodule BackerWeb.Plugs.BackerSignCheck do
     if conn.assigns.backer_signed_in? do
       conn
     else
-      Phoenix.Controller.redirect(conn, to: "/505")
+      conn
+      |> Phoenix.Controller.put_flash(:info, "You need to login first.")
+      |> Phoenix.Controller.redirect(to: "/login")
     end
   end
 end

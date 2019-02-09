@@ -254,6 +254,11 @@ defmodule Backer.Masterdata do
     Repo.all(Tier)
   end
 
+  def list_tiers(%{"pledger_id" => pledger_id}) do
+    query = from(t in Tier, where: t.pledger_id == ^pledger_id, order_by: t.amount)
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single tier.
 

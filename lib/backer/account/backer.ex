@@ -128,6 +128,38 @@ defmodule Backer.Account.Backer do
   end
 
   @doc false
+  def update_changeset(backer, attrs) do
+    backer
+    |> cast(attrs, [
+      :username,
+      :passwordhash,
+      :display_name,
+      :backer_bio,
+      :full_name,
+      :email,
+      :phone,
+      :birth_date,
+      :recover_phone,
+      :id_type,
+      :id_number,
+      :id_photo,
+      :id_photokyc,
+      :is_pledger,
+      :avatar,
+      :email_verification_code,
+      :phone_verification_code,
+      :password_recovery_code,
+      :is_email_verified,
+      :is_phone_verified
+    ])
+    |> validate_required([:email, :display_name])
+    |> validate_display_name
+    |> unique_constraint(:email)
+    |> unique_constraint(:phone)
+    |> unique_constraint(:username)
+  end
+
+  @doc false
   def register_changeset(backer, attrs) do
     backer
     |> cast(attrs, [
@@ -242,12 +274,12 @@ defmodule Backer.Account.Backer do
   end
 
   defp add_email_verification_code(changeset) do
-    changeset |> change(email_verification_code: Ecto.UUID.generate)
-  end 
+    changeset |> change(email_verification_code: Ecto.UUID.generate())
+  end
 
   defp reset_password_recovery_code(changeset) do
     changeset |> change(password_recovery_code: "")
-  end    
+  end
 
   defp add_email_verification_code(changeset) do
     random_string = Ecto.UUID.generate()

@@ -50,7 +50,7 @@ html, body {
 }
 
 body{
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Ubuntu';
   line-height: 26px;
 	color: #6d6e71;
 	font-size: 13px;
@@ -62,9 +62,143 @@ body{
 /*==================================================
   Quick Fix
   ==================================================*/
+
+.form-label {
+  font-size: 20px;
+  color:black;
+  margin-left: 20px;
+}
+
+.form-description {
+  margin-top: 0.5em;
+  font-size: 12px;
+  color:black;
+  margin-left: 20px;
+  line-height: 180%;
+}
+
+.setting-input-form {
+    border-bottom: 2px solid #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 80%;
+  color: black;
+  background-color: white;
+}
+
+.setting-select-form {
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 80%;
+  color: black;
+}
+
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  /*border: 1px solid #ddd;*/
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 12px;
+  color: black;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; 
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}*/
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #241f20;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.up-current {
+  background-color: #F5F7F9;
+}
+
+
+.sidenav a:hover {
+  color: #818181;  
+  background-color: #F5F7F9;  
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+.icondashboard{
+  font-size: 10rem; 
+  color: tomato; 
+  opacity: 0.2;
+}
+
 .image-container {
   display: flex;
   justify-content: center;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  padding: 20px 20px;
+  min-height: 100px;
+  background-color: white;
+  color: white;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .lh300 {
@@ -97,6 +231,11 @@ body{
 .pd-tb-15{
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.pd-tb-25{
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .pd-b-15{
@@ -239,12 +378,13 @@ img.badge-photo{
   ==================================================*/
 
 @font-face {
-    font-family: 'Ubuntu';
-    src: url("../fonts/agency-fb.eot") /* EOT file for IE */
+    font-family: 'Roboto';
+    /*src: url("../fonts/agency-fb.eot") /* EOT file for IE */*/
+
 }
 @font-face {
-    font-family: 'Ubuntu';
-    src: url("../fonts/agency-fb.ttf") /* TTF file for CSS3 browsers */
+    font-family: 'Roboto';
+    /*src: url("../fonts/agency-fb.ttf") /* TTF file for CSS3 browsers */*/
 }
 
 h1, h2, h3, h4, h5, h6{color: #F85D5D;}
@@ -280,14 +420,14 @@ text-decoration: none;
 a, a:active, a:focus {outline: none;}
 
 section h1.section-title{
-	font-family:  'Ubuntu', sans-serif;
+	font-family:  'Roboto', sans-serif;
 	font-size: 215px;
 	color: #E6E7E8;
 	margin-bottom: -55px;
 }
 
 section h2.sub-title{
-	font-family:  'Ubuntu', sans-serif;
+	font-family:  'Roboto', sans-serif;
 	color: #E6E7E8;
 	font-size: 50px;
 	margin: 40px 0;
@@ -322,7 +462,7 @@ section .wrapper{
 }
 
 .page-title-section h1{
-  font-family:  'Ubuntu', sans-serif;
+  font-family:  'Roboto', sans-serif;
   font-size: 50px;
 }
 
@@ -473,7 +613,6 @@ textarea{
   box-shadow: none;
   border-radius: 4px;
   color: #939598;
-  width: 100% !important;
 }
 
 .screen-reader-text{
@@ -719,7 +858,7 @@ textarea{
 }
 
 .sign-up-form h2{
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 100px 0 20px;
 }
 
@@ -809,7 +948,7 @@ textarea{
 }
 
 #features .feature-item h3{
-  font-family:  'Ubuntu', sans-serif;
+  font-family:  'Roboto', sans-serif;
   color: #939598;
 }
 
@@ -829,7 +968,7 @@ textarea{
   font-size: 45px;
   font-size: 3.72625em;
   font-weight: normal;
-  font-family:  'Ubuntu', sans-serif;
+  font-family:  'Roboto', sans-serif;
 }
 #incremental-counter .num::before {
   background: #00aae6;
@@ -1024,7 +1163,7 @@ textarea{
 }
 
 .intro-texts h1{
-  font-family:  'Ubuntu', sans-serif;
+  font-family:  'Roboto', sans-serif;
   margin-bottom: 30px;
   font-weight: 700;
 }
@@ -2282,7 +2421,7 @@ input:checked + .slider:before{
 .faq-cat-list{
   text-align: center;
   border: none;
-  font-family:  'Ubuntu', sans-serif;
+  font-family:  'Roboto', sans-serif;
   font-size: 0;
   margin-top: -90px;
   margin-bottom: 50px;
@@ -2427,7 +2566,7 @@ input:checked + .slider:before{
 }
 
 .error-page .error-content h1.error-title{
-  font-family:  'Ubuntu';
+  font-family:  'Roboto';
   color: #6d6e71;
   font-size: 60px;
 }

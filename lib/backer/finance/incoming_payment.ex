@@ -139,7 +139,7 @@ defmodule Backer.Finance.IncomingPayment do
     invoice = Finance.get_invoice!(incoming_payment.invoice_id)
 
     result =
-      if incoming_payment.amount != invoice.amount do
+      if incoming_payment.amount != invoice.amount + invoice.unique_amount do
         changeset
         |> add_error(:status, "The invoice amount is not the same with incoming payment")
       else
@@ -158,12 +158,13 @@ defmodule Backer.Finance.IncomingPayment do
 
   defp validate_invoice_exist(changeset, incoming_payment) do
     invoice = Finance.get_invoice!(incoming_payment.invoice_id)
+    amount = invoice.amount + invoice.unique_amount
 
     result =
       if invoice == nil do
         changeset |> add_error(:status, "Asscociated invoice cannot be founded")
       else
-        if incoming_payment.amount != invoice.amount do
+        if incoming_payment.amount != amount do
           changeset
           |> add_error(:status, "Invoice amount and Incoming Payment amount does not match")
         else

@@ -60,7 +60,7 @@
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Amount:</label>
                           <div class="col-sm-10">
-                          <p class="form-control-static"><%= @invoice.amount %></p>
+                          <p class="form-control-static"><%= @invoice.amount + @invoice.unique_amount %></p>
                           </div>
                         </div>  
 
@@ -214,12 +214,16 @@
                   <td class="text-right"><%= @invoice.amount %></td>
                 </tr>
                 <tr>
+                  <td>Unique Amount</td>
+                  <td class="text-right"><%= @invoice.unique_amount %></td>
+                </tr>                
+                <tr>
                   <td>Payment Made</td>
                   <td class="pink text-right">(-) 0</td>
                 </tr>
                 <tr class="bg-grey bg-lighten-4">
                   <td class="text-bold-800">Balance Due</td>
-                  <td class="text-bold-800 text-right"><%= @invoice.amount %></td>
+                  <td class="text-bold-800 text-right"><%= @invoice.amount + @invoice.unique_amount %></td>
                 </tr>
               </tbody>
             </table>

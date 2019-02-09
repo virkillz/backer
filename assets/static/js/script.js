@@ -11,7 +11,29 @@ $(window).on('load', function() {
     hidePreloader();
 });
 
+
+function format(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 jQuery(document).ready(function($) {
+
+
+    $('#amount').change(function() { 
+        var amount = $("#amount").val();
+        var month = $("#month").val(); 
+
+        $("#total").html(format(amount * month, ",", 0));
+    });      
+
+    $('#month').change(function() { 
+        var amount = $("#amount").val();
+        var month = $("#month").val(); 
+
+        $("#total").html(format(amount * month, ",", 0));
+    }); 
+
 
     //Incremental Coutner
     if ($.isFunction($.fn.incrementalCounter))
@@ -163,6 +185,9 @@ $(window).on("resize", function() {
         };
     }
 });
+
+
+
 
 // Fuction for map initialization
 function initMap() {

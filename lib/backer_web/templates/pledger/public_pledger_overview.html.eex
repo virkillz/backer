@@ -16,17 +16,16 @@
 
               <div class="row bg-white mt10 pd-tb-15">
               <div id="chat-block bg-white">
+
+                  <%= if @backers == [] do %>
+                  <p class="text-center"><%= @pledger.display_name %> don't have backers yet</p>
+                  <% else %>
               <ul class="online-users list-inline">
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/37.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/35.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/34.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/31.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/men/36.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/41.jpg" alt="user" class="img-responsive profile-photo" /></a></li>
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="https://randomuser.me/api/portraits/women/42.jpg" alt="user" class="img-responsive profile-photo" /></a></li>                
+                <%= for backer <- @backers do %>
+                <li><a href="/<%= backer.username %>" title="<%= backer.display_name %>"><img src="<%= backer.avatar %>" alt="user" class="img-responsive profile-photo" /></a></li>
+                <% end %>
               </ul>
+                <% end %>               
               </div>
             </div>
 
@@ -47,12 +46,17 @@
                 </div>
 
                 <div class="about-content-block pd-tb-15 pd-lr-25">
-                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Backer to</h4>
+                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Backing</h4>
+
+                  <%= if @backing == [] do %>
+                  <p class="text-center"><%= @pledger.display_name %> is not supporting anyone yet</p>
+                  <% else %>
               <ul class="online-users list-inline">
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="John Doe"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <%= for backer <- @backing do %>
+                <li><a href="/pledger/<%= backer.username %>" title="<%= backer.display_name %>"><img src="<%= backer.avatar %>" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <% end %>
               </ul>
+                <% end %>
                 </div>                
               </div>
             </div>

@@ -64,7 +64,7 @@
                                         <td><%= invoice.inserted_at %></td>
                                         <td><%= invoice.backer_id %></td>
                                         <td><%= invoice.type %></td>
-                                        <td><%= invoice.amount %></td>
+                                        <td><%= invoice.amount + invoice.unique_amount %></td>
                                         <td>
                                           <%= if invoice.status == "paid" do %>
                                           <span class="badge badge-pill badge-success"><%= invoice.status %></span>

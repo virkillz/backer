@@ -57,6 +57,7 @@ defmodule BackerWeb.InvoiceController do
     invoice_params =
       params
       |> Map.put("type", "backing")
+      |> IO.inspect()
 
     case Finance.create_donation_invoice(invoice_params) do
       {:ok, %{invoice: invoice}} ->
@@ -82,7 +83,7 @@ defmodule BackerWeb.InvoiceController do
   end
 
   def show(conn, %{"id" => id}) do
-    invoice = Finance.get_invoice!(id)
+    invoice = Finance.get_invoice!(id) |> IO.inspect()
 
     invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
 

@@ -22,8 +22,14 @@ defmodule BackerWeb.Router do
     plug(Backer.Auth.AuthAccessPipeline)
   end
 
+  # pipeline for user must signed in
   pipeline :backer_sign_check do
     plug(BackerWeb.Plugs.BackerSignCheck)
+  end
+
+  # pipeline for page can be access by own backer account.
+  pipeline :is_pledger_check do
+    plug(BackerWeb.Plugs.PledgerCheck)
   end
 
   # This route area is for admin Portal
@@ -83,9 +89,25 @@ defmodule BackerWeb.Router do
 
     get("/backer/:username/timeline", BackerController, :timeline)
     get("/backer/:username/finance", BackerController, :finance)
+    get("/pledger/:username/tier/:tier", PledgerController, :checkout)
+    post("/checkout", PledgerController, :checkout_post)
     get("/backer/:username/backing-history", BackerController, :backing_history)
     get("/backer/:username/profile-setting", BackerController, :profile_setting)
   end
+
+  # This route area is for signed in pledger
+  scope "/", BackerWeb do
+    pipe_through([:browser, :backer_sign_check, :is_pledger_check])
+
+    get("/dashboard", PledgerController, :dashboard)
+    get("/dashboard/post", PledgerController, :dashboard_post)
+    get("/dashboard/backers", PledgerController, :dashboard_backers)
+    get("/dashboard/donation", PledgerController, :dashboard_donation)
+    get("/dashboard/edit-profile", PledgerController, :dashboard_edit_profile)
+    get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)                            
+
+  end
+
 
   # This route area is for public route
   scope "/", BackerWeb do
@@ -112,8 +134,8 @@ defmodule BackerWeb.Router do
     get("/forgot-password", PageController, :forgot_password)
     post("/forgot-password", PageController, :forgot_password_post)
     get("/change-password", PageController, :change_password)
-    put("/change-password", PageController, :change_password_post)  
-    post("/change-password", PageController, :change_password_post)  
+    put("/change-password", PageController, :change_password_post)
+    post("/change-password", PageController, :change_password_post)
     get("/pledger/:username", PledgerController, :overview)
     get("/pledger/:username/posts", PledgerController, :posts)
     get("/pledger/:username/backers", PledgerController, :backers)

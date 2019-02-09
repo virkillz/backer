@@ -8,12 +8,24 @@ defmodule Stringhelper do
       end
   end
 
+  def format_thousand(integer) do
+    integer
+    |> Integer.to_char_list()
+    |> Enum.reverse()
+    |> Enum.chunk(3, 3, [])
+    |> Enum.join(",")
+    |> String.reverse()
+  end
+
   def validate_alphanumeric_and_space(string) do
-    return =
+    if string == nil do
+      {:error, "Cannot be empty"}
+    else
       if Regex.match?(~r/^[a-z\d\-_\s]+$/i, string) do
         {:ok, "correct"}
       else
         {:error, "contain forbidden character"}
       end
+    end
   end
 end

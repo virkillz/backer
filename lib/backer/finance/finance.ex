@@ -10,6 +10,8 @@ defmodule Backer.Finance do
   alias Backer.Finance.IncomingPayment
   alias Backer.Finance.InvoiceDetail
   alias Backer.Account.Pledger
+  alias Backer.Account.Backer, as: Backerz  
+  alias Backer.Masterdata.Title
 
   @doc """
   Returns the list of invoices.
@@ -26,6 +28,11 @@ defmodule Backer.Finance do
 
   def list_invoices(%{"status" => "not_paid"}) do
     query = from(i in Invoice, where: i.status != "paid")
+    Repo.all(query)
+  end
+
+  def list_invoices(%{"backer_id" => id}) do
+    query = from(i in Invoice, where: i.backer_id == ^id, order_by: [desc: :id])
     Repo.all(query)
   end
 
@@ -519,6 +526,92 @@ defmodule Backer.Finance do
       [%Donation{}, ...]
 
   """
+
+  def list_all_backerfor(%{"backer_id" => id}) do
+    query =
+      from(d in Donation,
+        join: p in Pledger,
+        join: b in Backerz,
+        join: t in Title,
+        on: p.title_id == t.id,
+        on: p.backer_id == b.id,
+        on: d.pledger_id == p.id,
+        where: d.backer_id == ^id,
+        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        distinct: true
+      )
+
+    Repo.all(query)
+  end
+
+
+  @doc """
+  List all active backers for one particular pledger
+
+  ## Examples
+
+      iex> list_donations()
+      [%Donation{}, ...]
+
+  """
+
+  def list_active_backers(%{"pledger_id" => id}) do
+
+    {year, month, _day} = Date.utc_today() |> Date.to_erl()
+
+    query =
+      from(d in Donation,
+        join: b in Backerz,
+        on: d.backer_id == b.id,
+        where: d.pledger_id == ^id,
+        where: d.month == ^month and d.year == ^year,        
+        select: %{backer_id: d.backer_id, username: b.username, avatar: b.avatar, display_name: b.display_name},
+        distinct: true
+      )
+
+    Repo.all(query)
+  end
+
+
+  def list_active_backerfor(%{"backer_id" => id}) do
+
+    {year, month, _day} = Date.utc_today() |> Date.to_erl()
+
+    query =
+      from(d in Donation,
+        join: p in Pledger,
+        join: b in Backerz,
+        join: t in Title,
+        on: p.title_id == t.id,
+        on: p.backer_id == b.id,
+        on: d.pledger_id == p.id,
+        where: d.backer_id == ^id,
+        where: d.month == ^month and d.year == ^year,
+        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        distinct: true
+      )
+
+    Repo.all(query)
+  end
+
+  def list_all_backerfor(%{"backer_id" => id, "limit" => limit}) do
+    query =
+      from(d in Donation,
+        join: p in Pledger,
+        join: b in Backerz,
+        join: t in Title,
+        on: p.title_id == t.id,
+        on: p.backer_id == b.id,
+        on: d.pledger_id == p.id,
+        where: d.backer_id == ^id,
+        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        distinct: true,
+        limit: ^limit
+      )
+
+    Repo.all(query)
+  end  
+
   def list_donations(params) do
     Repo.paginate(Donation, params)
   end
@@ -660,6 +753,24 @@ defmodule Backer.Finance do
     %Mutation{}
     |> Mutation.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def get_balance(%{"backer_id" => id}) do
+    query =
+      from(m in Mutation,
+        where: m.backer_id == ^id,
+        order_by: [desc: :id],
+        limit: 1,
+        select: %{balance: m.balance}
+      )
+
+    result = Repo.one(query)
+
+    if result == nil do
+      0
+    else
+      result.balance
+    end
   end
 
   defp create_mutation_deposit(incoming_payment, backer_id) do

@@ -23,6 +23,15 @@ defmodule Backer.Constant do
     10000
   end
 
+  def default_tier() do
+    %{
+      "title" => "Standard Backer",
+      "description" =>
+        "This is the most standard monthly backing cost. Consider it the same as treating us coffee once a month",
+      "amount" => "10000"
+    }
+  end
+
   def invoice_status() do
     [Unpaid: "unpaid", Expired: "expired", Cancelled: "cancelled"]
   end

@@ -15,17 +15,17 @@
             	<div class="row mt80">
             	<div class="container">
 
-            		<%= for pledger <- @category.pledger do %>
+            		<%= for pledger <- @pledgers do %>
             	<div class="col-12 col-sm-6">
-            		<a href="/<%= pledger.backer.username %>">
+            		<a href="/<%= pledger.username %>">
                   <div class="friend-card bg-white">
                   	<img src="<%= pledger.background %>" alt="profile-cover" class="img-responsive cover" />
                   	<div class="card-info">
-                      <img src="<%= pledger.backer.avatar %>" alt="user" class="profile-photo-lg" />
+                      <img src="<%= pledger.avatar %>" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">345 Active Backer</a>
-                      	<h5><a href="timeline.html" class="profile-link"><%= pledger.backer.display_name %></a></h5>
-                      	<p><%= pledger.title.name %></p>
+                      	<h5><a href="/<%= pledger.username %>" class="profile-link"><%= pledger.display_name %></a></h5>
+                      	<p><%= pledger.title %></p>
                       </div>
                     </div>
                   </div>

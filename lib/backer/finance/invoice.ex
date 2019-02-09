@@ -12,6 +12,7 @@ defmodule Backer.Finance.Invoice do
     field(:type, :string)
     field(:pledger_id, :integer, virtual: true)
     field(:month, :integer, virtual: true)
+    field(:unique_amount, :integer, default: 0)
 
     belongs_to(:backer, Backerz)
 
@@ -41,6 +42,11 @@ defmodule Backer.Finance.Invoice do
     |> validate_number(:month, greater_than_or_equal_to: 1)
     |> validate_required([:amount, :month, :pledger_id, :backer_id])
     |> transform_donation_changeset
+    |> add_unique_amount
+  end
+
+  def add_unique_amount(changeset) do
+    changeset |> change(unique_amount: Enum.random(0..500))
   end
 
   def transform_donation_changeset(changeset) do

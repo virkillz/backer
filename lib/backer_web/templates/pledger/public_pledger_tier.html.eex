@@ -15,14 +15,14 @@
               </div>   
               <% else %>
 
-              <%= for tier <- @pledger.pledger.tier do %>
+              <%= for {tier, i} <- @pledger.pledger.tier |> Enum.sort_by(fn(p) -> p.amount end) |> Enum.with_index() do %>
 
               <div class="col-xs-12  col-sm-6  col-md-4  col-lg-4">
                 <div class="bg-white pd-lr-15 pd-tb-15">
                 <h4 class="text-dark"><%= tier.title %></h4>
-                <p>RP.<%= tier.amount %>/month or more</p>
+                <p>Rp.<%= tier.amount %>/month or more</p>
                 <p class="text-dark"><%= tier.description %></p>
-                <div class="text-center"><button class="btn-primary">Back me up!</button></div>
+                <a href="/pledger/<%= @pledger.username %>/tier/<%= i + 1 %>"> <div class="text-center"><button class="btn-primary">Back me up!</button></div>
               </div>
               </div> 
 
