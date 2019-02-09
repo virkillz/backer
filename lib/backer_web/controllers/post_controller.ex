@@ -13,13 +13,12 @@ defmodule BackerWeb.PostController do
 
   def new(conn, _params) do
     pledgers = Account.list_pledgers()
-    tiers = Constant.standard_tier
+    tiers = Constant.standard_tier()
     changeset = Content.change_post(%Post{})
     render(conn, "new.html", changeset: changeset, pledgers: pledgers, tiers: tiers)
   end
 
   def create(conn, %{"post" => post_params}) do
-  
     case Content.create_post(post_params |> convert_featured_atom) do
       {:ok, post} ->
         conn
@@ -27,8 +26,8 @@ defmodule BackerWeb.PostController do
         |> redirect(to: post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-            pledgers = Account.list_pledgers()
-                tiers = Constant.standard_tier
+        pledgers = Account.list_pledgers()
+        tiers = Constant.standard_tier()
         render(conn, "new.html", changeset: changeset, pledgers: pledgers, tiers: tiers)
     end
   end
@@ -40,47 +39,47 @@ defmodule BackerWeb.PostController do
   defp convert_featured_atom(%{"featured_select" => "image"} = attr) do
     if attr["featured_content"] == "" do
       attr
-      else
-      attr 
+    else
+      attr
       |> Map.put("featured_image", attr["featured_content"])
       |> Map.put("featured_video", "")
-      |> Map.put("featured_link", "")        
+      |> Map.put("featured_link", "")
     end
   end
 
   defp convert_featured_atom(%{"featured_select" => "video"} = attr) do
     if attr["featured_content"] == "" do
       attr
-      else
-      attr 
+    else
+      attr
       |> Map.put("featured_video", attr["featured_content"])
       |> Map.put("featured_link", "")
-      |> Map.put("featured_image", "")        
+      |> Map.put("featured_image", "")
     end
   end
 
   defp convert_featured_atom(%{"featured_select" => "link"} = attr) do
     if attr["featured_content"] == "" do
       attr
-      else
-      attr 
+    else
+      attr
       |> Map.put("featured_link", attr["featured_content"])
       |> Map.put("featured_video", "")
-      |> Map.put("featured_image", "")      
+      |> Map.put("featured_image", "")
     end
-  end      
+  end
 
   def show(conn, %{"id" => id}) do
-    pcomments = Content.list_pcomments(%{"post_id" => id}) |> IO.inspect
+    pcomments = Content.list_pcomments(%{"post_id" => id}) |> IO.inspect()
     post = Content.get_post!(id)
     render(conn, "show.html", post: post, pcomments: pcomments)
   end
 
   def edit(conn, %{"id" => id}) do
     post = Content.get_post!(id)
-        pledgers = Account.list_pledgers()
+    pledgers = Account.list_pledgers()
     changeset = Content.change_post(post)
-        tiers = Constant.standard_tier
+    tiers = Constant.standard_tier()
     render(conn, "edit.html", post: post, changeset: changeset, pledgers: pledgers, tiers: tiers)
   end
 
@@ -94,9 +93,15 @@ defmodule BackerWeb.PostController do
         |> redirect(to: post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-            pledgers = Account.list_pledgers()
-                tiers = Constant.standard_tier
-        render(conn, "edit.html", post: post, changeset: changeset, pledgers: pledgers, tiers: tiers)
+        pledgers = Account.list_pledgers()
+        tiers = Constant.standard_tier()
+
+        render(conn, "edit.html",
+          post: post,
+          changeset: changeset,
+          pledgers: pledgers,
+          tiers: tiers
+        )
     end
   end
 

@@ -21,6 +21,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :default_background, class: "control-label" %>
+    <%= text_input f, :default_background, class: "form-control" %>
+    <%= error_tag f, :default_background %>
+  </div>  
+
+  <div class="form-group">
     <%= label f, :is_active, class: "control-label" %>
     <%= checkbox f, :is_active, class: "checkbox" %>
     <%= error_tag f, :is_active %>

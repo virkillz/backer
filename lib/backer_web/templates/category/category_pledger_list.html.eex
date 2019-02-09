@@ -1,0 +1,39 @@
+
+		<section class="banner-category" style="background: linear-gradient(to right, rgba(0,0,0, 0.1) , rgba(0,0,0, 0.7)), url(https://picsum.photos/1600/600?image=96) fixed no-repeat;">
+			<div class="container">
+
+<div class="col-sm-6 pull-right">
+<h1 class="text-white text-right mt80"><%= @category.name %></h1>
+<p class="text-white text-right mt40"><%= @category.description %></p>
+</div>
+			</div>
+		</section>
+
+            <!-- Friend List
+            ================================================= -->
+            <div class="friend-list">
+            	<div class="row mt80">
+            	<div class="container">
+
+            		<%= for pledger <- @pledgers do %>
+            	<div class="col-12 col-sm-6">
+            		<a href="/<%= pledger.username %>">
+                  <div class="friend-card bg-white">
+                  	<img src="<%= pledger.background %>" alt="profile-cover" class="img-responsive cover" />
+                  	<div class="card-info">
+                      <img src="<%= pledger.avatar %>" alt="user" class="profile-photo-lg" />
+                      <div class="friend-info">
+                        <a href="#" class="pull-right text-green">345 Active Backer</a>
+                      	<h5><a href="/<%= pledger.username %>" class="profile-link"><%= pledger.display_name %></a></h5>
+                      	<p><%= pledger.title %></p>
+                      </div>
+                    </div>
+                  </div>
+              </a>
+                </div>
+
+            		<% end %>
+            	</div>
+            </div>
+        </div>
+          </div>\

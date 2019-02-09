@@ -2,11 +2,11 @@ defmodule BackerWeb.ForumController do
   use BackerWeb, :controller
 
   alias Backer.Content
-  alias Backer.Account  
+  alias Backer.Account
   alias Backer.Content.Forum
 
   def index(conn, params) do
-    forums = Content.list_forums(params) |> IO.inspect
+    forums = Content.list_forums(params) |> IO.inspect()
     render(conn, "index.html", forums: forums)
   end
 
@@ -17,7 +17,7 @@ defmodule BackerWeb.ForumController do
     render(conn, "new.html", changeset: changeset, backers: backers, pledgers: pledgers)
   end
 
-  def create(conn, %{"forum" => forum_params}) do    
+  def create(conn, %{"forum" => forum_params}) do
     case Content.create_forum(forum_params) do
       {:ok, forum} ->
         conn
@@ -25,8 +25,8 @@ defmodule BackerWeb.ForumController do
         |> redirect(to: forum_path(conn, :show, forum))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-    backers = Account.list_backers()
-    pledgers = Account.list_pledgers()        
+        backers = Account.list_backers()
+        pledgers = Account.list_pledgers()
         render(conn, "new.html", changeset: changeset, backers: backers, pledgers: pledgers)
     end
   end
@@ -42,7 +42,13 @@ defmodule BackerWeb.ForumController do
     pledgers = Account.list_pledgers()
     forum = Content.get_forum!(id)
     changeset = Content.change_forum(forum)
-    render(conn, "edit.html", forum: forum, changeset: changeset, backers: backers, pledgers: pledgers)
+
+    render(conn, "edit.html",
+      forum: forum,
+      changeset: changeset,
+      backers: backers,
+      pledgers: pledgers
+    )
   end
 
   def update(conn, %{"id" => id, "forum" => forum_params}) do
@@ -57,7 +63,13 @@ defmodule BackerWeb.ForumController do
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
         pledgers = Account.list_pledgers()
-        render(conn, "edit.html", forum: forum, changeset: changeset, pledgers: pledgers, backers: backers)
+
+        render(conn, "edit.html",
+          forum: forum,
+          changeset: changeset,
+          pledgers: pledgers,
+          backers: backers
+        )
     end
   end
 

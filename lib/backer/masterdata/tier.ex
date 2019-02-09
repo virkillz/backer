@@ -14,7 +14,7 @@ defmodule Backer.Masterdata.Tier do
   @doc false
   def changeset(tier, attrs) do
     tier
-    |> cast(attrs, [:title, :description, :amount])
-    |> validate_required([:title, :description, :amount])
+    |> cast(attrs, [:title, :description, :amount, :pledger_id])
+    |> validate_required([:title, :description, :amount, :pledger_id])
   end
 end

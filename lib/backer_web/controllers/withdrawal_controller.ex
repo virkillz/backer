@@ -20,6 +20,7 @@ defmodule BackerWeb.WithdrawalController do
         conn
         |> put_flash(:info, "Withdrawal created successfully.")
         |> redirect(to: withdrawal_path(conn, :show, withdrawal))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,6 +45,7 @@ defmodule BackerWeb.WithdrawalController do
         conn
         |> put_flash(:info, "Withdrawal updated successfully.")
         |> redirect(to: withdrawal_path(conn, :show, withdrawal))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", withdrawal: withdrawal, changeset: changeset)
     end

@@ -16,13 +16,14 @@ defmodule BackerWeb.ForumCommentController do
   end
 
   def newcomment(conn, %{"forumid" => forumid}) do
-    backers = Account.list_backers
+    backers = Account.list_backers()
     changeset = Content.change_forum_comment(%ForumComment{})
     render(conn, "new.html", changeset: changeset, backers: backers, id: forumid)
-  end  
+  end
 
   def create(conn, %{"forum_comment" => forum_comment_params}) do
-    forum_comment_params |> IO.inspect
+    forum_comment_params |> IO.inspect()
+
     case Content.create_forum_comment(forum_comment_params) do
       {:ok, forum_comment} ->
         conn
@@ -40,10 +41,16 @@ defmodule BackerWeb.ForumCommentController do
   end
 
   def edit(conn, %{"id" => id}) do
-    backers = Account.list_backers
+    backers = Account.list_backers()
     forum_comment = Content.get_forum_comment!(id)
     changeset = Content.change_forum_comment(forum_comment)
-    render(conn, "edit.html", forum_comment: forum_comment, changeset: changeset, backers: backers, id: forum_comment.forum_id)
+
+    render(conn, "edit.html",
+      forum_comment: forum_comment,
+      changeset: changeset,
+      backers: backers,
+      id: forum_comment.forum_id
+    )
   end
 
   def update(conn, %{"id" => id, "forum_comment" => forum_comment_params}) do

@@ -1,5 +1,5 @@
 defmodule BackerWeb.MutationView do
   use BackerWeb, :view
 
-  use Scrivener.HTML  
+  use Scrivener.HTML
 end

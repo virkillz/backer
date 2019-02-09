@@ -1,21 +1,28 @@
-            <section class="height-100 text-center">
-                <div class="container pos-vertical-center">
-                    <div class="row">
-                        <div class="col-md-7 col-lg-5">
+
+        <section>
+            <div class="container">
+                <div style="min-height: 200px;" class="mtb100 text-center bg-white">
+                    <div class="container">
+
+                    <div class="row text-center">
+ 
                             <h2>Recover your account</h2>
                             <p class="lead">
                                 Enter email address to send a recovery email.
                             </p>
-                            <form>
-                                <input type="email" placeholder="Email Address" />
-                                <button class="btn btn--primary type--uppercase" type="submit">Recover Account</button>
-                            </form>
+
+                            <%= form_for @conn, "/forgot-password", fn f -> %>
+                                <input type="email" name="email" placeholder="Email Address" />
+                                <button class="btn btn-primary" type="submit">Recover Account</button>
+                            <% end %>
+
                             <span class="type--fine-print block">Dont have an account yet?
                                 <a href="/login">Create account</a>
-                            </span>
-                        </div>
+ 
                     </div>
-                    <!--end of row-->
+
+                    </div>
                 </div>
-                <!--end of container-->
-            </section>
+
+            </div>
+        </section>            

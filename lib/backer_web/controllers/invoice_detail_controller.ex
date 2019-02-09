@@ -13,6 +13,4 @@ defmodule BackerWeb.InvoiceDetailController do
     invoice_detail = Finance.get_invoice_detail!(id)
     render(conn, "show.html", invoice_detail: invoice_detail)
   end
-
-
 end

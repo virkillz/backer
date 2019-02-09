@@ -1,0 +1,15 @@
+<div class="dashboard-content" style="margin-left: 300px;margin-top: 50px;margin-right: 30px;">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <h2>post</h2>
+
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="card" style="margin-left: auto; margin-right: auto; max-width: 600px; display: flex; ">
+                <img src="https://randomuser.me/api/portraits/men/20.jpg" alt="user" class="img-responsive profile-photo" alt="avatar" /><span style="font-size: 2em; color: black; margin-left: 10px; margin-top: 15px;">Georgeus Man</span>
+            </div>
+        </div>    
+    </div>
+</div>

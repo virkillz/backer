@@ -58,7 +58,7 @@ config :phoenix, :stacktrace_depth, 20
 config :backer, Backer.Repo,
   adapter: Ecto.Adapters.Postgres,
   # username: "postgres",
-  username: "indodax",  
+  username: "indodax",
   password: "postgres",
   database: "backer_dev",
   hostname: "localhost",

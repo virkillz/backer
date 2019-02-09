@@ -2,6 +2,7 @@ defmodule BackerWeb.CategoryController do
   use BackerWeb, :controller
 
   alias Backer.Masterdata
+  alias Backer.Account
   alias Backer.Masterdata.Category
 
   def index(conn, _params) do
@@ -12,6 +13,18 @@ defmodule BackerWeb.CategoryController do
   def new(conn, _params) do
     changeset = Masterdata.change_category(%Category{})
     render(conn, "new.html", changeset: changeset)
+  end
+
+  def list_pledger(conn, %{"id" => id}) do
+    category = Masterdata.get_category!(id)
+    pledgers = Account.get_pledger(%{"category_id" => id})
+
+    conn
+    |> render("category_pledger_list.html",
+      category: category,
+      pledgers: pledgers,
+      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+    )
   end
 
   def create(conn, %{"category" => category_params}) do

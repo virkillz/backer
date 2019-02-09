@@ -1,0 +1,49 @@
+        <div class="timeline-cover" style="background: url(<%= @pledger.pledger.background %>) no-repeat">
+
+          <!--Timeline Menu for Large Screens-->
+          <div class="timeline-nav-bar hidden-sm hidden-xs">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="profile-info">
+                  <img src="<%= @pledger.avatar %>" alt="" class="img-responsive profile-photo" />
+                  <div>
+                  <h3><%= @pledger.display_name %></h3>
+                  <p class="text-muted"><%= @pledger.pledger.title.name %></p>
+                </div>
+                </div>                
+              </div>
+              <div class="col-md-9">
+                <ul class="list-inline profile-menu">
+                  <li><a href="/pledger/<%= @pledger.username %>" class="<%= if @active == :overview, do: 'active' %>">Overview</a></li>
+                  <li><a href="/pledger/<%= @pledger.username %>/posts" class="<%= if @active == :posts, do: 'active' %>">Post</a></li>
+                  <li><a href="/pledger/<%= @pledger.username %>/backers" class="<%= if @active == :backers, do: 'active' %>">Backer</a></li>
+                  <li><a href="/pledger/<%= @pledger.username %>/forum" class="<%= if @active == :forum, do: 'active' %>">Forum</a></li>
+                </ul>
+                <ul class="follow-me list-inline">
+                  <li>1,299 active Backer</li>
+                  <li><a href="/pledger/<%= @pledger.username %>/tier" class="btn-primary" data-toggle="modal">Back me!</a></li>
+                </ul>
+              </div>
+            </div>
+          </div><!--Timeline Menu for Large Screens End-->
+
+          <!--Timeline Menu for Small Screens-->
+          <div class="navbar-mobile hidden-lg hidden-md">
+            <div class="profile-info">
+              <img src="<%= @pledger.avatar %>" alt="" class="img-responsive profile-photo" />
+              <h4><%= @pledger.display_name %></h4>
+              <p class="text-muted"><%= @pledger.pledger.title.name %></p>
+            </div>
+            <div class="mobile-menu">
+              <ul class="list-inline">
+                <li><a href="timline.html" class="active">Overview</a></li>
+                <li><a href="timeline-about.html">Post</a></li>
+                <li><a href="timeline-album.html">Backer</a></li>
+                <li><a href="timeline-friends.html">Forum</a></li>
+              </ul>
+              <a href="/pledger/<%= @pledger.username %>/tier" class="btn-primary" data-toggle="modal">Back me!</a>
+            </div>
+          </div><!--Timeline Menu for Small Screens End-->
+
+        </div>
+       

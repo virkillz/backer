@@ -1,0 +1,58 @@
+    <div id="page-contents" class="mt40">
+    	<div class="container">
+    		<div class="row">
+
+    			<!-- Newsfeed Common Side Bar Left
+          ================================================= -->
+    			<div class="col-md-3 static">
+
+            <%= render("public_component_profile_card.html", backer: @backer) %>
+            <%= if @conn.assigns.current_backer.username == @backer.username do
+                  render("private_component_sidebar_menu.html", backer: @backer)
+                else
+                  render("public_component_sidebar_menu.html", backer: @backer)
+            end %>
+
+          </div>
+          
+    			<div class="col-md-7">
+            <div class="about-profile bg-white pd-lr-25 pd-tb-15"> 
+            <div class="people-nearby about-content-block">
+              <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Badges</h4>
+
+
+                <%= if @backer.badges == [] do %>
+                <div class="text-center"><h5>No badges for this backer yet.</h5></div>
+                <% else %>
+                        <%= for badge <- @backer.badges do %>
+                          <a href="#">
+                          <div class="nearby-user">
+                            <div class="row">
+                              <div class="col-md-2 col-sm-2">
+                                <img src="<%= badge.badge.icon %>" alt="user" class="profile-photo-lg" />
+                              </div>
+                              <div class="col-md-7 col-sm-7">
+                                <h5><a href="#" class="profile-link"><%= badge.badge.title %></a></h5>
+                                <p><%= badge.badge.description %></p>
+                                <p class="text-muted">1 owner</p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                <% end %> 
+                <% end %>
+
+            </div>
+              </div>
+          </div>
+
+    			<!-- Newsfeed Common Side Bar Right
+          ================================================= -->
+    			<div class="col-md-2 static">
+
+          <%= render("public_component_suggested_post.html", backer: @backer) %>
+
+          </div>
+    		</div>
+    	</div>
+    </div>

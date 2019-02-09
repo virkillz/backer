@@ -2,21 +2,20 @@ defmodule Backer.Finance.InvoiceDetail do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "invoice_details" do
-    field :amount, :integer
-    field :month, :integer
-    field :type, :string
-    field :year, :integer
-    field :backer_id, :id
-    field :invoice_id, :id
-    field :tier, :integer
-    field :is_settled, :boolean
-    field :settlement_date, :date
-    field :mutation_id, :id
-    field :donation_id, :id
+    field(:amount, :integer)
+    field(:month, :integer)
+    field(:type, :string)
+    field(:year, :integer)
+    field(:backer_id, :id)
+    field(:invoice_id, :id)
+    field(:tier, :integer)
+    field(:is_settled, :boolean)
+    field(:settlement_date, :date)
+    field(:mutation_id, :id)
+    field(:donation_id, :id)
 
-    belongs_to :pledger, Backer.Account.Pledger
+    belongs_to(:pledger, Backer.Account.Pledger)
     timestamps()
   end
 

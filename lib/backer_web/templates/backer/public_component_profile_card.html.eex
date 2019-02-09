@@ -1,0 +1,5 @@
+<div class="profile-card">
+	<img src="<%= @backer.avatar %>" alt="user" class="profile-photo" />
+	<h5><a href="timeline.html" class="text-white"><%= @backer.display_name %></a></h5>
+	<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
+</div>

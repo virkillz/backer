@@ -94,7 +94,7 @@
 
   <div class="form-group">
     <%= label f, :email_verification_code, class: "control-label" %>
-    <%= text_input f, :email_verification_code, [class: "form-control", disabled: true] %>
+    <%= text_input f, :email_verification_code, [class: "form-control", disabled: false] %>
     <%= error_tag f, :email_verification_code %>
   </div>
 

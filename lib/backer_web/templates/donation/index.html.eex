@@ -48,6 +48,9 @@
                                   <th>Tier</th>
                                   <th>Month</th>
                                   <th>Year</th>
+                                  <th>Pledger ID</th>
+                                  <th>Backer ID</th>
+                                  <th>Invoice ID</th>                                                                                                      
                             
                                   <th></th>
                                 </tr>
@@ -59,6 +62,9 @@
                                         <td><%= donation.tier %></td>
                                         <td><%= donation.month %></td>
                                         <td><%= donation.year %></td>
+                                        <td><%= donation.pledger_id %></td>
+                                        <td><%= donation.backer_id %></td>
+                                        <td><%= donation.invoice_id %></td>
                                   
                                         <td class="text-right">
                                           <span><%= link "Show", to: donation_path(@conn, :show, donation), class: "btn btn-default btn-xs" %></span>

@@ -5,7 +5,8 @@ defmodule Backer.Gamification.BadgeMember do
   schema "badge_members" do
     field(:award_date, :date)
     field(:backer_id, :id)
-    field(:badge_id, :id)
+
+    belongs_to(:badge, Backer.Gamification.Badge)
 
     timestamps()
   end

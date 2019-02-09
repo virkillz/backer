@@ -1,0 +1,2970 @@
+/*      Desktop Layout: 1170px.
+---------------------------------------------------------------- */
+@media only screen and (max-width: 1920px) {
+    .product_landing {
+        background-size: 100%;
+    }
+}
+@media only screen and (min-width: 1401px) and (max-width: 1700px) {
+.header_app:before {
+    height: 100%;
+}
+
+    .header_app .intro_wrapper .intro_text {
+    margin-top: 100px;
+}
+
+.header_app .intro_wrapper .intro_banner .screenshot .screen_1 {
+    top: 0%;
+    right: -28%;
+    width: 87%;
+}
+.header_app .intro_wrapper .intro_banner .screenshot .screen_2 {
+    top: 26%;
+    right: 12%;
+    width: 74%;
+}
+.header_app .intro_wrapper .intro_banner .screenshot .screen_3 {
+    left: 11%;
+    width: 64%;
+    top: 46%;
+}
+.header_app .banner_shapes .app_1 {
+    bottom: 17%;
+    width: 12%;
+}
+.header_app .banner_shapes .app_2 {
+    bottom: 6%;
+    width: 14%;
+}
+.header_app .banner_shapes .app_3 {
+    bottom: -1%;
+    width: 14%;
+}
+.header_app .banner_shapes .app_4 {
+    top: 16%;
+    left: 10%;
+    width: 8%;
+}
+.header_app .banner_shapes .pen {
+    bottom: 0%;
+    left: 12%;
+}
+.header_app .intro_wrapper {
+    height: 827px;
+}
+.features {
+    padding: 100px 0 0;
+}
+#features_product {
+    padding-top: 150px;
+}
+
+.header_app:before {
+    top: 0;
+    left: -58px;
+    width: 113%;
+    height: 1020px;
+    background-size: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+}
+/*		Desktop Layout: 1170px.
+---------------------------------------------------------------- */
+@media only screen and (max-width: 1500px) {
+    header{
+        overflow: hidden;
+    }
+    .header_app .intro_wrapper .intro_text {
+    margin-top: 100px;
+}
+
+.header_app .intro_wrapper .intro_banner .screenshot .screen_1 {
+    top: -24%;
+    right: -35%;
+    width: 87%;
+}
+.header_app .intro_wrapper .intro_banner .screenshot .screen_2 {
+    top: 2%;
+    right: 7%;
+    width: 74%;
+}
+.header_app .intro_wrapper .intro_banner .screenshot .screen_3 {
+    left: -8%;
+    width: 68%;
+    top: 22%;
+}
+.header_app .banner_shapes .app_1 {
+    bottom: 25%;
+    width: 12%;
+}
+.header_app .banner_shapes .app_2 {
+    bottom: 14%;
+    width: 14%;
+}
+.header_app .banner_shapes .app_3 {
+    bottom: 7%;
+    width: 14%;
+}
+.header_app .banner_shapes .app_4 {
+    top: 16%;
+    left: 10%;
+    width: 8%;
+}
+.header_app .intro_wrapper {
+    height: 827px;
+}
+.features {
+    padding:0;
+}
+#features_product {
+    padding-top: 150px;
+}
+
+
+
+
+
+
+.header_app .banner_shapes .pen {
+    bottom: 14%;
+    width: 25%;
+}
+    header .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        width: 107%;
+    }
+    .feature_banner_r_1 img, .feature_banner_r_2 img, .feature_banner_r_3 .right_banner {
+        width: 100%;
+    }
+    .header_app{
+        background-size: auto;
+    }
+    header .intro_wrapper .intro_banner img {
+         width: 100%; 
+    }
+    .app_download .single_features .feature_banner img {
+        width: 100%;
+    }
+    #app_team:before {
+        background-size: auto;
+    }
+    .agency .intro_wrapper .intro_banner img {
+        margin-left: 10%;
+        width: 100%;
+    }
+    .agency .intro_wrapper .intro_banner {
+        margin-top: 150px;
+    }
+    #team_agency:before {
+        background-size: auto;
+    }
+    .count_lead_agency {
+        overflow: hidden;
+    }
+    .agency_project {
+        overflow: hidden;
+    }
+    #payment .banner_shapes .agency_1 {
+        height: 950px;
+    }
+    .product_landing {
+        background-size: 100%;
+    }
+    .sercives_product .product_wrapper {
+        padding: 40px 30px;
+    }
+    .sercives_product .product_wrapper .signle_services h3 {
+        font-size: 24px;
+    }
+    .sercives_product .product_wrapper .signle_services p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .product_landing .banner_shapes {
+        display: none;
+    }
+    .product_landing .intro_wrapper .intro_text {
+        margin-top: 250px;
+    }
+    .product_landing .intro_wrapper {
+        min-height: 870px;
+    }
+
+}
+/*		Desktop Layout: 1170px.
+---------------------------------------------------------------- */
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /*======================== Degital Marketing Page */
+    header{
+        overflow: hidden;
+    }
+    header .intro_wrapper {
+        min-height: 790px;
+    }
+    header .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        width: 100%;
+    }
+    header .intro_wrapper .intro_text h1 {
+        font-size: 40px;
+        line-height: 46px;
+    }
+    header .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    .services:before, .services:after {
+        display: none
+    }
+    .services .signle_services h3 {
+        font-size: 22px;
+    }
+    .features {
+        padding: 0px 15px 0;
+    }
+    .features .single_features .feature_banner_r_2 img {
+        margin-top: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+    .features .single_features {
+        margin-bottom: 100px;
+    }
+    .features .single_features .feature_banner_r_1 img {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_intro h2 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .features .single_features .feature_banner_r_3 img {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_1 {
+        top: -15px;
+        left: 0;
+        width: 45%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_2 {
+        top: -27px;
+        left: -20%;
+        width: 76%;
+    }
+    .feature_banner.feature_banner_r_1{
+        margin-bottom: 50px;
+    }
+    .features .single_features .feature_banner {
+        min-height: 450px;
+    }
+    .features .single_features .feature_intro_1 h2 {
+        margin-bottom: 25px;
+    }
+    .feature_intro.feature_intro_2 {
+        margin-bottom: 50px;
+    }
+    .team{
+        margin-bottom: 100px;
+    }
+    .team:after{
+        display: none;
+    }
+.testimonial_single .member-img img {
+    width: 136%;
+}
+    .client_logos {
+        padding: 50px 0 150px;
+    }
+    .need_help .subscribe_wrapper .subscribe_title h2 {
+        font-size: 32px;
+    }
+    footer .footer_top .newspaper-site input[type='email'] {
+        padding: 12px 20px;
+    }
+
+
+    /*========================App Landing Page */
+    .header_app {
+        background-size: auto;
+        margin-bottom: 0px;
+    }
+    .header_app .banner_shapes {
+        display: none;
+    }
+    .header_app .intro_wrapper {
+        min-height: 500px;
+    }
+    .header_app:before {
+        width: 121%;
+        height: 752px;
+    }
+    .header_app .banner_shapes .app_1 {
+        bottom: 6%;
+    }
+    .header_app .banner_shapes .app_3 {
+        bottom: 0%;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_1 {
+        right: 0;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_2, .header_app .intro_wrapper .intro_banner .screenshot .screen_3, .header_app .banner_shapes .app_2, .header_app .banner_shapes .app_4, .header_app .banner_shapes .pen {
+        display: none;
+    }
+    .header_app .intro_wrapper .intro_text {
+        margin-top: 100px;
+        padding-left: 0;
+    }
+    .header_app .intro_wrapper .intro_text h4 {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .header_app .intro_wrapper .intro_text h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 40px;
+    }
+    .header_app .intro_wrapper .intro_text p {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    .app_download .single_features .feature_banner img {
+        width: 100%;
+    }
+    #app_team:before{
+        background-size: auto;
+    }
+    #client_app {
+        padding: 200px 0 100px;
+    }
+
+
+
+    /*======================== Agency Landing Page */
+    .agency .intro_wrapper {
+        min-height: 810px;
+    }
+    .agency .intro_wrapper .intro_banner img {
+        margin-left: 0;
+    }
+    #agency_services .signle_services {
+        margin-right: 0;
+    }
+    #agency_services {
+        padding: 100px 15px;
+    }
+    #agency_services .single_services_1{
+        margin-bottom: 0px;
+    }
+    #agency_services .single_services_4, #agency_services .single_services_2  {
+        margin-top: 0px;
+    }
+    #agency_services .signle_services {
+        margin:0 15px 30px;
+    }
+    #agency_services .agency_services_intro {
+        margin-top: 100px;
+    }
+    .video_intro_agency .agency_video_wrapper {
+        padding: 0 15px;
+    }
+    .video_intro_agency .agency_video_wrapper .video_banner .video_wrapper a i:before {
+        font-size: 50px;
+    }
+    .video_intro_agency {
+        min-height: 200px;
+    }
+    .count_lead_agency {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    .count_lead_agency .count_load_wrapper .count_lead_banner img {
+        width: 100%;
+    }
+    .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .agency_project {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    #team_agency:before{
+        display: block;
+        background-size: auto;
+        width: 103%;
+        top: -13%;
+    }
+    #team_agency .owl-buttons {
+        bottom: -60px;
+    }
+    .testimonial_agency {
+        padding: 200px 15px 0;
+    }
+    .testimonial_agency .testimonial_single .testimonial_content {
+        padding: 35px 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-next {
+        top: 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-prev {
+        top: -80px;
+    }
+    #team_agency {
+        overflow: hidden;
+    }
+    footer .footer_top .newspaper-site input[type='email'] {
+        margin-top: 20px;
+    }
+    #agency_services .signle_services .services_icon:before {
+        font-size: 45px;
+    }
+    #agency_services .signle_services h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .agency .intro_wrapper .intro_banner {
+        margin-top: 150px;
+    }
+    /*======================== Payment Landing Page */
+    #payment {
+        overflow: hidden;
+        padding: 0 15px;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    #payment .intro_wrapper {
+        min-height: 640px;
+    }
+    #payment .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    #payment .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    #payment .intro_wrapper .intro_banner {
+        margin-top: 40px;
+    }
+    #payment .banner_shapes .agency_1 {
+        height: 812px;
+    }
+    #payment .banner_shapes .agency_2 {
+        display: none;
+    }
+    .favorite_services {
+        padding: 100px 15px 150px;
+    }
+    .favorite_services .services_option ul li {
+        width: 25%;
+        margin-top: 10px;
+        height: 60px;
+    }
+    .favorite_services .services_option ul li img{
+        width: 100%;
+    }
+    .automation_software .sub_title h2 {
+        line-height: 40px;
+    }
+    .automation_software {
+        padding: 100px 15px 0px;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_banner img {
+        width: 100%;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_intro h2 {
+        line-height: 38px;
+        font-size: 30px;
+    }
+    .testimonial_payment .testimonial_text_wrapper {
+        padding: 0 15px;
+    }
+    .pricing_payment {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .video_payment {
+        padding: 0;
+        overflow: hidden;
+    }
+    .video_payment .video_payment_wrapper .video_payment_intro h2 {
+        padding: 17px 0;
+        font-size: 30px;
+    }
+    .earnings_grow {
+        padding: 200px 0 140px;
+        overflow: hidden;
+    }
+    .testimonial_payment {
+        overflow: hidden;
+    }
+
+    /*======================== Product Landing Page */
+    .product_landing {
+        background-size: 100%;
+       background: #fedd51;
+    }
+    .product_landing::before{
+        background: url('../images/banner/product_banner.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: absolute;
+        content: "";
+        height:650px;
+        width: 100%;
+        top: 200px;
+        left: 0;
+        z-index: -1;
+    }   
+    .product_landing .banner_shapes {
+        display: none;
+    }
+    .product_landing .intro_wrapper .intro_text h1 {
+        font-size: 32px;
+        color: #222D39;
+        line-height: 40px;
+    }
+    .product_landing .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    .product_landing .intro_wrapper {
+        min-height: 700px;
+    }
+    .sercives_product {
+        margin-top: 0;
+    }
+    .sercives_product .product_wrapper {
+        padding: 30px 15px;
+        display: inherit;
+    }
+    .sercives_product .product_wrapper .signle_services {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .sercives_product .product_wrapper .signle_services h3 {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    #features_product .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #features_product .single_features .feature_banner_r_2 img {
+        padding-left: 0px;
+    }
+    #features_product .single_features .feature_banner {
+        min-height: 260px;
+    }
+    #features_product .single_features .feature_banner_r_3 img {
+        right: 0;
+        margin-right: 0;
+    }
+    #features_product .single_features .feature_banner_r_3 .shape_feature {
+        top: -54px;
+        left: 0;
+        width: 100px;
+    }
+    .product_video {
+        padding: 0;
+        margin-top: 200px;
+    }
+    .product_testimonial .testimonial_pro_wrapper .carousel_images .restimonial_single_img img {
+        float:none;
+        margin: 0px auto;
+    }
+    #features_product .single_features .feature_intro_3 {
+        margin-top: 0;
+    }
+    .product_video .product_video_wrapper .shape_video {
+        position: absolute;
+        top: -25px;
+        right: 15px;
+        width: 56px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:before {
+        height: 70px;
+        width: 70px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:after {
+        height: 120px;
+        width: 120px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a i:before {
+        font-size: 30px;
+    }
+    .product_video .product_video_wrapper .video_wrapper {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .product_special_features .single_features .feature_intro_1 {
+        margin-top: 180px;
+        padding-right: 0;
+        padding: 0 30px;
+    }
+    .product_special_features .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .product_special_features .single_features .feature_banner {
+        min-height: 424px;
+        position: relative;
+        margin-top: 50px;
+    }
+    .product_special_features {
+        margin: 0;
+    }
+    .product_testimonial .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .product_testimonial .testimonial_text_wrapper .single_box p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    #footer_product {
+        margin: 0;
+    }
+    .product_testimonial .testimonial_text_wrapper .slick-list {
+        margin: 15px;
+    }
+    .product_testimonial .testimonial_pro_wrapper .banner_shapes .app_1 {
+        top: -46px;
+        left: 20%;
+        width: 74px;
+    }
+    .product_special_features .single_features .feature_intro_2 {
+        margin-top: 50px;
+        padding-left: 30px;
+    }
+    .product_special_features {
+
+        padding-bottom: 0;
+    }
+
+    /*Inner Pages Style*/
+
+    .header_inner_pages{
+        margin-bottom: 0;
+    }
+
+    .header_inner_pages .intro_wrapper {
+        margin: 100px 0 0px;
+        min-height: 230px;
+    }
+    .header_inner_pages .intro_wrapper .intro_text h1 {
+        font-size: 36px;
+    }
+    .header_inner_pages .banner_shapes{
+        display: none;
+    }
+    .about_our_self {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .about_our_self .about_our_self_wrapper .about_our_self_title h2 {
+        font-size: 28px;
+    }
+    .our_mission .shape {
+        display: none;
+    }
+    .our_mission .mission_banner img {
+        right: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    .our_mission {
+        padding: 0;
+        margin-bottom: 50px;
+    }
+    .our_mission .mission_banner {
+        min-height: 420px;
+    }
+    #mission_vission .mission_vission_content h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .our_mission .mission_content {
+        padding: 0 15px;
+    }
+    .our_vission {
+        margin-bottom: 100px;
+        margin-top: 100px;
+        padding: 0 15px;
+    }
+    .our_vission .vission_banner img {
+        left: 0;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .our_vission .vission_banner {
+        min-height: 355px;
+    }
+    .free_trial_inner_page .banner_shapes .app_1 {
+        top: -100px;
+        right: 0px;
+    }
+    .free_trial_inner_page .subscribe_wrapper {
+        display: inherit !important;
+        text-align: center;
+        padding: 100px 15px
+    }
+    .free_trial_inner_page .subscribe_wrapper .free_trial_btn a.chat_btn {
+        padding: 17px 35px;
+        margin: 50px auto 0;
+        font-size: 16px;
+    }
+    .free_trial_inner_page {
+        padding:0px;
+            overflow: hidden;
+    }
+
+    .blog_details .blog_post_wrapper .blog_content h3 {
+        line-height: 36px;
+        font-size: 28px;
+    }
+
+    footer .footer_top .about_footer {
+        margin-left: 0px;
+    }
+    #footer_product {
+        margin: 0;
+        overflow: hidden;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+/*      Tablet Layout: 768px.    */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* ========================Marketing Landing Page */
+    section{
+        overflow: hidden;
+    }
+    header {
+        overflow: hidden;
+        padding: 0 15px;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    #footer_product {
+        overflow: hidden;
+    }
+    .sub_title {
+        margin-bottom: 50px;
+    }
+    header .intro_wrapper {
+        min-height: 600px;
+    }
+    header .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    header .intro_wrapper .intro_text h1 {
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 25px;
+    }
+    header .intro_wrapper .intro_text p {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    header .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        width: 100%;
+    }
+    header .intro_wrapper .intro_banner {
+        margin-top: 80px;
+    }
+
+    .sub_title h2 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .sub_title p {
+        margin: 0 10%;
+    }
+    .services {
+        margin-bottom: 0;
+        padding: 100px 15px;
+    }
+    .services .signle_services a {
+        font-size: 14px;
+    }
+    .services .signle_services h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    .services:before {
+        display: none
+    }
+    .services:after {
+        display: none
+    }
+    .features {
+        padding: 100px 15px 0;
+    }
+    .features .single_features .feature_banner_r_2 img {
+        margin-top: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+    .features .single_features {
+        margin-bottom: 100px;
+    }
+    .features .single_features .feature_banner_r_1 img {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .features .single_features .feature_intro p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    .features .single_features .feature_intro a {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+    .features .single_features .feature_banner_r_3 img {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_1 {
+        top: -15px;
+        left: 0;
+        width: 45%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_2 {
+        top: -27px;
+        left: -20%;
+        width: 76%;
+    }
+    .feature_banner.feature_banner_r_1{
+        margin-bottom: 50px;
+    }
+    .features .single_features .feature_banner {
+        min-height: 330px;
+    }
+    .features .single_features .feature_intro_1 h2 {
+        margin-bottom: 25px;
+    }
+    .feature_intro.feature_intro_2 {
+        margin-bottom: 50px;
+    }
+    .team {
+        margin-bottom: 0;
+        padding: 100px 15px;
+    }
+    .team:before, .team:after{
+        display: none;
+    }
+    .team .signel_team {
+        width: 45%;
+        margin: 0 auto 30px;
+    }
+    .team_wrapper_items {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .team .meet_all_parson {
+        padding-left: 15px;
+    }
+    .client_logos {
+        padding: 100px 15px;
+    }
+    .client_logos .clients_logo ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .client_logos .clients_logo ul li {
+        padding: 30px 30px 0 0;
+    }
+
+    .client_logos .clients_logo ul li a img{
+        width: 120px;
+    }
+    .testimonial_4{
+        overflow: hidden;
+    }
+    .testimonial_4 .title h2{
+        font-size: 28px;
+        color: #fff;
+    }
+    .testimonial_4 .testimonial_single {
+        margin: 0;
+        padding: 0;
+    }
+    .slick-list {
+        margin: 0 15px;
+    }
+    .testimonial_4 .testimonial_single .review_content {
+        padding: 20px;
+    }
+    .testimonial_4 .testimonial_single .review_content p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 50px;
+        padding-right: 50px;
+    }
+    .testimonial_4 .testimonial_single .review_content h4 {
+        font-size: 16px;
+        line-height: 45px;
+        padding-left: 80px;
+    }
+    .testimonial_4 .testimonial_single .member-img {
+        height: 80px;
+        width: 80px;
+    }
+    .testimonial_4 .testimonial_single .review_content:before {
+        display: none;
+    }
+    .testimonial_4 .slick-arrow {
+        bottom: -50px;
+    }
+    .blog .signle_services {
+        margin-bottom: 50px;
+    }
+    .blog {
+        padding: 100px 0;
+        overflow: hidden;
+    }
+    .blog_page .signle_services .blog_content h3 a {
+        font-size: 18px;
+    }
+    .blog_page .signle_services .blog_content h3 {
+        line-height: 25px;
+    }
+    .need_help {
+        text-align: center;
+        overflow: hidden;
+    }
+    .need_help .subscribe_wrapper {
+        padding: 30px 15px;
+        display: initial !important;
+    }
+    .need_help .subscribe_wrapper .subscribe_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .need_help .subscribe_wrapper .subscribe_title p {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+    }
+    .need_help .subscribe_wrapper a.chat_btn {
+        padding: 16px 30px;
+        line-height: 24px;
+        font-size: 16px;
+        margin: 40px auto 0;
+    }
+    footer {
+        padding: 90px 15px 0;
+    }
+
+    footer .footer_top .footer-title {
+        padding-right: 0;
+    }
+    .company-content {
+        margin-top: 50px;
+    }
+    footer .footer_top h3 {
+        margin-bottom: 20px;
+    }
+    footer .footer_bottom {
+        text-align: center;
+    }
+    footer .footer_bottom .copy_right_items{
+        justify-content: center !important;
+    }
+    footer .newspaper-site {
+        padding-top: 40px;
+    }
+
+
+
+    /*========================App Landing Page */
+    .header_app {
+        background-size: auto;
+        margin-bottom: 0px;
+    }
+    .header_app .intro_wrapper .intro_banner {
+        display: none;
+    }
+    .header_app .intro_wrapper .intro_text {
+        margin-top: 100px;
+        padding-left: 0;
+    }
+    .header_app .intro_wrapper .intro_text h4 {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .header_app .intro_wrapper .intro_text h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 40px;
+    }
+    .header_app .intro_wrapper .intro_text p {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    .header_app .intro_wrapper .intro_text .intro_button a {
+        font-size: 15px;
+        line-height: 50px;
+    }
+    .header_app .intro_wrapper {
+        min-height: 656px;
+    }
+    .header_app .banner_shapes {
+        display: none;
+    }
+    #features_app .single_features .feature_intro h2 {
+        font-size: 28px;
+    }
+    #features_app .single_features .feature_intro p {
+        line-height: 26px;
+    }
+    #features_app .single_features .feature_banner_r_2 img {
+        margin-top: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+    #features_app .single_features .feature_banner_r_3 img {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    #features_app .single_features .feature_banner {
+        min-height: 275px;
+    }
+    #features_app .single_features {
+        margin-bottom: 0;
+    }
+    #services_app {
+        overflow: hidden;
+    }
+    #services_app .signle_services h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        margin-top: 15px;
+    }
+    .app_download {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    .app_download .single_features .feature_banner img {
+        top: 0;
+        right: 0px;
+        width: 100%;
+    }
+    .app_download .single_features .feature_banner .banner_shapes .app_1 {
+        left: -15%;
+    }
+    .app_download .single_features .feature_banner {
+        min-height: 350px;
+    }
+    .app_download .single_features .feature_intro_wrapper {
+        padding: 0;
+    }
+    .count_app_download {
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+    .count_app_download .count_wrapper{
+        display: initial !important;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    .count_app_download .count_single {
+        width: 100%;
+    }
+    .app_download .single_features .feature_intro_wrapper .feature_intro h2 {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .app_download .single_features .feature_intro_wrapper .feature_intro p {
+        margin-bottom: 50px;
+    }
+    .app_download .download_app_icon img {
+        width: 100%;
+    }
+    #client_app {
+        padding: 150px 0;
+        overflow: hidden;
+    }
+    #app_team .banner_shapes {
+        display: none;
+    }
+    #app_team {
+        background: transparent;
+        min-height: 600px;
+        position: relative;
+        overflow: hidden;
+        padding: 100px 15px 0;
+        margin-top: 100px;
+    }
+    #app_team:before{
+        display: block;
+        background-size: auto;
+        height: 2500px;
+        width: 100%;
+        top: 50%;
+        left: 0%;
+    }
+    #app_team .meet_all_parson a {
+        color: #FF8A73;
+    }
+    .app_screenshort {
+        overflow: hidden;
+        padding: 0 15px;
+    }
+    .app_screenshort .app_screenshort_title h2{
+        font-size: 28px;
+    }
+    .app_screenshort .owl-buttons {
+        top: 0;
+        right: 0;
+        padding-right: 0;
+    }
+    .app_screenshort .owl-buttons .owl-prev {
+        left: -75px;
+    }
+    .app_screenshort_wrapper .testimonial_single .member-img img{
+        width: 100%;
+    }
+    .testimonial_app {
+        overflow: hidden;
+        padding: 100px 15px;
+    }
+    .testimonial_app .sub_title h2 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .testimonial_app .testimonial_text_wrapper .slick-list {
+        margin: 0 15px;
+    }
+    .testimonial_app .testimonial_pro_wrapper .carousel_images .restimonial_single_img img {
+        float: none;
+        margin: 0px auto;
+    }
+    #subscribe_app .need_help_wrapper .banner_shapes {
+        display: none;
+    }
+    #subscribe_app .need_help_wrapper .subscribe_wrapper {
+        padding: 50px 15px;
+    }
+    #subscribe_app .need_help_wrapper {
+        position: relative;
+        display: flex;
+    }
+    #subscribe_app .app_download_s{
+        padding: 0 15px;
+        margin-bottom: 0;
+    }
+    #subscribe_app .app_download_s a img {
+        width: 100%;
+    }
+
+    /*======================== Agency Landing Page */
+    .agency .intro_wrapper {
+        min-height: 810px;
+    }
+    .agency .intro_wrapper .intro_banner img {
+        margin-left: 0;
+    }
+    #agency_services .signle_services {
+        margin-right: 0;
+    }
+    #agency_services {
+        padding: 100px 15px;
+    }
+    #agency_services .single_services_1{
+        margin-bottom: 0px;
+    }
+    #agency_services .single_services_4, #agency_services .single_services_2  {
+        margin-top: 0px;
+    }
+    #agency_services .signle_services {
+        margin:0 15px 30px;
+    }
+    #agency_services .agency_services_intro {
+        margin-top: 100px;
+    }
+    .video_intro_agency .agency_video_wrapper {
+        padding: 0 15px;
+    }
+    .video_intro_agency .agency_video_wrapper .video_banner .video_wrapper a i:before {
+        font-size: 50px;
+    }
+    .video_intro_agency {
+        min-height: 200px;
+    }
+    .count_lead_agency {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    .count_lead_agency .count_load_wrapper .count_lead_banner img {
+        width: 100%;
+    }
+    .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .agency_project {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    #team_agency:before{
+        display: block;
+        background-size: auto;
+        width: 103%;
+        top: -13%;
+    }
+    #team_agency .owl-buttons {
+        bottom: -60px;
+    }
+    .testimonial_agency {
+        padding: 200px 15px 0;
+    }
+    .testimonial_agency .testimonial_single .testimonial_content {
+        padding: 35px 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-next {
+        top: 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-prev {
+        top: -80px;
+    }
+    #team_agency {
+        overflow: hidden;
+    }
+    footer .footer_top .newspaper-site input[type='email'] {
+        margin-top: 20px;
+    }
+    #agency_services .signle_services .services_icon:before {
+        font-size: 45px;
+    }
+    #agency_services .signle_services h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+
+
+
+    /*======================== Payment Landing Page */
+    #payment {
+        overflow: hidden;
+        padding: 0 15px;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    #payment .intro_wrapper {
+        min-height: 640px;
+    }
+    #payment .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    #payment .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    #payment .intro_wrapper .intro_banner {
+        margin-top: 40px;
+    }
+    #payment .banner_shapes .agency_1 {
+        height: 812px;
+    }
+    #payment .banner_shapes .agency_2 {
+        display: none;
+    }
+    .favorite_services {
+        padding: 100px 15px 150px;
+    }
+    .favorite_services .services_option ul li {
+        width: 25%;
+        margin-top: 10px;
+        height: 60px;
+    }
+    .favorite_services .services_option ul li img{
+        width: 100%;
+    }
+    .automation_software .sub_title h2 {
+        line-height: 40px;
+    }
+    .automation_software {
+        padding: 100px 15px 0px;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_banner img {
+        width: 100%;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_intro h2 {
+        line-height: 38px;
+        font-size: 30px;
+    }
+    .testimonial_payment .testimonial_text_wrapper {
+        padding: 0 15px;
+    }
+    .pricing_payment {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .video_payment {
+        padding: 0;
+        overflow: hidden;
+    }
+    .video_payment .video_payment_wrapper .video_payment_intro h2 {
+        padding: 17px 0;
+        font-size: 30px;
+    }
+    .earnings_grow {
+        padding: 200px 0 140px;
+        overflow: hidden;
+    }
+    .testimonial_payment {
+        overflow: hidden;
+    }
+
+    /*======================== Product Landing Page */
+    .product_landing {
+        background-size: 100%;
+       background: #fedd51;
+    }
+    .product_landing::before{
+        background: url('../images/banner/product_banner.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: absolute;
+        content: "";
+        height:650px;
+        width: 100%;
+        top: 200px;
+        left: 0;
+        z-index: -1;
+    }   
+    .product_landing .banner_shapes {
+        display: none;
+    }
+    .product_landing .intro_wrapper .intro_text h1 {
+        font-size: 32px;
+        color: #222D39;
+        line-height: 40px;
+    }
+    .product_landing .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    .product_landing .intro_wrapper {
+        min-height: 700px;
+    }
+    .sercives_product {
+        margin-top: 0;
+    }
+    .sercives_product .product_wrapper {
+        padding: 30px 15px;
+        display: inherit;
+    }
+    .sercives_product .product_wrapper .signle_services {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .sercives_product .product_wrapper .signle_services h3 {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    #features_product .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #features_product .single_features .feature_banner_r_2 img {
+        padding-left: 0px;
+    }
+    #features_product .single_features .feature_banner {
+        min-height: 260px;
+    }
+    #features_product .single_features .feature_banner_r_3 img {
+        right: 0;
+        margin-right: 0;
+    }
+    #features_product .single_features .feature_banner_r_3 .shape_feature {
+        top: -54px;
+        left: 0;
+        width: 100px;
+    }
+    .product_video {
+        padding: 0;
+        margin-top: 200px;
+    }
+    .product_testimonial .testimonial_pro_wrapper .carousel_images .restimonial_single_img img {
+        float:none;
+        margin: 0px auto;
+    }
+    #features_product .single_features .feature_intro_3 {
+        margin-top: 0;
+    }
+    .product_video .product_video_wrapper .shape_video {
+        position: absolute;
+        top: -25px;
+        right: 15px;
+        width: 56px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:before {
+        height: 70px;
+        width: 70px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:after {
+        height: 120px;
+        width: 120px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a i:before {
+        font-size: 30px;
+    }
+    .product_video .product_video_wrapper .video_wrapper {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .product_special_features .single_features .feature_intro_1 {
+        margin-top: 180px;
+        padding-right: 0;
+        padding: 0 30px;
+    }
+    .product_special_features .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .product_special_features .single_features .feature_banner {
+        min-height: 424px;
+        position: relative;
+        margin-top: 50px;
+    }
+    .product_special_features {
+        margin: 0;
+    }
+    .product_testimonial .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .product_testimonial .testimonial_text_wrapper .single_box p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    #footer_product {
+        margin: 0;
+    }
+    .product_testimonial .testimonial_text_wrapper .slick-list {
+        margin: 15px;
+    }
+    .product_testimonial .testimonial_pro_wrapper .banner_shapes .app_1 {
+        top: -46px;
+        left: 20%;
+        width: 74px;
+    }
+    .product_special_features .single_features .feature_intro_2 {
+        margin-top: 50px;
+        padding-left: 30px;
+    }
+    .product_special_features {
+
+        padding-bottom: 0;
+    }
+
+    /*Inner Pages Style*/
+
+    .header_inner_pages{
+        margin-bottom: 0;
+    }
+    .header_inner_pages .intro_wrapper {
+        margin: 100px 0 0px;
+        min-height: 230px;
+    }
+    .header_inner_pages .intro_wrapper .intro_text h1 {
+        font-size: 36px;
+    }
+    .header_inner_pages .banner_shapes{
+        display: none;
+    }
+    .about_our_self {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .about_our_self .about_our_self_wrapper .about_our_self_title h2 {
+        font-size: 28px;
+    }
+    .our_mission .shape {
+        display: none;
+    }
+    .our_mission .mission_banner img {
+        right: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    .our_mission {
+        padding: 0;
+        margin-bottom: 50px;
+    }
+    .our_mission .mission_banner {
+        min-height: 420px;
+    }
+    #mission_vission .mission_vission_content h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .our_mission .mission_content {
+        padding: 0 15px;
+    }
+    .our_vission {
+        margin-bottom: 100px;
+        margin-top: 100px;
+        padding: 0 15px;
+    }
+    .our_vission .vission_banner img {
+        left: 0;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .our_vission .vission_banner {
+        min-height: 355px;
+    }
+    .free_trial_inner_page .banner_shapes .app_1 {
+        top: -100px;
+        right: 0px;
+    }
+    .free_trial_inner_page .subscribe_wrapper {
+        display: inherit !important;
+        text-align: center;
+        padding: 100px 15px
+    }
+    .free_trial_inner_page .subscribe_wrapper .free_trial_btn a.chat_btn {
+        padding: 17px 35px;
+        margin: 50px auto 0;
+        font-size: 16px;
+    }
+    .free_trial_inner_page {
+        padding:0px;
+    }
+
+    .contact_page .contact_banner img {
+        width: 100%;
+    }
+    .mr-auto.others_option {
+        display: none;
+    }
+
+}
+
+
+/*		Mobile Layout: 320px.
+---------------------------------------------------------------- */
+@media only screen and (max-width: 767px) {
+    .navbar-brand {
+        display: none;
+    }
+    .our_mission {
+        overflow: hidden;
+    }
+    .about_our_self {
+        overflow: hidden;
+    }
+    header .eco_nav nav {
+        padding: 0;
+        display: none;
+    }
+    #scroll-top .to-top a {
+        height: 38px;
+        width: 38px;
+        line-height: 36px;
+        right: 4px;
+    }
+    #scroll-top .to-top a i:before {
+        font-size: 12px;
+    }
+    /*======================== Degital Marketing Landing Page */
+    p{
+    	 font-size: 16px;
+        line-height: 24px;
+    }
+    header {
+        overflow: hidden;
+        padding: 0 15px;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    .sub_title {
+        margin-bottom: 50px;
+    }
+    header .intro_wrapper {
+        min-height: 600px;
+    }
+    header .intro_wrapper .intro_text_marketing {
+        margin-top: 100px !important;
+    }
+    header .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    header .intro_wrapper .intro_text h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 25px;
+    }
+    header .intro_wrapper .intro_text p {
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    header .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        width: 100%;
+    }
+    header .intro_wrapper .intro_banner {
+        margin-top: 80px;
+    }
+    header .intro_wrapper .intro_text .intro_button a {
+        font-size: 14px;
+        line-height: 46px;
+    }
+    .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .sub_title p {
+        margin: 0;
+        font-size: 16px;
+    }
+    .services {
+        margin-bottom: 0;
+        padding: 100px 15px;
+    }
+    .services .signle_services a {
+        font-size: 14px;
+    }
+    .services .signle_services h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    .services:before {
+    	display: none
+    }
+    .services:after {
+    	display: none
+    }
+    .features {
+        padding: 50px 15px 0;
+    }
+    .features .single_features .feature_banner_r_2 img {
+        margin-top: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+    .features .single_features {
+        margin-bottom: 100px;
+    }
+    .features .single_features .feature_banner_r_1 img {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .features .single_features .feature_intro p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    .features .single_features .feature_intro a {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+    .features .single_features .feature_banner_r_3 img {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        width: 100%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_1 {
+        top: -15px;
+        left: 0;
+        width: 45%;
+    }
+    .features .single_features .feature_banner_r_3 .banner_shapes .shape_2 {
+        top: -27px;
+        left: -20%;
+        width: 76%;
+    }
+    .feature_banner.feature_banner_r_1{
+        margin-bottom: 50px;
+    }
+    .features .single_features .feature_banner {
+        min-height: 290px;
+    }
+    .features .single_features .feature_intro_1 h2 {
+        margin-bottom: 25px;
+    }
+    .feature_intro.feature_intro_2 {
+        margin-bottom: 50px;
+    }
+    .team {
+        margin-bottom: 0;
+        padding: 100px 15px;
+    }
+    .team:before, .team:after{
+        display: none;
+    }
+    .team .signel_team {
+        width: 90%;
+        margin: 0 auto 30px;
+    }
+    .team_wrapper_items {
+        display: initial !important;
+    }
+    .team .meet_all_parson {
+        padding-left: 15px;
+    }
+    .client_logos {
+        padding: 100px 15px;
+    }
+    .client_logos .clients_logo ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .client_logos .clients_logo ul li {
+        padding: 30px 15px 0 0;
+    }
+    .client_logos .clients_logo ul li a img{
+        width: 120px;
+    }
+    .testimonial_4{
+        overflow: hidden;
+    }
+    .testimonial_4 .title h2{
+        font-size: 28px;
+        color: #fff;
+    }
+    .testimonial_4 .testimonial_single {
+        margin: 0;
+        padding: 0;
+    }
+    .slick-list {
+        margin: 0 15px;
+    }
+    .testimonial_4 ul.slick-dots {
+        display: none !important
+    }
+    .testimonial_4 .testimonial_single .review_content {
+        padding: 20px 20px 40px;
+    }
+    .testimonial_4 .testimonial_single .member-img {
+        bottom: 26px;
+        left: 7px;
+    }
+    .testimonial_4 .testimonial_single .review_content p {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 50px;
+    }
+    .testimonial_4 .testimonial_single .review_content h4 {
+        font-size: 14px;
+        line-height: 14px;
+        padding-left: 40px;
+    }
+    .testimonial_4 .testimonial_single .member-img {
+        height: 50px;
+        width: 50px;
+    }
+    .testimonial_4 .testimonial_single .review_content:before {
+        display: none;
+    }
+    .testimonial_4 .slick-arrow {
+        bottom: -50px;
+    }
+    .blog .signle_services {
+        margin-bottom: 50px;
+    }
+    .blog {
+        padding: 100px 0;
+        overflow: hidden;
+    }
+    .need_help {
+        text-align: center;
+        overflow: hidden;
+    }
+    .need_help .subscribe_wrapper {
+        padding: 30px 15px;
+        display: initial !important;
+    }
+    .need_help .subscribe_wrapper .subscribe_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .need_help .subscribe_wrapper .subscribe_title p {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+    }
+    .need_help .subscribe_wrapper a.chat_btn {
+        padding: 16px 30px;
+        line-height: 24px;
+        font-size: 16px;
+        margin: 40px auto 0;
+    }
+    footer {
+        padding: 0px 15px 0;
+    }
+    footer .footer_top .footer-title {
+        padding-right: 0;
+    }
+    .company-content {
+        margin-top: 50px;
+    }
+    footer .footer_top h3 {
+        margin-bottom: 20px;
+    }
+    footer .footer_bottom {
+        text-align: center;
+        margin-top: 50px;
+    }
+    footer .footer_bottom .copy_right_items{
+        justify-content: center !important;
+    }
+    footer .newspaper-site {
+        padding-top: 40px;
+    }
+    .marketing_footer .footer_top .footer-title {
+        padding-right: 0;
+        padding-top: 100px;
+    }
+
+
+    /*========================App Landing Page */
+    .header_app {
+        background-size: auto;
+        margin-bottom: 0px;
+    }
+    .header_app .intro_wrapper .intro_banner {
+        margin-top: 40px;
+        position: relative;
+        min-height: 165px;
+    }
+    .header_app:before {
+        width: 400%;
+        background-size: auto;
+    }
+    .header_app .intro_wrapper .intro_banner .screen_3{
+        display: none;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_1 {
+        top: -30%;
+        right: -16%;
+        width: 87%;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_2 {
+        top: -15%;
+        right: 26%;
+        width: 82%;
+    }
+    .header_app .intro_wrapper .intro_text {
+        margin-top: 100px;
+        padding-left: 0;
+    }
+    .header_app .intro_wrapper .intro_text h4 {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .header_app .intro_wrapper .intro_text h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 40px;
+    }
+    .header_app .intro_wrapper .intro_text p {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    .header_app .intro_wrapper .intro_text .intro_button a {
+        font-size: 15px;
+        line-height: 50px;
+    }
+    .header_app .intro_wrapper {
+        min-height: 770px;
+    }
+    .header_app .banner_shapes {
+        display: none;
+    }
+    #features_app .single_features .feature_intro h2 {
+        font-size: 28px;
+    }
+    #features_app .single_features .feature_intro p {
+        line-height: 26px;
+    }
+    #features_app .single_features .feature_banner_r_2{
+         min-height: 350px !important;
+    }
+    #features_app .single_features .feature_banner_r_2 img {
+        margin-top: 30px;
+        padding-left: 0;
+        width: 100%;
+    }
+    #features_app .single_features .feature_banner_r_3 img {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    #features_app .single_features .feature_banner {
+        min-height: 275px;
+    }
+    #features_app .single_features {
+        margin-bottom: 0;
+    }
+    #services_app {
+        overflow: hidden;
+    }
+    #services_app .signle_services h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        margin-top: 15px;
+    }
+    .app_download {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    .app_download .single_features .feature_banner img {
+        top: 0;
+        right: 0px;
+        width: 100%;
+    }
+    .app_download .single_features .feature_banner .banner_shapes .app_1 {
+        left: -15%;
+    }
+    .app_download .single_features .feature_banner {
+        min-height: 350px;
+    }
+    .app_download .single_features .feature_intro_wrapper {
+        padding: 0;
+    }
+    .count_app_download {
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+
+    #services_app {
+        padding: 100px 0 0;
+    }
+    .count_app_download {
+        margin-bottom: 100px !important;
+    }
+    .count_app_download .count_wrapper{
+        display: initial !important;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    .count_app_download .count_single {
+        width: 100%;
+    }
+    .app_download .single_features .feature_intro_wrapper .feature_intro h2 {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .app_download .single_features .feature_intro_wrapper .feature_intro p {
+        margin-bottom: 50px;
+    }
+    .app_download .download_app_icon img {
+        width: 100%;
+    }
+    #client_app {
+        padding: 100px 0;
+        overflow: hidden;
+    }
+    #app_team .banner_shapes {
+        display: none;
+    }
+    #app_team {
+        background: transparent;
+        min-height: 600px;
+        position: relative;
+        overflow: hidden;
+        padding: 100px 15px 0;
+    }
+    #app_team:before{
+        display: block;
+        background-size: auto;
+        height: 2500px;
+        width: 100%;
+        top: 50%;
+        left: 0%;
+    }
+    #app_team .meet_all_parson a {
+        color: #FF8A73;
+    }
+    .app_screenshort {
+        overflow: hidden;
+        padding: 0 15px;
+    }
+    .app_screenshort .app_screenshort_title h2{
+        font-size: 28px;
+    }
+    .app_screenshort .owl-buttons {
+        top: 0;
+        right: 0;
+        padding-right: 0;
+    }
+    .app_screenshort .owl-buttons .owl-prev {
+        left: -75px;
+    }
+    .app_screenshort_wrapper .testimonial_single .member-img img{
+        width: 100%;
+    }
+    .testimonial_app {
+        overflow: hidden;
+        padding: 100px 15px;
+    }
+    .testimonial_app .sub_title h2 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .testimonial_app .testimonial_text_wrapper .slick-list {
+        margin: 0 15px;
+    }
+
+    #subscribe_app .need_help_wrapper .banner_shapes {
+        display: none;
+    }
+    #subscribe_app .need_help_wrapper .subscribe_wrapper {
+        padding: 50px 15px;
+    }
+    #subscribe_app .need_help_wrapper {
+        position: relative;
+        display: flex;
+    }
+    #subscribe_app .app_download_s{
+        padding: 0 15px;
+        margin-bottom: 0;
+    }
+    #subscribe_app .app_download_s a img {
+        width: 100%;
+    }
+
+
+
+    /*======================== Agency Landing Page */
+    .agency .intro_wrapper {
+        min-height: 810px;
+    }
+    .agency .intro_wrapper .intro_banner {
+        margin-top: 50px;
+    }
+    .agency .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        display: block;
+    }
+    #agency_services .signle_services {
+        margin-right: 0;
+    }
+    #agency_services {
+        padding: 100px 15px;
+    }
+    #agency_services .single_services_1{
+        margin-bottom: 0px;
+    }
+    .count_lead_banner {
+        margin-top: 50px;
+    }
+    #agency_services .single_services_4, #agency_services .single_services_2  {
+        margin-top: 0px;
+    }
+    #agency_services .signle_services {
+        margin:0 15px 30px;
+    }
+    #agency_services .agency_services_intro {
+        margin-top: 100px;
+    }
+    .video_intro_agency .agency_video_wrapper {
+        padding: 0 15px;
+    }
+    .count_lead_agency .count_load_wrapper .count_lead_single {
+        min-height: auto;
+        padding: 30px 0;
+    }
+    .count_lead_agency .count_load_wrapper .count_lead_single_3 {
+        border-right: 1px solid rgba(103, 114, 148, 0.2);
+    }
+    .video_intro_agency .agency_video_wrapper .video_banner .video_wrapper a i:before {
+        font-size: 50px;
+    }
+    .agency_project .agency_project_single .project_caption h3 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .agency_project .agency_project_single .project_caption a i {
+        padding: 12px;
+    }
+    .video_intro_agency {
+        min-height: auto;
+    }
+    .count_lead_agency {
+        padding: 100px 15px 0;
+        overflow: hidden;
+    }
+    .count_lead_agency .count_load_wrapper .count_lead_banner img {
+        width: 100%;
+    }
+    .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .agency_project {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+     #team_agency:before {
+        display: block;
+        background-size: auto;
+        width: 168%;
+        top: -5%;
+        left: -51%;
+    }
+    #team_agency .owl-buttons {
+        bottom: -60px;
+    }
+    .testimonial_agency {
+        padding: 200px 15px 0;
+    }
+    .testimonial_agency .testimonial_single .testimonial_content {
+        padding: 35px 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-next {
+        top: 0px;
+    }
+    .testimonial_agency .owl-buttons .owl-prev {
+        top: -80px;
+    }
+    #team_agency {
+        overflow: hidden;
+        padding: 100px 15px 150px;
+    }
+    #client_logos_agency {
+        padding: 0;
+        overflow: hidden;
+    }    
+    #client_logos_agency .clients_logo ul {
+        padding: 50px 0;
+    }
+    #blog_agency {
+        padding: 50px 0;
+    }
+    footer .footer_top .newspaper-site input[type='email'] {
+        margin-top: 20px;
+    }
+
+
+    /*======================== Payment Landing Page */
+    #payment {
+        overflow: hidden;
+        padding: 0 15px;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    #payment .intro_wrapper {
+        min-height: 640px;
+    }
+    #payment .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    #payment .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    #payment .intro_wrapper .intro_banner {
+        margin-top: 40px;
+    }
+    #payment .banner_shapes .agency_1 {
+        height: 713px;
+    }
+    #payment .banner_shapes .agency_2 {
+        display: none;
+    }
+    .favorite_services {
+        padding: 100px 15px 150px;
+    }
+    .favorite_services .services_option ul li {
+        width: 43%;
+        margin-top: 10px;
+        height: 60px;
+    }
+    .favorite_services .services_option ul li img{
+        width: 100%;
+    }
+    .automation_software .automation_software_single {
+        margin-bottom: 130px;
+        display: inline !important;
+        text-align: center;
+    }
+    .automation_software .automation_software_single .software_icon {
+        margin-top: 0px;
+            width: 100%
+    }
+    .automation_software .automation_software_single .software_content {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 70px;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_banner {
+        margin: 50px 0;
+    }
+    .testimonial_payment .testimonial_pro_wrapper .carousel_images .img_single img {
+        height: 100px;
+        width: 100px;
+    }
+    .testimonial_payment .testimonial_text_wrapper .single_box p {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .automation_software .sub_title h2 {
+        line-height: 40px;
+    }
+    .automation_software {
+        padding: 100px 15px 0px;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_banner img {
+        width: 100%;
+    }
+    .earnings_grow .earnings_grow_wrapper .earnings_grow_intro h2 {
+        line-height: 38px;
+        font-size: 30px;
+    }
+    .testimonial_payment .testimonial_text_wrapper {
+        padding: 0 15px;
+    }
+    .pricing_payment {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .video_payment {
+        padding: 0;
+        overflow: hidden;
+    }
+    .video_payment .video_payment_wrapper .video_payment_intro h2 {
+        padding: 17px 0;
+        font-size: 30px;
+    }
+    .earnings_grow {
+        padding: 200px 0 140px;
+        overflow: hidden;
+    }
+    .testimonial_payment {
+        overflow: hidden;
+    }
+
+
+    /*======================== Product Landing Page */
+    .product_landing {
+        background-size: 100%;
+       background: #fedd51;
+    }
+    .product_landing::before{
+        background: url('../images/banner/product_banner.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: absolute;
+        content: "";
+        height:212px;
+        width: 100%;
+        top: 54px;
+        left: 0;
+        z-index: 1;
+    }   
+    .product_landing .banner_shapes {
+        display: none;
+    }
+    .product_landing .intro_wrapper .intro_text h1 {
+        font-size: 32px;
+        color: #222D39;
+        line-height: 40px;
+    }
+    .product_landing .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    .product_landing .intro_wrapper {
+        min-height: 700px;
+    }
+    .sercives_product {
+        margin-top: 0;
+        padding: 0 15px;
+    }
+    #features_product .single_features {
+        margin-bottom: 100px;
+    }
+    .sercives_product .product_wrapper .signle_services .services_icon:before {
+        font-size: 35px;
+    }
+    .sercives_product .product_wrapper {
+        padding: 30px 15px;
+        display: inherit;
+    }
+    .sercives_product .product_wrapper .signle_services {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .sercives_product .product_wrapper .signle_services h3 {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    #features_product .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #features_product .single_features .feature_banner_r_2 img {
+        padding-left: 0px;
+    }
+    #features_product .single_features .feature_banner {
+        min-height: 260px;
+    }
+    #features_product .single_features .feature_banner_r_3 img {
+        right: 0;
+        margin-right: 0;
+    }
+    #features_product .single_features .feature_banner_r_3 .shape_feature {
+        top: -54px;
+        left: 0;
+        width: 100px;
+    }
+    .product_video {
+        padding: 0;
+        margin-top: 100px;
+    }
+    #features_product .single_features .feature_intro_3 {
+            margin-top: 150px;
+    }
+    .product_video .product_video_wrapper .shape_video {
+        position: absolute;
+        top: -25px;
+        right: 15px;
+        width: 56px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:before {
+        height: 70px;
+        width: 70px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a:after {
+        height: 120px;
+        width: 120px;
+    }
+    .product_video .product_video_wrapper .video_wrapper a i:before {
+        font-size: 30px;
+    }
+    .product_video .product_video_wrapper .video_wrapper {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .product_special_features .single_features .feature_intro_1 {
+       margin-top: 100px;
+        padding-right: 0;
+        padding: 0 30px;
+    }
+    .product_special_features .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .product_special_features .single_features .feature_banner {
+        min-height: 424px;
+        position: relative;
+        margin-top: 100px;
+    }
+    .product_special_features {
+        margin: 0;
+    }
+    .product_testimonial .sub_title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #product_blog {
+        padding: 100px 0 0;
+    }
+    .product_testimonial .testimonial_text_wrapper .single_box p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    #footer_product {
+        margin-top: 80px;
+    }
+    .product_testimonial .testimonial_text_wrapper .slick-list {
+        margin: 15px;
+    }
+    .product_testimonial .testimonial_pro_wrapper .banner_shapes .app_1 {
+        top: -46px;
+        left: 20%;
+        width: 74px;
+    }
+    .product_special_features .single_features .feature_intro_2 {
+        margin-top: 50px;
+        padding-left: 30px;
+    }
+    .product_special_features {
+
+        padding-bottom: 0;
+    }
+
+
+    /*======================== Sass Landing Page */
+    .sass_landing .intro_wrapper .intro_text {
+        margin-top: 100px;
+    }
+    .sass_landing {
+        padding: 0 15px;
+    }
+    .sass_landing .intro_wrapper .intro_text p {
+        width: 100%;
+    }
+    .sass_landing .intro_wrapper .intro_banner {
+        margin-top: 50px;
+    }
+    .sass_landing .intro_wrapper .intro_banner img {
+        margin-left: 0;
+        width: 100%;
+    }
+    .sass_landing .intro_wrapper {
+        min-height: 800px;
+    }
+    .client_logos .clients_logo ul {
+        padding: 50px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }    
+    .client_logos .clients_logo ul li {
+        width: 50%;
+    }
+    .sercives_sass .signle_services .services_icon {
+        left: -23px;
+        top: 46px;
+        height: 46px;
+        width: 46px;
+    }
+    .sercives_sass .signle_services .services_icon:before {
+        font-size: 18px;
+        line-height: 50px;
+    }
+    #client_logos_sass {
+        padding: 0px 15px 100px;
+    }
+
+    .sercives_sass .sub_title h2 {
+        font-size: 28px;
+    }
+    .sercives_sass {
+        padding: 100px 15px 0;
+    }
+    .sercives_sass .signle_services {
+        padding: 55px 15px 55px 41px;
+        margin: 0px 7px 60px;
+    }
+    .features_sass .single_features .feature_banner img {
+        top: 0;
+        right: 0px;
+        width: 100%;
+    }
+    .features_sass {
+        padding: 100px 0px 0;
+        overflow: hidden;
+    }
+    .features_sass .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .features_sass .single_features .feature_banner {
+        min-height: 240px;
+    }
+    .tools_sass .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .tools_sass {
+        padding: 0;
+        margin: 100px 0;
+        overflow: hidden;
+    }
+    .tools_sass .feature_intro {
+        padding: 140px 0 100px;
+        padding-right: 0;
+    }
+    .tools_sass .feature_intro p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .tools_sass .feature_banner {
+        display: none;
+    }
+    .aplication_sass .single_features .feature_banner img {
+        top: 0;
+        right: 0px;
+        width: 100%;
+    }
+    .aplication_sass {
+        padding: 0px 15px 100px;
+    }
+    .aplication_sass .single_features .feature_banner {
+        min-height: 300px;
+    }
+    .aplication_sass .single_features .feature_intro {
+        padding-left: 0;
+    }
+    .aplication_sass .single_features .feature_intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .aplication_sass .single_features .feature_intro p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial_sass {
+        padding: 0px 0px 100px;
+    }
+    #need_help_sass {
+        padding: 0px 14%;
+        background: #5f65ff;
+        padding: 100px 15px;
+    }
+
+    #footer_sass .banner_shapes{
+        display: none;
+    }
+    #footer_sass{
+        background: #5f65ff;
+        margin-top: 0;
+        padding-top: 0;
+        border: none;
+    }
+    .testimonial_sass .testimonial_single .testimonial_person .person_title .p_name {
+        font-size: 16px;
+    }
+    .testimonial_sass .testimonial_single .testimonial_person .person_title .p_location {
+        font-size: 12px;
+    }
+    .testimonial_sass .testimonial_single .testimonial_content p {
+        font-size: 16px;
+    }
+
+    /*Inner Pages Style*/
+
+    .header_inner_pages{
+        margin-bottom: 0;
+    }
+
+    .header_inner_pages .intro_wrapper {
+        margin: 100px 0 ;
+        min-height: auto;
+    }
+    .header_inner_pages .intro_wrapper .intro_text h1 {
+        font-size: 36px;
+    }
+    .header_inner_pages .banner_shapes{
+        display: none;
+    }
+    .about_our_self {
+        padding: 100px 15px;
+        position: relative;
+    }
+    .about_our_self .about_our_self_wrapper .about_our_self_title h2 {
+        font-size: 28px;
+    }
+    .our_mission .shape {
+        display: none;
+    }
+    .our_mission .mission_banner img {
+        right: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    .our_mission {
+        padding: 0;
+        margin-bottom: 50px;
+    }
+    .our_mission .mission_banner {
+        min-height: 420px;
+    }
+    #mission_vission .mission_vission_content h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .our_mission .mission_content {
+        padding: 0 15px;
+    }
+    .our_vission {
+        margin-bottom: 100px;
+        margin-top: 100px;
+        padding: 0 15px;
+    }
+    .our_vission .vission_banner img {
+        left: 0;
+        width: 100%;
+        margin-top: 100px;
+    }
+    .our_vission .vission_banner {
+        min-height: 355px;
+    }
+    .free_trial_inner_page .banner_shapes .app_1 {
+        top: -100px;
+        right: 0px;
+    }
+    .free_trial_inner_page .subscribe_wrapper {
+        display: inherit !important;
+        text-align: center;
+        padding: 100px 15px
+    }
+    .free_trial_inner_page .subscribe_wrapper .free_trial_btn a.chat_btn {
+        padding: 17px 35px;
+        margin: 50px auto 0;
+        font-size: 16px;
+    }
+    .free_trial_inner_page {
+        padding:0px;
+    }
+
+    .blog_details .blog_post_wrapper .blog_content h3 {
+        line-height: 36px;
+        font-size: 28px;
+    }
+    .blog_details .blog_post_wrapper .blog_content .quite_author:after {
+        bottom: 100px;
+    }
+    .blog_details .blog_post_wrapper .blog_content .post_share {
+        padding-top: 0;
+        justify-content: center !important;
+    }
+    .blog_details .blog_post_wrapper .blog_content p {
+        line-height: 24px;
+        margin-bottom: 50px !important;
+    }
+    .blog_details .blog_post_wrapper .blog_content .quite_author {
+        padding: 60px 20px;
+    }
+    .blog_details .blog_post_wrapper .blog_content .quite_author span {
+        font-size: 18px;
+    }
+    .blog_details .blog_post_wrapper .post_share:before {
+        display: none;
+    }
+    .blog_details .blog_post_wrapper .blog_content {
+        padding: 0 20px;
+    }
+    #blog_post_related {
+        padding: 80px 15px 0;
+    }
+    .blog_details {
+        padding: 100px 0 0;
+    }
+    .shop_details {
+        padding: 100px 15px;
+    }
+    .comment_area {
+        padding: 100px 15px 0;
+    }
+    .comment_area .commnet-wrapper .comment-list-items .comment-list-wrapper .comment-list {
+        justify-content: center;
+        align-items: center;
+        display: inherit;
+    }
+    .comment_area .commnet-wrapper .comment-list-items .comment-list-wrapper .comment-list:last-child {
+        padding-bottom: 50px;
+    }
+    .comment_area .commnet-wrapper .comment-list-items a.reply_btn {
+        margin-top: 10px;
+    }
+    .comment_area .commnet-wrapper .comment-list-items .comment-list-wrapper .comment-list .comment-text {
+        padding: 0;
+        width: 100%;
+    }
+    .comment_area .commnet-wrapper .comment-list-items .comment-list-wrapper .comment-list .commnet_img {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .comment_area .commnet-wrapper .reply_comments {
+        margin-left: 20px;
+    }
+    .blog_page {
+        background: #F6F7F9;
+        min-height: 600px;
+        padding: 200px 15px 0;
+    }
+    #free_trial_inner_page_blog {
+        padding-top: 100px;
+        overflow: hidden;
+    }
+    .contact_page {
+        padding: 100px 0;
+    }
+    .contact_page .contact_banner img {
+        width: 100%;
+        padding: 0 15px;
+    }
+    .contact_page .contact_banner {
+        min-height: 355px;
+    }
+    .contact_page .sign_in_form {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .contact_map .google_map #map {
+        height: 420px;
+        width: 100%;
+    }
+    .map_location .contact_location {
+        padding: 50px 15px 20px;
+    }
+    .map_location .contact_location p {
+        line-height: 30px;
+        font-size: 18px;
+        color: #677294;
+    }
+    .map_location .contact_location_right {
+        margin-left: 15px;
+        margin-top: 30px;
+        margin-right: 15px;
+    }
+    .map_location .contact_location_left {
+        margin-right: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .map_location .contact_location .location_info li {
+        font-size: 16px;
+    }
+    .map_location {
+        padding: 0;
+        margin-top: 0px;
+    }
+
+    .contact_page .contact_banner {
+         min-height: 350px;
+    }
+    .contact_page .sign_in_form .form_title h2 {
+        font-size: 30px;
+    }
+    #pricing_payment_inner .sub_title h2 {
+        font-size: 28px;
+    }
+    .pricing_packages {
+        overflow: hidden;
+        padding: 0 15px;
+    }
+    .pricing_payment .payment_pricing_wrapper {
+        padding: 30px 15px;
+        margin-bottom: 30px;
+    }
+    .pricing_packages .sub_title h2 {
+        font-size: 28px;
+    }
+    .pricing_packages .btn-items .nav-tabs .nav-link {
+        font-size: 16px;
+        width: 126px;
+        height: 50px;
+        line-height: 50px;
+        margin: 0 14px;
+    }
+    .free_trial_inner_page {
+        overflow: hidden;
+    }
+    .shop_details {
+        padding: 150px 15px;
+    }
+    .shop_details .product_view_wrapper .descripton_tab_wrapper {
+        padding: 0 15px;
+    }
+    .shop_details .product_cart_description {
+        padding-left: 0;
+        margin-top: 100px;
+    }
+    .related_products {
+        overflow: inherit;
+    }
+    .eco_products .latest-product-filter {
+        display: inherit !important;
+        height: auto;
+    }
+    .eco_products {
+        padding: 100px 15px;
+    }
+    .eco_products .latest-product-filter .btn-items .dropdown {
+        margin-left: 0;
+    }
+    #client_logos_sass {
+        padding: 0px 15px 0px;
+    }
+    .sign_in {
+        padding: 100px 15px;
+        overflow: hidden;
+    }
+    .sign_in .vission_banner img {
+        left: 0;
+        width: 100%;
+    }
+    .sign_in .vission_banner {
+        min-height: 290px;
+    }
+    #team_page_wrapper {
+        overflow: hidden;
+    }
+
+    .client_logos .clients_logo ul {
+        padding: 50px 0;
+    }
+    .mr-auto.others_option {
+        display: none;
+    }
+    footer .footer_top .about_footer {
+        margin-left: 0px;
+    }
+    #footer_product, #features_product, .product_testimonial {
+        overflow: hidden;
+    }
+    .product_special_features {
+        overflow: hidden;
+        margin: 0 15px;
+    }
+    .header_app .intro_wrapper {
+        height: auto;
+    }
+    #features_product {
+        padding-top: 0px;
+    }
+    .app_download .single_features .feature_banner {
+        min-height: 450px !important;
+    }
+}
+
+/*		Wide Mobile Layout: 480px.
+------------------------------------------------- */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+
+    .features .single_features .feature_banner {
+        min-height: 420px;
+    }
+    .client_logos .clients_logo ul li {
+        padding: 30px 30px 0 0;
+    }
+    #features_app .single_features .feature_banner {
+        min-height: 420px;
+    }
+    #services_app {
+        padding: 100px 0 0;
+    }
+    .app_download .single_features .feature_banner {
+        min-height: 460px;
+    }
+    .app_download .single_features .feature_banner .banner_shapes .app_3 {
+        top: -134px;
+        left: 3%;
+        width: 240px;
+    }
+    #app_team:before {
+        top: 30%;
+    }
+    #app_team {
+        margin-top: 100px;
+    }
+    #subscribe_app .need_help_wrapper .subscribe_wrapper {
+        width: 100%;
+    }
+    .product_landing::before{
+        height:350px;
+    } 
+    .product_landing .intro_wrapper .intro_text {
+        margin-top: 319px;
+    }
+    .sign_in .vission_banner {
+        min-height: 250px;
+    }
+    .header_app:before {
+        width: 280%;
+    }
+    .contact_page .contact_banner {
+        min-height: 429px;
+    }
+    .header_app .intro_wrapper .intro_banner {
+        min-height: 260px;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_1 {
+        top: -30%;
+        right: -16%;
+        width: 70%;
+    }
+    .header_app .intro_wrapper .intro_banner .screenshot .screen_2 {
+        top: 7%;
+        right: 19%;
+        width: 63%;
+    }
+    #features_app .single_features .feature_banner_r_2 {
+        margin-bottom: 100px;
+    }
+    .app_download .single_features .feature_banner {
+        min-height: 670px;
+    }
+    .product_landing .intro_wrapper .intro_text {
+        margin-top: 394px;
+    }
+    .favorite_services .services_option ul li {
+        margin-bottom: 15px;
+    }
+    feature_banner.feature_banner_r_1 {
+        margin-bottom: 150px;
+    }
+    .client_logos .clients_logo ul li {
+        width: 29%;
+    }
+    .features_sass .single_features .feature_banner {
+        min-height: 240px;
+        margin-bottom: 150px;
+    }
+    .aplication_sass .single_features .feature_banner {
+        min-height: 300px;
+        margin-bottom: 180px;
+    }
+
+
+
+
+
+
+}

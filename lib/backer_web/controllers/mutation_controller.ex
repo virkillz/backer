@@ -9,7 +9,6 @@ defmodule BackerWeb.MutationController do
     render(conn, "index.html", mutations: mutations)
   end
 
-
   def show(conn, %{"id" => id}) do
     mutation = Finance.get_mutation!(id)
     render(conn, "show.html", mutation: mutation)
