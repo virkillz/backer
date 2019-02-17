@@ -1,0 +1,55 @@
+<!-- Sign In Form -->  
+<section class="sign_in">
+    <div class="container">
+        <div class="card card-padding row" style="padding: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="sign_in_form">   
+                    <div class="form_title">
+                        <h2>Daftar</h2>
+                        <p>Bergabung menjadi komunitas backer hanya dalam hitungan detik.</p>
+                    </div>
+                    <%= form_for @changeset, "/register", fn f -> %>  
+                        <div class="row">
+
+                            <%= if @changeset.action do %>
+                            <div class="alert alert-danger col-12">
+                              <p>Oops, something went wrong! Please check the errors below.</p>
+                            </div>
+                          <% end %> 
+
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label  class="control-label">Nama Tampilan</label>
+                                    <%= text_input f, :display_name, [class: "form-control", placeholder: "Nama Yang Keren"] %>
+                                    <%= error_tag f, :display_name %>
+                                </div>
+                            </div>     
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <%= email_input f, :email, [class: "form-control", placeholder: "Email"] %>
+                                    <%= error_tag f, :email %>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Password</label>
+                                    <%= password_input f, :password, [class: "form-control", placeholder: "Password"] %>
+                                    <%= error_tag f, :password %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="login_option">
+                                    <button type="submit" class="btn btn-default login_btn">Daftar</button><br>
+                                    <span>Already a registered user?<a href="/login" title="" class="forget_pass">Log In</a></span>
+                                </div>
+                            </div> 
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Sing In  -->  

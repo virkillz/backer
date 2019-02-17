@@ -1,0 +1,148 @@
+
+
+
+    <section style="margin-top: 40px; min-height: 800px;">
+    <div class="container" style="max-width: 1300px;">
+
+      <div class="row">
+
+
+        <div class="col-md-3 static">
+
+        <%= render("component_private_menu.html", backer: @backer) %>
+
+
+        </div>
+                
+        <div class="col-md-6">
+
+
+        <div class="card" style="width:100%;">
+            <div class="card-header p-1">
+                <h4 class="card-title float-left">Project X - <span class="blue-grey lighten-2 font-small-3 mb-0">24 DEC 2017 - 09 APR 2019</span></h4>
+                <span class="badge badge-pill badge-info float-right m-0">Approved</span>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-footer text-center p-1" style="background-color: white;">
+                    <div class="row">
+                        <div class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                            <p class="blue-grey lighten-2 mb-0">Tasks</p>
+                            <p class="font-medium-5 text-bold-400">26</p>
+                        </div>
+                        <div class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                            <p class="blue-grey lighten-2 mb-0">Completed</p>
+                            <p class="font-medium-5 text-bold-400">58%</p>
+                        </div>
+                        <div class="col-md-3 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                            <p class="blue-grey lighten-2 mb-0">Pending</p>
+                            <p class="font-medium-5 text-bold-400">42%</p>
+                        </div>
+                        <div class="col-md-3 col-12 text-center">
+                            <p class="blue-grey lighten-2 mb-0">Version</p>
+                            <p class="font-medium-5 text-bold-400">4.5</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <span class="text-muted"><a href="#" class="danger darken-2">Project X</a> Statistics</span>
+                </div>
+            </div>
+        </div>  
+      
+              <div class="row p-0">
+              <div class="col-md-4 col-xs-4" >
+                <div class="card text-center text-dark" >Balance
+                  <h1 class="text-dark"><%= Stringhelper.format_thousand(@balance) %></h1>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="card text-center text-dark">Total Donated
+                  <h1 class="text-dark">10000</h1>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4" >
+                <div class="card text-center text-dark" >Pending Invoice
+                  <h1 class="text-dark"><%= @pending_invoice %></h1>
+                </div>
+              </div>    
+              </div>          
+
+
+
+
+              <div class="card card-padding" style="width: 100%;">
+              <table class="table bg-white" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Expiry</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for invoice <- @invoices do %>
+                  <tr>
+                    <td><%= invoice.inserted_at %></td>
+                    <td>Rp. <%= Stringhelper.format_thousand(invoice.amount + invoice.unique_amount) %></td>
+                    <td><%= invoice.inserted_at %></td>
+                    <td><%= invoice.status %></td>
+                  </tr>
+
+                  <% end %>
+
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+        </div>
+
+                    <!-- Newsfeed Common Side Bar Right
+              ================================================= -->
+        <div class="col-md-3 static">
+
+
+                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
+
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+</section>
+

@@ -10,8 +10,7 @@ defmodule Backer.Account do
   alias Comeonin.Bcrypt
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Tier
-  alias Backer.Account.Pledger 
-
+  alias Backer.Account.Pledger
 
   @doc """
   Returns the list of user.
@@ -173,7 +172,7 @@ defmodule Backer.Account do
 
   def list_backers(params) do
     Backerz |> Repo.paginate(params)
-  end 
+  end
 
   @doc """
   Gets a single backer.
@@ -317,8 +316,6 @@ defmodule Backer.Account do
     Backerz.change_password_changeset(backer, %{})
   end
 
-
-
   @doc """
   Returns the list of pledgers.
 
@@ -356,9 +353,36 @@ defmodule Backer.Account do
   """
 
   def get_pledger(%{"backer_id" => backer_id}) do
-    query = from(p in Pledger, preload: [:backer, :category, :title, :tier], where: p.backer_id == ^backer_id)
+    query =
+      from(p in Pledger,
+        preload: [:backer, :category, :title, :tier],
+        where: p.backer_id == ^backer_id
+      )
 
     Repo.one(query)
+  end
+
+  def get_pledger_compact(%{"backer_id" => backer_id}) do
+    query =
+      from(p in Pledger,
+        preload: [:backer, :category, :title, :tier],
+        where: p.backer_id == ^backer_id
+      )
+
+    pledger = Repo.one(query)
+
+    if pledger != nil do
+      %{
+        backer_id: pledger.backer.id,
+        pledger_id: pledger.id,
+        avatar: pledger.backer.avatar,
+        title: pledger.title.name,
+        background: pledger.background,
+        tiers: pledger.tier
+      }
+    else
+      nil
+    end
   end
 
   def get_pledger!(id) do
@@ -444,6 +468,18 @@ defmodule Backer.Account do
     pledger
     |> Pledger.changeset(attrs)
     |> Repo.update()
+  end
+
+  def random_pledger(limit) do
+    query =
+      from(b in Backerz,
+        where: b.is_pledger == true,
+        order_by: fragment("RANDOM()"),
+        preload: :pledger,
+        limit: 10
+      )
+
+    Repo.all(query)
   end
 
   @doc """

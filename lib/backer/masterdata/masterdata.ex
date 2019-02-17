@@ -259,6 +259,15 @@ defmodule Backer.Masterdata do
     Repo.all(query)
   end
 
+  def list_tiers_for_select(%{"pledger_id" => pledger_id}) do
+    query = from(t in Tier, where: t.pledger_id == ^pledger_id, order_by: t.amount)
+
+    Repo.all(query)
+    |> Enum.with_index(1)
+    |> Enum.map(fn {x, i} -> {"#{x.title} #{x.amount}", i} end)
+    |> List.insert_at(0, {"Public Post", 0})
+  end
+
   @doc """
   Gets a single tier.
 

@@ -17,6 +17,7 @@
     <!-- END VENDOR CSS-->
     <!-- BEGIN CHAMELEON  CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/components-front.css">     
     <!-- END CHAMELEON  CSS-->
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">

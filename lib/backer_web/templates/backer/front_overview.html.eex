@@ -1,0 +1,103 @@
+<section style="margin-top: 40px; min-height: 800px;">
+    <div class="container" style="max-width: 1300px;">
+
+      <div class="row">
+
+
+        <div class="col-md-3 static">
+
+            <div class="profile-card" style="padding: 20px;">
+                <div class="text-center">
+                    <img src="<%= @backer.avatar %>" alt="user" class="profile-photo-backer">
+                    <h5 style="margin-top: 20px;"><a href="#" class="display-name-profile-card"><%= @backer.display_name %></a></h5>
+                </div>
+            </div>
+
+        </div>
+                
+        <div class="col-md-6">
+
+
+          <div class="row block_page"><div id="timeline-target"></div></div>
+            <div class="text-center" id="backloader">
+              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
+              <%# <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="loader">               %>
+            </div>                      
+
+        </div>
+
+                    <!-- Newsfeed Common Side Bar Right
+              ================================================= -->
+        <div class="col-md-3 static">
+
+
+                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
+
+
+
+
+<div class="twPc-div">
+    <a href="/pledger/virkill" class="twPc-bg twPc-block" style="background: url(https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80) no-repeat center;"></a>
+
+  <div>
+
+    <a title="VirKill Almasy" href="/pledger/virkill" class="twPc-avatarLink">
+      <img alt="Mert Salih Kaplan" src="/img/avatar2.jpg" class="twPc-avatarImg">
+    </a>
+
+    <div class="twPc-divUser">
+      <div class="twPc-divName">
+        <a href="/pledger/virkill">VirKill Almasy</a>
+      </div>
+      <span>
+        <span>Musician</span>
+      </span>
+    </div>
+
+    <div class="twPc-divStats">
+      <ul class="twPc-Arrange">
+        <li class="twPc-ArrangeSizeFit text-center">
+          <a href="/pledger/virkill" title="9.840 Tweet">
+            <span class="twPc-StatLabel twPc-block">Backer</span>
+            <span class="twPc-StatValue">9.840</span>
+          </a>
+        </li>
+        <li class="twPc-ArrangeSizeFit text-center">
+          <a href="/pledger/virkill" title="885 Following">
+            <span class="twPc-StatLabel twPc-block">Post</span>
+            <span class="twPc-StatValue">885</span>
+          </a>
+        </li>      
+        <li class="twPc-ArrangeSizeFit text-center">
+            <a href="/pledger/virkill" class="btn btn-pill " style="margin-top: 10px; margin-right: 25px;">Support</a>
+        </li>        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+</section>

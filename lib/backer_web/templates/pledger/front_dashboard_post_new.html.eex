@@ -1,0 +1,60 @@
+<div class="sidebar-detached sidebar-left">
+  <div class="sidebar">
+      <div class="bug-list-sidebar-content">
+        <div class="card">
+
+            <%= render("component_pledger_card_header.html", conn: @conn) %>
+          
+            <%= render("component_dashboard_post_menu.html") %>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="content-detached content-right">
+          <div class="content-body">
+      <unpoly>
+    <section class="row">
+        <div class="col-12">
+
+    <div class="card" style="padding:15px;">
+                <div class="card-header">
+                    <h4 class="card-title">New Post</h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body p-0 pb-0">
+    <div class="container">
+
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= if @intent == :edit do %>
+
+<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, pledger_path(@conn, :dashboard_post_edit, @post)) %>
+
+<% else %>
+
+<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, pledger_path(@conn, :dashboard_post_create)) %>
+
+<% end %>
+</div>
+</div>
+
+
+
+    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</unpoly>
+
+  </div>
+</div>        

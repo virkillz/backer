@@ -1,0 +1,84 @@
+<header class="header_inner_pages">
+     <div class="header-top">
+        <div class="sassnex_nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light bg-faded" >
+                    <a class="navbar-brand" href="/"><img src="/front/images/backer-logo-whiteish.png" alt="logo"></a>
+                    <div class="collapse navbar-collapse mean_menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav ml-auto">
+
+                           <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+                           <li class="nav-item"><a href="/explore" class="nav-link">Explore</a></li>
+                           <li class="nav-item"><a href="/backers" class="nav-link">Backer</a></li>                                                 
+                            <li class="nav-item"><a href="#" class="nav-link">Informasi</a>
+                                 <ul class="dropdown_menu">
+                                    <li><a href="about.html">Cara Kerja</a></li>                                                                                                             
+                                    <li class="nav-item"><a href="#" class="nav-link">Informasi</a>
+                                        <ul class="dropdown_menu">
+                                            <li><a href="shop-page.html">Shop Page</a></li>
+                                            <li><a href="shop-details.html">Shop Details</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="mr-auto others_option">
+                        <ul class="navbar-nav mx-auto d-flex">
+                            <li class="header-search-box btn-color-dark">
+                                <a href="#header-search" title="Search">
+                                    <i class="flaticon-search search_btn"></i>
+                                </a>
+                            </li>
+                                <%= if @conn.assigns.backer_signed_in? do %>
+                                <li class="dropdown"> 
+                                    <span data-toggle="dropdown" class="dropdown-toggle" style="color: white;">
+                                      <span class="display_name_nav"><%= @conn.assigns.current_backer.display_name %></span>
+                                      <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
+                                    </span>
+
+                                            <ul class="dropdown_menu">
+                                              <li> <a href="/backer/<%= @conn.assigns.current_backer.username %>">My Backer Profile</a> </li>
+
+                                              <%= if @conn.assigns.current_backer.is_pledger do %>
+                                              <li> <a href="/pledger/<%= @conn.assigns.current_backer.username %>">My Pledger Profile</a> </li>
+                                              <li> <a href="/dashboard">My Pledger Dashboard</a> </li>                                                              
+                                              <% end %>
+
+                                                <li> <a href="/signout">Logout</a> </li>
+                                            </ul>
+                                              
+
+                                </li> 
+                                <% else %>
+                            <li>
+                                <a href="/login" class="btn btn-default">Login</a>
+                                <a href="/register" class="btn btn-default">Register</a>
+                            </li>              
+
+                                <% end %>   
+                        </ul>
+                    </div>
+                </nav><!-- END NAVBAR -->
+            </div> 
+        </div>
+    </div>
+
+
+    <div class="intro_wrapper">
+        <div class="container">  
+            <div class="row">        
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="intro_text">
+                        <h1 class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">Title</h1>
+                        <div class="select_pages">
+                            <span>Description</span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
+
+</header> <!-- End Header -->    

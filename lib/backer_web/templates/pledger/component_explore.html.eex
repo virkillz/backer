@@ -1,0 +1,56 @@
+
+<section class="features" id="features_product">
+    <div class="container">
+        <div class="row single_features">
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="feature_intro feature_intro_2" style="margin-top:50px;">
+                    <h2 class="wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeInLeft;">Dukung hal positif agar terus berjalan</h2>
+                    <p class="wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.3s; animation-name: fadeInLeft;">Mulai dari komunitas hobi, organisasi kemasyarakatan, anak asuh hingga para seniman kreasi, kita bisa bantu mereka untuk terus maju.</p>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-7">
+                <div class="feature_banner feature_banner_r_2">
+                    <img src="https://images.pexels.com/photos/951236/pexels-photo-951236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="anak sekolah" style="height: 100%; width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="agency_project" style="padding-top: 0px;">
+    <div class="container">
+        <div class="row">        
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="sub_title wow fadeInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                    <h2>Kategori</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+              <%= for category <- @categories do %>
+            <div class="col-12 col-md-6 col-lg-4" style="padding:10px;">
+                <div class="agency_project_single">
+                    <div class="project_banner" style="border-radius: 10px;">
+                      <h4 class="centered text-white"><%= category.name %> </h4>
+                        <img src="<%= category.background %>" alt="">
+                    </div>
+                    <div class="project_caption">
+
+                        <a href="/category/<%= category.id %>" title=""><i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+            </div>                    
+                  <% end %>
+
+          
+        </div> 
+    </div>
+</section>
+
+
+
+
+

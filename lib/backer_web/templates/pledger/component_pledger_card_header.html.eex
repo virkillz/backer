@@ -1,0 +1,9 @@
+<div class="card-head">
+    <div class="align-self-center halfway-fab text-center p-1">
+        <span class="avatar avatar-lg avatar-online rounded-circle"><img src="<%= @conn.assigns.current_backer.avatar %>" alt="avatar"></span>
+    </div>
+    <div class="text-center">
+            <span class="font-medium-2 text-uppercase"><%= @conn.assigns.current_backer.display_name %></span>
+            <p class="blue-grey font-small-2"><%= @conn.assigns.current_backer.username %></p>
+        </div>
+</div>

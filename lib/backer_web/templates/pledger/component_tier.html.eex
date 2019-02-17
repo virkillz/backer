@@ -1,27 +1,27 @@
               <div id="tier">      
 
-              <div class="row bg-white pd-tb-15">
-              <h4 class="pd15 text-center text-dark">Backer Tier</h4>
-              </div>
+                  <div class="row bg-white pd-tb-15">
+                  <h4 class="pd15 text-center text-dark">Backer Tier</h4>
+                  </div>
 
-              <%= if @pledger.pledger.tier == [] do %>
-              <div class="row bg-white pd-lr-15 pd-b-15 mt10">
-                <h5 class="text-dark text-center">No tier available</h5>
-              </div>   
-              <% else %>
+                  <%= if @pledger.pledger.tier == [] do %>
+                  <div class="row bg-white pd-lr-15 pd-b-15 mt10">
+                    <h5 class="text-dark text-center">No tier available</h5>
+                  </div>   
+                  <% else %>
 
-              <%= for {tier, i} <- @pledger.pledger.tier |> Enum.sort_by(fn(p) -> p.amount end) |> Enum.with_index() do %>
+                <%= for {tier, i} <- @pledger.pledger.tier |> Enum.sort_by(fn(p) -> p.amount end) |> Enum.with_index() do %>
 
-              <div class="row bg-white pd-lr-15 pd-b-15 mt10">
-                <h4 class="text-dark"><%= tier.title %></h4>
-                <p>RP.<%= tier.amount %>/month or more</p>
-                <p class="text-dark"><%= tier.description %></p>
-                <div class="text-center"><a href="/pledger/<%= @pledger.username %>/tier/<%= i + 1 %>"><button class="btn-primary">Back me up!</button></a></div>
-              </div> 
+                  <div class="row bg-white pd-lr-15 pd-b-15 mt10">
+                    <h4 class="text-dark"><%= tier.title %></h4>
+                    <p>RP.<%= tier.amount %>/month or more</p>
+                    <p class="text-dark"><%= tier.description %></p>
+                    <div class="text-center"><a href="/pledger/<%= @pledger.username %>/tier/<%= i + 1 %>"><button class="btn-primary">Back me up!</button></a></div>
+                  </div> 
 
-              <% end %>
+                  <% end %>
 
-              <% end %>
+                  <% end %>
                            
 
               </div>

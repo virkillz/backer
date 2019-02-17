@@ -1,0 +1,16 @@
+<div class="card-body border-top-blue-grey border-top-lighten-5">
+  <div class="card-body text-center">
+    <a href="#" onclick="filterBacker('all')">
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-music"></i> All Backer </button> 
+    </a>     
+    <a href="#">
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-type"></i> Active Backer </button>
+    </a>
+    <a href="#">
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-image"></i> Inactive Backer </button>
+    </a>                                                   
+  </div>
+</div>

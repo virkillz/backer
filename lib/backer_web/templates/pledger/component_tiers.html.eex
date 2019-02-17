@@ -1,0 +1,42 @@
+<section class="pricing_payment" id="pricing_payment_inner">
+    <div class="container">
+        <div class="row">        
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="sub_title">
+                    <h2>Transparent pricing <br>Unlimited users</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+              <%= if @pledger.pledger.tier == [] do %>
+              <div class="row bg-white pd-lr-15 pd-b-15 mt10">
+                <h5 class="text-dark text-center">No tier available</h5>
+              </div>   
+              <% else %>
+
+              <%= for {tier, i} <- @pledger.pledger.tier |> Enum.sort_by(fn(p) -> p.amount end) |> Enum.with_index() do %>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="payment_pricing_wrapper">
+                    <div class="pricing_icon">
+                        <img src="/front/images/icons/paynent_pricing_<%= i + 1 %>.png" alt="">
+                    </div>
+                    <div class="pricing_content">
+                        <h3><%= tier.title %></h3>
+                        <h4>Rp.<%= tier.amount %></h4>
+                        <span>Per Bulan</span>
+                        <p><%= tier.description %></p>
+                        <a href="/pledger/<%= @pledger.username %>/tier/<%= i + 1 %>" title="">Pilih</a>
+                    </div>
+                </div>
+            </div>               
+
+              <% end %>
+
+              <% end %>
+
+        </div> 
+    </div>
+    <img src="/front/images/shapes/blure_shape.png" alt="" class="shape_blure">
+</section>

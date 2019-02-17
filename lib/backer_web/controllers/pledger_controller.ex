@@ -4,6 +4,8 @@ defmodule BackerWeb.PledgerController do
   alias Backer.Account
   alias Backer.Account.Pledger
   alias Backer.Constant
+  alias Backer.Content
+  alias Backer.Content.Post
   alias Backer.Finance
 
   alias Backer.Masterdata
@@ -26,10 +28,17 @@ defmodule BackerWeb.PledgerController do
   def explore(conn, params) do
     categories = Masterdata.list_categories()
 
+    page_data = %{
+      header_img: "/front/images/banner/bg-header3.png",
+      title: "Explore"
+    }
+
     conn
-    |> render("categories_public_list.html",
+    |> render("component_explore.html",
       categories: categories,
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+      page_data: page_data,
+      layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
+      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}      
     )
   end
 
@@ -45,10 +54,10 @@ defmodule BackerWeb.PledgerController do
           redirect(conn, to: page_path(conn, :page404))
         else
           conn
-          |> render("public_pledger_tier.html",
+          |> render("component_tiers.html",
             pledger: pledger,
             active: :overview,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
           )
         end
     end
@@ -59,7 +68,6 @@ defmodule BackerWeb.PledgerController do
     backing = Finance.list_all_backerfor(%{"backer_id" => pledger.id})
     backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id})
 
-
     case pledger do
       nil ->
         redirect(conn, to: page_path(conn, :page404))
@@ -69,12 +77,12 @@ defmodule BackerWeb.PledgerController do
           redirect(conn, to: page_path(conn, :page404))
         else
           conn
-          |> render("public_pledger_overview.html",
+          |> render("front_overview.html",
             pledger: pledger,
             active: :overview,
             backing: backing,
             backers: backers,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            layout: {BackerWeb.LayoutView, "layout_front_pledger_public.html"}
           )
         end
     end
@@ -82,6 +90,8 @@ defmodule BackerWeb.PledgerController do
 
   def posts(conn, %{"username" => username}) do
     pledger = Account.get_pledger(%{"username" => username})
+    backing = Finance.list_all_backerfor(%{"backer_id" => pledger.id})
+    backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id})
 
     case pledger do
       nil ->
@@ -92,69 +102,271 @@ defmodule BackerWeb.PledgerController do
           redirect(conn, to: page_path(conn, :page404))
         else
           conn
-          |> render("public_pledger_posts.html",
+          |> render("front_posts.html",
             pledger: pledger,
             active: :posts,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            backing: backing,
+            backers: backers,
+            layout: {BackerWeb.LayoutView, "layout_front_pledger_public.html"}
           )
         end
     end
   end
 
   def dashboard(conn, _params) do
-          conn
-          |> render("dashboard.html",
-            active: :dashboard,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
+    conn
+    |> render("front_dashboard.html",
+      active: :dashboard,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
   end
 
   def dashboard_post(conn, _params) do
-          conn
-          |> render("dashboard_post.html",
-            active: :post,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
-  end 
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    posts = Content.list_posts(%{"pledger_id" => pledger_id}) |> IO.inspect()
+
+    conn
+    |> render("front_dashboard_post.html",
+      active: :dashboard,
+      posts: posts,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
+
+  def dashboard_post_show(conn, %{"id" => id}) do
+    post = Content.get_post_simple(conn.assigns.current_pledger.pledger_id, id)
+
+    if post == nil do
+      redirect(conn, to: "/400")
+    else
+      conn
+      |> render("front_dashboard_post_show.html",
+        post: post,
+        active: :dashboard,
+        layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+      )
+    end
+
+    # pledger_id = conn.assigns.current_pledger.pledger_id
+    # posts = Content.list_posts(%{"pledger_id" => pledger_id}) |> IO.inspect
+  end
+
+  def dashboard_post_new(conn, _params) do
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    changeset = Content.change_post(%Post{})
+    tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+    conn
+    |> render("front_dashboard_post_new.html",
+      changeset: changeset,
+      tiers: tiers,
+      intent: :create,
+      type: :text,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
+
+  def dashboard_post_new_image(conn, _params) do
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    changeset = Content.change_post(%Post{})
+    tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+    conn
+    |> render("front_dashboard_post_new_image.html",
+      changeset: changeset,
+      tiers: tiers,
+      intent: :create,
+      type: :image,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
+
+  def dashboard_post_new_video(conn, _params) do
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    changeset = Content.change_post(%Post{})
+    tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+    conn
+    |> render("front_dashboard_post_new_video.html",
+      changeset: changeset,
+      tiers: tiers,
+      intent: :create,
+      type: :video,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
+
+  def dashboard_post_create(conn, %{"post" => params}) do
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+    post_params = params |> Map.put("pledger_id", pledger_id)
+
+    case Content.create_post(post_params) do
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Post created successfully.")
+        |> redirect(to: pledger_path(conn, :dashboard_post))
+
+      {:error, %Ecto.Changeset{changes: %{type: "image"}} = changeset} ->
+        conn
+        |> render("front_dashboard_post_new_image.html",
+          changeset: changeset,
+          tiers: tiers,
+          layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+        )
+
+      {:error, %Ecto.Changeset{changes: %{type: "video"}} = changeset} ->
+        conn
+        |> render("front_dashboard_post_new_video.html",
+          changeset: changeset,
+          tiers: tiers,
+          layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+        )
+
+      {:error, %Ecto.Changeset{changes: %{type: "text"}} = changeset} ->
+        conn
+        |> render("front_dashboard_post_new.html",
+          changeset: changeset,
+          tiers: tiers,
+          layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+        )
+    end
+  end
+
+  def dashboard_post_edit(conn, %{"id" => id}) do
+    post = Content.get_post_simple(conn.assigns.current_pledger.pledger_id, id)
+    changeset = Content.change_post(post)
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+    if post == nil do
+      redirect(conn, to: "/400")
+    else
+      render_target =
+        case post.type do
+          "image" -> "front_dashboard_post_new_image.html"
+          "video" -> "front_dashboard_post_new_video.html"
+          _other -> "front_dashboard_post_new.html"
+        end
+
+      post_type =
+        case post.type do
+          "image" -> :image
+          "video" -> :video
+          _other -> :other
+        end
+
+      conn
+      |> render(render_target,
+        post: post,
+        intent: :edit,
+        changeset: changeset,
+        tiers: tiers,
+        type: post_type,
+        layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+      )
+    end
+  end
+
+  def dashboard_post_update(conn, %{"id" => id, "post" => post_params}) do
+    post = Content.get_post!(id)
+
+    case Content.update_post(post, post_params) do
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Post updated successfully.")
+        |> redirect(to: pledger_path(conn, :dashboard_post_show, post))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        pledger_id = conn.assigns.current_pledger.pledger_id
+        tiers = Masterdata.list_tiers_for_select(%{"pledger_id" => pledger_id})
+
+        render_target =
+          case post.type do
+            "image" -> "front_dashboard_post_new_image.html"
+            "video" -> "front_dashboard_post_new_video.html"
+            _other -> "frontx_dashboard_post_new.html"
+          end
+
+        post_type =
+          case post.type do
+            "image" -> :image
+            "video" -> :video
+            _other -> :other
+          end
+
+        conn
+        |> render(render_target,
+          post: post,
+          intent: :edit,
+          changeset: changeset,
+          tiers: tiers,
+          type: post_type,
+          layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+        )
+    end
+  end
+
+  def dashboard_post_delete(conn, %{"id" => id}) do
+    post = Content.get_post!(id)
+    {:ok, _post} = Content.delete_post(post)
+
+    conn
+    |> put_flash(:info, "Post deleted successfully.")
+    |> redirect(to: pledger_path(conn, :dashboard_post))
+  end
 
   def dashboard_backers(conn, _params) do
-    pledger = Account.get_pledger(%{"username" => conn.assigns.current_backer.username})
-    backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id}) |> IO.inspect 
-          conn
-          |> render("dashboard_backer.html",
-            active: :backers,
-            backers: backers,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
-  end 
+    pledger_id = conn.assigns.current_pledger.pledger_id
+    backers = Finance.list_all_backers(%{"pledger_id" => pledger_id}) |> IO.inspect()
 
-  def dashboard_donation(conn, _params) do
-          conn
-          |> render("dashboard_donation.html",
-            active: :donation,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
-  end  
+    conn
+    |> render("front_dashboard_backers.html",
+      active: :dashboard,
+      backers: backers,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
+
+  # def dashboard_backers(conn, _params) do
+  #   pledger = Account.get_pledger(%{"username" => conn.assigns.current_backer.username})
+  #   backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id}) |> IO.inspect 
+  #         conn
+  #         |> render("dashboard_backer.html",
+  #           active: :backers,
+  #           backers: backers,
+  #           layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
+  #         )
+  # end 
+
+  def dashboard_earning(conn, _params) do
+    conn
+    |> render("front_dashboard_earning.html",
+      active: :donation,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
 
   def dashboard_edit_profile(conn, _params) do
-          conn
-          |> render("dashboard.html",
-            active: :edit_profile,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
+    conn
+    |> render("dashboard.html",
+      active: :edit_profile,
+      layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
+    )
   end
 
   def dashboard_page_setting(conn, _params) do
-          conn
-          |> render("dashboard_page_setting.html",
-            active: :page_setting,
-            layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-          )
-  end         
+    conn
+    |> render("front_dashboard_page_setting.html",
+      active: :page_setting,
+      layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
+    )
+  end
 
   def backers(conn, %{"username" => username}) do
     pledger = Account.get_pledger(%{"username" => username})
-    backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id})    
+    backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id})
 
     case pledger do
       nil ->
@@ -165,11 +377,11 @@ defmodule BackerWeb.PledgerController do
           redirect(conn, to: page_path(conn, :page404))
         else
           conn
-          |> render("public_pledger_backers.html",
+          |> render("front_backers.html",
             pledger: pledger,
             active: :backers,
             backers: backers,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            layout: {BackerWeb.LayoutView, "layout_front_pledger_public.html"}
           )
         end
     end
@@ -201,7 +413,12 @@ defmodule BackerWeb.PledgerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        conn
+        |> put_status(:not_found)
+        |> render("page_404.html",
+          title: "404",
+          layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+        )
 
       other ->
         if backer.is_pledger do
@@ -307,7 +524,12 @@ defmodule BackerWeb.PledgerController do
 
       case Finance.create_donation_invoice(new_params) do
         {:ok, %{invoice: invoice}} ->
-          redirect(conn, to: "/backer/" <> conn.assigns.current_backer.username)
+          redirect(conn,
+            to:
+              "/backer/" <>
+                conn.assigns.current_backer.username <>
+                "/invoice/" <> Integer.to_string(invoice.id)
+          )
 
         {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
           IO.inspect(changeset)
@@ -321,9 +543,11 @@ defmodule BackerWeb.PledgerController do
   end
 
   def checkout(conn, %{"tier" => tier, "username" => username}) do
+    # check kalau pledger ga bisa support dirinya sendiri
+
     if conn.assigns.backer_signed_in? do
       backer = conn.assigns.current_backer
-      pledger = Account.get_pledger(%{"username" => username})
+      pledger = Account.get_pledger(%{"username" => username}) |> IO.inspect()
 
       if pledger == nil do
         redirect(conn, to: "/404")
@@ -341,9 +565,10 @@ defmodule BackerWeb.PledgerController do
               end
 
             conn
-            |> render("private_checkout.html",
+            |> render("component_checkout.html",
               tier: selected_tier,
-              layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+              pledger: pledger,
+              layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
             )
 
           _ ->

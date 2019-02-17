@@ -6,11 +6,6 @@ defmodule BackerWeb.BackerController do
   alias Backer.Constant
   alias Backer.Account.Backer
 
-  def index(conn, params) do
-    backers = Account.list_backers(params)
-    render(conn, "index.html", backers: backers)
-  end
-
   def featured(conn, _params) do
     backers = Account.list_backers()
 
@@ -19,6 +14,66 @@ defmodule BackerWeb.BackerController do
       backers: backers,
       layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
     )
+  end
+
+  def redirector(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        conn
+        |> put_status(:not_found)
+        |> render(BackerWeb.PledgerView, "page_404.html",
+          title: "404",
+          layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+        )
+
+      _ ->
+        pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+
+        if conn.assigns.backer_signed_in? do
+          if conn.assigns.current_backer.username == username do
+            redirect(conn, to: backer_path(conn, :timeline, username))
+          else
+            redirect(conn, to: backer_path(conn, :overview, username))
+          end
+        else
+          redirect(conn, to: backer_path(conn, :overview, username))
+        end
+    end
+  end
+
+  def invoice_display(conn, %{"id" => id, "username" => username}) do
+    invoice = Finance.get_invoice!(id) |> IO.inspect()
+    invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
+    backer = Account.get_backer(%{"username" => username})
+
+    conn
+    |> render("component_invoice.html",
+      invoice: invoice,
+      invoice_details: invoice_details,
+      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+    )
+  end
+
+  def overview(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+    pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+    IO.inspect("ini lho")
+    recomendation = Account.random_pledger(2) |> IO.inspect()
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("front_overview.html",
+          backer: backer,
+          pledgers: pledgers,
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        )
+    end
   end
 
   def timeline(conn, %{"username" => username}) do
@@ -30,10 +85,16 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         conn
-        |> render("private_backer_timeline.html",
+        |> render("front_timeline.html",
           backer: backer,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
+
+        # conn
+        # |> render("private_backer_timeline.html",
+        #   backer: backer,
+        #   layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        # )
     end
   end
 
@@ -64,10 +125,10 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         conn
-        |> render("public_backer_backerfor.html",
+        |> render("front_backerfor.html",
           backer: backer,
           pledgers: pledgers,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end
@@ -88,12 +149,12 @@ defmodule BackerWeb.BackerController do
           pending_invoice = Enum.count(invoices, fn x -> x.status == "unpaid" end)
 
           conn
-          |> render("private_backer_finance.html",
+          |> render("component_finance.html",
             backer: conn.assigns.current_backer,
             invoices: invoices,
             balance: balance,
             pending_invoice: pending_invoice,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
           )
         end
     end
@@ -107,23 +168,14 @@ defmodule BackerWeb.BackerController do
     text(conn, "profile setting. put auth")
   end
 
-  def overview(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  def ajax_test(conn, params) do
+    IO.inspect(params)
+    conn |> put_layout(false) |> render("ajax_test.html")
+  end
 
-    pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})    
-
-    case backer do
-      nil ->
-        redirect(conn, to: page_path(conn, :page404))
-
-      _ ->
-        conn
-        |> render("public_backer_overview.html",
-          backer: backer,
-          pledgers: pledgers,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-        )
-    end
+  def index(conn, params) do
+    backers = Account.list_backers(params)
+    render(conn, "index.html", backers: backers)
   end
 
   def new(conn, _params) do

@@ -10,7 +10,7 @@ defmodule Backer.Finance do
   alias Backer.Finance.IncomingPayment
   alias Backer.Finance.InvoiceDetail
   alias Backer.Account.Pledger
-  alias Backer.Account.Backer, as: Backerz  
+  alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
 
   @doc """
@@ -537,13 +537,19 @@ defmodule Backer.Finance do
         on: p.backer_id == b.id,
         on: d.pledger_id == p.id,
         where: d.backer_id == ^id,
-        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        select: %{
+          pledger_id: d.pledger_id,
+          background: p.background,
+          display_name: b.display_name,
+          avatar: b.avatar,
+          username: b.username,
+          title: t.name
+        },
         distinct: true
       )
 
     Repo.all(query)
   end
-
 
   @doc """
   List all active backers for one particular pledger
@@ -556,7 +562,6 @@ defmodule Backer.Finance do
   """
 
   def list_active_backers(%{"pledger_id" => id}) do
-
     {year, month, _day} = Date.utc_today() |> Date.to_erl()
 
     query =
@@ -564,17 +569,53 @@ defmodule Backer.Finance do
         join: b in Backerz,
         on: d.backer_id == b.id,
         where: d.pledger_id == ^id,
-        where: d.month == ^month and d.year == ^year,        
-        select: %{backer_id: d.backer_id, username: b.username, avatar: b.avatar, display_name: b.display_name},
+        where: d.month == ^month and d.year == ^year,
+        select: %{
+          backer_id: d.backer_id,
+          username: b.username,
+          avatar: b.avatar,
+          display_name: b.display_name,
+          tier: d.tier
+        },
         distinct: true
       )
 
     Repo.all(query)
   end
 
+  def list_all_backers(%{"pledger_id" => id}) do
+    query =
+      from(d in Donation,
+        join: b in Backerz,
+        on: d.backer_id == b.id,
+        where: d.pledger_id == ^id and d.is_executed == true,
+        group_by: [d.backer_id, b.avatar, b.display_name, b.username],
+        select: %{
+          backer_id: d.backer_id,
+          amount: sum(d.amount),
+          avatar: b.avatar,
+          display_name: b.display_name,
+          username: b.username
+        }
+      )
+
+    all_backer = Repo.all(query)
+    active_backer = list_active_backers(%{"pledger_id" => id})
+
+    aggregate_backers = Enum.map(all_backer, fn x -> aggregate_backers_list(active_backer, x) end)
+  end
+
+  defp aggregate_backers_list(list, backer) do
+    result = Enum.find(list, fn x -> x.backer_id == backer.backer_id end) |> IO.inspect()
+
+    if result != nil do
+      Map.put(backer, :status, "active") |> Map.put(:tier, result.tier)
+    else
+      Map.put(backer, :status, "inactive") |> Map.put(:tier, "-")
+    end
+  end
 
   def list_active_backerfor(%{"backer_id" => id}) do
-
     {year, month, _day} = Date.utc_today() |> Date.to_erl()
 
     query =
@@ -587,7 +628,14 @@ defmodule Backer.Finance do
         on: d.pledger_id == p.id,
         where: d.backer_id == ^id,
         where: d.month == ^month and d.year == ^year,
-        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        select: %{
+          pledger_id: d.pledger_id,
+          background: p.background,
+          display_name: b.display_name,
+          avatar: b.avatar,
+          username: b.username,
+          title: t.name
+        },
         distinct: true
       )
 
@@ -604,13 +652,20 @@ defmodule Backer.Finance do
         on: p.backer_id == b.id,
         on: d.pledger_id == p.id,
         where: d.backer_id == ^id,
-        select: %{pledger_id: d.pledger_id, background: p.background, display_name: b.display_name, avatar: b.avatar, username: b.username, title: t.name},
+        select: %{
+          pledger_id: d.pledger_id,
+          background: p.background,
+          display_name: b.display_name,
+          avatar: b.avatar,
+          username: b.username,
+          title: t.name
+        },
         distinct: true,
         limit: ^limit
       )
 
     Repo.all(query)
-  end  
+  end
 
   def list_donations(params) do
     Repo.paginate(Donation, params)

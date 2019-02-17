@@ -11,7 +11,7 @@ defmodule BackerWeb.Endpoint do
     at: "/",
     from: :backer,
     gzip: false,
-    only_matching: ~w(css img fonts assets images app-assets js favicon.ico robots.txt)
+    only_matching: ~w(css img fonts assets images front app-assets js favicon.ico robots.txt)
   )
 
   # Code reloading can be explicitly enabled under the

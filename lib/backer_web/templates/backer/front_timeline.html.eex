@@ -1,0 +1,101 @@
+<section style="margin-top: 40px; min-height: 800px;">
+    <div class="container" style="max-width: 1300px;">
+
+      <div class="row">
+
+
+        <div class="col-md-3 static">
+
+<%= render("component_private_menu.html", backer: @backer) %>
+
+
+        </div>
+                
+        <div class="col-md-6">
+
+
+          <div class="row block_page"><div id="timeline-target"></div></div>
+            <div class="text-center" id="backloader">
+              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
+              <%# <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="loader">               %>
+            </div>                      
+
+        </div>
+
+                    <!-- Newsfeed Common Side Bar Right
+              ================================================= -->
+        <div class="col-md-3 static">
+
+
+                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
+
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+</section>
+
+<script>
+      function mbel(params) {
+        var button = document.getElementById("load-more");
+        var loader = document.getElementById("backloader");
+        button.remove();
+        loader.style.display = '';
+        var url = '/ajax/public/test?salam=' + params;
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                success: function(data){
+                    //If the success function is execute,
+                    //then the Ajax request was successful.
+                    //Add the data we received in our Ajax
+                    //request to the "content" div.
+                    $('#backloader').hide();
+                    $('#timeline-target').append(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#backloader').hide();
+                    var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                    var htmlError = '<div class="card card-padding text-center"> Failed to fetch content </div>';
+                    $('#timeline-target').append(errorMsg); //if want to show real error
+                    // $('#timeline-target').html(htmlError);                    
+                  }
+            });        
+
+    }
+</script>

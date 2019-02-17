@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="EcologyTheme">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backer - Sustainable Support Network</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Goole Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/front/css/assets/bootstrap.min.css">
+    <!-- Font awsome CSS -->
+    <link rel="stylesheet" href="/front/css/assets/flaticon.css">
+    <link rel="stylesheet" href="/front/css/assets/magnific-popup.css">    
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/front/css/assets/owl.carousel.css">
+    <link rel="stylesheet" href="/front/css/assets/owl.theme.css">     
+    <link rel="stylesheet" href="/front/css/assets/animate.css"> 
+    <link rel="stylesheet" href="/front/css/assets/preloader.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/front/css/assets/slick.css">  
+    <!-- Mean Menu-->
+    <link rel="stylesheet" href="/front/css/assets/meanmenu.css">
+
+    <!-- main style-->
+    <link rel="stylesheet" href="/front/css/style.css">    
+    <link rel="stylesheet" href="/front/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> 
+        
+                     
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background-color: rgba(245, 245, 255, 1);">
+
+
+<%= render("component_topmenu_dark.html", conn: @conn, title: "taik") %>
+
+
+
+<!-- Search Box Start Here -->
+<div id="header-search" class="header-search">
+    <button type="button" class="close">×</button>
+    <form class="header-search-form">
+        <input type="search" value="" placeholder="Type here........" />
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+</div>
+
+
+
+<%= render @view_module, @view_template, assigns %>
+
+
+
+<!-- Footer -->  
+<footer id="footer_app_x" style="padding-top: 0px; margin-top:0px; background-color: white;">
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright  &copy; Backer 2019. All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="copy_right_items d-flex justify-content-end">
+                        <li><a href="#">Terms & Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<section id="scroll-top" class="scroll-top">
+    <h2 class="disabled">Scroll to top</h2>
+    <div class="to-top pos-rtive">
+        <a href="#"><i class = "flaticon-right-arrow"></i></a>
+    </div>
+</section>
+
+    <!-- JavaScript -->
+    <script src="/front/js/jquery-3.2.1.min.js"></script>
+    <script src="/front/js/popper.min.js"></script>
+    <script src="/front/js/bootstrap.min.js"></script>
+    <script src="/front/js/jquery.magnific-popup.min.js"></script>     
+    <script src="/front/js/owl.carousel.min.js"></script>  
+    <script src="/front/js/slick.min.js"></script>  
+    <!-- Main Menu -->
+    <script src="/front/js/jquery.meanmenu.min.js"></script>       
+    <script src="/front/js/custom.js"></script>
+    <script src="/js/app.js" type="text/javascript"></script> 
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 
+
+    
+    <script>
+
+    $(document).ready(function() {        
+
+    $('#myTable').DataTable({
+        "pagingType": "simple",
+        "pageLength": 10,
+        "bLengthChange": false,
+        "language": {
+            "paginate": {
+                          "previous": "<",
+                          "next": ">",
+                            },
+            "info": " _START_ ke _END_ dari total _TOTAL_"
+                        }
+    });
+
+    }); 
+
+    </script>  
+        
+</body>
+</html>

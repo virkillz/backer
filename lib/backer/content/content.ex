@@ -409,6 +409,14 @@ defmodule Backer.Content do
       [%Post{}, ...]
 
   """
+  def list_posts(%{"pledger_id" => pledger_id}) do
+    # Repo.all(Post)
+
+    query = from(p in Post, where: p.pledger_id == ^pledger_id)
+
+    Repo.all(query)
+  end
+
   def list_posts(params) do
     # Repo.all(Post)
     Post |> Repo.paginate(params)
@@ -431,7 +439,12 @@ defmodule Backer.Content do
   def get_post!(id) do
     Repo.get!(Post, id)
     |> Repo.preload(:pcomment)
-    |> IO.inspect()
+  end
+
+  def get_post_simple(pledger_id, id) do
+    query = from(p in Post, where: p.id == ^id and p.pledger_id == ^pledger_id)
+
+    Repo.one(query)
   end
 
   @doc """

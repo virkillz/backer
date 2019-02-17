@@ -1,0 +1,170 @@
+<section style="margin-top: 100px; margin-bottom: 200px;">
+
+<%= if @invoice.status == "unpaid" do %>
+	<h1 class="text-center" style="padding-bottom: 50px;">Silahkan melakukan pembayaran</h1>
+<% end %>
+
+	<div class="container">
+
+
+
+<section class="card" style="padding: 20px;">
+  <div id="invoice-template" class="card-body">
+    <!-- Invoice Company Details -->
+    <div id="invoice-company-details" class="row">
+      <div class="col-md-6 col-sm-12 text-left text-md-left">             
+                        <img src="/img/backer-logo-color-small.png" alt="company logo" class="mb-2" width="70">
+                        <ul class="px-0 list-unstyled">
+                            <li class="text-bold-700">PT. Backerindo Cipta Kreasi</li>
+                            <li>Jl. Jend Soedirman,</li>                            
+                            <li>Portland 12345,</li>
+                            <li>Indonesia</li>
+                        </ul>
+                    
+      </div>
+      <div class="col-md-6 col-sm-12 text-center text-md-right">
+        <h2>INVOICE</h2>
+        <p># INV-<%= @invoice.id %></p>
+        <p> <%= @invoice.inserted_at %></p>        
+      </div>
+    </div>
+    <!--/ Invoice Company Details -->
+
+    <!-- Invoice Customer Details -->
+    <div id="invoice-customer-details" class="row pt-2">
+      <div class="col-md-6 col-sm-12">
+          <p class="text-muted">(123) 456 789</p>
+          <p class="text-muted">finance@backer.id</p>
+      </div>
+      <div class="col-md-6 col-sm-12 text-center text-md-right">
+          <p class="text-muted">Bill To</p>
+          <ul class="px-0 list-unstyled">
+              <li class="text-bold-700"><%= @invoice.backer.full_name %></li>
+              <li>102 Park Avenue,</li>
+              <li>Jakarta,</li>
+              <li>Indonesia</li>
+            </ul>
+        
+      </div>
+    </div>
+    <!--/ Invoice Customer Details -->
+
+    <!-- Invoice Items Details -->
+    <div id="invoice-items-details" class="pt-2">
+      <div class="row">
+        <div class="table-responsive col-sm-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Item & Description</th>
+                <th class="text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= for {invoice_detail, i} <- @invoice_details do %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td>
+                      <%= if @invoice.type == "deposit" do %>
+                      <p>Deposit Balance</p>
+                      <% end %>
+
+                      <%= if @invoice.type == "backing" do %>
+                      <p><%= String.capitalize(invoice_detail.type) <> " for Pledger with ID: #" <> Integer.to_string(invoice_detail.pledger_id) <> " ("<> invoice_detail.pledger.backer.display_name <> ") for " <>stringify(invoice_detail.month)<> " " <> Integer.to_string(invoice_detail.year)%></p>
+                      <% end %>                      
+                    </td>
+                    <td class="text-right"><%= invoice_detail.amount %></td>
+                  </tr>  
+              <% end %>              
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-sm-12 text-center text-md-left">
+          <p class="lead">Payment Methods:</p>
+          <div class="row">
+            <div class="col-md-8">
+            <table class="table table-borderless table-sm">
+              <tbody>
+                <tr>
+                  <td>Bank name:</td>
+                  <td class="text-right">Bank Central Asia (BCA)</td>
+                </tr>
+                <tr>
+                  <td>Acc name:</td>
+                  <td class="text-right">PT. Backer Cipta Kreasi</td>
+                </tr>
+                <tr>
+                  <td>Nomor Account:</td>
+                  <td class="text-right">0372800516</td>
+                </tr>
+                <tr>
+                  <td>SWIFT code:</td>
+                  <td class="text-right">CENAIDJA</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <p class="lead">Total due</p>
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Sub Total</td>
+                  <td class="text-right"><%= @invoice.amount %></td>
+                </tr>
+                <tr>
+                  <td>Unique Amount</td>
+                  <td class="text-right"><%= @invoice.unique_amount %></td>
+                </tr>                
+                <tr>
+                  <td>Payment Made</td>
+                  <td class="pink text-right">(-) 0</td>
+                </tr>
+                <tr class="bg-grey bg-lighten-4">
+                  <td class="text-bold-800">Balance Due</td>
+                  <td class="text-bold-800 text-right"><%= @invoice.amount + @invoice.unique_amount %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center">
+            <p>Authorized person</p>
+            <img src="../../../app-assets/images/pages/signature-scan.png" alt="signature" class="height-100"/>
+            <h6>Carla Prop</h6>
+            <p class="text-muted">Managing Director</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invoice Footer -->
+    <div id="invoice-footer">
+      <div class="row">
+        <div class="col-md-7 col-sm-12">
+          <h6>Terms & Condition</h6>
+          <p>You know, being a test pilot isn't always the healthiest business in the world. We predict too much for the next year and yet far too little for the next 10.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Invoice Footer -->
+
+  </div>
+</section>
+
+
+
+          <div id="load-more" class="text-center" style="margin-bottom: 50px;margin-top: 100px;">
+                    <button class="btn_load_more" >Kembali ke Backer Profile</button>
+          </div> 
+
+
+</div>
+
+</section>

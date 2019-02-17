@@ -7,6 +7,7 @@ defmodule Backer.Finance.Donation do
     field(:month, :integer)
     field(:tier, :integer)
     field(:year, :integer)
+    field(:is_executed, :boolean, default: true)
     field(:pledger_id, :id)
     field(:backer_id, :id)
     field(:invoice_id, :id)

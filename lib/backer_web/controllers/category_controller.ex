@@ -17,13 +17,20 @@ defmodule BackerWeb.CategoryController do
 
   def list_pledger(conn, %{"id" => id}) do
     category = Masterdata.get_category!(id)
-    pledgers = Account.get_pledger(%{"category_id" => id})
+    pledgers = Account.get_pledger(%{"category_id" => id}) |> IO.inspect()
+
+    page_data = %{
+      header_img:
+        "https://images.pexels.com/photos/1212829/pexels-photo-1212829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      title: category.name
+    }
 
     conn
     |> render("category_pledger_list.html",
       category: category,
       pledgers: pledgers,
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+      page_data: page_data,
+      layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
     )
   end
 

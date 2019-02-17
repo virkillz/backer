@@ -1,0 +1,56 @@
+<!-- Sign In Form -->  
+<section class="sign_in">
+    <div class="container">
+        <div class="card card-padding row" style="padding: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="sign_in_form">   
+                    <div class="form_title">
+                        <h2>Login</h2>
+                        <p>Selamat datang kembali.</p>
+                    </div>
+
+                  <p class="alert alert-info alert-dismissible" role="alert"><%= get_flash(@conn, :info) %></p>
+                  <p class="alert alert-danger alert-dismissible" style="background-color: tomato;" role="alert"><%= get_flash(@conn, :error) %></p>                       
+
+                    <%= form_for @changeset, "/login", fn f -> %>  
+                        <div class="row">
+
+                            <%= if @changeset.action do %>
+                            <div class="alert alert-danger col-12">
+                              <p>Ups! Silahkah cek kesalahan dibawah.</p>
+                            </div>                            
+                          <% end %> 
+                           
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                    <%= error_tag f, :email %>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <%= error_tag f, :password %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between pass_option">
+                                <div><input type="checkbox" name="vehicle" value="Bike"> <span class="keep_me_login">Keep me Log in</span></div>
+                                <a href="" title="" class="forget_pass">Lupa Password ?</a>
+                            </div>  
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <div class="login_option">
+                                    <button type="submit" class="btn btn-default login_btn">Login</button><br>
+                                    <span>Belum punya user?<a href="/register" title="" class="forget_pass">Daftar</a></span>
+                                </div>
+                            </div> 
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Sing In  -->  

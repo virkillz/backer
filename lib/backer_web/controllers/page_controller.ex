@@ -9,26 +9,30 @@ defmodule BackerWeb.PageController do
     changeset = Account.change_backer(%Backerz{})
 
     conn
-    |> render("homepage.html",
+    |> render("component_homepage.html",
       changeset: changeset,
-      layout: {BackerWeb.LayoutView, "homepage_frontend_layout.html"}
+      layout: {BackerWeb.LayoutView, "layout_front_homepage.html"}
     )
   end
 
-  def static_page(conn, %{"slug" => slug}) do
-    case slug do
-      "how-it-works" ->
-        render(conn, "static_how_it_works.html",
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-        )
+  def how_it_works(conn, _params) do
+    render(conn, "static_how_it_works.html",
+      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+    )
+  end
 
-      _else ->
-        conn
-        |> put_status(:not_found)
-        |> render("404.html",
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-        )
-    end
+  def about_us(conn, _params) do
+    render(conn, "page_about.html",
+      title: "Tentang Kami",
+      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+    )
+  end
+
+  def contact_us(conn, _params) do
+    render(conn, "page_contact.html",
+      title: "Hubungi Kami",
+      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+    )
   end
 
   def verify(conn, %{"code" => code}) do
@@ -100,6 +104,16 @@ defmodule BackerWeb.PageController do
     redirect(conn, to: "/404")
   end
 
+  def page400(conn, _params) do
+    conn
+    |> put_status(:not_found)
+    |> render(BackerWeb.PledgerView, "page_404.html",
+      page_data: %{title: "400"},
+      title: "400",
+      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+    )
+  end
+
   def page404(conn, _params) do
     conn
     |> put_status(:not_found)
@@ -108,28 +122,23 @@ defmodule BackerWeb.PageController do
 
   def page505(conn, _params) do
     text(conn, "505 bro")
-    # conn
-    # |> put_status(:not_found)
-    # |> render("404.html", layout: {BackerWeb.LayoutView, "frontend_header_footer.html"})
   end
 
   def login(conn, _params) do
     changeset = Account.change_backer(%Backerz{})
 
-    render(conn, "login_register.html",
-      layout: {BackerWeb.LayoutView, "header_only.html"},
-      changeset: changeset,
-      action: :login
+    render(conn, "component_login.html",
+      layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+      changeset: changeset
     )
   end
 
   def register(conn, params) do
     changeset = Account.change_backer(%Backerz{})
 
-    render(conn, "login_register.html",
-      layout: {BackerWeb.LayoutView, "header_only.html"},
-      changeset: changeset,
-      action: :register
+    render(conn, "component_register.html",
+      layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+      changeset: changeset
     )
   end
 
@@ -139,17 +148,14 @@ defmodule BackerWeb.PageController do
         conn
         |> put_flash(
           :info,
-          "User created successfully. Please check your email and verify before login"
+          "Pendaftaran sukses. Silahkan cek dan verifikasi email anda sebelum login."
         )
         |> redirect(to: "/login")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        conn
-        # |> put_flash(:error, "Oops, check error below")
-        |> render("login_register.html",
-          layout: {BackerWeb.LayoutView, "header_only.html"},
-          changeset: changeset,
-          action: :register
+        render(conn, "component_register.html",
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+          changeset: changeset
         )
     end
   end
@@ -173,10 +179,9 @@ defmodule BackerWeb.PageController do
 
         conn
         |> put_flash(:error, reason)
-        |> render("login_register.html",
-          layout: {BackerWeb.LayoutView, "header_only.html"},
-          changeset: changeset,
-          action: :login
+        |> render("component_login.html",
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+          changeset: changeset
         )
     end
   end
@@ -235,7 +240,6 @@ defmodule BackerWeb.PageController do
   end
 
   def change_password_post(conn, %{"backer" => params}) do
-    IO.inspect(params)
     backer = Account.get_backer(%{"password_recovery_code" => params["code"]})
 
     if backer == nil do

@@ -1,0 +1,83 @@
+<section style="margin-top: 40px; min-height: 800px;">
+    <div class="container" style="max-width: 1300px;">
+    		<div class="row">
+
+    			<!-- Newsfeed Common Side Bar Left
+          ================================================= -->
+    			<div class="col-md-3 static">
+
+<%= render("component_private_menu.html", backer: @backer) %>
+          </div>
+          
+    			<div class="col-md-6">
+
+<div class="friend-list">
+                <div class="row">
+                  <%= for pledger <- @pledgers do %>
+
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="/<%= pledger.username %>">
+                            <img class="fir-author-image fir-clickcircle" src="<%= pledger.avatar %>" alt="<%= pledger.display_name %>">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title"><%= pledger.display_name %></div>
+                            <div class="fig-author-figure-username">@<%= pledger.username %></div>
+                            <div class="fig-author-figure-since"><%= pledger.title %></div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+
+
+                  <% end %>
+                </div>
+              </div>
+
+          </div>
+
+    			<!-- Newsfeed Common Side Bar Right
+          ================================================= -->
+    			<div class="col-md-3 static">
+
+                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
+
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="card card-padding">
+                        <figure class="fir-image-figure">
+                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                            <div class="fir-imageover-color"></div>
+                          </a>
+
+                          <figcaption>
+                            <div class="fig-author-figure-title">Bintang Dilangit</div>
+                            <div class="fig-author-figure-username">@bintang</div>
+                            <div class="fig-author-figure-since">active backer since November 2019</div>
+                          </figcaption>
+                        </figure>
+                    </div>
+
+
+          </div>
+    		</div>
+    	</div>
+    </section>

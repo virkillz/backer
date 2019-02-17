@@ -1,39 +1,65 @@
-
-		<section class="banner-category" style="background: linear-gradient(to right, rgba(0,0,0, 0.1) , rgba(0,0,0, 0.7)), url(https://picsum.photos/1600/600?image=96) fixed no-repeat;">
-			<div class="container">
-
-<div class="col-sm-6 pull-right">
-<h1 class="text-white text-right mt80"><%= @category.name %></h1>
-<p class="text-white text-right mt40"><%= @category.description %></p>
-</div>
-			</div>
-		</section>
+<section style="margin-top: 100px; margin-bottom: 100px;">
 
             <!-- Friend List
             ================================================= -->
             <div class="friend-list">
-            	<div class="row mt80">
             	<div class="container">
+            	<div class="row">
 
             		<%= for pledger <- @pledgers do %>
-            	<div class="col-12 col-sm-6">
-            		<a href="/<%= pledger.username %>">
-                  <div class="friend-card bg-white">
-                  	<img src="<%= pledger.background %>" alt="profile-cover" class="img-responsive cover" />
-                  	<div class="card-info">
-                      <img src="<%= pledger.avatar %>" alt="user" class="profile-photo-lg" />
-                      <div class="friend-info">
-                        <a href="#" class="pull-right text-green">345 Active Backer</a>
-                      	<h5><a href="/<%= pledger.username %>" class="profile-link"><%= pledger.display_name %></a></h5>
-                      	<p><%= pledger.title %></p>
-                      </div>
-                    </div>
-                  </div>
-              </a>
+
+
+            	<div class="col-lg-6">
+
+
+<div class="twPc-div">
+    <a href="/pledger/<%= pledger.username %>" class="twPc-bg twPc-block" style="background: url(<%= pledger.background %>) no-repeat center;"></a>
+
+  <div>
+
+    <a title="<%= pledger.display_name %>" href="/pledger/<%= pledger.username %>" class="twPc-avatarLink">
+      <img alt="Mert Salih Kaplan" src="<%= pledger.avatar %>" class="twPc-avatarImg">
+    </a>
+
+    <div class="twPc-divUser">
+      <div class="twPc-divName">
+        <a href="/pledger/<%= pledger.username %>"><%= pledger.display_name %></a>
+      </div>
+      <span>
+        <span><%= pledger.title %></span>
+      </span>
+    </div>
+
+    <div class="twPc-divStats">
+      <ul class="twPc-Arrange">
+        <li class="twPc-ArrangeSizeFit text-center">
+          <a href="/pledger/<%= pledger.username %>" title="9.840 Tweet">
+            <span class="twPc-StatLabel twPc-block">Backer</span>
+            <span class="twPc-StatValue">9.840</span>
+          </a>
+        </li>
+        <li class="twPc-ArrangeSizeFit text-center">
+          <a href="/pledger/<%= pledger.username %>" title="885 Following">
+            <span class="twPc-StatLabel twPc-block">Post</span>
+            <span class="twPc-StatValue">885</span>
+          </a>
+        </li>      
+        <li class="twPc-ArrangeSizeFit text-center">
+            <a href="/pledger/<%= pledger.username %>/tier" class="btn btn-pill " style="margin-top: 10px; margin-right: 25px;">Support</a>
+        </li>        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
                 </div>
 
             		<% end %>
+
             	</div>
             </div>
         </div>
-          </div>\
+</section>

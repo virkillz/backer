@@ -1,0 +1,16 @@
+<div class="card-body border-top-blue-grey border-top-lighten-5">
+  <div class="card-body text-center">
+    <a href="/dashboard/post/new" up-dash="unpoly">
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-type"></i> Create Text Post</button>
+    </a>
+    <a href="/dashboard/post/new-image" up-instant>
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-image"></i> Create Picture Post</button>
+    </a>
+    <a href="/dashboard/post/new-video" up-instant>
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-music"></i> Create Video Post</button> 
+    </a>                                                    
+  </div>
+</div>

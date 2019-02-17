@@ -1,0 +1,88 @@
+<div class="sidebar-detached sidebar-left">
+  <div class="sidebar">
+      <div class="bug-list-sidebar-content">
+        <div class="card">
+
+            <%= render("component_pledger_card_header.html", conn: @conn) %>
+          
+            <%= render("component_dashboard_post_menu.html") %>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="content-detached content-right">
+          <div class="content-body">
+      <unpoly>
+    <section class="row">
+        <div class="col-12">
+
+    <div class="card" style="padding:15px;">
+                <div class="card-header">
+                    <h4 class="card-title">New Post</h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body p-0 pb-0">
+    <div class="container">
+
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+
+
+
+
+
+
+<div class="post-content">
+
+                <h4 style="text-align: right;"><%= @post.title %></h4>
+                <img src="http://ecologytheme.com/theme/sassnex/images/blog/blog_p_5.jpg" alt="post-image" class="img-responsive post-image">
+                <div class="post-container">
+                  <img src="/img/avatar1.jpg" alt="user" class="avatar-small float-left">
+                  <div class="post-detail">
+                    <div class="user-info">
+                      <h5><a href="timeline.html" class="profile-link">Sarah Cruiz</a> <span class="following">following</span></h5>
+                      <p class="text-muted">Published a photo about 15 mins ago</p>
+                    </div>
+                    <div class="reaction">
+                      <a class="btn text-green"><i class="la la-comments-o"></i> 13</a>
+                      <a class="btn text-red"><i class="la la-comments-o"></i> 0</a>
+                    </div>
+                    <div class="line-divider"></div>
+                    <div class="post-text">
+                      <%= @post.content %>
+                    </div>
+                  </div>
+                </div>
+
+</div>
+
+
+ <div class="text-center"><%= link "Back", to: "/dashboard/post", class: "btn btn-warning" %></span></div>
+
+
+
+
+
+</div>
+</div>
+
+
+
+    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</unpoly>
+
+  </div>
+</div>        

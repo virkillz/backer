@@ -11,6 +11,8 @@ defmodule Backer.Content.Post do
     field(:min_tier, :integer)
     field(:title, :string)
     field(:pledger_id, :id)
+    field(:type, :string)
+    field(:publish_status, :string, default: "draft")
 
     has_many(:pcomment, Backer.Content.PostComment)
 
@@ -28,31 +30,31 @@ defmodule Backer.Content.Post do
       :featured_image,
       :featured_link,
       :featured_video,
-      :pledger_id
+      :pledger_id,
+      :type,
+      :publish_status
     ])
-    |> validate_required([:pledger_id, :content, :min_tier])
+    |> validate_required([:pledger_id, :title, :content, :min_tier])
     |> validate_only_one
-    |> IO.inspect()
   end
 
   def validate_only_one(changeset) do
-    changeset |> IO.inspect()
-    featured_link = get_field(changeset, :featured_link) |> IO.inspect()
-    featured_video = get_field(changeset, :featured_video) |> IO.inspect()
-    featured_image = get_field(changeset, :featured_image) |> IO.inspect()
+    featured_link = get_field(changeset, :featured_link)
+    featured_video = get_field(changeset, :featured_video)
+    featured_image = get_field(changeset, :featured_image)
 
     cond do
       featured_image != nil and featured_link == nil and featured_video == nil ->
-        changeset
+        changeset |> change(type: "image")
 
       featured_image == nil and featured_link != nil and featured_video == nil ->
-        changeset
+        changeset |> change(type: "link")
 
       featured_image == nil and featured_link == nil and featured_video != nil ->
-        changeset
+        changeset |> change(type: "video")
 
       featured_image == nil and featured_link == nil and featured_video == nil ->
-        changeset
+        changeset |> change(type: "text")
 
       true ->
         changeset

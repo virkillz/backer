@@ -1,0 +1,84 @@
+
+<section>
+    <div class="container" style="max-width: 1242px;">
+<div class="row" style="margin-top: 30px;">
+
+
+            <div class="col-md-8">
+
+
+
+
+          <div class="row block_page"><div id="timeline-target"><div class="post-content">
+
+
+                <img src="http://ecologytheme.com/theme/sassnex/images/blog/blog_p_5.jpg" alt="post-image" class="img-responsive post-image">
+                <div class="post-container">
+                  <img src="/img/avatar1.jpg" alt="user" class="avatar-small float-left">
+                  <div class="post-detail">
+                    <div class="user-info">
+                      <h5><a href="timeline.html" class="profile-link">Sarah Cruiz</a> <span class="following">following</span></h5>
+                      <p class="text-muted">Published a photo about 15 mins ago</p>
+                    </div>
+                    <div class="reaction">
+                      <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+                      <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                    </div>
+                    <div class="line-divider"></div>
+                    <div class="post-text">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                    </div>
+                    <div class="line-divider"></div>
+                    <div class="post-comment">
+                      <img src="/img/avatar3.jpg" alt="" class="profile-photo-sm">
+                      <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                    </div>
+                    <div class="post-comment">
+                      <img src="/img/avatar1.jpg" alt="" class="profile-photo-sm">
+                      <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                    </div>
+                    <div class="post-comment">
+                      <img src="/img/avatar2.jpg" alt="" class="profile-photo-sm">
+                      <input type="text" class="form-control" placeholder="Post a comment">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          <div id="load-more" class="text-center" style="margin-bottom: 50px;">
+                    <button class="btn_load_more" onclick="mbel(1)">Load More</button>
+          </div>              </div></div>
+            <div class="text-center" id="backloader" style="display: none;">
+              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
+            </div>                      
+
+        </div>
+
+ 
+
+            <div class="col-md-4 static">
+
+         
+            <div class="card card-padding text-center">
+                         <ul class="social_iocns d-flex">
+                            <li><a href="#"><i class="flaticon-facebook-logo icon_tw"></i></a></li>
+                            <li><a href="#"><i class="flaticon-twitter icon_fb"></i></a></li>
+                            <li><a href="#"><i class="flaticon-instagram-logo icon_pin"></i></a></li>
+                        </ul>
+            </div>
+   
+
+            <%= render("component_top_backers.html", backers: @backers) %>
+
+
+            <div class="title-separator"> Backer Tiers </div> 
+
+       
+           
+            <%= render("component_tiers_sidebar.html", tiers: @pledger.pledger.tier) %>
+
+           
+          </div>
+        </div>
+    </div>
+</section>

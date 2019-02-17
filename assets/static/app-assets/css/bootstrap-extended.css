@@ -1482,7 +1482,7 @@ select.form-control
 {
     font-family: 'Comfortaa', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 
-    min-height: 5rem;
+    min-height: 5 rem;
     padding: 0;
 
     -webkit-transition: 300ms ease all;

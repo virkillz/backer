@@ -27,6 +27,12 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.BackerSignCheck)
   end
 
+  # pipeline for user must signed in and params is himself
+  pipeline :backer_self_check do
+    plug(BackerWeb.Plugs.BackerSignCheck)
+    plug(BackerWeb.Plugs.BackerSelfCheck)
+  end
+
   # pipeline for page can be access by own backer account.
   pipeline :is_pledger_check do
     plug(BackerWeb.Plugs.PledgerCheck)
@@ -87,10 +93,17 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
-    get("/backer/:username/timeline", BackerController, :timeline)
-    get("/backer/:username/finance", BackerController, :finance)
     get("/pledger/:username/tier/:tier", PledgerController, :checkout)
     post("/checkout", PledgerController, :checkout_post)
+  end
+
+  # This route area is for signed in backer and only for himself
+  scope "/", BackerWeb do
+    pipe_through([:browser, :backer_self_check])
+
+    get("/backer/:username/invoice/:id", BackerController, :invoice_display)
+    get("/backer/:username/timeline", BackerController, :timeline)
+    get("/backer/:username/finance", BackerController, :finance)
     get("/backer/:username/backing-history", BackerController, :backing_history)
     get("/backer/:username/profile-setting", BackerController, :profile_setting)
   end
@@ -101,17 +114,26 @@ defmodule BackerWeb.Router do
 
     get("/dashboard", PledgerController, :dashboard)
     get("/dashboard/post", PledgerController, :dashboard_post)
+    get("/dashboard/post/show/:id", PledgerController, :dashboard_post_show)
+    get("/dashboard/post/edit/:id", PledgerController, :dashboard_post_edit)
+    put("/dashboard/post/edit/:id", PledgerController, :dashboard_post_update)
+
+    get("/dashboard/post/new", PledgerController, :dashboard_post_new)
+    get("/dashboard/post/new-image", PledgerController, :dashboard_post_new_image)
+    get("/dashboard/post/new-video", PledgerController, :dashboard_post_new_video)
+    post("/dashboard/post/create", PledgerController, :dashboard_post_create)
+    delete("/dashboard/post/delete/:id", PledgerController, :dashboard_post_delete)
+
     get("/dashboard/backers", PledgerController, :dashboard_backers)
-    get("/dashboard/donation", PledgerController, :dashboard_donation)
-    get("/dashboard/edit-profile", PledgerController, :dashboard_edit_profile)
-    get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)                            
-
+    get("/dashboard/earning", PledgerController, :dashboard_earning)
+    get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)
   end
-
 
   # This route area is for public route
   scope "/", BackerWeb do
     pipe_through(:browser)
+
+    get("/ajax/public/test", BackerController, :ajax_test)
 
     get("/", PageController, :index)
     get("/login", PageController, :login)
@@ -122,10 +144,11 @@ defmodule BackerWeb.Router do
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PageController, :signout)
-    get("/backer", BackerController, :featured)
+    get("/backers", BackerController, :featured)
     get("/pledger", PledgerController, :featured)
 
-    get("/backer/:username", BackerController, :overview)
+    get("/backer/:username", BackerController, :redirector)
+    get("/backer/:username/overview", BackerController, :overview)
     get("/backer/:username/badges", BackerController, :badges)
     get("/backer/:username/backerfor", BackerController, :backerfor)
 
@@ -143,10 +166,14 @@ defmodule BackerWeb.Router do
     get("/pledger/:username/tier", PledgerController, :tier)
     get("/pledger/:username/checkout", PledgerController, :checkout)
 
-    get("/page/:slug", PageController, :static_page)
+    get("/page/how-it-works", PageController, :how_it_works)
+    get("/page/about-us", PageController, :about_us)
+    get("/page/contact-us", PageController, :contact_us)
+
     get("/explore", PledgerController, :explore)
     get("/category/:id", CategoryController, :list_pledger)
     get("/404", PageController, :page404)
+    get("/400", PageController, :page400)
     get("/505", PageController, :page505)
     get("/:backer", PledgerController, :redirector)
   end
