@@ -45,7 +45,7 @@
 <body style="background-color: rgba(245, 245, 255, 1);">
 
 
-<%= render("component_topmenu_dark.html", conn: @conn, title: "taik") %>
+<%= render("component_topmenu_dark.html", conn: @conn) %>
 
 
 

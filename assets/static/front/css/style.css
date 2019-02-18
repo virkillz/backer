@@ -222,6 +222,11 @@ label
   margin-left: 50px;
 }
 
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
 
 /*=================================*/
 
@@ -4714,8 +4719,7 @@ footer {
 .header_inner_pages {
   /*background: #5580FF;*/
   background: url(/front/images/banner/bg-header.png);
-  position: relative;
-  min-height: 320px; }
+  position: relative;}
   .header_inner_pages:before {
 /*    background: url(../images/shapes/inner_bg_shapes.png);*/
     content: "";

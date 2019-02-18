@@ -1,7 +1,11 @@
 <div class="post-content">
 
-                <h1 style="padding: 10px;">Pasti ancur</h1>
-                <img src="http://ecologytheme.com/theme/sassnex/images/blog/blog_p_5.jpg" alt="post-image" class="img-responsive post-image">
+
+                <div class="row" style="padding-top: 10px;">
+                  <div class="col-9">                <div style="padding: 15px 15px; font-size: 1.8em; font-weight: bold;">Hasil dari perbuatan tetangga.</div></div>
+                  <div class="col-3"><span style="text-align: right;"><img src="/img/avatar1.jpg" alt="user" class="avatar-small"> Category</span></div>                  
+                </div>
+                <img src="http://ecologytheme.com/theme/sassnex/images/blog/blog_p_5.jpg" alt="post-image" class="img-responsive post-image" style="padding:10px;">
                 <div class="post-container">
                   <img src="/img/avatar1.jpg" alt="user" class="avatar-small float-left">
                   <div class="post-detail">

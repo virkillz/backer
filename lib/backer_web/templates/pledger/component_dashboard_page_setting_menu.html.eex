@@ -2,15 +2,11 @@
   <div class="card-body text-center">
     <a href="#" onclick="filterBacker('all')">
         <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
-            <i class="ft-music"></i> Earning </button> 
+            <i class="ft-music"></i> Page Information </button> 
     </a>     
     <a href="#">
         <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
-            <i class="ft-type"></i> Withdraw </button>
-    </a>
-    <a href="#">
-        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
-            <i class="ft-image"></i> Mutation History </button>
-    </a>                                                   
+            <i class="ft-type"></i> Setting </button>
+    </a>                                                  
   </div>
 </div>

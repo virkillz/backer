@@ -125,8 +125,12 @@ defmodule BackerWeb.Router do
     delete("/dashboard/post/delete/:id", PledgerController, :dashboard_post_delete)
 
     get("/dashboard/backers", PledgerController, :dashboard_backers)
+    get("/dashboard/backers/active", PledgerController, :dashboard_backers_active) 
+    get("/dashboard/backers/inactive", PledgerController, :dashboard_backers_inactive) 
+
     get("/dashboard/earning", PledgerController, :dashboard_earning)
     get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)
+    put("/dashboard/page-setting", PledgerController, :dashboard_page_setting_update)    
   end
 
   # This route area is for public route
@@ -150,7 +154,8 @@ defmodule BackerWeb.Router do
     get("/backer/:username", BackerController, :redirector)
     get("/backer/:username/overview", BackerController, :overview)
     get("/backer/:username/badges", BackerController, :badges)
-    get("/backer/:username/backerfor", BackerController, :backerfor)
+    get("/backer/:username/backing", BackerController, :backing)
+    get("/backer/:username/profile-setting", BackerController, :profile_setting)    
 
     get("/verify", PageController, :verify)
     get("/resend-email", PageController, :resend)

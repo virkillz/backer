@@ -1,5 +1,9 @@
 <div class="card-body border-top-blue-grey border-top-lighten-5">
   <div class="card-body text-center">
+    <a href="/dashboard/post" up-dash="unpoly">
+        <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
+            <i class="ft-type"></i> All Post </button>
+    </a>    
     <a href="/dashboard/post/new" up-dash="unpoly">
         <button type="button" class="btn btn-primary btn-max-width box-shadow-3 mr-1 mb-1">
             <i class="ft-type"></i> Create Text Post</button>

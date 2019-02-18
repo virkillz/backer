@@ -57,10 +57,10 @@ defmodule BackerWeb.BackerController do
   end
 
   def overview(conn, %{"username" => username}) do
+    IO.inspect(conn)
     backer = Account.get_backer(%{"username" => username})
     pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-    IO.inspect("ini lho")
-    recomendation = Account.random_pledger(2) |> IO.inspect()
+    recomendation = Account.random_pledger(3)
 
     case backer do
       nil ->
@@ -71,8 +71,23 @@ defmodule BackerWeb.BackerController do
         |> render("front_overview.html",
           backer: backer,
           pledgers: pledgers,
+          menu: :overview,
+          owner: same_owner?(conn, username),
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
+    end
+  end
+
+
+  defp same_owner?(conn, username) do
+    if conn.assigns.current_backer != nil do
+      if username== conn.assigns.current_backer.username do
+        true
+      else
+        false
+      end
+    else
+      false
     end
   end
 
@@ -87,14 +102,10 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_timeline.html",
           backer: backer,
+          owner: true,
+          menu: :timeline,          
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
-
-        # conn
-        # |> render("private_backer_timeline.html",
-        #   backer: backer,
-        #   layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-        # )
     end
   end
 
@@ -109,12 +120,13 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("public_backer_badges.html",
           backer: backer,
+          owner: same_owner?(conn, username),          
           layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
         )
     end
   end
 
-  def backerfor(conn, %{"username" => username}) do
+  def backing(conn, %{"username" => username}) do
     backer = Account.get_backer(%{"username" => username})
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
@@ -128,6 +140,8 @@ defmodule BackerWeb.BackerController do
         |> render("front_backerfor.html",
           backer: backer,
           pledgers: pledgers,
+          menu: :backing,
+          owner: same_owner?(conn, username),
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
@@ -149,10 +163,12 @@ defmodule BackerWeb.BackerController do
           pending_invoice = Enum.count(invoices, fn x -> x.status == "unpaid" end)
 
           conn
-          |> render("component_finance.html",
+          |> render("front_finance.html",
             backer: conn.assigns.current_backer,
             invoices: invoices,
             balance: balance,
+            menu: :finance,
+            owner: true,
             pending_invoice: pending_invoice,
             layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
           )
@@ -165,7 +181,24 @@ defmodule BackerWeb.BackerController do
   end
 
   def profile_setting(conn, %{"username" => username}) do
-    text(conn, "profile setting. put auth")
+    backer = Account.get_backer(%{"username" => username})
+
+    pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("front_profile_setting.html",
+          backer: backer,
+          pledgers: pledgers,
+          menu: :profile_setting,
+          owner: true,
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        )
+    end
   end
 
   def ajax_test(conn, params) do

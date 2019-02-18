@@ -11,20 +11,19 @@
 
         </div>
                 
-        <div class="col-md-6">        
-
-
-              <div class="title-separator"> Badge </div>              
-
+        <div class="col-md-6">
+                    
               <div class="card card-padding">
-                <p class="text-center card-v-center">VirKill Almasy dont have any badge yet</p>
+
+
+                <div class="row">
+                  <div class="col-3"> Label </div>
+                  <div class="col-9"> <input type="text" name="text" class="checkout-input"> </div>                  
+                </div>
+
+
               </div>
 
-              <div class="title-separator"> Backing </div> 
-
-              <div class="card card-padding">
-                <p class="text-center card-v-center">VirKill Almasy dont backing anyone yet</p>
-              </div>              
 
         </div>
 
