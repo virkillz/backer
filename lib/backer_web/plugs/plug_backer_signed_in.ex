@@ -1,9 +1,6 @@
 defmodule BackerWeb.Plugs.BackerSignCheck do
   import Plug.Conn
 
-  alias Backer.Repo
-  alias Backer.Account.Backer, as: Backerz
-
   def init(_params) do
   end
 

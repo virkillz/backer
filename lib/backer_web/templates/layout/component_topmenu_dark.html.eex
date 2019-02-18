@@ -1,4 +1,4 @@
-<header class="header_inner_pages" style="height: 300px;">
+<header class="header_inner_pages" style="height: 100px;">
      <div class="header-top">
         <div class="sassnex_nav">
             <div class="container">
@@ -31,10 +31,24 @@
                                     <i class="flaticon-search search_btn"></i>
                                 </a>
                             </li>
-                                <%= if @conn.assigns.backer_signed_in? do %>
+
+                               <%= if @conn.assigns.backer_signed_in? do %>
+
+                            <li class="header-search-box btn-color-dark">
+                                <a href="/home" title="Search">
+                                    <i class="la la-home" style="font-size: 2em; font-weight: 800; margin: 0px 15px;"></i>
+                                </a>
+                            </li>    
+
+<%#                             <li class="header-search-box btn-color-dark">
+                                <a href="/home" title="Search">
+                                    <i class="la la-envelope" style="font-size: 2em; font-weight: 800; margin-right: 15px;"></i>
+                                </a>
+                            </li> %>                                                     
+
                                 <li class="dropdown"> 
                                     <span data-toggle="dropdown" class="dropdown-toggle" style="color: white;">
-                                      <span class="display_name_nav"><%= @conn.assigns.current_backer.display_name %></span>
+                                      
                                       <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
                                     </span>
 

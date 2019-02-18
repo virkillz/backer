@@ -13,16 +13,32 @@
                 
         <div class="col-md-6">
                     
-              <div class="card card-padding">
+              <div class="card" style="padding: 30px;">
 
-
-                <div class="row">
-                  <div class="col-3"> Label </div>
-                  <div class="col-9"> <input type="text" name="text" class="checkout-input"> </div>                  
+               <div class="row" style="margin-bottom: 2em;">
+                  <div class="col-4" style="text-align: right; font-weight: 800; font-size: 1.5em;"> Avatar </div>
+                  <div class="col-8"> <img src="<%= @backer.avatar %>" class="avatar-medium"> <button class="btn btn-primary">CHANGE</button> <button class="btn">remove</button></div>                  
                 </div>
 
 
+                <div class="row">
+                  <div class="col-5"> <div class="input-label">Display Name </div></div>
+                  <div class="col-7"> <input type="text" name="text" class="checkout-input" style="width: 100%;"> </div>                  
+                </div>
+
+
+
+
               </div>
+
+              <div class="card" style="padding: 30px;">
+
+                <div class="row">
+                  <div class="col-5"> <div class="input-label"> Backer Overview </div> <span>Show the thing bla bla bla</span></div>
+                  <div class="col-7"> <input type="text" name="text" class="checkout-input" style="width: 100%;"> </div>                  
+                </div>
+
+              </div>              
 
 
         </div>

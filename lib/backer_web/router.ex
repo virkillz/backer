@@ -33,6 +33,10 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.BackerSelfCheck)
   end
 
+  pipeline :must_not_sign_in do
+    plug(BackerWeb.Plugs.BackerNonSignCheck)
+  end
+
   # pipeline for page can be access by own backer account.
   pipeline :is_pledger_check do
     plug(BackerWeb.Plugs.PledgerCheck)
@@ -93,6 +97,14 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
+    get("/home", BackerController, :home)
+    get("/home/invoice/:id", BackerController, :invoice_display)
+    get("/home/overview", BackerController, :overview)
+    get("/home/finance", BackerController, :finance)
+    get("/home/backing-history", BackerController, :backing_history)
+    get("/home/backing", BackerController, :backing)
+    get("/home/profile-setting", BackerController, :profile_setting)
+
     get("/pledger/:username/tier/:tier", PledgerController, :checkout)
     post("/checkout", PledgerController, :checkout_post)
   end
@@ -100,12 +112,6 @@ defmodule BackerWeb.Router do
   # This route area is for signed in backer and only for himself
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_self_check])
-
-    get("/backer/:username/invoice/:id", BackerController, :invoice_display)
-    get("/backer/:username/timeline", BackerController, :timeline)
-    get("/backer/:username/finance", BackerController, :finance)
-    get("/backer/:username/backing-history", BackerController, :backing_history)
-    get("/backer/:username/profile-setting", BackerController, :profile_setting)
   end
 
   # This route area is for signed in pledger
@@ -125,37 +131,25 @@ defmodule BackerWeb.Router do
     delete("/dashboard/post/delete/:id", PledgerController, :dashboard_post_delete)
 
     get("/dashboard/backers", PledgerController, :dashboard_backers)
-    get("/dashboard/backers/active", PledgerController, :dashboard_backers_active) 
-    get("/dashboard/backers/inactive", PledgerController, :dashboard_backers_inactive) 
+    get("/dashboard/backers/active", PledgerController, :dashboard_backers_active)
+    get("/dashboard/backers/inactive", PledgerController, :dashboard_backers_inactive)
 
     get("/dashboard/earning", PledgerController, :dashboard_earning)
     get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)
-    put("/dashboard/page-setting", PledgerController, :dashboard_page_setting_update)    
+    put("/dashboard/page-setting", PledgerController, :dashboard_page_setting_update)
   end
 
-  # This route area is for public route
+  # must not sign in as backer
   scope "/", BackerWeb do
-    pipe_through(:browser)
-
-    get("/ajax/public/test", BackerController, :ajax_test)
+    pipe_through([:browser, :must_not_sign_in])
 
     get("/", PageController, :index)
     get("/login", PageController, :login)
     get("/register", PageController, :register)
+
     post("/login", PageController, :auth)
     post("/register", PageController, :createuser)
     get("/recover", PageController, :recover)
-    get("/admin/login", UserController, :login)
-    post("/admin/login", UserController, :auth)
-    get("/signout", PageController, :signout)
-    get("/backers", BackerController, :featured)
-    get("/pledger", PledgerController, :featured)
-
-    get("/backer/:username", BackerController, :redirector)
-    get("/backer/:username/overview", BackerController, :overview)
-    get("/backer/:username/badges", BackerController, :badges)
-    get("/backer/:username/backing", BackerController, :backing)
-    get("/backer/:username/profile-setting", BackerController, :profile_setting)    
 
     get("/verify", PageController, :verify)
     get("/resend-email", PageController, :resend)
@@ -164,6 +158,25 @@ defmodule BackerWeb.Router do
     get("/change-password", PageController, :change_password)
     put("/change-password", PageController, :change_password_post)
     post("/change-password", PageController, :change_password_post)
+  end
+
+  # This route area is for public route
+  scope "/", BackerWeb do
+    pipe_through(:browser)
+
+    get("/ajax/public/test", BackerController, :ajax_test)
+
+    get("/admin/login", UserController, :login)
+    post("/admin/login", UserController, :auth)
+    get("/signout", PageController, :signout)
+    get("/backers", BackerController, :featured)
+    get("/pledger", PledgerController, :featured)
+
+    get("/backer/:username", BackerController, :public_overview)
+    # get("/backer/:username/overview", BackerController, :overview)
+    # get("/backer/:username/badges", BackerController, :badges)
+    # get("/backer/:username/backing", BackerController, :backing)
+
     get("/pledger/:username", PledgerController, :overview)
     get("/pledger/:username/posts", PledgerController, :posts)
     get("/pledger/:username/backers", PledgerController, :backers)

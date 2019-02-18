@@ -5,25 +5,19 @@
                 </div>
             </div>
 
-<%= if assigns[:menu] do %>
 
             <ul style="padding-left: 20px; padding-right: 20px; margin: 0 0 40px 0;" class="card backer-menu">
 
-              <%= if @owner do %>
               <li><i class="icon ion-ios-paper"></i>
                 <div>
-                  <a href="/backer/<%= @backer.username %>/timeline" class="<%= if @menu == :timeline, do: "backer-menu-active" %>">Timeline</a>
+                  <a href="/home" class="<%= if @menu == :timeline, do: "backer-menu-active" %>">Timeline</a>
                 </div>
               </li>
-              <% end %>
 
-              <li><i class="icon ion-ios-people"></i><div><a href="/backer/<%= @backer.username %>/overview" class="<%= if @menu == :overview, do: "backer-menu-active" %>">Overview</a></div></li>
-              <li><i class="icon ion-ios-people-outline"></i><div><a href="/backer/<%= @backer.username %>/backing" class="<%= if @menu == :backing, do: "backer-menu-active" %>">Backing</a></div></li>
+              <li><i class="icon ion-ios-people"></i><div><a href="/home/overview" class="<%= if @menu == :overview, do: "backer-menu-active" %>">Overview</a></div></li>
+              <li><i class="icon ion-ios-people-outline"></i><div><a href="/home/backing" class="<%= if @menu == :backing, do: "backer-menu-active" %>">Backing</a></div></li>
 
-              <%= if @owner do %>
-              <li><i class="icon ion-ios-people-outline"></i><div><a href="/backer/<%= @backer.username %>/finance" class="<%= if @menu == :finance, do: "backer-menu-active" %>">Finance</a></div></li>              
-              <li><i class="icon ion-ios-people-outline"></i><div><a href="/backer/<%= @backer.username %>/profile-setting" class="<%= if @menu == :profile_setting, do: "backer-menu-active" %>">Profile Setting</a></div></li>              
+              <li><i class="icon ion-ios-people-outline"></i><div><a href="/home/finance" class="<%= if @menu == :finance, do: "backer-menu-active" %>">Finance</a></div></li>              
+              <li><i class="icon ion-ios-people-outline"></i><div><a href="/home/profile-setting" class="<%= if @menu == :profile_setting, do: "backer-menu-active" %>">Profile Setting</a></div></li>              
             </ul> 
-            <% end %>
 
-<% end %>

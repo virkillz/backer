@@ -16,32 +16,32 @@ defmodule BackerWeb.BackerController do
     )
   end
 
-  def redirector(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  # def redirector(conn, %{"username" => username}) do
+  #   backer = Account.get_backer(%{"username" => username})
 
-    case backer do
-      nil ->
-        conn
-        |> put_status(:not_found)
-        |> render(BackerWeb.PledgerView, "page_404.html",
-          title: "404",
-          layout: {BackerWeb.LayoutView, "layout_front_static.html"}
-        )
+  #   case backer do
+  #     nil ->
+  #       conn
+  #       |> put_status(:not_found)
+  #       |> render(BackerWeb.PledgerView, "page_404.html",
+  #         title: "404",
+  #         layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+  #       )
 
-      _ ->
-        pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+  #     _ ->
+  #       pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
 
-        if conn.assigns.backer_signed_in? do
-          if conn.assigns.current_backer.username == username do
-            redirect(conn, to: backer_path(conn, :timeline, username))
-          else
-            redirect(conn, to: backer_path(conn, :overview, username))
-          end
-        else
-          redirect(conn, to: backer_path(conn, :overview, username))
-        end
-    end
-  end
+  #       if conn.assigns.backer_signed_in? do
+  #         if conn.assigns.current_backer.username == username do
+  #           redirect(conn, to: backer_path(conn, :timeline, username))
+  #         else
+  #           redirect(conn, to: backer_path(conn, :overview, username))
+  #         end
+  #       else
+  #         redirect(conn, to: backer_path(conn, :overview, username))
+  #       end
+  #   end
+  # end
 
   def invoice_display(conn, %{"id" => id, "username" => username}) do
     invoice = Finance.get_invoice!(id) |> IO.inspect()
@@ -56,9 +56,28 @@ defmodule BackerWeb.BackerController do
     )
   end
 
-  def overview(conn, %{"username" => username}) do
-    IO.inspect(conn)
+  def public_overview(conn, %{"username" => username}) do
     backer = Account.get_backer(%{"username" => username})
+    pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+    recomendation = Account.random_pledger(3)
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page404))
+
+      _ ->
+        conn
+        |> render("front_public_overview.html",
+          backer: backer,
+          pledgers: pledgers,
+          menu: :overview,
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        )
+    end
+  end
+
+  def overview(conn, _params) do
+    backer = Account.get_backer(%{"username" => conn.assigns.current_backer.username})
     pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
     recomendation = Account.random_pledger(3)
 
@@ -72,27 +91,15 @@ defmodule BackerWeb.BackerController do
           backer: backer,
           pledgers: pledgers,
           menu: :overview,
-          owner: same_owner?(conn, username),
+          owner: true,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end
 
-
-  defp same_owner?(conn, username) do
-    if conn.assigns.current_backer != nil do
-      if username== conn.assigns.current_backer.username do
-        true
-      else
-        false
-      end
-    else
-      false
-    end
-  end
-
-  def timeline(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  def home(conn, params) do
+    # backer = Account.get_backer(%{"username" => username})
+    backer = conn.assigns.current_backer
 
     case backer do
       nil ->
@@ -103,14 +110,15 @@ defmodule BackerWeb.BackerController do
         |> render("front_timeline.html",
           backer: backer,
           owner: true,
-          menu: :timeline,          
+          menu: :timeline,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end
 
   def badges(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+    # backer = Account.get_backer(%{"username" => username})
+    backer = conn.assigns.current_backer
 
     case backer do
       nil ->
@@ -120,14 +128,15 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("public_backer_badges.html",
           backer: backer,
-          owner: same_owner?(conn, username),          
+          owner: true,
           layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
         )
     end
   end
 
-  def backing(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  def backing(conn, _paramsms) do
+    # backer = Account.get_backer(%{"username" => username})
+    backer = conn.assigns.current_backer
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
 
@@ -141,47 +150,39 @@ defmodule BackerWeb.BackerController do
           backer: backer,
           pledgers: pledgers,
           menu: :backing,
-          owner: same_owner?(conn, username),
+          owner: true,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end
 
-  def finance(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  def finance(conn, _params) do
+    # backer = Account.get_backer(%{"username" => username})
+    backer = conn.assigns.current_backer
 
-    case backer do
-      nil ->
-        redirect(conn, to: page_path(conn, :page404))
+    balance = Finance.get_balance(%{"backer_id" => conn.assigns.current_backer.id})
+    invoices = Finance.list_invoices(%{"backer_id" => conn.assigns.current_backer.id})
+    pending_invoice = Enum.count(invoices, fn x -> x.status == "unpaid" end)
 
-      _ ->
-        if conn.assigns.current_backer.username != username do
-          redirect(conn, to: page_path(conn, :page404))
-        else
-          balance = Finance.get_balance(%{"backer_id" => conn.assigns.current_backer.id})
-          invoices = Finance.list_invoices(%{"backer_id" => conn.assigns.current_backer.id})
-          pending_invoice = Enum.count(invoices, fn x -> x.status == "unpaid" end)
-
-          conn
-          |> render("front_finance.html",
-            backer: conn.assigns.current_backer,
-            invoices: invoices,
-            balance: balance,
-            menu: :finance,
-            owner: true,
-            pending_invoice: pending_invoice,
-            layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-          )
-        end
-    end
+    conn
+    |> render("front_finance.html",
+      backer: conn.assigns.current_backer,
+      invoices: invoices,
+      balance: balance,
+      menu: :finance,
+      owner: true,
+      pending_invoice: pending_invoice,
+      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+    )
   end
 
   def backing_history(conn, %{"username" => username}) do
     text(conn, "backing history. put auth")
   end
 
-  def profile_setting(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
+  def profile_setting(conn, params) do
+    # backer = Account.get_backer(%{"username" => username})
+    backer = conn.assigns.current_backer
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
 

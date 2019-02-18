@@ -331,7 +331,10 @@ defmodule BackerWeb.PledgerController do
 
   def dashboard_backers_active(conn, _params) do
     pledger_id = conn.assigns.current_pledger.pledger_id
-    backers = Finance.list_all_backers(%{"pledger_id" => pledger_id}) |> Enum.filter(fn x -> x.status == "active" end )
+
+    backers =
+      Finance.list_all_backers(%{"pledger_id" => pledger_id})
+      |> Enum.filter(fn x -> x.status == "active" end)
 
     conn
     |> render("front_dashboard_backers.html",
@@ -343,7 +346,10 @@ defmodule BackerWeb.PledgerController do
 
   def dashboard_backers_inactive(conn, _params) do
     pledger_id = conn.assigns.current_pledger.pledger_id
-    backers = Finance.list_all_backers(%{"pledger_id" => pledger_id}) |> Enum.filter(fn x -> x.status == "inactive" end )
+
+    backers =
+      Finance.list_all_backers(%{"pledger_id" => pledger_id})
+      |> Enum.filter(fn x -> x.status == "inactive" end)
 
     conn
     |> render("front_dashboard_backers.html",
@@ -351,7 +357,7 @@ defmodule BackerWeb.PledgerController do
       backers: backers,
       layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
     )
-  end    
+  end
 
   # def dashboard_backers(conn, _params) do
   #   pledger = Account.get_pledger(%{"username" => conn.assigns.current_backer.username})
@@ -381,8 +387,6 @@ defmodule BackerWeb.PledgerController do
   end
 
   def dashboard_page_setting(conn, _params) do
-
-
     backers = Account.list_backers()
     titles = Masterdata.list_titles()
     categories = Masterdata.list_categories()
@@ -394,15 +398,13 @@ defmodule BackerWeb.PledgerController do
       pledger: pledger,
       changeset: changeset,
       titles: titles,
-      categories: categories,      
+      categories: categories,
       layout: {BackerWeb.LayoutView, "layout_front_pledger_private.html"}
     )
   end
 
-  def dashboard_page_setting_update(conn, params) do  
-
+  def dashboard_page_setting_update(conn, params) do
     IO.inspect(params)
-
   end
 
   def backers(conn, %{"username" => username}) do

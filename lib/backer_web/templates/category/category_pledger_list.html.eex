@@ -11,19 +11,19 @@
 
             	<div class="col-lg-6">
 
-
+<a href="/pledger/<%= pledger.username %>">
 <div class="twPc-div">
     <a href="/pledger/<%= pledger.username %>" class="twPc-bg twPc-block" style="background: url(<%= pledger.background %>) no-repeat center;"></a>
 
   <div>
 
     <a title="<%= pledger.display_name %>" href="/pledger/<%= pledger.username %>" class="twPc-avatarLink">
-      <img alt="Mert Salih Kaplan" src="<%= pledger.avatar %>" class="twPc-avatarImg">
+      <img  src="<%= pledger.avatar %>" class="twPc-avatarImg grow">
     </a>
 
     <div class="twPc-divUser">
       <div class="twPc-divName">
-        <a href="/pledger/<%= pledger.username %>"><%= pledger.display_name %></a>
+        <%= pledger.display_name %>
       </div>
       <span>
         <span><%= pledger.title %></span>
@@ -33,24 +33,25 @@
     <div class="twPc-divStats">
       <ul class="twPc-Arrange">
         <li class="twPc-ArrangeSizeFit text-center">
-          <a href="/pledger/<%= pledger.username %>" title="9.840 Tweet">
+
             <span class="twPc-StatLabel twPc-block">Backer</span>
             <span class="twPc-StatValue">9.840</span>
-          </a>
+
         </li>
         <li class="twPc-ArrangeSizeFit text-center">
-          <a href="/pledger/<%= pledger.username %>" title="885 Following">
+
             <span class="twPc-StatLabel twPc-block">Post</span>
             <span class="twPc-StatValue">885</span>
-          </a>
+
         </li>      
-        <li class="twPc-ArrangeSizeFit text-center">
+        <li class="twPc-ArrangeSizeFit text-center grow">
             <a href="/pledger/<%= pledger.username %>/tier" class="btn btn-pill " style="margin-top: 10px; margin-right: 25px;">Support</a>
         </li>        
       </ul>
     </div>
   </div>
 </div>
+</a>
 
 
 

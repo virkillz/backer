@@ -6,11 +6,12 @@ defmodule BackerWeb.PageController do
   alias Backer.Account.Backer, as: Backerz
 
   def index(conn, _params) do
-    changeset = Account.change_backer(%Backerz{})
+    # changeset = Account.change_backer(%Backerz{})
+    IO.inspect("BANGSAYY")
+    IO.inspect(conn)
 
     conn
     |> render("component_homepage.html",
-      changeset: changeset,
       layout: {BackerWeb.LayoutView, "layout_front_homepage.html"}
     )
   end
