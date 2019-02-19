@@ -88,9 +88,9 @@ defmodule Backer.Account do
     end
   end
 
-  defp check_password(%Backerz{} = user, plain_text_password) do
-    case Bcrypt.checkpw(plain_text_password, user.passwordhash) do
-      true -> {:ok, user}
+  defp check_password(%Backerz{} = backer, plain_text_password) do
+    case Bcrypt.checkpw(plain_text_password, backer.passwordhash) do
+      true -> {:ok, backer}
       false -> {:error, "Incorrect credential"}
     end
   end
@@ -502,7 +502,6 @@ defmodule Backer.Account do
     |> Ecto.Multi.delete(:pledger, pledger)
     |> Ecto.Multi.update(:backer, backer_changeset)
     |> Repo.transaction()
-    |> IO.inspect()
   end
 
   def get_backers_pledger(id) do

@@ -49,7 +49,9 @@ defmodule Backer.Mixfile do
       {:bcrypt_elixir, "~> 1.0"},
       {:timex, "~> 3.0"},
       {:scrivener_ecto, "~> 2.0"},
-      {:scrivener_html, "~> 1.7"}
+      {:scrivener_html, "~> 1.7"},
+      {:drab, "~> 0.10.0"},
+      {:earmark, "~> 1.3"}
     ]
   end
 

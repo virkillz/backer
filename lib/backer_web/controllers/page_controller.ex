@@ -6,9 +6,6 @@ defmodule BackerWeb.PageController do
   alias Backer.Account.Backer, as: Backerz
 
   def index(conn, _params) do
-    # changeset = Account.change_backer(%Backerz{})
-    IO.inspect("BANGSAYY")
-    IO.inspect(conn)
 
     conn
     |> render("component_homepage.html",
@@ -166,8 +163,8 @@ defmodule BackerWeb.PageController do
       {:ok, backer} ->
         if backer.is_email_verified do
           conn
-          |> put_session(:current_user_id, backer.id)
-          |> redirect(to: "/backer/" <> backer.username)
+          |> put_session(:current_backer_id, backer.id)
+          |> redirect(to: "/home")
         else
           render(conn, "please_verify_first.html",
             layout: {BackerWeb.LayoutView, "frontend_header_footer.html"},

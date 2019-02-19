@@ -4,8 +4,6 @@ defmodule Backer.Content.PostComment do
 
   schema "pcomments" do
     field(:content, :string)
-    # field(:pcomment_id, :id)
-    # field(:backer_id, :id)
 
     belongs_to(:post, {"posts", Backer.Content.Post})
     belongs_to(:pcomment, {"pcomments", Backer.Content.PostComment})

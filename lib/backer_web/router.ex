@@ -98,6 +98,7 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home", BackerController, :home)
+    get("/home/timeline/:id", BackershowController, :show_post)    
     get("/home/invoice/:id", BackerController, :invoice_display)
     get("/home/overview", BackerController, :overview)
     get("/home/finance", BackerController, :finance)

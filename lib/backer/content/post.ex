@@ -10,11 +10,11 @@ defmodule Backer.Content.Post do
     field(:like_count, :integer)
     field(:min_tier, :integer)
     field(:title, :string)
-    field(:pledger_id, :id)
     field(:type, :string)
     field(:publish_status, :string, default: "draft")
 
     has_many(:pcomment, Backer.Content.PostComment)
+    belongs_to(:pledger, Backer.Account.Pledger)    
 
     timestamps()
   end

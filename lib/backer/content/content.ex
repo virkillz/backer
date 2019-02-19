@@ -7,7 +7,10 @@ defmodule Backer.Content do
   alias Backer.Repo
 
   alias Backer.Content.Forum
+  alias Backer.Finance.Donation
   alias Backer.Account.Pledger
+  alias Backer.Account.Backer, as: Backerz  
+  alias Backer.Content.PostComment  
 
   @doc """
   Returns the list of forums.
@@ -422,6 +425,33 @@ defmodule Backer.Content do
     Post |> Repo.paginate(params)
   end
 
+
+  def timeline(%{"backer_id" => backer_id}) do
+    
+    {year, month, _day} = Date.utc_today() |> Date.to_erl()    
+
+
+    #get all pledger currently backed.
+    query = from p in Donation,
+            where: p.backer_id == ^backer_id and p.is_executed == true and p.month == ^month and p.year == ^year
+
+    #get post from that pledger
+    query2 = from donation in query,
+              join: post in Post,
+              join: pledger in Pledger,
+              join: backer in Backerz,
+              on: pledger.backer_id == backer.id,
+              on: post.pledger_id == pledger.id,
+              where: post.pledger_id == donation.pledger_id,
+              select: %{id: post.id, title: post.title, avatar: backer.avatar, content: post.content, display_name: backer.display_name, type: post.type, image: post.featured_image, video: post.featured_video, link: post.featured_link}
+
+
+    pledger = Repo.all(query)
+    post = Repo.all(query2)
+
+    {pledger, post}
+  end
+
   @doc """
   Gets a single post.
 
@@ -436,6 +466,33 @@ defmodule Backer.Content do
       ** (Ecto.NoResultsError)
 
   """
+
+  def get_post(%{"id" => id}) do
+
+    query = 
+      from post in Post, 
+      where: post.id == ^id,
+      join: pledger in Pledger,
+      join: backer in Backerz,
+      on: pledger.backer_id == backer.id,
+      on: post.pledger_id == pledger.id,
+      select: %{id: post.id, title: post.title, min_tier: post.min_tier, avatar: backer.avatar, username: backer.username, type: post.type, image: post.featured_image, video: post.featured_video, link: post.featured_link, content: post.content, like_count: post.like_count, display_name: backer.display_name}
+
+    query_comment = 
+        from comment in PostComment,
+        where: comment.post_id == ^id,
+        join: backer in Backerz,
+        on: comment.backer_id == backer.id,
+        select: %{id: comment.id, content: comment.content, avatar: backer.avatar}
+
+
+    post = Repo.one(query)
+    comment = Repo.all(query_comment)
+
+    {post, comment}
+
+  end
+
   def get_post!(id) do
     Repo.get!(Post, id)
     |> Repo.preload(:pcomment)
@@ -607,8 +664,6 @@ defmodule Backer.Content do
   def change_post_like(%PostLike{} = post_like) do
     PostLike.changeset(post_like, %{})
   end
-
-  alias Backer.Content.PostComment
 
   @doc """
   Returns the list of pcomments.

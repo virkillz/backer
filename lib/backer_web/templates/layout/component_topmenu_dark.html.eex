@@ -1,4 +1,4 @@
-<header class="header_inner_pages" style="height: 100px;">
+<header class="header_inner_pages" style="height: 300px;">
      <div class="header-top">
         <div class="sassnex_nav">
             <div class="container">
@@ -47,7 +47,7 @@
                             </li> %>                                                     
 
                                 <li class="dropdown"> 
-                                    <span data-toggle="dropdown" class="dropdown-toggle" style="color: white;">
+                                    <span data-toggle="dropdown" class="dropdown-toggle" style="color: white; ">
                                       
                                       <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
                                     </span>

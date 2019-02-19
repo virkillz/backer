@@ -8,7 +8,7 @@ defmodule BackerWeb.Plugs.SetCurrentBacker do
   end
 
   def call(conn, _params) do
-    backer_id = Plug.Conn.get_session(conn, :current_user_id)
+    backer_id = Plug.Conn.get_session(conn, :current_backer_id)
 
     cond do
       current_backer = backer_id && Repo.get(Backerz, backer_id) ->

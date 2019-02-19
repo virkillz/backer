@@ -14,10 +14,22 @@
         <div class="col-md-6">
 
 
-          <div class="row block_page"><div id="timeline-target"></div></div>
+          <div class="row block_page">
+
+
+
+          <%= render("ajax_test.html", posts: @posts, backer: @backer) %>
+
+
+
+
+
+<%# 
+            <div id="timeline-target"></div> %>
+
+          </div>
             <div class="text-center" id="backloader">
-              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
-              <%# <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="loader">               %>
+              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">              %>
             </div>                      
 
         </div>
@@ -68,34 +80,3 @@
 
     </div>
 </section>
-
-<script>
-      function mbel(params) {
-        var button = document.getElementById("load-more");
-        var loader = document.getElementById("backloader");
-        button.remove();
-        loader.style.display = '';
-        var url = '/ajax/public/test?salam=' + params;
-
-            $.ajax({
-                url: url,
-                type: 'get',
-                success: function(data){
-                    //If the success function is execute,
-                    //then the Ajax request was successful.
-                    //Add the data we received in our Ajax
-                    //request to the "content" div.
-                    $('#backloader').hide();
-                    $('#timeline-target').append(data);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    $('#backloader').hide();
-                    var errorMsg = 'Ajax request failed: ' + xhr.responseText;
-                    var htmlError = '<div class="card card-padding text-center"> Failed to fetch content </div>';
-                    $('#timeline-target').append(errorMsg); //if want to show real error
-                    // $('#timeline-target').html(htmlError);                    
-                  }
-            });        
-
-    }
-</script>

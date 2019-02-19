@@ -4,7 +4,8 @@ defmodule BackerWeb.BackerController do
   alias Backer.Finance
   alias Backer.Account
   alias Backer.Constant
-  alias Backer.Account.Backer
+  alias Backer.Account.Backer, as: Backerz
+  alias Backer.Content
 
   def featured(conn, _params) do
     backers = Account.list_backers()
@@ -97,9 +98,33 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def home(conn, params) do
-    # backer = Account.get_backer(%{"username" => username})
+
+  def show_post(conn, %{"id" => id}) do
+    post = Content.get_post(%{"id" => id}) |> IO.inspect
     backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: page_path(conn, :page400))
+
+      _ ->
+        conn
+        |> render("front_timeline_show.html",
+          backer: backer,
+          owner: true,
+          menu: :timeline,
+          post: post,
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        )
+    end
+  end
+
+  def home(conn, params) do
+    backer = conn.assigns.current_backer
+
+    {donation, rawposts} = Content.timeline(%{"backer_id" => backer.id})
+    posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end) 
+
 
     case backer do
       nil ->
@@ -111,13 +136,13 @@ defmodule BackerWeb.BackerController do
           backer: backer,
           owner: true,
           menu: :timeline,
+          posts: posts,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end
 
   def badges(conn, %{"username" => username}) do
-    # backer = Account.get_backer(%{"username" => username})
     backer = conn.assigns.current_backer
 
     case backer do
@@ -135,7 +160,7 @@ defmodule BackerWeb.BackerController do
   end
 
   def backing(conn, _paramsms) do
-    # backer = Account.get_backer(%{"username" => username})
+
     backer = conn.assigns.current_backer
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
@@ -157,7 +182,7 @@ defmodule BackerWeb.BackerController do
   end
 
   def finance(conn, _params) do
-    # backer = Account.get_backer(%{"username" => username})
+
     backer = conn.assigns.current_backer
 
     balance = Finance.get_balance(%{"backer_id" => conn.assigns.current_backer.id})
@@ -203,8 +228,19 @@ defmodule BackerWeb.BackerController do
   end
 
   def ajax_test(conn, params) do
-    IO.inspect(params)
-    conn |> put_layout(false) |> render("ajax_test.html")
+
+    if conn.assigns.backer_signed_in? do
+
+      {donation, posts} = Content.timeline(%{"backer_id" => conn.assigns.current_backer.id}) |> IO.inspect
+
+      conn |> put_layout(false) |> render("ajax_test.html", posts: posts)
+
+    else
+
+
+      text(conn, "not authorized")
+    end
+
   end
 
   def index(conn, params) do
@@ -214,7 +250,7 @@ defmodule BackerWeb.BackerController do
 
   def new(conn, _params) do
     id_types = Constant.accepted_id_kyc()
-    changeset = Account.change_backer(%Backer{})
+    changeset = Account.change_backer(%Backerz{})
     render(conn, "new.html", changeset: changeset, id_types: id_types)
   end
 
