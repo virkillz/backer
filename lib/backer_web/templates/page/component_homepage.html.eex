@@ -81,11 +81,11 @@
                  <div class="col-sm-12 col-md-12 col-lg-6">
                     <div class="intro_text">
                         <!-- <h4>Discover New Ideas</h4> -->
-                        <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">Jaringan dukungan berkesinambungan.</h1>
-                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Backer adalah platform donasi berbasis langganan untuk para kreator, komunitas, dan organisasi. </p>
+                        <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">Karena hal baik tidak selayaknya terhenti.</h1>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Backer adalah social network donation berbasis langganan agar kita dapat membantu para kreator, komunitas, dan organisasi menjaga keberlangsungan aktivitas mereka. </p>
                         <div class="intro_button d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <a href="/page/how-it-works" class="nav-link btn_gradient ">Cara Kerja</a>
-                            <a href="/register" class="nav-link d_btn_gradient btn_gradient app_contact_btn">Daftar Sekarang</a>
+                            <a href="/register" class="nav-link d_btn_gradient btn_gradient app_contact_btn">Explore</a>
                         </div>
                     </div>
                 </div>
@@ -118,23 +118,22 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6 p-0">
                         <div class="signle_services single_services_1 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".2s">
-                            <i class="flaticon-website services_icon"></i>
-                            <h3>Komunitas</h3>
+                            <i class="flaticon-branding services_icon"></i>
+                            <h3>Organisasi Sosial</h3>  
                         </div>
                     </div>            
 
                     <div class="col-12 col-md-6 col-lg-6 p-0">
                         <div class="signle_services single_services_2 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".4s">
-                            <i class="flaticon-advertising services_icon"></i>                            
-
-                            <h3>Kreator</h3>
+                            <i class="flaticon-website services_icon"></i>
+                            <h3>Komunitas</h3>                            
                         </div>
                     </div>            
 
                     <div class="col-12 col-md-6 col-lg-6 p-0">
                         <div class="signle_services single_services_3 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".6s">
-                            <i class="flaticon-branding services_icon"></i>
-                            <h3>Organisasi</h3>
+                            <i class="flaticon-advertising services_icon"></i>                            
+                            <h3>Kreator</h3>
                         </div>
                     </div>            
 
@@ -148,11 +147,12 @@
             </div>
             <div class="col-md-5">      
                 <div class="agency_services_intro wow fadeInRight" data-wow-duration="1.5s" data-wow-delay=".2s">
-                    <h2 class="">Backer hadir untuk</h2>
-                    <p>Para pencipta konten akhirnya dapat menerima dukungan finansial langsung dari kontennya tanpa perlu melalui iklan. </p>
-                    <p>Komunitas dapat mengumpulkan dan memantau iuran anggota bulanannya secara lebih mudah dan transparan.</p>
-                    <p> Organisasi masyarakat, keagamaan, dan kemanusiaan, dapat menghimpun bantuan berbasis langganan.</p>
-                    <a href="#" class="default_btn d_btn_gradient btn_gradient">Informasi lebih lanjut</a>
+                    <h2 class="">Backer mendukung keberlangsungan</h2>
+                    <p> Backer adalah ekosistem transparan dimana setiap pemberi donasi (Backer) dapat memberikan bantuan secara berkala (bulanan) kepada entitas yang dia dukung (Donee)<p> 
+                    <p>Platform Backer juga dapat digunakan oleh komunitas untuk mengumpulkan dan memantau iuran anggota bulanannya secara lebih mudah dan transparan, serta memberikan laporan kegiatan kepada para backernya.</p>
+                    <p>Para pencipta konten akhirnya dapat menerima dukungan finansial langsung dari kontennya tanpa perlu melalui platform berbasis iklan. </p>                    
+                    <p> Organisasi masyarakat, keagamaan, dan kemanusiaan, dapat juga menghimpun bantuan berbasis langganan.</p>
+                    <a href="#" class="default_btn d_btn_gradient btn_gradient">Studi kasus yang lain</a>
                 </div>
             </div>
         </div>  
