@@ -1,30 +1,18 @@
 $(document).ready(function () {
     "use strict";
     //Preloader js
-    $(document).ready(function() {
-
-            $.ajax({
-                url: '/ajax/public/test',
-                type: 'get',
-                success: function(data){
-                    //If the success function is execute,
-                    //then the Ajax request was successful.
-                    //Add the data we received in our Ajax
-                    //request to the "content" div.
-                    $('#backloader').hide();
-                    $('#timeline-target').html(data);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    $('#backloader').hide();
-                    var errorMsg = 'Ajax request failed: ' + xhr.responseText;
-                    var htmlError = '<div class="card card-padding text-center"> Failed to fetch content </div>';
-                    $('#timeline-target').html(errorMsg); //if want to show real error
-                    // $('#timeline-target').html(htmlError);                    
-                  }
-            });
 
 
-    }); 
+    $('#toggle-comment-show').click(function(){
+        $(this).text(function(i,old){
+            return old=='Show all comments' ?  'Hide all comments' : 'Show all comments';
+        });
+    });
+
+    $('#makecomment').click(function() {
+     $('#commenthere').focus();
+    });
+
 
 
 //=========== Scroll to top 
@@ -120,7 +108,7 @@ $(document).ready(function () {
 	//Team Carousel   
     $("#team_01").owlCarousel({
         navigationText :["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-right-arrow'></i>"],
-        items :4,
+        items :3,
         itemsDesktop : [1199, 3],
         itemsDesktopSmall : [980, 3],
         itemsTablet: [768, 2],

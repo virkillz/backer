@@ -1,4 +1,8 @@
-<section style="margin-top: 100px; margin-bottom: 200px;">
+                <div style="background: url(<%= @pledger.pledger.background %>) no-repeat; min-height: 200px; width: 100%; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);"></div>
+                 
+              <img src="/img/avatar1.jpg" alt="user" class="avatar-big" style="position: relative;top: -90px; margin:auto; display: block; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+
+<section style="margin-top: 0px; margin-bottom: 10px;">
 	<h1 class="text-center" style="padding-bottom: 50px;">Jadi backer untuk <%= @pledger.display_name %></h1>
 	<div class="container">
 	<div class="row">

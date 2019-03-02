@@ -1,36 +1,31 @@
 
-		<section id="banner" style="background: url(https://images.unsplash.com/photo-1468421870903-4df1664ac249?ixlib=rb-1.2.1&auto=format&fit=crop&w=2978&q=80) no-repeat">
-			<div class="container">
+<section style="margin-top: 100px;">
+<div class="container">
+            	<div class="row">
 
-<div class="col-sm-6 pull-right">
-<h1 class="text-white text-right mt80">We believe good things should be sustainable</h1>
-<p class="text-white text-right mt40">Backer is about sustainability. We make it easier for anyone to back what they support, whether it is community, artist, or activity. Learn more about our platform or create your own campaign page right now.</p>
-<div class="pull-right">
-<a href="#"><button style="border-radius:17px;" class="btn-secondary btn-login">Learn More</button></a>
-	<a href="#"><button style="border-radius:17px;" class="btn-primary btn-login">Create Campaign Page</button></a>
-</div>
-</div>
-			</div>
-		</section>
 
-            <!-- Friend List
-            ================================================= -->
-            <div class="friend-list">
-            	<div class="row mt80">
-            	<div class="container">
+              <%= for backer <- @backers do %>
+                          <div class="col-lg-4">
+                      <a class="fir-imageover" rel="noopener" target="_blank" href="/backer/<%= backer.username %>" style="color: black;">                            
+                <div class="card card-padding grow" style="z-index: 999;">
+                    <figure class="fir-image-figure">
 
-            		<%= for backer <- @backers do %>
-            <a href="/backer/<%= backer.username %>">
-            	<div class="col-4 col-sm-4">
-            <div class="profile-card mb40">
-              <img src="<%= backer.avatar %>" alt="user" class="profile-photo">
-              <h3 class="text-white"><%= backer.display_name %></h3>
-              <i class="ion ion-android-person-add"></i> Backer for 1234
-            </div>
-            		
-            	</div>
-              </a>
-              <% end %>
-            </div>
+                        <img class="fir-author-image fir-clickcircle" src="<%= backer.avatar %>" alt="VirKill Almasy">
+                        <div class="fir-imageover-color"></div>
+
+                      <figcaption>
+                        <div class="fig-author-figure-title"><%= backer.display_name %></div>
+                        <div class="fig-author-figure-username">@<%= backer.username %></div>
+                        <div class="fig-author-figure-since">backer since <%= "#{stringify(backer.inserted_at.month)} #{backer.inserted_at.year}" %></div>
+                      </figcaption>
+                    </figure>
+                </div> 
+                                      </a> 
+              </div>
+            <% end %> 
+                    
+
         </div>
-          </div>
+
+</div>
+</section>

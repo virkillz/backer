@@ -82,7 +82,7 @@
 ---------------------------------------------------------------- */
 @media only screen and (max-width: 1500px) {
     header{
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
     .header_app .intro_wrapper .intro_text {
     margin-top: 100px;

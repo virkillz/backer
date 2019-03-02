@@ -43,8 +43,6 @@
 
 <%= render("component_topmenu.html", conn: @conn, page_data: @page_data) %>
 
-
-
 <%= render @view_module, @view_template, assigns %>
 
 

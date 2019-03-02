@@ -1,4 +1,4 @@
-<header class="header_inner_pages" style="height: 300px;">
+<header class="header_inner_pages" style="height: 100px;">
      <div class="header-top">
         <div class="sassnex_nav">
             <div class="container">
@@ -52,7 +52,7 @@
                                       <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
                                     </span>
 
-                                            <ul class="dropdown_menu">
+                                            <ul class="dropdown_menu dropdown-menu-left">
                                               <li> <a href="/backer/<%= @conn.assigns.current_backer.username %>">My Backer Profile</a> </li>
 
                                               <%= if @conn.assigns.current_backer.is_pledger do %>

@@ -15,16 +15,6 @@ defmodule BackerWeb.PledgerController do
     render(conn, "index.html", pledgers: pledgers)
   end
 
-  def featured(conn, params) do
-    pledgers = Account.list_pledgers(params)
-
-    conn
-    |> render("public_pledger_list.html",
-      pledgers: pledgers,
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-    )
-  end
-
   def explore(conn, params) do
     categories = Masterdata.list_categories()
 
@@ -93,6 +83,8 @@ defmodule BackerWeb.PledgerController do
     backing = Finance.list_all_backerfor(%{"backer_id" => pledger.id})
     backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id})
 
+    posts = Content.timeline_pledger(pledger.pledger.id) |> IO.inspect()
+
     case pledger do
       nil ->
         redirect(conn, to: page_path(conn, :page404))
@@ -107,6 +99,7 @@ defmodule BackerWeb.PledgerController do
             active: :posts,
             backing: backing,
             backers: backers,
+            posts: posts,
             layout: {BackerWeb.LayoutView, "layout_front_pledger_public.html"}
           )
         end

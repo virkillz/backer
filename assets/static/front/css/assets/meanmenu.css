@@ -25,7 +25,7 @@ a.meanmenu-reveal {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .mean-container .mean-bar::before {
-    background: url(../../images/logo1.png) no-repeat center center / cover;
+    background: url(/front/images/backer-logo-whiteish.png) no-repeat center center / cover;
     height: 22px;
     width: 129px;
     content: "";
@@ -89,7 +89,7 @@ a.meanmenu-reveal {
 	margin: 0;
 	text-align: left;
 	color: #677294;
-	border-top: 1px solid #DBEEFD;
+	/*border-top: 1px solid #DBEEFD;*/
 	text-decoration: none;
 }
 
@@ -97,7 +97,7 @@ a.meanmenu-reveal {
 	width: 80%;
 	padding: 1em 10%;
 	color: #677294;
-	border-top: 1px solid #DBEEFD;
+	/*border-top: 1px solid #DBEEFD;*/
 	opacity: 1;
 	filter: alpha(opacity=75);
 	text-shadow: none !important;

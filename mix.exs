@@ -20,7 +20,14 @@ defmodule Backer.Mixfile do
   def application do
     [
       mod: {Backer.Application, []},
-      extra_applications: [:logger, :runtime_tools, :timex, :scrivener_ecto, :scrivener_html]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :timex,
+        :scrivener_ecto,
+        :scrivener_html,
+        :timex
+      ]
     ]
   end
 

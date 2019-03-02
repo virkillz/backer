@@ -8,6 +8,7 @@
                         <h2>Daftar</h2>
                         <p>Bergabung menjadi komunitas backer hanya dalam hitungan detik.</p>
                     </div>
+                    <% IO.inspect(@changeset) %>
                     <%= form_for @changeset, "/register", fn f -> %>  
                         <div class="row">
 

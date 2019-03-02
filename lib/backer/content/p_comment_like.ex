@@ -12,7 +12,7 @@ defmodule Backer.Content.PCommentLike do
   @doc false
   def changeset(p_comment_like, attrs) do
     p_comment_like
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:pcomment_id, :backer_id])
+    |> validate_required([:pcomment_id, :backer_id])
   end
 end

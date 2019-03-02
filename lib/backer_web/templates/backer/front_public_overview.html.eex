@@ -39,38 +39,7 @@
         <div class="col-md-3 static">
 
 
-                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
-
-
-                    <div class="card card-padding">
-                        <figure class="fir-image-figure">
-                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-                            <div class="fir-imageover-color"></div>
-                          </a>
-
-                          <figcaption>
-                            <div class="fig-author-figure-title">Bintang Dilangit</div>
-                            <div class="fig-author-figure-username">@bintang</div>
-                            <div class="fig-author-figure-since">active backer since November 2019</div>
-                          </figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="card card-padding">
-                        <figure class="fir-image-figure">
-                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-                            <div class="fir-imageover-color"></div>
-                          </a>
-
-                          <figcaption>
-                            <div class="fig-author-figure-title">Bintang Dilangit</div>
-                            <div class="fig-author-figure-username">@bintang</div>
-                            <div class="fig-author-figure-since">active backer since November 2019</div>
-                          </figcaption>
-                        </figure>
-                    </div>
+         <%= render("component_suggestion.html") %>
 
 
         </div>

@@ -15,30 +15,61 @@
                     
               <div class="card" style="padding: 30px;">
 
-               <div class="row" style="margin-bottom: 2em;">
-                  <div class="col-4" style="text-align: right; font-weight: 800; font-size: 1.5em;"> Avatar </div>
-                  <div class="col-8"> <img src="<%= @backer.avatar %>" class="avatar-medium"> <button class="btn btn-primary">CHANGE</button> <button class="btn">remove</button></div>                  
-                </div>
+                <div id="save_profile_result"></div>
+
+                   <div class="row">
+                      <div class="col-5 input-label"> Avatar </div>
+                      <div class="col-7"> <input type="text" name="text" value="<%= @backer.avatar %>" class="regular-input" style="width: 100%;"> </div>               
+                    </div>
 
 
-                <div class="row">
-                  <div class="col-5"> <div class="input-label">Display Name </div></div>
-                  <div class="col-7"> <input type="text" name="text" class="checkout-input" style="width: 100%;"> </div>                  
-                </div>
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="col-5"> <div class="input-label">Nama Display </div></div>
+                      <div class="col-7"> <input type="text" name="text" value="<%= @backer.display_name %>" class="regular-input" style="width: 100%;"> </div>                  
+                    </div>
+
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="col-5"> <div class="input-label">Username </div>
+                        <div style="text-align: right; font-size: 0.8em;">Sekaligus menjadi bagian dari url backer.id/usernameKamu</div>
+                    </div>
+                      <div class="col-7"> <input type="text" value="<%= @backer.username %>" name="text" class="regular-input" style="width: 100%;"> </div>                  
+                    </div>                
 
 
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="col-5"> 
+                        <div class="input-label">Tentang kamu </div> 
+                        <div style="text-align: right; font-size: 0.8em;">Sedikit tentang anda sebagai seorang Backer.</div>
 
+                      </div>
+                      <div class="col-7"> <textarea name="text" rows="4" cols="50" class="regular-input" style="width: 100%;" ><%= @backer.backer_bio %></textarea> 
+                      </div>                  
+                    </div>
 
-              </div>
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="text-center col-12">
+                        <button class="btn btn-primary" drab="click:save_profile">Simpan</button>
+                      </div>
+                    </div>
+
+              </div> 
 
               <div class="card" style="padding: 30px;">
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="col-5"> <div class="input-label">Ganti Password </div></div>
+                      <div class="col-7"> <input type="text" name="text" class="regular-input" style="width: 100%;"> </div>                  
+                    </div>
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="col-5"> <div class="input-label">Ulangi Password </div></div>
+                      <div class="col-7"> <input type="text" name="text" class="regular-input" style="width: 100%;"> </div>                  
+                    </div> 
 
-                <div class="row">
-                  <div class="col-5"> <div class="input-label"> Backer Overview </div> <span>Show the thing bla bla bla</span></div>
-                  <div class="col-7"> <input type="text" name="text" class="checkout-input" style="width: 100%;"> </div>                  
-                </div>
-
-              </div>              
+                    <div class="row" style="margin-top: 2em;">
+                      <div class="text-center col-12">
+                        <button class="btn btn-primary">Simpan</button>
+                      </div>
+                    </div>                                       
+              </div>             
 
 
         </div>
@@ -47,40 +78,7 @@
               ================================================= -->
         <div class="col-md-3 static">
 
-
-                  <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
-
-
-                    <div class="card card-padding">
-                        <figure class="fir-image-figure">
-                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-                            <div class="fir-imageover-color"></div>
-                          </a>
-
-                          <figcaption>
-                            <div class="fig-author-figure-title">Bintang Dilangit</div>
-                            <div class="fig-author-figure-username">@bintang</div>
-                            <div class="fig-author-figure-since">active backer since November 2019</div>
-                          </figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="card card-padding">
-                        <figure class="fir-image-figure">
-                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-                            <div class="fir-imageover-color"></div>
-                          </a>
-
-                          <figcaption>
-                            <div class="fig-author-figure-title">Bintang Dilangit</div>
-                            <div class="fig-author-figure-username">@bintang</div>
-                            <div class="fig-author-figure-since">active backer since November 2019</div>
-                          </figcaption>
-                        </figure>
-                    </div>
-
+         <%= render("component_suggestion.html") %>
 
         </div>
     </div>

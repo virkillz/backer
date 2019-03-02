@@ -1,3 +1,5 @@
+            <div style="top: 0px; position: -webkit-sticky; /* Safari */
+  position: sticky;">
             <div class="profile-card" style="padding: 20px;">
                 <div class="text-center">
                     <img src="<%= @backer.avatar %>" alt="user" class="profile-photo-backer">
@@ -20,4 +22,6 @@
               <li><i class="icon ion-ios-people-outline"></i><div><a href="/home/finance" class="<%= if @menu == :finance, do: "backer-menu-active" %>">Finance</a></div></li>              
               <li><i class="icon ion-ios-people-outline"></i><div><a href="/home/profile-setting" class="<%= if @menu == :profile_setting, do: "backer-menu-active" %>">Profile Setting</a></div></li>              
             </ul> 
+
+          </div>
 

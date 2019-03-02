@@ -7,14 +7,15 @@ defmodule Backer.Content.Post do
     field(:featured_image, :string)
     field(:featured_link, :string)
     field(:featured_video, :string)
-    field(:like_count, :integer)
+    field(:like_count, :integer, default: 0)
+    field(:comment_count, :integer)
     field(:min_tier, :integer)
     field(:title, :string)
     field(:type, :string)
     field(:publish_status, :string, default: "draft")
 
     has_many(:pcomment, Backer.Content.PostComment)
-    belongs_to(:pledger, Backer.Account.Pledger)    
+    belongs_to(:pledger, Backer.Account.Pledger)
 
     timestamps()
   end
@@ -27,6 +28,8 @@ defmodule Backer.Content.Post do
       :title,
       :content,
       :min_tier,
+      :comment_count,
+      :like_count,
       :featured_image,
       :featured_link,
       :featured_video,

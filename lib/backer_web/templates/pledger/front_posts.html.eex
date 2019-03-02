@@ -1,6 +1,6 @@
 
 <section>
-    <div class="container" style="max-width: 1242px;">
+    <div class="container">
 <div class="row" style="margin-top: 30px;">
 
 
@@ -9,45 +9,116 @@
 
 
 
-          <div class="row block_page"><div id="timeline-target"><div class="post-content">
+          <div class="row block_page">
 
 
-                <img src="http://ecologytheme.com/theme/sassnex/images/blog/blog_p_5.jpg" alt="post-image" class="img-responsive post-image">
-                <div class="post-container">
-                  <img src="/img/avatar1.jpg" alt="user" class="avatar-small float-left">
+<%= for post <- @posts do %>
+
+
+<div class="post-content card">
+                
+
+                <div class="post-header">
+                  <img src="<%= @pledger.avatar %>" alt="user" class="avatar-small float-left" style="margin-right: 8px;">
                   <div class="post-detail">
                     <div class="user-info">
-                      <h5><a href="timeline.html" class="profile-link">Sarah Cruiz</a> <span class="following">following</span></h5>
-                      <p class="text-muted">Published a photo about 15 mins ago</p>
+                      <h5><a href="timeline.html" class="profile-link"><%= @pledger.display_name %></a></h5>
+                      <p class="text-muted" style="font-size: 0.8em;">Post about <%= Stringhelper.ago(post.inserted_at) %></p>
                     </div>
-                    <div class="reaction">
-                      <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-                      <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                    </div>
-                    <div class="line-divider"></div>
-                    <div class="post-text">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
-                    </div>
-                    <div class="line-divider"></div>
-                    <div class="post-comment">
-                      <img src="/img/avatar3.jpg" alt="" class="profile-photo-sm">
-                      <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                    </div>
-                    <div class="post-comment">
-                      <img src="/img/avatar1.jpg" alt="" class="profile-photo-sm">
-                      <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                    </div>
-                    <div class="post-comment">
-                      <img src="/img/avatar2.jpg" alt="" class="profile-photo-sm">
-                      <input type="text" class="form-control" placeholder="Post a comment">
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-          <div id="load-more" class="text-center" style="margin-bottom: 50px;">
-                    <button class="btn_load_more" onclick="mbel(1)">Load More</button>
-          </div>              </div></div>
+                    </div>
+                  </div> 
+              
+                  <div style="background-color: #f5f5f5; padding: 20px 0px 10px 0px;">
+                   <h4 class="text-center" style="padding: 5px 15px 5px 20px; color: #2e2e2e ;font-size: 1.3em; font-weight: bold;"><%= post.title %> 
+                   </h4>  
+
+
+                <%= case post.type do %>
+
+                <% "image" -> %>
+
+                <img src="<%= post.featured_image %>" alt="post-image" class="img-responsive post-image" style="padding:10px 0px;">
+
+                <% "video" -> %>
+
+
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/<%= post.featured_video %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
+                <% _other -> %>
+
+
+                  <% end %>
+
+            
+                    <div class="post-text" style="padding: 10px 25px;">
+                      <%= post.content %>
+                    </div>
+
+                </div>
+
+
+                    <div style="padding: 20px 20px 0px 20px;">
+                  <div class="pull-left"> <%= post.like_count %> likes</div>
+                  <div class="pull-right"> <%= post.comment_count %> comments</div>
+                    </div>
+
+                <div class="post-container">
+
+                     <div class="line-divider"></div>  
+
+                  <table style="width:100%; table-layout:fixed;">
+                    <tbody><tr class="text-center">
+                      <td> <button class="btn" drab="click:like(24)" style="margin: 5px; width:100%;" drab-id="d3"><i class="la la-thumbs-up"></i> Like</button></td>
+                      <td><a class="btn" href="home/timeline/24" style="margin: 5px; width:100%;"><i class="la la-comments-o"></i> Comment</a></td>              
+                    </tr>
+                  </tbody></table>
+
+                  <div class="line-divider"></div>                                            
+
+
+                    <div style="color:darkblue; font-size: 13px; padding: 10px 0px;"><a data-toggle="collapse" href="#comment<%= post.id %>" role="button" aria-expanded="false" aria-controls="comment<%= post.id %>">Show <%= post.comment_count %> comments</a></div>
+
+                    <div class="post-detail collapse" id="comment<%= post.id %>">
+                      <a href="home/timeline/24" style="margin: 5px; width:100%;"> Show all Comments</a>                      
+                    <%= for comment <- post.pcomment do %>
+
+                    <div class="post-comment">
+                      <img src="<%= comment.backer.avatar %>" alt="" class="profile-photo-sm">
+                      <p class="commentbox"><a href="timeline.html" class="profile-link"><%= comment.backer.display_name %> </a> <%= comment.content %> </p>
+                      
+                    </div> 
+
+                    <span class="comment-like" style="padding-left: 50px; padding-top: 0px"><a><i class="la la-thumbs-up"></i> 13</a> ∙ <%= Stringhelper.ago(comment.inserted_at) %></span>
+
+                    <% end %>
+                  </div>
+
+                    <form>
+
+                    <div class="post-comment">
+
+                      <table style="width:100%; table-layout:fixed;">
+                        <tbody><tr><td><img src="/img/avatar2.jpg" alt="" class="profile-photo-sm"></td><td style="width:80%;"> <input type="text" drab="enter:comment(24)" name="comment" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;" drab-id="d4"></td><td><button class="btn float-right" drab="click:comment(24)" drab-id="d5"> Send </button></td></tr>
+                      </tbody></table>
+
+
+
+                    </div>
+                  </form>
+
+
+                  </div>
+</div>    
+
+
+<% end %>        
+
+
+
+
+        </div>
             <div class="text-center" id="backloader" style="display: none;">
               <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
             </div>                      

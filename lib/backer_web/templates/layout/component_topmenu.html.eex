@@ -3,12 +3,12 @@
 <%= if assigns[:page_data] != nil do %>
 
 <%= if Map.has_key?(@page_data, :header_img) do %>
-style="background: url(<%= @page_data.header_img %>) no-repeat;"
+style="background: url(<%= @page_data.header_img %>) no-repeat; min-height: 350px;"
 
 <% end %>
 <% end %>
 
->
+    >
      <div class="header-top">
         <div class="sassnex_nav">
             <div class="container">

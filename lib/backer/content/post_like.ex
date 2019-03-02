@@ -12,7 +12,7 @@ defmodule Backer.Content.PostLike do
   @doc false
   def changeset(post_like, attrs) do
     post_like
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:post_id, :backer_id])
+    |> validate_required([:post_id, :backer_id])
   end
 end

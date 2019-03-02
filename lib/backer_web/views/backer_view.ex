@@ -19,4 +19,11 @@ defmodule BackerWeb.BackerView do
       12 -> "December"
     end
   end
+
+  def ago(datetime) do
+    {:ok, relative_str} =
+      DateTime.from_naive!(datetime, "Etc/UTC") |> Timex.format("{relative}", :relative)
+
+    relative_str
+  end
 end

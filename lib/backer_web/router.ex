@@ -98,7 +98,7 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home", BackerController, :home)
-    get("/home/timeline/:id", BackershowController, :show_post)    
+    get("/home/timeline/:id", BackershowController, :show_post)
     get("/home/invoice/:id", BackerController, :invoice_display)
     get("/home/overview", BackerController, :overview)
     get("/home/finance", BackerController, :finance)
@@ -165,13 +165,14 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through(:browser)
 
+    get("/avatar", PageController, :color)
+
     get("/ajax/public/test", BackerController, :ajax_test)
 
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PageController, :signout)
     get("/backers", BackerController, :featured)
-    get("/pledger", PledgerController, :featured)
 
     get("/backer/:username", BackerController, :public_overview)
     # get("/backer/:username/overview", BackerController, :overview)

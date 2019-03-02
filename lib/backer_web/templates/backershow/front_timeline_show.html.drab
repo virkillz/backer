@@ -6,6 +6,7 @@
 
         <div class="col-md-3 static">
 
+        <%= render(BackerWeb.BackerView, "component_private_menu.html", backer: @backer, menu: @menu, owner: @owner) %>
 
 
         </div>
@@ -13,22 +14,34 @@
         <div class="col-md-6">
 
 
-          <div class="row block_page">
 
+        <div class="post-content card" style="margin-bottom: 25px;">
+                        
 
-
-
-      <div class="post-content">
-                <div class="row" style="padding-top: 10px;">
-                  <div class="col-9">  <div style="padding: 15px 15px; font-size: 1.4em; font-weight: bold;"><%= @post.title %> </div></div>
-                  <div class="col-3"><span style="text-align: right;"><img src="/img/avatar1.jpg" alt="user" class="avatar-small"> Category</span></div>                  
+            <div class="post-header">
+              <img src="<%= @post.avatar %>" alt="user" class="avatar-small float-left" style="margin-right: 8px;">
+              <div class="post-detail">
+                <div class="user-info">
+                  <h5><a href="timeline.html" class="profile-link"><%= @post.display_name %></a></h5>
+                  <p class="text-muted" style="font-size: 0.8em;">Post about <%= Stringhelper.ago(@post.inserted_at) %></p>
                 </div>
 
-                <%= case @post.type do %>
+                </div>
+              </div> 
+          
+              <div style="background-color: #f5f5f5; padding: 20px 0px 10px 0px;">
+               
+               <h4 class="text-center" style="padding: 5px 15px 5px 20px; color: #2e2e2e ;font-size: 1.3em; font-weight: bold;">
+
+               <%= @post.title %>
+               </h4>  
+
+
+                    <%= case @post.type do %>
 
                 <% "image" -> %>
 
-                <img src="<%= @post.image %>" alt="post-image" class="img-responsive post-image" style="padding:10px;">
+                <img src="<%= @post.image %>" alt="post-image" class="img-responsive post-image" style="padding:10px 0px;">
 
                 <% "video" -> %>
 
@@ -41,60 +54,78 @@
 
                   <% end %>
 
+                <div class="post-text" style="padding: 10px 25px;">
+                  
+                  <%= @post.content %>                   
 
-                    <div class="line-divider"></div>
-                    <div class="post-text" style="padding: 10px 20px;">
-                      <%= @post.content |> Earmark.as_html! |> raw %>
-                    </div>
-                    <div class="line-divider"></div>
-                <div class="post-container">
-                  <img src="<%= @post.avatar %>" alt="user" class="avatar-small float-left">
-                  <div class="post-detail">
-                    <div class="user-info">
-                      <h5><a href="timeline.html" class="profile-link"><%= @post.display_name %></a></h5>
-                      <p class="text-muted">Published a photo about 15 mins ago</p>
-                    </div>
-                    <div class="reaction">
-                      <a class="btn text-green" href="home/timeline/<%= @post.id %>"><i class="la la-comments-o"></i> <%= Enum.count(@post.comments) %></a>
-                      <a class="btn text-red" href="home/timeline/<%= @post.id %>"><i class="la la-comments-o"></i> 0</a>
-                    </div>
-
-                    <%= for comment <- @post.comments do %>
-
-                    <div class="post-comment">
-                      <img src="<%= comment.avatar %>" alt="" class="profile-photo-sm">
-                      <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i>  <%= comment.content %> </p>
-                    </div> 
-
-                    <% end %>
-
-
-
-                    <div class="post-comment">
-                      <form class="form-inline">
-                      <img src="<%= @post.avatar %>" alt="" class="profile-photo-sm">
-                      <input type="text" class="form-control" name="comment" placeholder="Post a comment"> 
-                      <button drab="click:comment(<%= @post.id %>)"> Send </button>
-                    </form>
-                    </div>
-                  </div>
                 </div>
-</div>
+
+            </div>
+
+                <div style="padding: 20px 20px 0px 20px;">
+              <div class="pull-left"> <%= @post.like_count %> likes</div>
+              <div class="pull-right"> <%= @post.comment_count %> comments</div>
+                </div>
+
+            <div class="post-container">
+
+                 <div class="line-divider"></div>  
+
+                  <table style="width:100%; table-layout:fixed;">
+                    <tbody><tr class="text-center">
+                      <td> <button class="btn" drab="click:like_post(<%= @post.id %>)" style="margin: 5px; width:100%;" ><i class="la la-thumbs-up"></i> Like</button></td>
+                      <td><a class="btn" onclick="makecomment()" style="margin: 5px; width:100%;"><i class="la la-comments-o"></i> Comment</a></td>              
+                    </tr>
+                  </tbody></table>
+
+                  <div class="line-divider"></div>                                            
+
+                  <div class="post-detail" id="comments">
+                   <%= for comment <- @post.comments do %>
+                      <div class="post-comment">
+                        <img src="<%= comment.avatar %>" alt="" class="profile-photo-sm">
+                        <p class="commentbox" style="width:100%;"><a href="/<%= comment.username %>" class="profile-link"><%= comment.display_name %> </a> <%= comment.content %> </p>
+                      </div>
+
+                      <a id="d<%= comment.id %>" drab="click:like_comment(<%= comment.id %>)"><span class="comment-like" style="padding-left: 50px; padding-top: 0px;"><i class="la la-thumbs-up"></i> <%= comment.like_count %> ∙ <%= Stringhelper.ago(comment.inserted_at) %></span>   </a>                 
+
+                    <% end %> 
+                  </div>
 
 
+           
+                    <form>
+                      <div class="post-comment" style="margin-top: 10px;">
 
+                        <table style="width:100%; table-layout:fixed;">
+                          
+                          <tr>
+                            <td>
+                              <img src="<%= @post.current_avatar %>" alt="" class="profile-photo-sm">
+                            </td>
+                          <td style="width:80%;"> 
+                          <input id="comment_content" type="text" drab="enter:comment(<%= @post.id %>)" name="comment_content" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;">
+                          </td>
+                          <td><button class="btn float-right" drab="click:comment(<%= @post.id %>)" > Send </button></td>
+                          </tr>
+                        
+                        </table>
+                      </div>
+                  </form>
+                 
 
-
+                  
+              </div>
           </div>
-      <%#    
-            <div class="text-center" id="backloader">
-              <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
-            </div>  %>                    
+
+                  
 
         </div>
 
         <div class="col-md-3 static">
 
+                    <div style="top: 0px; position: -webkit-sticky; /* Safari */
+  position: sticky;">
 
                   <div class="title-separator" style="margin-top: 0px;"> All backer </div> 
 
@@ -129,7 +160,7 @@
                         </figure>
                     </div>
 
-
+          </div>
         </div>
     </div>
 
@@ -137,3 +168,13 @@
 
     </div>
 </section>
+
+
+<script>
+
+function makecomment() {
+  
+  document.getElementById("input-comment").focus();
+}
+
+</script>

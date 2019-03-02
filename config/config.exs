@@ -33,16 +33,13 @@ config :backer, Backer.Auth.AuthAccessPipeline,
 config :scrivener_html,
   routes_helper: BackerWeb.Router.Helpers
 
-config :phoenix, :template_engines,
-  drab: Drab.Live.Engine
+config :phoenix, :template_engines, drab: Drab.Live.Engine
 
 config :drab, BackerWeb.Endpoint,
-  otp_app: :backer,  
+  otp_app: :backer,
   js_socket_constructor: "window.__socket"
 
-config :drab, BackerWeb.Endpoint,
-  access_session: :current_backer_id 
-  
+config :drab, BackerWeb.Endpoint, access_session: :current_backer_id
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

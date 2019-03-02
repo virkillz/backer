@@ -6,7 +6,6 @@ defmodule BackerWeb.PageController do
   alias Backer.Account.Backer, as: Backerz
 
   def index(conn, _params) do
-
     conn
     |> render("component_homepage.html",
       layout: {BackerWeb.LayoutView, "layout_front_homepage.html"}
@@ -25,6 +24,99 @@ defmodule BackerWeb.PageController do
       layout: {BackerWeb.LayoutView, "layout_front_static.html"}
     )
   end
+
+  # def color(conn, %{"name" => name, "size" => size, "color" => color, "shape" => shape} = params) do
+  #   IO.inspect(params)  
+  #   IO.inspect("LOL")  
+  #   html(conn, """
+  #    <html>
+  #      <head>
+  #         <title>Passing an Id</title>
+  #      </head>
+  #      <body>
+
+  #      #{HashColor.gen_avatar(name, [size: size, color: color, shape: shape])}                                        
+                         
+  #      </body>
+  #    </html>
+  #   """)
+  # end
+
+  # def color(conn, %{"name" => name, "size" => size, "color" => color} = params) do
+  #   IO.inspect(params)    
+  #       IO.inspect("ini") 
+  #   html(conn, """
+  #    <html>
+  #      <head>
+  #         <title>Passing an Id</title>
+  #      </head>
+  #      <body>
+
+  #      #{HashColor.gen_avatar(name, [size: size, color: color])}                                        
+                         
+  #      </body>
+  #    </html>
+  #   """)
+  # end
+
+  # def color(conn, %{"name" => name, "size" => size} = params) do
+  #   IO.inspect(params)  
+  #       IO.inspect("LOLss")   
+  #   html(conn, """
+  #    <html>
+  #      <head>
+  #         <title>Passing an Id</title>
+  #      </head>
+  #      <body>
+
+  #      #{HashColor.gen_avatar(name, [size: size])}                                        
+                         
+  #      </body>
+  #    </html>
+  #   """)
+  # end
+
+  # def color(conn, %{"name" => name} = params) do
+  #   IO.inspect(params)
+  #       IO.inspect("LOLsd") 
+  #   html(conn, """
+  #    <html>
+  #      <head>
+  #         <title>Passing an Id</title>
+  #      </head>
+  #      <body>
+
+  #      #{HashColor.gen_avatar(name)}                                        
+                         
+  #      </body>
+  #    </html>
+  #   """)
+  # end
+
+  def color(conn, params) do
+
+    name = params["name"]
+    shape = params["shape"]
+    color = params["color"]
+    size = params["size"] |> parse_number
+
+    html(conn, """
+       #{HashColor.gen_avatar(name, [shape: shape, color: color, size: size])}                                        
+    """)
+  end
+
+  defp parse_number(nil) do
+    100
+  end
+
+  defp parse_number(string) do 
+    case Integer.parse(string) do
+      {integer, _} -> integer
+      :error -> 100
+    end
+  end
+
+
 
   def contact_us(conn, _params) do
     render(conn, "page_contact.html",
@@ -132,11 +224,11 @@ defmodule BackerWeb.PageController do
   end
 
   def register(conn, params) do
-    changeset = Account.change_backer(%Backerz{})
+    changeset = Account.change_backer(%Backerz{}) |> IO.inspect()
 
     render(conn, "component_register.html",
-      layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
-      changeset: changeset
+      changeset: changeset,
+      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
     )
   end
 

@@ -10,10 +10,17 @@ defmodule BackerWeb.BackerController do
   def featured(conn, _params) do
     backers = Account.list_backers()
 
+    page_data = %{
+      header_img: "/front/images/banner/bg-header2.png",
+      title: "Backers"
+    }
+
     conn
     |> render("public_backer_list.html",
       backers: backers,
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+      page_data: page_data,
+      layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
+      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
     )
   end
 
@@ -98,10 +105,9 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-
   def show_post(conn, %{"id" => id}) do
-    post = Content.get_post(%{"id" => id}) |> IO.inspect
-    backer = conn.assigns.current_backer
+    backer = conn.assigns.current_backer 
+    post = Content.get_post(%{"id" => id, "backer_id" => backer.id})
 
     case backer do
       nil ->
@@ -119,12 +125,35 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  # def home(conn, params) do
+  #   backer = conn.assigns.current_backer
+
+  #   {donation, rawposts} = Content.timeline(%{"backer_id" => backer.id})
+  #   posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
+
+  #   experiment = Content.timeline(backer.id) |> IO.inspect
+
+  #   case backer do
+  #     nil ->
+  #       redirect(conn, to: page_path(conn, :page404))
+
+  #     _ ->
+  #       conn
+  #       |> render("front_timeline.html",
+  #         backer: backer,
+  #         owner: true,
+  #         menu: :timeline,
+  #         posts: posts,
+  #         layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+  #       )
+  #   end
+  # end
+
   def home(conn, params) do
     backer = conn.assigns.current_backer
 
-    {donation, rawposts} = Content.timeline(%{"backer_id" => backer.id})
-    posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end) 
-
+    {donation, rawposts} = Content.timeline(backer.id)
+    posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
 
     case backer do
       nil ->
@@ -160,7 +189,6 @@ defmodule BackerWeb.BackerController do
   end
 
   def backing(conn, _paramsms) do
-
     backer = conn.assigns.current_backer
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
@@ -182,7 +210,6 @@ defmodule BackerWeb.BackerController do
   end
 
   def finance(conn, _params) do
-
     backer = conn.assigns.current_backer
 
     balance = Finance.get_balance(%{"backer_id" => conn.assigns.current_backer.id})
@@ -228,19 +255,14 @@ defmodule BackerWeb.BackerController do
   end
 
   def ajax_test(conn, params) do
-
     if conn.assigns.backer_signed_in? do
-
-      {donation, posts} = Content.timeline(%{"backer_id" => conn.assigns.current_backer.id}) |> IO.inspect
+      {donation, posts} =
+        Content.timeline(%{"backer_id" => conn.assigns.current_backer.id}) |> IO.inspect()
 
       conn |> put_layout(false) |> render("ajax_test.html", posts: posts)
-
     else
-
-
       text(conn, "not authorized")
     end
-
   end
 
   def index(conn, params) do

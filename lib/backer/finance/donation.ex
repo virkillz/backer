@@ -11,7 +11,7 @@ defmodule Backer.Finance.Donation do
     field(:backer_id, :id)
     field(:invoice_id, :id)
 
-    belongs_to(:pledger, Backer.Account.Pledger)      
+    belongs_to(:pledger, Backer.Account.Pledger)
 
     timestamps()
   end
