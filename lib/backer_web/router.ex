@@ -105,6 +105,7 @@ defmodule BackerWeb.Router do
     get("/home/backing-history", BackerController, :backing_history)
     get("/home/backing", BackerController, :backing)
     get("/home/profile-setting", BackerController, :profile_setting)
+    put("/home/edit_profile", BackerController, :profile_setting_update)
 
     get("/pledger/:username/tier/:tier", PledgerController, :checkout)
     post("/checkout", PledgerController, :checkout_post)

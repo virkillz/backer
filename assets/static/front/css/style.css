@@ -267,6 +267,10 @@ label
 
 /*=================================*/
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 
 .checkout-input{
       background: transparent;
@@ -282,6 +286,7 @@ label
     border-bottom: 1px solid darkgrey;
     padding-bottom: 3px;
     font-size: 1em;
+    width: 100%;
 }
 
 
@@ -291,7 +296,7 @@ label
   font-family: "Montserrat", sans-serif;     
   text-align: right; 
   font-weight: 800; 
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 

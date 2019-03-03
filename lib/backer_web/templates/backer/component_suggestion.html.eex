@@ -1,47 +1,67 @@
                  <div class="title-separator" style="margin-top: 0px;"> suggested donee </div> 
 
-
-<div class="post-content card">
-                
-    <div style="background: url(https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80) no-repeat; min-height: 100px; width: 100%; margin-bottom: 40px;">
-    <img src="/img/avatar1.jpg" alt="user" class="avatar-medium" style="position: relative;top: 60px; margin:auto; display: block;">      
+<!--
+<a href="#">
+<div class="post-content card" >        
+    <div style="background-color: <%= HashColor.random_color([value: 60]) %>; min-height: 60px; width: 100%; margin-bottom: 5px;">
+             <h4 class="text-center" style="color: white ;font-size: 1.3em; font-weight: bold; position: relative; top: 13px;">Samara
+       </h4> 
+           <div class="text-center" style="font-size: 0.9em; padding-bottom: 10px; color: white; top:8px; position: relative;">Penyanyi</div>         
+    <img src="/img/avatar1.jpg" alt="user" class="avatar-medium" style="position: absolute;top: 20px; margin-left: 20px;">      
     </div>
     
+           <div style="font-size: 0.9em; padding-bottom: 5px; text-align: right; margin-right: 20px; color: #383838;">13 backer • 16 posts</div>          
 
-       <h4 class="text-center" style="color: #2e2e2e ;font-size: 1.3em; font-weight: bold;">Samara
-       </h4> 
-           <div class="text-center" style="font-size: 0.9em; padding-bottom: 10px;">Penyanyi</div>          
-           <div class="text-center" style="font-size: 0.9em; padding-bottom: 20px;">13 backer • 16 posts</div>          
-
-         
-      <div style="background-color: #f5f5f5; padding: 20px 0px 10px 0px;"> 
-
-        <div class="post-text text-center" style="padding: 10px 25px;">
-Sesungguhnya ini hanyalah dummy text biasa, tidak ada apa apa                    </div>
-
-    </div>
-
-
-    <div class="text-center" style="padding: 20px;">
-
-      <button class="btn btn-primary">Kunjungi</button>                                        
-
-
-
-      </div>
+        <div class="post-text text-center" style="padding: 15px 20px; line-height: 1.6em; font-size: 0.8em;color: #677294;">
+            Sesungguhnya ini hanyalah dummy text biasa, tidak ada apa apa
+        </div>
 </div>
+</a>
+-->
 
-                    <div class="card card-padding">
-                        <figure class="fir-image-figure">
-                          <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-                            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-                            <div class="fir-imageover-color"></div>
-                          </a>
 
-                          <figcaption>
-                            <div class="fig-author-figure-title">Bintang Dilangit</div>
-                            <div class="fig-author-figure-username">@bintang</div>
-                            <div class="fig-author-figure-since">active backer since November 2019</div>
-                          </figcaption>
-                        </figure>
-                    </div>
+<a href="#">
+<div class="post-contentx card" >        
+    <div style="background-color: <%= HashColor.random_color([value: 60]) %>; height: 100px; width: 100%; margin-bottom: 5px;">
+        <div class="post-text text-center" style="background-color: white; padding: 7px; margin: 15px 10px 15px 60px;line-height: 1.7em; font-size: 0.8em; color: #677294; border-radius: 20px 20px 20px 0px;">
+            <%= String.slice("Sesungguhnya ini hanyalah dummy text biasa, tidak ada apa apa kalau isiny abanyak sekali gimana", 0..90) <> "..."%>
+        </div>            
+    <img src="/img/avatar1.jpg" alt="user" class="avatar-small" style="position: absolute;top: 80px; margin-left: 10px;">      
+    </div>
+      <div style="margin-left: 70px;"><span style="font-weight: bold;">Komunitas Tinggi Awang Awang </span> ∙ <span>Musisi</span></div>  
+
+           <div style="font-size: 0.7em; padding-bottom: 5px; text-align: center; margin-right: 20px;">13 backer • 16 posts</div>          
+
+</div>
+</a>
+
+<a href="#">
+<div class="post-contentx card" >        
+    <div style="background-color: <%= HashColor.random_color([value: 60]) %>; height: 100px; width: 100%; margin-bottom: 5px;">
+        <div class="post-text text-center" style="background-color: white; padding: 7px; margin: 15px 10px 15px 60px;line-height: 1.7em; font-size: 0.8em; color: #677294; border-radius: 20px 20px 20px 0px;">
+            <%= String.slice("Sesungguhnya ini hanyalah dummy ", 0..90) <> "..."%>
+        </div>            
+    <img src="/img/avatar1.jpg" alt="user" class="avatar-small" style="position: absolute;top: 80px; margin-left: 10px;">      
+    </div>
+      <div style="margin-left: 70px;"><span style="font-weight: bold;">Komunitas Sabrina </span> ∙ <span>Musisi</span></div>  
+
+           <div style="font-size: 0.7em; padding-bottom: 5px; text-align: center; margin-right: 20px;">13 backer • 16 posts</div>          
+
+</div>
+</a>
+
+<a href="#">
+<div class="post-contentx card" >        
+    <div style="background-color: <%= HashColor.random_color([value: 60]) %>; height: 100px; width: 100%; margin-bottom: 5px;">
+        <div class="post-text text-center" style="background-color: white; padding: 7px; margin: 15px 10px 15px 60px;line-height: 1.7em; font-size: 0.8em; color: #677294; border-radius: 20px 20px 20px 0px;">
+            <%= String.slice("Sesungguhnya ini hanyalah dummy ", 0..90) <> "..."%>
+        </div>            
+    <img src="/img/avatar1.jpg" alt="user" class="avatar-small" style="position: absolute;top: 80px; margin-left: 10px;">      
+    </div>
+      <div style="margin-left: 70px;"><span style="font-weight: bold;">Komunitas Sabrina </span> ∙ <span>Musisi</span></div>  
+
+           <div style="font-size: 0.7em; padding-bottom: 5px; text-align: center; margin-right: 20px;">13 backer • 16 posts</div>          
+
+</div>
+</a>
+

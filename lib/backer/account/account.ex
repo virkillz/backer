@@ -273,7 +273,7 @@ defmodule Backer.Account do
 
   def update_backer(%Backerz{} = backer, attrs) do
     backer
-    |> Backerz.create_changeset(attrs)
+    |> Backerz.update_changeset(attrs)
     |> Repo.update()
   end
 

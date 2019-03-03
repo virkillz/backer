@@ -2,7 +2,7 @@
   position: sticky;">
             <div class="profile-card" style="padding: 20px;">
                 <div class="text-center">
-                    <img src="<%= @backer.avatar %>" alt="user" class="profile-photo-backer">
+                    <img src="<%= Stringhelper.avatar(@backer.avatar, 100) %>" alt="user" class="profile-photo-backer">
                     <h5 style="margin-top: 20px;"><a href="#" class="display-name-profile-card"><%= @backer.display_name %></a></h5>
                 </div>
             </div>

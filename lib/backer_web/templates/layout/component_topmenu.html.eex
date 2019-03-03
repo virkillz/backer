@@ -45,7 +45,7 @@ style="background: url(<%= @page_data.header_img %>) no-repeat; min-height: 350p
                                 <li class="dropdown"> 
                                     <span data-toggle="dropdown" class="dropdown-toggle" style="color: white;">
                                       <span class="display_name_nav"><%= @conn.assigns.current_backer.display_name %></span>
-                                      <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
+                                      <img src="<%= Stringhelper.avatar(@conn.assigns.current_backer.avatar, 50) %>" class="avatar-small" />
                                     </span>
 
                                             <ul class="dropdown_menu">

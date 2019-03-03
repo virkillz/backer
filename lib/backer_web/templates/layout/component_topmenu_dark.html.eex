@@ -49,7 +49,7 @@
                                 <li class="dropdown"> 
                                     <span data-toggle="dropdown" class="dropdown-toggle" style="color: white; ">
                                       
-                                      <img src="<%= @conn.assigns.current_backer.avatar %>" class="avatar-small" />
+                                      <img src="<%= Stringhelper.avatar(@conn.assigns.current_backer.avatar, 50) %>" class="avatar-small" />
                                     </span>
 
                                             <ul class="dropdown_menu dropdown-menu-left">

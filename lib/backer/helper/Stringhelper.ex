@@ -8,6 +8,32 @@ defmodule Stringhelper do
       end
   end
 
+  def accepted_images_mime?(format) do
+    accepted_mime_types = ["image/png", "image/bmp", "image/gif", "image/svg+xml", "image/jpeg", "image/tiff", "image/webp"]
+    Enum.member?(accepted_mime_types, format)
+  end
+
+  def get_public_id_cloudinary!(url_image) do
+    [_a,b,_c] = Regex.run(~r/(\w+)(\.\w+)+(?!.*(\w+)(\.\w+)+)/, url_image)
+     b 
+  end
+
+  def is_cloudinary_link?(url_image) do
+    case Regex.run(~r/(\w+)(\.\w+)+(?!.*(\w+)(\.\w+)+)/, url_image) do
+      [_a,b,_c] -> {:ok, b}
+      _other -> {:error, "doesn't seems like cloudinary url"}
+    end
+  end  
+
+  def avatar(url_image, width) do
+    #detect if its a cloudinary link. if not, bypass.
+    case is_cloudinary_link?(url_image) do
+      {:ok, id} -> "https://" <> Cloudex.Url.for(id, %{width: width, height: width, crop: "thumb", round: "max"})
+      _other -> url_image
+    end
+  end
+
+
   def stringify(x) do
     case x do
       1 -> "January"
