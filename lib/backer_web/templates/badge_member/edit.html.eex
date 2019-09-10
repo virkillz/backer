@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, badge_member_path(@conn, :update, @badge_member)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.badge_member_path(@conn, :update, @badge_member)) %>
 
 
 </div>

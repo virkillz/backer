@@ -19,7 +19,7 @@ defmodule BackerWeb.FCommentLikeController do
       {:ok, f_comment_like} ->
         conn
         |> put_flash(:info, "F comment like created successfully.")
-        |> redirect(to: f_comment_like_path(conn, :show, f_comment_like))
+        |> redirect(to: Router.f_comment_like_path(conn, :show, f_comment_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.FCommentLikeController do
       {:ok, f_comment_like} ->
         conn
         |> put_flash(:info, "F comment like updated successfully.")
-        |> redirect(to: f_comment_like_path(conn, :show, f_comment_like))
+        |> redirect(to: Router.f_comment_like_path(conn, :show, f_comment_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", f_comment_like: f_comment_like, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.FCommentLikeController do
 
     conn
     |> put_flash(:info, "F comment like deleted successfully.")
-    |> redirect(to: f_comment_like_path(conn, :index))
+    |> redirect(to: Router.f_comment_like_path(conn, :index))
   end
 end

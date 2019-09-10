@@ -21,7 +21,8 @@ defmodule BackerWeb do
     quote do
       use Phoenix.Controller, namespace: BackerWeb
       import Plug.Conn
-      import BackerWeb.Router.Helpers
+      # import BackerWeb.Router.Helpers
+      alias BackerWeb.Router.Helpers, as: Routes
       import BackerWeb.Gettext
     end
   end
@@ -38,7 +39,8 @@ defmodule BackerWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import BackerWeb.Router.Helpers
+      # import BackerWeb.Router.Helpers
+      alias BackerWeb.Router.Helpers, as: Routes
       import BackerWeb.ErrorHelpers
       import BackerWeb.Gettext
     end

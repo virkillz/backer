@@ -40,7 +40,7 @@ defmodule BackerWeb.InvoiceController do
       {:ok, %{invoice: invoice}} ->
         conn
         |> put_flash(:info, "Invoice created successfully.")
-        |> redirect(to: invoice_path(conn, :show, invoice))
+        |> redirect(to: Router.invoice_path(conn, :show, invoice))
 
       {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
         backers = Account.list_backers()
@@ -63,7 +63,7 @@ defmodule BackerWeb.InvoiceController do
       {:ok, %{invoice: invoice}} ->
         conn
         |> put_flash(:info, "Invoice created successfully.")
-        |> redirect(to: invoice_path(conn, :index))
+        |> redirect(to: Router.invoice_path(conn, :index))
 
       {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
         backers = Account.list_backers()
@@ -109,7 +109,7 @@ defmodule BackerWeb.InvoiceController do
       {:ok, invoice} ->
         conn
         |> put_flash(:info, "Invoice updated successfully.")
-        |> redirect(to: invoice_path(conn, :show, invoice))
+        |> redirect(to: Router.invoice_path(conn, :show, invoice))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         invoice_status = Constant.invoice_status()
@@ -128,6 +128,6 @@ defmodule BackerWeb.InvoiceController do
 
     conn
     |> put_flash(:info, "Invoice deleted successfully.")
-    |> redirect(to: invoice_path(conn, :index))
+    |> redirect(to: Router.invoice_path(conn, :index))
   end
 end

@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, withdrawal_path(@conn, :update, @withdrawal)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.withdrawal_path(@conn, :update, @withdrawal)) %>
 
 
 </div>

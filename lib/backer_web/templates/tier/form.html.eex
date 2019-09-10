@@ -35,7 +35,7 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
-    <span><%= link "Cancel", to: tier_path(@conn, :index), class: "btn btn-warning" %></span>
+    <span><%= link "Cancel", to: Router.tier_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>
 </div>

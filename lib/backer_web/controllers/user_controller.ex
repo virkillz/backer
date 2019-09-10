@@ -34,7 +34,7 @@ defmodule BackerWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: Router.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -72,7 +72,7 @@ defmodule BackerWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: Router.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         IO.inspect(changeset)
@@ -102,7 +102,7 @@ defmodule BackerWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: Router.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         IO.inspect(changeset)
@@ -116,7 +116,7 @@ defmodule BackerWeb.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: Router.user_path(conn, :index))
   end
 
   def login(conn, _params) do
@@ -148,7 +148,7 @@ defmodule BackerWeb.UserController do
           conn
           |> Guardian.login(user)
           |> put_flash(:info, "Welcome back, #{user.fullname}! You look so damn handsome today.")
-          |> redirect(to: user_path(conn, :dashboard))
+          |> redirect(to: Router.user_path(conn, :dashboard))
         end
 
       {:error, reason} ->
@@ -169,7 +169,7 @@ defmodule BackerWeb.UserController do
 
     conn
     |> Guardian.logout()
-    |> redirect(to: user_path(conn, :login))
+    |> redirect(to: Router.user_path(conn, :login))
   end
 
   def locked(conn, _) do
@@ -230,6 +230,6 @@ defmodule BackerWeb.UserController do
   def redirector(conn, _) do
     conn
     |> put_flash(:info, "You need to login first.")
-    |> redirect(to: user_path(conn, :login))
+    |> redirect(to: Router.user_path(conn, :login))
   end
 end

@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, point_path(@conn, :update, @point)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.point_path(@conn, :update, @point)) %>
 
 
 </div>

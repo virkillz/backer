@@ -54,15 +54,15 @@
                                         <i class="ft-more-vertical"></i>
                                       </button>
                                       <span aria-labelledby="btnSearchDrop12" class="dropdown-menu mt-1 dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(55px, 27px, 0px);">
-                        <%= link to: pledger_path(@conn, :dashboard_post_show, post), class: "dropdown-item" do %>
-                          <i class="ft-check-square"></i> show
-                        <% end %>
+                                      <%= link to: Router.pledger_path(@conn, :dashboard_post_show, post), class: "dropdown-item" do %>
+                                        <i class="ft-check-square"></i> show
+                                      <% end %>
 
-                        <%= link to: pledger_path(@conn, :dashboard_post_edit, post), class: "dropdown-item" do %>
-                           <i class="ft-edit-2"></i> Edit
-                        <% end %>
+                                      <%= link to: Router.pledger_path(@conn, :dashboard_post_edit, post), class: "dropdown-item" do %>
+                                        <i class="ft-edit-2"></i> Edit
+                                      <% end %>
 
-                                      <%= link to: pledger_path(@conn, :dashboard_post_delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "dropdown-item" do %>
+                                      <%= link to: Router.pledger_path(@conn, :dashboard_post_delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "dropdown-item" do %>
                                         <i class="ft-trash-2"></i> Delete
                                       <% end %> 
 

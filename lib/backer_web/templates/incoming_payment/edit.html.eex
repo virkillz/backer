@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, incoming_payment_path(@conn, :update, @incoming_payment)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.incoming_payment_path(@conn, :update, @incoming_payment)) %>
 
 
 </div>

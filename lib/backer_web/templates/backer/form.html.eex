@@ -124,7 +124,7 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
-    <span><%= link "Cancel", to: backer_path(@conn, :index), class: "btn btn-warning" %></span>
+    <span><%= link "Cancel", to: Router.backer_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>
 </div>

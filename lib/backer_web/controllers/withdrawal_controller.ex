@@ -19,7 +19,7 @@ defmodule BackerWeb.WithdrawalController do
       {:ok, withdrawal} ->
         conn
         |> put_flash(:info, "Withdrawal created successfully.")
-        |> redirect(to: withdrawal_path(conn, :show, withdrawal))
+        |> redirect(to: Router.withdrawal_path(conn, :show, withdrawal))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.WithdrawalController do
       {:ok, withdrawal} ->
         conn
         |> put_flash(:info, "Withdrawal updated successfully.")
-        |> redirect(to: withdrawal_path(conn, :show, withdrawal))
+        |> redirect(to: Router.withdrawal_path(conn, :show, withdrawal))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", withdrawal: withdrawal, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.WithdrawalController do
 
     conn
     |> put_flash(:info, "Withdrawal deleted successfully.")
-    |> redirect(to: withdrawal_path(conn, :index))
+    |> redirect(to: Router.withdrawal_path(conn, :index))
   end
 end

@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, backer_path(@conn, :update, @backer)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.backer_path(@conn, :update, @backer)) %>
 
 
 </div>

@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, donation_path(@conn, :update, @donation)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.donation_path(@conn, :update, @donation)) %>
 
 
 </div>

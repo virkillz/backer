@@ -46,7 +46,7 @@ defmodule BackerWeb.IncomingPaymentController do
       {:ok, incoming_payment} ->
         conn
         |> put_flash(:info, "Incoming payment created successfully.")
-        |> redirect(to: incoming_payment_path(conn, :show, incoming_payment))
+        |> redirect(to: Router.incoming_payment_path(conn, :show, incoming_payment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         unpaid_invoices = Finance.list_invoices(%{"status" => "not_paid"})
@@ -79,7 +79,7 @@ defmodule BackerWeb.IncomingPaymentController do
     if incoming_payment.status == "Executed" do
       conn
       |> put_flash(:error, "Executed incoming payment cannot be edited.")
-      |> redirect(to: incoming_payment_path(conn, :index))
+      |> redirect(to: Router.incoming_payment_path(conn, :index))
     else
       unpaid_invoices = Finance.list_invoices(%{"status" => "not_paid"})
       statuses = Constant.incoming_payment_status()
@@ -117,7 +117,7 @@ defmodule BackerWeb.IncomingPaymentController do
       {:ok, incoming_payment} ->
         conn
         |> put_flash(:info, "Incoming payment updated successfully.")
-        |> redirect(to: incoming_payment_path(conn, :show, incoming_payment))
+        |> redirect(to: Router.incoming_payment_path(conn, :show, incoming_payment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         incoming_payment = Finance.get_incoming_payment!(id)
@@ -147,13 +147,13 @@ defmodule BackerWeb.IncomingPaymentController do
     if incoming_payment.status == "Executed" do
       conn
       |> put_flash(:error, "Executed incoming payment cannot be deleted.")
-      |> redirect(to: incoming_payment_path(conn, :index))
+      |> redirect(to: Router.incoming_payment_path(conn, :index))
     else
       {:ok, _incoming_payment} = Finance.delete_incoming_payment(incoming_payment)
 
       conn
       |> put_flash(:info, "Incoming payment deleted successfully.")
-      |> redirect(to: incoming_payment_path(conn, :index))
+      |> redirect(to: Router.incoming_payment_path(conn, :index))
     end
   end
 end

@@ -70,7 +70,7 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
-    <span><%= link "Cancel", to: incoming_payment_path(@conn, :index), class: "btn btn-warning" %></span>
+    <span><%= link "Cancel", to: Router.incoming_payment_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>
 </div>

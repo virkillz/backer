@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= forum_path(@conn, :edit, @forum) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Forum</button></a></li>
+                        <li><a href="<%= Router.forum_path(@conn, :edit, @forum) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Forum</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= forum_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= Router.forum_path(@conn, :index) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                          
                 </form>
@@ -137,9 +137,9 @@
                                         <td><%= forum_comment.content %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: forum_comment_path(@conn, :show, forum_comment), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: forum_comment_path(@conn, :edit, forum_comment), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: forum_comment_path(@conn, :delete, forum_comment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                          <span><%= link "Show", to: Router.forum_comment_path(@conn, :show, forum_comment), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: Router.forum_comment_path(@conn, :edit, forum_comment), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: Router.forum_comment_path(@conn, :delete, forum_comment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

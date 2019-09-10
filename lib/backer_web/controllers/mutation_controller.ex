@@ -20,6 +20,6 @@ defmodule BackerWeb.MutationController do
 
     conn
     |> put_flash(:info, "Mutation deleted successfully.")
-    |> redirect(to: mutation_path(conn, :index))
+    |> redirect(to: Router.mutation_path(conn, :index))
   end
 end

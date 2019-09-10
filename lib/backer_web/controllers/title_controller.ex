@@ -19,7 +19,7 @@ defmodule BackerWeb.TitleController do
       {:ok, title} ->
         conn
         |> put_flash(:info, "Title created successfully.")
-        |> redirect(to: title_path(conn, :show, title))
+        |> redirect(to: Router.title_path(conn, :show, title))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.TitleController do
       {:ok, title} ->
         conn
         |> put_flash(:info, "Title updated successfully.")
-        |> redirect(to: title_path(conn, :show, title))
+        |> redirect(to: Router.title_path(conn, :show, title))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", title: title, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.TitleController do
 
     conn
     |> put_flash(:info, "Title deleted successfully.")
-    |> redirect(to: title_path(conn, :index))
+    |> redirect(to: Router.title_path(conn, :index))
   end
 end

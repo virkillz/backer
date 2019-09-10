@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, category_path(@conn, :create)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.category_path(@conn, :create)) %>
 
 
 </div>

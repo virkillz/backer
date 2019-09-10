@@ -19,7 +19,7 @@ defmodule BackerWeb.DonationController do
       {:ok, donation} ->
         conn
         |> put_flash(:info, "Donation created successfully.")
-        |> redirect(to: donation_path(conn, :show, donation))
+        |> redirect(to: Router.donation_path(conn, :show, donation))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.DonationController do
       {:ok, donation} ->
         conn
         |> put_flash(:info, "Donation updated successfully.")
-        |> redirect(to: donation_path(conn, :show, donation))
+        |> redirect(to: Router.donation_path(conn, :show, donation))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", donation: donation, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.DonationController do
 
     conn
     |> put_flash(:info, "Donation deleted successfully.")
-    |> redirect(to: donation_path(conn, :index))
+    |> redirect(to: Router.donation_path(conn, :index))
   end
 end

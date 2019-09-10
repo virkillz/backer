@@ -31,14 +31,9 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body p-0 pb-0">
-<div class="container">
-
-
-
-<%= render "form.html", Map.put(assigns, :action, invoice_path(@conn, :update, @invoice)) %>
-
-
-</div>
+                  <div class="container">
+                  <%= render "form.html", Map.put(assigns, :action, Router.invoice_path(@conn, :update, @invoice)) %>
+                  </div>
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@
 
 <%# ======================== %>
 
-<%= render "register.html", Map.put(assigns, :action, user_path(@conn, :create)) %>
+<%= render "register.html", Map.put(assigns, :action, Router.user_path(@conn, :create)) %>
 
 <%# ======================== %>
 </div>

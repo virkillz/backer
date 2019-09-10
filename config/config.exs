@@ -34,11 +34,13 @@ config :scrivener_html,
   routes_helper: BackerWeb.Router.Helpers
 
 config :cloudex,
-    api_key: "833245838569613",
-    secret: "iKEo1f8h7Y2wxT1mptdcB7nFHjY",
-    cloud_name: "backer"
+  api_key: "833245838569613",
+  secret: "iKEo1f8h7Y2wxT1mptdcB7nFHjY",
+  cloud_name: "backer"
 
 config :phoenix, :template_engines, drab: Drab.Live.Engine
+
+config :phoenix, :json_library, Jason
 
 config :drab, BackerWeb.Endpoint,
   otp_app: :backer,

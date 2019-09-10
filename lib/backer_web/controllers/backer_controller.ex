@@ -71,7 +71,7 @@ defmodule BackerWeb.BackerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -91,7 +91,7 @@ defmodule BackerWeb.BackerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -106,12 +106,12 @@ defmodule BackerWeb.BackerController do
   end
 
   def show_post(conn, %{"id" => id}) do
-    backer = conn.assigns.current_backer 
+    backer = conn.assigns.current_backer
     post = Content.get_post(%{"id" => id, "backer_id" => backer.id})
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page400))
+        redirect(conn, to: Router.page_path(conn, :page400))
 
       _ ->
         conn
@@ -157,7 +157,7 @@ defmodule BackerWeb.BackerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -176,7 +176,7 @@ defmodule BackerWeb.BackerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -195,7 +195,7 @@ defmodule BackerWeb.BackerController do
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -238,9 +238,10 @@ defmodule BackerWeb.BackerController do
 
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
     changeset = Account.change_backer(backer)
+
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         conn
@@ -256,47 +257,46 @@ defmodule BackerWeb.BackerController do
   end
 
   def profile_setting_update(conn, %{"backer" => params}) do
-
     backer = conn.assigns.current_backer
     pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
 
-    #check if avatar exist
+    # check if avatar exist
     attrs =
       if params["avatar"] == nil do
         params
       else
-        params |> Map.put("avatar",try_upload(params["avatar"], backer.avatar))
+        params |> Map.put("avatar", try_upload(params["avatar"], backer.avatar))
       end
 
-      #try to submit real edited data
-      case Account.update_backer(backer, attrs) do
-        {:ok, backer} ->
-          conn
-          |> put_flash(:info, "Backer updated successfully.")
-          |> redirect(to: "/home/profile-setting")
+    # try to submit real edited data
+    case Account.update_backer(backer, attrs) do
+      {:ok, backer} ->
+        conn
+        |> put_flash(:info, "Backer updated successfully.")
+        |> redirect(to: "/home/profile-setting")
 
-        {:error, %Ecto.Changeset{} = changeset} ->
-          id_types = Constant.accepted_id_kyc()
-          render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
+      {:error, %Ecto.Changeset{} = changeset} ->
+        id_types = Constant.accepted_id_kyc()
+        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
 
-          conn
-          |> render("front_profile_setting.html",
-            backer: backer,
-            pledgers: pledgers,
-            menu: :profile_setting,
-            changeset_backer: changeset,
-            owner: true,
-            layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-          )                
-      end   
+        conn
+        |> render("front_profile_setting.html",
+          backer: backer,
+          pledgers: pledgers,
+          menu: :profile_setting,
+          changeset_backer: changeset,
+          owner: true,
+          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        )
+    end
   end
 
   defp try_upload(upload_info, old_pic) do
-    #the idea is to return invalid data to make the changeset invalid (because avatar expect string type, we give atom)
-   case backer_edit_avatar(upload_info, old_pic) do
-     {:ok, img_url} ->  img_url
-     {:error, _changeset} -> :make_invalid
-   end
+    # the idea is to return invalid data to make the changeset invalid (because avatar expect string type, we give atom)
+    case backer_edit_avatar(upload_info, old_pic) do
+      {:ok, img_url} -> img_url
+      {:error, _changeset} -> :make_invalid
+    end
   end
 
   def ajax_test(conn, params) do
@@ -323,7 +323,7 @@ defmodule BackerWeb.BackerController do
 
   def create(conn, %{"backer" => backer_params}) do
     IO.inspect(backer_params)
-    text(conn,"test berhasil cek console")
+    text(conn, "test berhasil cek console")
     # case Account.create_backer(backer_params) do
     #   {:ok, backer} ->
     #     conn
@@ -355,47 +355,35 @@ defmodule BackerWeb.BackerController do
 
     case try_upload do
       {:ok, img_url} ->
-        attrs = Map.put(backer_params, "avatar", img_url) |> IO.inspect
+        attrs = Map.put(backer_params, "avatar", img_url) |> IO.inspect()
 
-            #try to submit real photo
-            case Account.update_backer(backer, attrs) do
-              {:ok, backer} ->
-                conn
-                |> put_flash(:info, "Backer updated successfully.")
-                |> redirect(to: backer_path(conn, :show, backer))
+        # try to submit real photo
+        case Account.update_backer(backer, attrs) do
+          {:ok, backer} ->
+            conn
+            |> put_flash(:info, "Backer updated successfully.")
+            |> redirect(to: Router.backer_path(conn, :show, backer))
 
-              {:error, %Ecto.Changeset{} = changeset} ->
-                IO.inspect("nyampe sini dan ternyata error")
-                id_types = Constant.accepted_id_kyc()
-                render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
-            end
+          {:error, %Ecto.Changeset{} = changeset} ->
+            IO.inspect("nyampe sini dan ternyata error")
+            id_types = Constant.accepted_id_kyc()
+            render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
+        end
 
       {:error, changeset} ->
         id_types = Constant.accepted_id_kyc()
-        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)          
+        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
     end
   end
 
   defp backer_upload_avatar(params) do
+    # first, check with allowed mime types
+    if Stringhelper.accepted_images_mime?(params.content_type) do
+      case Cloudex.upload(params.path) do
+        {:ok, %Cloudex.UploadedImage{} = result} ->
+          {:ok, result.secure_url}
 
-      # first, check with allowed mime types
-      if Stringhelper.accepted_images_mime?(params.content_type) do
-
-        case Cloudex.upload(params.path) do
-          {:ok, %Cloudex.UploadedImage{} = result} -> {:ok, result.secure_url}
-          {:error, reason} ->
-                  {:error,
-                     %Ecto.Changeset{
-                       action: :update,
-                       changes: %{},
-                       errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
-                       data: %Backer.Account.Backer{},
-                       valid?: false
-                     }
-                    } 
-        end
-        
-      else
+        {:error, reason} ->
           {:error,
            %Ecto.Changeset{
              action: :update,
@@ -403,39 +391,35 @@ defmodule BackerWeb.BackerController do
              errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
              data: %Backer.Account.Backer{},
              valid?: false
-           }
-          }        
+           }}
       end
+    else
+      {:error,
+       %Ecto.Changeset{
+         action: :update,
+         changes: %{},
+         errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
+         data: %Backer.Account.Backer{},
+         valid?: false
+       }}
+    end
   end
 
   defp backer_edit_avatar(params, old_img) do
+    # first, check with allowed mime types
+    if Stringhelper.accepted_images_mime?(params.content_type) do
+      case Cloudex.upload(params.path) do
+        {:ok, %Cloudex.UploadedImage{} = result} ->
+          # try to delete old image
+          case Stringhelper.is_cloudinary_link?(old_img) do
+            {:ok, id} -> Cloudex.delete(id)
+            _other -> :nothing
+          end
 
-      # first, check with allowed mime types
-      if Stringhelper.accepted_images_mime?(params.content_type) do
+          # give the imag link
+          {:ok, result.secure_url}
 
-        case Cloudex.upload(params.path) do
-          {:ok, %Cloudex.UploadedImage{} = result} -> 
-                                          #try to delete old image
-                                          case Stringhelper.is_cloudinary_link?(old_img) do
-                                            {:ok, id} -> Cloudex.delete(id)
-                                              _other -> :nothing
-                                          end
-
-                                          #give the imag link
-                                          {:ok, result.secure_url}
-          {:error, reason} ->
-                  {:error,
-                     %Ecto.Changeset{
-                       action: :update,
-                       changes: %{},
-                       errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
-                       data: %Backer.Account.Backer{},
-                       valid?: false
-                     }
-                    } 
-        end
-        
-      else
+        {:error, reason} ->
           {:error,
            %Ecto.Changeset{
              action: :update,
@@ -443,10 +427,19 @@ defmodule BackerWeb.BackerController do
              errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
              data: %Backer.Account.Backer{},
              valid?: false
-           }
-          }        
+           }}
       end
-  end  
+    else
+      {:error,
+       %Ecto.Changeset{
+         action: :update,
+         changes: %{},
+         errors: [avatar: {"File type is invalid", [type: :string, validation: :cast]}],
+         data: %Backer.Account.Backer{},
+         valid?: false
+       }}
+    end
+  end
 
   def delete(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
@@ -454,6 +447,6 @@ defmodule BackerWeb.BackerController do
 
     conn
     |> put_flash(:info, "Backer deleted successfully.")
-    |> redirect(to: backer_path(conn, :index))
+    |> redirect(to: Router.backer_path(conn, :index))
   end
 end

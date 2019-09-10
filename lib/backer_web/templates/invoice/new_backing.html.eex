@@ -35,7 +35,7 @@
 
 
 
-<%= render "new_backing_form.html", Map.put(assigns, :action, invoice_path(@conn, :create_backing)) %>
+<%= render "new_backing_form.html", Map.put(assigns, :action, Router.invoice_path(@conn, :create_backing)) %>
 
 
 </div>

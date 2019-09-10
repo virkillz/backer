@@ -29,7 +29,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Post like", to: post_like_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Post like", to: Router.post_like_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
@@ -53,9 +53,9 @@
                                       <tr>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: post_like_path(@conn, :show, post_like), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: post_like_path(@conn, :edit, post_like), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: post_like_path(@conn, :delete, post_like), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                          <span><%= link "Show", to: Router.post_like_path(@conn, :show, post_like), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: Router.post_like_path(@conn, :edit, post_like), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: Router.post_like_path(@conn, :delete, post_like), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

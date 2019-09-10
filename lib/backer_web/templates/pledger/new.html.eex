@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, pledger_path(@conn, :create)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.pledger_path(@conn, :create)) %>
 
 
 </div>

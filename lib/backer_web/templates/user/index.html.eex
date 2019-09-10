@@ -50,20 +50,20 @@
                                 <tbody>
                                 <%= for user <- @user do %>
                                     <tr>
-                                      <td><span class="mask"><img src="<%= static_path(@conn, user.avatar) %>" class="user-image img-circle" alt="User Image" height="50px" > <strong><%= user.fullname %></strong></span></td>
+                                      <td><span class="mask"><img src="<%= Router.static_path(@conn, user.avatar) %>" class="user-image img-circle" alt="User Image" height="50px" > <strong><%= user.fullname %></strong></span></td>
                                       <td><%= user.username %></td>
                                       <td><%= user.role %></td>
                                       <% status = if user.is_active == true do "label-success" else "label-danger" end %>
                                       <td><span class="label <%= status %>"><%= user.is_active %></span></td>
 
                                         <td class="text-right">
-                                          <%= link to: user_path(@conn, :show, user) do %>
+                                          <%= link to: Router.user_path(@conn, :show, user) do %>
                                            <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
                                           <% end %>                                            
-                                          <%= link to: user_path(@conn, :edit, user) do %>
+                                          <%= link to: Router.user_path(@conn, :edit, user) do %>
                                            <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
                                           <% end %>                                       
-                                          <%= link to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                          <%= link to: Router.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] do %>
                                            <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
                                           <% end %>
                                         </td>

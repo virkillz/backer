@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= pledger_path(@conn, :edit, @pledger) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Pledger</button></a></li>
+                        <li><a href="<%= Router.pledger_path(@conn, :edit, @pledger) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Pledger</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= pledger_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= Router.pledger_path(@conn, :index) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                          
                 </form>
@@ -207,13 +207,13 @@
                                         <td><%= tier.amount %></td>
                                   
                                         <td class="text-right">
-                                          <%= link to: tier_path(@conn, :show, tier) do %>
+                                          <%= link to: Router.tier_path(@conn, :show, tier) do %>
                                            <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
                                           <% end %>                                            
-                                          <%= link to: tier_path(@conn, :edit, tier) do %>
+                                          <%= link to: Router.tier_path(@conn, :edit, tier) do %>
                                            <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
                                           <% end %>                                       
-                                          <%= link to: tier_path(@conn, :delete, tier), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                          <%= link to: Router.tier_path(@conn, :delete, tier), method: :delete, data: [confirm: "Are you sure?"] do %>
                                            <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
                                           <% end %>
                                         </td>

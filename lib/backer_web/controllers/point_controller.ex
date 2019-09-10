@@ -19,7 +19,7 @@ defmodule BackerWeb.PointController do
       {:ok, point} ->
         conn
         |> put_flash(:info, "Point created successfully.")
-        |> redirect(to: point_path(conn, :show, point))
+        |> redirect(to: Router.point_path(conn, :show, point))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.PointController do
       {:ok, point} ->
         conn
         |> put_flash(:info, "Point updated successfully.")
-        |> redirect(to: point_path(conn, :show, point))
+        |> redirect(to: Router.point_path(conn, :show, point))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", point: point, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.PointController do
 
     conn
     |> put_flash(:info, "Point deleted successfully.")
-    |> redirect(to: point_path(conn, :index))
+    |> redirect(to: Router.point_path(conn, :index))
   end
 end

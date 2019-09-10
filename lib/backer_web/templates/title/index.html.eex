@@ -7,7 +7,7 @@
             <div class="breadcrumbs-top float-md-right">
               <div class="breadcrumb-wrapper mr-1">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
                   <li class="breadcrumb-item"><a href="/admin/Title">Title List</a>
                   </li>                  
@@ -29,7 +29,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Title", to: title_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Title", to: Router.title_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
@@ -58,13 +58,13 @@
                                   
                                         <td class="text-right">
                                         
-                                          <%= link to: title_path(@conn, :show, title) do %>
+                                          <%= link to: Router.title_path(@conn, :show, title) do %>
                                            <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
                                           <% end %>                                            
-                                          <%= link to: title_path(@conn, :edit, title) do %>
+                                          <%= link to: Router.title_path(@conn, :edit, title) do %>
                                            <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
                                           <% end %>                                       
-                                          <%= link to: title_path(@conn, :delete, title), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                          <%= link to: Router.title_path(@conn, :delete, title), method: :delete, data: [confirm: "Are you sure?"] do %>
                                            <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
                                           <% end %>
 

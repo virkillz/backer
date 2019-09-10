@@ -19,7 +19,7 @@ defmodule BackerWeb.ForumLikeController do
       {:ok, forum_like} ->
         conn
         |> put_flash(:info, "Forum like created successfully.")
-        |> redirect(to: forum_like_path(conn, :show, forum_like))
+        |> redirect(to: Router.forum_like_path(conn, :show, forum_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.ForumLikeController do
       {:ok, forum_like} ->
         conn
         |> put_flash(:info, "Forum like updated successfully.")
-        |> redirect(to: forum_like_path(conn, :show, forum_like))
+        |> redirect(to: Router.forum_like_path(conn, :show, forum_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", forum_like: forum_like, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.ForumLikeController do
 
     conn
     |> put_flash(:info, "Forum like deleted successfully.")
-    |> redirect(to: forum_like_path(conn, :index))
+    |> redirect(to: Router.forum_like_path(conn, :index))
   end
 end

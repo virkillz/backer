@@ -35,11 +35,11 @@
       <div class="panel-body">
 <%= if @intent == :edit do %>
 
-<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, pledger_path(@conn, :dashboard_post_edit, @post)) %>
+<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, Router.pledger_path(@conn, :dashboard_post_edit, @post)) %>
 
 <% else %>
 
-<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, pledger_path(@conn, :dashboard_post_create)) %>
+<%= render "component_dashboard_post_form.html", Map.put(assigns, :action, Router.pledger_path(@conn, :dashboard_post_create)) %>
 
 <% end %>
 </div>

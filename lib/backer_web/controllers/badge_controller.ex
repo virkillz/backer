@@ -19,7 +19,7 @@ defmodule BackerWeb.BadgeController do
       {:ok, badge} ->
         conn
         |> put_flash(:info, "Badge created successfully.")
-        |> redirect(to: badge_path(conn, :show, badge))
+        |> redirect(to: Router.badge_path(conn, :show, badge))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -45,7 +45,7 @@ defmodule BackerWeb.BadgeController do
       {:ok, badge} ->
         conn
         |> put_flash(:info, "Badge updated successfully.")
-        |> redirect(to: badge_path(conn, :show, badge))
+        |> redirect(to: Router.badge_path(conn, :show, badge))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", badge: badge, changeset: changeset)
@@ -58,6 +58,6 @@ defmodule BackerWeb.BadgeController do
 
     conn
     |> put_flash(:info, "Badge deleted successfully.")
-    |> redirect(to: badge_path(conn, :index))
+    |> redirect(to: Router.badge_path(conn, :index))
   end
 end

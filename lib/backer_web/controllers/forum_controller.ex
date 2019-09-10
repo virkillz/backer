@@ -22,7 +22,7 @@ defmodule BackerWeb.ForumController do
       {:ok, forum} ->
         conn
         |> put_flash(:info, "Forum created successfully.")
-        |> redirect(to: forum_path(conn, :show, forum))
+        |> redirect(to: Router.forum_path(conn, :show, forum))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
@@ -58,7 +58,7 @@ defmodule BackerWeb.ForumController do
       {:ok, forum} ->
         conn
         |> put_flash(:info, "Forum updated successfully.")
-        |> redirect(to: forum_path(conn, :show, forum))
+        |> redirect(to: Router.forum_path(conn, :show, forum))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
@@ -79,6 +79,6 @@ defmodule BackerWeb.ForumController do
 
     conn
     |> put_flash(:info, "Forum deleted successfully.")
-    |> redirect(to: forum_path(conn, :index))
+    |> redirect(to: Router.forum_path(conn, :index))
   end
 end

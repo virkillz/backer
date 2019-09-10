@@ -35,7 +35,7 @@
 
 
 
-<%= render "form.html", Map.put(assigns, :action, p_comment_like_path(@conn, :update, @p_comment_like)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.p_comment_like_path(@conn, :update, @p_comment_like)) %>
 
 
 </div>

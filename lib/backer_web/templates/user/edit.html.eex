@@ -38,7 +38,7 @@
 
 <%# ======================== %>
 
-<%= render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user)) %>
+<%= render "form.html", Map.put(assigns, :action, Router.user_path(@conn, :update, @user)) %>
 
 <%# ======================== %>
 </div>

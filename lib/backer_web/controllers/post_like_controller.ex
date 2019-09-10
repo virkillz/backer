@@ -19,7 +19,7 @@ defmodule BackerWeb.PostLikeController do
       {:ok, post_like} ->
         conn
         |> put_flash(:info, "Post like created successfully.")
-        |> redirect(to: post_like_path(conn, :show, post_like))
+        |> redirect(to: Router.post_like_path(conn, :show, post_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.PostLikeController do
       {:ok, post_like} ->
         conn
         |> put_flash(:info, "Post like updated successfully.")
-        |> redirect(to: post_like_path(conn, :show, post_like))
+        |> redirect(to: Router.post_like_path(conn, :show, post_like))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", post_like: post_like, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.PostLikeController do
 
     conn
     |> put_flash(:info, "Post like deleted successfully.")
-    |> redirect(to: post_like_path(conn, :index))
+    |> redirect(to: Router.post_like_path(conn, :index))
   end
 end

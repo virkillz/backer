@@ -1,11 +1,11 @@
 # Backer
 
-![Backer](https://imgur.com/9bdb488a-58d0-45e3-9706-2948d0dc9b22)
 
-Backer is phoenix boilerplate to make web application. It comes with admin panel for administrator and front end auth for user.
+# Todo
 
-
-
+- [ ] Migrate to Phoenix 1.4
+- [ ] Remove drab
+- [ ] Install live view
 
 
 ## To start:

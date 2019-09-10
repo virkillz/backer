@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
-    <span><%= link "Cancel", to: forum_comment_path(@conn, :index), class: "btn btn-warning" %></span>
+    <span><%= link "Cancel", to: Router.forum_comment_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>
 </div>

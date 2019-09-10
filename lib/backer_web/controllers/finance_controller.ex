@@ -28,7 +28,7 @@ defmodule BackerWeb.FinanceController do
       {:ok, _incoming_payment} ->
         conn
         |> put_flash(:info, "Incoming payment updated successfully.")
-        |> redirect(to: finance_path(conn, :index))
+        |> redirect(to: Router.finance_path(conn, :index))
 
       {:error, _any, %Ecto.Changeset{} = changeset, _} ->
         render(conn, "edit.html", changeset: changeset, incoming_payment: incoming_payment)

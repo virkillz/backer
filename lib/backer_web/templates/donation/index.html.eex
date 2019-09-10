@@ -29,7 +29,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Donation", to: donation_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Donation", to: Router.donation_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
@@ -67,9 +67,9 @@
                                         <td><%= donation.invoice_id %></td>
                                   
                                         <td class="text-right">
-                                          <span><%= link "Show", to: donation_path(@conn, :show, donation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: donation_path(@conn, :edit, donation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: donation_path(@conn, :delete, donation), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                                          <span><%= link "Show", to: Router.donation_path(@conn, :show, donation), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Edit", to: Router.donation_path(@conn, :edit, donation), class: "btn btn-default btn-xs" %></span>
+                                          <span><%= link "Delete", to: Router.donation_path(@conn, :delete, donation), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

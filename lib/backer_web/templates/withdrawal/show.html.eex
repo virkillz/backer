@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= withdrawal_path(@conn, :edit, @withdrawal) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Withdrawal</button></a></li>
+                        <li><a href="<%= Router.withdrawal_path(@conn, :edit, @withdrawal) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Withdrawal</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= withdrawal_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= Router.withdrawal_path(@conn, :index) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                          
                 </form>

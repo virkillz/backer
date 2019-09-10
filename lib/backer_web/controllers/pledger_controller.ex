@@ -28,7 +28,7 @@ defmodule BackerWeb.PledgerController do
       categories: categories,
       page_data: page_data,
       layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
-      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}      
+      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
     )
   end
 
@@ -37,11 +37,11 @@ defmodule BackerWeb.PledgerController do
 
     case pledger do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         if pledger.pledger == nil do
-          redirect(conn, to: page_path(conn, :page404))
+          redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
           |> render("component_tiers.html",
@@ -60,11 +60,11 @@ defmodule BackerWeb.PledgerController do
 
     case pledger do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         if pledger.pledger == nil do
-          redirect(conn, to: page_path(conn, :page404))
+          redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
           |> render("front_overview.html",
@@ -87,11 +87,11 @@ defmodule BackerWeb.PledgerController do
 
     case pledger do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         if pledger.pledger == nil do
-          redirect(conn, to: page_path(conn, :page404))
+          redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
           |> render("front_posts.html",
@@ -199,7 +199,7 @@ defmodule BackerWeb.PledgerController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: pledger_path(conn, :dashboard_post))
+        |> redirect(to: Router.pledger_path(conn, :dashboard_post))
 
       {:error, %Ecto.Changeset{changes: %{type: "image"}} = changeset} ->
         conn
@@ -269,7 +269,7 @@ defmodule BackerWeb.PledgerController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: pledger_path(conn, :dashboard_post_show, post))
+        |> redirect(to: Router.pledger_path(conn, :dashboard_post_show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         pledger_id = conn.assigns.current_pledger.pledger_id
@@ -307,7 +307,7 @@ defmodule BackerWeb.PledgerController do
 
     conn
     |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: pledger_path(conn, :dashboard_post))
+    |> redirect(to: Router.pledger_path(conn, :dashboard_post))
   end
 
   def dashboard_backers(conn, _params) do
@@ -354,14 +354,14 @@ defmodule BackerWeb.PledgerController do
 
   # def dashboard_backers(conn, _params) do
   #   pledger = Account.get_pledger(%{"username" => conn.assigns.current_backer.username})
-  #   backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id}) |> IO.inspect 
+  #   backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id}) |> IO.inspect
   #         conn
   #         |> render("dashboard_backer.html",
   #           active: :backers,
   #           backers: backers,
   #           layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
   #         )
-  # end 
+  # end
 
   def dashboard_earning(conn, _params) do
     conn
@@ -406,11 +406,11 @@ defmodule BackerWeb.PledgerController do
 
     case pledger do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         if pledger.pledger == nil do
-          redirect(conn, to: page_path(conn, :page404))
+          redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
           |> render("front_backers.html",
@@ -428,11 +428,11 @@ defmodule BackerWeb.PledgerController do
 
     case pledger do
       nil ->
-        redirect(conn, to: page_path(conn, :page404))
+        redirect(conn, to: Router.page_path(conn, :page404))
 
       _ ->
         if pledger.pledger == nil do
-          redirect(conn, to: page_path(conn, :page404))
+          redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
           |> render("public_pledger_forum.html",
@@ -484,7 +484,7 @@ defmodule BackerWeb.PledgerController do
       {:ok, %{pledger: pledger}} ->
         conn
         |> put_flash(:info, "Pledger created successfully.")
-        |> redirect(to: pledger_path(conn, :show, pledger))
+        |> redirect(to: Router.pledger_path(conn, :show, pledger))
 
       {:error, :pledger, %Ecto.Changeset{} = changeset, _} ->
         backers = Account.list_backers()
@@ -528,7 +528,7 @@ defmodule BackerWeb.PledgerController do
       {:ok, pledger} ->
         conn
         |> put_flash(:info, "Pledger updated successfully.")
-        |> redirect(to: pledger_path(conn, :show, pledger))
+        |> redirect(to: Router.pledger_path(conn, :show, pledger))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
@@ -627,6 +627,6 @@ defmodule BackerWeb.PledgerController do
 
     conn
     |> put_flash(:info, "Pledger deleted successfully.")
-    |> redirect(to: pledger_path(conn, :index))
+    |> redirect(to: Router.pledger_path(conn, :index))
   end
 end

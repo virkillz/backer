@@ -54,7 +54,7 @@
 <% else %>  
         <%= submit "Submit", [class: "btn btn-primary", disabled: true] %>
 <% end %>      
-    <span><%= link "Cancel", to: invoice_path(@conn, :index), class: "btn btn-warning" %></span>
+    <span><%= link "Cancel", to: Router.invoice_path(@conn, :index), class: "btn btn-warning" %></span>
   </div>
 <% end %>
 </div>

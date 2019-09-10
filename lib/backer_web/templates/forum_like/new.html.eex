@@ -31,14 +31,9 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body p-0 pb-0">
-<div class="container">
-
-
-
-<%= render "form.html", Map.put(assigns, :action, forum_like_path(@conn, :create)) %>
-
-
-</div>
+                <div class="container">
+                <%= render "form.html", Map.put(assigns, :action, Router.forum_like_path(@conn, :create)) %>
+                </div>
                 </div>
             </div>
         </div>

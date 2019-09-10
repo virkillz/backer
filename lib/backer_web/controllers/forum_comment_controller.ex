@@ -28,7 +28,7 @@ defmodule BackerWeb.ForumCommentController do
       {:ok, forum_comment} ->
         conn
         |> put_flash(:info, "Forum comment created successfully.")
-        |> redirect(to: forum_comment_path(conn, :show, forum_comment))
+        |> redirect(to: Router.forum_comment_path(conn, :show, forum_comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -60,7 +60,7 @@ defmodule BackerWeb.ForumCommentController do
       {:ok, forum_comment} ->
         conn
         |> put_flash(:info, "Forum comment updated successfully.")
-        |> redirect(to: forum_comment_path(conn, :show, forum_comment))
+        |> redirect(to: Router.forum_comment_path(conn, :show, forum_comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", forum_comment: forum_comment, changeset: changeset)
@@ -73,6 +73,6 @@ defmodule BackerWeb.ForumCommentController do
 
     conn
     |> put_flash(:info, "Forum comment deleted successfully.")
-    |> redirect(to: forum_path(conn, :show, forum_comment.forum_id))
+    |> redirect(to: Router.forum_path(conn, :show, forum_comment.forum_id))
   end
 end

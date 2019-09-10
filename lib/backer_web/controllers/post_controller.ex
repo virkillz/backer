@@ -23,7 +23,7 @@ defmodule BackerWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: post_path(conn, :show, post))
+        |> redirect(to: Router.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         pledgers = Account.list_pledgers()
@@ -90,7 +90,7 @@ defmodule BackerWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: post_path(conn, :show, post))
+        |> redirect(to: Router.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         pledgers = Account.list_pledgers()
@@ -111,6 +111,6 @@ defmodule BackerWeb.PostController do
 
     conn
     |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: post_path(conn, :index))
+    |> redirect(to: Router.post_path(conn, :index))
   end
 end

@@ -19,7 +19,7 @@ defmodule BackerWeb.SettingController do
       {:ok, setting} ->
         conn
         |> put_flash(:info, "Setting created successfully.")
-        |> redirect(to: setting_path(conn, :show, setting))
+        |> redirect(to: Router.setting_path(conn, :show, setting))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BackerWeb.SettingController do
       {:ok, setting} ->
         conn
         |> put_flash(:info, "Setting updated successfully.")
-        |> redirect(to: setting_path(conn, :show, setting))
+        |> redirect(to: Router.setting_path(conn, :show, setting))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", setting: setting, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BackerWeb.SettingController do
 
     conn
     |> put_flash(:info, "Setting deleted successfully.")
-    |> redirect(to: setting_path(conn, :index))
+    |> redirect(to: Router.setting_path(conn, :index))
   end
 end

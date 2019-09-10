@@ -6,7 +6,7 @@
         <div class="col-md-4 col-10 box-shadow-2 p-0">
             <div class="card border-grey border-lighten-3 px-2 py-2 m-0">
                 <div class="card-header border-0 text-center">
-                    <img src="<%= static_path(@conn, @avatar) %>" alt="unlock-user" class="rounded-circle img-fluid center-block" style="max-width: 120px; max-height: 120px">
+                    <img src="<%= Router.static_path(@conn, @avatar) %>" alt="unlock-user" class="rounded-circle img-fluid center-block" style="max-width: 120px; max-height: 120px">
                     <h5 class="card-title mt-1"><%= @name %></h5>
                 </div>
 

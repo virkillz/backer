@@ -14,7 +14,7 @@ defmodule BackerWeb.ActivityController do
       {:ok, activity} ->
         conn
         |> put_flash(:info, "Activity created successfully.")
-        |> redirect(to: activity_path(conn, :show, activity))
+        |> redirect(to: Router.activity_path(conn, :show, activity))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -27,6 +27,6 @@ defmodule BackerWeb.ActivityController do
 
     conn
     |> put_flash(:info, "Activity deleted successfully.")
-    |> redirect(to: activity_path(conn, :index))
+    |> redirect(to: Router.activity_path(conn, :index))
   end
 end

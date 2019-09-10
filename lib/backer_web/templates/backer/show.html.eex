@@ -29,7 +29,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Backer</button></a></li>
+                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Backer</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= backer_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= Router.backer_path(@conn, :index) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                          
                 </form>
@@ -264,7 +264,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit</button></a></li>
+                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit</button></a></li>
                     </ul>
                 </div>
             </div>

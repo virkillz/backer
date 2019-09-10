@@ -21,7 +21,7 @@ defmodule BackerWeb.TierController do
       {:ok, tier} ->
         conn
         |> put_flash(:info, "Tier created successfully.")
-        |> redirect(to: tier_path(conn, :show, tier))
+        |> redirect(to: Router.tier_path(conn, :show, tier))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -47,7 +47,7 @@ defmodule BackerWeb.TierController do
       {:ok, tier} ->
         conn
         |> put_flash(:info, "Tier updated successfully.")
-        |> redirect(to: tier_path(conn, :show, tier))
+        |> redirect(to: Router.tier_path(conn, :show, tier))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         pledgers = Account.list_pledgers()
@@ -61,6 +61,6 @@ defmodule BackerWeb.TierController do
 
     conn
     |> put_flash(:info, "Tier deleted successfully.")
-    |> redirect(to: tier_path(conn, :index))
+    |> redirect(to: Router.tier_path(conn, :index))
   end
 end

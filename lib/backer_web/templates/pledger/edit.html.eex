@@ -31,14 +31,14 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body p-0 pb-0">
-<div class="container">
+                <div class="container">
 
 
 
-<%= render "form.html", Map.put(assigns, :action, pledger_path(@conn, :update, @pledger)) %>
+                <%= render "form.html", Map.put(assigns, :action, Router.pledger_path(@conn, :update, @pledger)) %>
 
 
-</div>
+                </div>
                 </div>
             </div>
         </div>

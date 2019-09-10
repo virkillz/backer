@@ -30,7 +30,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= user_path(@conn, :edit, @user) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit User</button></a></li>
+                        <li><a href="<%= Router.user_path(@conn, :edit, @user) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit User</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Avatar:</label>
                       <div class="col-sm-10">
-                      <img src="<%= static_path(@conn, @user.avatar) %>" class="user-image" alt="User Image" height="100px">
+                      <img src="<%= Router.static_path(@conn, @user.avatar) %>" class="user-image" alt="User Image" height="100px">
                       </div>
                   </div>   
 
@@ -122,7 +122,7 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                          <a href="<%= user_path(@conn, :index) %>" class="btn btn-primary">Close</a>
+                          <a href="<%= Router.user_path(@conn, :index) %>" class="btn btn-primary">Close</a>
                         </div>
                     </div>                                                                                                                         
                 </form>

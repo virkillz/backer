@@ -26,7 +26,7 @@ defmodule BackerWeb.PostCommentController do
       {:ok, post_comment} ->
         conn
         |> put_flash(:info, "Post comment created successfully.")
-        |> redirect(to: post_comment_path(conn, :show, post_comment))
+        |> redirect(to: Router.post_comment_path(conn, :show, post_comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -58,7 +58,7 @@ defmodule BackerWeb.PostCommentController do
       {:ok, post_comment} ->
         conn
         |> put_flash(:info, "Post comment updated successfully.")
-        |> redirect(to: post_comment_path(conn, :show, post_comment))
+        |> redirect(to: Router.post_comment_path(conn, :show, post_comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", post_comment: post_comment, changeset: changeset)
@@ -71,6 +71,6 @@ defmodule BackerWeb.PostCommentController do
 
     conn
     |> put_flash(:info, "Post comment deleted successfully.")
-    |> redirect(to: post_path(conn, :show, post_comment.post_id))
+    |> redirect(to: Router.post_path(conn, :show, post_comment.post_id))
   end
 end

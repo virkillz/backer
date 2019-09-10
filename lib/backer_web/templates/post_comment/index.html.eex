@@ -29,7 +29,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Post comment", to: post_comment_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Post comment", to: Router.post_comment_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
@@ -55,13 +55,13 @@
                                         <td><%= post_comment.content %></td>
                                   
                                         <td class="text-right">
-                                          <%= link to: post_comment_path(@conn, :show, post_comment) do %>
+                                          <%= link to: Router.post_comment_path(@conn, :show, post_comment) do %>
                                            <button type="button" class="btn btn-outline-success mr-1"><i class="ft-monitor"></i></button>
                                           <% end %>                                            
-                                          <%= link to: post_comment_path(@conn, :edit, post_comment) do %>
+                                          <%= link to: Router.post_comment_path(@conn, :edit, post_comment) do %>
                                            <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
                                           <% end %>                                       
-                                          <%= link to: post_comment_path(@conn, :delete, post_comment), method: :delete, data: [confirm: "Are you sure?"] do %>
+                                          <%= link to: Router.post_comment_path(@conn, :delete, post_comment), method: :delete, data: [confirm: "Are you sure?"] do %>
                                            <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
                                           <% end %>
                                         </td>

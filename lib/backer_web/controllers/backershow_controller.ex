@@ -9,14 +9,14 @@ defmodule BackerWeb.BackershowController do
 
     is_post_liked = Content.is_post_liked?(post_id, backer.id)
 
-    comments_ids = (comments |> Enum.map(fn x -> x.id end) )
-    list_liked_comments = Content.list_liked_comments(comments_ids, backer.id)    
+    comments_ids = comments |> Enum.map(fn x -> x.id end)
+    list_liked_comments = Content.list_liked_comments(comments_ids, backer.id)
 
     post = Map.put(posts, :comments, comments) |> Map.put(:current_avatar, backer.avatar)
 
     case backer do
       nil ->
-        redirect(conn, to: page_path(conn, :page400))
+        redirect(conn, to: Router.page_path(conn, :page400))
 
       _ ->
         conn
