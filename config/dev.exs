@@ -20,8 +20,7 @@ config :backer, BackerWeb.Endpoint,
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/backer_web/views/.*(ex)$},
-      ~r{lib/backer_web/templates/.*(eex|drab)$}
+      ~r{lib/backer_web/views/.*(ex)$}
     ]
   ]
 

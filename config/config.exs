@@ -38,15 +38,7 @@ config :cloudex,
   secret: "iKEo1f8h7Y2wxT1mptdcB7nFHjY",
   cloud_name: "backer"
 
-config :phoenix, :template_engines, drab: Drab.Live.Engine
-
 config :phoenix, :json_library, Jason
-
-config :drab, BackerWeb.Endpoint,
-  otp_app: :backer,
-  js_socket_constructor: "window.__socket"
-
-config :drab, BackerWeb.Endpoint, access_session: :current_backer_id
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -22,7 +22,7 @@ defmodule BackerWeb do
       use Phoenix.Controller, namespace: BackerWeb
       import Plug.Conn
       # import BackerWeb.Router.Helpers
-      alias BackerWeb.Router.Helpers, as: Routes
+      alias BackerWeb.Router.Helpers, as: Router
       import BackerWeb.Gettext
     end
   end
@@ -40,7 +40,7 @@ defmodule BackerWeb do
       use Phoenix.HTML
 
       # import BackerWeb.Router.Helpers
-      alias BackerWeb.Router.Helpers, as: Routes
+      alias BackerWeb.Router.Helpers, as: Router
       import BackerWeb.ErrorHelpers
       import BackerWeb.Gettext
     end

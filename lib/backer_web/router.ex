@@ -37,10 +37,11 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.BackerNonSignCheck)
   end
 
-  # pipeline for page can be access by own backer account.
   pipeline :is_pledger_check do
     plug(BackerWeb.Plugs.PledgerCheck)
   end
+
+  # ============================================================#
 
   # This route area is for admin Portal
   scope "/admin", BackerWeb do
@@ -141,7 +142,7 @@ defmodule BackerWeb.Router do
     put("/dashboard/page-setting", PledgerController, :dashboard_page_setting_update)
   end
 
-  # must not sign in as backer
+  # must not sign in
   scope "/", BackerWeb do
     pipe_through([:browser, :must_not_sign_in])
 
@@ -198,9 +199,4 @@ defmodule BackerWeb.Router do
     get("/505", PageController, :page505)
     get("/:backer", PledgerController, :redirector)
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", BackerWeb do
-  #   pipe_through :api
-  # end
 end

@@ -24,33 +24,6 @@ defmodule BackerWeb.BackerController do
     )
   end
 
-  # def redirector(conn, %{"username" => username}) do
-  #   backer = Account.get_backer(%{"username" => username})
-
-  #   case backer do
-  #     nil ->
-  #       conn
-  #       |> put_status(:not_found)
-  #       |> render(BackerWeb.PledgerView, "page_404.html",
-  #         title: "404",
-  #         layout: {BackerWeb.LayoutView, "layout_front_static.html"}
-  #       )
-
-  #     _ ->
-  #       pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-
-  #       if conn.assigns.backer_signed_in? do
-  #         if conn.assigns.current_backer.username == username do
-  #           redirect(conn, to: backer_path(conn, :timeline, username))
-  #         else
-  #           redirect(conn, to: backer_path(conn, :overview, username))
-  #         end
-  #       else
-  #         redirect(conn, to: backer_path(conn, :overview, username))
-  #       end
-  #   end
-  # end
-
   def invoice_display(conn, %{"id" => id, "username" => username}) do
     invoice = Finance.get_invoice!(id) |> IO.inspect()
     invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
@@ -124,30 +97,6 @@ defmodule BackerWeb.BackerController do
         )
     end
   end
-
-  # def home(conn, params) do
-  #   backer = conn.assigns.current_backer
-
-  #   {donation, rawposts} = Content.timeline(%{"backer_id" => backer.id})
-  #   posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
-
-  #   experiment = Content.timeline(backer.id) |> IO.inspect
-
-  #   case backer do
-  #     nil ->
-  #       redirect(conn, to: page_path(conn, :page404))
-
-  #     _ ->
-  #       conn
-  #       |> render("front_timeline.html",
-  #         backer: backer,
-  #         owner: true,
-  #         menu: :timeline,
-  #         posts: posts,
-  #         layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-  #       )
-  #   end
-  # end
 
   def home(conn, params) do
     backer = conn.assigns.current_backer
