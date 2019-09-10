@@ -146,34 +146,34 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :must_not_sign_in])
 
-    get("/", PageController, :index)
-    get("/login", PageController, :login)
-    get("/register", PageController, :register)
+    get("/", PublicController, :index)
+    get("/login", PublicController, :login)
+    get("/register", PublicController, :register)
 
-    post("/login", PageController, :auth)
-    post("/register", PageController, :createuser)
-    get("/recover", PageController, :recover)
+    post("/login", PublicController, :auth)
+    post("/register", PublicController, :createuser)
+    get("/recover", PublicController, :recover)
 
-    get("/verify", PageController, :verify)
-    get("/resend-email", PageController, :resend)
-    get("/forgot-password", PageController, :forgot_password)
-    post("/forgot-password", PageController, :forgot_password_post)
-    get("/change-password", PageController, :change_password)
-    put("/change-password", PageController, :change_password_post)
-    post("/change-password", PageController, :change_password_post)
+    get("/verify", PublicController, :verify)
+    get("/resend-email", PublicController, :resend)
+    get("/forgot-password", PublicController, :forgot_password)
+    post("/forgot-password", PublicController, :forgot_password_post)
+    get("/change-password", PublicController, :change_password)
+    put("/change-password", PublicController, :change_password_post)
+    post("/change-password", PublicController, :change_password_post)
   end
 
   # This route area is for public route
   scope "/", BackerWeb do
     pipe_through(:browser)
 
-    get("/avatar", PageController, :color)
+    get("/avatar", PublicController, :color)
 
     get("/ajax/public/test", BackerController, :ajax_test)
 
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
-    get("/signout", PageController, :signout)
+    get("/signout", PublicController, :signout)
     get("/backers", BackerController, :featured)
 
     get("/backer/:username", BackerController, :public_overview)
@@ -188,15 +188,15 @@ defmodule BackerWeb.Router do
     get("/pledger/:username/tier", PledgerController, :tier)
     get("/pledger/:username/checkout", PledgerController, :checkout)
 
-    get("/page/how-it-works", PageController, :how_it_works)
-    get("/page/about-us", PageController, :about_us)
-    get("/page/contact-us", PageController, :contact_us)
+    get("/page/how-it-works", PublicController, :how_it_works)
+    get("/page/about-us", PublicController, :about_us)
+    get("/page/contact-us", PublicController, :contact_us)
 
     get("/explore", PledgerController, :explore)
     get("/category/:id", CategoryController, :list_pledger)
-    get("/404", PageController, :page404)
-    get("/400", PageController, :page400)
-    get("/505", PageController, :page505)
+    get("/404", PublicController, :page404)
+    get("/400", PublicController, :page400)
+    get("/505", PublicController, :page505)
     get("/:backer", PledgerController, :redirector)
   end
 end

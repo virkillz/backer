@@ -1,4 +1,4 @@
-defmodule BackerWeb.PageController do
+defmodule BackerWeb.PublicController do
   use BackerWeb, :controller
 
   alias Backer.Account
