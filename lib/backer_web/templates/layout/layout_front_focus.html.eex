@@ -118,7 +118,6 @@
     <script src="/front/js/jquery.meanmenu.min.js"></script>       
     <script src="/front/js/custom.js"></script>
     <script src="/js/app.js" type="text/javascript"></script> 
-    <%= Drab.Client.run(@conn) %>
 
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 

@@ -57,7 +57,7 @@
 
                       <table style="width:100%; table-layout:fixed;">
                         <tr class="text-center">
-                          <td> <button class="btn" drab="click:like(<%= post.id %>)" style="margin: 5px; width:100%;"><i class="la la-thumbs-up"></i> Like</button></td>
+                          <td> <button class="btn" style="margin: 5px; width:100%;"><i class="la la-thumbs-up"></i> Like</button></td>
                           <td><a class="btn" href="home/timeline/<%= post.id %>" style="margin: 5px; width:100%;"><i class="la la-comments-o"></i> Comment</a></td>              
                         </tr>
                       </table>
@@ -93,7 +93,7 @@
                     <div class="post-comment">
 
                       <table style="width:100%; table-layout:fixed;">
-                        <tr><td><img src="<%= post.current_avatar %>" alt="" class="profile-photo-sm"></td><td style="width:80%;"> <input type="text" drab="enter:comment(<%= post.id %>)" name="comment" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;"></td><td><button class="btn float-right" drab="click:comment(<%= post.id %>)"> Send </button></td></tr>
+                        <tr><td><img src="<%= post.current_avatar %>" alt="" class="profile-photo-sm"></td><td style="width:80%;"> <input type="text" name="comment" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;"></td><td><button class="btn float-right" > Send </button></td></tr>
                       </table>
 
 
@@ -110,7 +110,7 @@
 
           <div class="text-center" style="margin-bottom: 50px;">
 
-                    <button class="btn btn-primary" drab-click="loadmore()">Load more</button>
+                    <button class="btn btn-primary" >Load more</button>
           </div>     
 
 

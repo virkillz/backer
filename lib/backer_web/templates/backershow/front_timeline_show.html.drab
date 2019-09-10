@@ -73,8 +73,8 @@
 
                   <table style="width:100%; table-layout:fixed;">
                     <tbody><tr class="text-center">
-                      <td> <button class="btn" drab="click:like_post(<%= @post.id %>)" style="margin: 5px; width:100%;" ><i class="la la-thumbs-up"></i> Like</button></td>
-                      <td><a class="btn" onclick="makecomment()" style="margin: 5px; width:100%;"><i class="la la-comments-o"></i> Comment</a></td>              
+                      <td> <button class="btn"  style="margin: 5px; width:100%;" ><i class="la la-thumbs-up"></i> Like</button></td>
+                      <td><a class="btn" style="margin: 5px; width:100%;"><i class="la la-comments-o"></i> Comment</a></td>              
                     </tr>
                   </tbody></table>
 
@@ -87,7 +87,7 @@
                         <p class="commentbox" style="width:100%;"><a href="/<%= comment.username %>" class="profile-link"><%= comment.display_name %> </a> <%= comment.content %> </p>
                       </div>
 
-                      <a id="d<%= comment.id %>" drab="click:like_comment(<%= comment.id %>)"><span class="comment-like" style="padding-left: 50px; padding-top: 0px;"><i class="la la-thumbs-up"></i> <%= comment.like_count %> ∙ <%= Stringhelper.ago(comment.inserted_at) %></span>   </a>                 
+                      <a href="#"><span class="comment-like" style="padding-left: 50px; padding-top: 0px;"><i class="la la-thumbs-up"></i> <%= comment.like_count %> ∙ <%= Stringhelper.ago(comment.inserted_at) %></span>   </a>                 
 
                     <% end %> 
                   </div>
@@ -104,9 +104,9 @@
                               <img src="<%= @post.current_avatar %>" alt="" class="profile-photo-sm">
                             </td>
                           <td style="width:80%;"> 
-                          <input id="comment_content" type="text" drab="enter:comment(<%= @post.id %>)" name="comment_content" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;">
+                          <input id="comment_content" type="text" name="comment_content" class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;">
                           </td>
-                          <td><button class="btn float-right" drab="click:comment(<%= @post.id %>)" > Send </button></td>
+                          <td><button class="btn float-right" > Send </button></td>
                           </tr>
                         
                         </table>

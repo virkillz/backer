@@ -352,17 +352,6 @@ defmodule BackerWeb.PledgerController do
     )
   end
 
-  # def dashboard_backers(conn, _params) do
-  #   pledger = Account.get_pledger(%{"username" => conn.assigns.current_backer.username})
-  #   backers = Finance.list_active_backers(%{"pledger_id" => pledger.pledger.id}) |> IO.inspect
-  #         conn
-  #         |> render("dashboard_backer.html",
-  #           active: :backers,
-  #           backers: backers,
-  #           layout: {BackerWeb.LayoutView, "dashboard_pledger.html"}
-  #         )
-  # end
-
   def dashboard_earning(conn, _params) do
     conn
     |> render("front_dashboard_earning.html",
