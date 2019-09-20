@@ -9,8 +9,19 @@
                         <p>Selamat datang kembali.</p>
                     </div>
 
-                  <p class="alert alert-info alert-dismissible" role="alert"><%= get_flash(@conn, :info) %></p>
-                  <p class="alert alert-danger alert-dismissible" style="background-color: tomato;" role="alert"><%= get_flash(@conn, :error) %></p>                       
+                    <div class="alert alert-success alert-dismissible fade show  <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :info) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show  <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :error) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>                                        
 
                     <%= form_for @changeset, "/login", fn f -> %>  
                         <div class="row">

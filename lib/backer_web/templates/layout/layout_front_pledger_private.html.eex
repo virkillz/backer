@@ -28,7 +28,6 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/chat-application.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/fonts/simple-line-icons/style.min.css">    
-    <link rel="stylesheet" type="text/css" href="/css/unpoly.min.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">      
     
 
@@ -164,13 +163,21 @@
       <div class="content-wrapper">
         <div class="content-wrapper-before main"></div>
      
+                    <div class="alert alert-success alert-dismissible fade show  <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :info) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
 
-                  <p class="alert alert-success" role="alert"><%= get_flash(@conn, :info) %></p>
-                  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+                    <div class="alert alert-danger alert-dismissible fade show  <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :error) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>   
 
-                  <unpoly-page>
                   <%= render @view_module, @view_template, assigns %>
-                  </unpoly-page>
 
 
       </div>

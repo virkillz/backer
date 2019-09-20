@@ -1,15 +1,15 @@
 # Backer
 
-
 # Todo
 
-- [ ] Migrate to Phoenix 1.4
-- [ ] Remove drab
+- [x] Migrate to Phoenix 1.4
+- [x] Remove drab
 - [ ] Install live view
-
+- [ ] Change logo in admin panel
+- [ ] Change logo in admin login
+- [ ] Edit profile pledger cause error
 
 ## To start:
-
   * Install dependencies with `mix deps.get`
   * Check your database setting at `config/dev.exs` and match your postgresql credential
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`

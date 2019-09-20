@@ -197,7 +197,7 @@
             </ul>
           </li>  
 
-          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal management</span></a>
+          <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Portal</span></a>
             <ul class="menu-content">
               <li class="<%= activate(@conn.request_path, "/admin/activity") %>"><a class="menu-item" href="/admin/activity" up-target=".main" up-transition="move-right">Activity Monitor</a>
               </li>
@@ -217,8 +217,20 @@
         <div class="content-wrapper-before main"></div>
      
 
-                  <p class="alert alert-success" role="alert"><%= get_flash(@conn, :info) %></p>
-                  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+                    <div class="alert alert-success alert-dismissible fade show  <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :info) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show  <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> " role="alert">
+                            <%= get_flash(@conn, :error) %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>   
+
                   <%= render @view_module, @view_template, assigns %>
 
 

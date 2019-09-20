@@ -153,7 +153,7 @@ defmodule BackerWeb.PublicController do
   end
 
   def register(conn, params) do
-    changeset = Account.change_backer(%Backerz{}) |> IO.inspect()
+    changeset = Account.change_backer(%Backerz{})
 
     render(conn, "component_register.html",
       changeset: changeset,
