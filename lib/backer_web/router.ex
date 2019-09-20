@@ -148,10 +148,10 @@ defmodule BackerWeb.Router do
 
     get("/", PublicController, :index)
     get("/login", PublicController, :login)
-    get("/register", PublicController, :register)
+    get("/sign_up", PublicController, :sign_up)
 
     post("/login", PublicController, :auth)
-    post("/register", PublicController, :createuser)
+    post("/sign_up", PublicController, :createuser)
     get("/recover", PublicController, :recover)
 
     get("/verify", PublicController, :verify)

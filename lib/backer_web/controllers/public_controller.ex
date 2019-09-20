@@ -6,10 +6,10 @@ defmodule BackerWeb.PublicController do
   alias Backer.Account.Backer, as: Backerz
 
   def index(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
     conn
-    |> render("component_homepage.html",
-      layout: {BackerWeb.LayoutView, "layout_front_homepage.html"}
-    )
+    |> render("homepage.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
   end
 
   def how_it_works(conn, _params) do
@@ -129,7 +129,7 @@ defmodule BackerWeb.PublicController do
     |> render(BackerWeb.PledgerView, "page_404.html",
       page_data: %{title: "400"},
       title: "400",
-      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+      layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
 
@@ -152,12 +152,12 @@ defmodule BackerWeb.PublicController do
     )
   end
 
-  def register(conn, params) do
+  def sign_up(conn, params) do
     changeset = Account.change_backer(%Backerz{})
 
-    render(conn, "component_register.html",
+    render(conn, "sign_up.html",
       changeset: changeset,
-      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+      layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
 

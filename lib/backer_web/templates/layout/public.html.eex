@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backer :: <%= @conn.assigns[:meta][:title] %></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+
+</head>
+
+<body class="text-gray-700 gradient polkadot">
+
+
+    <%= render @view_module, @view_template, assigns %>
+
+
+
+    <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        var navcontent = document.getElementById("nav-content");
+        var navaction = document.getElementById("navAction");
+        var navtoggle = document.getElementById("nav-toggle");
+        var navitem = document.getElementById("navItem");
+        var brandname = document.getElementById("brand");
+        var toToggle = document.querySelectorAll(".toggleColour");
+
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                brandname.src = "/assets/images/logo/backer-bg-white.png";
+                navaction.classList.remove("bg-white");
+                navitem.classList.remove("text-white");
+                navitem.classList.add("text-gray-700");
+                navaction.classList.add("gradient");
+                navtoggle.classList.remove("text-white");
+                navtoggle.classList.remove("border-white");
+                navtoggle.classList.add("text-gray-800");
+                navtoggle.classList.add("border-gray-800");
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-gray-800");
+                    toToggle[i].classList.remove("text-white");
+                }
+                header.classList.add("shadow");
+                header.classList.add("bg-white");
+                header.classList.remove("bg-transparent");
+                navcontent.classList.remove("bg-black");
+                navcontent.classList.add("bg-white");
+            }
+            else {
+                brandname.src = "/assets/images/logo/backer-bg-indigo.png";
+                header.classList.remove("bg-white");
+                header.classList.add("bg-tranparant");
+                header.classList.add("shadow");
+                navaction.classList.remove("gradient");
+                navaction.classList.add("bg-white");
+                navitem.classList.remove("text-gray-700");
+                navitem.classList.add("text-white");
+
+
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-white");
+                    toToggle[i].classList.remove("text-gray-800");
+                }
+
+                header.classList.remove("shadow");
+                navcontent.classList.remove("bg-white");
+                navcontent.classList.add("bg-black");
+                navtoggle.classList.add("text-white");
+                navtoggle.classList.add("border-white");
+                navtoggle.classList.remove("text-gray-800");
+                navtoggle.classList.remove("border-gray-800");
+
+            }
+
+        });
+
+
+    </script>
+
+    <script>
+
+
+        /*Toggle dropdown list*/
+        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+        var navMenuDiv = document.getElementById("nav-content");
+        var navMenu = document.getElementById("nav-toggle");
+
+        document.onclick = check;
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                // click NOT on the menu
+                if (checkParent(target, navMenu)) {
+                    // click on the link
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else { navMenuDiv.classList.add("hidden"); }
+                } else {
+                    // click both outside link and outside menu, hide menu
+                    navMenuDiv.classList.add("hidden");
+                }
+            }
+
+        }
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) { return true; }
+                t = t.parentNode;
+            }
+            return false;
+        }
+    </script>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+				/* Toggle between adding and removing the "active" class,
+				to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

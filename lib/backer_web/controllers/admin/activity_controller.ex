@@ -6,7 +6,7 @@ defmodule BackerWeb.ActivityController do
 
   def index(conn, params) do
     activity = Logging.list_activity(params)
-    render(conn, "index.html", activity: activity)
+    render(conn, "basad/index.html", activity: activity)
   end
 
   def create(conn, %{"activity" => activity_params}) do
