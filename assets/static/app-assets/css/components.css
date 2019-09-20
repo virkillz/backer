@@ -25,18 +25,6 @@ html body a:hover
 {
     color: #4340c2;
 }
-
-.mask {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-img {max-width: 100%;}
-
-
 html body.blank-page .content-wrapper-before
 {
     height: 0 !important;
@@ -503,7 +491,7 @@ footer.footer-dark
 .main-menu.menu-light .navigation > li:hover > a,
 .main-menu.menu-light .navigation > li.active > a
 {
-    color: #fa626b;
+    color: #009688;
 }
 .main-menu.menu-light .navigation > li.hover > a > span,
 .main-menu.menu-light .navigation > li:hover > a > span,

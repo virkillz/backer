@@ -11,11 +11,6 @@
 $(document).ready(function() {
 
     var userDataTable = $('#users-contacts').DataTable();
-    var backerDataTable = $('#backers').DataTable({
-        "pageLength": 50,
-        "lengthChange": false
-    });
-
     // Set the search textbox functionality in sidebar
     $('#search-contacts').on( 'keyup', function () {
         userDataTable.search( this.value ).draw();
