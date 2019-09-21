@@ -50,7 +50,7 @@
                                 <tbody>
                                 <%= for user <- @user do %>
                                     <tr>
-                                      <td><span class="mask"><img src="<%= Router.static_path(@conn, user.avatar) %>" class="user-image img-circle" alt="User Image" height="50px" > <strong><%= user.fullname %></strong></span></td>
+                                      <td><span class="avatar"><img src="<%= Router.static_path(@conn, user.avatar) %>" class="user-image img-circle" alt="User Image" height="50px" > <strong><%= user.fullname %></strong></span></td>
                                       <td><%= user.username %></td>
                                       <td><%= user.role %></td>
                                       <% status = if user.is_active == true do "label-success" else "label-danger" end %>
