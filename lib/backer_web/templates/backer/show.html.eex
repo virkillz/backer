@@ -29,7 +29,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Backer</button></a></li>
+                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit Backer</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -264,7 +264,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit</button></a></li>
+                        <li><a href="<%= Router.backer_path(@conn, :edit, @backer) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -329,7 +329,7 @@
                     <%= if @pledger == nil do %>
                       
                     <% else %>
-                        <li><a href="/admin/pledgers/<%= @pledger.id %>/edit"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit</button></a></li>
+                        <li><a href="/admin/pledgers/<%= @pledger.id %>/edit"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit</button></a></li>
                     <% end %>
                     </ul>
                 </div>
@@ -397,7 +397,7 @@
                     <%= if @pledger == nil do %>
                       
                     <% else %>
-                        <li><a href="/admin/pledgers/<%= @pledger.id %>/edit"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit</button></a></li>
+                        <li><a href="/admin/pledgers/<%= @pledger.id %>/edit"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit</button></a></li>
                     <% end %>
                     </ul>
                 </div>

@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.badge_path(@conn, :edit, @badge) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Badge</button></a></li>
+                        <li><a href="<%= Router.badge_path(@conn, :edit, @badge) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit Badge</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "Add Badge member", to: "/admin/badge_members/new/" <> Integer.to_string(@badge.id), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "Add Badge member", to: "/admin/badge_members/new/" <> Integer.to_string(@badge.id), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>

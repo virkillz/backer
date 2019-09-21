@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.forum_comment_path(@conn, :edit, @forum_comment) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Forum comment</button></a></li>
+                        <li><a href="<%= Router.forum_comment_path(@conn, :edit, @forum_comment) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit Forum comment</button></a></li>
                     </ul>
                 </div>
             </div>

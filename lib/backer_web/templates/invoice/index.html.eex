@@ -29,10 +29,10 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Invoice Deposit", to: Router.invoice_path(@conn, :newdeposit), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Invoice Deposit", to: Router.invoice_path(@conn, :newdeposit), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
                         </li>
                         <li>
-                          <%= link "New Invoice Backing", to: Router.invoice_path(@conn, :newbacking), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Invoice Backing", to: Router.invoice_path(@conn, :newbacking), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
                         </li>                        
                     </ul>
                 </div>

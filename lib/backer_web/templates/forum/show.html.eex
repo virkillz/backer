@@ -31,7 +31,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.forum_path(@conn, :edit, @forum) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">Edit Forum</button></a></li>
+                        <li><a href="<%= Router.forum_path(@conn, :edit, @forum) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit Forum</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "Add Comment", to: "/admin/fcomments/new/" <> Integer.to_string(@forum.id), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "Add Comment", to: "/admin/fcomments/new/" <> Integer.to_string(@forum.id), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>

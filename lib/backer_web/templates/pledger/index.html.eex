@@ -28,7 +28,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Pledger", to: Router.pledger_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                          <%= link "New Pledger", to: Router.pledger_path(@conn, :new), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
                         </li>
                     </ul>
                 </div>
