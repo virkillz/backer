@@ -3,9 +3,9 @@
     Description: Chartist line chart with area
     ----------------------------------------------------------------------------------------
     Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-    Version: 1.0
+    Version: 1.1
     Author: ThemeSelection
-    Author URL: https://themeforest.net/user/themeselect
+    Author URL: https://themeselection.com/
 ==========================================================================================*/
 
 // Line chart with area

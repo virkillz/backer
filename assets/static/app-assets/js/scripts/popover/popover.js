@@ -4,9 +4,9 @@
 				use CSS3 for animations, and data-attributes for local title storage.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 (function(window, document, $) {
 'use strict';

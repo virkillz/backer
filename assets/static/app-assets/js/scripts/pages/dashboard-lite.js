@@ -3,9 +3,9 @@
     Description: dashboard-ecommerce
     ----------------------------------------------------------------------------------------
     Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-    Version: 1.0
+    Version: 1.1
     Author: ThemeSelection
-    Author URL: https://themeforest.net/user/themeselect
+    Author URL: https://themeselection.com/
 ==========================================================================================*/
 
 
@@ -105,116 +105,6 @@
             });
         }
     });
-
-    /*************************************************
-        *               Quarterly Sales Stats               *
-        *************************************************/
-
-    var quarterlySales = new Chartist.Bar('#quarterly-sales', {
-        labels: ['Q1', 'Q1', 'Q1', 'Q1', 'Q1', 'Q1', 'Q2', 'Q2', 'Q2', 'Q2', 'Q2', 'Q2', 'Q3', 'Q3', 'Q3', 'Q3', 'Q3', 'Q3', 'Q4', 'Q4', 'Q4', 'Q4', 'Q4', 'Q4'],
-        series: [
-            [2000, 1500, 3000, 5000, 7000, 4000, 8000, 6000, 12000, 14000, 11000, 9000, 7000, 4000, 8000, 12000, 13000, 11000, 7000, 4000, 3000, 2000, 1500, 2000],
-        ]
-    }, {
-            axisY: {
-                labelInterpolationFnc: function (value) {
-                    return (value / 1000) + 'k';
-                },
-                scaleMinSpace: 50,
-            },
-            axisX: {
-                showGrid: false,
-                labelInterpolationFnc: function (value, index) {
-                    return index % 6 === 0 ? value : null;
-                }
-            }
-        });
-    quarterlySales.on('draw', function (data) {
-        if (data.type === 'bar') {
-            data.element.attr({
-                style: 'stroke-width: 10px',
-                y1: 250,
-                x1: data.x1 + 0.001
-            });
-            data.group.append(new Chartist.Svg('circle', {
-                cx: data.x2,
-                cy: data.y2,
-                r: 5
-            }, 'ct-slice-pie'));
-        }
-    });
-    quarterlySales.on('created', function (data) {
-        var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
-        defs.elem('linearGradient', {
-            id: 'barGradient1',
-            x1: 0,
-            y1: 0,
-            x2: 0,
-            y2: 1
-        }).elem('stop', {
-            offset: 0,
-            'stop-color': 'rgba(253,99,107,1)'
-        }).parent().elem('stop', {
-            offset: 1,
-            'stop-color': 'rgba(253,99,107, 0.6)'
-        });
-        return defs;
-    });
-
-
-    /*************************************************
-    *               New Customers Stats               *
-    *************************************************/
-
-    var newCustomers = new Chartist.Pie('#new-customers', {
-        series: [100],
-        labels: ['iOS']
-    }, {
-            donut: true,
-            labelInterpolationFnc: function (value) {
-                return '\ue9d7';
-            },
-            donutSolid: true,
-            total: 100,
-            donutWidth: 10,
-        });
-
-    newCustomers.on('draw', function (data) {
-        if (data.type === 'label') {
-            if (data.index === 0) {
-                data.element.attr({
-                    dx: data.element.root().width() / 2,
-                    dy: (data.element.root().height() + (data.element.height() / 4)) / 2,
-                    class: 'ct-label',
-                    'font-family': 'feather'
-                });
-            } else {
-                data.element.remove();
-            }
-        }
-    });
-
-    // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
-    newCustomers.on('created', function (data) {
-        var defs = data.svg.querySelector('defs') || data.svg.elem('defs');
-        defs.elem('linearGradient', {
-            id: 'donutGradient5',
-            x1: 0,
-            y1: 1,
-            x2: 0,
-            y2: 0
-        }).elem('stop', {
-            offset: '0%',
-            'stop-color': 'rgba(253,99,107,1)'
-        }).parent().elem('stop', {
-            offset: '95%',
-            'stop-color': 'rgba(253,99,107, 0.3)'
-        });
-        return defs;
-
-
-    });
-
 
     /*************************************************
   *               Project Stats               *
@@ -447,16 +337,5 @@
 
     ////////////////////////////////////////////////////////////////////////////////
 
-
-
-    ////////////////////////////////////////////////////////////////////////////////////
-
-    // checkbox
-    if ($('.chk-task').length) {
-        $('.chk-task').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-        });
-    }
 
 })(window, document, jQuery);

@@ -3,9 +3,9 @@
 	Description: A beautiful replacement for javascript alerts
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Responsive Admin Theme
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 $(document).ready(function () {
 

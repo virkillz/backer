@@ -2,9 +2,6 @@
 
 # Todo
 
-- [ ] Install live view
-- [ ] Change logo in admin panel
-- [ ] Change logo in admin login
 - [ ] Edit profile pledger cause error
 - [ ] Make login working
 - [ ] Make register working

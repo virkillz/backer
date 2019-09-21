@@ -264,9 +264,9 @@ html body .pace .pace-progress
 	Description: content sidebar specific scss.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 .sidebar
 {
@@ -354,9 +354,9 @@ footer.footer-dark
 	Description: Common mixin for menus, contain dark and light version scss.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 .main-menu
 {
@@ -491,7 +491,7 @@ footer.footer-dark
 .main-menu.menu-light .navigation > li:hover > a,
 .main-menu.menu-light .navigation > li.active > a
 {
-    color: #009688;
+    color: #fa626b;
 }
 .main-menu.menu-light .navigation > li.hover > a > span,
 .main-menu.menu-light .navigation > li:hover > a > span,
@@ -1198,7 +1198,7 @@ footer.footer-dark
 
 .navigation
 {
-    font-family: 'Comfortaa', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Comfortaa', cursive, 'Times New Roman', Times, serif;
     font-size: 1rem;
     font-weight: 700;
 
@@ -1210,7 +1210,7 @@ footer.footer-dark
 }
 .navigation .navigation-header
 {
-    font-family: 'Comfortaa', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Comfortaa', cursive, 'Times New Roman', Times, serif;
     font-size: 1rem; 
     font-weight: 400;
     line-height: 1.2;
@@ -2973,9 +2973,9 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu-footer .content
 	Description: Search  functionality.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 .navbar-container a.nav-link-search
 {
@@ -4601,9 +4601,9 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu-footer .content
 	Description: CSS used for demo purpose only. Remove this css from your project.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 .fonticon-container > .fonticon-wrap
 {
@@ -4760,9 +4760,9 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu-footer .content
 	Description: CSS used for demo purpose only. Remove this css from your project.
 	----------------------------------------------------------------------------------------
 	Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-	Version: 1.0
+	Version: 1.1
 	Author: ThemeSelection
-	Author URL: https://themeforest.net/user/themeselect
+	Author URL: https://themeselection.com/
 ==========================================================================================*/
 .customizer
 {
@@ -4797,6 +4797,8 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu-footer .content
 .customizer .customizer-content
 {
     position: relative;
+
+    overflow-y: scroll; 
 
     height: 100%;
 }

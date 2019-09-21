@@ -3,9 +3,9 @@
     Description: Users contacts configurations
     ----------------------------------------------------------------------------------------
     Item Name: Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit
-    Version: 1.0
+    Version: 1.1
     Author: ThemeSelection
-    Author URL: http://www.themeforest.net/user/themeselect
+    Author URL: https://themeselection.com/
 ==========================================================================================*/
 
 $(document).ready(function() {
