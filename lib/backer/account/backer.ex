@@ -22,6 +22,7 @@ defmodule Backer.Account.Backer do
     field(:is_phone_verified, :boolean, default: false)
     field(:is_donee, :boolean, default: false)
     field(:password_recovery_code, :string)
+    field(:is_agree_term, :boolean, virtual: true)
     field(:passwordhash, :string)
     field(:password, :string, virtual: true)
     field(:passwordrepeat, :string, virtual: true)
@@ -160,31 +161,12 @@ defmodule Backer.Account.Backer do
   end
 
   @doc false
-  def register_changeset(backer, attrs) do
+  def sign_up_changeset(backer, attrs) do
     backer
     |> cast(attrs, [
-      :username,
-      :passwordhash,
       :display_name,
-      :backer_bio,
-      :full_name,
       :email,
-      :phone,
-      :password,
-      :gender,
-      :birth_date,
-      :recover_phone,
-      :id_type,
-      :id_number,
-      :id_photo,
-      :id_photokyc,
-      :is_donee,
-      :avatar,
-      :email_verification_code,
-      :phone_verification_code,
-      :password_recovery_code,
-      :is_email_verified,
-      :is_phone_verified
+      :password
     ])
     |> validate_required([:email, :display_name, :password])
     |> validate_display_name

@@ -7,8 +7,20 @@
 - [ ] Make register working
 - [ ] Display dynamic donee at "/explore"
 - [ ] Display dynamic donee at "/"
+- [ ] Register backer better have automatic username such as backer1
+- [ ] user cannot create backer[number] below his user id
+- [ ] Fix please verify page
+- [ ] Register email which already registered but not yet verified must be valid.
 
+## PHASE 1 Feature
 
+- [ ] Backer can register
+- [ ] Donee can register separately
+- [ ] Donee can post
+- [ ] Backer can donate
+- [ ] Admin can change donation status
+- [ ] Backer can see the donation status
+- [ ] Backer can browse the post and comment
 
 ## To start:
   * Install dependencies with `mix deps.get`

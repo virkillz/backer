@@ -110,12 +110,8 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         conn
-        |> render("front_timeline.html",
-          backer: backer,
-          owner: true,
-          menu: :timeline,
-          posts: posts,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+        |> render("private_backer_timeline.html",
+          layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
   end
@@ -299,6 +295,22 @@ defmodule BackerWeb.BackerController do
   end
 
   def update(conn, %{"id" => id, "backer" => backer_params}) do
+    backer = Account.get_backer!(id)
+
+    case Account.update_backer(backer, backer_params) do
+      {:ok, backer} ->
+        conn
+        |> put_flash(:info, "Backer updated successfully.")
+        |> redirect(to: Router.backer_path(conn, :show, backer))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        id_types = Constant.accepted_id_kyc()
+        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
+    end
+  end
+
+  def update_x(conn, %{"id" => id, "backer" => backer_params}) do
+    IO.inspect(backer_params)
     backer = Account.get_backer!(id)
     try_upload = backer_upload_avatar(backer_params["avatar"])
 

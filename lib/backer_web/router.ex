@@ -193,6 +193,6 @@ defmodule BackerWeb.Router do
     get("/404", PublicController, :page404)
     get("/400", PublicController, :page400)
     get("/505", PublicController, :page505)
-    get("/:backer", DoneeController, :redirector)
+    get("/:backer", PublicController, :redirector)
   end
 end

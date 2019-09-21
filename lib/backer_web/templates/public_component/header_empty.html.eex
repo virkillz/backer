@@ -1,0 +1,12 @@
+<nav class="h-18 bg-white shadow-lg transition-all transition-ease-in-out w-full z-30 text-white">
+
+
+        <div class="p-5 flex justify-center">
+            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                <img src="/assets/images/logo/backer-bg-white.png" class="h-8 " alt="">
+            </a>
+        </div>
+
+
+
+</nav>

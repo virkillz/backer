@@ -50,12 +50,12 @@ defmodule BackerWeb.DoneeController do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
-          |> render("front_overview.html",
+          |> render("public_donee_timeline.html",
             donee: donee,
             active: :overview,
             backing: backing,
             backers: backers,
-            layout: {BackerWeb.LayoutView, "layout_front_donee_public.html"}
+            layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
     end
@@ -412,27 +412,6 @@ defmodule BackerWeb.DoneeController do
             active: :forum,
             layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
           )
-        end
-    end
-  end
-
-  def redirector(conn, %{"backer" => username}) do
-    backer = Account.get_backer(%{"username" => username})
-
-    case backer do
-      nil ->
-        conn
-        |> put_status(:not_found)
-        |> render("page_404.html",
-          title: "404",
-          layout: {BackerWeb.LayoutView, "layout_front_static.html"}
-        )
-
-      other ->
-        if backer.is_donee do
-          redirect(conn, to: "/donee/" <> username)
-        else
-          redirect(conn, to: "/backer/" <> username)
         end
     end
   end

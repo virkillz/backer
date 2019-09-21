@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 
-
+    <style>
+    div:empty {
+        display: none;
+    }
+    </style>
 </head>
 
 <body class="text-gray-700 gradient polkadot">

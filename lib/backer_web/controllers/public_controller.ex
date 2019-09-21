@@ -15,8 +15,14 @@ defmodule BackerWeb.PublicController do
   def explore(conn, _params) do
     meta = %{title: "Welcome to backer"}
 
+    donees = Account.list_donees()
+
     conn
-    |> render("explore.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+    |> render("explore.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      meta: meta,
+      donees: donees
+    )
   end
 
   def forgot_password(conn, _params) do
@@ -59,6 +65,26 @@ defmodule BackerWeb.PublicController do
 
     conn
     |> render("privacy_policy.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def redirector(conn, %{"backer" => username}) do
+    backer = Account.get_backer(%{"username" => username})
+
+    case backer do
+      nil ->
+        conn
+        |> put_status(:not_found)
+        |> render("page_404.html",
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+
+      other ->
+        if backer.is_donee do
+          redirect(conn, to: "/donee/" <> username)
+        else
+          redirect(conn, to: "/backer/" <> username)
+        end
+    end
   end
 
   def how_it_works(conn, _params) do
@@ -197,7 +223,7 @@ defmodule BackerWeb.PublicController do
   end
 
   def createuser(conn, %{"backer" => params}) do
-    case Account.register_backer(params) do
+    case Account.sign_up_backer(params) do
       {:ok, _user} ->
         conn
         |> put_flash(
@@ -207,14 +233,14 @@ defmodule BackerWeb.PublicController do
         |> redirect(to: "/login")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "component_register.html",
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+        render(conn, "sign_up.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
           changeset: changeset
         )
     end
   end
 
-  def auth(conn, %{"email" => email, "password" => password}) do
+  def auth(conn, %{"email" => email, "password" => password} = params) do
     case Account.authenticate_backer_front(email, password) do
       {:ok, backer} ->
         if backer.is_email_verified do
@@ -222,8 +248,8 @@ defmodule BackerWeb.PublicController do
           |> put_session(:current_backer_id, backer.id)
           |> redirect(to: "/home")
         else
-          render(conn, "please_verify_first.html",
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"},
+          render(conn, "verify.html",
+            layout: {BackerWeb.LayoutView, "public.html"},
             backer: backer
           )
         end
@@ -233,8 +259,8 @@ defmodule BackerWeb.PublicController do
 
         conn
         |> put_flash(:error, reason)
-        |> render("component_login.html",
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+        |> render("login.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
           changeset: changeset
         )
     end

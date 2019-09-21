@@ -1,5 +1,0 @@
-<ul class="nav-news-feed bg-white">
-  <li><i class="icon ion-ios-paper"></i><div><a href="/backer/<%= @backer.username %>">Overview</a></div></li>
-  <li><i class="icon ion-ios-people"></i><div><a href="/backer/<%= @backer.username %>/badges">Badge</a></div></li>
-  <li><i class="icon ion-ios-people-outline"></i><div><a href="/backer/<%= @backer.username %>/backerfor">Backer for</a></div></li>
-</ul>

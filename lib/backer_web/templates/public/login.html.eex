@@ -1,9 +1,6 @@
-<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+<%= BackerWeb.PublicComponentView.render "header_empty.html", conn: @conn %>
 
-<div class="pt-32 pb-20 px-4">
-
-
-
+<div class="py-32 px-4">
 
         <div class="container mx-auto max-w-md">
                 <div class="hidden text-center mb-4 p-4 rounded border border-white">Akun sudah selesai diverifikasi.
@@ -14,16 +11,23 @@
 
                         <div class="text-4xl  font-semibold">Login</div>
 
+
+
+                    <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> bg-red-400 text-white text-sm rounded">
+                        <%= get_flash(@conn, :error) %>
+                    </div>                        
+
+                        <%= form_for @changeset, "/login", [], fn _f ->  %>
                         <div class="py-2">
                                 <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 ">Email</label>
-                                <input type="email" name="text"
-                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full">
+                                <input type="email" name="email" 
+                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full" required>
                         </div>
 
                         <div class="py-2">
                                 <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">Password</label>
-                                <input type="password" name="text"
-                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full">
+                                <input type="password" name="password"
+                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full" required>
                         </div>
 
 
@@ -31,6 +35,8 @@
                                 <button type="submit"
                                         class="tracking-wide w-full focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Login</button>
                         </div>
+
+                        <% end %>
 
                         <div class="pt-4 text-center text-sm text-gray-600">Forgot your password? <a
                                         href="/forgot-password" class="text-blue-500">Reset your password</a></div>

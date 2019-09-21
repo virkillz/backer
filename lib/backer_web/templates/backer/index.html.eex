@@ -28,9 +28,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Backer", to: Router.backer_path(@conn, :new), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
-                        </li>
+                     <li><a href="<%= Router.backer_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">New Backer</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +46,6 @@
                                   <th>Username</th>
                                    <th>ID</th>
                                   <th>Display name</th>
-                                  <th>Full name</th>
                                   <th>Email</th>
                             
                                   <th></th>
@@ -59,7 +56,7 @@
                                       <tr>
                                         <th>
 
-<div class="mask">
+<div class="mask avatar">
 <img src="<%= backer.avatar %>" />
 </div>​
 
@@ -67,7 +64,6 @@
                                         <td><%= backer.username %></td>
                                         <td><%= backer.id %></td>
                                         <td><%= backer.display_name %></td>
-                                        <td><%= backer.full_name %></td>
                                         <td><%= backer.email %></td>
 
                                         <td class="text-right">
