@@ -225,11 +225,11 @@ defmodule Backer.Account do
     |> Repo.insert()
   end
 
-  def register_backer(attrs \\ %{}) do
+  def sign_up_backer(attrs \\ %{}) do
     attrs
 
     %Backerz{}
-    |> Backerz.register_changeset(attrs)
+    |> Backerz.sign_up_changeset(attrs)
     |> Repo.insert()
   end
 
