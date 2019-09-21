@@ -14,7 +14,7 @@ defmodule Backer.Gamification.Badge do
   @doc false
   def changeset(badge, attrs) do
     badge
-    |> cast(attrs, [:title, :icon, :description])
-    |> validate_required([:title, :icon, :description])
+    |> cast(attrs, [:title, :icon, :description, :donee_id])
+    |> validate_required([:title])
   end
 end
