@@ -12,16 +12,58 @@ defmodule BackerWeb.PublicController do
     |> render("homepage.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
   end
 
-  def how_it_works(conn, _params) do
-    render(conn, "static_how_it_works.html",
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-    )
+  def explore(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("explore.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def forgot_password(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("forgot_password.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
   end
 
   def about_us(conn, _params) do
-    render(conn, "page_about.html",
-      title: "Tentang Kami",
-      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("about_us.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def faq(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("faq.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def contact_us(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("contact_us.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def terms(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("terms.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def privacy_policy(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("privacy_policy.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+  end
+
+  def how_it_works(conn, _params) do
+    render(conn, "static_how_it_works.html",
+      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
     )
   end
 
@@ -45,13 +87,6 @@ defmodule BackerWeb.PublicController do
       {integer, _} -> integer
       :error -> 100
     end
-  end
-
-  def contact_us(conn, _params) do
-    render(conn, "page_contact.html",
-      title: "Hubungi Kami",
-      layout: {BackerWeb.LayoutView, "layout_front_static.html"}
-    )
   end
 
   def verify(conn, %{"code" => code}) do
@@ -146,8 +181,8 @@ defmodule BackerWeb.PublicController do
   def login(conn, _params) do
     changeset = Account.change_backer(%Backerz{})
 
-    render(conn, "component_login.html",
-      layout: {BackerWeb.LayoutView, "layout_front_focus.html"},
+    render(conn, "login.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
       changeset: changeset
     )
   end

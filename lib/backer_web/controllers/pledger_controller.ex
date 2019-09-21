@@ -15,23 +15,6 @@ defmodule BackerWeb.PledgerController do
     render(conn, "index.html", pledgers: pledgers)
   end
 
-  def explore(conn, params) do
-    categories = Masterdata.list_categories()
-
-    page_data = %{
-      header_img: "/front/images/banner/bg-header3.png",
-      title: "Explore"
-    }
-
-    conn
-    |> render("component_explore.html",
-      categories: categories,
-      page_data: page_data,
-      layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
-      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-    )
-  end
-
   def tier(conn, %{"username" => username}) do
     pledger = Account.get_pledger(%{"username" => username})
 

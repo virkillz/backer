@@ -1,0 +1,73 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+	<div class="pt-10 text-white">
+	
+	    <div class="container px-3 pt-20 pb-20 mx-auto text-center">
+	        <div class="text-5xl  text-center font-semibold">Explore</div>
+	        <div class="mx-auto text-xl pt-12 leading-relaxed max-w-xl">Temukan komunitas , organisasi dan kreator favoritmu
+	            dan
+	            dukung
+	            mereka. Kamu juga bisa
+	            daftarkan komunitasmu.</div>
+	
+	        <button
+	            class="mt-12 mx-auto btn-glow-orange tracking-wide focus:outline-none px-16 font-semibold py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Daftarkan
+	            Komunitasmu</button>
+	
+	    </div>
+	
+	</div>
+	<div class="banner_shapes">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_1 img-fluid hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_2 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_6 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_3 hidden lg:visible">
+	</div><!--Hero-->
+	<section class="bg-gray-200 py-10 text-gray-800">
+	
+	    <div class="pl-6 max-w-3xl mx-auto p-6">
+	        <!-- <div class="font-bold text-xl text-center pb-4">Other community</div> -->
+	        <div class="my-8 flex items-center cursor-pointer hover:shadow-xl bg-white rounded-lg shadow">
+	            <img src="/assets/images/bg/komunitas.jpeg" class="shadow rounded-l-lg h-48 object-cover w-48 lg:w-64"
+	                alt="">
+	            <img src="/assets/images/bg/avatar2.jpeg"
+	                class="z-10 -ml-8 shadow border-white border-2 shadow-lg rounded-lg w-16 h-16" alt="">
+	            <div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
+	                <div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
+	                    2441
+	                    Backer</div>
+	                <div class="">
+	                    <div class="text-md  font-semibold">Sekolah Tuna Rungu Jakarta</div>
+	                    <div class="text-xs  text-gray-600">@jakartamuteclub</div>
+	                    <div class="py-4 text-sm text-gray-600">Mencerdaskan nusa dan bangsa.</div>
+	                </div>
+	            </div>
+	        </div>
+	
+	        <div class="my-8 flex items-center cursor-pointer hover:shadow-xl bg-white rounded-lg shadow">
+	            <img src="/assets/images/bg/komunitas.jpeg" class="shadow rounded-l-lg h-48 object-cover w-48 lg:w-64"
+	                alt="">
+	            <img src="/assets/images/bg/avatar2.jpeg"
+	                class="z-10 -ml-8 shadow border-white border-2 shadow-lg rounded-lg w-16 h-16" alt="">
+	            <div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
+	                <div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
+	                    2441
+	                    Backer</div>
+	                <div class="">
+	                    <div class="text-md  font-semibold">Sekolah Tuna Rungu Jakarta</div>
+	                    <div class="text-xs  text-gray-600">@jakartamuteclub</div>
+	                    <div class="py-4 text-sm text-gray-600">Mencerdaskan nusa dan bangsa.</div>
+	                </div>
+	            </div>
+	        </div>
+	
+	    </div>
+	
+	</section>
+
+    <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

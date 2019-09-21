@@ -1,0 +1,144 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+	<div class="pt-10 text-white">
+	
+	    <div class="container px-3 py-20 mx-auto">
+	        <div class="text-4xl  text-center font-semibold">Tentang Kami </div>
+	        <div class="text-center">Home / <span class="underline">Tentang Kami</span></div>
+	
+	
+	    </div>
+	
+	</div>
+	<div class="banner_shapes">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_1 img-fluid hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_2 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_6 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_3 hidden lg:visible">
+	</div><!--Hero-->
+	<section class="bg-white py-10 text-gray-800">
+	    <div class="container mx-auto">
+	        <div class="text-4xl  text-center font-semibold pb-10">We believe people are awesome</div>
+	        <div class="lg:flex justify-center items-center">
+	            <div class="p-12 bg-indigo-100 rounded mx-auto max-w-lg text-justify leading-loose">
+	                <p class="whitespace-normal mb-6">
+	                    Backer dilahirkan karena kami percaya ada banyak kegiatan positif yang telah secara rutin
+	                    dilakukan oleh teman-teman di lingkungan kita yang membutuhkan dukungan secara berkelanjutan.
+	                </p>
+	                <p class="whitespace-normal my-6">
+	                    Kita sering melihat mereka yang mengatur penggalangan dana baru
+	                    ketika kebutuhan sudah sangat mendesak. Permohonan dukungan juga sering dibagikan lewat media sosial
+	                    dan dengan proses pembayaran yang mungkin tidak aman.
+	                </p>
+	                <p class="whitespace-normal mt-6">
+	                    Backer memberikan pilihan bagi para penggiat untuk mendapatkan dukungan dana
+	                    secara berkesinambungan; dan bagi para donatur untuk mendukung kegiatan positif
+	                    sesuai minatnya selama durasi waktu yang diinginkan.
+	                </p>
+	            </div>
+	            <div class="p-12 max-w-lg text-justify mx-auto leading-loose">
+	                <p class="whitespace-normal mb-6">
+	                    Backer was born because we believe that there are a lot of good things routinely done by people in
+	                    our community that
+	                    need our continous support.
+	                </p>
+	                <p class="whitespace-normal my-6">
+	                    We often find people just begin to scambling and asking for donation when it is already a bit too
+	                    late.
+	                    The calls for support are usually distributed through social media with a potentially unsafe
+	                    transaction method.
+	                </p>
+	                <p class="whitespace-normal mt-6">
+	                    Backer is providing this option for those who needs continuous support; and for donors to support
+	                    positive activities according to their
+	                    passion in a duration they can choose from.
+	                </p>
+	
+	            </div>
+	        </div>
+	    </div>
+	
+	</section>
+	
+	<section class="bg-white py-10 text-gray-800">
+	    <div class="">
+	        <div class="lg:flex items-center">
+	            <div class="lg:w-1/2">
+	                <div class="w-full p-12">
+	                    <img src="/assets/images/bg/vision.png" alt="">
+	                </div>
+	            </div>
+	            <div class="lg:w-1/2 p-4">
+	                <div class="w-full bg-indigo-100 rounded p-12">
+	                    <div class="text-4xl  font-semibold pb-5">Our Vision</div>
+	                    <div class="text-gray-700  text-justify leading-loose">Lorem ipsum dolor sit
+	                        amet, consectetur
+	                        adipiscing elit.
+	                        Nullam
+	                        pellentesque sapien nec
+	                        ipsum maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis
+	                        tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus
+	                        et
+	                        magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus tristique. Sed
+	                        scelerisque
+	                        non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare magna convallis a.
+	                        Vestibulum
+	                        ante
+	                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque consequat enim
+	                        non
+	                        varius pretium. Ut ut ante eu felis porttitor tristique. Cras ultricies purus id sollicitudin
+	                        rutrum.
+	                    </div>
+	                </div>
+	            </div>
+	
+	        </div>
+	    </div>
+	
+	</section>
+	
+	<section class="bg- py-10 text-gray-800">
+	    <div class="">
+	        <div class="lg:flex items-center">
+	            <div class="lg:w-1/2 p-4">
+	                <div class="w-full bg-indigo-100 rounded p-12">
+	                    <div class="text-4xl  font-semibold pb-5">Our Mission</div>
+	                    <div class="text-gray-700  text-justify leading-loose">Lorem ipsum dolor sit
+	                        amet, consectetur
+	                        adipiscing elit.
+	                        Nullam
+	                        pellentesque sapien nec
+	                        ipsum maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis
+	                        tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus
+	                        et
+	                        magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus tristique. Sed
+	                        scelerisque
+	                        non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare magna convallis a.
+	                        Vestibulum
+	                        ante
+	                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque consequat enim
+	                        non
+	                        varius pretium. Ut ut ante eu felis porttitor tristique. Cras ultricies purus id sollicitudin
+	                        rutrum.
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="lg:w-1/2 hidden lg:block">
+	                <div class="w-full p-12">
+	                    <img src="/assets/images/bg/creative.jpeg" class="rounded" alt="">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</section>
+
+    	<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

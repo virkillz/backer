@@ -1,4 +1,4 @@
-<%= BackerWeb.PublicComponentView.render "header_public.html" %>
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 
 <div class="pt-32 pb-20 lg:px-20 flex justify-center ">
@@ -28,4 +28,4 @@
 
 </div>
 
-<%= BackerWeb.PublicComponentView.render "footer_public.html" %>
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

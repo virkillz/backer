@@ -12,8 +12,16 @@
 
                 </a>
 
-                <div class="pb-4 pt-1 px-px text-gray-600">Enabling sustainable support circle</div>
-                <ul class="flex">
+                <div class="pb-2 pt-1 px-px text-gray-600">Enabling sustainable support circle</div>
+
+
+                <div class="flex py-2">
+                    <a href="?locale=en" class=""> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
+                    <a href="?locale=id" class="pl-4"> <img src="/assets/images/lang-en.png" class="w-6 h-6" alt=""></a>
+                </div>
+
+
+                <ul class="flex pt-2">
                     <li><a href="#"><i
                                 class="la la-facebook transition-all transition-ease-in-out hover:text-orange-500 text-2xl pr-4"></i></a>
                     </li>
@@ -35,13 +43,7 @@
                     <p class="uppercase text-gray-500 md:mb-4 font-bold ">Links</p>
                     <ul class="list-reset mb-6">
                         <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">FAQ</a>
-                        </li>
-                        <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Help</a>
-                        </li>
-                        <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Support</a>
+                            <a href="/faq" class="text-gray-800 hover:text-blue-500">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -49,10 +51,10 @@
                     <p class="uppercase text-gray-500 md:mb-4 font-bold">Legal</p>
                     <ul class=" mb-6">
                         <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Terms</a>
+                            <a href="/terms" class="text-gray-800 hover:text-blue-500">Terms</a>
                         </li>
                         <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Privacy</a>
+                            <a href="/privacy-policy" class="text-gray-800 hover:text-blue-500">Privacy</a>
                         </li>
                     </ul>
                 </div>
@@ -60,15 +62,11 @@
                     <p class="uppercase text-gray-500 md:mb-4 font-bold">Company</p>
                     <ul class="list-reset mb-6">
                         <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Official
-                                Blog</a>
-                        </li>
-                        <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">About
+                            <a href="/about-us" class="text-gray-800 hover:text-blue-500">About
                                 Us</a>
                         </li>
                         <li class="mt-2 ">
-                            <a href="#" class="text-gray-800 hover:text-blue-500">Contact</a>
+                            <a href="/contact-us" class="text-gray-800 hover:text-blue-500">Contact</a>
                         </li>
                     </ul>
                 </div>

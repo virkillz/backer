@@ -1,0 +1,105 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+	<div class="pt-10 text-white">
+	
+	    <div class="container px-3 py-20 mx-auto">
+	        <div class="text-4xl  text-center font-semibold">Syarat & Ketentuan</div>
+	        <div class="text-center">Home / <span class="underline">Syarat & Ketentuan</span></div>
+	
+	
+	    </div>
+	
+	</div>
+	<div class="banner_shapes">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_1 img-fluid hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_2 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+	        class="agency_6 hidden lg:visible">
+	    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+	        class="agency_3 hidden lg:visible">
+	</div><!--Hero-->
+	<section class="bg-white py-10 text-gray-800">
+	    <div class="lg:flex container mx-auto">
+	        <div class="flex-grow">
+	            <div class="px-10">
+	
+	                <div class="font-bold  text-2xl pb-4">Syarat & Ketentuan</div>
+	
+	                <ul class="list-decimal text-sm text-justify leading-relaxed">
+	                    <li class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien
+	                        nec ipsum
+	                        maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus
+	                        tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare
+	                        magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+	                        cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor
+	                        tristique. Cras ultricies purus id sollicitudin rutrum.</li>
+	                    <li class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien
+	                        nec ipsum
+	                        maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus
+	                        tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare
+	                        magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+	                        cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor
+	                        tristique. Cras ultricies purus id sollicitudin rutrum.</li>
+	                    <li class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien
+	                        nec ipsum
+	                        maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus
+	                        tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare
+	                        magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+	                        cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor
+	                        tristique. Cras ultricies purus id sollicitudin rutrum.</li>
+	                    <li class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien
+	                        nec ipsum
+	                        maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus
+	                        tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare
+	                        magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+	                        cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor
+	                        tristique. Cras ultricies purus id sollicitudin rutrum.</li>
+	                    <li class="pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien
+	                        nec ipsum
+	                        maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor.
+	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
+	                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus
+	                        tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare
+	                        magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+	                        cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor
+	                        tristique. Cras ultricies purus id sollicitudin rutrum.</li>
+	                </ul>
+	
+	
+	
+	
+	
+	            </div>
+	        </div>
+	        <div class="rounded border shadow" style="min-width: 18em;">
+	            <div class=" font-bold px-4 text-center py-4">Informasi Lebih Lanjut</div>
+	            <ul class="bg-gray-300">
+	                <li class="py-4 px-12 border-l-4 my-px border-indigo-500 bg-gray-100"><a href="#">Syarat & Ketentuan</a>
+	                </li>
+	                <li
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    <a href="#">Kebijakan
+	                        Privasi</a></li>
+	                <li
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    <a href="#">Ketentuan Donee</a></li>
+	                <li
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    <a href="#">Ketentuan Backer</a></li>
+	            </ul>
+	        </div>
+	    </div>
+	</section
+
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

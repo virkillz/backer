@@ -1,0 +1,80 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+<div class="pt-10 polkadot text-white">
+
+    <div class="container px-3 py-20 mx-auto">
+        <div class="text-4xl  text-center font-semibold">Hubungi Kami</div>
+        <div class="text-center">Home / <span class="underline">Hubungi Kami</span></div>
+
+
+    </div>
+
+</div>
+<div class="banner_shapes">
+    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+        class="agency_1 img-fluid hidden lg:visible">
+    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+        class="agency_2 hidden lg:visible">
+    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_4.png" alt=""
+        class="agency_6 hidden lg:visible">
+    <img src="http://shtheme.com/demosd/sassnex/wp-content/themes/sassnex/images/shapes/app_3.png" alt=""
+        class="agency_3 hidden lg:visible">
+</div>
+<!--Hero-->
+<section class="bg-gray-200 border-b py-8 text-gray-700 h-screen">
+
+    <div class="rounded bg-white shadow p-6 mx-auto max-w-lg">
+        <div class="text-3xl  font-semibold text-center">Kirim Pesan</div>
+        <div class="">
+            <input type="text" name="" id="" placeholder="Nama"
+                class="w-full py-2 px-2 my-1 rounded border bg-gray-100">
+            <input type="text" name="" id="" placeholder="Nomor Handphone"
+                class="w-full py-2 px-2 rounded border my-1 bg-gray-100">
+            <input type="text" name="" id="" placeholder="Judul"
+                class="w-full my-1 py-2 px-2 rounded border bg-gray-100">
+            <textarea name="" class="w-full py-2 px-2 rounded border my-1 bg-gray-100" id="" cols="30"
+                rows="10"></textarea>
+            <button
+                class="btn-glow-indigo w-full mt-4 tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-indigo-500 border-indigo-500 hover:bg-indigo-600 border-2 text-white rounded-lg">Submit</button>
+        </div>
+    </div>
+
+</section>
+
+
+<section>
+    <img src="/assets/images/bg/komunitas.jpeg" class="h-64 object-cover w-full" alt="">
+</section>
+
+<section class="bg-gray-200 pb-20 -mt-8">
+    <div class="flex container mx-auto justify-center ">
+        <div class="p-8 bg-white mx-4 rounded-lg shadow max-w-md text-gray-800">
+            <div class=" font-bold text-xl">Kantor kami</div>
+            <div class="py-4">Ante amet vitae vulputate odio
+                nulla vel pretium pulvinar aenean.</div>
+            <div class="text-2xl flex py-2"><i class="la la-map-marker mr-2 text-orange-500"></i>
+                <div class="text-sm">Jl. Jendral Soedirman
+                    32</div>
+            </div>
+            <div class="text-2xl flex py-2"><i class="la la-map-pin mr-2 text-orange-500"></i>
+                <div class="text-sm">Jakarta, Indonesia</div>
+            </div>
+        </div>
+        <div class="p-8 bg-white mx-4 rounded-lg shadow max-w-md text-gray-800">
+            <div class=" font-bold text-xl">Kontak kami</div>
+            <div class="py-4 ">Ante amet vitae vulputate odio
+                nulla vel pretium pulvinar aenean.</div>
+            <div class="text-2xl flex py-2"><i class="la la-envelope mr-2 text-orange-500"></i>
+                <div class="text-sm">info@backer.id</div>
+            </div>
+            <div class="text-2xl flex py-2"><i class="la la-phone mr-2 text-orange-500"></i>
+                <div class="text-sm">021-9842424</div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

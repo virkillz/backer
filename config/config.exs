@@ -9,6 +9,8 @@ use Mix.Config
 config :backer,
   ecto_repos: [Backer.Repo]
 
+config :backer, BackerWeb.Gettext, default_locale: "id", locales: ~w(en id)
+
 # Configures the endpoint
 config :backer, BackerWeb.Endpoint,
   url: [host: "localhost"],

@@ -1,0 +1,46 @@
+		<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+    <div class="pt-10 text-white">
+
+		<div class="container px-3 pt-20 mx-auto">
+			<div class="text-4xl  text-center font-semibold">Frequently Asked Question</div>
+			<div class="text-center">Home / <span class="underline">FAQ</span></div>
+
+
+		</div>
+
+	</div>
+
+	<section class=" py-10 text-gray-700 px-2">
+		<div class="container mx-auto">
+			<div class="max-w-3xl mx-auto p-10 rounded-lg bg-white">
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 rounded cursor-pointer flex">
+					<div class="px-8">1</div>
+					<div>Apakah sesuatu itu?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				</div>
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">2</div>
+					<div>Dimanakah sesuatu yang judulnya bisa sangat panjang sekali itu yaa kalau panjang nanti mungkin
+						kebawah?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				</div>
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">3</div>
+					<div>Apa yang terjadi bilamana akankah seketika?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+    	<%= BackerWeb.PublicComponentView.render "footer_public.html",conn: @conn %>

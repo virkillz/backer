@@ -1,0 +1,47 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="pt-32 pb-20 px-4">
+
+
+
+
+        <div class="container mx-auto max-w-md">
+                <div class="hidden text-center mb-4 p-4 rounded border border-white">Akun sudah selesai diverifikasi.
+                        Silahkan
+                        login.</div>
+
+                <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lg">
+
+                        <div class="text-4xl  font-semibold">Login</div>
+
+                        <div class="py-2">
+                                <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 ">Email</label>
+                                <input type="email" name="text"
+                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full">
+                        </div>
+
+                        <div class="py-2">
+                                <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">Password</label>
+                                <input type="password" name="text"
+                                        class="block px-2 transition-all focus:border-indigo-500 focus:outline-none rounded py-3 border w-full">
+                        </div>
+
+
+                        <div class="pt-6">
+                                <button type="submit"
+                                        class="tracking-wide w-full focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Login</button>
+                        </div>
+
+                        <div class="pt-4 text-center text-sm text-gray-600">Forgot your password? <a
+                                        href="/forgot-password" class="text-blue-500">Reset your password</a></div>
+                        <div class="pt-2 text-center text-gray-600 text-sm">Don't have account yet? <a
+                                        href="/sign_up" class="text-blue-500">Sign up
+                                        here</a></div>
+                </div>
+        </div>
+
+
+
+</div>
+
+	<%= BackerWeb.PublicComponentView.render "footer_public.html",conn: @conn %>

@@ -22,18 +22,14 @@
             id="nav-content">
             <ul class="list-reset lg:flex text-white  justify-end flex-1 items-center" id="navItem">
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4 font-bold" href="#">Home</a>
+                    <a class="inline-block py-2 px-4 font-bold" href="/">Home</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block font-semibold py-2 px-4" href="#">Explore</a>
+                    <a class="inline-block font-semibold py-2 px-4" href="/explore">Explore</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block transition-all font-semibold py-2 px-4" href="#">Start Donee
-                        page</a>
-                </li>
-                <li class="mr-3">
-                    <a href="#"> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
-
+                    <a class="inline-block transition-all font-semibold py-2 px-4" href="about-us">About us
+    </a>
                 </li>
             </ul>
 

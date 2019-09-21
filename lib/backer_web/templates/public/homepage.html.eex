@@ -1,4 +1,4 @@
-<%= BackerWeb.PublicComponentView.render "header_public.html" %>
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 
 <div class="pt-24">
@@ -7,7 +7,7 @@
 		<!--Left Col-->
 		<div
 			class="flex flex-col text-center lg:text-left w-full md:w-1/2 justify-center items-start text-center md:text-left">
-			<div class="text-5xl  leading-relaxed font-bold">Dukung komunitas positif agar berkesinambungan</div>
+			<div class="text-5xl  leading-relaxed font-bold"><%= gettext "Dukung komunitas positif agar berkesinambungan" %></div>
 			<p class="text-xl mb-8 mt-4 leading-loose">Backer.id memberi ruang bagi komunitas dan pendukungnya untuk
 				menggalang
 				iuran bulanan, update kegiatan dan berinteraksi secara transparan.</p>
@@ -621,6 +621,6 @@
 
 	</section>
 
-	<%= BackerWeb.PublicComponentView.render "footer_public.html" %>
+	<%= BackerWeb.PublicComponentView.render "footer_public.html",conn: @conn %>
 
 </div>

@@ -1,9 +1,9 @@
-<%= BackerWeb.PublicComponentView.render "header_public.html" %>
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 <div class="pt-32 pb-20 px-4">
         <div class="bg-white text-gray-700 max-w-md container mx-auto rounded-lg p-8 shadow-lg">
 
-                <div class="text-4xl pb-4  font-semibold">Sign up</div>
+                <div class="text-4xl pb-4  font-semibold"><%= gettext "Daftar" %></div>
 
                 <div class="py-2">
                         <label for="name" class="text-gray-700 text-sm tracking-wide pl-1 ">Display Name</label>
@@ -38,10 +38,10 @@
                                 class="tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Sign
                                 up</button>
                 </div>
-                <div class="pt-4 text-center text-sm">Already have account? <a href="/login.html"
+                <div class="pt-4 text-center text-sm">Already have account? <a href="/login"
                                 class="text-blue-500">Login here</a></div>
         </div>
 
 </div>
 
-	<%= BackerWeb.PublicComponentView.render "footer_public.html" %>
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

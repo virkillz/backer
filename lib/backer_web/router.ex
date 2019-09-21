@@ -12,6 +12,7 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.SetCurrentUser)
     plug(BackerWeb.Plugs.SetCurrentBacker)
     plug(BackerWeb.Plugs.SetNotification)
+    plug BackerWeb.Locale
   end
 
   pipeline :api do
@@ -169,30 +170,25 @@ defmodule BackerWeb.Router do
 
     get("/avatar", PublicController, :color)
 
-    get("/ajax/public/test", BackerController, :ajax_test)
-
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PublicController, :signout)
-    get("/backers", BackerController, :featured)
 
-    get("/backer/:username", BackerController, :public_overview)
-    # get("/backer/:username/overview", BackerController, :overview)
-    # get("/backer/:username/badges", BackerController, :badges)
-    # get("/backer/:username/backing", BackerController, :backing)
+    get("/donee/:username", PledgerController, :overview)
+    get("/donee/:username/posts", PledgerController, :posts)
+    # get("/donee/:username/backers", PledgerController, :backers)
+    # get("/donee/:username/forum", PledgerController, :forum)
+    # get("/donee/:username/tier", PledgerController, :tier)
+    # get("/donee/:username/checkout", PledgerController, :checkout)
 
-    get("/pledger/:username", PledgerController, :overview)
-    get("/pledger/:username/posts", PledgerController, :posts)
-    get("/pledger/:username/backers", PledgerController, :backers)
-    get("/pledger/:username/forum", PledgerController, :forum)
-    get("/pledger/:username/tier", PledgerController, :tier)
-    get("/pledger/:username/checkout", PledgerController, :checkout)
+    get("/contact-us", PublicController, :contact_us)
+    get("/about-us", PublicController, :about_us)
+    get("/forgot-password", PublicController, :forgot_password)
+    get("/faq", PublicController, :faq)
+    get("/terms", PublicController, :terms)
+    get("/privacy-policy", PublicController, :privacy_policy)
+    get("/explore", PublicController, :explore)
 
-    get("/page/how-it-works", PublicController, :how_it_works)
-    get("/page/about-us", PublicController, :about_us)
-    get("/page/contact-us", PublicController, :contact_us)
-
-    get("/explore", PledgerController, :explore)
     get("/category/:id", CategoryController, :list_pledger)
     get("/404", PublicController, :page404)
     get("/400", PublicController, :page400)
