@@ -8,11 +8,11 @@ defmodule Backer.Content do
 
   alias Backer.Content.Forum
   alias Backer.Finance.Donation
-  alias Backer.Account.Pledger
+  alias Backer.Account.Donee
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Content.PostComment
-  alias Backer.Content.PostLike  
-  alias Backer.Content.PCommentLike  
+  alias Backer.Content.PostLike
+  alias Backer.Content.PCommentLike
 
   @doc """
   Returns the list of forums.
@@ -24,8 +24,8 @@ defmodule Backer.Content do
 
   """
   def list_forums(params) do
-    pledger = from(p in Pledger, preload: :backer)
-    query = from(f in Forum, preload: [:backer, pledger: ^pledger])
+    donee = from(p in Donee, preload: :backer)
+    query = from(f in Forum, preload: [:backer, donee: ^donee])
     Repo.paginate(query, params)
   end
 
@@ -414,10 +414,10 @@ defmodule Backer.Content do
       [%Post{}, ...]
 
   """
-  def list_posts(%{"pledger_id" => pledger_id}) do
+  def list_posts(%{"donee_id" => donee_id}) do
     # Repo.all(Post)
 
-    query = from(p in Post, where: p.pledger_id == ^pledger_id)
+    query = from(p in Post, where: p.donee_id == ^donee_id)
 
     Repo.all(query)
   end
@@ -430,7 +430,7 @@ defmodule Backer.Content do
   def timeline(%{"backer_id" => backer_id}) do
     {year, month, _day} = Date.utc_today() |> Date.to_erl()
 
-    # get all pledger currently backed.
+    # get all donee currently backed.
     query =
       from(p in Donation,
         where:
@@ -438,15 +438,15 @@ defmodule Backer.Content do
             p.year == ^year
       )
 
-    # get post from that pledger
+    # get post from that donee
     query2 =
       from(donation in query,
         join: post in Post,
-        join: pledger in Pledger,
+        join: donee in Donee,
         join: backer in Backerz,
-        on: pledger.backer_id == backer.id,
-        on: post.pledger_id == pledger.id,
-        where: post.pledger_id == donation.pledger_id,
+        on: donee.backer_id == backer.id,
+        on: post.donee_id == donee.id,
+        where: post.donee_id == donation.donee_id,
         select: %{
           id: post.id,
           title: post.title,
@@ -464,16 +464,16 @@ defmodule Backer.Content do
         order_by: [desc: post.id]
       )
 
-    pledger = Repo.all(query)
+    donee = Repo.all(query)
     post = Repo.all(query2)
 
-    {pledger, post}
+    {donee, post}
   end
 
   def timeline(backer_id) do
     {year, month, _day} = Date.utc_today() |> Date.to_erl()
 
-    # get all pledger currently backed.
+    # get all donee currently backed.
     query =
       from(p in Donation,
         where:
@@ -497,11 +497,11 @@ defmodule Backer.Content do
         }
       )
 
-    query3 = from(p in Post, join: s in subquery(query), on: s.pledger_id == p.pledger_id)
+    query3 = from(p in Post, join: s in subquery(query), on: s.donee_id == p.donee_id)
 
     query4 =
       from(p in query3,
-        preload: [pcomment: ^query2, pledger: [:backer]],
+        preload: [pcomment: ^query2, donee: [:backer]],
         order_by: [desc: p.id]
       )
 
@@ -511,11 +511,11 @@ defmodule Backer.Content do
     {donation, post}
   end
 
-  def timeline_pledger(id) do
+  def timeline_donee(id) do
     query =
       from(post in Post,
         preload: [pcomment: [:backer]],
-        where: post.pledger_id == ^id,
+        where: post.donee_id == ^id,
         order_by: [desc: post.id]
       )
 
@@ -526,10 +526,10 @@ defmodule Backer.Content do
     query =
       from(post in Post,
         where: post.id == ^id,
-        join: pledger in Pledger,
+        join: donee in Donee,
         join: backer in Backerz,
-        on: pledger.backer_id == backer.id,
-        on: post.pledger_id == pledger.id,
+        on: donee.backer_id == backer.id,
+        on: post.donee_id == donee.id,
         select: %{
           id: post.id,
           title: post.title,
@@ -548,11 +548,12 @@ defmodule Backer.Content do
         }
       )
 
-    query_like_post = 
-      from like in PostLike,
+    query_like_post =
+      from(like in PostLike,
         where: like.backer_id == ^backer_id and like.post_id == ^id
+      )
 
-    post_like? = if query_like_post |> first |> Repo.one == nil, do: false, else: true
+    post_like? = if query_like_post |> first |> Repo.one() == nil, do: false, else: true
 
     query_comment =
       from(comment in PostComment,
@@ -578,35 +579,32 @@ defmodule Backer.Content do
     {post, comment}
   end
 
-
   def is_post_liked?(post_id, backer_id) do
-    query_like_post = 
-      from like in PostLike,
+    query_like_post =
+      from(like in PostLike,
         where: like.backer_id == ^backer_id and like.post_id == ^post_id
-    post_like? = if query_like_post |> first |> Repo.one == nil, do: false, else: true    
-  end
+      )
 
+    post_like? = if query_like_post |> first |> Repo.one() == nil, do: false, else: true
+  end
 
   def list_liked_comments(comments, backer_id) do
-
-    query = PCommentLike 
-    |> where([p], p.pcomment_id in ^comments) 
-    |> where([p], p.backer_id == ^backer_id) 
-    |> select([p], p.pcomment_id)
-    |> Repo.all 
-
+    query =
+      PCommentLike
+      |> where([p], p.pcomment_id in ^comments)
+      |> where([p], p.backer_id == ^backer_id)
+      |> select([p], p.pcomment_id)
+      |> Repo.all()
   end
-
-
 
   def get_post(%{"id" => id}) do
     query =
       from(post in Post,
         where: post.id == ^id,
-        join: pledger in Pledger,
+        join: donee in Donee,
         join: backer in Backerz,
-        on: pledger.backer_id == backer.id,
-        on: post.pledger_id == pledger.id,
+        on: donee.backer_id == backer.id,
+        on: post.donee_id == donee.id,
         select: %{
           id: post.id,
           title: post.title,
@@ -649,14 +647,13 @@ defmodule Backer.Content do
     {post, comment}
   end
 
-
   def get_post!(id) do
     Repo.get!(Post, id)
     |> Repo.preload(:pcomment)
   end
 
-  def get_post_simple(pledger_id, id) do
-    query = from(p in Post, where: p.id == ^id and p.pledger_id == ^pledger_id)
+  def get_post_simple(donee_id, id) do
+    query = from(p in Post, where: p.id == ^id and p.donee_id == ^donee_id)
 
     Repo.one(query)
   end
@@ -730,7 +727,6 @@ defmodule Backer.Content do
     Post.changeset(post, %{})
   end
 
-
   @doc """
   Returns the list of post_likes.
 
@@ -793,32 +789,29 @@ defmodule Backer.Content do
   #   |> Repo.transaction()
   # end
 
-
   def like_post_comment(%{"pcomment_id" => pcomment_id, "backer_id" => backer_id}) do
-    query = 
-      from p in PCommentLike,
-      where: p.pcomment_id == ^pcomment_id and p.backer_id == ^backer_id
+    query =
+      from(p in PCommentLike,
+        where: p.pcomment_id == ^pcomment_id and p.backer_id == ^backer_id
+      )
 
     post_comment_like = Repo.one(query)
 
     if post_comment_like == nil do
+      attrs = %{"pcomment_id" => pcomment_id, "backer_id" => backer_id}
+      post_comment_like_changeset = PCommentLike.changeset(%PCommentLike{}, attrs)
 
-    attrs = %{"pcomment_id" => pcomment_id, "backer_id" => backer_id}
-    post_comment_like_changeset = PCommentLike.changeset(%PCommentLike{}, attrs)
+      Ecto.Multi.new()
+      |> Ecto.Multi.insert(:comment_like, post_comment_like_changeset)
+      |> Ecto.Multi.run(:post_comment, fn repo, %{comment_like: comment_like} ->
+        comment = get_post_comment!(comment_like.pcomment_id)
 
-    Ecto.Multi.new()
-    |> Ecto.Multi.insert(:comment_like, post_comment_like_changeset)
-    |> Ecto.Multi.run(:post_comment, fn repo, %{comment_like: comment_like} ->
-      comment = get_post_comment!(comment_like.pcomment_id)
-
-      attrs = %{"like_count" => comment.like_count + 1}
-      changeset = PostComment.changeset(comment, attrs)
-      repo.update(changeset)
-    end)
-    |> Repo.transaction()
-
+        attrs = %{"like_count" => comment.like_count + 1}
+        changeset = PostComment.changeset(comment, attrs)
+        repo.update(changeset)
+      end)
+      |> Repo.transaction()
     else
-
       Ecto.Multi.new()
       |> Ecto.Multi.delete(:comment_like, post_comment_like)
       |> Ecto.Multi.run(:post_comment, fn repo, %{comment_like: _post} ->
@@ -829,23 +822,21 @@ defmodule Backer.Content do
         repo.update(changeset)
       end)
       |> Repo.transaction()
-
     end
-
   end
 
-
-  def like_post(%{"post_id"=> post_id, "backer_id"=> backer_id} = attrs) do
-    
-    query = 
-      from p in PostLike,
-      where: p.post_id == ^post_id and p.backer_id == ^backer_id
+  def like_post(%{"post_id" => post_id, "backer_id" => backer_id} = attrs) do
+    query =
+      from(p in PostLike,
+        where: p.post_id == ^post_id and p.backer_id == ^backer_id
+      )
 
     post_like = Repo.one(query)
 
     if post_like == nil do
       # if not exist, like post!
       changeset = %PostLike{} |> PostLike.changeset(attrs)
+
       Ecto.Multi.new()
       |> Ecto.Multi.insert(:like, changeset)
       |> Ecto.Multi.run(:post, fn repo, %{like: like} ->
@@ -855,7 +846,7 @@ defmodule Backer.Content do
         changeset = Post.changeset(post, attrs2)
         repo.update(changeset)
       end)
-      |> Repo.transaction()      
+      |> Repo.transaction()
     else
       # dislike post
       Ecto.Multi.new()
@@ -869,13 +860,7 @@ defmodule Backer.Content do
       end)
       |> Repo.transaction()
     end
-
   end
-
-
-
-
-
 
   # def like_post(attrs \\ %{}) do
   #   like_changeset = PostLike.changeset(%PostLike{}, attrs)
@@ -890,12 +875,11 @@ defmodule Backer.Content do
   #     repo.update(changeset)
   #   end)
   #   |> Repo.transaction()
-  # end  
-
+  # end
 
   # def dislike_post(post_id, backer_id) do
 
-  #   query = 
+  #   query =
   #     from p in PostLike,
   #     where: p.post_id == ^post_id and p.backer_id == ^backer_id
 
@@ -911,7 +895,7 @@ defmodule Backer.Content do
   #     repo.update(changeset)
   #   end)
   #   |> Repo.transaction()
-  # end    
+  # end
 
   @doc """
   Updates a post_like.
@@ -1035,9 +1019,6 @@ defmodule Backer.Content do
     |> Repo.transaction()
   end
 
-
-
-
   defp update_previous_comment(repo, post_id) do
     older_comment = get_previous_comment(post_id, 1)
 
@@ -1126,7 +1107,6 @@ defmodule Backer.Content do
   def change_post_comment(%PostComment{} = post_comment) do
     PostComment.changeset(post_comment, %{})
   end
-
 
   @doc """
   Returns the list of pcomment_likes.

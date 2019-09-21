@@ -9,7 +9,7 @@ defmodule Backer.Finance do
   alias Backer.Finance.Invoice
   alias Backer.Finance.IncomingPayment
   alias Backer.Finance.InvoiceDetail
-  alias Backer.Account.Pledger
+  alias Backer.Account.Donee
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
 
@@ -95,7 +95,7 @@ defmodule Backer.Finance do
   def create_invoice_detail_donation(invoice, attrs) do
     attr = %{
       "amount" => attrs["amount"],
-      "pledger_id" => attrs["pledger_id"],
+      "donee_id" => attrs["donee_id"],
       "type" => "donate",
       "backer_id" => attrs["backer_id"],
       "invoice_id" => invoice.id
@@ -340,7 +340,7 @@ defmodule Backer.Finance do
       "amount" => x.amount,
       "tier" => 1,
       "backer_id" => x.backer_id,
-      "pledger_id" => x.pledger_id,
+      "donee_id" => x.donee_id,
       "invoice_id" => x.invoice_id,
       "month" => x.month,
       "year" => x.year
@@ -423,17 +423,16 @@ defmodule Backer.Finance do
   def get_invoice_detail!(id), do: Repo.get!(InvoiceDetail, id)
 
   def get_invoice_detail(%{"invoice_id" => invoice_id}) do
-    pledger = from(p in Pledger, preload: [:backer])
+    donee = from(p in Donee, preload: [:backer])
 
-    query =
-      from(i in InvoiceDetail, where: i.invoice_id == ^invoice_id, preload: [pledger: ^pledger])
+    query = from(i in InvoiceDetail, where: i.invoice_id == ^invoice_id, preload: [donee: ^donee])
 
     Repo.all(query)
   end
 
-  # def test!(id) do 
-  #  pledger = from p in Pledger, preload: [:backer]
-  #  query = from i in InvoiceDetail, where: i.id == ^id, preload: [pledger: ^pledger]
+  # def test!(id) do
+  #  donee = from p in Donee, preload: [:backer]
+  #  query = from i in InvoiceDetail, where: i.id == ^id, preload: [donee: ^donee]
   #  Repo.all(query)
   # end
 
@@ -530,15 +529,15 @@ defmodule Backer.Finance do
   def list_all_backerfor(%{"backer_id" => id}) do
     query =
       from(d in Donation,
-        join: p in Pledger,
+        join: p in Donee,
         join: b in Backerz,
         join: t in Title,
         on: p.title_id == t.id,
         on: p.backer_id == b.id,
-        on: d.pledger_id == p.id,
+        on: d.donee_id == p.id,
         where: d.backer_id == ^id,
         select: %{
-          pledger_id: d.pledger_id,
+          donee_id: d.donee_id,
           background: p.background,
           display_name: b.display_name,
           avatar: b.avatar,
@@ -552,7 +551,7 @@ defmodule Backer.Finance do
   end
 
   @doc """
-  List all active backers for one particular pledger
+  List all active backers for one particular donee
 
   ## Examples
 
@@ -561,14 +560,14 @@ defmodule Backer.Finance do
 
   """
 
-  def list_active_backers(%{"pledger_id" => id}) do
+  def list_active_backers(%{"donee_id" => id}) do
     {year, month, _day} = Date.utc_today() |> Date.to_erl()
 
     query =
       from(d in Donation,
         join: b in Backerz,
         on: d.backer_id == b.id,
-        where: d.pledger_id == ^id,
+        where: d.donee_id == ^id,
         where: d.month == ^month and d.year == ^year,
         select: %{
           backer_id: d.backer_id,
@@ -583,12 +582,12 @@ defmodule Backer.Finance do
     Repo.all(query)
   end
 
-  def list_all_backers(%{"pledger_id" => id}) do
+  def list_all_backers(%{"donee_id" => id}) do
     query =
       from(d in Donation,
         join: b in Backerz,
         on: d.backer_id == b.id,
-        where: d.pledger_id == ^id and d.is_executed == true,
+        where: d.donee_id == ^id and d.is_executed == true,
         group_by: [d.backer_id, b.avatar, b.display_name, b.username],
         select: %{
           backer_id: d.backer_id,
@@ -600,7 +599,7 @@ defmodule Backer.Finance do
       )
 
     all_backer = Repo.all(query)
-    active_backer = list_active_backers(%{"pledger_id" => id})
+    active_backer = list_active_backers(%{"donee_id" => id})
 
     aggregate_backers = Enum.map(all_backer, fn x -> aggregate_backers_list(active_backer, x) end)
   end
@@ -620,16 +619,16 @@ defmodule Backer.Finance do
 
     query =
       from(d in Donation,
-        join: p in Pledger,
+        join: p in Donee,
         join: b in Backerz,
         join: t in Title,
         on: p.title_id == t.id,
         on: p.backer_id == b.id,
-        on: d.pledger_id == p.id,
+        on: d.donee_id == p.id,
         where: d.backer_id == ^id,
         where: d.month == ^month and d.year == ^year,
         select: %{
-          pledger_id: d.pledger_id,
+          donee_id: d.donee_id,
           background: p.background,
           display_name: b.display_name,
           avatar: b.avatar,
@@ -645,15 +644,15 @@ defmodule Backer.Finance do
   def list_all_backerfor(%{"backer_id" => id, "limit" => limit}) do
     query =
       from(d in Donation,
-        join: p in Pledger,
+        join: p in Donee,
         join: b in Backerz,
         join: t in Title,
         on: p.title_id == t.id,
         on: p.backer_id == b.id,
-        on: d.pledger_id == p.id,
+        on: d.donee_id == p.id,
         where: d.backer_id == ^id,
         select: %{
-          pledger_id: d.pledger_id,
+          donee_id: d.donee_id,
           background: p.background,
           display_name: b.display_name,
           avatar: b.avatar,

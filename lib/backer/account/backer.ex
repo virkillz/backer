@@ -20,7 +20,7 @@ defmodule Backer.Account.Backer do
     field(:id_type, :string)
     field(:is_email_verified, :boolean, default: false)
     field(:is_phone_verified, :boolean, default: false)
-    field(:is_pledger, :boolean, default: false)
+    field(:is_donee, :boolean, default: false)
     field(:password_recovery_code, :string)
     field(:passwordhash, :string)
     field(:password, :string, virtual: true)
@@ -33,7 +33,7 @@ defmodule Backer.Account.Backer do
 
     has_many(:invoices, Backer.Finance.Invoice)
     has_many(:badges, Backer.Gamification.BadgeMember)
-    has_one(:pledger, Backer.Account.Pledger)
+    has_one(:donee, Backer.Account.Donee)
     timestamps()
   end
 
@@ -54,7 +54,7 @@ defmodule Backer.Account.Backer do
       :id_number,
       :id_photo,
       :id_photokyc,
-      :is_pledger,
+      :is_donee,
       :avatar,
       :gender,
       :email_verification_code,
@@ -109,7 +109,7 @@ defmodule Backer.Account.Backer do
       :id_number,
       :id_photo,
       :id_photokyc,
-      :is_pledger,
+      :is_donee,
       :avatar,
       :email_verification_code,
       :phone_verification_code,
@@ -144,7 +144,7 @@ defmodule Backer.Account.Backer do
       :id_number,
       :id_photo,
       :id_photokyc,
-      :is_pledger,
+      :is_donee,
       :avatar,
       :email_verification_code,
       :phone_verification_code,
@@ -178,7 +178,7 @@ defmodule Backer.Account.Backer do
       :id_number,
       :id_photo,
       :id_photokyc,
-      :is_pledger,
+      :is_donee,
       :avatar,
       :email_verification_code,
       :phone_verification_code,

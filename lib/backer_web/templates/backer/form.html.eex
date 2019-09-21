@@ -81,9 +81,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :is_pledger, class: "control-label" %>
-    <%= checkbox f, :is_pledger, class: "checkbox" %>
-    <%= error_tag f, :is_pledger %>
+    <%= label f, :is_donee, class: "control-label" %>
+    <%= checkbox f, :is_donee, class: "checkbox" %>
+    <%= error_tag f, :is_donee %>
   </div>
 
   <div class="form-group">

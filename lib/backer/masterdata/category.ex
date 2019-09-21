@@ -10,7 +10,7 @@ defmodule Backer.Masterdata.Category do
 
     timestamps()
 
-    has_many(:pledger, Backer.Account.Pledger)
+    has_many(:donee, Backer.Account.Donee)
   end
 
   @doc false

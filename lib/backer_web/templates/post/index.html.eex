@@ -46,7 +46,7 @@
                                 <tr>
                                   <th>#</th>
                                   <th>Created</th>
-                                  <th>Pledger ID</th>
+                                  <th>Donee ID</th>
                                   <th>Title</th>
                                   <th>Min tier</th>
                             
@@ -58,7 +58,7 @@
                                       <tr>
                                         <td><%= post.id %></td>
                                         <td><%= post.inserted_at %></td>
-                                        <td><%= post.pledger_id %></td>
+                                        <td><%= post.donee_id %></td>
                                         <td><%= post.title %></td>
                                         <td><%= post.min_tier %></td>
                                         <td>

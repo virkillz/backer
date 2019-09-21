@@ -48,7 +48,7 @@
                                   <th>Tier</th>
                                   <th>Month</th>
                                   <th>Year</th>
-                                  <th>Pledger ID</th>
+                                  <th>Donee ID</th>
                                   <th>Backer ID</th>
                                   <th>Invoice ID</th>                                                                                                      
                             
@@ -62,7 +62,7 @@
                                         <td><%= donation.tier %></td>
                                         <td><%= donation.month %></td>
                                         <td><%= donation.year %></td>
-                                        <td><%= donation.pledger_id %></td>
+                                        <td><%= donation.donee_id %></td>
                                         <td><%= donation.backer_id %></td>
                                         <td><%= donation.invoice_id %></td>
                                   

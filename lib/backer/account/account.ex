@@ -10,7 +10,7 @@ defmodule Backer.Account do
   alias Comeonin.Bcrypt
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Tier
-  alias Backer.Account.Pledger
+  alias Backer.Account.Donee
 
   @doc """
   Returns the list of user.
@@ -317,44 +317,44 @@ defmodule Backer.Account do
   end
 
   @doc """
-  Returns the list of pledgers.
+  Returns the list of donees.
 
   ## Examples
 
-      iex> list_pledgers()
-      [%Pledger{}, ...]
+      iex> list_donees()
+      [%Donee{}, ...]
 
   """
-  def list_pledgers do
-    query = from(p in Pledger, preload: [:backer, :category, :title])
+  def list_donees do
+    query = from(p in Donee, preload: [:backer, :category, :title])
 
     Repo.all(query)
   end
 
-  def list_pledgers(params) do
-    query = from(p in Pledger, preload: [:backer, :category, :title])
+  def list_donees(params) do
+    query = from(p in Donee, preload: [:backer, :category, :title])
 
     Repo.paginate(query, params)
   end
 
   @doc """
-  Gets a single pledger.
+  Gets a single donee.
 
-  Raises `Ecto.NoResultsError` if the Pledger does not exist.
+  Raises `Ecto.NoResultsError` if the Donee does not exist.
 
   ## Examples
 
-      iex> get_pledger!(123)
-      %Pledger{}
+      iex> get_donee!(123)
+      %Donee{}
 
-      iex> get_pledger!(456)
+      iex> get_donee!(456)
       ** (Ecto.NoResultsError)
 
   """
 
-  def get_pledger(%{"backer_id" => backer_id}) do
+  def get_donee(%{"backer_id" => backer_id}) do
     query =
-      from(p in Pledger,
+      from(p in Donee,
         preload: [:backer, :category, :title, :tier],
         where: p.backer_id == ^backer_id
       )
@@ -362,51 +362,51 @@ defmodule Backer.Account do
     Repo.one(query)
   end
 
-  def get_pledger_compact(%{"backer_id" => backer_id}) do
+  def get_donee_compact(%{"backer_id" => backer_id}) do
     query =
-      from(p in Pledger,
+      from(p in Donee,
         preload: [:backer, :category, :title, :tier],
         where: p.backer_id == ^backer_id
       )
 
-    pledger = Repo.one(query)
+    donee = Repo.one(query)
 
-    if pledger != nil do
+    if donee != nil do
       %{
-        backer_id: pledger.backer.id,
-        pledger_id: pledger.id,
-        avatar: pledger.backer.avatar,
-        title: pledger.title.name,
-        background: pledger.background,
-        tiers: pledger.tier
+        backer_id: donee.backer.id,
+        donee_id: donee.id,
+        avatar: donee.backer.avatar,
+        title: donee.title.name,
+        background: donee.background,
+        tiers: donee.tier
       }
     else
       nil
     end
   end
 
-  def get_pledger!(id) do
-    query = from(p in Pledger, preload: [:backer, :category, :title, :tier], where: p.id == ^id)
+  def get_donee!(id) do
+    query = from(p in Donee, preload: [:backer, :category, :title, :tier], where: p.id == ^id)
 
     Repo.one!(query)
   end
 
-  def get_pledger(%{"username" => username}) do
+  def get_donee(%{"username" => username}) do
     query =
       from(p in Backerz,
-        where: p.username == ^username and p.is_pledger == true,
-        preload: [pledger: [:title, :tier]]
+        where: p.username == ^username and p.is_donee == true,
+        preload: [donee: [:title, :tier]]
       )
 
     Repo.one(query)
   end
 
-  def get_pledger(%{"category_id" => id}) do
+  def get_donee(%{"category_id" => id}) do
     query =
       from(b in Backerz,
-        join: p in assoc(b, :pledger),
+        join: p in assoc(b, :donee),
         join: t in assoc(p, :title),
-        where: p.category_id == ^id and b.is_pledger == true,
+        where: p.category_id == ^id and b.is_donee == true,
         select: %{
           background: p.background,
           display_name: b.display_name,
@@ -420,30 +420,30 @@ defmodule Backer.Account do
   end
 
   @doc """
-  Creates a pledger.
+  Creates a donee.
 
   ## Examples
 
-      iex> create_pledger(%{field: value})
-      {:ok, %Pledger{}}
+      iex> create_donee(%{field: value})
+      {:ok, %Donee{}}
 
-      iex> create_pledger(%{field: bad_value})
+      iex> create_donee(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_pledger(attrs \\ %{}) do
-    pledger_changeset = %Pledger{} |> Pledger.changeset(attrs)
+  def create_donee(attrs \\ %{}) do
+    donee_changeset = %Donee{} |> Donee.changeset(attrs)
 
     Ecto.Multi.new()
-    |> Ecto.Multi.insert(:pledger, pledger_changeset)
-    |> Ecto.Multi.run(:backer, fn _repo, %{pledger: pledger} ->
-      get_backer!(pledger.backer_id)
-      |> Backerz.update_changeset(%{"is_pledger" => true})
+    |> Ecto.Multi.insert(:donee, donee_changeset)
+    |> Ecto.Multi.run(:backer, fn _repo, %{donee: donee} ->
+      get_backer!(donee.backer_id)
+      |> Backerz.update_changeset(%{"is_donee" => true})
       |> Repo.update()
     end)
-    |> Ecto.Multi.run(:tier, fn _repo, %{pledger: pledger} ->
+    |> Ecto.Multi.run(:tier, fn _repo, %{donee: donee} ->
       # get default tier from constant
-      tier_attr = Map.put(Backer.Constant.default_tier(), "pledger_id", pledger.id)
+      tier_attr = Map.put(Backer.Constant.default_tier(), "donee_id", donee.id)
 
       %Tier{}
       |> Tier.changeset(tier_attr)
@@ -453,29 +453,29 @@ defmodule Backer.Account do
   end
 
   @doc """
-  Updates a pledger.
+  Updates a donee.
 
   ## Examples
 
-      iex> update_pledger(pledger, %{field: new_value})
-      {:ok, %Pledger{}}
+      iex> update_donee(donee, %{field: new_value})
+      {:ok, %Donee{}}
 
-      iex> update_pledger(pledger, %{field: bad_value})
+      iex> update_donee(donee, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_pledger(%Pledger{} = pledger, attrs) do
-    pledger
-    |> Pledger.changeset(attrs)
+  def update_donee(%Donee{} = donee, attrs) do
+    donee
+    |> Donee.changeset(attrs)
     |> Repo.update()
   end
 
-  def random_pledger(limit) do
+  def random_donee(limit) do
     query =
       from(b in Backerz,
-        where: b.is_pledger == true,
+        where: b.is_donee == true,
         order_by: fragment("RANDOM()"),
-        preload: :pledger,
+        preload: :donee,
         limit: 10
       )
 
@@ -483,30 +483,30 @@ defmodule Backer.Account do
   end
 
   @doc """
-  Deletes a Pledger.
+  Deletes a Donee.
 
   ## Examples
 
-      iex> delete_pledger(pledger)
-      {:ok, %Pledger{}}
+      iex> delete_donee(donee)
+      {:ok, %Donee{}}
 
-      iex> delete_pledger(pledger)
+      iex> delete_donee(donee)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_pledger(%Pledger{} = pledger) do
+  def delete_donee(%Donee{} = donee) do
     backer_changeset =
-      get_backer!(pledger.backer_id) |> Backerz.update_changeset(%{"is_pledger" => false})
+      get_backer!(donee.backer_id) |> Backerz.update_changeset(%{"is_donee" => false})
 
     Ecto.Multi.new()
-    |> Ecto.Multi.delete(:pledger, pledger)
+    |> Ecto.Multi.delete(:donee, donee)
     |> Ecto.Multi.update(:backer, backer_changeset)
     |> Repo.transaction()
   end
 
-  def get_backers_pledger(id) do
+  def get_backers_donee(id) do
     query =
-      from(p in Pledger,
+      from(p in Donee,
         where: p.backer_id == ^id
       )
 
@@ -518,15 +518,15 @@ defmodule Backer.Account do
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking pledger changes.
+  Returns an `%Ecto.Changeset{}` for tracking donee changes.
 
   ## Examples
 
-      iex> change_pledger(pledger)
-      %Ecto.Changeset{source: %Pledger{}}
+      iex> change_donee(donee)
+      %Ecto.Changeset{source: %Donee{}}
 
   """
-  def change_pledger(%Pledger{} = pledger) do
-    Pledger.changeset(pledger, %{})
+  def change_donee(%Donee{} = donee) do
+    Donee.changeset(donee, %{})
   end
 end

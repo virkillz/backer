@@ -15,7 +15,7 @@ defmodule Backer.Content.Post do
     field(:publish_status, :string, default: "draft")
 
     has_many(:pcomment, Backer.Content.PostComment)
-    belongs_to(:pledger, Backer.Account.Pledger)
+    belongs_to(:donee, Backer.Account.Donee)
 
     timestamps()
   end
@@ -33,11 +33,11 @@ defmodule Backer.Content.Post do
       :featured_image,
       :featured_link,
       :featured_video,
-      :pledger_id,
+      :donee_id,
       :type,
       :publish_status
     ])
-    |> validate_required([:pledger_id, :title, :content, :min_tier])
+    |> validate_required([:donee_id, :title, :content, :min_tier])
     |> validate_only_one
   end
 

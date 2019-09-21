@@ -11,9 +11,9 @@ defmodule BackerWeb.TierController do
   end
 
   def new(conn, _params) do
-    pledgers = Account.list_pledgers()
+    donees = Account.list_donees()
     changeset = Masterdata.change_tier(%Tier{})
-    render(conn, "new.html", changeset: changeset, pledgers: pledgers)
+    render(conn, "new.html", changeset: changeset, donees: donees)
   end
 
   def create(conn, %{"tier" => tier_params}) do
@@ -35,9 +35,9 @@ defmodule BackerWeb.TierController do
 
   def edit(conn, %{"id" => id}) do
     tier = Masterdata.get_tier!(id)
-    pledgers = Account.list_pledgers()
+    donees = Account.list_donees()
     changeset = Masterdata.change_tier(tier)
-    render(conn, "edit.html", tier: tier, pledgers: pledgers, changeset: changeset)
+    render(conn, "edit.html", tier: tier, donees: donees, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "tier" => tier_params}) do
@@ -50,8 +50,8 @@ defmodule BackerWeb.TierController do
         |> redirect(to: Router.tier_path(conn, :show, tier))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        pledgers = Account.list_pledgers()
-        render(conn, "edit.html", tier: tier, pledgers: pledgers, changeset: changeset)
+        donees = Account.list_donees()
+        render(conn, "edit.html", tier: tier, donees: donees, changeset: changeset)
     end
   end
 

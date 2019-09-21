@@ -71,7 +71,7 @@
                       <% end %>
 
                       <%= if @invoice.type == "backing" do %>
-                      <p><%= String.capitalize(invoice_detail.type) <> " for Pledger with ID: #" <> Integer.to_string(invoice_detail.pledger_id) <> " ("<> invoice_detail.pledger.backer.display_name <> ") for " <>stringify(invoice_detail.month)<> " " <> Integer.to_string(invoice_detail.year)%></p>
+                      <p><%= String.capitalize(invoice_detail.type) <> " for Donee with ID: #" <> Integer.to_string(invoice_detail.donee_id) <> " ("<> invoice_detail.donee.backer.display_name <> ") for " <>stringify(invoice_detail.month)<> " " <> Integer.to_string(invoice_detail.year)%></p>
                       <% end %>                      
                     </td>
                     <td class="text-right"><%= invoice_detail.amount %></td>

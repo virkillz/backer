@@ -15,9 +15,9 @@ defmodule BackerWeb.CategoryController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def list_pledger(conn, %{"id" => id}) do
+  def list_donee(conn, %{"id" => id}) do
     category = Masterdata.get_category!(id)
-    pledgers = Account.get_pledger(%{"category_id" => id}) |> IO.inspect()
+    donees = Account.get_donee(%{"category_id" => id}) |> IO.inspect()
 
     page_data = %{
       header_img:
@@ -26,9 +26,9 @@ defmodule BackerWeb.CategoryController do
     }
 
     conn
-    |> render("category_pledger_list.html",
+    |> render("category_donee_list.html",
       category: category,
-      pledgers: pledgers,
+      donees: donees,
       page_data: page_data,
       layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
     )

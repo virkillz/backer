@@ -39,8 +39,8 @@ defmodule BackerWeb.BackerController do
 
   def public_overview(conn, %{"username" => username}) do
     backer = Account.get_backer(%{"username" => username})
-    pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-    recomendation = Account.random_pledger(3)
+    donees = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+    recomendation = Account.random_donee(3)
 
     case backer do
       nil ->
@@ -50,7 +50,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_public_overview.html",
           backer: backer,
-          pledgers: pledgers,
+          donees: donees,
           menu: :overview,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
@@ -59,8 +59,8 @@ defmodule BackerWeb.BackerController do
 
   def overview(conn, _params) do
     backer = Account.get_backer(%{"username" => conn.assigns.current_backer.username})
-    pledgers = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-    recomendation = Account.random_pledger(3)
+    donees = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
+    recomendation = Account.random_donee(3)
 
     case backer do
       nil ->
@@ -70,7 +70,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_overview.html",
           backer: backer,
-          pledgers: pledgers,
+          donees: donees,
           menu: :overview,
           owner: true,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
@@ -140,7 +140,7 @@ defmodule BackerWeb.BackerController do
   def backing(conn, _paramsms) do
     backer = conn.assigns.current_backer
 
-    pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
+    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
 
     case backer do
       nil ->
@@ -150,7 +150,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_backerfor.html",
           backer: backer,
-          pledgers: pledgers,
+          donees: donees,
           menu: :backing,
           owner: true,
           layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
@@ -185,7 +185,7 @@ defmodule BackerWeb.BackerController do
     # backer = Account.get_backer(%{"username" => username})
     backer = conn.assigns.current_backer
 
-    pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
+    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
     changeset = Account.change_backer(backer)
 
     case backer do
@@ -196,7 +196,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_profile_setting.html",
           backer: backer,
-          pledgers: pledgers,
+          donees: donees,
           menu: :profile_setting,
           changeset_backer: changeset,
           owner: true,
@@ -207,7 +207,7 @@ defmodule BackerWeb.BackerController do
 
   def profile_setting_update(conn, %{"backer" => params}) do
     backer = conn.assigns.current_backer
-    pledgers = Finance.list_all_backerfor(%{"backer_id" => backer.id})
+    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
 
     # check if avatar exist
     attrs =
@@ -231,7 +231,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("front_profile_setting.html",
           backer: backer,
-          pledgers: pledgers,
+          donees: donees,
           menu: :profile_setting,
           changeset_backer: changeset,
           owner: true,
@@ -286,9 +286,9 @@ defmodule BackerWeb.BackerController do
 
   def show(conn, %{"id" => id}) do
     backer = Account.get_backer!(id)
-    pledger = Account.get_backers_pledger(id)
+    donee = Account.get_backers_donee(id)
     mutations = Finance.list_mutations()
-    render(conn, "show.html", backer: backer, pledger: pledger, mutations: mutations)
+    render(conn, "show.html", backer: backer, donee: donee, mutations: mutations)
   end
 
   def edit(conn, %{"id" => id}) do

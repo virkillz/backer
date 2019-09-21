@@ -19,18 +19,18 @@
 
 <div class="friend-list">
                 <div class="row">
-                  <%= for pledger <- @pledgers do %>
+                  <%= for donee <- @donees do %>
 
                   <div class="col-md-6 col-sm-6">
-                    <a href="/pledger/<%= pledger.username %>" class="profile-link">
+                    <a href="/donee/<%= donee.username %>" class="profile-link">
                     <div class="friend-card bg-white">
-                      <img src="<%= pledger.background %>" alt="profile-cover" class="img-responsive cover">
+                      <img src="<%= donee.background %>" alt="profile-cover" class="img-responsive cover">
                       <div class="card-info">
-                        <img src="<%= pledger.avatar %>" alt="user" class="profile-photo-lg">
+                        <img src="<%= donee.avatar %>" alt="user" class="profile-photo-lg">
                         <div class="friend-info">
                           <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><%= pledger.display_name %></h5>
-                          <p><%= pledger.title %></p>
+                          <h5><%= donee.display_name %></h5>
+                          <p><%= donee.title %></p>
                         </div>
                       </div>
                     </div>

@@ -1,0 +1,25 @@
+              <div class="title-separator" style="margin-top: 0px;"> Top backer </div> 
+
+              <%= if @backers != [] do %>
+                <div class="card card-padding">
+                  <ul class="list-inline">
+
+                    <%= for backer <- Enum.take(@backers, 4) do %>
+                      <li class="list-inline-item">
+                        <a href="/<%= backer.username %>" title="<%= backer.display_name %>"><img src="<%= backer.avatar %>" alt="user" class="avatar-medium grow"></a>
+                        <div class="text-center"><%= backer.display_name %></div>
+                      </li>
+                   <% end %>
+
+                  </ul>
+                </div>
+
+              <% else %>
+                <div class="card card-padding">
+                  <div class="text-center">
+                    <p><b><%= @donee.display_name %></b> don't have any backers yet. Be the first one!</p>
+                    <a href="#"><button class="btn_backme">Support</button></a>
+                  </div>
+                </div>
+
+              <% end %>

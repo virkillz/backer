@@ -59,9 +59,9 @@
                         </div> 
 
                         <div class="form-group">
-                          <label class="col-sm-2 control-label">Pledger:</label>
+                          <label class="col-sm-2 control-label">Donee:</label>
                           <div class="col-sm-10">
-                          <p class="form-control-static"><%= @badge.pledger_id %></p>
+                          <p class="form-control-static"><%= @badge.donee_id %></p>
                           </div>
                         </div>                          
                     

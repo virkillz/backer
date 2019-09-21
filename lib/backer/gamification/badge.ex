@@ -6,7 +6,7 @@ defmodule Backer.Gamification.Badge do
     field(:description, :string)
     field(:icon, :string)
     field(:title, :string)
-    field(:pledger_id, :id)
+    field(:donee_id, :id)
 
     timestamps()
   end

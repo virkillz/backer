@@ -38,8 +38,8 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.BackerNonSignCheck)
   end
 
-  pipeline :is_pledger_check do
-    plug(BackerWeb.Plugs.PledgerCheck)
+  pipeline :is_donee_check do
+    plug(BackerWeb.Plugs.DoneeCheck)
   end
 
   # ============================================================#
@@ -59,7 +59,7 @@ defmodule BackerWeb.Router do
     resources("/titles", TitleController)
     resources("/general_settings", SettingController)
     resources("/backers", BackerController)
-    resources("/pledgers", PledgerController)
+    resources("/donees", DoneeController)
     resources("/badges", BadgeController)
     resources("/badge_members", BadgeMemberController, except: [:index])
     get("/badge_members/new/:badgeid", BadgeMemberController, :newmember)
@@ -109,8 +109,8 @@ defmodule BackerWeb.Router do
     get("/home/profile-setting", BackerController, :profile_setting)
     put("/home/edit_profile", BackerController, :profile_setting_update)
 
-    get("/pledger/:username/tier/:tier", PledgerController, :checkout)
-    post("/checkout", PledgerController, :checkout_post)
+    get("/donee/:username/tier/:tier", DoneeController, :checkout)
+    post("/checkout", DoneeController, :checkout_post)
   end
 
   # This route area is for signed in backer and only for himself
@@ -118,29 +118,29 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_self_check])
   end
 
-  # This route area is for signed in pledger
+  # This route area is for signed in donee
   scope "/", BackerWeb do
-    pipe_through([:browser, :backer_sign_check, :is_pledger_check])
+    pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
-    get("/dashboard", PledgerController, :dashboard)
-    get("/dashboard/post", PledgerController, :dashboard_post)
-    get("/dashboard/post/show/:id", PledgerController, :dashboard_post_show)
-    get("/dashboard/post/edit/:id", PledgerController, :dashboard_post_edit)
-    put("/dashboard/post/edit/:id", PledgerController, :dashboard_post_update)
+    get("/dashboard", DoneeController, :dashboard)
+    get("/dashboard/post", DoneeController, :dashboard_post)
+    get("/dashboard/post/show/:id", DoneeController, :dashboard_post_show)
+    get("/dashboard/post/edit/:id", DoneeController, :dashboard_post_edit)
+    put("/dashboard/post/edit/:id", DoneeController, :dashboard_post_update)
 
-    get("/dashboard/post/new", PledgerController, :dashboard_post_new)
-    get("/dashboard/post/new-image", PledgerController, :dashboard_post_new_image)
-    get("/dashboard/post/new-video", PledgerController, :dashboard_post_new_video)
-    post("/dashboard/post/create", PledgerController, :dashboard_post_create)
-    delete("/dashboard/post/delete/:id", PledgerController, :dashboard_post_delete)
+    get("/dashboard/post/new", DoneeController, :dashboard_post_new)
+    get("/dashboard/post/new-image", DoneeController, :dashboard_post_new_image)
+    get("/dashboard/post/new-video", DoneeController, :dashboard_post_new_video)
+    post("/dashboard/post/create", DoneeController, :dashboard_post_create)
+    delete("/dashboard/post/delete/:id", DoneeController, :dashboard_post_delete)
 
-    get("/dashboard/backers", PledgerController, :dashboard_backers)
-    get("/dashboard/backers/active", PledgerController, :dashboard_backers_active)
-    get("/dashboard/backers/inactive", PledgerController, :dashboard_backers_inactive)
+    get("/dashboard/backers", DoneeController, :dashboard_backers)
+    get("/dashboard/backers/active", DoneeController, :dashboard_backers_active)
+    get("/dashboard/backers/inactive", DoneeController, :dashboard_backers_inactive)
 
-    get("/dashboard/earning", PledgerController, :dashboard_earning)
-    get("/dashboard/page-setting", PledgerController, :dashboard_page_setting)
-    put("/dashboard/page-setting", PledgerController, :dashboard_page_setting_update)
+    get("/dashboard/earning", DoneeController, :dashboard_earning)
+    get("/dashboard/page-setting", DoneeController, :dashboard_page_setting)
+    put("/dashboard/page-setting", DoneeController, :dashboard_page_setting_update)
   end
 
   # must not sign in
@@ -174,12 +174,12 @@ defmodule BackerWeb.Router do
     post("/admin/login", UserController, :auth)
     get("/signout", PublicController, :signout)
 
-    get("/donee/:username", PledgerController, :overview)
-    get("/donee/:username/posts", PledgerController, :posts)
-    # get("/donee/:username/backers", PledgerController, :backers)
-    # get("/donee/:username/forum", PledgerController, :forum)
-    # get("/donee/:username/tier", PledgerController, :tier)
-    # get("/donee/:username/checkout", PledgerController, :checkout)
+    get("/donee/:username", DoneeController, :overview)
+    get("/donee/:username/posts", DoneeController, :posts)
+    # get("/donee/:username/backers", DoneeController, :backers)
+    # get("/donee/:username/forum", DoneeController, :forum)
+    # get("/donee/:username/tier", DoneeController, :tier)
+    # get("/donee/:username/checkout", DoneeController, :checkout)
 
     get("/contact-us", PublicController, :contact_us)
     get("/about-us", PublicController, :about_us)
@@ -189,10 +189,10 @@ defmodule BackerWeb.Router do
     get("/privacy-policy", PublicController, :privacy_policy)
     get("/explore", PublicController, :explore)
 
-    get("/category/:id", CategoryController, :list_pledger)
+    get("/category/:id", CategoryController, :list_donee)
     get("/404", PublicController, :page404)
     get("/400", PublicController, :page400)
     get("/505", PublicController, :page505)
-    get("/:backer", PledgerController, :redirector)
+    get("/:backer", DoneeController, :redirector)
   end
 end

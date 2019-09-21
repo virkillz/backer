@@ -161,7 +161,7 @@ defmodule BackerWeb.PublicController do
   def page400(conn, _params) do
     conn
     |> put_status(:not_found)
-    |> render(BackerWeb.PledgerView, "page_404.html",
+    |> render(BackerWeb.DoneeView, "page_404.html",
       page_data: %{title: "400"},
       title: "400",
       layout: {BackerWeb.LayoutView, "public.html"}

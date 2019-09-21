@@ -6,7 +6,7 @@ defmodule Backer.Masterdata.Tier do
     field(:amount, :integer)
     field(:description, :string)
     field(:title, :string)
-    field(:pledger_id, :id)
+    field(:donee_id, :id)
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Backer.Masterdata.Tier do
   @doc false
   def changeset(tier, attrs) do
     tier
-    |> cast(attrs, [:title, :description, :amount, :pledger_id])
-    |> validate_required([:title, :description, :amount, :pledger_id])
+    |> cast(attrs, [:title, :description, :amount, :donee_id])
+    |> validate_required([:title, :description, :amount, :donee_id])
   end
 end

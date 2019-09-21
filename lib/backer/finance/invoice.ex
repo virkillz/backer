@@ -10,7 +10,7 @@ defmodule Backer.Finance.Invoice do
     field(:method, :string)
     field(:status, :string, default: "unpaid")
     field(:type, :string)
-    field(:pledger_id, :integer, virtual: true)
+    field(:donee_id, :integer, virtual: true)
     field(:month, :integer, virtual: true)
     field(:unique_amount, :integer, default: 0)
 
@@ -37,10 +37,10 @@ defmodule Backer.Finance.Invoice do
 
   def donation_changeset(invoice, attrs) do
     invoice
-    |> cast(attrs, [:amount, :method, :backer_id, :pledger_id, :type, :month])
+    |> cast(attrs, [:amount, :method, :backer_id, :donee_id, :type, :month])
     |> validate_number(:amount, greater_than_or_equal_to: Constant.minimum_tier())
     |> validate_number(:month, greater_than_or_equal_to: 1)
-    |> validate_required([:amount, :month, :pledger_id, :backer_id])
+    |> validate_required([:amount, :month, :donee_id, :backer_id])
     |> transform_donation_changeset
     |> add_unique_amount
   end

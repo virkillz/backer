@@ -1,0 +1,173 @@
+<section>
+  <div class="container">
+    <div class="row" style="margin-top: 30px;">
+
+
+      <div class="col-md-8">
+
+        <div class="row block_page">
+
+
+          <%= for post <- @posts do %>
+
+
+          <div class="post-content card">
+
+
+            <div class="post-header">
+              <img src="<%= @donee.avatar %>" alt="user" class="avatar-small float-left" style="margin-right: 8px;">
+              <div class="post-detail">
+                <div class="user-info">
+                  <h5><a href="timeline.html" class="profile-link"><%= @donee.display_name %></a></h5>
+                  <p class="text-muted" style="font-size: 0.8em;">Post about <%= Stringhelper.ago(post.inserted_at) %>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="background-color: #f5f5f5; padding: 20px 0px 10px 0px;">
+              <h4 class="text-center"
+                style="padding: 5px 15px 5px 20px; color: #2e2e2e ;font-size: 1.3em; font-weight: bold;">
+                <%= post.title %>
+              </h4>
+
+
+              <%= case post.type do %>
+
+              <% "image" -> %>
+
+              <img src="<%= post.featured_image %>" alt="post-image" class="img-responsive post-image"
+                style="padding:10px 0px;">
+
+              <% "video" -> %>
+
+
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/<%= post.featured_video %>"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen=""></iframe>
+
+
+              <% _other -> %>
+
+
+              <% end %>
+
+
+              <div class="post-text" style="padding: 10px 25px;">
+                <%= post.content %>
+              </div>
+
+            </div>
+
+
+            <div style="padding: 20px 20px 0px 20px;">
+              <div class="pull-left"> <%= post.like_count %> likes</div>
+              <div class="pull-right"> <%= post.comment_count %> comments</div>
+            </div>
+
+            <div class="post-container">
+
+              <div class="line-divider"></div>
+
+              <table style="width:100%; table-layout:fixed;">
+                <tbody>
+                  <tr class="text-center">
+                    <td> <button class="btn" style="margin: 5px; width:100%;" ><i
+                          class="la la-thumbs-up"></i> Like</button></td>
+                    <td><a class="btn" href="home/timeline/24" style="margin: 5px; width:100%;"><i
+                          class="la la-comments-o"></i> Comment</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="line-divider"></div>
+
+
+              <div style="color:darkblue; font-size: 13px; padding: 10px 0px;"><a data-toggle="collapse"
+                  href="#comment<%= post.id %>" role="button" aria-expanded="false"
+                  aria-controls="comment<%= post.id %>">Show <%= post.comment_count %> comments</a></div>
+
+              <div class="post-detail collapse" id="comment<%= post.id %>">
+                <a href="home/timeline/24" style="margin: 5px; width:100%;"> Show all Comments</a>
+                <%= for comment <- post.pcomment do %>
+
+                <div class="post-comment">
+                  <img src="<%= comment.backer.avatar %>" alt="" class="profile-photo-sm">
+                  <p class="commentbox"><a href="timeline.html" class="profile-link"><%= comment.backer.display_name %>
+                    </a> <%= comment.content %> </p>
+
+                </div>
+
+                <span class="comment-like" style="padding-left: 50px; padding-top: 0px"><a><i
+                      class="la la-thumbs-up"></i> 13</a> ∙ <%= Stringhelper.ago(comment.inserted_at) %></span>
+
+                <% end %>
+              </div>
+
+              <form>
+
+                <div class="post-comment">
+
+                  <table style="width:100%; table-layout:fixed;">
+                    <tbody>
+                      <tr>
+                        <td><img src="/img/avatar2.jpg" alt="" class="profile-photo-sm"></td>
+                        <td style="width:80%;"> <input type="text"  name="comment"
+                            class="input-comment" placeholder="Post a comment" style="width:100%; height: 35px;"
+                            ></td>
+                        <td><button class="btn float-right" > Send </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+
+
+          <% end %>
+
+
+
+
+        </div>
+        <div class="text-center" id="backloader" style="display: none;">
+          <img src="https://loading.io/spinners/gooey-ball-2/lg.gooey-ball-lodaer.gif" alt="loader">
+        </div>
+
+      </div>
+
+
+
+      <div class="col-md-4 static">
+
+
+        <div class="card card-padding text-center">
+          <ul class="social_iocns d-flex">
+            <li><a href="#"><i class="flaticon-facebook-logo icon_tw"></i></a></li>
+            <li><a href="#"><i class="flaticon-twitter icon_fb"></i></a></li>
+            <li><a href="#"><i class="flaticon-instagram-logo icon_pin"></i></a></li>
+          </ul>
+        </div>
+
+
+        <%= render("component_top_backers.html", backers: @backers, donee: @donee) %>
+
+
+        <div class="title-separator"> Backer Tiers </div>
+
+
+
+        <%= render("component_tiers_sidebar.html", tiers: @donee.donee.tier) %>
+
+
+      </div>
+    </div>
+  </div>
+</section>

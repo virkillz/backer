@@ -11,7 +11,7 @@ defmodule Backer.Finance.Donation do
     field(:backer_id, :id)
     field(:invoice_id, :id)
 
-    belongs_to(:pledger, Backer.Account.Pledger)
+    belongs_to(:donee, Backer.Account.Donee)
 
     timestamps()
   end
@@ -19,7 +19,7 @@ defmodule Backer.Finance.Donation do
   @doc false
   def changeset(donation, attrs) do
     donation
-    |> cast(attrs, [:amount, :tier, :backer_id, :pledger_id, :invoice_id, :month, :year])
-    |> validate_required([:amount, :tier, :backer_id, :pledger_id, :invoice_id, :month, :year])
+    |> cast(attrs, [:amount, :tier, :backer_id, :donee_id, :invoice_id, :month, :year])
+    |> validate_required([:amount, :tier, :backer_id, :donee_id, :invoice_id, :month, :year])
   end
 end

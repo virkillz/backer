@@ -1,0 +1,53 @@
+
+<div class="card">
+            <div class="card-header">
+                <h4 class="card-title">New Post</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body p-0 pb-0">
+<div class="container">
+
+
+
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<form accept-charset="UTF-8" action="/admin/posts" method="post"><input name="_csrf_token" type="hidden" value="AR4aPBkYLwIWSVwVThg0TQ8qDxVONgAAwLjLRSNTPyhXvmM+Yrxc7A=="><input name="_utf8" type="hidden" value="✓">  
+  <div class="form-group">
+<label class="control-label" for="post_donee_id">Donee</label>    <select class="form-control" id="post_donee_id" name="post[donee_id]"><option value="30">30</option><option value="29">29</option></select>    
+  </div>   
+
+  <div class="form-group">
+<label class="control-label" for="post_title">Title</label>    <input class="form-control" id="post_title" name="post[title]" type="text">
+  </div>
+
+  <div class="form-group">
+<label class="control-label" for="post_content">Content</label>    <textarea class="form-control" id="post_content" name="post[content]" style="display: none;"></textarea><div class="editor-toolbar"><a title="Bold (Cmd-B)" tabindex="-1" class="fa fa-bold"></a><a title="Italic (Cmd-I)" tabindex="-1" class="fa fa-italic"></a><a title="Heading (Cmd-H)" tabindex="-1" class="fa fa-header"></a><i class="separator">|</i><a title="Quote (Cmd-')" tabindex="-1" class="fa fa-quote-left"></a><a title="Generic List (Cmd-L)" tabindex="-1" class="fa fa-list-ul"></a><a title="Numbered List (Cmd-⌥-L)" tabindex="-1" class="fa fa-list-ol"></a><i class="separator">|</i><a title="Create Link (Cmd-K)" tabindex="-1" class="fa fa-link"></a><a title="Insert Image (Cmd-⌥-I)" tabindex="-1" class="fa fa-picture-o"></a><i class="separator">|</i><a title="Toggle Preview (Cmd-P)" tabindex="-1" class="fa fa-eye no-disable"></a><a title="Toggle Side by Side (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a><a title="Toggle Fullscreen (F11)" tabindex="-1" class="fa fa-arrows-alt no-disable no-mobile"></a><i class="separator">|</i><a title="Markdown Guide" tabindex="-1" class="fa fa-question-circle" href="https://simplemde.com/markdown-guide" target="_blank"></a></div><div class="CodeMirror cm-s-paper CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 15px; left: 15px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="width: 18px; pointer-events: none;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true" style="height: 18px; pointer-events: none;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; min-height: 28px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 20px;">&nbsp;</div></div><div class="CodeMirror-code"><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom: 0px solid transparent; top: 28px;"></div><div class="CodeMirror-gutters" style="display: none; height: 58px;"></div></div></div><div class="editor-preview-side"></div><div class="editor-statusbar"><span class="autosave"></span><span class="lines">1</span><span class="words">0</span><span class="cursor">0:0</span></div>
+  </div>
+
+  <div class="form-group">
+<label class="control-label" for="post_min_tier">Min tier</label>    <select class="form-control" id="post_min_tier" name="post[min_tier]"><option value="0">Public</option><option value="1">Tier 1</option><option value="2">Tier 2</option><option value="3">Tier 3</option><option value="4">Tier 4</option><option value="5">Tier 5</option></select>
+  </div>
+
+  <div class="form-group">
+<label class="control-label" for="post_feature_select">Feature select</label>    <select class="form-control" id="post_featured_select" name="post[featured_select]"><option value="" selected="">No Featured</option><option value="image">Image</option><option value="video">Video</option><option value="link">Link</option></select>
+  </div>
+
+  <div class="form-group">
+<label class="control-label" for="post_Featured Image/Video/Link">Featured image/video/link</label>    <input class="form-control" id="post_featured_content" name="post[featured_content]" type="text">
+  </div>
+
+  <div class="form-group">
+<button class="btn btn-primary" type="submit">Submit</button>    <span><a class="btn btn-warning" href="/admin/posts">Cancel</a></span>
+  </div>
+</form></div>
+</div>
+
+
+</div>
+                </div>
+            </div>
+        </div>

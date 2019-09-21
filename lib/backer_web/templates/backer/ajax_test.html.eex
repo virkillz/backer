@@ -4,10 +4,10 @@
                 
 
                 <div class="post-header">
-                  <img src="<%= post.pledger.backer.avatar %>" alt="user" class="avatar-small float-left" style="margin-right: 8px;">
+                  <img src="<%= post.donee.backer.avatar %>" alt="user" class="avatar-small float-left" style="margin-right: 8px;">
                   <div class="post-detail">
                     <div class="user-info">
-                      <h5><a href="/<%= post.pledger.backer.username %>" class="profile-link"><%= post.pledger.backer.display_name %></a></h5>
+                      <h5><a href="/<%= post.donee.backer.username %>" class="profile-link"><%= post.donee.backer.display_name %></a></h5>
                       <p class="text-muted" style="font-size: 0.8em;">Post about <%= ago(post.inserted_at) %></p>
                     </div>
 

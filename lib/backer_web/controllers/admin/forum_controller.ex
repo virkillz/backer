@@ -12,9 +12,9 @@ defmodule BackerWeb.ForumController do
 
   def new(conn, _params) do
     backers = Account.list_backers()
-    pledgers = Account.list_pledgers()
+    donees = Account.list_donees()
     changeset = Content.change_forum(%Forum{})
-    render(conn, "new.html", changeset: changeset, backers: backers, pledgers: pledgers)
+    render(conn, "new.html", changeset: changeset, backers: backers, donees: donees)
   end
 
   def create(conn, %{"forum" => forum_params}) do
@@ -26,8 +26,8 @@ defmodule BackerWeb.ForumController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
-        pledgers = Account.list_pledgers()
-        render(conn, "new.html", changeset: changeset, backers: backers, pledgers: pledgers)
+        donees = Account.list_donees()
+        render(conn, "new.html", changeset: changeset, backers: backers, donees: donees)
     end
   end
 
@@ -39,7 +39,7 @@ defmodule BackerWeb.ForumController do
 
   def edit(conn, %{"id" => id}) do
     backers = Account.list_backers()
-    pledgers = Account.list_pledgers()
+    donees = Account.list_donees()
     forum = Content.get_forum!(id)
     changeset = Content.change_forum(forum)
 
@@ -47,7 +47,7 @@ defmodule BackerWeb.ForumController do
       forum: forum,
       changeset: changeset,
       backers: backers,
-      pledgers: pledgers
+      donees: donees
     )
   end
 
@@ -62,12 +62,12 @@ defmodule BackerWeb.ForumController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         backers = Account.list_backers()
-        pledgers = Account.list_pledgers()
+        donees = Account.list_donees()
 
         render(conn, "edit.html",
           forum: forum,
           changeset: changeset,
-          pledgers: pledgers,
+          donees: donees,
           backers: backers
         )
     end

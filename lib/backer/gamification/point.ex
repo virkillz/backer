@@ -7,7 +7,7 @@ defmodule Backer.Gamification.Point do
     field(:refference, :integer)
     field(:type, :string)
     field(:backer_id, :id)
-    field(:pledger_id, :id)
+    field(:donee_id, :id)
 
     timestamps()
   end

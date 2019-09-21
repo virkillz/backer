@@ -17,7 +17,7 @@ defmodule Backer.Repo.Migrations.CreateBackers do
       add(:id_number, :string)
       add(:id_photo, :string)
       add(:id_photokyc, :string)
-      add(:is_pledger, :boolean, default: false, null: false)
+      add(:is_donee, :boolean, default: false, null: false)
       add(:avatar, :string)
       add(:email_verification_code, :string)
       add(:phone_verification_code, :string)

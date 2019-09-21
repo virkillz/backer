@@ -9,7 +9,7 @@ defmodule Backer.Content.Forum do
     field(:status, :string)
     field(:title, :string)
 
-    belongs_to(:pledger, Backer.Account.Pledger)
+    belongs_to(:donee, Backer.Account.Donee)
     belongs_to(:backer, Backer.Account.Backer)
     timestamps()
   end
@@ -17,8 +17,8 @@ defmodule Backer.Content.Forum do
   @doc false
   def changeset(forum, attrs) do
     forum
-    |> cast(attrs, [:title, :content, :is_visible, :status, :like_count, :backer_id, :pledger_id])
-    |> validate_required([:pledger_id, :backer_id, :title, :content])
+    |> cast(attrs, [:title, :content, :is_visible, :status, :like_count, :backer_id, :donee_id])
+    |> validate_required([:donee_id, :backer_id, :title, :content])
     |> IO.inspect()
   end
 end

@@ -175,13 +175,13 @@
           </li>                      
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/pledgers") %>"><a href="/admin/pledgers" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Pledgers</span></a>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/donees") %>"><a href="/admin/donees" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Donees</span></a>
           </li>                      
           <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Content</span></a>
             <ul class="menu-content">
               <li class="<%= activate(@conn.request_path, "/admin/forums") %>"><a class="menu-item" href="/admin/forums" up-target=".main" up-transition="move-right">Forum Posts</a>
               </li>
-              <li class="<%= activate(@conn.request_path, "/admin/posts") %>"><a class="menu-item" href="/admin/posts" up-target=".main" up-transition="move-right">Pledger Posts</a>
+              <li class="<%= activate(@conn.request_path, "/admin/posts") %>"><a class="menu-item" href="/admin/posts" up-target=".main" up-transition="move-right">Donee Posts</a>
             </ul>
           </li> 
           <li class="nav-item <%= activate(@conn.request_path, "/admin/badges") %>"><a href="/admin/badges" up-target=".main" up-transition="move-right"><i class="ft-shield"></i><span class="menu-title" data-i18n="">Badge</span></a>

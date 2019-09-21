@@ -1,0 +1,72 @@
+                <div style="background: url(<%= @donee.donee.background %>) no-repeat; min-height: 200px; width: 100%; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);"></div>
+                 
+              <img src="/img/avatar1.jpg" alt="user" class="avatar-big" style="position: relative;top: -90px; margin:auto; display: block; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+
+<section style="margin-top: 0px; margin-bottom: 10px;">
+	<h1 class="text-center" style="padding-bottom: 50px;">Jadi backer untuk <%= @donee.display_name %></h1>
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-7" style="padding-right: 30px;">
+			<div class="card" style="padding:50px;">
+			<%= form_for @conn, "/checkout", [id: "registration_form"], fn f -> %> 	
+			<input value="<%= @tier.donee_id %>" name="donee_id" type="hidden">						
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-lg-6">
+						<h3 style="font-size: 23px; font-weight: 800;">Tentukan Jumlah </h3>
+						<div style="font-size: 13px;">yang ingin anda berikan per bulan</div>
+					</div>
+					<div class="col-lg-6"><input class="checkout-input" type="number" step="10000" id="amount" name="amount" value="<%= @tier.amount %>"></div>
+				</div>
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-lg-6">
+					<h3 style="font-size: 23px; font-weight: 800;">Tentukan Bulan </h3>
+					<div style="font-size: 13px;">untuk berapa bulan kedepan</div>
+					</div>
+					<div class="col-lg-6"><input class="checkout-input" type="number" id="month" name="month" value="6"></div>
+				</div>
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-lg-6">
+					<h3 style="font-size: 23px; font-weight: 800;">Tier </h3>
+						<div style="font-size: 12px;">yang saat ini anda pilih</div>
+					</div>
+					<div class="col-lg-6">
+						<div><span style="font-size: 25px; font-weight: 800;"><%= @tier.title %></span><span><a href="/donee/<%= @donee.username %>/tier"> edit</a></span></div>
+						<div>Tunjukkan Deskripsi</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="col-lg-5 pricing_payment" style="padding-top: 0px;">
+			<div class="card" style="padding:50px; min-height: 400px;">
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-lg-6">
+						<h3 style="font-size: 23px; font-weight: 800;">Total </h3>
+					</div>	
+					<div class="col-lg-6">
+						<h5>Rp.18.000,-</h5>
+					</div>										
+				</div>
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-lg-6">
+						<h3 style="font-size: 23px; font-weight: 800;">Pembayaran </h3>
+					</div>	
+					<div class="col-lg-6">
+						<input type="radio" name="method" value="balance" id="radio-one" class="form-radio" disabled><label for="radio-one">Backer Balance</label><br>
+						<input type="radio" name="method" value="bca" id="radio-one" class="form-radio" checked><label for="radio-one">Transfer BCA</label>					
+					</div>										
+				</div>	
+				<div class="row" style="padding-top: 30px;">
+					<div class="col-lg-6">
+
+					</div>	
+					<div class="col-lg-6">
+  					<button type="submit" class="btn-pay">Bayar</button>
+						<% end %>
+					</div>										
+				</div>							
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>

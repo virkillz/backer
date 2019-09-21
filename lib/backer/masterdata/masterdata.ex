@@ -7,7 +7,7 @@ defmodule Backer.Masterdata do
   alias Backer.Repo
 
   alias Backer.Masterdata.Category
-  alias Backer.Account.Pledger
+  alias Backer.Account.Donee
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
 
@@ -51,7 +51,7 @@ defmodule Backer.Masterdata do
     query =
       from(c in Category,
         where: c.id == ^id,
-        preload: [pledger: [backer: ^query_backer, title: ^query_title]]
+        preload: [donee: [backer: ^query_backer, title: ^query_title]]
       )
 
     Repo.one(query)
@@ -66,19 +66,19 @@ defmodule Backer.Masterdata do
   #   #     select: %{title: u.title, city: %{title: c.title}}
 
   #   query = from c in Category,
-  #   join: p in assoc(c, :pledger),
-  #   join: b in assoc(p, :backer), 
-  #   join: t in assoc(p, :title),        
+  #   join: p in assoc(c, :donee),
+  #   join: b in assoc(p, :backer),
+  #   join: t in assoc(p, :title),
   #   where: c.id == ^id,
   #   # select: []
-  #   # select: %{name: c.name, pledger: %{background: p.background, title: %{name: t.name},backer: %{display_name: b.display_name, avatar: b.avatar}}}
-  #   # select: [c.name]   
-  #   preload: [pledger: {p, backer: b, title: t}]
-  #   # select: %{id: c.id, pledger: p}
+  #   # select: %{name: c.name, donee: %{background: p.background, title: %{name: t.name},backer: %{display_name: b.display_name, avatar: b.avatar}}}
+  #   # select: [c.name]
+  #   preload: [donee: {p, backer: b, title: t}]
+  #   # select: %{id: c.id, donee: p}
 
   #   Repo.one(query)
 
-  # end  
+  # end
 
   @doc """
   Creates a category.
@@ -254,13 +254,13 @@ defmodule Backer.Masterdata do
     Repo.all(Tier)
   end
 
-  def list_tiers(%{"pledger_id" => pledger_id}) do
-    query = from(t in Tier, where: t.pledger_id == ^pledger_id, order_by: t.amount)
+  def list_tiers(%{"donee_id" => donee_id}) do
+    query = from(t in Tier, where: t.donee_id == ^donee_id, order_by: t.amount)
     Repo.all(query)
   end
 
-  def list_tiers_for_select(%{"pledger_id" => pledger_id}) do
-    query = from(t in Tier, where: t.pledger_id == ^pledger_id, order_by: t.amount)
+  def list_tiers_for_select(%{"donee_id" => donee_id}) do
+    query = from(t in Tier, where: t.donee_id == ^donee_id, order_by: t.amount)
 
     Repo.all(query)
     |> Enum.with_index(1)

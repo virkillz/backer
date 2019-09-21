@@ -9,9 +9,9 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :pledger_id, class: "control-label" %>
-    <%= select f, :pledger_id, Enum.map(@pledgers, &{&1.backer.email, &1.id}), class: "form-control" %>
-    <%= error_tag f, :pledger_id %>
+    <%= label f, :donee_id, class: "control-label" %>
+    <%= select f, :donee_id, Enum.map(@donees, &{&1.backer.email, &1.id}), class: "form-control" %>
+    <%= error_tag f, :donee_id %>
   </div>
 
 

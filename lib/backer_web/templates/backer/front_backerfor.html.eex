@@ -13,28 +13,28 @@
 
 <div class="friend-list">
                 <div class="row">
-                  <%= for pledger <- @pledgers do %>
+                  <%= for donee <- @donees do %>
 
 
 
               <div class="col-lg-12">
 
-<a href="/pledger/<%= pledger.username %>">
+<a href="/donee/<%= donee.username %>">
 <div class="twPc-div card" >
-    <a href="/pledger/<%= pledger.username %>" class="twPc-bg twPc-block" style="background: url(<%= pledger.background %>) no-repeat center;"></a>
+    <a href="/donee/<%= donee.username %>" class="twPc-bg twPc-block" style="background: url(<%= donee.background %>) no-repeat center;"></a>
 
   <div>
 
-    <a title="<%= pledger.display_name %>" href="/pledger/<%= pledger.username %>" class="twPc-avatarLink">
-      <img  src="<%= pledger.avatar %>" class="twPc-avatarImg grow">
+    <a title="<%= donee.display_name %>" href="/donee/<%= donee.username %>" class="twPc-avatarLink">
+      <img  src="<%= donee.avatar %>" class="twPc-avatarImg grow">
     </a>
 
     <div class="twPc-divUser">
       <div class="twPc-divName">
-        <%= pledger.display_name %>
+        <%= donee.display_name %>
       </div>
       <span>
-        <span><%= pledger.title %></span>
+        <span><%= donee.title %></span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
 
         </li>      
         <li class="twPc-ArrangeSizeFit text-center grow">
-            <a href="/pledger/<%= pledger.username %>/tier" class="btn btn-pill " style="margin-top: 10px; margin-right: 25px;">Support</a>
+            <a href="/donee/<%= donee.username %>/tier" class="btn btn-pill " style="margin-top: 10px; margin-right: 25px;">Support</a>
         </li>        
       </ul>
     </div>

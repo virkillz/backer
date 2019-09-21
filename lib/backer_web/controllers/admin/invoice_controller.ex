@@ -21,14 +21,14 @@ defmodule BackerWeb.InvoiceController do
 
   def newbacking(conn, _params) do
     backers = Account.list_backers()
-    pledgers = Account.list_pledgers()
+    donees = Account.list_donees()
     methods = Constant.payment_method_deposit()
     changeset = Finance.change_invoice(%Invoice{})
 
     render(conn, "new_backing.html",
       changeset: changeset,
       backers: backers,
-      pledgers: pledgers,
+      donees: donees,
       methods: methods
     )
   end
@@ -68,11 +68,11 @@ defmodule BackerWeb.InvoiceController do
       {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
         backers = Account.list_backers()
         methods = Constant.payment_method_deposit()
-        pledgers = Account.list_pledgers()
+        donees = Account.list_donees()
 
         render(conn, "new_backing.html",
           changeset: changeset,
-          pledgers: pledgers,
+          donees: donees,
           backers: backers,
           methods: methods
         )

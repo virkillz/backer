@@ -8,7 +8,7 @@ defmodule Backer.Repo.Migrations.CreateInvoiceDetails do
       add(:month, :integer)
       add(:type, :string)
       add(:invoice_id, references(:invoices, on_delete: :delete_all))
-      add(:pledger_id, references(:pledgers, on_delete: :nilify_all))
+      add(:donee_id, references(:donees, on_delete: :nilify_all))
       add(:is_settled, :boolean)
       add(:tier, :integer)
       add(:backer_id, references(:backers, on_delete: :nilify_all))
@@ -21,7 +21,7 @@ defmodule Backer.Repo.Migrations.CreateInvoiceDetails do
 
     create(index(:invoice_details, [:backer_id]))
     create(index(:invoice_details, [:invoice_id]))
-    create(index(:invoice_details, [:pledger_id]))
+    create(index(:invoice_details, [:donee_id]))
     create(index(:invoice_details, [:mutation_id]))
     create(index(:invoice_details, [:donation_id]))
   end

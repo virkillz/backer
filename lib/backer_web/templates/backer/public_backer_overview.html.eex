@@ -53,17 +53,17 @@
 <div class="friend-list">
                 <div class="row">
 
-                  <%= for pledger <- @pledgers do %>
+                  <%= for donee <- @donees do %>
 
                   <div class="col-md-6 col-sm-6">
                     <div class="friend-card">
-                      <img src="<%= pledger.background %>" alt="profile-cover" class="img-responsive cover">
+                      <img src="<%= donee.background %>" alt="profile-cover" class="img-responsive cover">
                       <div class="card-info">
-                        <img src="<%= pledger.avatar %>" alt="user" class="profile-photo-lg">
+                        <img src="<%= donee.avatar %>" alt="user" class="profile-photo-lg">
                         <div class="friend-info">
                           <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link"><%= pledger.display_name %></a></h5>
-                          <p><%= pledger.title %></p>
+                          <h5><a href="timeline.html" class="profile-link"><%= donee.display_name %></a></h5>
+                          <p><%= donee.title %></p>
                         </div>
                       </div>
                     </div>
@@ -71,7 +71,7 @@
 
                   <% end %>
 
-                  <%= if Enum.count(@pledgers) > 4 do %>
+                  <%= if Enum.count(@donees) > 4 do %>
                   <div class="text-center"> <a href="/backer/<%= @backer.username %>/backerfor ">Show all list</a></div>
 
                   <% end %>

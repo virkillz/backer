@@ -45,7 +45,7 @@
                                 <thead class="bg-primary white">
                                 <tr>
                                   <th>#</th>
-                                  <th>Pledger</th>
+                                  <th>Donee</th>
                                   <th>Backer</th>
                                   <th>Title</th>
                                   <th>Content</th>
@@ -59,7 +59,7 @@
                                   <%= for forum <- @forums do %>
                                       <tr>
                                         <td><%= forum.id %></td>
-                                        <td><%= forum.pledger.backer.email %></td>
+                                        <td><%= forum.donee.backer.email %></td>
                                         <td><%= forum.backer.email %></td>                                        
                                         <td><%= forum.title %></td>
                                         <td><%= forum.content %></td>

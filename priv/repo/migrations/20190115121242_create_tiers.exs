@@ -3,14 +3,14 @@ defmodule Backer.Repo.Migrations.CreateTiers do
 
   def change do
     create table(:tiers) do
-      add :title, :string
-      add :description, :text
-      add :amount, :integer
-      add :pledger_id, references(:pledgers, on_delete: :delete_all)
+      add(:title, :string)
+      add(:description, :text)
+      add(:amount, :integer)
+      add(:donee_id, references(:donees, on_delete: :delete_all))
 
       timestamps()
     end
 
-    create index(:tiers, [:pledger_id])
+    create(index(:tiers, [:donee_id]))
   end
 end

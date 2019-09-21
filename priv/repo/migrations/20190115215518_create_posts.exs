@@ -13,11 +13,11 @@ defmodule Backer.Repo.Migrations.CreatePosts do
       add(:featured_link, :string)
       add(:featured_video, :string)
       add(:comment_count, :integer)
-      add(:pledger_id, references(:pledgers, on_delete: :delete_all))
+      add(:donee_id, references(:donees, on_delete: :delete_all))
 
       timestamps()
     end
 
-    create(index(:posts, [:pledger_id]))
+    create(index(:posts, [:donee_id]))
   end
 end

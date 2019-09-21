@@ -43,7 +43,7 @@ defmodule Backer.Constant do
       "Self proclaimed beautiful human.",
       "A generous backer in the making",
       "Looking for interesting project to be backed!",
-      "Show me an interesting Pledger to backed."
+      "Show me an interesting Donee to backed."
     ]
   end
 
