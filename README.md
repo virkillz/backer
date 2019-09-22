@@ -1,13 +1,19 @@
 # Backer
 
-# Todo
-- [x] Update seed data with title, and other master data
-- [x] add backer_count and post_count into donee
-- [x] Explore donee must show correct backer count
+## EPIC
+
+### Make the backerzone menu sidebar at least working
+- [ ] Remove menu category
+- [ ] Refactor menu to external component
+- [ ] Routing to My Donee List
+- [ ] Routing to My Support History
+- [ ] Routing to My Setting
+
+
+
+## SMALL TODO
 - [ ] Default donee/username must be dynamic. by default goes to post if post is not empty. 
-- [x] Fix bug in execute payment approval
 - [ ] Make donate mechanism works
-- [x] Edit profile pledger cause error
 - [ ] Change favicon backer admin
 - [ ] Remove category from private donee sidebar
 - [ ] Display backer page
