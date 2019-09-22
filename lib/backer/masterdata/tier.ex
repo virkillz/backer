@@ -15,6 +15,6 @@ defmodule Backer.Masterdata.Tier do
   def changeset(tier, attrs) do
     tier
     |> cast(attrs, [:title, :description, :amount, :donee_id])
-    |> validate_required([:title, :description, :amount, :donee_id])
+    |> validate_required([:title, :amount])
   end
 end
