@@ -178,7 +178,7 @@ defmodule BackerWeb.Router do
     get("/donee/:username/posts", DoneeController, :posts)
     # get("/donee/:username/backers", DoneeController, :backers)
     # get("/donee/:username/forum", DoneeController, :forum)
-    # get("/donee/:username/tier", DoneeController, :tier)
+    get("/donee/:username/donate", DoneeController, :donate)
     # get("/donee/:username/checkout", DoneeController, :checkout)
 
     get("/contact-us", PublicController, :contact_us)

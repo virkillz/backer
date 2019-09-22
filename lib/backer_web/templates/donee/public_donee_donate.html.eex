@@ -1,0 +1,202 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16 text-gray-700">
+    <img src="/assets/images/bg/komunitas.jpeg" alt="Belajar Bersama Bimo"
+        class="mt-16 object-cover h-48 w-full border-b-8 border-white shadow-lg">
+    <img src="/assets/images/bg/avatar.jpeg"
+        class="rounded-lg mx-auto w-18 h-18 -mt-20 border-8 border-white shadow-lg">
+
+
+    <div class="container mx-auto pb-20">
+        <div class="font-bold text-center text-3xl py-8  text-gray-700">Back me up!</div>
+
+        <div class="py-4 max-w-3xl mx-auto">
+            <div class="py-4 text-justify bg-white rounded shadow px-6 text-gray-700 leading-relaxed">Operasi bulanan
+                kami
+                membutuhkan
+                setidaknya 300rb
+                rupiah
+                untuk sekedar penyewaan
+                gedung. Segalanya saat ini masih berupa donasi dari pemilik usaha.</div>
+        </div>
+
+
+
+       <div> 
+        <div class="py-4 max-w-3xl mx-auto">
+            <div class="font-bold text-center  text-2xl">Select Tier</div>
+            <div class="flex">
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4 border-indigo-500">
+                        <div class="text-gray-700  text-2xl font-bold text-center">Rp.10,000.-</div>
+                        <div class="text-gray-500 text-center">per bulan</div>
+                        <div class="text-orange-600  font-bold py-2 text-center">Backer</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4">
+                        <div class="text-gray-700  text-2xl font-bold text-center">Rp.50,000.-</div>
+                        <div class="text-gray-500 text-center">per bulan</div>
+                        <div class="text-orange-600  font-bold py-2 text-center">Light Backer</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4">
+                        <div class="text-gray-700  text-2xl font-bold text-center">Rp.100,000.-</div>
+                        <div class="text-gray-500 text-center">per bulan</div>
+                        <div class="text-orange-600  font-bold py-2 text-center">Heavy Backer</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="py-4 max-w-xl mx-auto">
+            <div class="font-bold text-center  py-2 text-2xl">Fill Amount</div>
+
+            <div class="bg-white rounded p-6 shadow flex items-center">
+                <div class="mx-auto">
+                    <div class="flex items-baseline py-2">
+                        <div class="w-32"><label class="font-bold text-gray-700">Amount</label></div>
+
+                        <input type="number" class="border-b-2 focus:outline-none p-1 w-32 font-bold text-lg"
+                            step="1000" value="10000" name="amount">
+                        <span class="ml-4 text-gray-600 text-sm">Rupiah</span>
+                    </div>
+                    <div class="flex items-baseline py-2">
+                        <div class="w-32"><label class="font-bold text-gray-700">Month</label></div>
+
+                        <select class="w-32 bg-white border-b-2 focus:outline-none h-8 text-lg font-bold">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                        </select>
+                        <span class="ml-4 text-gray-600 text-sm">Bulan</span>
+                    </div>
+                    <div class="flex py-2">
+                        <div class="w-32"><label class="font-bold text-lg text-gray-800">Total</label></div>
+
+                        <div class="font-bold w-32 text-lg">24,000,000,00</div>
+                        <span class="ml-4 text-gray-600 text-sm">Rupiah</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+        <div class="py-4 max-w-3xl mx-auto">
+            <div class="font-bold text-center  text-2xl">Select Payment</div>
+            <div class="flex">
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4 border-indigo-500">
+                        <div class="text-gray-700  text-2xl font-bold text-center">BCA</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4">
+                        <div class="text-gray-700  text-2xl font-bold text-center">MANDIRI</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+
+                <div class="w-1/3 p-2">
+                    <div class="bg-white rounded p-4 cursor-pointer hover:border-indigo-500 border-4">
+                        <div class="text-gray-700  text-2xl font-bold text-center">BNI</div>
+
+                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
+                            begini
+                            begitu dan
+                            masih banyak lagi. </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="w-full mt-8">
+            <div class="mx-auto text-center max-w-xl">
+                <div class="px-2">
+                    <button
+                        class="btn-glow-orange w-full tracking-wide focus:outline-none px-10 py-4 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Submit</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+                <div class="pt-6 text-center w-full">
+                    <a href="/" class="text-orange-500">I changed my mind</a>
+                </div>
+
+    </div>
+
+
+
+    <div class="bottom-0 fixed w-full">
+        <!-- footer -->
+        <footer class="font-sans bg-white shadow-lg border-gray-300 border-t-2 text-gray-700 py-2 px-4">
+            <div class="mx-auto container overflow-hidden flex justify-between items-center">
+                <p class="inline-block py-2 px-3 "> ©2019 VirKill. All rights reserved.</p>
+                <ul class=" flex items-center">
+                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Product</a></li>
+                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Company</a></li>
+                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">FAQs</a></li>
+                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">About Us</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- /footer -->
+    </div>

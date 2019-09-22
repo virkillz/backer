@@ -15,29 +15,30 @@ defmodule BackerWeb.DoneeController do
     render(conn, "index.html", donees: donees)
   end
 
-  def tier(conn, %{"username" => username}) do
+  def donate(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
 
     case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        # redirect(conn, to: Router.page_path(conn, :page404))
+        BackerWeb.PublicView.render(conn, "page_404.html")
 
       _ ->
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
-          |> render("component_tiers.html",
+          |> render("public_donee_donate.html",
             donee: donee,
             active: :overview,
-            layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
+            layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
     end
   end
 
   def overview(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username})
+    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
     backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
     backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
@@ -52,7 +53,6 @@ defmodule BackerWeb.DoneeController do
           conn
           |> render("public_donee_timeline.html",
             donee: donee,
-            active: :overview,
             backing: backing,
             backers: backers,
             layout: {BackerWeb.LayoutView, "public.html"}
