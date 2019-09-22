@@ -26,4 +26,14 @@ defmodule BackerWeb.BackerView do
 
     relative_str
   end
+
+  def sidebar_active(conn, current_path) do
+    IO.inspect(conn.request_path)
+
+    if conn.request_path == current_path do
+      " font-semibold bg-purple-200 text-purple-700 "
+    else
+      " font-base text-gray-700 "
+    end
+  end
 end
