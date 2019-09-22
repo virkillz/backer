@@ -18,6 +18,8 @@ defmodule Backer.Repo.Migrations.CreateBackers do
       add(:id_photo, :string)
       add(:id_photokyc, :string)
       add(:is_donee, :boolean, default: false, null: false)
+      add(:is_listed, :boolean, default: false, null: false)
+      add(:is_searchable, :boolean, default: true, null: false)
       add(:avatar, :string)
       add(:email_verification_code, :string)
       add(:phone_verification_code, :string)
