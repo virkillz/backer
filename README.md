@@ -5,6 +5,7 @@
 - [x] add backer_count and post_count into donee
 - [x] Explore donee must show correct backer count
 - [ ] Default donee/username must be dynamic. by default goes to post if post is not empty. 
+- [x] Fix bug in execute payment approval
 - [ ] Make donate mechanism works
 - [x] Edit profile pledger cause error
 - [ ] Change favicon backer admin
@@ -27,6 +28,7 @@
 - [ ] Admin can change donation status
 - [ ] Backer can see the donation status
 - [ ] Backer can browse the post and comment
+- [ ] Visisting nonexistent "/donee/nonexistuser" shows error, need to check other variant as well.
 
 ## To start:
   * Install dependencies with `mix deps.get`
