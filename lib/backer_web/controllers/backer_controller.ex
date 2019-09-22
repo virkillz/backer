@@ -99,18 +99,60 @@ defmodule BackerWeb.BackerController do
   end
 
   def home(conn, params) do
+    # This is redirector function. If user is donee, home means redirect to /doneezone
+    # If he is regular backer, just redirect to /backerzone
+
     backer = conn.assigns.current_backer
 
-    {donation, rawposts} = Content.timeline(backer.id)
-    posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
+    if conn.assigns.current_backer.is_donee do
+      redirect(conn, to: "/doneezone/timeline")
+    else
+      redirect(conn, to: "/backerzone/timeline")
+    end
+
+    # {donation, rawposts} = Content.timeline(backer.id)
+    # posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
+
+    # case backer do
+    #   nil ->
+    #     redirect(conn, to: Router.page_path(conn, :page404))
+
+    #   _ ->
+    #     conn
+    #     |> render("private_backer_timeline.html",
+    #       layout: {BackerWeb.LayoutView, "public.html"}
+    #     )
+    # end
+  end
+
+  def timeline(conn, params) do
+    backer = conn.assigns.current_backer
+
+    # {donation, rawposts} = Content.timeline(backer.id)
+    # posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
 
     case backer do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
         conn
-        |> render("private_backer_timeline.html",
+        |> render("backerzone_timeline.html",
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def placeholder(conn, params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        conn
+        |> render("backerzone_timeline.html",
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end

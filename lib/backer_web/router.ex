@@ -100,7 +100,14 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home", BackerController, :home)
-    get("/home/timeline/:id", BackershowController, :show_post)
+
+    get("/backerzone/timeline", BackerController, :timeline)
+    get("/backerzone/timeline/:id", BackerController, :show_post)
+
+    get("/backerzone/donee", BackerController, :placeholder)
+    get("/backerzone/payment-history", BackerController, :placeholder)
+    get("/backerzone/profile-setting", BackerController, :placeholder)
+
     get("/home/invoice/:id", BackerController, :invoice_display)
     get("/home/overview", BackerController, :overview)
     get("/home/finance", BackerController, :finance)
@@ -122,25 +129,25 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
-    get("/dashboard", DoneeController, :dashboard)
-    get("/dashboard/post", DoneeController, :dashboard_post)
-    get("/dashboard/post/show/:id", DoneeController, :dashboard_post_show)
-    get("/dashboard/post/edit/:id", DoneeController, :dashboard_post_edit)
-    put("/dashboard/post/edit/:id", DoneeController, :dashboard_post_update)
+    get("/doneezone/dashboard", DoneeController, :dashboard)
+    get("/doneezone/post", DoneeController, :dashboard_post)
+    get("/doneezone/post/show/:id", DoneeController, :dashboard_post_show)
+    get("/doneezone/post/edit/:id", DoneeController, :dashboard_post_edit)
+    put("/doneezone/post/edit/:id", DoneeController, :dashboard_post_update)
 
-    get("/dashboard/post/new", DoneeController, :dashboard_post_new)
-    get("/dashboard/post/new-image", DoneeController, :dashboard_post_new_image)
-    get("/dashboard/post/new-video", DoneeController, :dashboard_post_new_video)
-    post("/dashboard/post/create", DoneeController, :dashboard_post_create)
-    delete("/dashboard/post/delete/:id", DoneeController, :dashboard_post_delete)
+    get("/doneezone/post/new", DoneeController, :dashboard_post_new)
+    get("/doneezone/post/new-image", DoneeController, :dashboard_post_new_image)
+    get("/doneezone/post/new-video", DoneeController, :dashboard_post_new_video)
+    post("/doneezone/post/create", DoneeController, :dashboard_post_create)
+    delete("/doneezone/post/delete/:id", DoneeController, :dashboard_post_delete)
 
-    get("/dashboard/backers", DoneeController, :dashboard_backers)
-    get("/dashboard/backers/active", DoneeController, :dashboard_backers_active)
-    get("/dashboard/backers/inactive", DoneeController, :dashboard_backers_inactive)
+    get("/doneezone/backers", DoneeController, :dashboard_backers)
+    get("/doneezone/backers/active", DoneeController, :dashboard_backers_active)
+    get("/doneezone/backers/inactive", DoneeController, :dashboard_backers_inactive)
 
-    get("/dashboard/earning", DoneeController, :dashboard_earning)
-    get("/dashboard/page-setting", DoneeController, :dashboard_page_setting)
-    put("/dashboard/page-setting", DoneeController, :dashboard_page_setting_update)
+    get("/doneezone/earning", DoneeController, :dashboard_earning)
+    get("/doneezone/page-setting", DoneeController, :dashboard_page_setting)
+    put("/doneezone/page-setting", DoneeController, :dashboard_page_setting_update)
   end
 
   # must not sign in
