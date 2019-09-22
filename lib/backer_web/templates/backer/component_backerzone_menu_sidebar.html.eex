@@ -1,0 +1,34 @@
+	                <div class="flex lg:block items-center">
+	                
+	                    <a href="/backerzone/timeline">
+	                        <div
+	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/timeline") %>">
+	                            <i class="la la-home text-2xl font-bold lg:mr-4"></i>
+	                            <div class=" lg:text-lg md:text-md text-sm"> Linimasa</div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backerzone/donee">
+	                        <div
+	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/donee") %>">
+	                            <i class="la la-leaf text-2xl font-bold lg:mr-4"></i>
+	                            <div class=" lg:text-lg md:text-md text-sm"> Donee </div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backerzone/payment-history">
+	                        <div
+	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/payment-history") %>">
+	                            <i class="la la-credit-card text-2xl font-bold lg:mr-4"></i>
+	                            <div class=" lg:text-lg md:text-md text-sm"> Riwayat Donasi</div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backerzone/profile-setting">
+	                        <div
+	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/profile-setting") %>">
+	                            <i class="la la-cog text-2xl font-bold lg:mr-4"></i>
+	                            <div class=" lg:text-lg md:text-md text-sm"> Pengaturan</div>
+	                        </div>
+	                    </a>
+	                </div>

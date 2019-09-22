@@ -14,45 +14,13 @@
 	                </div>
 	                
 	                <div class="border-b-2 my-8 lg:hidden"></div>
-	                
-	                <div class="flex lg:block items-center">
-	                
-	                    <a href="/backer-timeline.html">
-	                        <div
-	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 font-semibold rounded-lg text-purple-700 hover:text-purple-700 hover:bg-purple-200 bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-home text-2xl font-bold lg:mr-4"></i>
-	                            <div class=" lg:text-lg md:text-md text-sm"> Linimasa</div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-my-donee.html">
-	                        <div
-	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-leaf text-2xl font-bold lg:mr-4"></i>
-	                            <div class=" lg:text-lg md:text-md text-sm"> Donee </div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-riwayat-donasi.html">
-	                        <div
-	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-credit-card text-2xl font-bold lg:mr-4"></i>
-	                            <div class=" lg:text-lg md:text-md text-sm"> Riwayat Donasi</div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-pengaturan.html">
-	                        <div
-	                            class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 px-6 hover:font-semibold text-lg rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-cog text-2xl font-bold lg:mr-4"></i>
-	                            <div class=" lg:text-lg md:text-md text-sm"> Pengaturan</div>
-	                        </div>
-	                    </a>
-	                </div>
+
+					<%= render "component_backerzone_menu_sidebar.html", conn: @conn %>
 	
 	
 	                <div class="border-b-2 my-8"></div>
 	
+					<%# 
 	                <div class="hidden lg:block">
 	                
 	                    <div class="my-4 font-bold text-lg  text-gray-700">Kategori</div>
@@ -67,6 +35,9 @@
 	                        </ul>
 	                    </div>
 	                </div>
+					%>
+
+
 	            </div>
 	        </div>
 	
@@ -198,57 +169,8 @@
 	            </div>
 	            <div class="border-b my-4"></div>
 	
-	            <div class="pb-20">
-	            
-	                <div class="mt-2 px-2 font-bold text-right text-lg  text-gray-700">Recommended Community</div>
-	            
-	                <div class="py-2">
-	                    <a href="#">
-	                        <div class="bg-white relative shadow p-2 text-gray-600 hover:shadow-lg">
-	                            <div
-	                                class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-indigo-500">
-	                                123
-	                                Backer
-	                            </div>
-	                            <img src="/assets/images/bg/komunitas.jpeg" class="h-32 w-full object-cover">
-	                            <div class="flex justify-center">
-	                                <img src="/assets/images/bg/avatar.jpeg"
-	                                    class="rounded-lg -mt-6 border-4 border-white mr-2 h-16 w-16">
-	                            </div>
-	                            <div class="py-2 px-2">
-	                                <div class=" font-bold text-center">Komunitas Kreasi Bersama</div>
-	                                <div class="font-semibold text-center text-xs text-gray-600">seguci • 21 backers</div>
-	                                <div class="text-sm text-center my-2">Menjalankan keberagaman kreasi bagi anak jalanan</div>
-	                            </div>
-	                        </div>
-	                    </a>
-	            
-	                </div>
-	            
-	                <div class="py-2">
-	                    <a href="#">
-	                        <div class="bg-white relative shadow p-2 text-gray-600 hover:shadow-lg">
-	                            <div
-	                                class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-indigo-500">
-	                                123
-	                                Backer
-	                            </div>
-	                            <img src="/assets/images/bg/komunitas.jpeg" class="h-32 w-full object-cover">
-	                            <div class="flex justify-center">
-	                                <img src="/assets/images/bg/avatar.jpeg"
-	                                    class="rounded-lg -mt-6 border-4 border-white mr-2 h-16 w-16">
-	                            </div>
-	                            <div class="py-2 px-2">
-	                                <div class=" font-bold text-center">Komunitas Kreasi Bersama</div>
-	                                <div class="font-semibold text-center text-xs text-gray-600">seguci • 21 backers</div>
-	                                <div class="text-sm text-center my-2">Menjalankan keberagaman kreasi bagi anak jalanan</div>
-	                            </div>
-	                        </div>
-	                    </a>
-	            
-	                </div>
-	            
-	            </div>
+				<%= render "component_backerzone_recommended_donee.html", conn: @conn %>
+
 	        </div>
 	    </div>
 	
