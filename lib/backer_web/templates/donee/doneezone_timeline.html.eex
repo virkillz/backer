@@ -287,54 +287,9 @@
 	        <div class="lg:w-1/4 px-4">
 	
 	            <div class="pb-20">
+
+					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
 	            
-	                <div class="mt-2 px-2 font-bold text-right text-lg  text-gray-700">Recommended Community</div>
-	            
-	                <div class="py-2">
-	                    <a href="#">
-	                        <div class="bg-white relative shadow p-2 text-gray-600 hover:shadow-lg">
-	                            <div
-	                                class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-indigo-500">
-	                                123
-	                                Backer
-	                            </div>
-	                            <img src="/assets/images/bg/komunitas.jpeg" class="h-32 w-full object-cover">
-	                            <div class="flex justify-center">
-	                                <img src="/assets/images/bg/avatar.jpeg"
-	                                    class="rounded-lg -mt-6 border-4 border-white mr-2 h-16 w-16">
-	                            </div>
-	                            <div class="py-2 px-2">
-	                                <div class=" font-bold text-center">Komunitas Kreasi Bersama</div>
-	                                <div class="font-semibold text-center text-xs text-gray-600">seguci • 21 backers</div>
-	                                <div class="text-sm text-center my-2">Menjalankan keberagaman kreasi bagi anak jalanan</div>
-	                            </div>
-	                        </div>
-	                    </a>
-	            
-	                </div>
-	            
-	                <div class="py-2">
-	                    <a href="#">
-	                        <div class="bg-white relative shadow p-2 text-gray-600 hover:shadow-lg">
-	                            <div
-	                                class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-indigo-500">
-	                                123
-	                                Backer
-	                            </div>
-	                            <img src="/assets/images/bg/komunitas.jpeg" class="h-32 w-full object-cover">
-	                            <div class="flex justify-center">
-	                                <img src="/assets/images/bg/avatar.jpeg"
-	                                    class="rounded-lg -mt-6 border-4 border-white mr-2 h-16 w-16">
-	                            </div>
-	                            <div class="py-2 px-2">
-	                                <div class=" font-bold text-center">Komunitas Kreasi Bersama</div>
-	                                <div class="font-semibold text-center text-xs text-gray-600">seguci • 21 backers</div>
-	                                <div class="text-sm text-center my-2">Menjalankan keberagaman kreasi bagi anak jalanan</div>
-	                            </div>
-	                        </div>
-	                    </a>
-	            
-	                </div>
 	            
 	            </div>
 	        </div>

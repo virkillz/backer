@@ -197,6 +197,18 @@ defmodule Backer.Account do
     Repo.all(query)
   end
 
+  def get_random_donee(limit) do
+    query =
+      from(p in Backerz,
+        where: p.is_donee == true,
+        limit: ^limit,
+        order_by: fragment("RANDOM()"),
+        preload: [donee: [:title, :tier]]
+      )
+
+    Repo.all(query)
+  end
+
   def get_backer(%{"username" => username}) do
     query = from(b in Backerz, where: b.username == ^username, preload: [badges: :badge])
     Repo.one(query)

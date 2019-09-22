@@ -225,7 +225,8 @@ defmodule BackerWeb.BackerController do
   end
 
   def public_profile(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username}) |> IO.inspect()
+    backer = Account.get_backer(%{"username" => username})
+    random_donee = Account.get_random_donee(3)
 
     case backer do
       nil ->
@@ -235,6 +236,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("public_backer_profile.html",
           backer: backer,
+          random_donee: random_donee,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end

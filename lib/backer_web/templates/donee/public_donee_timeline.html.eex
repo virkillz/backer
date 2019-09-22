@@ -31,7 +31,7 @@
 	                
 	                </div>
 	                <div class="pb-1 p-5 lg:hidden block">
-	                    <a href="#" class=""><button
+	                    <a href="/donee/<%= @donee.username %>/donate" class=""><button
 	                            class="rounded-lg hover:bg-indigo-500 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 	                </div>
 	

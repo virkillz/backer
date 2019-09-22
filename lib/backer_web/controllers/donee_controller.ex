@@ -18,11 +18,13 @@ defmodule BackerWeb.DoneeController do
   def timeline(conn, params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
 
     conn
     |> render("doneezone_timeline.html",
       backer_info: backer_info,
       donee_info: donee_info,
+      recommended_donees: random_donee,
       layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
@@ -111,7 +113,7 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
-  def timeline(conn, %{"username" => username}) do
+  def donate(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
 
     case donee do
@@ -125,28 +127,6 @@ defmodule BackerWeb.DoneeController do
           conn
           |> render("public_donee_donate.html",
             donee: donee,
-            active: :overview,
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
-        end
-    end
-  end
-
-  def donate(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username})
-
-    case donee do
-      nil ->
-        redirect(conn, to: "/404")
-
-      _ ->
-        if donee.donee == nil do
-          redirect(conn, to: Router.page_path(conn, :page404))
-        else
-          conn
-          |> render("public_donee_donate.html",
-            donee: donee,
-            active: :overview,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
