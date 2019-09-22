@@ -21,6 +21,8 @@ defmodule Backer.Account.Backer do
     field(:is_email_verified, :boolean, default: false)
     field(:is_phone_verified, :boolean, default: false)
     field(:is_donee, :boolean, default: false)
+    field(:is_searchable, :boolean, default: true)
+    field(:is_listed, :boolean, default: false)
     field(:password_recovery_code, :string)
     field(:is_agree_term, :boolean, virtual: true)
     field(:passwordhash, :string)

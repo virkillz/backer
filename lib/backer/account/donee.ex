@@ -12,9 +12,12 @@ defmodule Backer.Account.Donee do
     field(:bank_name, :string)
     field(:donee_overview, :string)
     field(:status, :string)
+    field(:tagline, :string)
     field(:featured_post, :id)
     field(:address_public, :string)
     field(:video_profile, :string)
+    field(:is_searchable, :boolean, default: true)
+    field(:is_listed, :boolean, default: false)
     field(:backer_count, :integer, default: 0)
     field(:post_count, :integer, default: 0)
 
