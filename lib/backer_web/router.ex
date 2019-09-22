@@ -89,7 +89,7 @@ defmodule BackerWeb.Router do
     resources("/withdrawals", WithdrawalController)
 
     get("/approval", FinanceController, :index)
-    get("/approval/:id", FinanceController, :process)
+    get("/approval/:id", FinanceController, :approval_form)
     put("/approval/:id", FinanceController, :update)
 
     resources("/articles", ArticleController)
