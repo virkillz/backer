@@ -1,11 +1,17 @@
 # Backer
 
 # Todo
-
-- [ ] Edit profile pledger cause error
+- [x] Update seed data with title, and other master data
+- [x] add backer_count and post_count into donee
+- [x] Explore donee must show correct backer count
+- [ ] Default donee/username must be dynamic. by default goes to post if post is not empty. 
+- [ ] Make donate mechanism works
+- [x] Edit profile pledger cause error
+- [ ] Change favicon backer admin
+- [ ] Remove category from private donee sidebar
+- [ ] Display backer page
 - [ ] Make login working
 - [ ] Make register working
-- [ ] Display dynamic donee at "/explore"
 - [ ] Display dynamic donee at "/"
 - [ ] Register backer better have automatic username such as backer1
 - [ ] user cannot create backer[number] below his user id
