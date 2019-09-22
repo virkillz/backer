@@ -2,13 +2,45 @@
 
 ## EPIC
 
-### Make the backerzone menu sidebar at least working
-- [ ] Remove menu category
-- [ ] Refactor menu to external component
-- [ ] Routing to My Donee List
-- [ ] Routing to My Support History
-- [ ] Routing to My Setting
 
+### Make Doneezone placeholder works
+- [ ] Create placeholder for dashboard
+- [ ] Create endpoint for timeline/posts
+- [ ] Create endpoint for my finance
+- [ ] Create endpoint for my Donee setting
+
+### Make Public Donee About tab works
+
+
+### make Public Donee Backer Tab works
+
+
+### Make backing flow works
+
+Note: - 
+
+- [ ] Simplify payment form
+- [ ] Make the form works
+- [ ] Create Invoice detail page
+- [ ] Make the Invoice detail page works
+
+
+### Make My Donee list and donee counter works
+
+Note: Depends on previous epic
+
+- [ ] Test end to end donate cycle.
+- [ ] Ensure backing month update backer count.
+- [ ] Update my donee list to make it dynamic
+
+### Make backer profile page
+- [ ] Create endpoint
+- [ ] Hook to dynamic data
+
+
+### Make top backer below donee profile works
+
+- [ ] Make donee profie dynamic
 
 
 ## SMALL TODO
