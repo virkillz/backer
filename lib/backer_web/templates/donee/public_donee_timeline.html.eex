@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="/assets/images/bg/komunitas.jpeg" alt="Belajar Bersama Bimo" class="mt-16 object-cover h-48 w-full">
+	<img src="<%= @donee.donee.background %>" alt="Belajar Bersama Bimo" class="mt-16 object-cover h-64 w-full">
 	
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
