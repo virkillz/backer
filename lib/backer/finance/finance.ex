@@ -280,7 +280,8 @@ defmodule Backer.Finance do
         %{"status" => "Executed"} = attrs
       ) do
     incoming_payment_changeset =
-      incoming_payment |> IncomingPayment.process_executed_deposit_changeset(attrs)
+      incoming_payment
+      |> IncomingPayment.process_executed_deposit_changeset(attrs)
 
     Ecto.Multi.new()
     |> Ecto.Multi.update(:incoming_payment, incoming_payment_changeset)
@@ -295,7 +296,7 @@ defmodule Backer.Finance do
         %{"status" => "Executed"} = attrs
       ) do
     pay_invoice_attr = %{"status" => "paid"}
-    invoice = get_invoice(incoming_payment.invoice_id)
+    invoice = get_invoice(incoming_payment.invoice_id) |> IO.inspect()
     invoice_changeset = Invoice.change_status_changeset(invoice, pay_invoice_attr)
 
     case invoice.type do
@@ -318,8 +319,10 @@ defmodule Backer.Finance do
           IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs)
         )
         |> Ecto.Multi.update(:invoice, invoice_changeset)
-        |> Ecto.Multi.run(:backing, fn _ ->
-          create_batch_donation(invoice.id)
+        |> IO.inspect()
+        |> Ecto.Multi.run(:backing, fn _repo, _ ->
+          # IO.inspect("----- checkpoint 2 ---")
+          create_batch_donation(invoice.id) |> IO.inspect()
           # {:error, %{"somehow" => "wrong again"}}
         end)
         |> Repo.transaction()
@@ -327,9 +330,11 @@ defmodule Backer.Finance do
   end
 
   defp create_batch_donation(invoice_id) do
+    IO.inspect("----- checkpoint 3 ---")
     invoice_details = list_invoice_details(%{"invoice_id" => invoice_id})
 
-    case Enum.each(invoice_details, fn x -> create_donation_from_invoice_detail(x) end) do
+    case Enum.each(invoice_details, fn x -> create_donation_from_invoice_detail(x) end)
+         |> IO.inspect() do
       :ok -> {:ok, "executed"}
       _other -> {:error, "failed to create"}
     end
