@@ -20,8 +20,7 @@ defmodule BackerWeb.DoneeController do
 
     case donee do
       nil ->
-        # redirect(conn, to: Router.page_path(conn, :page404))
-        BackerWeb.PublicView.render(conn, "page_404.html")
+        redirect(conn, to: "/404")
 
       _ ->
         if donee.donee == nil do
@@ -39,14 +38,15 @@ defmodule BackerWeb.DoneeController do
 
   def overview(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
-    backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-    backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
     case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
+        backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
+        backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
@@ -63,18 +63,19 @@ defmodule BackerWeb.DoneeController do
 
   def posts(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
-    backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-    backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
-
-    posts = Content.timeline_donee(donee.donee.id) |> IO.inspect()
 
     case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
+        backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
+        backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+
+        posts = Content.timeline_donee(donee.donee.id) |> IO.inspect()
+
         if donee.donee == nil do
-          redirect(conn, to: Router.page_path(conn, :page404))
+          redirect(conn, to: "/404")
         else
           conn
           |> render("front_posts.html",
@@ -113,7 +114,7 @@ defmodule BackerWeb.DoneeController do
     post = Content.get_post_simple(conn.assigns.current_donee.donee_id, id)
 
     if post == nil do
-      redirect(conn, to: "/400")
+      redirect(conn, to: "/404")
     else
       conn
       |> render("front_dashboard_post_show.html",
@@ -217,7 +218,7 @@ defmodule BackerWeb.DoneeController do
     tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee_id})
 
     if post == nil do
-      redirect(conn, to: "/400")
+      redirect(conn, to: "/404")
     else
       render_target =
         case post.type do
@@ -378,7 +379,7 @@ defmodule BackerWeb.DoneeController do
 
     case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
         if donee.donee == nil do
@@ -400,7 +401,7 @@ defmodule BackerWeb.DoneeController do
 
     case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
         if donee.donee == nil do
@@ -502,7 +503,7 @@ defmodule BackerWeb.DoneeController do
           params
       ) do
     if conn.assigns.current_backer.id == donee_id do
-      redirect(conn, to: "/400")
+      redirect(conn, to: "/404")
     else
       new_params =
         params

@@ -197,7 +197,7 @@ defmodule BackerWeb.PublicController do
   def page404(conn, _params) do
     conn
     |> put_status(:not_found)
-    |> render("404.html", layout: {BackerWeb.LayoutView, "frontend_header_footer.html"})
+    |> render("page_404.html", layout: {BackerWeb.LayoutView, "public.html"})
   end
 
   def page505(conn, _params) do
