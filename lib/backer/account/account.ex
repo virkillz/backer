@@ -190,6 +190,13 @@ defmodule Backer.Account do
   """
   def get_backer!(id), do: Repo.get!(Backerz, id)
 
+  def get_random_backer(limit) do
+    query =
+      from(b in Backerz, preload: [badges: :badge], limit: ^limit, order_by: fragment("RANDOM()"))
+
+    Repo.all(query)
+  end
+
   def get_backer(%{"username" => username}) do
     query = from(b in Backerz, where: b.username == ^username, preload: [badges: :badge])
     Repo.one(query)
@@ -369,16 +376,20 @@ defmodule Backer.Account do
         where: p.backer_id == ^backer_id
       )
 
-    donee = Repo.one(query)
+    donee = Repo.one(query) |> IO.inspect()
 
     if donee != nil do
       %{
         backer_id: donee.backer.id,
         donee_id: donee.id,
+        display_name: donee.backer.display_name,
         avatar: donee.backer.avatar,
         title: donee.title.name,
         background: donee.background,
-        tiers: donee.tier
+        tiers: donee.tier,
+        tagline: donee.tagline,
+        backer_count: donee.backer_count,
+        post_count: donee.post_count
       }
     else
       nil

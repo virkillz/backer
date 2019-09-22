@@ -1,0 +1,163 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+	
+    <div class="bg-gray-200 mt-16">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+
+
+					<%= render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+	
+	
+	                <div class="border-b-2 my-8"></div>
+	
+					<%# 
+	                <div class="hidden lg:block">
+	                
+	                    <div class="my-4 font-bold text-lg  text-gray-700">Kategori</div>
+	                
+	                    <div class="pl-6">
+	                        <ul class="text-gray-700 flex lg:block">
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Musik</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Seni</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Hobi</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Pendidikan</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Sosial</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+					%>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+	
+	            <div class="py-2">
+	
+	
+	                <div class="bg-white mb-8 relative shadow-md rounded-t-lg text-gray-600 hover:shadow-lg">
+	                    <div
+	                        class="right-0 mt-8 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-green-500">
+	                        Active supporter
+	                    </div>
+	
+	                    <div class="flex items-center p-4">
+	                        <div class="ml-4">
+	                            <img src="https://i.pravatar.cc/80" class="rounded-lg border-4 border-white mr-2 h-20">
+	                        </div>
+	                        <div class="p-2">
+	                            <div class=" font-bold ">Komunitas Sekolah Bersama</div>
+	                            <div class="font-semibold text-sm text-gray-600">senggama • 10001 backers</div>
+	                        </div>
+	                    </div>
+	                    <div class="px-4">
+	                        <div class="flex text-center rounded justify-between p-2 bg-gray-200">
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Status Backing</div>
+	                                <div class="text-center text-green-500">Aktif</div>
+	                            </div>
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Backer sejak</div>
+	                                <div class="text-center">Juli 2019</div>
+	                            </div>
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Level</div>
+	                                <div class="text-center">Supporter</div>
+	                            </div>
+	                        </div>
+	                    </div>
+	
+	                    <div class="flex text-center justify-center p-4">
+	                        <div class="mx-2">
+	                            <button
+	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Riwayat
+	                                Donasi</button>
+	                        </div>
+	                        <div class="mx-2">
+	                            <button
+	                                class="px-6 py-2 text-sm rounded-lg bg-purple-600 text-white transition-all border border-purple-600">Kunjungi</button>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="bg-white mb-8 relative shadow-md rounded-t-lg text-gray-600 hover:shadow-lg">
+	                    <div
+	                        class="right-0 mt-8 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-gray-500">
+	                        Inactive Bro
+	                    </div>
+	                    <div class="flex items-center p-4">
+	                        <div class="ml-4">
+	                            <img src="https://i.pravatar.cc/80" class="rounded-lg border-4 border-white mr-2 h-20">
+	                        </div>
+	                        <div class="p-2">
+	                            <div class=" font-bold ">Anda Bertanya Ateis Menjawab</div>
+	                            <div class="font-semibold text-sm text-gray-600">abam • 2112 backers</div>
+	                        </div>
+	                    </div>
+	
+	                    <div class="px-4">
+	                        <div class="flex text-center rounded justify-between p-2 bg-gray-200">
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Status Backing</div>
+	                                <div class="text-center text-gray-500">Inaktif</div>
+	                            </div>
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Backer sejak</div>
+	                                <div class="text-center">Juli 2019</div>
+	                            </div>
+	                            <div class="w-1/3">
+	                                <div class="font-semibold text-sm text-gray-600">Level</div>
+	                                <div class="text-center">Bro</div>
+	                            </div>
+	                        </div>
+	                    </div>
+	
+	                    <div class="flex text-center justify-center p-4">
+	                        <div class="mx-2">
+	                            <button
+	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Riwayat
+	                                Donasi</button>
+	                        </div>
+	                        <div class="mx-2">
+	                            <button
+	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Kunjungi</button>
+	                        </div>
+	
+	                        <div class="mx-2">
+	                            <button
+	                                class="px-6 py-2 text-sm rounded-lg bg-green-600 text-white transition-all border border-green-600">Aktifkan</button>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	
+	            </div>
+	
+	
+	
+	        </div>
+
+
+
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="py-1">
+	                <div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
+	                    <i class="la la-search text-white mr-2"></i></i>
+	                    <input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
+	                </div>
+	            </div>
+	            <div class="border-b my-4"></div>
+	
+				<%= render "component_backerzone_recommended_donee.html", conn: @conn %>
+
+	        </div>
+	    </div>
+	
+	</div>
+
+    <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

@@ -1,0 +1,96 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+	
+    <div class="bg-gray-200 mt-16">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+	
+
+					<%= render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+	
+	
+	                <div class="border-b-2 my-8"></div>
+	
+					<%# 
+	                <div class="hidden lg:block">
+	                
+	                    <div class="my-4 font-bold text-lg  text-gray-700">Kategori</div>
+	                
+	                    <div class="pl-6">
+	                        <ul class="text-gray-700 flex lg:block">
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Musik</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Seni</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Hobi</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Pendidikan</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Sosial</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+					%>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+	
+	            <div class="py-2">
+	
+	
+	                <div class="bg-white flex p-4 mb-8 relative shadow-md rounded-lg text-gray-600 hover:shadow-lg">
+	                    <div class="w-1/3">
+	                        <div class="flex justify-center">
+	                            <img src="/assets/images/bg/avatar.jpeg" class="rounded-lg border-4 border-white ">
+	                        </div>
+	                        <div class="mt-2 text-center"><button
+	                                class="px-2 py-px rounded text-purple-600 border border-purple-600">Change</button>
+	                        </div>
+	                    </div>
+	                    <div class="w-2/3">
+	                        <div class="text-center font-bold  pt-2 text-lg">VirKill Suprapto</div>
+	                        <div class="text-center py-2">vkprap ● vprap@gmail.com </div>
+	                        <div class="text-center py-4 px-4">
+	                            <div class="text-xs">Bio:</div>
+	                            <textarea col="4"
+	                                class="focus:outline-none text-center w-full bg-gray-200 rounded-lg p-4">Just a humble and generous Backer</textarea>
+	                        </div>
+	                        <div class="text-center"><button
+	                                class="px-6 py-2 rounded text-white bg-purple-600">Save</button>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	
+	
+	
+	            </div>
+	
+	
+	
+			</div>
+
+
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="py-1">
+	                <div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
+	                    <i class="la la-search text-white mr-2"></i></i>
+	                    <input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
+	                </div>
+	            </div>
+	            <div class="border-b my-4"></div>
+	
+				<%= render "component_backerzone_recommended_donee.html", conn: @conn %>
+
+	        </div>
+	    </div>
+	
+	</div>
+
+    <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+
+	
+
+

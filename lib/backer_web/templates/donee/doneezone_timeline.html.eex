@@ -1,53 +1,93 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee.donee.background %>" alt="Belajar Bersama Bimo" class="mt-16 object-cover h-64 w-full">
-	
-	<div class="bg-gray-200">
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
+		class="mt-16 hidden lg:block object-cover h-64 w-full">
+		
+		<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
-	        <div class="lg:w-1/4 px-4 ">
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
-	                <div class="pt-10 bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                <div class="pt-20 lg:hidden"></div>
+	                
+	                <div class="flex items-center lg:hidden">
+	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+	                </div>
+	                
+	                <div class="pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
+	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700"><%= @donee.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.title.name %></div>
+	                        <div class="text-center font-bold  text-gray-700"><%= @backer_info.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
 	                    </div>
 	                
 	                    <div class="flex pt-4">
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-indigo-400"><%= @donee.donee.backer_count %></div>
+	                            <div class="text-xl text-center font-bold  text-indigo-600"><%= @donee_info.backer_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Backer</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-indigo-400"><%= @donee.donee.post_count %></div>
+	                            <div class="text-xl text-center font-bold  text-indigo-600"><%= @donee_info.post_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Posts</div>
 	                        </div>
 	                    </div>
 	                
 	                
 	                </div>
-	                <div class="pb-1 p-5 lg:hidden block">
-	                    <a href="#" class=""><button
-	                            class="rounded-lg hover:bg-indigo-500 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
+
+                    <div class="pt-6 px-2 w-full">
+                        <a href="/backerzone/timeline"> <button class="w-full py-2 px-2 focus:outline-none hover:shadow-xl hover:bg-indigo-500 text-center text-sm rounded-lg text-white bg-indigo-400">Go to Backerzone </button></a>
+                    </div>
+	
+	
+	
+	                <div class="border-b-2 my-6"></div>
+	
+	                <div class="flex lg:block justify-center items-center">
+	                    <a href="/backer-timeline.html">
+	                        <div
+	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 font-semibold rounded text-indigo-700 hover:text-indigo-700 hover:bg-indigo-200 bg-indigo-200 transition-all transition-ease transition-500">
+	                            <i class="la la-home text-2xl font-bold lg:mr-4"></i>
+	                            <div class="text-sm md:text-base lg:text-lg"> My Page</div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backer-my-donee.html">
+	                        <div
+	                            class="mb-2 lg:flex  text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:font-semibold text-lg rounded text-gray-700 hover:text-indigo-700 hover:bg-indigo-200 transition-all transition-ease transition-500">
+	                            <i class="la la-bar-chart-o text-2xl font-bold lg:mr-4"></i>
+	                            <div class="text-sm md:text-base lg:text-lg"> Statistic </div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backer-riwayat-donasi.html">
+	                        <div
+	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:font-semibold text-lg rounded text-gray-700 hover:text-indigo-700 hover:bg-indigo-200 transition-all transition-ease transition-500">
+	                            <i class="la la-group text-2xl font-bold lg:mr-4"></i>
+	                            <div class="text-sm md:text-base lg:text-lg"> My Backer</div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backer-riwayat-donasi.html">
+	                        <div
+	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:font-semibold text-lg rounded text-gray-700 hover:text-indigo-700 hover:bg-indigo-200 transition-all transition-ease transition-500">
+	                            <i class="la la-credit-card text-2xl font-bold lg:mr-4"></i>
+	                            <div class="text-sm md:text-base lg:text-lg"> Keuangan</div>
+	                        </div>
+	                    </a>
+	                
+	                    <a href="/backer-pengaturan.html">
+	                        <div
+	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-2 mx-px lg:px-6 hover:font-semibold text-lg rounded text-gray-700 hover:text-indigo-700 hover:bg-indigo-200 transition-all transition-ease transition-500">
+	                            <i class="la la-cog text-2xl font-bold lg:mr-4"></i>
+	                            <div class="text-sm md:text-base lg:text-lg"> Pengaturan</div>
+	                        </div>
+	                    </a>
 	                </div>
-	
-	                <div class="pb-10">
-	                    <div class=" text-gray-700 font-bold py-1 px-2 mt-8">Top Backer</div>
-	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= for random <- @random_backer do %>
-							<a href="/backer/<%= random.username %>">
-	                        <img src="<%= random.avatar %>"
-	                            class="hover:border-indigo-500 border-2 hover:border-2 hover:shadow-md rounded-lg w-12 h-12 m-2">
-							</a>
-							<% end %>
-	                    </div>
-	                </div>
-	
-	
 	            </div>
 	        </div>
 	
@@ -73,13 +113,63 @@
 	                    </div>
 	                </a>
 	            </div>
-	
-	
 	            <div class="border-b-2  mb-6"></div>
 	
+	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow">
+	                <div class="flex">
+	                    <div
+	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-indigo-500 transition-all border-indigo-500 flex items-center">
+	                        <i class="la la-edit text-2xl mr-2"></i>
+	                        <div>Text</div>
+	                    </div>
+	                    <div
+	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-indigo-500 transition-all flex items-center">
+	                        <i class="la la-photo text-2xl mr-2"></i>
+	                        <div>Image</div>
+	                    </div>
+	                    <div
+	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-indigo-500 transition-all flex items-center">
+	                        <i class="la la-youtube text-2xl mr-2"></i>
+	                        <div>Video</div>
+	                    </div>
+	                </div>
+	                <div class="flex py-4">
+	                    <img src="<%= @donee_info.avatar %>" class="w-12 h-12 rounded-lg" alt="">
+	                    <div class="w-full ml-4">
+	                        <input type="text" placeholder="Judul"
+	                            class="focus:outline-none rounded-lg bg-gray-100 w-full  mb-2 p-4">
+	                        <textarea name="post" id="" cols="30" rows="5"
+	                            class="focus:outline-none rounded-lg bg-gray-100 w-full  p-4"
+	                            placeholder="Konten..."></textarea>
+	                        <div class="py-2 flex">
+	                            <div class="w-40">Status Publikasi</div>
+	                            <select class="border h-8 w-40">
+	                                <option>Draft</option>
+	                                <option>Public</option>
+	                            </select>
+	                        </div>
+	                        <div class="py-2 flex">
+	                            <div class="w-40">Dapat dilihat oleh</div>
+	                            <select class="border h-8 w-40">
+	                                <option>Semua orang</option>
+	                                <option>Tier 1</option>
+	                                <option>Tier 2</option>
+	                            </select>
+	                        </div>
+	                        <div class="pt-4">
+	                            <button
+	                                class="btn-glow-orange tracking-wide shadow focus:outline-none px-16 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Post</button>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	
+	            </div>
+	
 	            <div class=" bg-white shadow p-4 mb-4">
+	
 	                <div class="flex items-center">
-	                    <img src="/assets/images/bg/avatar3.jpeg" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
+	                    <img src="<%= @donee_info.avatar %>" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
 	                    <div class="">
 	                        <div class="text-gray-600 font-semibold">Mr.Pokemon</div>
 	                        <div class="text-gray-500 text-xs">
@@ -115,21 +205,20 @@
 	                <div class="border-b mb-2"></div>
 	                <div class="flex">
 	
-	                    <img src="/assets/images/bg/avatar3.jpeg" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
+	                    <img src="<%= @donee_info.avatar %>" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
 	                    <input placeholder="Ketik komentar kamu..."
 	                        class="flex-grow border px-4 focus:outline-none bg-gray-100 rounded-lg">
 	                    <button
-	                        class="px-6 bg-purple-600 hover:bg-purple-700 transition-all ml-2 rounded-lg text-white">Kirim</button>
-	
+	                        class="px-6 transition-all ml-2 rounded-lg text-sm text-orange-500 hover:text-orange-600 tracking-wide">Kirim</button>
 	                </div>
 	            </div>
 	
 	
 	            <div class=" bg-white shadow p-4">
 	                <div class="flex items-center">
-	                    <img src="/assets/images/bg/avatar3.jpeg" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
+	                    <img src="<%= @donee_info.avatar %>" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
 	                    <div class="">
-	                        <div class="text-gray-600 font-semibold"><%= @donee.display_name %></div>
+	                        <div class="text-gray-600 font-semibold">Mr.Pokemon</div>
 	                        <div class="text-gray-500 text-xs">
 	                            21
 	                            m</div>
@@ -166,7 +255,7 @@
 	
 	                <div class="my-4">
 	                    <div class="flex items-center">
-	                        <img src="/assets/images/bg/avatar3.jpeg"
+	                        <img src="<%= @donee_info.avatar %>"
 	                            class="w-10 h-10  rounded-lg border-4 border-white mr-2">
 	                        <div
 	                            class="px-4 text-gray-600 py-1 text-sm align-middle focus:outline-none bg-gray-200 rounded-lg">
@@ -180,27 +269,22 @@
 	
 	                <div class="flex mt-4">
 	
-	                    <img src="/assets/images/bg/avatar3.jpeg" class="w-10 h-10 rounded-lg border-4 border-white mr-2">
+	                    <img src="<%= @donee_info.avatar %>" class="w-10 h-10 rounded-lg border-4 border-white mr-2">
 	                    <input placeholder="Ketik komentar kamu..."
 	                        class="flex-grow border text-sm px-4 focus:outline-none bg-gray-200 rounded-lg">
 	                    <button
-	                        class="px-6 hover:bg-purple-700 transition-all ml-2 rounded-lg text-gray-500 hover:text-white">Kirim</button>
-	
+	                        class="px-6 transition-all ml-2 rounded-lg text-sm text-orange-500 hover:text-orange-600 tracking-wide">Kirim</button>
 	                </div>
+
 	            </div>
 	
 	            <div class="py-8 text-center">
-	                <button class="text-purple-500 px-4 py-2 border rounded border-purple-500">Load more</button>
+	                <button
+	                    class="focus:outline-none tracking-wide px-8 py-2 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Load
+	                    More</button>
 	            </div>
 	        </div>
-	        <div class="lg:w-1/4 px-4 pb-20">
-	
-	            <div class="pb-1 hidden lg:block">
-	                <a href="/donee/<%= @donee.username %>/donate" class=""><button
-	                        class="rounded-lg hover:bg-indigo-500 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
-	            </div>
-	
-	            <div class="border-b my-4"></div>
+	        <div class="lg:w-1/4 px-4">
 	
 	            <div class="pb-20">
 	            
@@ -255,22 +339,7 @@
 	            </div>
 	        </div>
 	    </div>
+	
 	</div>
-	
-	
-	
-<div class="bottom-0 fixed w-full">
-	    <!-- footer -->
-	    <footer class="font-sans bg-white shadow-lg border-gray-300 border-t-2 text-gray-700 py-2 px-4">
-	      <div class="mx-auto container overflow-hidden flex justify-between items-center">
-	        <p class="inline-block py-2 px-3 "> ©2019 VirKill. All rights reserved.</p>
-	        <ul class=" flex items-center">
-	          <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Product</a></li>
-	          <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Company</a></li>
-	          <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">FAQs</a></li>
-	          <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">About Us</a></li>
-	        </ul>
-	      </div>
-	    </footer>
-	    <!-- /footer -->
-</div>
+
+        <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

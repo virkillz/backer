@@ -104,9 +104,9 @@ defmodule BackerWeb.Router do
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)
 
-    get("/backerzone/donee", BackerController, :placeholder)
-    get("/backerzone/payment-history", BackerController, :placeholder)
-    get("/backerzone/profile-setting", BackerController, :placeholder)
+    get("/backerzone/my-donee-list", BackerController, :my_donee_list)
+    get("/backerzone/payment-history", BackerController, :payment_history)
+    get("/backerzone/profile-setting", BackerController, :profile_setting)
 
     get("/home/invoice/:id", BackerController, :invoice_display)
     get("/home/overview", BackerController, :overview)
@@ -128,6 +128,8 @@ defmodule BackerWeb.Router do
   # This route area is for signed in donee
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
+
+    get("/doneezone/timeline", DoneeController, :timeline)
 
     get("/doneezone/dashboard", DoneeController, :dashboard)
     get("/doneezone/post", DoneeController, :dashboard_post)
@@ -180,6 +182,8 @@ defmodule BackerWeb.Router do
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)
     get("/signout", PublicController, :signout)
+
+    get("/backer/:username", BackerController, :public_profile)
 
     get("/donee/:username", DoneeController, :overview)
     get("/donee/:username/posts", DoneeController, :posts)

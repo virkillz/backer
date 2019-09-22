@@ -15,6 +15,123 @@ defmodule BackerWeb.DoneeController do
     render(conn, "index.html", donees: donees)
   end
 
+  def timeline(conn, params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+
+    conn
+    |> render("doneezone_timeline.html",
+      backer_info: backer_info,
+      donee_info: donee_info,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
+  def statistic(conn, %{"username" => username}) do
+    donee = Account.get_donee(%{"username" => username})
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if donee.donee == nil do
+          redirect(conn, to: "/404")
+        else
+          conn
+          |> render("public_donee_donate.html",
+            donee: donee,
+            active: :overview,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
+  def my_backer(conn, %{"username" => username}) do
+    donee = Account.get_donee(%{"username" => username})
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if donee.donee == nil do
+          redirect(conn, to: "/404")
+        else
+          conn
+          |> render("public_donee_donate.html",
+            donee: donee,
+            active: :overview,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
+  def finance(conn, %{"username" => username}) do
+    donee = Account.get_donee(%{"username" => username})
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if donee.donee == nil do
+          redirect(conn, to: "/404")
+        else
+          conn
+          |> render("public_donee_donate.html",
+            donee: donee,
+            active: :overview,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
+  def setting(conn, %{"username" => username}) do
+    donee = Account.get_donee(%{"username" => username})
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if donee.donee == nil do
+          redirect(conn, to: "/404")
+        else
+          conn
+          |> render("public_donee_donate.html",
+            donee: donee,
+            active: :overview,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
+  def timeline(conn, %{"username" => username}) do
+    donee = Account.get_donee(%{"username" => username})
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if donee.donee == nil do
+          redirect(conn, to: "/404")
+        else
+          conn
+          |> render("public_donee_donate.html",
+            donee: donee,
+            active: :overview,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
   def donate(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
 
@@ -37,13 +154,14 @@ defmodule BackerWeb.DoneeController do
   end
 
   def overview(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
+    donee = Account.get_donee(%{"username" => username})
 
     case donee do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
+        random_backer = Account.get_random_backer(4) |> IO.inspect()
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
         backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
@@ -55,6 +173,7 @@ defmodule BackerWeb.DoneeController do
             donee: donee,
             backing: backing,
             backers: backers,
+            random_backer: random_backer,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end

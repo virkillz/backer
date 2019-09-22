@@ -37,7 +37,7 @@ defmodule BackerWeb.BackerController do
     )
   end
 
-  def public_overview(conn, %{"username" => username}) do
+  def public_overviewx(conn, %{"username" => username}) do
     backer = Account.get_backer(%{"username" => username})
     donees = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
     recomendation = Account.random_donee(3)
@@ -138,6 +138,7 @@ defmodule BackerWeb.BackerController do
       _ ->
         conn
         |> render("backerzone_timeline.html",
+          backer: backer,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -158,6 +159,54 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def my_donee_list(conn, params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        conn
+        |> render("backerzone_my_donee_list.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def profile_setting(conn, params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        conn
+        |> render("backerzone_profile_setting.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def payment_history(conn, params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        conn
+        |> render("backerzone_payment_history.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
   def badges(conn, %{"username" => username}) do
     backer = conn.assigns.current_backer
 
@@ -171,6 +220,22 @@ defmodule BackerWeb.BackerController do
           backer: backer,
           owner: true,
           layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        )
+    end
+  end
+
+  def public_profile(conn, %{"username" => username}) do
+    backer = Account.get_backer(%{"username" => username}) |> IO.inspect()
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        conn
+        |> render("public_backer_profile.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
   end
