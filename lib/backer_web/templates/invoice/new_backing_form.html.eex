@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= label f, :donee_id, class: "control-label" %>
-    <%= select f, :donee_id, Enum.map(@donees, &{&1.id, &1.id}), class: "form-control" %>
+    <%= select f, :donee_id, Enum.map(@donees, &{&1.backer.email, &1.id}), class: "form-control" %>
     <%= error_tag f, :donee_id %>
   </div>    
 
