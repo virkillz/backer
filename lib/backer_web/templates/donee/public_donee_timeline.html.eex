@@ -9,21 +9,21 @@
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
 	                <div class="pt-10 bg-white rounded shadow py-6 px-4">
-	                    <img src="/assets/images/bg/avatar.jpeg" class="rounded-lg mx-auto w-20 h-20">
+	                    <img src="<%= @donee.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700">Belajar Bersama Bimo</div>
-	                        <div class="text-center text-sm text-gray-600">Kelompok belajar anak jalanan</div>
+	                        <div class="text-center font-bold  text-gray-700"><%= @donee.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.title.name %></div>
 	                    </div>
 	                
 	                    <div class="flex pt-4">
 	                        <div class="w-1/2">
-	                            <div class="text-xl text-center font-bold  text-indigo-600">21</div>
+	                            <div class="text-2xl text-center font-semibold  text-indigo-400"><%= @donee.donee.backer_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Backer</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">
-	                            <div class="text-xl text-center font-bold  text-indigo-600">321</div>
+	                            <div class="text-2xl text-center font-semibold  text-indigo-400"><%= @donee.donee.post_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Posts</div>
 	                        </div>
 	                    </div>
@@ -131,7 +131,7 @@
 	                <div class="flex items-center">
 	                    <img src="/assets/images/bg/avatar3.jpeg" class="w-12 h-12 rounded-lg border-4 border-white mr-2">
 	                    <div class="">
-	                        <div class="text-gray-600 font-semibold">Mr.Pokemon</div>
+	                        <div class="text-gray-600 font-semibold"><%= @donee.display_name %></div>
 	                        <div class="text-gray-500 text-xs">
 	                            21
 	                            m</div>
@@ -198,7 +198,7 @@
 	        <div class="lg:w-1/4 px-4 pb-20">
 	
 	            <div class="pb-1 hidden lg:block">
-	                <a href="#" class=""><button
+	                <a href="/donee/<%= @donee.username %>/donate" class=""><button
 	                        class="rounded-lg hover:bg-indigo-500 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 	            </div>
 	
