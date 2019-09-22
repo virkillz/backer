@@ -15,6 +15,8 @@ defmodule Backer.Account.Donee do
     field(:featured_post, :id)
     field(:address_public, :string)
     field(:video_profile, :string)
+    field(:backer_count, :integer, default: 0)
+    field(:post_count, :integer, default: 0)
 
     belongs_to(:backer, {"backers", Backer.Account.Backer})
     belongs_to(:category, {"categories", Backer.Masterdata.Category})
