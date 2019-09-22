@@ -4,7 +4,7 @@ defmodule Backer.Masterdata.Title do
 
   schema "titles" do
     field(:description, :string)
-    field(:is_active, :boolean, default: false)
+    field(:is_active, :boolean, default: true)
     field(:name, :string)
     field(:default_background, :string)
 
