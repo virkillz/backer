@@ -1,6 +1,7 @@
 alias Backer.Repo
 alias Backer.Account.User
 alias Backer.Gamification.Badge
+alias Backer.Masterdata.Category
 
 Repo.insert!(%User{
   fullname: "Joe Admin",
@@ -20,4 +21,14 @@ Repo.insert!(%Badge{
 
 Repo.insert!(%Badge{
   title: "Ultra Backer"
+})
+
+Repo.insert!(%Category{
+  name: "Social",
+  is_active: true
+})
+
+Repo.insert!(%Title{
+  name: "Non Profit Organization",
+  is_active: true
 })
