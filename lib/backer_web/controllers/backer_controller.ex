@@ -136,9 +136,12 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
+        random_donee = Account.get_random_donee(3)
+
         conn
         |> render("backerzone_timeline.html",
           backer: backer,
+          random_donee: random_donee,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end

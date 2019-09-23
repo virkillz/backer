@@ -133,7 +133,7 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
-  def overview(conn, %{"username" => username}) do
+  def about(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
 
     case donee do
@@ -141,7 +141,8 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_backer = Account.get_random_backer(4) |> IO.inspect()
+        random_backer = Account.get_random_backer(4)
+        random_donee = Account.get_random_donee(4)
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
         backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
@@ -149,11 +150,12 @@ defmodule BackerWeb.DoneeController do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
-          |> render("public_donee_timeline.html",
+          |> render("public_donee_about.html",
             donee: donee,
             backing: backing,
             backers: backers,
             random_backer: random_backer,
+            random_donee: random_donee,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
@@ -168,6 +170,8 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
+        random_backer = Account.get_random_backer(4)
+        random_donee = Account.get_random_donee(4)
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
         backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
@@ -177,13 +181,11 @@ defmodule BackerWeb.DoneeController do
           redirect(conn, to: "/404")
         else
           conn
-          |> render("front_posts.html",
+          |> render("public_donee_posts.html",
             donee: donee,
-            active: :posts,
-            backing: backing,
-            backers: backers,
-            posts: posts,
-            layout: {BackerWeb.LayoutView, "layout_front_donee_public.html"}
+            random_backer: random_backer,
+            random_donee: random_donee,
+            layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
     end
@@ -474,22 +476,25 @@ defmodule BackerWeb.DoneeController do
 
   def backers(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
-    backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+    # backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
     case donee do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
+        random_backer = Account.get_random_backer(4)
+        random_donee = Account.get_random_donee(4)
+
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
-          |> render("front_backers.html",
+          |> render("public_donee_backers.html",
             donee: donee,
-            active: :backers,
-            backers: backers,
-            layout: {BackerWeb.LayoutView, "layout_front_donee_public.html"}
+            random_backer: random_backer,
+            random_donee: random_donee,
+            layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
     end

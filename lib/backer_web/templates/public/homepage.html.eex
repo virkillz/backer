@@ -70,7 +70,7 @@
 					<div class="px-4 pt-4 pb-6">
 						<div class="text-lg  pl-20 -mt-8 font-semibold">Komunitas Tuna Rungu Jakarta</div>
 						<div class="text-sm  pl-20 text-gray-600">@jakartamuteclub</div>
-						<div class="py-4 text-gray-600 text-justify text-sm">Memfasilitasi kegiatan dan silaturahmi
+						<div class="py-4 text-gray-600 font-light tracking-wide text-justify text-sm">Memfasilitasi kegiatan dan silaturahmi
 							sesama penyandang tuna rungu di wilayah Jakarta dan Sekitarnya.</div>
 						<div class="flex justify-between pt-4">
 							<div class="px-4">
@@ -90,7 +90,7 @@
 
 							<div class="px-4 hidden">
 								<div class="font-semibold ">Backing mulai dari</div>
-								<div class="font-semibold  text-indigo-600">Rp.10,000,-<span
+								<div class="font-semibold  text-purple-600">Rp.10,000,-<span
 										class="text-gray-500 font-normal text-xs">/ bulan</span></span></div>
 							</div>
 						</div>

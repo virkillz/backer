@@ -84,17 +84,17 @@
 	        <div class="rounded border shadow" style="min-width: 18em;">
 	            <div class=" font-bold px-4 text-center py-4">Informasi Lebih Lanjut</div>
 	            <ul class="bg-gray-300">
-	                <li class="py-4 px-12 border-l-4 my-px border-indigo-500 bg-gray-100"><a href="#">Syarat & Ketentuan</a>
+	                <li class="py-4 px-12 border-l-4 my-px border-purple-500 bg-gray-100"><a href="#">Syarat & Ketentuan</a>
 	                </li>
 	                <li
-	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-purple-500 hover:bg-gray-100 cursor-pointer">
 	                    <a href="#">Kebijakan
 	                        Privasi</a></li>
 	                <li
-	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-purple-500 hover:bg-gray-100 cursor-pointer">
 	                    <a href="#">Ketentuan Donee</a></li>
 	                <li
-	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-indigo-500 hover:bg-gray-100 cursor-pointer">
+	                    class="py-4 px-12 bg-white my-px border-l-4 border-transparent hover:border-purple-500 hover:bg-gray-100 cursor-pointer">
 	                    <a href="#">Ketentuan Backer</a></li>
 	            </ul>
 	        </div>

@@ -144,7 +144,7 @@
 	            </div>
 	            <div class="border-b my-4"></div>
 	
-				<%= render "component_backerzone_recommended_donee.html", conn: @conn %>
+				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: [] %>
 
 	        </div>
 	    </div>
