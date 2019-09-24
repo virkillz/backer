@@ -1,0 +1,136 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
+		class="mt-16 hidden lg:block object-cover h-64 w-full">
+		
+		<div class="bg-gray-200">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+	                <div class="pt-20 lg:hidden"></div>
+	                
+	                <div class="flex items-center lg:hidden">
+	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+	                </div>
+	                
+	                <div class="pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
+	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                
+	                    <div class="py-4 text-gray-800">
+	                        <div class="text-center font-bold  text-gray-700"><%= @donee_info.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
+	                    </div>
+	                
+	                    <div class="flex pt-4">
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.backer_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Backer</div>
+	                        </div>
+	                
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.post_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Posts</div>
+	                        </div>
+	                    </div>
+	                
+	                
+	                </div>
+
+                    <div class="pt-6 w-full">
+                        <a href="/backerzone/timeline"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
+                    </div>
+	
+	
+	
+	                <div class="border-b-2 my-6"></div>
+	
+                    <%= render "component_doneezone_side_menu.html", conn: @conn %>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+
+                <%= render "component_doneezone_top_menu.html", conn: @conn %>
+
+
+	            <div class="border-b-2  mb-6"></div>
+	
+                <a href="/backer-8">
+                    <div class="mb-4 flex items-center cursor-pointer">
+                        <img src="/assets/images/bg/avatar-default8.jpg" class="z-10 rounded-lg shadow w-16 h-16" alt="">
+                        <div class="flex p-4 bg-white -ml-8 z-0 flex-grow hover:text-blue-500  hover:shadow-lg shadow rounded-lg relative">
+                            <div class="bg-black px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
+                                Heavy Backer</div>
+                            <div class="pl-8">
+                                <div class="text-md  font-semibold">Sandra Bullock</div>
+                                <div class="text-xs  text-gray-600">@backer-8</div>
+                                <div class="text-xs py-3 text-gray-600">Backing Since : <span class="text-purple-600">October 2019</span></div>
+                                <div>
+                                <div class="flex hidden">
+
+                                    <div class="mr-4 p-2 bg-purple-200 rounded-lg">
+                                        <div>Backing Point</div>
+                                        <div>12452</div> 
+                                    </div>
+                                    <div class="mr-4 p-2 bg-purple-200 rounded-lg">
+                                        <div>Backing since</div>
+                                        <div>October 2018</div> 
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/donee-6">
+                <div class="mb-4 flex items-center cursor-pointer">
+					<img src="/assets/images/bg/avatar-default6.jpg" class="z-10 rounded-lg w-16 shadow h-16" alt="">
+					<div class="flex p-4 bg-white -ml-8 z-0 flex-grow hover:text-blue-500  shadow hover:shadow-lg rounded-lg relative">
+						<div class="bg-black px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
+						    Heavy Backer</div>
+						<div class="pl-8">
+							<div class="text-md  font-semibold">Komunitas Tuli</div>
+							<div class="text-xs  text-gray-600">@donee-6</div>
+                            <div class="text-xs py-3 text-gray-600">Backing Since : <span class="text-purple-600">October 2019</span></div>
+                            <div>
+                            <div class="flex hidden">
+
+                                <div class="mr-4 p-2 bg-purple-200 rounded-lg">
+                                    <div>Backing Point</div>
+                                    <div>12452</div> 
+                                </div>
+                                <div class="mr-4 p-2 bg-purple-200 rounded-lg">
+                                    <div>Backing since</div>
+                                    <div>October 2018</div> 
+                                </div>
+
+                            </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+                </a>
+
+
+	        </div>
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="pb-20">
+
+					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
+	            
+	            
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

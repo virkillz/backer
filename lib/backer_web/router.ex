@@ -129,7 +129,12 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
-    get("/doneezone/timeline", DoneeController, :timeline)
+    get("/doneezone/posts", DoneeController, :doneezone_posts)
+    get("/doneezone/about", DoneeController, :doneezone_about)
+    get("/doneezone/backers", DoneeController, :doneezone_backers)
+    get("/doneezone/finance", DoneeController, :doneezone_finance)
+    get("/doneezone/setting", DoneeController, :doneezone_setting)
+    get("/doneezone/statistic", DoneeController, :doneezone_statistic)
 
     get("/doneezone/dashboard", DoneeController, :dashboard)
     get("/doneezone/post", DoneeController, :dashboard_post)
@@ -143,7 +148,6 @@ defmodule BackerWeb.Router do
     post("/doneezone/post/create", DoneeController, :dashboard_post_create)
     delete("/doneezone/post/delete/:id", DoneeController, :dashboard_post_delete)
 
-    get("/doneezone/backers", DoneeController, :dashboard_backers)
     get("/doneezone/backers/active", DoneeController, :dashboard_backers_active)
     get("/doneezone/backers/inactive", DoneeController, :dashboard_backers_inactive)
 

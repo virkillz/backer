@@ -14,6 +14,14 @@
 - [x] About Donee
 - [x] Backer Tab
 
+### Make Doneezone placeholder works
+- [x] Create placeholder for about
+- [x] Create placeholder for post
+- [x] Create placeholder for backers
+- [x] Create placeholder for finance
+- [x] Create placeholder for statistic
+- [x] Create placeholder for settings
+
 
 ##### Small Todo Archieve
 

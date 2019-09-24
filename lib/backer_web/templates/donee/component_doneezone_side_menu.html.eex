@@ -1,0 +1,34 @@
+
+<div class="flex lg:block justify-center items-center">
+    <a href="/doneezone/posts">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/posts") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 rounded hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
+            <i class="la la-home text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg"> My Page</div>
+        </div>
+    </a>
+
+    <a href="/doneezone/statistic">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/statistic") %> mb-2 lg:flex  text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
+            <i class="la la-bar-chart-o text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg"> Statistic </div>
+        </div>
+    </a>
+
+    <a href="/doneezone/finance">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/finance") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
+            <i class="la la-credit-card text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg"> Keuangan</div>
+        </div>
+    </a>
+
+    <a href="/doneezone/setting">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/setting") %> mb-2 lg:flex text-center cursor-pointer py-2 px-2 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
+            <i class="la la-cog text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg"> Pengaturan</div>
+        </div>
+    </a>
+</div>

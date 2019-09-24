@@ -47,72 +47,16 @@
 	
 	                <div class="border-b-2 my-6"></div>
 	
-	                <div class="flex lg:block justify-center items-center">
-	                    <a href="/backer-timeline.html">
-	                        <div
-	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 font-semibold rounded text-purple-700 hover:text-purple-700 hover:bg-purple-200 bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-home text-2xl font-bold lg:mr-4"></i>
-	                            <div class="text-sm md:text-base lg:text-lg"> My Page</div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-my-donee.html">
-	                        <div
-	                            class="mb-2 lg:flex  text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-bar-chart-o text-2xl lg:mr-4"></i>
-	                            <div class="text-sm md:text-base lg:text-lg"> Statistic </div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-riwayat-donasi.html">
-	                        <div
-	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-group text-2xl lg:mr-4"></i>
-	                            <div class="text-sm md:text-base lg:text-lg"> My Backer</div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-riwayat-donasi.html">
-	                        <div
-	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-credit-card text-2xl lg:mr-4"></i>
-	                            <div class="text-sm md:text-base lg:text-lg"> Keuangan</div>
-	                        </div>
-	                    </a>
-	                
-	                    <a href="/backer-pengaturan.html">
-	                        <div
-	                            class="mb-2 lg:flex text-center cursor-pointer py-2 px-2 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
-	                            <i class="la la-cog text-2xl lg:mr-4"></i>
-	                            <div class="text-sm md:text-base lg:text-lg"> Pengaturan</div>
-	                        </div>
-	                    </a>
-	                </div>
+                    <%= render "component_doneezone_side_menu.html", conn: @conn %>
+
 	            </div>
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
-	
-	            <div class="pt-4 flex">
-	                <a href="#">
-	                    <div
-	                        class="text-purple-500 px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-500 cursor-pointer border-b-4 hover:border-purple-500 border-purple-500 pb-4">
-	                        Post
-	                    </div>
-	                </a>
-	                <a href="#">
-	                    <div
-	                        class="text-gray-700 px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-500 border-b-4 hover:border-purple-500 border-transparent    cursor-pointer pb-4 ">
-	                        About
-	                    </div>
-	                </a>
-	                <a href="#">
-	                    <div
-	                        class="text-gray-700 px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-500 border-b-4 hover:border-purple-500 border-transparent cursor-pointer pb-4 ">
-	                        Backer
-	                    </div>
-	                </a>
-	            </div>
+
+                <%= render "component_doneezone_top_menu.html", conn: @conn %>
+
+
 	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow">

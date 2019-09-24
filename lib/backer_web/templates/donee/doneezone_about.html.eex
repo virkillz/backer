@@ -1,0 +1,110 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
+		class="mt-16 hidden lg:block object-cover h-64 w-full">
+		
+		<div class="bg-gray-200">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+	                <div class="pt-20 lg:hidden"></div>
+	                
+	                <div class="flex items-center lg:hidden">
+	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+	                </div>
+	                
+	                <div class="pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
+	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                
+	                    <div class="py-4 text-gray-800">
+	                        <div class="text-center font-bold  text-gray-700"><%= @donee_info.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
+	                    </div>
+	                
+	                    <div class="flex pt-4">
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.backer_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Backer</div>
+	                        </div>
+	                
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.post_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Posts</div>
+	                        </div>
+	                    </div>
+	                
+	                
+	                </div>
+
+                    <div class="pt-6 w-full">
+                        <a href="/backerzone/timeline"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
+                    </div>
+	
+	
+	
+	                <div class="border-b-2 my-6"></div>
+	
+                    <%= render "component_doneezone_side_menu.html", conn: @conn %>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+
+                <%= render "component_doneezone_top_menu.html", conn: @conn %>
+
+
+	            <div class="border-b-2  mb-6"></div>
+	
+	            <div class=" bg-white shadow pb-8 mb-4">
+					<iframe width="100%" height="350" src="https://www.youtube.com/embed/lAeAO51aVKA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					
+                    <div class="py-1 text-right text-sm underline cursor-pointer">
+                    <i class="la la-edit"></i>
+                    Edit youtube link
+                    </div>
+
+                    <div class="p-4">
+                        <div class="p-4 hover:border-blue-500 border border-transparent rounded-lg  hover:bg-gray-100 cursor-text">
+                            <div class="py-4 text-xl text-center font-bold "><%= @donee_info.display_name %></div>
+                            <div class="text-justify leading-loose">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien nec ipsum maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor. Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor tristique. Cras ultricies purus id sollicitudin rutrum.
+                            </div>
+
+                            <div class="py-4 text-lg font-bold ">Alamat</div>
+
+                            <div class="text-justify leading-loose px-8">
+                            Jl. Pelan pelan banyak anak anak 17, Jakarta Utara
+                            </div>
+
+                            <div class="py-4 text-lg font-bold ">Visi</div>
+
+                            <div class="text-justify leading-loose px-8">
+                            Mensejahterakan bangsa
+                            </div>					
+                        </div>	
+                    </div>				
+
+	            </div>
+
+
+
+	        </div>
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="pb-20">
+
+					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
+	            
+	            
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

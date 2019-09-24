@@ -1,66 +1,24 @@
 # Backer
 
-## EPIC
+Backer is a subscribtion based donation platform. It geared toward community and social activity.
 
-### Make Doneezone placeholder works
-- [ ] Create placeholder for about
-- [ ] Create placeholder for post
-- [ ] Create placeholder for backers
-- [ ] Create placeholder for finance
-- [ ] Create placeholder for statistic
-- [ ] Create placeholder for settings
-
-### Make backing flow works
-- [ ] Simplify payment form
-- [X] Make the form works
-- [ ] Create Invoice detail page
-- [ ] Make the Invoice detail page works
-- [ ] Make invoice list works
-- [x] Redirect if not logged in
-- [x] Capture intention to redirect to previous page after login
-- [x] Make create invoice works
-- [x] Ensure changing status from backend reflected on front end.
+For more background information click [here](background.md)
 
 
-### Make My Donee list and donee counter works
+## Feature
 
-Note: Depends on previous epic
-- [ ] Test end to end donate cycle.
-- [ ] Ensure backing month update backer count.
-- [ ] Update my donee list to make it dynamic
+### Donee cataloque
 
-### Make backer profile page
-- [ ] Create endpoint
-- [ ] Hook to dynamic data
+Public can browse a lot of donee grouped by its category. Each of them will have it's own profile page explaining their activity, list of their top backer, and list of post.
 
+### Subscribtion mechanism
 
-### Make top backer below donee profile works
-- [ ] Make donee profie dynamic
+Backer can subscribe into Donee by paying monthly donation. Active backers status are tracked. Donee can give some benefit for backer according to it's level.
 
+### Post timeline
 
-## SMALL TODO
-- [ ] Default donee/username must be dynamic. by default goes to post if post is not empty. 
-- [ ] Change favicon backer admin
-- [x] Remove category from private donee sidebar
-- [ ] Display backer page
-- [x] Make login working
-- [x] Make register working
-- [ ] Display dynamic donee at "/"
-- [ ] Register backer better have automatic username such as backer1
-- [ ] user cannot create backer[number] below his user id
-- [ ] Fix 'please verify page'
-- [ ] Register email which already registered but not yet verified must be valid.
+Donee can create post for public or set to be visible only by minimum level of backer. 
 
-
-## PHASE 1 Feature
-- [ ] Backer can register
-- [ ] Donee can register separately
-- [ ] Donee can post
-- [ ] Backer can donate
-- [ ] Admin can change donation status
-- [ ] Backer can see the donation status
-- [ ] Backer can browse the post and comment
-- [ ] Visisting nonexistent "/donee/nonexistuser" shows error, need to check other variant as well.
 
 
 

@@ -1,0 +1,173 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
+		class="mt-16 hidden lg:block object-cover h-64 w-full">
+		
+		<div class="bg-gray-200">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+	                <div class="pt-20 lg:hidden"></div>
+	                
+	                <div class="flex items-center lg:hidden">
+	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+	                </div>
+	                
+	                <div class="pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
+	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                
+	                    <div class="py-4 text-gray-800">
+	                        <div class="text-center font-bold  text-gray-700"><%= @donee_info.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
+	                    </div>
+	                
+	                    <div class="flex pt-4">
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.backer_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Backer</div>
+	                        </div>
+	                
+	                        <div class="w-1/2">
+	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.post_count %></div>
+	                            <div class="text-center text-gray-600 text-sm">Posts</div>
+	                        </div>
+	                    </div>
+	                
+	                
+	                </div>
+
+                    <div class="pt-6 w-full">
+                        <a href="/backerzone/timeline"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
+                    </div>
+	
+	
+	
+	                <div class="border-b-2 my-6"></div>
+	
+                    <%= render "component_doneezone_side_menu.html", conn: @conn %>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+
+
+	
+	            <div class=" font-bold text-xl text-gray-700">Keuangan</div>
+	
+	            <div class="border-b-2  mb-6"></div>
+	
+	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow rounded">
+	
+	                <table class="table-fixedx w-full">
+	                    <thead class="text-sm">
+	                        <tr>
+	                            <th>Tanggal</th>
+	                            <th class="w-32">Backer</th>
+	                            <th>Nominal</th>
+	                            <th>Bulan</th>
+	                            <th>Total</th>
+	                            <th>Settlement</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody class="text-xs">
+	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
+	                            <td class="p-1">12 Sep 2019</td>
+	                            <td class="p-1 text-center w-32">
+	                                <div class="flex">
+	                                    <div class="">
+	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
+	                                    </div>
+	                                    <div class="">
+	                                        <div class="font-bold">Nama Backer</div>
+	                                        <div class="">@username</div>
+	                                    </div>
+	                                </div>
+	                            </td>
+	                            <td class="p-1 text-right">Rp. 10,000,- </td>
+	                            <td class="p-1 text-right">3 bulan</td>
+	                            <td class="p-1 text-right">Rp. 30,000,-</td>
+	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
+	                        </tr>
+	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
+	                            <td class="p-1">12 Sep 2019</td>
+	                            <td class="p-1 text-center w-32">
+	                                <div class="flex">
+	                                    <div class="">
+	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
+	                                    </div>
+	                                    <div class="">
+	                                        <div class="font-bold">Nama Backer</div>
+	                                        <div class="">@username</div>
+	                                    </div>
+	                                </div>
+	                            </td>
+	                            <td class="p-1 text-right">Rp. 10,000,- </td>
+	                            <td class="p-1 text-right">3 bulan</td>
+	                            <td class="p-1 text-right">Rp. 30,000,-</td>
+	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
+	                        </tr>
+	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
+	                            <td class="p-1">12 Sep 2019</td>
+	                            <td class="p-1 text-center w-32">
+	                                <div class="flex">
+	                                    <div class="">
+	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
+	                                    </div>
+	                                    <div class="">
+	                                        <div class="font-bold">Nama Backer</div>
+	                                        <div class="">@username</div>
+	                                    </div>
+	                                </div>
+	                            </td>
+	                            <td class="p-1 text-right">Rp. 10,000,- </td>
+	                            <td class="p-1 text-right">3 bulan</td>
+	                            <td class="p-1 text-right">Rp. 30,000,-</td>
+	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
+	                        </tr>
+	                        <tr class="hover:bg-gray-200 py-4 border-t-8 border-b-8 border-transparent">
+	                            <td class="p-1">12 Sep 2019</td>
+	                            <td class="p-1 text-center w-32">
+	                                <div class="flex">
+	                                    <div class="">
+	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
+	                                    </div>
+	                                    <div class="">
+	                                        <div class="font-bold">Nama Backer</div>
+	                                        <div class="">@username</div>
+	                                    </div>
+	                                </div>
+	                            </td>
+	                            <td class="p-1 text-right">Rp. 10,000,- </td>
+	                            <td class="p-1 text-right">3 bulan</td>
+	                            <td class="p-1 text-right">Rp. 30,000,-</td>
+	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	
+	            </div>
+	
+	
+
+
+
+	        </div>
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="pb-20">
+
+					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
+	            
+	            
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

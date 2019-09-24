@@ -394,6 +394,7 @@ defmodule Backer.Account do
       %{
         backer_id: donee.backer.id,
         donee_id: donee.id,
+        username: donee.backer.username,
         display_name: donee.backer.display_name,
         avatar: donee.backer.avatar,
         title: donee.title.name,

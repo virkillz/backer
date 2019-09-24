@@ -105,7 +105,7 @@ defmodule BackerWeb.BackerController do
     backer = conn.assigns.current_backer
 
     if conn.assigns.current_backer.is_donee do
-      redirect(conn, to: "/doneezone/timeline")
+      redirect(conn, to: "/doneezone/posts")
     else
       redirect(conn, to: "/backerzone/timeline")
     end

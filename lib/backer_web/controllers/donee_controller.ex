@@ -16,13 +16,55 @@ defmodule BackerWeb.DoneeController do
     render(conn, "index.html", donees: donees)
   end
 
-  def timeline(conn, params) do
+  def doneezone_posts(conn, params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
 
     conn
     |> render("doneezone_timeline.html",
+      backer_info: backer_info,
+      donee_info: donee_info,
+      recommended_donees: random_donee,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
+  def doneezone_finance(conn, params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
+
+    conn
+    |> render("doneezone_finance.html",
+      backer_info: backer_info,
+      donee_info: donee_info,
+      recommended_donees: random_donee,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
+  def doneezone_statistic(conn, params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
+
+    conn
+    |> render("doneezone_statistic.html",
+      backer_info: backer_info,
+      donee_info: donee_info,
+      recommended_donees: random_donee,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
+  def doneezone_setting(conn, params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
+
+    conn
+    |> render("doneezone_setting.html",
       backer_info: backer_info,
       donee_info: donee_info,
       recommended_donees: random_donee,
@@ -133,6 +175,48 @@ defmodule BackerWeb.DoneeController do
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
+    end
+  end
+
+  def doneezone_about(conn, _params) do
+    donee = conn.assigns.current_donee |> IO.inspect()
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_backer = Account.get_random_backer(4)
+        random_donee = Account.get_random_donee(4)
+
+        conn
+        |> render("doneezone_about.html",
+          donee_info: donee,
+          random_backer: random_backer,
+          recommended_donees: random_donee,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def doneezone_backers(conn, _params) do
+    donee = conn.assigns.current_donee |> IO.inspect()
+
+    case donee do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_backer = Account.get_random_backer(4)
+        random_donee = Account.get_random_donee(4)
+
+        conn
+        |> render("doneezone_backers.html",
+          donee_info: donee,
+          random_backer: random_backer,
+          recommended_donees: random_donee,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
     end
   end
 
