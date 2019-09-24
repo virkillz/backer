@@ -6,6 +6,17 @@
     <img src="<%= @donee.avatar %>"
         class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 border-white shadow-lg">
 
+    <div class="py-4 max-w-3xl mx-auto px-2">
+
+        <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> bg-blue-400 text-white text-sm rounded">
+            <%= get_flash(@conn, :info) %>
+        </div> 
+
+        <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> bg-red-400 text-white text-sm rounded">
+            <%= get_flash(@conn, :error) %>
+        </div>
+
+    </div>
 
     <div class="container mx-auto pb-20">
         <div class="font-bold text-center text-3xl py-8  text-gray-700">Back me up!</div>
@@ -68,6 +79,8 @@
             </div>
         </div>
 
+        <%= form_for @changeset, "/donee/#{@donee.username}/donate", [], fn f -> %>
+
         <div class="py-4 max-w-xl mx-auto px-2">
             <div class="font-bold text-center  py-2 text-2xl">Fill Amount</div>
 
@@ -77,13 +90,13 @@
                         <div class="w-32"><label class="font-bold text-gray-700">Amount</label></div>
 
                         <input type="number" class="border-b-2 focus:outline-none p-1 w-32 font-bold text-lg"
-                            step="1000" value="10000" name="amount">
+                            step="1000" value="10000" name="invoice[amount]">
                         <span class="ml-4 text-gray-600 text-sm">Rupiah</span>
                     </div>
                     <div class="flex items-baseline py-2">
                         <div class="w-32"><label class="font-bold text-gray-700">Month</label></div>
 
-                        <select class="w-32 bg-white border-b-2 focus:outline-none h-8 text-lg font-bold">
+                        <select name="invoice[month]" class="w-32 bg-white border-b-2 focus:outline-none h-8 text-lg font-bold">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -170,11 +183,13 @@
         <div class="w-full mt-8">
             <div class="mx-auto text-center max-w-xl">
                 <div class="px-2">
-                    <button
+                    <button type="submit"
                         class="btn-glow-orange w-full tracking-wide focus:outline-none px-10 py-4 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Submit</button>
                 </div>
             </div>
         </div>
+
+        <% end %>
         </div>
 
                 <div class="pt-6 text-center w-full">

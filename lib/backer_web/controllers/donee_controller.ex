@@ -7,6 +7,7 @@ defmodule BackerWeb.DoneeController do
   alias Backer.Content
   alias Backer.Content.Post
   alias Backer.Finance
+  alias Backer.Finance.Invoice
 
   alias Backer.Masterdata
 
@@ -115,6 +116,7 @@ defmodule BackerWeb.DoneeController do
 
   def donate(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
+    changeset = Finance.change_invoice(%Invoice{})
 
     case donee do
       nil ->
@@ -127,6 +129,7 @@ defmodule BackerWeb.DoneeController do
           conn
           |> render("public_donee_donate.html",
             donee: donee,
+            changeset: changeset,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
@@ -188,6 +191,56 @@ defmodule BackerWeb.DoneeController do
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
+    end
+  end
+
+  def donate_post(conn, params) do
+    # 1. if backer not logged in, put session and redirect to login with friendly flash message.
+    # 2. if backer logged in, check if donee exist. If not, throw 403.
+    # 3. if all is valid, send params to invoice creation.
+    # backer_info = conn.assigns.current_backer
+    if conn.assigns.backer_signed_in? do
+      donee = Account.get_donee(%{"username" => params["username"]})
+      backer = conn.assigns.current_backer
+
+      if is_nil(donee) do
+        redirect(conn, to: "/403")
+      else
+        attrs =
+          params["invoice"]
+          |> Map.put("donee_id", donee.donee.id)
+          |> Map.put("backer_id", backer.id)
+
+        case Finance.create_donation_invoice(attrs) do
+          {:ok, %{invoice: invoice}} ->
+            conn
+            |> put_flash(:info, "Please make Payment.")
+            |> redirect(to: "/backerzone/payment-history")
+
+          {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
+            IO.inspect(changeset)
+
+            conn
+            |> render("public_donee_donate.html",
+              donee: donee,
+              changeset: changeset,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+
+          other ->
+            text(conn, "Ecto Multi give unhandled error, check your console")
+        end
+
+        text(conn, "lanjut cek console.")
+      end
+    else
+      conn
+      |> put_session(:intention_url, "/donee/#{params["username"]}/donate")
+      |> put_flash(
+        :info,
+        "Thanks for your kind intention. But you need to login first. Don't worry, we will redirect you to the previous page after login."
+      )
+      |> redirect(to: "/login")
     end
   end
 

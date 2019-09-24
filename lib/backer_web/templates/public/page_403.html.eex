@@ -1,0 +1,30 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+<div class="pt-32 pb-20 lg:px-20 flex justify-center ">
+
+
+
+
+    <div class="lg:w-1/3 px-2">
+
+        <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lg">
+
+            <div class="text-xl  text-center font-semibold">Forbidden!</div>
+            <div class="text-6xl  text-center text-orange-500 font-bold">403</div>
+            <div class="text-xl text-center">Please don't do something funny.
+            </div>
+
+            <div class="py-2 text-center mt-4">
+                <a href="/"> <button type="submit"
+                        class="tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Back to Home</button></a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

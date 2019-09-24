@@ -32,7 +32,6 @@ defmodule Backer.Finance.Invoice do
     invoice
     |> cast(attrs, [:status])
     |> validate_required([:status])
-    |> IO.inspect()
   end
 
   def donation_changeset(invoice, attrs) do

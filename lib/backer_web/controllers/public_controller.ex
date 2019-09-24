@@ -194,6 +194,12 @@ defmodule BackerWeb.PublicController do
     )
   end
 
+  def page403(conn, _params) do
+    conn
+    |> put_status(:forbidden)
+    |> render(BackerWeb.DoneeView, "page_403.html", layout: {BackerWeb.LayoutView, "public.html"})
+  end
+
   def page404(conn, _params) do
     conn
     |> put_status(:not_found)
@@ -244,9 +250,19 @@ defmodule BackerWeb.PublicController do
     case Account.authenticate_backer_front(email, password) do
       {:ok, backer} ->
         if backer.is_email_verified do
-          conn
-          |> put_session(:current_backer_id, backer.id)
-          |> redirect(to: "/home")
+          intention_url = get_session(conn, :intention_url)
+
+          if is_nil(intention_url) do
+            conn
+            |> put_session(:current_backer_id, backer.id)
+            |> redirect(to: "/home")
+          else
+            conn
+            |> put_session(:current_backer_id, backer.id)
+            |> delete_session(:intention_url)
+            |> put_flash(:info, "Great! You've logged in! Now please continue.")
+            |> redirect(to: intention_url)
+          end
         else
           render(conn, "verify.html",
             layout: {BackerWeb.LayoutView, "public.html"},

@@ -319,11 +319,8 @@ defmodule Backer.Finance do
           IncomingPayment.process_executed_settle_invoice_changeset(incoming_payment, attrs)
         )
         |> Ecto.Multi.update(:invoice, invoice_changeset)
-        |> IO.inspect()
         |> Ecto.Multi.run(:backing, fn _repo, _ ->
-          # IO.inspect("----- checkpoint 2 ---")
           create_batch_donation(invoice.id) |> IO.inspect()
-          # {:error, %{"somehow" => "wrong again"}}
         end)
         |> Repo.transaction()
     end

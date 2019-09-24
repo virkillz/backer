@@ -190,6 +190,7 @@ defmodule BackerWeb.Router do
     get("/donee/:username/backers", DoneeController, :backers)
     # get("/donee/:username/forum", DoneeController, :forum)
     get("/donee/:username/donate", DoneeController, :donate)
+    post("/donee/:username/donate", DoneeController, :donate_post)
     # get("/donee/:username/checkout", DoneeController, :checkout)
 
     get("/contact-us", PublicController, :contact_us)
@@ -202,6 +203,7 @@ defmodule BackerWeb.Router do
 
     get("/category/:id", CategoryController, :list_donee)
     get("/404", PublicController, :page404)
+    get("/403", PublicController, :page403)
     get("/400", PublicController, :page400)
     get("/505", PublicController, :page505)
     get("/:backer", PublicController, :redirector)

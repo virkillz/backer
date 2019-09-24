@@ -9,9 +9,11 @@
 
                 <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lg">
 
-                        <div class="text-4xl  font-semibold">Login</div>
+                    <div class="text-4xl  font-semibold">Login</div>
 
-
+                    <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> bg-blue-400 text-white text-sm rounded">
+                        <%= get_flash(@conn, :info) %>
+                    </div> 
 
                     <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> bg-red-400 text-white text-sm rounded">
                         <%= get_flash(@conn, :error) %>
