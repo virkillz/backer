@@ -4,31 +4,33 @@
 
 
 ### Make Doneezone placeholder works
-- [ ] Create placeholder for dashboard
-- [ ] Create endpoint for timeline/posts
-- [ ] Create endpoint for my finance
-- [ ] Create endpoint for my Donee setting
+- [ ] Create placeholder for about
+- [ ] Create placeholder for post
+- [ ] Create placeholder for backers
+- [ ] Create placeholder for finance
+- [ ] Create placeholder for statistic
+- [ ] Create placeholder for settings
 
-### Make Public Donee About tab works
-
-
-### make Public Donee Backer Tab works
+### Make Public Donee Works
+- [x] About Donee
+- [x] Backer Tab
 
 
 ### Make backing flow works
-
-Note: - 
-
 - [ ] Simplify payment form
-- [ ] Make the form works
+- [X] Make the form works
 - [ ] Create Invoice detail page
 - [ ] Make the Invoice detail page works
+- [ ] Make invoice list works
+- [x] Redirect if not logged in
+- [x] Capture intention to redirect to previous page after login
+- [x] Make create invoice works
+- [x] Ensure changing status from backend reflected on front end.
 
 
 ### Make My Donee list and donee counter works
 
 Note: Depends on previous epic
-
 - [ ] Test end to end donate cycle.
 - [ ] Ensure backing month update backer count.
 - [ ] Update my donee list to make it dynamic
