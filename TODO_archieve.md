@@ -10,6 +10,9 @@
 - [x] Routing to My Support History
 - [x] Routing to My Setting
 
+### Make Public Donee Works
+- [x] About Donee
+- [x] Backer Tab
 
 
 ##### Small Todo Archieve

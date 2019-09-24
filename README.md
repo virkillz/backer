@@ -2,7 +2,6 @@
 
 ## EPIC
 
-
 ### Make Doneezone placeholder works
 - [ ] Create placeholder for about
 - [ ] Create placeholder for post
@@ -10,11 +9,6 @@
 - [ ] Create placeholder for finance
 - [ ] Create placeholder for statistic
 - [ ] Create placeholder for settings
-
-### Make Public Donee Works
-- [x] About Donee
-- [x] Backer Tab
-
 
 ### Make backing flow works
 - [ ] Simplify payment form
@@ -41,26 +35,24 @@ Note: Depends on previous epic
 
 
 ### Make top backer below donee profile works
-
 - [ ] Make donee profie dynamic
 
 
 ## SMALL TODO
 - [ ] Default donee/username must be dynamic. by default goes to post if post is not empty. 
-- [ ] Make donate mechanism works
 - [ ] Change favicon backer admin
-- [ ] Remove category from private donee sidebar
+- [x] Remove category from private donee sidebar
 - [ ] Display backer page
-- [ ] Make login working
-- [ ] Make register working
+- [x] Make login working
+- [x] Make register working
 - [ ] Display dynamic donee at "/"
 - [ ] Register backer better have automatic username such as backer1
 - [ ] user cannot create backer[number] below his user id
-- [ ] Fix please verify page
+- [ ] Fix 'please verify page'
 - [ ] Register email which already registered but not yet verified must be valid.
 
-## PHASE 1 Feature
 
+## PHASE 1 Feature
 - [ ] Backer can register
 - [ ] Donee can register separately
 - [ ] Donee can post
@@ -70,38 +62,65 @@ Note: Depends on previous epic
 - [ ] Backer can browse the post and comment
 - [ ] Visisting nonexistent "/donee/nonexistuser" shows error, need to check other variant as well.
 
-## To start:
-  * Install dependencies with `mix deps.get`
-  * Check your database setting at `config/dev.exs` and match your postgresql credential
+
+
+## Installation
+
+#### Requirement
+
+  Make sure your machine have these installed:
+  * Elixir ~1.7.4
+  * Postgre ~9.0.0
+  * Nodejs ~10.0.0
+
+#### How to install
+  * Fork this repo and clone to your local machine
+  * Cd into the directory and install dependencies with `mix deps.get`
+  * Edit database setting at `config/dev.exs` and match your postgresql username and password
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && npm install`
-  * Run seed `mix run priv/repo/seeds.exs` (if you are from asset folder, dont forget to back to root project folder `cd ..`)
+  * Run seed to prepopulate data: `cd .. && mix run priv/repo/seeds.exs`
   * Start Phoenix endpoint with `mix phx.server`
 
-### For User
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-You can register as a regular user.
+### Credentials
+
+#### As User
+Visit [`localhost:4000`](http://localhost:4000)
+List of dummy user:
+
+```
+username: 
+
+donee1@tester.com
+donee2@tester.com
+donee3@tester.com
+donee4@tester.com
+donee5@tester.com
+donee6@tester.com
+backer1@tester.com
+backer2@tester.com
+backer3@tester.com
+backer4@tester.com
+backer5@tester.com
+backer6@tester.com
+backer7@tester.com
+backer8@tester.com
+backer9@tester.com
+backer10@tester.com
+
+password for all:
+virus123
+
+```
+
+Or simply register your own, manually edit 'is_verified' from admin panel to true, and login.
 
 ### For Admin
-You can visit [`localhost:4000/admin`](http://localhost:4000/admin) and login using username 'administrator' and passsword 'administrator'
+Visit [`localhost:4000/admin`](http://localhost:4000/admin)
 
+```
+username: 'administrator' 
+passsword 'administrator'
 
-## Use Backer Generator instead of phoenix!
-You probably familiar using `phx.gen.html` like this:
-
-`mix phx.gen.html Content Post post title:string content:string is_published:boolean`
-
-Instead, you better use:
-
-`mix backer.gen.html Content Post post title:string content:string is_published:boolean`
-
-The later one will give nicer html output.
-
-Put `resources "/post", PostController` in the router `/lib/Yourapp_web/router.ex`
-
-Run migration `mix ecto.migrate`
-
-Add link to your menu at '/lib/Yourapp_web/templates/layout/app.html.eex'
-
-Bam it's done!
+```
 
