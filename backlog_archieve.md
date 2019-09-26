@@ -8,7 +8,7 @@
 - [x] Refactor menu to external component
 - [x] Routing to My Donee List
 - [x] Routing to My Support History
-- [x] Routing to My Setting
+- [x] Routing to My Setting 
 
 ### Make Public Donee Works
 - [x] About Donee
@@ -24,7 +24,16 @@
 
 
 ##### Small Todo Archieve
-
+- [x] Header for logged in Donee/Backer
+- [x] Some page not yet responsive
+- [x] Featured donee's banner needs to be smaller
+- [x] Accept term and condition for sign up
+- [x] link to login at sign up
+- [x] link to forget password at sign-in
+- [x] Switch Language at header
+- [x] Fix Header font
+- [x] Fix Footer
+- [x] Create Header Variant 
 - [x] Update seed data with title, and other master data
 - [x] add backer_count and post_count into donee
 - [x] Explore donee must show correct backer count
