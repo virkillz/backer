@@ -7,6 +7,10 @@ For more background information click [here](background.md)
 
 ## Feature
 
+Backer relies on 3 primary feature. The full list of backlog can be seen [here](backlog.md). We occationally clean things up and move it to [backlog archieve](backlog_archieve.md)
+
+Target milestone we docummented [here](milestone-plan.md)
+
 ### Donee cataloque
 
 Public can browse a lot of donee grouped by its category. Each of them will have it's own profile page explaining their activity, list of their top backer, and list of post.
