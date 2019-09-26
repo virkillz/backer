@@ -26,36 +26,38 @@
 	        <div class="lg:flex justify-center items-center">
 	            <div class="p-12 bg-purple-100 rounded mx-auto max-w-lg text-justify leading-loose">
 	                <p class="whitespace-normal mb-6">
-	                    Backer dilahirkan karena kami percaya ada banyak kegiatan positif yang telah secara rutin
-	                    dilakukan oleh teman-teman di lingkungan kita yang membutuhkan dukungan secara berkelanjutan.
+	                    <b>Backer.id</b> dilahirkan karena kami percaya ada banyak kegiatan positif yang telah secara rutin
+	                    dilakukan di lingkungan kita yang membutuhkan dukungan secara berkelanjutan.
 	                </p>
 	                <p class="whitespace-normal my-6">
-	                    Kita sering melihat mereka yang mengatur penggalangan dana baru
-	                    ketika kebutuhan sudah sangat mendesak. Permohonan dukungan juga sering dibagikan lewat media sosial
-	                    dan dengan proses pembayaran yang mungkin tidak aman.
+	                    Sering kita temukan komunitas-komunitas ini (kami menyebutnya Donee) akan mengatur penggalangan dana hanya
+	                    ketika kebutuhan sudah mendesak. Permohonan dukungan juga sering dibagikan lewat media sosial
+	                    dan dengan proses pembayaran yang mungkin tidak aman. Proses ini akan berulang tiap kali dukungan pendanaan
+						dibutuhkan. 
+
 	                </p>
 	                <p class="whitespace-normal mt-6">
-	                    Backer memberikan pilihan bagi para penggiat untuk mendapatkan dukungan dana
-	                    secara berkesinambungan; dan bagi para donatur untuk mendukung kegiatan positif
-	                    sesuai minatnya selama durasi waktu yang diinginkan.
+	                   Jadwal penggalangan dana yang sporadis dan kurangnya ruang yang terintegrasi bagi para penggiat dan pendukungnya (atau Backer) 
+						untuk berinteraksi 
+						seringkali menyebabkan keberlangsungan komunitas-komunitas semacam ini di ujung tanduk. Padahal, dampak positif yang telah 
+						dilakukan selama ini tentu perlu didukung terus-menerus.
 	                </p>
 	            </div>
 	            <div class="p-12 max-w-lg text-justify mx-auto leading-loose">
 	                <p class="whitespace-normal mb-6">
-	                    Backer was born because we believe that there are a lot of good things routinely done by people in
-	                    our community that
-	                    need our continous support.
+	                    
+	                
 	                </p>
 	                <p class="whitespace-normal my-6">
-	                    We often find people just begin to scambling and asking for donation when it is already a bit too
-	                    late.
-	                    The calls for support are usually distributed through social media with a potentially unsafe
-	                    transaction method.
+	                 <b>Backer.id</b> memberikan pilihan bagi Donee untuk mendapatkan dukungan dana
+	                    secara berkesinambungan dan terjadwal; dan bagi para Backer untuk mendukung kegiatan positif
+	                    sesuai minatnya selama durasi waktu yang diinginkan. <b>Backer.id</b> menawarkan ruang di mana Donee dan Backer bisa membangun komunitas yang erat, 
+						saling berkomunikasi layaknya media sosial, serta
+						menyampaikan informasi kegiatan terbaru yang bisa terjadi karena dukungan para Backer.
 	                </p>
 	                <p class="whitespace-normal mt-6">
-	                    Backer is providing this option for those who needs continuous support; and for donors to support
-	                    positive activities according to their
-	                    passion in a duration they can choose from.
+	                    Para Backer juga tak perlu khawatir tertinggal berita terbaru dari Donee yang didukung, atau terlupa jadwal berdonasi bulanan karena Backer.id 
+						memfasilitasi itu semua. Melalui <b>Backer.id</b> bersama-sama kita bangun komunitas yang positif, berkesinambungan dan transparan.
 	                </p>
 	
 	            </div>
@@ -74,26 +76,10 @@
 	            </div>
 	            <div class="lg:w-1/2 p-4">
 	                <div class="w-full bg-purple-100 rounded p-12">
-	                    <div class="text-4xl  font-semibold pb-5">Our Vision</div>
-	                    <div class="text-gray-700  text-justify leading-loose">Lorem ipsum dolor sit
-	                        amet, consectetur
-	                        adipiscing elit.
-	                        Nullam
-	                        pellentesque sapien nec
-	                        ipsum maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis
-	                        tortor.
-	                        Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque
-	                        penatibus
-	                        et
-	                        magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus tristique. Sed
-	                        scelerisque
-	                        non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare magna convallis a.
-	                        Vestibulum
-	                        ante
-	                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque consequat enim
-	                        non
-	                        varius pretium. Ut ut ante eu felis porttitor tristique. Cras ultricies purus id sollicitudin
-	                        rutrum.
+	                    <div class="text-4xl  font-semibold pb-5">Visi Kami</div>
+	                    <div class="text-gray-700  text-justify leading-loose">Kami ingin melihat inisiatif positif dari masyarakat Indonesia bisa terus berlangsung
+						secara mandiri dan berkelanjutan; baik kegiatan yang dilakukan oleh organisasi formal atau pun dari mereka yang berbentuk komunitas informal. Semua bisa 
+						berbuat baik dan kita dapat bersama-sama mewujudkannya!
 	                    </div>
 	                </div>
 	            </div>
