@@ -14,7 +14,8 @@ Target:
 - [x] All front end screen is finished.
 - [ ] Basic backing payment flow is finished.
 - [ ] All the text for about us, basic FAQ, landing page is finished.
-- [ ] Deploy alpha.backer.id 
+- [x] Deploy alpha.backer.id 
+- [x] Donee can create submission to be considered.
 
 ### October 2019
 

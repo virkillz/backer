@@ -39,6 +39,7 @@ Donee can create post for public or set to be visible only by minimum level of b
   * Fork this repo and clone to your local machine
   * Cd into the directory and install dependencies with `mix deps.get`
   * Edit database setting at `config/dev.exs` and match your postgresql username and password
+  * if you are on freshly installed ubuntu run `sudo apt-get install build-essential`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && npm install`
   * Run seed to prepopulate data: `cd .. && mix run priv/repo/seeds.exs`
