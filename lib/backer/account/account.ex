@@ -11,6 +11,7 @@ defmodule Backer.Account do
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Tier
   alias Backer.Account.Donee
+  alias Backer.Settings
 
   @doc """
   Returns the list of user.
@@ -381,6 +382,22 @@ defmodule Backer.Account do
     Repo.one(query)
   end
 
+  def get_highlight_donee_homepage() do
+    main_featured_donee_id = Settings.get_setting(:key, "main_featured_donee")
+
+    if is_nil(main_featured_donee_id) do
+      nil
+    else
+      donee_id =
+        case Integer.parse(main_featured_donee_id.value) do
+          :error -> nil
+          {number, _} -> number
+        end
+
+      get_donee(:id, donee_id)
+    end
+  end
+
   def get_donee_compact(%{"backer_id" => backer_id}) do
     query =
       from(p in Donee,
@@ -413,6 +430,12 @@ defmodule Backer.Account do
     query = from(p in Donee, preload: [:backer, :category, :title, :tier], where: p.id == ^id)
 
     Repo.one!(query)
+  end
+
+  def get_donee(:id, id) do
+    query = from(p in Donee, preload: [:backer, :category, :title, :tier], where: p.id == ^id)
+
+    Repo.one(query)
   end
 
   def get_donee(%{"username" => username}) do

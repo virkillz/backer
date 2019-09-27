@@ -5,6 +5,7 @@ alias Backer.Masterdata.Category
 alias Backer.Masterdata.Title
 alias Backer.Masterdata.Tier
 alias Backer.Account.Donee
+alias Backer.Setting
 alias Backer.Account.Backer, as: Backerz
 
 Repo.insert!(%User{
@@ -356,4 +357,16 @@ Repo.insert!(%Donee{
   title_id: 1,
   backer_count: 17,
   post_count: 42
+})
+
+Repo.insert!(%Setting{
+  group: "landing page",
+  key: "main_featured_donee",
+  value: "1"
+})
+
+Repo.insert!(%Setting{
+  group: "landing page",
+  key: "main_featured_donee_description",
+  value: "Lorem ipsum"
 })

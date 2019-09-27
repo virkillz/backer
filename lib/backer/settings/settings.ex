@@ -21,6 +21,15 @@ defmodule Backer.Settings do
     Repo.all(Setting)
   end
 
+  def get_setting(:key, key) do
+    query =
+      from(s in Setting,
+        where: s.key == ^key
+      )
+
+    Repo.one(query)
+  end
+
   @doc """
   Gets a single setting.
 

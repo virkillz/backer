@@ -65,19 +65,21 @@
 		<div class="text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold">Seperti aktivitas mereka
 		</div>
 
+		<%= if not is_nil @highlight_donee do %>
+		<!-- Highlight Donee -->
 		<div class="lg:flex items-center">
 			<div class="flex p-6 lg:w-7/12">
-				<img src="/assets/images/bg/komunitas.jpeg" class="rounded-lg w-full object-cover" alt="">
+				<img src="<%= @highlight_donee.background %>" class="rounded-lg w-full object-cover" alt="">
 			</div>
 
 			<div class="pl-6 lg:w-5/12 mx-auto p-6">
 
 				<div class="flex">
-					<img src="/assets/images/bg/avatar2.jpeg" class=" border-2 border-white rounded-lg w-16 h-16"
+					<img src="<%= @highlight_donee.backer.avatar %>" class=" border-2 border-white rounded-lg w-16 h-16"
 						alt="">
 					<div class="">
-						<div class="text-lg  pl-5 font-semibold">Komunitas Tuna Rungu Jakarta</div>
-						<div class="text-sm  pl-5 text-gray-600">@jakartamuteclub</div>
+						<div class="text-lg  pl-5 font-semibold"><%= @highlight_donee.backer.display_name %></div>
+						<div class="text-sm  pl-5 text-gray-600">@<%= @highlight_donee.backer.username %></div>
 					</div>
 				</div>
 
@@ -88,9 +90,11 @@
 				</div>
 
 				<div class="pt-5 ">
+					<a href="/donee/<%= @highlight_donee.backer.username %>">
 					<button
 						class="shadow btn-glow-orange tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Read
 						full story</button>
+					</a>
 				</div>
 
 
@@ -100,6 +104,8 @@
 			</div>
 
 		</div>
+		<!-- /Highlight Donee -->
+		<% end %>
 
 
 	</div>
