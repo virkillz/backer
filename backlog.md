@@ -1,16 +1,24 @@
 ## EPIC
 
+### All screen is finish designed
+- [x] Donee registration page
+- [x] Thank you for submit
+- [ ] Invoice detail page 
+- [x] Notification page
+- [x] Search result page
+- [ ] Private settlement detail
+
 ### Make 'daftarkan komunitasmu' works
-- [ ] [Design] the registration page.
-- [ ] [Design] thank you page.
-- [ ] Create schema for Donee submission.
-- [ ] Working on backend portal.
+- [x] [Design] the registration page.
+- [x] [Design] thank you page.
+- [x] Create schema for Donee submission.
+- [x] Working on backend portal.
 
 
 ### Make backing flow works
 - [ ] Simplify payment form
 - [X] Make the form works
-- [ ] Create Invoice detail page
+- [ ] [Design] Invoice detail page
 - [ ] Make the Invoice detail page works
 - [ ] Make invoice list works
 - [x] Redirect if not logged in

@@ -1,0 +1,89 @@
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :donee_name, class: "control-label" %>
+    <%= text_input f, :donee_name, class: "form-control" %>
+    <%= error_tag f, :donee_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :donee_website, class: "control-label" %>
+    <%= text_input f, :donee_website, class: "form-control" %>
+    <%= error_tag f, :donee_website %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :donee_description, class: "control-label" %>
+    <%= textarea f, :donee_description, class: "form-control" %>
+    <%= error_tag f, :donee_description %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :applicant_name, class: "control-label" %>
+    <%= text_input f, :applicant_name, class: "form-control" %>
+    <%= error_tag f, :applicant_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :applicant_email, class: "control-label" %>
+    <%= text_input f, :applicant_email, class: "form-control" %>
+    <%= error_tag f, :applicant_email %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :applicant_phone, class: "control-label" %>
+    <%= text_input f, :applicant_phone, class: "form-control" %>
+    <%= error_tag f, :applicant_phone %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :phone_preffered, class: "control-label" %>
+    <%= checkbox f, :phone_preffered, class: "checkbox" %>
+    <%= error_tag f, :phone_preffered %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :email_preffered, class: "control-label" %>
+    <%= checkbox f, :email_preffered, class: "checkbox" %>
+    <%= error_tag f, :email_preffered %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :whatsapp_preffered, class: "control-label" %>
+    <%= checkbox f, :whatsapp_preffered, class: "checkbox" %>
+    <%= error_tag f, :whatsapp_preffered %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :handle_status, class: "control-label" %>
+    <%= text_input f, :handle_status, class: "form-control" %>
+    <%= error_tag f, :handle_status %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :comment, class: "control-label" %>
+    <%= textarea f, :comment, class: "form-control" %>
+    <%= error_tag f, :comment %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :acceptance_status, class: "control-label" %>
+    <%= text_input f, :acceptance_status, class: "form-control" %>
+    <%= error_tag f, :acceptance_status %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <span><%= link "Cancel", to: Router.submission_path(@conn, :index), class: "btn btn-warning" %></span>
+  </div>
+<% end %>
+</div>
+</div>

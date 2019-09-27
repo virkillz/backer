@@ -11,7 +11,7 @@ Breakdown
 ### September 2019
 
 Target:
-- [ ] All front end screen is finished.
+- [x] All front end screen is finished.
 - [ ] Basic backing payment flow is finished.
 - [ ] All the text for about us, basic FAQ, landing page is finished.
 - [ ] Deploy alpha.backer.id 

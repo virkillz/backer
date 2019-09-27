@@ -1,0 +1,102 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+<div class="pt-10 text-white">
+
+    <div class="container px-3 py-20 mx-auto">
+        <div class="text-4xl  text-center font-semibold">Register Community </div>
+        <div class="text-center">Let's make it happened!</div>
+
+
+    </div>
+
+</div>
+<!--Hero-->
+<section class="bg-white py-10 text-gray-800">
+    <div class="container mx-auto">
+        <div class="text-4xl  text-center font-semibold pb-10">Join as our early tester</div>
+        <div class="flex lg:flex-row flex-col-reverse justify-center items-center">
+            <div class="p-8 lg:w-1/2">
+                <div class="p-12 bg-indigo-100 rounded mx-auto text-justify leading-loose">
+
+                    <%= form_for @changeset, "/register-donee", fn f -> %>
+                        <%= if @changeset.action do %>
+                            <div class="alert alert-danger">
+                            <p>Oops, something went wrong! Please check the errors below.</p>
+                            </div>
+                        <% end %>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Community
+                                Name</label>
+                            <%= text_input f, :donee_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :donee_name %>
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Community
+                                Website/Facebook link/Twitter link, etc</label>
+                            <%= text_input f, :donee_website, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :donee_website %>                               
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Describe Your
+                                Community</label>
+                            <%= textarea f, :donee_description, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :donee_description %>                                
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Name</label>
+                            <%= text_input f, :applicant_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :applicant_name %>
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Email</label>
+                            <%= text_input f, :applicant_email, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :applicant_email %>
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Mobile
+                                Phone</label>
+                            <%= text_input f, :applicant_phone, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border w-full" %>
+                            <%= error_tag f, :applicant_phone %>
+                        </div>
+
+                        <div class="py-2 w-full">
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">How you would like
+                                to be
+                                contacted?</label>
+                            <div class="flex justify-between">
+                                <div class=""><%= checkbox f, :phone_preffered, class: "mr-2" %> Phone call</div>
+                                <div class=""><%= checkbox f, :whatsapp_preffered, class: "mr-2" %> Whatsapp</div>
+                                <div class=""><%= checkbox f, :email_preffered, class: "mr-2" %> Email</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <button
+                                class="w-full btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Submit</button>
+                        </div>
+                    <% end %>
+
+                </div>
+            </div>
+
+            <div class="p-8 lg:w-1/2 max-w-lg text-justify mx-auto leading-loose">
+                <p class="whitespace-normal mb-6">
+                    We are currently at heavy development and testing stage. We want to make sure everything is right.
+                    At this stage Community registration will be manually selected and orboarded. Please submit the
+                    basic information of your community and we will in contact with you very shortly.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
