@@ -4,6 +4,8 @@ defmodule BackerWeb.PublicController do
   alias Backer.Account
   alias Backer.Account.User
   alias Backer.Account.Backer, as: Backerz
+  alias Backer.Temporary.Submission
+  alias Backer.Temporary
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -192,6 +194,49 @@ defmodule BackerWeb.PublicController do
       title: "400",
       layout: {BackerWeb.LayoutView, "public.html"}
     )
+  end
+
+  def register_donee(conn, _params) do
+    meta = %{title: "Welcome to backer"}
+    changeset = Temporary.change_submission(%Submission{})
+
+    conn
+    |> render("register_donee.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      changeset: changeset,
+      meta: meta
+    )
+  end
+
+  def register_donee_post(conn, %{"submission" => submission_params}) do
+    meta = %{title: "Welcome to backer"}
+
+    case Temporary.create_submission(submission_params) do
+      {:ok, submission} ->
+        conn
+        |> put_flash(:info, "Submission created successfully.")
+        |> render("thanks-for-register.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
+          meta: meta
+        )
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        IO.inspect(changeset)
+
+        conn
+        |> render("register_donee.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
+          changeset: changeset,
+          meta: meta
+        )
+    end
+
+    # conn
+    # |> render("register_donee.html",
+    #   layout: {BackerWeb.LayoutView, "public.html"},
+    #   changeset: changeset,
+    #   meta: meta
+    # )
   end
 
   def page403(conn, _params) do

@@ -60,6 +60,7 @@ defmodule BackerWeb.Router do
     resources("/general_settings", SettingController)
     resources("/backers", BackerController)
     resources("/donees", DoneeController)
+    resources "/submissions", SubmissionController
     resources("/badges", BadgeController)
     resources("/badge_members", BadgeMemberController, except: [:index])
     get("/badge_members/new/:badgeid", BadgeMemberController, :newmember)
@@ -167,6 +168,8 @@ defmodule BackerWeb.Router do
     post("/login", PublicController, :auth)
     post("/sign_up", PublicController, :createuser)
     get("/recover", PublicController, :recover)
+    get("/register-donee", PublicController, :register_donee)
+    post("/register-donee", PublicController, :register_donee_post)
 
     get("/verify", PublicController, :verify)
     get("/resend-email", PublicController, :resend)

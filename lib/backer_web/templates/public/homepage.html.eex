@@ -14,9 +14,11 @@
 
 
 			<div class="pt-4">
+			<a href="/register-donee">
 				<button
 					class="btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Daftarkan
 					Komunitasmu</button>
+			</a>
 			</div>
 
 		</div>
@@ -614,10 +616,11 @@
 			kelangsungan aktivitas
 			komunitasmu.</h3>
 
-
+		<a href="/register-donee">
 		<button
 			class="mt-8 mx-auto btn-glow-orange tracking-wide focus:outline-none px-16 font-semibold py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Daftarkan
 			Komunitasmu</button>
+		</a>
 
 	</section>
 
