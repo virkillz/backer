@@ -26,6 +26,13 @@
     <%= error_tag f, :title_id %>
   </div>    
 
+
+  <div class="form-group">
+    <%= label f, :tagline, class: "control-label" %>
+    <%= text_input f, :tagline, class: "form-control" %>
+    <%= error_tag f, :tagline %>
+  </div>
+
   <div class="form-group">
     <%= label f, :background, class: "control-label" %>
     <%= text_input f, :background, class: "form-control" %>
