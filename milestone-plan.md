@@ -16,21 +16,32 @@ Target:
 - [ ] All the text for about us, basic FAQ, landing page is finished.
 - [x] Deploy alpha.backer.id 
 - [x] Donee can create submission to be considered.
+- [x] Admin can edit donee's tagline
+- [ ] Create general config
+- [ ] Make the landing page featured donee dynamic
+- [ ] Fix about us header link
+- [ ] Flix link CTA landing page above footer 
+- [ ] Make contact us 
+- [ ] Hide post public donee profile
+- [ ] Hide post doneezone
+- [ ] Hide post backerzone
+- [ ] Add simple WoW animation
 
 ### October 2019
 
 Target:
+- [ ] Hide post
 - [ ] Make the monthly backing fully works.
 - [ ] Donee can create post.
-- [ ] Backer can see correct post in timeline.
 - [ ] Donee can edit their own profile
 - [ ] Backer can edit their own profile
+- [ ] Connect to cloud image storage
 
 ### November target
 
 Target:
+- [ ] Backer can see correct post in timeline.
 - [ ] Like and comment works
-- [ ] Connect to cloud image storage
 - [ ] Connect to email service
 - [ ] Connect to Facebook login and google.
 - [ ] all multilang translation are finished
