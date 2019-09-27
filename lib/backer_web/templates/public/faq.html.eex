@@ -18,26 +18,60 @@
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 rounded cursor-pointer flex">
 					<div class="px-8">1</div>
-					<div>Apakah sesuatu itu?</div>
+					<div>Apa itu Backer.id?</div>
 				</div>
-				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					<b>Backer.id</b> adalah ruang bagi komunitas atau organisasi formal atau nonformal untuk menggalang iuran bulanan, 
+					berbagi kegiatan terbaru dengan para pendukungnya, dan
+					bertinteraksi secara transparan. <b>Backer.id</b> membantu kegiatan positif di masyarakat menjadi mandiri dan berkelanjutan.
 				</div>
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
 					<div class="px-8">2</div>
-					<div>Dimanakah sesuatu yang judulnya bisa sangat panjang sekali itu yaa kalau panjang nanti mungkin
-						kebawah?</div>
+					<div>Apa itu Donee?</div>
 				</div>
-				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					<b>Donee</b> adalah individu, organisasi formal atau komunitas yang melakukan kegiatan positif di masyarakat yang membutuhkan dukungan 
+					finansial secara rutin.
+				</div>
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 rounded cursor-pointer flex">
+					<div class="px-8">1</div>
+					<div>Siapa saja yang bisa menjadi Donee? Adakah contohnya?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					<p>Siapa saja yang memiliki kegiatan rutin yang berdampak positif bagi masyarakat bisa menjadi <b>Donee</b>. Baik yang merupakan organisasi resmi berstatus 
+					hukum yayasan atau perkumpulan; komunitas bentukan masyarakat tanpa badan hukum; atau pun inisiatif individu.</p> 
+					<br>
+					<p>Contoh <b>Donee</b> misalnya shelter untuk 
+					menampung binatang terlantar, organisasi penyedia bantuan hukum bagi yang tidak mampu, festival seni dan budaya yang mengangkat isu penting, komunitas
+					pecinta sejarah atau yang berkumpul untuk membersihkan sampah di pantai, komunitas penyandang disabilitas, dan lain-lain. </p>
 				</div>
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
 					<div class="px-8">3</div>
-					<div>Apa yang terjadi bilamana akankah seketika?</div>
+					<div>Mengapa saya perlu mendukung Donee?</div>
 				</div>
-				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">Content
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					Tentu saja agar kegiatan positif <b>Donee</b> bisa terus berlangsung. Dengan mendukung <b>Donee</b> kamu memastikan kerja-kerja positif yang telah 
+					dilakukan dapat memberi dampak yang lebih luas dan berkesinambungan. <b>Donee</b> yang terdaftar 
+					dalam <b>Backer.id</b> adalah mereka yang telah terbukti bekerja di masyarakat, namun karena satu dan lain hal mereka tidak bisa mengakses bantuan dari 
+					lembaga resmi negara, lembaga donor, atau menerima bentuk investasi formal lainnya.
 				</div>
 
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">3</div>
+					<div>Apa itu Backer?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					<b>Backer</b> adalah mereka yang mendukung kegiatan dan inisiatif positif dari para <b>Donee</b>. 
+					
+					Tentu saja agar kegiatan positif <b>Donee</b> bisa terus berlangsung. Dengan mendukung <b>Donee</b> kamu memastikan kerja-kerja positif yang telah 
+					dilakukan dapat memberi dampak yang lebih luas dan berkesinambungan. <b>Donee</b> yang terdaftar 
+					dalam <b>Backer.id</b> adalah mereka yang telah terbukti bekerja di masyarakat, namun karena satu dan lain hal mereka tidak bisa mengakses bantuan dari 
+					lembaga resmi negara, lembaga donor, atau menerima bentuk investasi formal lainnya.
+				</div>
+				
 			</div>
 
 		</div>
