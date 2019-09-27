@@ -10,8 +10,14 @@ defmodule BackerWeb.PublicController do
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
 
+    highlight_donee = Account.get_highlight_donee_homepage() |> IO.inspect()
+
     conn
-    |> render("homepage.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+    |> render("homepage.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      meta: meta,
+      highlight_donee: highlight_donee
+    )
   end
 
   def explore(conn, _params) do
