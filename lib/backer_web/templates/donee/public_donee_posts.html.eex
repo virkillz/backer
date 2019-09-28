@@ -6,49 +6,7 @@
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 ">
-	            <div class="transition-all" style="top: 56px; position: sticky;">
-	
-	                <div class="pt-10 bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee.avatar %>" class="rounded-lg mx-auto w-20 h-20">
-	                
-	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700"><%= @donee.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.title.name %></div>
-	                    </div>
-	                
-	                    <div class="flex pt-4">
-	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.donee.backer_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Backer</div>
-	                        </div>
-	                
-	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.donee.post_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Posts</div>
-	                        </div>
-	                    </div>
-	                
-	                
-	                </div>
-	                <div class="pb-1 p-5 lg:hidden block">
-	                    <a href="/donee/<%= @donee.username %>/donate" class=""><button
-	                            class="rounded-lg hover:bg-purple-500 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
-	                </div>
-	
-	                <div class="pb-10">
-	                    <div class=" text-gray-700 font-bold py-1 px-2 mt-8">Top Backer</div>
-	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= for random <- @random_backer do %>
-							<a href="/backer/<%= random.username %>">
-	                        <img src="<%= random.avatar %>"
-	                            class="hover:border-purple-500 border-2 hover:border-2 hover:shadow-md rounded-lg w-12 h-12 m-2">
-							</a>
-							<% end %>
-	                    </div>
-	                </div>
-	
-	
-	            </div>
+			<%= render "component_public_sidebar.html", donee: @donee, random_backer: @random_backer %>
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">

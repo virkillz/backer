@@ -26,7 +26,7 @@ Target:
 - [x] Hide post public donee profile
 - [x] Hide post doneezone
 - [x] Hide post backerzone
-- [ ] Add simple WoW animation
+- [x] Add simple WoW animation
 
 ### October 2019
 
