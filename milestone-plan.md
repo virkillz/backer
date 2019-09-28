@@ -15,14 +15,14 @@ Target:
 - [ ] Basic backing payment flow is finished.
 - [ ] All the text for about us, basic FAQ, landing page is finished.
 - [x] Deploy alpha.backer.id 
-- [ ] Fix template generator
+- [x] Fix template generator
 - [x] Donee can create submission to be considered.
 - [x] Admin can edit donee's tagline
 - [x] Create general config
 - [x] Make the landing page featured donee dynamic
 - [x] Fix about us header link
 - [x] Fix link CTA landing page above footer 
-- [ ] Make contact us 
+- [x] Make contact us 
 - [x] Hide post public donee profile
 - [x] Hide post doneezone
 - [x] Hide post backerzone

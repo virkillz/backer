@@ -202,6 +202,7 @@ defmodule BackerWeb.Router do
     # get("/donee/:username/checkout", DoneeController, :checkout)
 
     get("/contact-us", PublicController, :contact_us)
+    post("/contact-us", PublicController, :contact_us_post)
     get("/about-us", PublicController, :about_us)
     get("/forgot-password", PublicController, :forgot_password)
     get("/faq", PublicController, :faq)

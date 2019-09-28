@@ -6,6 +6,7 @@ defmodule BackerWeb.PublicController do
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Temporary.Submission
   alias Backer.Temporary
+  alias Backer.Temporary.Contact
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -57,9 +58,35 @@ defmodule BackerWeb.PublicController do
 
   def contact_us(conn, _params) do
     meta = %{title: "Welcome to backer"}
+    changeset = Temporary.change_contact(%Contact{})
 
     conn
-    |> render("contact_us.html", layout: {BackerWeb.LayoutView, "public.html"}, meta: meta)
+    |> render("contact_us.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      meta: meta,
+      changeset: changeset
+    )
+  end
+
+  def contact_us_post(conn, %{"contact" => contact_params}) do
+    meta = %{title: "Welcome to backer"}
+
+      {:ok, contact} ->
+        conn
+        |> put_flash(:info, "Contact created successfully.")
+        |> render("thanks-contact-us.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
+          meta: meta
+        )
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> render("contact_us.html",
+          layout: {BackerWeb.LayoutView, "public.html"},
+          meta: meta,
+          changeset: changeset
+        )
+    end
   end
 
   def terms(conn, _params) do
