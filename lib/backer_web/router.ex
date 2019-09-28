@@ -55,6 +55,7 @@ defmodule BackerWeb.Router do
     resources("/user", UserController)
     get("/logout", UserController, :logout)
 
+    resources "/contacts", ContactController
     resources("/categories", CategoryController)
     resources("/titles", TitleController)
     resources("/general_settings", SettingController)

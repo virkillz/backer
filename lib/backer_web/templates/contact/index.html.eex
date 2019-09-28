@@ -1,0 +1,118 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-4 col-12 mb-2">
+    <h3 class="content-header-title">Contact List</h3>
+  </div>
+  <div class="content-header-right col-md-8 col-12">
+    <div class="breadcrumbs-top float-md-right">
+      <div class="breadcrumb-wrapper mr-1">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/admin/contacts">Contacts List</a>
+          </li>
+          <li class="breadcrumb-item active">Index
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Revenue, Hit Rate & Deals -->
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Contact List</h4>
+          <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li>
+              <a href="<%= Router.contact_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Contact</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-content collapse show">
+          <div class="card-body p-0 pb-0">
+            <br>
+
+            
+            <div class="container">
+
+              <table class="table">
+                <thead class="bg-primary white">
+                  <tr>
+                     <th>Name</th>
+                     <th>Phone</th>
+                     <th>Email</th>
+                     <th>Title</th>
+                     <th>Message</th>
+                     <th>Is read</th>
+                     <th>Remark</th>
+                     <th>Status</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for contact <- @contacts do %>
+                    <tr>
+                       <td>
+                        <%= contact.name %>
+                      </td>
+                       <td>
+                        <%= contact.phone %>
+                      </td>
+                       <td>
+                        <%= contact.email %>
+                      </td>
+                       <td>
+                        <%= contact.title %>
+                      </td>
+                       <td>
+                        <%= contact.message %>
+                      </td>
+                       <td>
+                        <%= contact.is_read %>
+                      </td>
+                       <td>
+                        <%= contact.remark %>
+                      </td>
+                       <td>
+                        <%= contact.status %>
+                      </td>
+                      
+                      <td class="text-right">
+                        <span>
+                          <%= link "Show" , to: Router.contact_path(@conn, :show,
+                            contact), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Edit" , to: Router.contact_path(@conn, :edit,
+                            contact), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Delete" , to: Router.contact_path(@conn, :delete,
+                            contact), method: :delete, data: [confirm: "Are you sure?" ],
+                            class: "btn btn-danger btn-xs" %>
+                        </span>
+                      </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+
+            </div>
+            <br>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

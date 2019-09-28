@@ -147,8 +147,10 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="nav-item <%= activate(@conn.request_path, "/admin") %>"><a href="/admin" up-target=".main" up-transition="move-right"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
-          <li class="nav-item <%= activate(@conn.request_path, "/submissions") %>"><a href="/admin/submissions" up-target=".main" up-transition="move-right"><i class="ft-edit-2"></i><span class="menu-title" data-i18n="">Submissions</span></a>
-          </li>             
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/submissions") %>"><a href="/admin/submissions" up-target=".main" up-transition="move-right"><i class="ft-edit-2"></i><span class="menu-title" data-i18n="">Submissions</span></a>
+          </li>
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/contact") %>"><a href="/admin/contacts" up-target=".main" up-transition="move-right"><i class="ft-mail"></i><span class="menu-title" data-i18n="">Contact Messages</span></a>
+          </li>              
           <li class="nav-item <%= activate(@conn.request_path, "/admin/approval") %>"><a href="/admin/approval" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Approval</span>
             <%= if @conn.assigns.approval_count > 0 do %>
             <span class="badge badge-pill badge-danger"><%= @conn.assigns.approval_count %></span>
