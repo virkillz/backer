@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-
+    <link rel="stylesheet" href="/css/app.css">
 
 </head>
 
@@ -150,6 +150,11 @@
                 }
             });
         }
+    </script>
+
+    <script src="/js/wow.min.js"></script>
+    <script>
+    new WOW().init();
     </script>
 
 

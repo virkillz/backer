@@ -71,6 +71,7 @@ defmodule BackerWeb.PublicController do
   def contact_us_post(conn, %{"contact" => contact_params}) do
     meta = %{title: "Welcome to backer"}
 
+    case Temporary.create_contact(contact_params) do
       {:ok, contact} ->
         conn
         |> put_flash(:info, "Contact created successfully.")
