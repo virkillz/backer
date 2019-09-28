@@ -152,6 +152,80 @@
         }
     </script>
 
+    <script>
+    function adjustAmount(amount, target_id) {
+        var inputAmount = document.getElementById("amount");
+        inputAmount.value = amount;
+        var allTiers = document.getElementsByClassName("tier");
+        var targetTier = document.getElementById(target_id);
+
+        for (var i = 0; i < allTiers.length; i++) {
+            allTiers[i].classList.remove("border-orange-500");
+            // list[i] is a node with the desired class name
+        }
+       var month = document.getElementById("month");
+       var total = document.getElementById("total"); 
+       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
+
+        targetTier.classList.add("border-orange-500");
+
+    }
+
+    function amountChanged() {
+        var inputAmount = document.getElementById("amount");
+        var submitDonate = document.getElementById("submitDonate");
+
+        if (inputAmount.value < 10000) {
+            submitDonate.classList.remove("bg-orange-500");
+            submitDonate.classList.remove("hover:bg-orange-600");
+            submitDonate.classList.remove("btn-glow-orange");
+            submitDonate.classList.remove("border-orange-500");
+            submitDonate.classList.add("bg-gray-500"); 
+            submitDonate.disabled = true;
+
+        }
+        else {
+            submitDonate.classList.add("bg-orange-500");
+            submitDonate.classList.add("hover:bg-orange-600");
+            submitDonate.classList.add("border-orange-500");
+            submitDonate.classList.add("btn-glow-orange");
+            submitDonate.classList.remove("bg-gray-500"); 
+            submitDonate.disabled = false; 
+        }
+
+       var month = document.getElementById("month");
+       var total = document.getElementById("total"); 
+       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
+
+        console.log(inputAmount.value); 
+
+    }
+
+    function changeMonth() {
+       var month = document.getElementById("month");
+       var inputAmount = document.getElementById("amount");
+       var total = document.getElementById("total"); 
+       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
+    }
+
+    function changePaymentMethod(paymentMethod) {
+        var paymentMethodInput = document.getElementById("paymentMethodInput");
+        paymentMethodInput.value = paymentMethod;
+
+        // remove all border-purple-500
+        paymentmethods = document.getElementsByClassName("payment-methods");
+        for (var i = 0; i < paymentmethods.length; i++) {
+           paymentmethods[i].classList.remove("border-orange-500");
+        } 
+
+        // add border-purple-500 for selected payment methods
+        var paymentMethodSelected = document.getElementById(paymentMethod);
+        paymentMethodSelected.classList.add("border-orange-500")
+
+        console.log(paymentMethod);
+    }
+    </script>
+
     <script src="/js/wow.min.js"></script>
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>

@@ -35,68 +35,42 @@
 
        <div> 
         <div class="py-4 max-w-3xl mx-auto">
-            <div class="font-bold text-center  text-2xl">Select Tier</div>
-            <div class="flex">
+            <div class="font-bold text-center  text-2xl">1. Pilih Level Donasi</div>
+            <div class="flex flex-wrap">
+                <%= for tier <- @tiers do %>
                 <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4 border-purple-500">
-                        <div class="text-gray-700  text-lg md:text-xl lg:text-2xl font-bold text-center">Rp.10,000.-</div>
+                    <div onclick="adjustAmount(<%= tier.amount %>,'<%= "tier-#{tier.amount}" %>' )" id="tier-<%= tier.amount %>" class="<%= if tier.id == @default_tier.id, do: "border-orange-500"  %> bg-white rounded p-4 cursor-pointer hover:border-orange-500 border-4 h-64 tier">
+                        <div class="text-gray-700  text-lg md:text-xl lg:text-2xl font-bold text-center">Rp.<%= tier.amount %>.-</div>
                         <div class="text-gray-500 text-center">per bulan</div>
-                        <div class="text-orange-600  font-bold py-2 text-center">Backer</div>
+                        <div class="text-orange-600  font-bold py-2 text-center"><%= tier.title %></div>
 
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
+                        <div class="text-justify text-sm text-gray-500"><%= tier.description %> </div>
                     </div>
                 </div>
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4">
-                        <div class="text-gray-700  text-lg md:text-xl lg:text-2xl font-bold text-center">Rp.50,000.-</div>
-                        <div class="text-gray-500 text-center">per bulan</div>
-                        <div class="text-orange-600  font-bold py-2 text-center">Light Backer</div>
-
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
-                    </div>
-                </div>
-
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4">
-                        <div class="text-gray-700  text-lg md:text-xl lg:text-2xl font-bold text-center">Rp.100,000.-</div>
-                        <div class="text-gray-500 text-center">per bulan</div>
-                        <div class="text-orange-600  font-bold py-2 text-center">Heavy Backer</div>
-
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
-                    </div>
-                </div>
+                <% end %>
 
 
             </div>
         </div>
 
         <%= form_for @changeset, "/donee/#{@donee.username}/donate", [], fn f -> %>
-
+        <input type="text" id="paymentMethodInput" name="invoice[method]" value="<%= @default_payment_method.id %>" hidden>
         <div class="py-4 max-w-xl mx-auto px-2">
-            <div class="font-bold text-center  py-2 text-2xl">Fill Amount</div>
+            <div class="font-bold text-center  py-2 text-2xl">2. Pilih Jumlah Bulan</div>
 
             <div class="bg-white rounded p-6 shadow flex items-center">
                 <div class="mx-auto">
                     <div class="flex items-baseline py-2">
                         <div class="w-32"><label class="font-bold text-gray-700">Amount</label></div>
 
-                        <input type="number" class="border-b-2 focus:outline-none p-1 w-32 font-bold text-lg"
+                        <input id="amount" onkeyup="amountChanged()" onchange="amountChanged()" type="number" class="border-b-2 focus:outline-none p-1 w-32 font-bold text-lg"
                             step="1000" value="10000" name="invoice[amount]">
                         <span class="ml-4 text-gray-600 text-sm">Rupiah</span>
                     </div>
                     <div class="flex items-baseline py-2">
                         <div class="w-32"><label class="font-bold text-gray-700">Month</label></div>
 
-                        <select name="invoice[month]" class="w-32 bg-white border-b-2 focus:outline-none h-8 text-lg font-bold">
+                        <select onchange="changeMonth()" id="month" name="invoice[month]" class="w-32 bg-white border-b-2 focus:outline-none h-8 text-lg font-bold">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -127,7 +101,7 @@
                     <div class="flex py-2">
                         <div class="w-32"><label class="font-bold text-lg text-gray-800">Total</label></div>
 
-                        <div class="font-bold w-32 text-lg">24,000,000,00</div>
+                        <div class="font-bold w-32 text-lg" id="total"><%= @default_tier.amount %></div>
                         <span class="ml-4 text-gray-600 text-sm">Rupiah</span>
                     </div>
                 </div>
@@ -142,39 +116,20 @@
         </div>
 
         <div class="py-4 max-w-3xl mx-auto">
-            <div class="font-bold text-center  text-2xl">Select Payment</div>
-            <div class="flex">
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4 border-purple-500">
-                        <div class="text-gray-700  text-2xl font-bold text-center">BCA</div>
+            <div class="font-bold text-center  text-2xl">3. Pilih Metode Pembayaran</div>
+            <div class="flex flex-wrap">
 
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
+                <%= for payment_method <- @payment_methods do %>
+                <div class="w-1/3 p-2">
+                    <div id="<%= payment_method.id %>" onclick="changePaymentMethod('<%= payment_method.id %>')" class="payment-methods h-48 bg-white rounded p-4 cursor-pointer hover:border-orange-500 border-4 <%= if payment_method.id == @default_payment_method.id, do: "border-orange-500" %> ">
+
+                        <img src="<%= payment_method.logo %>" alt="<%= payment_method.name %>">
+                        <div class="text-gray-700  text-2xl font-bold text-center"><%= payment_method.name %></div>
+
+                        <div class="text-justify text-sm text-gray-500"> <%= raw payment_method.description %> </div>
                     </div>
                 </div>
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4">
-                        <div class="text-gray-700  text-2xl font-bold text-center">MANDIRI</div>
-
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
-                    </div>
-                </div>
-
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded p-4 cursor-pointer hover:border-purple-500 border-4">
-                        <div class="text-gray-700  text-2xl font-bold text-center">BNI</div>
-
-                        <div class="text-justify text-sm text-gray-500">Lorem ipsum dolor si amat. Nanti bakal dapet
-                            begini
-                            begitu dan
-                            masih banyak lagi. </div>
-                    </div>
-                </div>
+                <% end %>
 
 
             </div>
@@ -183,7 +138,7 @@
         <div class="w-full mt-8">
             <div class="mx-auto text-center max-w-xl">
                 <div class="px-2">
-                    <button type="submit"
+                    <button type="submit" id="submitDonate"
                         class="btn-glow-orange w-full tracking-wide focus:outline-none px-10 py-4 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Submit</button>
                 </div>
             </div>

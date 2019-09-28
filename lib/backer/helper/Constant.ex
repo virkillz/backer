@@ -23,13 +23,47 @@ defmodule Backer.Constant do
     10000
   end
 
-  def default_tier() do
-    %{
-      "title" => "Standard Backer",
-      "description" =>
-        "This is the most standard monthly backing cost. Consider it the same as treating us coffee once a month",
-      "amount" => "10000"
-    }
+  def default_payment_methods do
+    [
+      %{
+        id: "transfer_bca",
+        name: "BCA",
+        logo: "/assets/images/logo/bca.png",
+        description: "<div><span class=\"font-bold\">Acc:</span> 0372800516</div>"
+      },
+      %{
+        id: "transfer_bni",
+        name: "BNI",
+        logo: "/assets/images/logo/bni.png",
+        description: "<div><span class=\"font-bold\">Acc:</span> 0372800516</div>"
+      },
+      %{
+        id: "transfer_mandiri",
+        name: "MANDIRI",
+        logo: "/assets/images/logo/mandiri.png",
+        description: "<div><span class=\"font-bold\">Acc:</span> 0372800516</div>"
+      }
+    ]
+  end
+
+  def default_tiers do
+    [
+      %{
+        "amount" => 10_000,
+        "description" => "Equal to a cup of coffee. Treat us once in a month maybe?",
+        "title" => "Light Backer"
+      },
+      %{
+        "amount" => 50_000,
+        "description" => "You treat us decent meal, once a month. Really appreciate it.",
+        "title" => "Heavy Backer"
+      },
+      %{
+        "amount" => 100_000,
+        "description" => "We can do some stuff with this definitely. Thanks!",
+        "title" => "Ultra Backer"
+      }
+    ]
   end
 
   def invoice_status() do

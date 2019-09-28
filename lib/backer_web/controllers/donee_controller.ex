@@ -168,10 +168,21 @@ defmodule BackerWeb.DoneeController do
         if donee.donee == nil do
           redirect(conn, to: "/404")
         else
+          tiers =
+            Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id}) |> IO.inspect()
+
+          payment_methods = Backer.Constant.default_payment_methods() |> IO.inspect()
+          default_tier = List.first(tiers)
+          default_payment_method = List.first(payment_methods)
+
           conn
           |> render("public_donee_donate.html",
             donee: donee,
             changeset: changeset,
+            tiers: tiers,
+            default_tier: default_tier,
+            payment_methods: payment_methods,
+            default_payment_method: default_payment_method,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
         end
@@ -278,6 +289,11 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
+  def donate_postx(conn, params) do
+    IO.inspect(params)
+    text(conn, "check console")
+  end
+
   def donate_post(conn, params) do
     # 1. if backer not logged in, put session and redirect to login with friendly flash message.
     # 2. if backer logged in, check if donee exist. If not, throw 403.
@@ -294,6 +310,7 @@ defmodule BackerWeb.DoneeController do
           params["invoice"]
           |> Map.put("donee_id", donee.donee.id)
           |> Map.put("backer_id", backer.id)
+          |> Map.put("type", "backing")
 
         case Finance.create_donation_invoice(attrs) do
           {:ok, %{invoice: invoice}} ->

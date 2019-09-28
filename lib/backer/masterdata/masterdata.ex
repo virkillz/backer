@@ -262,10 +262,19 @@ defmodule Backer.Masterdata do
   def list_tiers_for_select(%{"donee_id" => donee_id}) do
     query = from(t in Tier, where: t.donee_id == ^donee_id, order_by: t.amount)
 
-    Repo.all(query)
-    |> Enum.with_index(1)
-    |> Enum.map(fn {x, i} -> {"#{x.title} #{x.amount}", i} end)
-    |> List.insert_at(0, {"Public Post", 0})
+    result = Repo.all(query)
+
+    if Enum.count(result) == 0 do
+      generate_default_tier(donee_id)
+    else
+      result
+    end
+  end
+
+  def generate_default_tier(donee_id) do
+    tiers_attrs = Backer.Constant.default_tiers()
+
+    Enum.map(tiers_attrs, fn x -> x |> Map.put("donee_id", donee_id) |> create_tier() end)
   end
 
   @doc """
