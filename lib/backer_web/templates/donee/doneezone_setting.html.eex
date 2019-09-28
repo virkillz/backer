@@ -9,45 +9,7 @@
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
-	                <div class="pt-20 lg:hidden"></div>
-	                
-	                <div class="flex items-center lg:hidden">
-	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
-	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
-	                </div>
-	                
-	                <div class="pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
-	                
-	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700"><%= @donee_info.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
-	                    </div>
-	                
-	                    <div class="flex pt-4">
-	                        <div class="w-1/2">
-	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.backer_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Backer</div>
-	                        </div>
-	                
-	                        <div class="w-1/2">
-	                            <div class="text-xl text-center font-bold  text-purple-600"><%= @donee_info.post_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Posts</div>
-	                        </div>
-	                    </div>
-	                
-	                
-	                </div>
-
-                    <div class="pt-6 w-full">
-                        <a href="/backerzone/timeline"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
-                    </div>
-	
-	
-	
-	                <div class="border-b-2 my-6"></div>
-
-                    <%= render "component_doneezone_side_menu.html", conn: @conn %>
+                    <%= render "component_doneezone_side_menu.html", conn: @conn, donee_info: @donee_info %>
 
 
 	            </div>

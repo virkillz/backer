@@ -113,7 +113,7 @@
                     <a class="inline-block font-semibold py-2 px-4" href="/explore">Explore</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block transition-all font-semibold py-2 px-4" href="about-us">About us
+                    <a class="inline-block transition-all font-semibold py-2 px-4" href="/about-us">About us
     </a>
                 </li>
             </ul>

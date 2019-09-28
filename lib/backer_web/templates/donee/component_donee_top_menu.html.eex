@@ -4,13 +4,15 @@
             class="<%= topbar_active(@conn, "/donee/#{@donee.username}") %> px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent    cursor-pointer pb-4 ">
             About
         </div>
-    </a>                
+    </a>   
+    <!--            
     <a href="/donee/<%= @donee.username %>/posts">
         <div
             class="<%= topbar_active(@conn, "/donee/#{@donee.username}/posts") %> px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-600 cursor-pointer border-b-4 hover:border-purple-600  pb-4">
             Post
         </div>
     </a>
+    -->
     <a href="/donee/<%= @donee.username %>/backers">
         <div
             class="<%= topbar_active(@conn, "/donee/#{@donee.username}/backers") %> px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent cursor-pointer pb-4 ">
