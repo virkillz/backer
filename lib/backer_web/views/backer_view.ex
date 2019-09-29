@@ -20,6 +20,25 @@ defmodule BackerWeb.BackerView do
     end
   end
 
+  def get_payment_name(method_id) do
+    payment_method_detail = get_payment_method_detail(method_id)
+
+    payment_method_detail.name
+  end
+
+  def get_payment_logo(method_id) do
+    payment_method_detail = get_payment_method_detail(method_id)
+
+    payment_method_detail.logo
+  end
+
+  def get_payment_method_detail(method_id) do
+    payment_method_detail =
+      Backer.Constant.default_payment_methods()
+      |> Enum.filter(fn x -> x.id == method_id end)
+      |> List.first()
+  end
+
   def ago(datetime) do
     {:ok, relative_str} =
       DateTime.from_naive!(datetime, "Etc/UTC") |> Timex.format("{relative}", :relative)
@@ -28,8 +47,6 @@ defmodule BackerWeb.BackerView do
   end
 
   def sidebar_active(conn, current_path) do
-    IO.inspect(conn.request_path)
-
     if conn.request_path == current_path do
       " font-semibold bg-purple-200 text-purple-700 "
     else

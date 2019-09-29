@@ -12,7 +12,10 @@ Breakdown
 
 Target:
 - [x] All front end screen is finished.
-- [ ] Basic backing payment flow is finished.
+- [x] Basic backing payment flow is finished.
+- [x] Create invoice detail page
+- [x] Make invoice detail dynamic
+- [x] Format all thousand separator and delimiter
 - [ ] All the text for about us, basic FAQ, landing page is finished.
 - [x] Deploy alpha.backer.id 
 - [x] Fix template generator

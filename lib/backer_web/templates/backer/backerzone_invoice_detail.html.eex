@@ -1,0 +1,133 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16">
+	<div class="pt-10 container mx-auto lg:flex">
+
+		<div class="lg:w-1/4 px-4">
+			<div class="transition-all" style="top: 56px; position: sticky;">
+
+
+				<%= render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+
+
+				<div class="border-b-2 my-8"></div>
+
+				<%# 
+	                <div class="hidden lg:block">
+	                
+	                    <div class="my-4 font-bold text-lg  text-gray-700">Kategori</div>
+	                
+	                    <div class="pl-6">
+	                        <ul class="text-gray-700 flex lg:block">
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Musik</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Seni</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Hobi</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Pendidikan</a></li>
+	                            <li class="my-2 px-2"><a href="#" class="transition-all hover:font-bold">Sosial</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+					%>
+
+
+			</div>
+		</div>
+
+		<div class="lg:w-2/4 px-4 pb-20">
+
+
+			<div class="py-2">
+
+
+                <div class="bg-white mb-8 p-6 relative shadow-md rounded-lg text-gray-600 hover:shadow-lg">
+                    <div class="flex">
+                        <div class="w-1/2"><img class="w-40" src="/assets/images/logo/backer-bg-white.png" alt="">
+                            <div class="font-semibold text-xs pt-8">Billed to:</div>
+                            <div class="font-bold"><%= @invoice.backer_name %></div>
+                            <div class="text-xs"><%= @invoice.backer_email %></div>
+                        </div>
+                        <div class="w-1/2 text-right">
+                            <div class="font-semibold">INVOICE</div>
+                            <div class="font-semibold text-sm">#INV-<%= @invoice.id %></div>
+                            <div class="text-xs"><%= @invoice.date %></div>
+
+                            <div class="py-4">
+                                <span
+                                    class="rounded <%= if @invoice.status == "paid", do: "bg-green-500", else: "bg-red-400" %> text-white text-xs font-bold uppercase px-3 py-px"><%= @invoice.status %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-3">
+                        <table class="table-auto w-full">
+                            <thead>
+                                <tr>
+                                    <th class="border">#</th>
+                                    <th class="border">Items & Description</th>
+                                    <th class="border">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs">
+								<%= for {item, index} <- @invoice.detail do %>
+                                <tr>
+                                    <td class="border p-1 text-right"><%= index + 1 %> </td>
+                                    <td class="border p-1">Payment for <%= item.donee_name %> (@<%= item.donee_username %>) for <%= stringify(item.month) %> <%= item.year %></td>
+                                    <td class="border p-1 text-right"><%= Stringhelper.format_thousand(item.amount, @conn) %></td>
+                                </tr>
+								<% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex">
+                        <div class="w-1/2 text-xs">
+                            <div class="font-bold text-xs">Payment to:</div>
+                            <div class="pt-4 pb-1"><img src="<%= @invoice.payment_method.logo %>" alt="" class="w-16"></div>
+                            <div class="">
+                                <%= raw @invoice.payment_method.description %>
+                            </div>
+                        </div>
+                        <div class="w-1/2">
+                            <div class="border-b p-1 text-sm font-semibold">Total </div>
+                            <div class="flex justify-between p-1 text-xs">
+                                <div class="">Sub Total</div>
+                                <div class=""> <%= Stringhelper.format_thousand(@invoice.amount, @conn) %> </div>
+                            </div>
+                            <div class="flex justify-between p-1 text-xs bg-gray-100">
+                                <div class="">Unique Amount</div>
+                                <div class=""><%= @invoice.unique_amount %> </div>
+                            </div>
+                            <div class="flex justify-between p-1 text-xs bg-gray-100">
+                                <div class="font-bold text-sm">Total</div>
+                                <div class="font-bold text-sm">Rp. <%= Stringhelper.format_thousand(@invoice.amount + @invoice.unique_amount, @conn) %> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+		<div class="lg:w-1/4 px-4">
+
+			<div class="py-1">
+				<div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
+					<i class="la la-search text-white mr-2"></i></i>
+					<input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
+				</div>
+			</div>
+			<div class="border-b my-4"></div>
+
+			<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: [] %>
+
+		</div>
+	</div>
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

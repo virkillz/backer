@@ -32,7 +32,13 @@ defmodule Backer.Finance do
   end
 
   def list_invoices(%{"backer_id" => id}) do
-    query = from(i in Invoice, where: i.backer_id == ^id, order_by: [desc: :id])
+    query =
+      from(i in Invoice,
+        where: i.backer_id == ^id,
+        order_by: [desc: :id],
+        preload: [:invoice_detail]
+      )
+
     Repo.all(query)
   end
 
@@ -56,7 +62,55 @@ defmodule Backer.Finance do
   """
   def get_invoice!(id), do: Repo.get!(Invoice, id) |> Repo.preload(:backer)
 
-  def get_invoice(id), do: Repo.get(Invoice, id)
+  def get_invoice(id) do
+    query =
+      from(i in Invoice,
+        where: i.id == ^id,
+        preload: [[invoice_detail: [donee: [:backer]]], :backer]
+      )
+
+    Repo.one(query)
+  end
+
+  def get_invoice_compact(id) do
+    invoice = get_invoice(id)
+
+    if is_nil(invoice) do
+      nil
+    else
+      payment_method =
+        Backer.Constant.default_payment_methods()
+        |> Enum.filter(fn x -> x.id == invoice.method end)
+        |> List.first()
+
+      %{
+        id: invoice.id,
+        date: invoice.inserted_at,
+        status: invoice.status,
+        amount: invoice.amount,
+        unique_amount: invoice.unique_amount,
+        backer_id: invoice.backer_id,
+        backer_name: invoice.backer.display_name,
+        backer_email: invoice.backer.email,
+        detail: summarize_detail(invoice.invoice_detail),
+        payment_method: payment_method
+      }
+    end
+  end
+
+  def summarize_detail(invoice_detail) do
+    invoice_detail
+    |> Enum.map(fn x ->
+      %{
+        amount: x.amount,
+        donee_name: x.donee.backer.display_name,
+        donee_username: x.donee.backer.username,
+        month: x.month,
+        year: x.year
+      }
+    end)
+    |> Enum.with_index()
+  end
 
   @doc """
   Creates a invoice.

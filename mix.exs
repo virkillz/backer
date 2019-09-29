@@ -58,7 +58,8 @@ defmodule Backer.Mixfile do
       {:scrivener_ecto, "~> 2.0"},
       {:scrivener_html, "~> 1.7"},
       {:earmark, "~> 1.3"},
-      {:cloudex, "~> 1.2.1"}
+      {:cloudex, "~> 1.2.1"},
+      {:number, "~> 1.0"}
     ]
   end
 

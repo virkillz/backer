@@ -15,6 +15,7 @@ defmodule Backer.Finance.Invoice do
     field(:unique_amount, :integer, default: 0)
 
     belongs_to(:backer, Backerz)
+    has_many(:invoice_detail, Backer.Finance.InvoiceDetail)
 
     timestamps()
   end

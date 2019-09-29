@@ -194,8 +194,9 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def payment_history(conn, params) do
+  def backerzone_payment_history(conn, params) do
     backer = conn.assigns.current_backer
+    invoices = Finance.list_invoices(%{"backer_id" => backer.id}) |> IO.inspect()
 
     case backer do
       nil ->
@@ -205,8 +206,38 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("backerzone_payment_history.html",
           backer: backer,
+          invoices: invoices,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
+    end
+  end
+
+  def backerzone_invoice_detail(conn, %{"id" => invoice_id}) do
+    backer = conn.assigns.current_backer
+    invoice = Finance.get_invoice_compact(invoice_id) |> IO.inspect()
+    IO.inspect(get_session(conn, :locale))
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        cond do
+          is_nil(invoice) ->
+            redirect(conn, to: "/404")
+
+          invoice.backer_id != backer.id ->
+            redirect(conn, to: "/403")
+
+          true ->
+            # text(conn, "blah")
+            conn
+            |> render("backerzone_invoice_detail.html",
+              backer: backer,
+              invoice: invoice,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+        end
     end
   end
 

@@ -277,7 +277,7 @@ defmodule BackerWeb.PublicController do
   def page403(conn, _params) do
     conn
     |> put_status(:forbidden)
-    |> render(BackerWeb.DoneeView, "page_403.html", layout: {BackerWeb.LayoutView, "public.html"})
+    |> render("page_403.html", layout: {BackerWeb.LayoutView, "public.html"})
   end
 
   def page404(conn, _params) do

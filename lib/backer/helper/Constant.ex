@@ -35,7 +35,8 @@ defmodule Backer.Constant do
         id: "transfer_bni",
         name: "BNI",
         logo: "/assets/images/logo/bni.png",
-        description: "<div><span class=\"font-bold\">Acc:</span> 0372800516</div>"
+        description:
+          "<div><span class=\"font-bold\">Acc:</span> 0372800516</div> <div><span class=\"font-bold\">Nama:</span> PT Backer Kreasi Republik</div>"
       },
       %{
         id: "transfer_mandiri",
