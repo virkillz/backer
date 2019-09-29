@@ -165,6 +165,8 @@ defmodule BackerWeb.BackerController do
   def my_donee_list(conn, params) do
     backer = conn.assigns.current_backer
 
+    donees = Finance.list_my_donee(:backer_id, backer.id) |> IO.inspect()
+
     case backer do
       nil ->
         redirect(conn, to: "/404")

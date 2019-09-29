@@ -572,6 +572,23 @@ defmodule Backer.Finance do
 
   alias Backer.Finance.Donation
 
+  def list_my_donee(:backer_id, backer_id) do
+    query =
+      from(d in Donation,
+        distinct: d.donee_id,
+        where: d.backer_id == ^backer_id,
+        select: d.donee_id
+      )
+
+    query2 =
+      from(d in Donation,
+        where: d.backer_id == ^backer_id,
+        preload: [donee: [:backer]]
+      )
+
+    result = Repo.all(query)
+  end
+
   @doc """
   Returns the list of donations.
 
