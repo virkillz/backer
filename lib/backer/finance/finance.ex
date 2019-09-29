@@ -577,10 +577,54 @@ defmodule Backer.Finance do
       from(d in Donation,
         distinct: d.donee_id,
         where: d.backer_id == ^backer_id,
-        select: d.donee_id
+        preload: [donee: [:backer], backer_tier: []]
       )
 
-    query2 =
+    result = Repo.all(query)
+
+    if Enum.count(result) > 0 do
+      backing_history = list_backing_history(:backer_id, backer_id)
+      Enum.map(result, fn x -> summarize_and_add_active(x, backing_history) end)
+    else
+      []
+    end
+
+    # backing_history = list_backing_history(:backer_id, backer_id)
+  end
+
+  def summarize_and_add_active(x, backing_history) do
+    today = DateTime.utc_now()
+
+    backer_since =
+      backing_history
+      |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
+      |> Enum.min_by(fn z -> z.id end)
+
+    current_donation =
+      backing_history
+      |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
+      |> Enum.filter(fn y -> y.month == today.month && y.year == today.year end)
+
+    summary = %{
+      id: x.donee_id,
+      display_name: x.donee.backer.display_name,
+      avatar: x.donee.backer.avatar,
+      background: x.donee.background,
+      backer_count: x.donee.backer_count,
+      username: x.donee.backer.username,
+      tier: x.backer_tier.title,
+      backer_since: %{month: backer_since.month, year: backer_since.year}
+    }
+
+    if Enum.count(current_donation) > 0 do
+      Map.put(summary, :status, "Active")
+    else
+      Map.put(summary, :status, "Inactive")
+    end
+  end
+
+  def list_backing_history(:backer_id, backer_id) do
+    query =
       from(d in Donation,
         where: d.backer_id == ^backer_id,
         preload: [donee: [:backer]]

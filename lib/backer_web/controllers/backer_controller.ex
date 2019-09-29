@@ -175,6 +175,7 @@ defmodule BackerWeb.BackerController do
         conn
         |> render("backerzone_my_donee_list.html",
           backer: backer,
+          donees: donees,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end

@@ -6,6 +6,7 @@
 		</div>
 	</div>
 
+	<a href="/backer/<%= @backer.username %>">
 	<div class="pt-10 hidden lg:block bg-white rounded-lg shadow py-6 px-4">
 		<img src="<%= @backer.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 
@@ -23,7 +24,7 @@
 			</div>
 
 		</div>
-
+	</a>
 
 	</div>
 

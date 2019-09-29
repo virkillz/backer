@@ -38,35 +38,36 @@
 	
 	            <div class="py-2">
 	
+					<%= for donee <- @donees do %>
 	
 	                <div class="bg-white mb-8 relative shadow-md rounded-t-lg text-gray-600 hover:shadow-lg">
 	                    <div
-	                        class="right-0 mt-8 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-green-500">
-	                        Active supporter
+	                        class="right-0 mt-8 rounded-l-full uppercase absolute text-center font-bold text-xs text-white px-6 py-2 bg-green-500">
+	                        <%= donee.status %>
 	                    </div>
 	
 	                    <div class="flex items-center p-4">
 	                        <div class="ml-4">
-	                            <img src="https://i.pravatar.cc/80" class="rounded-lg border-4 border-white mr-2 h-20">
+	                            <img src="<%= donee.avatar %>" class="rounded-lg border-4 border-white mr-2 h-20">
 	                        </div>
 	                        <div class="p-2">
-	                            <div class=" font-bold ">Komunitas Sekolah Bersama</div>
-	                            <div class="font-semibold text-sm text-gray-600">senggama • 10001 backers</div>
+	                            <div class=" font-bold "><%= donee.display_name %></div>
+	                            <div class="font-semibold text-sm text-gray-600"><%= donee.username %> • <%= donee.backer_count %> backers</div>
 	                        </div>
 	                    </div>
 	                    <div class="px-4">
 	                        <div class="flex text-center rounded justify-between p-2 bg-gray-200">
 	                            <div class="w-1/3">
 	                                <div class="font-semibold text-sm text-gray-600">Status Backing</div>
-	                                <div class="text-center text-green-500">Aktif</div>
+	                                <div class="text-center text-green-500"><%= donee.status %></div>
 	                            </div>
 	                            <div class="w-1/3">
 	                                <div class="font-semibold text-sm text-gray-600">Backer sejak</div>
-	                                <div class="text-center">Juli 2019</div>
+	                                <div class="text-center"><%= stringify(donee.backer_since.month) %> <%= donee.backer_since.year %></div>
 	                            </div>
 	                            <div class="w-1/3">
 	                                <div class="font-semibold text-sm text-gray-600">Level</div>
-	                                <div class="text-center">Supporter</div>
+	                                <div class="text-center"><%= donee.tier %></div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -78,61 +79,15 @@
 	                                Donasi</button>
 	                        </div>
 	                        <div class="mx-2">
+								<a href="/donee/<%= donee.username %>">
 	                            <button
 	                                class="px-6 py-2 text-sm rounded-lg bg-purple-600 text-white transition-all border border-purple-600">Kunjungi</button>
-	                        </div>
+	      						</a>                  
+							</div>
 	                    </div>
 	                </div>
-	
-	                <div class="bg-white mb-8 relative shadow-md rounded-t-lg text-gray-600 hover:shadow-lg">
-	                    <div
-	                        class="right-0 mt-8 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-gray-500">
-	                        Inactive Bro
-	                    </div>
-	                    <div class="flex items-center p-4">
-	                        <div class="ml-4">
-	                            <img src="https://i.pravatar.cc/80" class="rounded-lg border-4 border-white mr-2 h-20">
-	                        </div>
-	                        <div class="p-2">
-	                            <div class=" font-bold ">Anda Bertanya Ateis Menjawab</div>
-	                            <div class="font-semibold text-sm text-gray-600">abam • 2112 backers</div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="px-4">
-	                        <div class="flex text-center rounded justify-between p-2 bg-gray-200">
-	                            <div class="w-1/3">
-	                                <div class="font-semibold text-sm text-gray-600">Status Backing</div>
-	                                <div class="text-center text-gray-500">Inaktif</div>
-	                            </div>
-	                            <div class="w-1/3">
-	                                <div class="font-semibold text-sm text-gray-600">Backer sejak</div>
-	                                <div class="text-center">Juli 2019</div>
-	                            </div>
-	                            <div class="w-1/3">
-	                                <div class="font-semibold text-sm text-gray-600">Level</div>
-	                                <div class="text-center">Bro</div>
-	                            </div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="flex text-center justify-center p-4">
-	                        <div class="mx-2">
-	                            <button
-	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Riwayat
-	                                Donasi</button>
-	                        </div>
-	                        <div class="mx-2">
-	                            <button
-	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Kunjungi</button>
-	                        </div>
-	
-	                        <div class="mx-2">
-	                            <button
-	                                class="px-6 py-2 text-sm rounded-lg bg-green-600 text-white transition-all border border-green-600">Aktifkan</button>
-	                        </div>
-	                    </div>
-	                </div>
+
+					<% end %>
 	
 	
 	            </div>

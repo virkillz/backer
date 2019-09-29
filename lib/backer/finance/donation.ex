@@ -5,13 +5,14 @@ defmodule Backer.Finance.Donation do
   schema "donations" do
     field(:amount, :integer)
     field(:month, :integer)
-    field(:tier, :integer)
+    # field(:tier, :integer)
     field(:year, :integer)
     field(:is_executed, :boolean, default: true)
     field(:backer_id, :id)
     field(:invoice_id, :id)
 
     belongs_to(:donee, Backer.Account.Donee)
+    belongs_to(:backer_tier, Backer.Masterdata.Tier, foreign_key: :tier)
 
     timestamps()
   end
