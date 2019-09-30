@@ -7,6 +7,15 @@ Duration: 3 month
 Target: Have a production ready version deployed. Everything visible is working. 
 Create own legal entity. Have a pitchdeck. Start documenting expenses. Start distributing actual backing donation from own money to real donee.
 
+user_setting
+
+backer_id
+group
+key
+value_string
+value_integer
+
+
 Breakdown
 ### September 2019
 
@@ -34,7 +43,19 @@ Target:
 ### October 2019
 
 Target:
+- [x] Fix logo color in header
+- [x] Fix issue some donee doesn't have tier
+- [x] Fix recommended donee in doneezone cannot be clicked
+- [x] Make Backer public page backer list represent active backer.
+- [x] Make all number in public backer profile real from data
+- [ ] Create daily scheduler works for monthly data.
+- [ ] Make top backer in public donee profile works
+- [ ] Make search functioning
+- [ ] Make notification functioning for backer payment approved.
+- [ ] Make notification functioning for backer waiting for payment.
+- [ ] Make notification functioning for donee got new backer.
 - [ ] Make the monthly backing fully works.
+- [ ] Backer can edit social media link
 - [ ] Donee can edit their own profile
 - [ ] Backer can edit their own profile
 - [ ] Connect to cloud image storage

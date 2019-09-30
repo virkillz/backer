@@ -572,6 +572,45 @@ defmodule Backer.Finance do
 
   alias Backer.Finance.Donation
 
+  def list_my_active_donee(:backer_id, backer_id) do
+    today = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.backer_id == ^backer_id,
+        where: d.month == ^today.month,
+        where: d.year == ^today.year,
+        preload: [donee: [:backer], backer_tier: []]
+      )
+
+    Repo.all(query)
+    |> Enum.map(fn x ->
+      %{
+        background: x.donee.background,
+        avatar: x.donee.backer.avatar,
+        username: x.donee.backer.username,
+        backer_count: x.donee.backer_count,
+        display_name: x.donee.backer.display_name,
+        tagline: x.donee.tagline
+      }
+    end)
+  end
+
+  def count_my_active_donee(:backer_id, backer_id) do
+    0
+  end
+
+  def count_my_donee(:backer_id, backer_id) do
+    query =
+      from(d in Donation,
+        distinct: d.donee_id,
+        where: d.backer_id == ^backer_id,
+        select: d.donee_id
+      )
+
+    query |> Repo.all() |> Enum.count()
+  end
+
   def list_my_donee(:backer_id, backer_id) do
     query =
       from(d in Donation,

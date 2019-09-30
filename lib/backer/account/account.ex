@@ -490,11 +490,13 @@ defmodule Backer.Account do
     end)
     |> Ecto.Multi.run(:tier, fn _repo, %{donee: donee} ->
       # get default tier from constant
-      tier_attr = Map.put(Backer.Constant.default_tier(), "donee_id", donee.id)
+      tiers = Masterdata.generate_default_tier(donee.id)
 
-      %Tier{}
-      |> Tier.changeset(tier_attr)
-      |> Repo.insert()
+      if Enum.count(tiers) == 3 do
+        {:ok, tiers}
+      else
+        {:error, "Cannot create tiers"}
+      end
     end)
     |> Repo.transaction()
   end

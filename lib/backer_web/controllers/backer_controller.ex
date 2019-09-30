@@ -165,17 +165,20 @@ defmodule BackerWeb.BackerController do
   def my_donee_list(conn, params) do
     backer = conn.assigns.current_backer
 
-    donees = Finance.list_my_donee(:backer_id, backer.id) |> IO.inspect()
-
     case backer do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
+        my_donee_list = Finance.list_my_donee(:backer_id, backer.id)
+
+        random_donees = Account.get_random_donee(3)
+
         conn
         |> render("backerzone_my_donee_list.html",
           backer: backer,
-          donees: donees,
+          my_donee_list: my_donee_list,
+          random_donees: random_donees,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -189,9 +192,12 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
+        random_donees = Account.get_random_donee(3)
+
         conn
         |> render("backerzone_profile_setting.html",
           backer: backer,
+          random_donees: random_donees,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -199,17 +205,21 @@ defmodule BackerWeb.BackerController do
 
   def backerzone_payment_history(conn, params) do
     backer = conn.assigns.current_backer
-    invoices = Finance.list_invoices(%{"backer_id" => backer.id}) |> IO.inspect()
 
     case backer do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
+        invoices = Finance.list_invoices(%{"backer_id" => backer.id})
+
+        random_donees = Account.get_random_donee(3)
+
         conn
         |> render("backerzone_payment_history.html",
           backer: backer,
           invoices: invoices,
+          random_donees: random_donees,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -263,17 +273,20 @@ defmodule BackerWeb.BackerController do
 
   def public_profile(conn, %{"username" => username}) do
     backer = Account.get_backer(%{"username" => username})
-    random_donee = Account.get_random_donee(3)
 
     case backer do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
+        list_my_active_donee = Finance.list_my_active_donee(:backer_id, backer.id)
+        count_all_donee = Finance.count_my_donee(:backer_id, backer.id) |> IO.inspect()
+
         conn
         |> render("public_backer_profile.html",
           backer: backer,
-          random_donee: random_donee,
+          active_donee: list_my_active_donee,
+          count_all_donee: count_all_donee,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end

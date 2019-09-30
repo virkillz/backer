@@ -38,7 +38,7 @@
 	
 	            <div class="py-2">
 	
-					<%= for donee <- @donees do %>
+					<%= for donee <- @my_donee_list do %>
 	
 	                <div class="bg-white mb-8 relative shadow-md rounded-t-lg text-gray-600 hover:shadow-lg">
 	                    <div
@@ -108,7 +108,7 @@
 	            </div>
 	            <div class="border-b my-4"></div>
 	
-				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: [] %>
+				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees %>
 
 	        </div>
 	    </div>
