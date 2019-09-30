@@ -59,6 +59,9 @@ Target:
 - [ ] Donee can edit their own profile
 - [ ] Backer can edit their own profile
 - [ ] Connect to cloud image storage
+- [ ] Preview mode: /preview
+- [ ] Publish on and off
+- [ ] If publish is off will show special page.
 
 ### November target
 
