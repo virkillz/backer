@@ -631,6 +631,17 @@ defmodule Backer.Finance do
     # backing_history = list_backing_history(:backer_id, backer_id)
   end
 
+  def list_incoming_payment(:donee_id, donee_id) do
+    query =
+      from(i in InvoiceDetail,
+        distinct: i.invoice_id,
+        where: i.donee_id == ^donee_id,
+        preload: [invoice: [:invoice_detail]]
+      )
+
+    Repo.all(query)
+  end
+
   def summarize_and_add_active(x, backing_history) do
     today = DateTime.utc_now()
 
@@ -736,6 +747,28 @@ defmodule Backer.Finance do
       )
 
     Repo.all(query)
+  end
+
+  def list_active_backers(:donee_id, donee_id) do
+    today = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.donee_id == ^donee_id,
+        where: d.month == ^today.month,
+        where: d.year == ^today.year,
+        preload: [:backer, :backer_tier]
+      )
+
+    Repo.all(query)
+    |> Enum.map(fn x ->
+      %{
+        avatar: x.backer.avatar,
+        username: x.backer.username,
+        tier: x.backer_tier.title,
+        display_name: x.backer.display_name
+      }
+    end)
   end
 
   def list_all_backers(%{"donee_id" => id}) do

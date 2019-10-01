@@ -8,7 +8,6 @@ defmodule Backer.Finance.InvoiceDetail do
     field(:type, :string)
     field(:year, :integer)
     field(:backer_id, :id)
-    field(:invoice_id, :id)
     field(:tier, :integer)
     field(:is_settled, :boolean)
     field(:settlement_date, :date)
@@ -16,6 +15,7 @@ defmodule Backer.Finance.InvoiceDetail do
     field(:donation_id, :id)
 
     belongs_to(:donee, Backer.Account.Donee)
+    belongs_to(:invoice, Backer.Finance.Invoice)
     timestamps()
   end
 

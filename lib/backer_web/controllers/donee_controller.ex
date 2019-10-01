@@ -32,8 +32,9 @@ defmodule BackerWeb.DoneeController do
 
   def doneezone_finance(conn, params) do
     backer_info = conn.assigns.current_backer
-    donee_info = conn.assigns.current_donee
+    donee_info = conn.assigns.current_donee |> IO.inspect()
     random_donee = Account.get_random_donee(3)
+    finance_info = Finance.list_incoming_payment(:donee_id, donee_info.donee_id) |> IO.inspect()
 
     conn
     |> render("doneezone_finance.html",
@@ -221,11 +222,14 @@ defmodule BackerWeb.DoneeController do
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
 
+        active_backers = Finance.list_active_backers(:donee_id, donee.donee_id)
+
         conn
         |> render("doneezone_backers.html",
           donee_info: donee,
           random_backer: random_backer,
           recommended_donees: random_donee,
+          active_backers: active_backers,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -629,7 +633,7 @@ defmodule BackerWeb.DoneeController do
   end
 
   def backers(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username})
+    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
     # backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
     case donee do
@@ -637,7 +641,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_backer = Account.get_random_backer(4)
+        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id) |> IO.inspect()
         random_donee = Account.get_random_donee(4)
 
         if donee.donee == nil do
@@ -646,7 +650,7 @@ defmodule BackerWeb.DoneeController do
           conn
           |> render("public_donee_backers.html",
             donee: donee,
-            random_backer: random_backer,
+            active_backers: active_backers,
             random_donee: random_donee,
             layout: {BackerWeb.LayoutView, "public.html"}
           )

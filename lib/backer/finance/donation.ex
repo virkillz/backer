@@ -8,10 +8,10 @@ defmodule Backer.Finance.Donation do
     # field(:tier, :integer)
     field(:year, :integer)
     field(:is_executed, :boolean, default: true)
-    field(:backer_id, :id)
     field(:invoice_id, :id)
 
     belongs_to(:donee, Backer.Account.Donee)
+    belongs_to(:backer, Backer.Account.Backer)
     belongs_to(:backer_tier, Backer.Masterdata.Tier, foreign_key: :tier)
 
     timestamps()

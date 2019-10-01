@@ -25,7 +25,7 @@ Target:
 - [x] Create invoice detail page
 - [x] Make invoice detail dynamic
 - [x] Format all thousand separator and delimiter
-- [ ] All the text for about us, basic FAQ, landing page is finished.
+- [x] All the text for about us, basic FAQ, landing page is finished.
 - [x] Deploy alpha.backer.id 
 - [x] Fix template generator
 - [x] Donee can create submission to be considered.
@@ -48,6 +48,9 @@ Target:
 - [x] Fix recommended donee in doneezone cannot be clicked
 - [x] Make Backer public page backer list represent active backer.
 - [x] Make all number in public backer profile real from data
+- [x] If no backing yet, show somehting in doneezone
+- [x] Make backer in doneezone and public donee works
+- [ ] Invoice must record donee_id and month directly. Not only through detail 
 - [ ] Create daily scheduler works for monthly data.
 - [ ] Make top backer in public donee profile works
 - [ ] Make search functioning
