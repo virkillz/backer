@@ -6,6 +6,7 @@
 	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
 	                </div>
 	                
+                    <a href="/donee/<%= @donee_info.username %>">
 	                <div class="wow fadeIn pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
 	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 	                
@@ -28,6 +29,7 @@
 	                
 	                
 	                </div>
+                    </a>
 
                     <div class="pt-6 w-full">
                         <a href="/backerzone/my-donee-list"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
