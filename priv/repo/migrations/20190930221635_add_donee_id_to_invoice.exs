@@ -4,6 +4,7 @@ defmodule Backer.Repo.Migrations.AddDoneeIdToInvoice do
   def change do
     alter table(:invoices) do
       add(:donation, :integer)
+      add(:month, :integer)
       add(:donee_id, references(:donees, on_delete: :delete_all))
     end
 
