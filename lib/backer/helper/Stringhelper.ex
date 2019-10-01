@@ -46,6 +46,10 @@ defmodule Stringhelper do
     end
   end
 
+  def number_to_month(x) do
+    stringify(x)
+  end
+
   def stringify(x) do
     case x do
       1 -> "January"

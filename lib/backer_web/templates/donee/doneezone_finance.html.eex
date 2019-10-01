@@ -38,78 +38,31 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody class="text-xs">
+
+						<%= for invoice <- @invoices do %>
 	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
-	                            <td class="p-1">12 Sep 2019</td>
+	                            <td class="p-1"><%= datetime_to_date invoice.inserted_at %></td>
 	                            <td class="p-1 text-center w-32">
+									<a href="/backer/<%= invoice.backer.username %>">
 	                                <div class="flex">
 	                                    <div class="">
-	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
+	                                        <img src="<%= invoice.backer.avatar %>" alt="<%= invoice.backer.display_name %>" class="w-8 h-8 rounded-lg mr-2">
 	                                    </div>
-	                                    <div class="">
-	                                        <div class="font-bold">Nama Backer</div>
-	                                        <div class="">@username</div>
-	                                    </div>
-	                                </div>
-	                            </td>
-	                            <td class="p-1 text-right">Rp. 10,000,- </td>
-	                            <td class="p-1 text-right">3 bulan</td>
-	                            <td class="p-1 text-right">Rp. 30,000,-</td>
-	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
-	                        </tr>
-	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
-	                            <td class="p-1">12 Sep 2019</td>
-	                            <td class="p-1 text-center w-32">
-	                                <div class="flex">
-	                                    <div class="">
-	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
-	                                    </div>
-	                                    <div class="">
-	                                        <div class="font-bold">Nama Backer</div>
-	                                        <div class="">@username</div>
+	                                    <div class=" text-blue-500">
+	                                        <div class="font-bold"><%= invoice.backer.display_name %></div>
+	                                        <div class="">@<%= invoice.backer.username %></div>
 	                                    </div>
 	                                </div>
+									</a>
 	                            </td>
-	                            <td class="p-1 text-right">Rp. 10,000,- </td>
-	                            <td class="p-1 text-right">3 bulan</td>
-	                            <td class="p-1 text-right">Rp. 30,000,-</td>
+	                            <td class="p-1 text-right">Rp. <%= invoice.donation %>,- </td>
+	                            <td class="p-1 text-right"><%= invoice.month %> bulan</td>
+	                            <td class="p-1 text-right">Rp. <%= invoice.amount %>,-</td>
 	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
 	                        </tr>
-	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
-	                            <td class="p-1">12 Sep 2019</td>
-	                            <td class="p-1 text-center w-32">
-	                                <div class="flex">
-	                                    <div class="">
-	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
-	                                    </div>
-	                                    <div class="">
-	                                        <div class="font-bold">Nama Backer</div>
-	                                        <div class="">@username</div>
-	                                    </div>
-	                                </div>
-	                            </td>
-	                            <td class="p-1 text-right">Rp. 10,000,- </td>
-	                            <td class="p-1 text-right">3 bulan</td>
-	                            <td class="p-1 text-right">Rp. 30,000,-</td>
-	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
-	                        </tr>
-	                        <tr class="hover:bg-gray-200 py-4 border-t-8 border-b-8 border-transparent">
-	                            <td class="p-1">12 Sep 2019</td>
-	                            <td class="p-1 text-center w-32">
-	                                <div class="flex">
-	                                    <div class="">
-	                                        <img src="/assets/images/bg/avatar3.jpeg" alt="Someone" class="w-8 h-8 rounded-lg mr-2">
-	                                    </div>
-	                                    <div class="">
-	                                        <div class="font-bold">Nama Backer</div>
-	                                        <div class="">@username</div>
-	                                    </div>
-	                                </div>
-	                            </td>
-	                            <td class="p-1 text-right">Rp. 10,000,- </td>
-	                            <td class="p-1 text-right">3 bulan</td>
-	                            <td class="p-1 text-right">Rp. 30,000,-</td>
-	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
-	                        </tr>
+				
+						<% end %>
+
 	                    </tbody>
 	                </table>
 	

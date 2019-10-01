@@ -50,14 +50,15 @@ Target:
 - [x] Make all number in public backer profile real from data
 - [x] If no backing yet, show somehting in doneezone
 - [x] Make backer in doneezone and public donee works
-- [ ] Invoice must record donee_id and month directly. Not only through detail 
+- [x] Invoice must record donee_id and month directly. Not only through detail 
 - [ ] Create daily scheduler works for monthly data.
-- [ ] Make top backer in public donee profile works
+- [x] Make top backer in public donee profile works
+- [ ] Invoice should capture 'nominal'
+- [ ] Make backerzone 'keuangan' works 
 - [ ] Make search functioning
 - [ ] Make notification functioning for backer payment approved.
 - [ ] Make notification functioning for backer waiting for payment.
 - [ ] Make notification functioning for donee got new backer.
-- [ ] Make the monthly backing fully works.
 - [ ] Backer can edit social media link
 - [ ] Donee can edit their own profile
 - [ ] Backer can edit their own profile

@@ -34,12 +34,13 @@ defmodule BackerWeb.DoneeController do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee |> IO.inspect()
     random_donee = Account.get_random_donee(3)
-    finance_info = Finance.list_incoming_payment(:donee_id, donee_info.donee_id) |> IO.inspect()
+    invoices = Finance.list_incoming_payment(:donee_id, donee_info.donee_id) |> IO.inspect()
 
     conn
     |> render("doneezone_finance.html",
       backer_info: backer_info,
       donee_info: donee_info,
+      invoices: invoices,
       recommended_donees: random_donee,
       layout: {BackerWeb.LayoutView, "public.html"}
     )

@@ -42,12 +42,18 @@ defmodule Backer.Finance.Invoice do
     |> validate_number(:amount, greater_than_or_equal_to: Constant.minimum_tier())
     |> validate_number(:month, greater_than_or_equal_to: 1)
     |> validate_required([:amount, :month, :donee_id, :backer_id])
+    |> add_donation
     |> transform_donation_changeset
     |> add_unique_amount
   end
 
   def add_unique_amount(changeset) do
     changeset |> change(unique_amount: Enum.random(0..500))
+  end
+
+  def add_donation(changeset) do
+    amount = get_field(changeset, :amount)
+    changeset |> change(donation: amount)
   end
 
   def transform_donation_changeset(changeset) do

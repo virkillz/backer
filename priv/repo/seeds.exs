@@ -5,7 +5,7 @@ alias Backer.Masterdata.Category
 alias Backer.Masterdata.Title
 alias Backer.Masterdata.Tier
 alias Backer.Account.Donee
-alias Backer.Setting
+alias Backer.Settings.Setting
 alias Backer.Account.Backer, as: Backerz
 
 Repo.insert!(%User{

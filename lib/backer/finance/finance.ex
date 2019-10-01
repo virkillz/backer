@@ -633,10 +633,9 @@ defmodule Backer.Finance do
 
   def list_incoming_payment(:donee_id, donee_id) do
     query =
-      from(i in InvoiceDetail,
-        distinct: i.invoice_id,
+      from(i in Invoice,
         where: i.donee_id == ^donee_id,
-        preload: [invoice: [:invoice_detail]]
+        preload: [:backer]
       )
 
     Repo.all(query)

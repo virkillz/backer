@@ -162,7 +162,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def my_donee_list(conn, params) do
+  def backerzone_my_donee_list(conn, params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -184,7 +184,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def profile_setting(conn, params) do
+  def backerzone_profile_setting(conn, params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -334,30 +334,6 @@ defmodule BackerWeb.BackerController do
 
   def backing_history(conn, %{"username" => username}) do
     text(conn, "backing history. put auth")
-  end
-
-  def profile_setting(conn, params) do
-    # backer = Account.get_backer(%{"username" => username})
-    backer = conn.assigns.current_backer
-
-    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
-    changeset = Account.change_backer(backer)
-
-    case backer do
-      nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
-
-      _ ->
-        conn
-        |> render("front_profile_setting.html",
-          backer: backer,
-          donees: donees,
-          menu: :profile_setting,
-          changeset_backer: changeset,
-          owner: true,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-        )
-    end
   end
 
   def profile_setting_update(conn, %{"backer" => params}) do
