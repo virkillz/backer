@@ -222,7 +222,7 @@ defmodule BackerWeb.DoneeController do
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
 
-        active_backers = Finance.list_active_backers(:donee_id, donee.donee_id)
+        active_backers = Finance.list_active_backers(:donee_id, donee.donee_id) |> IO.inspect()
 
         conn
         |> render("doneezone_backers.html",
@@ -243,8 +243,8 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
+        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
         backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
@@ -256,7 +256,7 @@ defmodule BackerWeb.DoneeController do
             donee: donee,
             backing: backing,
             backers: backers,
-            random_backer: random_backer,
+            active_backers: active_backers,
             random_donee: random_donee,
             layout: {BackerWeb.LayoutView, "public.html"}
           )
@@ -641,7 +641,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id) |> IO.inspect()
+        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
         random_donee = Account.get_random_donee(4)
 
         if donee.donee == nil do

@@ -757,6 +757,7 @@ defmodule Backer.Finance do
         where: d.donee_id == ^donee_id,
         where: d.month == ^today.month,
         where: d.year == ^today.year,
+        order_by: [desc: d.amount],
         preload: [:backer, :backer_tier]
       )
 
