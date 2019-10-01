@@ -4,7 +4,7 @@
 	                    <img src="<%= @donee.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700"><%= @donee.display_name %></div>
+	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.display_name %></div>
 	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.title.name %></div>
 	                    </div>
 	                

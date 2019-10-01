@@ -9,13 +9,13 @@
     -->
     <a href="/doneezone/about">
         <div
-        class="<%= topbar_active(@conn, "/doneezone/about") %> px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-600 cursor-pointer border-b-4 border-transparent hover:border-purple-600  pb-4">
+        class="<%= topbar_active(@conn, "/doneezone/about") %> px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-600 cursor-pointer font-title border-b-4 border-transparent hover:border-purple-600  pb-4">
             About
         </div>
     </a>
     <a href="/doneezone/backers">
         <div
-        class="<%= topbar_active(@conn, "/doneezone/backers") %> px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-600 cursor-pointer border-b-4 border-transparent hover:border-purple-600  pb-4">
+        class="<%= topbar_active(@conn, "/doneezone/backers") %> px-4  transition-all font-bold lg:text-xl md:text-lg hover:text-purple-600 cursor-pointer font-title border-b-4 border-transparent hover:border-purple-600  pb-4">
             Backers
         </div>
     </a>

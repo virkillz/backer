@@ -3,7 +3,7 @@
 	<div class="pt-10 text-white">
 	
 	    <div class="container px-3 py-20 mx-auto">
-	        <div class="text-4xl  text-center font-semibold">Syarat & Ketentuan</div>
+	        <div class="text-4xl  text-center font-semibold font-title">Syarat & Ketentuan</div>
 	        <div class="text-center">Home / <span class="underline">Syarat & Ketentuan</span></div>
 	
 	

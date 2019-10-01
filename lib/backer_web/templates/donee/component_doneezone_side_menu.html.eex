@@ -10,7 +10,7 @@
 	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700"><%= @donee_info.display_name %></div>
+	                        <div class="text-center font-bold font-title text-gray-700"><%= @donee_info.display_name %></div>
 	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
 	                    </div>
 	                
@@ -43,7 +43,7 @@
         <div
             class="<%= sidebar_active(@conn, "/doneezone/about") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 rounded hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
             <i class="la la-home text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg"> My Page</div>
+            <div class="text-sm md:text-base lg:text-lg font-title"> My Page</div>
         </div>
     </a>
 
@@ -51,7 +51,7 @@
         <div
             class="<%= sidebar_active(@conn, "/doneezone/statistic") %> mb-2 lg:flex  text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
             <i class="la la-bar-chart-o text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg"> Statistic </div>
+            <div class="text-sm md:text-base lg:text-lg font-title"> Statistic </div>
         </div>
     </a>
 
@@ -59,7 +59,7 @@
         <div
             class="<%= sidebar_active(@conn, "/doneezone/finance") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
             <i class="la la-credit-card text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg"> Keuangan</div>
+            <div class="text-sm md:text-base lg:text-lg font-title"> Keuangan</div>
         </div>
     </a>
 
@@ -67,7 +67,7 @@
         <div
             class="<%= sidebar_active(@conn, "/doneezone/setting") %> mb-2 lg:flex text-center cursor-pointer py-2 px-2 mx-px lg:px-6 text-lg rounded text-gray-700 hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500">
             <i class="la la-cog text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg"> Pengaturan</div>
+            <div class="text-sm md:text-base lg:text-lg font-title"> Pengaturan</div>
         </div>
     </a>
 </div>

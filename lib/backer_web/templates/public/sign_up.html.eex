@@ -3,7 +3,7 @@
 <div class=" py-32 px-4">
         <div class="bg-white text-gray-700 max-w-md container mx-auto rounded-lg p-8 shadow-lg">
 
-                <div class="text-4xl pb-4  font-semibold"><%= gettext "Daftar" %></div>
+                <div class="text-4xl pb-4  font-semibold font-title"><%= gettext "Daftar" %></div>
 
                 <%= form_for @changeset, "/sign_up", [], fn f -> %>
 

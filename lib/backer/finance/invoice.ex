@@ -11,7 +11,7 @@ defmodule Backer.Finance.Invoice do
     field(:status, :string, default: "unpaid")
     field(:type, :string)
     field(:donee_id, :integer)
-    field(:month, :integer, virtual: true)
+    field(:month, :integer)
     field(:unique_amount, :integer, default: 0)
 
     belongs_to(:backer, Backerz)

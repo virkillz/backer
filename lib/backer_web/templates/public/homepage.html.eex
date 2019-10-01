@@ -1,12 +1,12 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 
-<div class="pt-24">
+<div class="pt-40">
 
 	<div class="container px-3 mx-auto text-white flex flex-wrap flex-col md:flex-row items-start">
 		<!--Left Col-->
-		<div class="lg:text-left w-full md:w-1/2 items-start text-center md:text-left">
-			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold">Visi kami: kegiatan positif di
+		<div class="lg:text-left w-full md:w-3/5 items-start text-center md:text-left">
+			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Visi kami: kegiatan positif di
 				Indonesia dapat
 				terus hidup.</div>
 			<p class="wow fadeIn lg:text-xl font-lightx text-justifyx md:text-lg mb-8 mt-8 leading-loose">Puluhan ribu komunitas dan
@@ -25,7 +25,7 @@
 
 		</div>
 		<!--Right Col-->
-		<div class="w-full md:w-1/2 px-6 hidden lg:block">
+		<div class="w-full md:w-2/5 px-6 hidden lg:block">
 			<img src="/assets/images/cover.svg" class="mx-auto wow fadeIn" style="max-height: 25em;" alt="">
 
 
@@ -62,7 +62,7 @@
 
 <section class="bg-white border-b py-8 text-gray-700">
 	<div class="container max-w-6xl mx-auto m-8">
-		<div class="text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold">Seperti aktivitas mereka
+		<div class="text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Seperti aktivitas mereka
 		</div>
 				<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -116,7 +116,7 @@
 
 <section class="bg-gray-200 py-8 text-gray-700">
 	<div class="container max-w-6xl mx-auto m-8">
-		<div class="text-4xl text-gray-800 text-center mt-2 mb-8 leading-tight font-bold">Atau mereka..</div>
+		<div class="text-4xl text-gray-800 text-center mt-2 mb-8 leading-tight font-bold font-title">Atau mereka..</div>
 
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -191,7 +191,7 @@
 <section class=" py-8">
 
 	<div class="container mx-auto flex flex-wrap pt-4 pb-12">
-		<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">Misi kami </h1>
+		<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white font-title">Misi kami </h1>
 
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -260,16 +260,16 @@
 
 <section class="bg-white py-8">
 	<div class="container max-w-5xl mx-auto m-8">
-		<div class="text-5xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold">Daftarkan komunitasmu</div>
+		<div class="text-5xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Daftarkan komunitasmu</div>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
 		<div class="flex my-6 flex-wrap">
 			<div class="w-5/6 sm:w-1/2 p-6">
-				<h4 class="font-bold">Langkah 1</h4>
-				<h3 class="text-3xl text-gray-800 font-bold mb-3">Daftar sebagai Donee dan bangun profil komunitasmu</h3>
-				<p class="text-gray-600 mb-8">Luangkan waktu sejenak untuk mendaftar dan mengisi informasi kegiatan komunitas atau organisasimu agar mudah ditemukan oleh publik.<br /><br />
+				<h4 class="font-bold font-title mb-4 text-gray-700">Langkah 1</h4>
+				<h3 class="text-3xl text-gray-800 font-bold mb-8 font-title">Daftar sebagai Donee dan bangun profil komunitasmu</h3>
+				<p class="text-gray-600 mb-8 leading-loose">Luangkan waktu sejenak untuk mendaftar dan mengisi informasi kegiatan komunitas atau organisasimu agar mudah ditemukan oleh publik.<br /><br />
 
 
 			</div>
@@ -289,9 +289,9 @@
 			</div>
 			<div class="w-full sm:w-1/2 p-6 mt-6">
 				<div class="align-middle">
-							<h4 class="font-bold">Langkah 2</h4>
-					<h3 class="text-3xl text-gray-800 font-bold mb-3">Kumpulkan donasi dan perluas jaringan backermu</h3>
-					<p class="text-gray-600 mb-8"> Gunakan platfom untuk memantau pembayaran donasi dan menemukan lebih banyak backer yang sevisi dengan kegiatanmu.
+							<h4 class="font-bold font-title mb-2">Langkah 2</h4>
+					<h3 class="text-3xl text-gray-800 font-bold mb-8 font-title">Kumpulkan donasi dan perluas jaringan backermu</h3>
+					<p class="text-gray-600 mb-8 leading-loose"> Gunakan platfom untuk memantau pembayaran donasi dan menemukan lebih banyak backer yang sevisi dengan kegiatanmu.
 					</p>
 				</div>
 			</div>
@@ -300,9 +300,9 @@
 
 		<div class="flex my-6 flex-wrap">
 			<div class="w-5/6 sm:w-1/2 p-6">
-				<h4 class="font-bold">Langkah 3</h4>
-				<h3 class="text-3xl text-gray-800 font-bold mb-3">Terus posting update dan jalin komunikasi dengan para backermu</h3>
-				<p class="text-gray-600 mb-8"> Gunakan paltform untuk terus mengupdate kegiatan komunitasmu dan jalin komunikasi dengan backer secara lebih mudah dan transparan.
+				<h4 class="font-bold font-title mb-2">Langkah 3</h4>
+				<h3 class="text-3xl text-gray-800 font-bold mb-8 font-title">Terus posting update dan jalin komunikasi dengan para backermu</h3>
+				<p class="text-gray-600 mb-8 leading-loose"> Gunakan paltform untuk terus mengupdate kegiatan komunitasmu dan jalin komunikasi dengan backer secara lebih mudah dan transparan.
 
 
 			</div>
@@ -349,12 +349,12 @@
 
 	<section class="container mx-auto text-center py-6 mb-12 ">
 
-		<h1 class="wow fadeIn w-full my-2 text-5xl font-bold leading-tight text-center text-white">Yuk! Mulai sekarang</h1>
+		<h1 class="wow fadeIn w-full my-2 text-5xl font-bold leading-tight text-center text-white font-title">Yuk! Mulai sekarang</h1>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
-		<h3 class="wow fadeIn my-4 text-2xl text-white max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
+		<h3 class="wow fadeIn my-8 text-2xl font-light leading-loose text-white max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
 			untuk
 			mendukung
 			kelangsungan aktifitas
