@@ -3,7 +3,10 @@
 	                
 	                <div class="flex items-center lg:hidden">
 	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg object-cover object-center w-12 h-12 mr-4" id="nav-toggle" alt="">
-	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+	                    <div>
+                        <div class="font-bold text-xl font-title">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+                        <div class="text-sm">You are in <span class="text-orange-500 font-semibold">Donee</span> mode, to go to Backer mode, <a href="/backerzone/my-donee-list" class="text-blue-500 underline"> click here</a></div>
+                        </div>
 	                </div>
 	                
                     <a href="/donee/<%= @donee_info.username %>">
@@ -31,8 +34,8 @@
 	                </div>
                     </a>
 
-                    <div class="pt-6 w-full">
-                        <a href="/backerzone/my-donee-list"> <button class="w-full py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
+                    <div class="pt-6 w-full hidden lg:block">
+                        <a href="/backerzone/my-donee-list" class=""> <button class="lg:w-full w-1/2 py-2 focus:outline-none hover:shadow-xl hover:bg-purple-500 text-center text-sm rounded text-white bg-purple-400">Go to Backerzone </button></a>
                     </div>
 	
 	
@@ -72,4 +75,5 @@
             <div class="text-sm md:text-base lg:text-lg font-title"> Pengaturan</div>
         </div>
     </a>
+   
 </div>
