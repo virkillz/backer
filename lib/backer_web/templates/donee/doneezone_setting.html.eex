@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.backer.display_name %>"
 		class="mt-16 hidden lg:block object-cover h-64 w-full">
 		
 		<div class="bg-gray-200">
@@ -18,6 +18,14 @@
 
 <div class="lg:w-2/4 px-4 pb-20">
 	
+
+    			<%= if not is_nil get_flash(@conn, :info) do  %>
+			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+			<% end %>
+
+			<%= if not is_nil get_flash(@conn, :error) do  %>
+			<div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
+			<% end %>
 
             <div class="pb-2">
 
@@ -37,7 +45,7 @@
                     <div class="flex">
                         <div class="w-1/2 p-2">
                             <div class="w-full">
-                                <img src="<%= @donee_info.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-lg ">
+                                <img src="<%= @donee_info.backer.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-lg ">
                             </div>
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">
@@ -62,19 +70,19 @@
                         <div class="w-1/2 p-2">
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Display Name</label>
-                                <div class="px-2 pb-1"><%= @donee_info.display_name %></div>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.display_name %></div>
                             </div>
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Username</label>
-                                <div class="px-2 pb-1">@<%= @donee_info.username %></div>
+                                <div class="px-2 pb-1">@<%= @donee_info.backer.username %></div>
                             </div>
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Email</label>
-                                <div class="px-2 pb-1"><%= @donee_info.email %></div>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.email %></div>
                             </div>
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Backer Bio</label>
-                                <div class="px-2 pb-1"><%= @donee_info.backer_bio %></div>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.backer_bio %></div>
                             </div>
                         </div>
                     </div>
@@ -87,7 +95,7 @@
 
 
             </div>
-			<%= form_for @changeset, "/doneezone/setting", fn f -> %>
+			<%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
 
             <div class="py-2">
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
@@ -101,13 +109,16 @@
 
                     <div class="flex">
                         <div class="w-1/2 p-2">
+
                             <div class="w-full">
-                                <img src="/assets/images/bg/komunitas.jpeg" class="mx-auto rounded-lg ">
+                                <img src="<%= @donee_info.background %>" id="output" class="mx-auto h-40 object-cover rounded-lg ">
                             </div>
-                            <div class="p-4 text-center">
-                                <button
-                                    class="mx-auto px-2 py-px rounded text-purple-600 border border-purple-600">Change</button>
-                            </div>
+                            <div class="flex justify-center mt-4">
+                            <label for="upload" 
+                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-purple-600 rounded hover:text-white text-purple-600 border border-purple-600">Change
+                                    <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="donee[background]" type="file">
+                            </label>
+                            </div>  
                         </div>
 
                         <div class="w-1/2 p-2">

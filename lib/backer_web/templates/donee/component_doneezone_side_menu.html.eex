@@ -2,20 +2,20 @@
 	                <div class="pt-20 lg:hidden"></div>
 	                
 	                <div class="flex items-center lg:hidden">
-	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg object-cover object-center w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="cursor-pointer rounded-lg object-cover object-center w-12 h-12 mr-4" id="nav-toggle" alt="">
 	                    <div>
-                        <div class="font-bold text-xl font-title">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
+                        <div class="font-bold text-xl font-title">Hello, <span class="font-semibold"><%= @donee_info.backer.display_name %></span></div>
                         <div class="text-sm">You are in <span class="text-orange-500 font-semibold">Donee</span> mode, to go to Backer mode, <a href="/backerzone/my-donee-list" class="text-blue-500 underline"> click here</a></div>
                         </div>
 	                </div>
 	                
-                    <a href="/donee/<%= @donee_info.username %>">
+                    <a href="/donee/<%= @donee_info.backer.username %>">
 	                <div class="wow fadeIn pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg object-center object-cover mx-auto w-20 h-20">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="rounded-lg object-center object-cover mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold font-title text-gray-700"><%= @donee_info.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.title %></div>
+	                        <div class="text-center font-bold font-title text-gray-700"><%= @donee_info.backer.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.tagline %></div>
 	                    </div>
 	                
 	                    <div class="flex pt-4">

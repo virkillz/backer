@@ -31,15 +31,15 @@ defmodule BackerWeb.DoneeController do
   end
 
   def doneezone_finance(conn, params) do
+    donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
     backer_info = conn.assigns.current_backer
-    donee_info = conn.assigns.current_donee |> IO.inspect()
     random_donee = Account.get_random_donee(3)
-    invoices = Finance.list_incoming_payment(:donee_id, donee_info.donee_id) |> IO.inspect()
+    invoices = Finance.list_incoming_payment(:donee_id, donee.id)
 
     conn
     |> render("doneezone_finance.html",
       backer_info: backer_info,
-      donee_info: donee_info,
+      donee_info: donee,
       invoices: invoices,
       recommended_donees: random_donee,
       layout: {BackerWeb.LayoutView, "public.html"}
@@ -48,13 +48,13 @@ defmodule BackerWeb.DoneeController do
 
   def doneezone_statistic(conn, params) do
     backer_info = conn.assigns.current_backer
-    donee_info = conn.assigns.current_donee
+    donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
     random_donee = Account.get_random_donee(3)
 
     conn
     |> render("doneezone_statistic.html",
       backer_info: backer_info,
-      donee_info: donee_info,
+      donee_info: donee,
       recommended_donees: random_donee,
       layout: {BackerWeb.LayoutView, "public.html"}
     )
@@ -70,7 +70,7 @@ defmodule BackerWeb.DoneeController do
     conn
     |> render("doneezone_setting.html",
       backer_info: backer_info,
-      donee_info: donee_info,
+      donee_info: donee,
       recommended_donees: random_donee,
       script: %{wysiwyg: true},
       style: %{wysiwyg: true},
@@ -83,17 +83,29 @@ defmodule BackerWeb.DoneeController do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
-    donee = Account.get_donee!(donee_info.donee_id)
+    donee = Account.get_donee!(donee_info.donee_id) |> IO.inspect()
+    background = donee_params["background"]
 
-    case Account.update_donee(donee, donee_params) do
-      {:ok, donee} ->
-        changeset = Account.change_donee(donee)
+    updated_params =
+      if is_nil(background) do
+        donee_params
+      else
+        donee_params
+        |> Map.put(
+          "background",
+          Backer.Helper.upload_s3_helper(background)
+        )
+      end
+
+    case Account.update_donee(donee, updated_params) do
+      {:ok, new_donee} ->
+        changeset = Account.change_donee(new_donee)
 
         conn
         |> put_flash(:info, "Donee updated successfully.")
         |> render("doneezone_setting.html",
           backer_info: backer_info,
-          donee_info: donee_info,
+          donee_info: new_donee,
           recommended_donees: random_donee,
           script: %{wysiwyg: true},
           style: %{wysiwyg: true},
@@ -106,7 +118,7 @@ defmodule BackerWeb.DoneeController do
         |> put_flash(:info, "Something is wrong")
         |> render("doneezone_setting.html",
           backer_info: backer_info,
-          donee_info: donee_info,
+          donee_info: donee,
           recommended_donees: random_donee,
           script: %{wysiwyg: true},
           style: %{wysiwyg: true},
@@ -247,7 +259,7 @@ defmodule BackerWeb.DoneeController do
 
         conn
         |> render("doneezone_about.html",
-          donee_info: donee_compact,
+          donee_info: donee,
           donee: donee,
           random_backer: random_backer,
           recommended_donees: random_donee,
@@ -257,7 +269,7 @@ defmodule BackerWeb.DoneeController do
   end
 
   def doneezone_backers(conn, _params) do
-    donee = conn.assigns.current_donee |> IO.inspect()
+    donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
 
     case donee do
       nil ->
@@ -267,7 +279,7 @@ defmodule BackerWeb.DoneeController do
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
 
-        active_backers = Finance.list_active_backers(:donee_id, donee.donee_id) |> IO.inspect()
+        active_backers = Finance.list_active_backers(:donee_id, donee.id)
 
         conn
         |> render("doneezone_backers.html",
