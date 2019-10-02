@@ -417,6 +417,8 @@ defmodule Backer.Account do
         title: donee.title.name,
         background: donee.background,
         tiers: donee.tier,
+        email: donee.backer.email,
+        backer_bio: donee.backer.backer_bio,
         tagline: donee.tagline,
         backer_count: donee.backer_count,
         post_count: donee.post_count

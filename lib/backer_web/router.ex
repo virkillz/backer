@@ -111,7 +111,7 @@ defmodule BackerWeb.Router do
     get("/backerzone/invoice/:id", BackerController, :backerzone_invoice_detail)
     get("/backerzone/profile-setting", BackerController, :backerzone_profile_setting)
     put("/backerzone/profile-setting", BackerController, :backerzone_profile_setting_post)
-    post("/backerzone/link-setting", BackerController, :backerzone_link_setting_post)
+    # post("/backerzone/link-setting", BackerController, :backerzone_link_setting_post)
 
     get("/home/invoice/:id", BackerController, :invoice_display)
     get("/home/overview", BackerController, :overview)
@@ -139,6 +139,7 @@ defmodule BackerWeb.Router do
     get("/doneezone/backers", DoneeController, :doneezone_backers)
     get("/doneezone/finance", DoneeController, :doneezone_finance)
     get("/doneezone/setting", DoneeController, :doneezone_setting)
+    put("/doneezone/setting", DoneeController, :doneezone_setting_post)
     get("/doneezone/statistic", DoneeController, :doneezone_statistic)
 
     get("/doneezone/dashboard", DoneeController, :dashboard)

@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
+    <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
+    <% end %>
 
 </head>
 
@@ -233,6 +236,10 @@
     new WOW().init();
     tippy('.tippy', {placement: 'bottom'});
     </script>
+
+    <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
+    <% end %>
 
 
 

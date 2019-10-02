@@ -64,14 +64,56 @@ defmodule BackerWeb.DoneeController do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
+    donee = Account.get_donee!(donee_info.donee_id)
+    changeset = Account.change_donee(donee)
 
     conn
     |> render("doneezone_setting.html",
       backer_info: backer_info,
       donee_info: donee_info,
       recommended_donees: random_donee,
+      script: %{wysiwyg: true},
+      style: %{wysiwyg: true},
+      changeset: changeset,
       layout: {BackerWeb.LayoutView, "public.html"}
     )
+  end
+
+  def doneezone_setting_post(conn, %{"donee" => donee_params}) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
+    donee = Account.get_donee!(donee_info.donee_id)
+
+    case Account.update_donee(donee, donee_params) do
+      {:ok, donee} ->
+        changeset = Account.change_donee(donee)
+
+        conn
+        |> put_flash(:info, "Donee updated successfully.")
+        |> render("doneezone_setting.html",
+          backer_info: backer_info,
+          donee_info: donee_info,
+          recommended_donees: random_donee,
+          script: %{wysiwyg: true},
+          style: %{wysiwyg: true},
+          changeset: changeset,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:info, "Something is wrong")
+        |> render("doneezone_setting.html",
+          backer_info: backer_info,
+          donee_info: donee_info,
+          recommended_donees: random_donee,
+          script: %{wysiwyg: true},
+          style: %{wysiwyg: true},
+          changeset: changeset,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
   end
 
   def statistic(conn, %{"username" => username}) do
@@ -192,7 +234,8 @@ defmodule BackerWeb.DoneeController do
   end
 
   def doneezone_about(conn, _params) do
-    donee = conn.assigns.current_donee |> IO.inspect()
+    donee_compact = conn.assigns.current_donee
+    donee = Account.get_donee!(donee_compact.donee_id)
 
     case donee do
       nil ->
@@ -204,7 +247,8 @@ defmodule BackerWeb.DoneeController do
 
         conn
         |> render("doneezone_about.html",
-          donee_info: donee,
+          donee_info: donee_compact,
+          donee: donee,
           random_backer: random_backer,
           recommended_donees: random_donee,
           layout: {BackerWeb.LayoutView, "public.html"}
