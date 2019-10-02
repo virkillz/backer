@@ -156,10 +156,23 @@ defmodule Backer.Account.Backer do
       :is_phone_verified
     ])
     |> validate_required([:email, :display_name])
+    |> validate_avatar
     |> validate_display_name
     |> unique_constraint(:email)
     |> unique_constraint(:phone)
     |> unique_constraint(:username)
+  end
+
+  def validate_avatar(changeset) do
+    if get_field(changeset, :avatar) == "error" do
+      add_error(
+        changeset,
+        :avatar,
+        "Avatar can only in PNG or JPG format"
+      )
+    else
+      changeset
+    end
   end
 
   @doc false

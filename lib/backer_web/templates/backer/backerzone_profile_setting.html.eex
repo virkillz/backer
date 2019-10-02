@@ -48,7 +48,7 @@
 
 
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
-				<%= form_for @changeset, "/backerzone/profile-setting", fn f -> %>
+				<%= form_for @changeset, "/backerzone/profile-setting",[multipart: true] ,fn f -> %>
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Edit Profile</div>
                         <button type="submit"
@@ -60,11 +60,15 @@
 					 
                         <div class="w-1/2 p-2">
                             <div class="w-full">
-                                <img src="<%= @backer.avatar %>" class="h-40 w-40 mx-auto rounded-lg ">
+                                <img src="<%= @backer.avatar %>" id="output" class="h-40 w-40 object-cover object-center mx-auto rounded-lg ">
                             </div>
                             <div class="p-4 text-center">
-                                <button 
-                                    class="mx-auto px-2 py-px rounded text-purple-600 border border-purple-600">Change</button>
+                            <div class="upload-btn-wrapper">
+                                <label for="upload" 
+                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-purple-600 rounded text-purple-600 border border-purple-600">Change
+                            <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="backer[avatar]" type="file">
+                            </label>
+                            </div>
                             </div>
                         </div>
 

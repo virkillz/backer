@@ -60,7 +60,9 @@ defmodule Backer.Mixfile do
       {:earmark, "~> 1.3"},
       {:cloudex, "~> 1.2.1"},
       {:number, "~> 1.0"},
-      {:html_sanitize_ex, "~> 1.3"}
+      {:html_sanitize_ex, "~> 1.3"},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"}
     ]
   end
 
