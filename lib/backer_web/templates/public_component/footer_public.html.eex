@@ -4,22 +4,21 @@
 
         <div class="w-full lg:flex py-6">
 
-            <div class="lg:w-1/3 mb-6">
+            <div class="lg:w-1/3 mb-6 flex lg:block justify-between">
 
-                <a class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                <div>
+                    <a class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
 
                     <img src="/assets/images/logo/backer-bg-white.png" class="h-8 " alt="">
 
                 </a>
 
-                <div class="pb-2 pt-1 px-px text-gray-600">Enabling sustainable support circle</div>
+                <div class="pb-2 pt-1 px-px text-gray-600 text-xs lg:text-sm">Enabling sustainable support circle</div>
 
 
-                <div class="flex py-2">
-                    <a href="?locale=en" class=""> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
-                    <a href="?locale=id" class="pl-4"> <img src="/assets/images/lang-en.png" class="w-6 h-6" alt=""></a>
                 </div>
 
+                <div>
 
                 <ul class="flex pt-2">
                     <li><a href="#"><i
@@ -33,7 +32,14 @@
                     </li>
 
                 </ul>
+
+                <div class="flex py-2">
+                    <a href="?locale=en" class=""> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
+                    <a href="?locale=id" class="pl-4"> <img src="/assets/images/lang-en.png" class="w-6 h-6" alt=""></a>
+                </div>                
+
                 <div class="pt-2">© 2019 PT Backer Kreasi Republik</div>
+                </div>
 
             </div>
 

@@ -51,7 +51,7 @@ Target:
 - [x] If no backing yet, show somehting in doneezone
 - [x] Make backer in doneezone and public donee works
 - [x] Invoice must record donee_id and month directly. Not only through detail 
-- [ ] Create daily scheduler works for monthly data.
+- [ ] Create backing aggregate.
 - [x] Make top backer in public donee profile works
 - [x] Invoice should capture 'nominal'
 - [x] Make backerzone 'keuangan' works 
@@ -67,11 +67,12 @@ Target:
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.
 - [ ] Connect to image processing service.
-- [ ] All avatar display must show object fit cover and center
+- [x] All avatar display must show object fit cover and center
 - [x] Validate image type
 - [x] make the upload button better
 - [ ] fix footer looks really ugly in mobile
 - [ ] explore looks bad in mobile
+- [x] Logout menu when mobile view didn't worked
 
 
 

@@ -1,30 +1,41 @@
-<div class="pb-10">
-	<div class="mt-2 px-2 font-bold text-right text-lg  text-gray-700">Recommended Community</div>
+<div class="hidden lg:block md:block">
+	<div class="py-1">
+		<div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
+			<i class="la la-search text-white mr-2"></i></i>
+			<input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
+		</div>
+	</div>
+	<div class="border-b my-4"></div>
 
-	<%= for donee <- @donees do %>
-	<div class="py-2">
-		<a href="/donee/<%= donee.username %>">
-			<div class="wow fadeInUp bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
-				<div
-					class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-purple-500">
-					<%= donee.donee.backer_count %>
-					Backer
+	<div class="pb-10">
+		<div class="mt-2 px-2 font-bold text-right text-lg  text-gray-700">Recommended Community</div>
+
+		<%= for donee <- @donees do %>
+		<div class="py-2">
+			<a href="/donee/<%= donee.username %>">
+				<div class="wow fadeInUp bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
+					<div
+						class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-purple-500">
+						<%= donee.donee.backer_count %>
+						Backer
+					</div>
+					<img src="<%= donee.donee.background %>" class="h-24 rounded-lg w-full object-cover">
+					<div class="flex justify-center">
+						<img src="<%= donee.avatar %>"
+							class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
+					</div>
+					<div class="py-1 px-2">
+						<div class=" font-semibold text-center"><%= donee.display_name %></div>
+						<div class="font-light text-center text-xs text-gray-600">@<%= donee.username %></div>
+						<div class="text-sm font-light text-center my-2"><%= donee.donee.tagline %></div>
+					</div>
 				</div>
-				<img src="<%= donee.donee.background %>" class="h-24 rounded-lg w-full object-cover">
-				<div class="flex justify-center">
-					<img src="<%= donee.avatar %>"
-						class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
-				</div>
-				<div class="py-1 px-2">
-					<div class=" font-semibold text-center"><%= donee.display_name %></div>
-					<div class="font-light text-center text-xs text-gray-600">@<%= donee.username %></div>
-					<div class="text-sm font-light text-center my-2"><%= donee.donee.tagline %></div>
-				</div>
-			</div>
-		</a>
+			</a>
+
+		</div>
+
+		<% end %>
 
 	</div>
-
-	<% end %>
 
 </div>

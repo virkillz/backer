@@ -1,7 +1,7 @@
 <div>
 
 	<div class="flex items-center lg:hidden px-6">
-		<img src="<%= @backer.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+		<img src="<%= @backer.avatar %>" class="cursor-pointer object-center object-cover rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
 		<div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @backer.display_name %></span>
 		</div>
 	</div>

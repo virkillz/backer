@@ -49,7 +49,7 @@
 	                    <a class="inline-block font-semibold py-2 px-4" href="#">Blog</a>
 	                </li>
 	                <li class="mr-3 lg:hidden block">
-	                    <a class="inline-block font-semibold py-2 px-4" href="#">Logout</a>
+	                    <a class="inline-block font-semibold py-2 px-4" href="/signout">Logout</a>
 	                </li>
 	                <li class="hidden lg:block">
 	                    <div class=" rounded-lg py-1 px-8 bg-gray-200 mx-2">
