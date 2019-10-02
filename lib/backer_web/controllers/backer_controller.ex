@@ -193,13 +193,47 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         random_donees = Account.get_random_donee(3)
+        changeset = Account.change_backer(backer)
 
         conn
         |> render("backerzone_profile_setting.html",
           backer: backer,
           random_donees: random_donees,
+          changeset: changeset,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
+    end
+  end
+
+  def backerzone_profile_setting_post(conn, %{"backer" => backer_params} = attrs) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        case Account.update_backer(backer, backer_params) do
+          {:ok, backer} ->
+            conn
+            |> put_flash(:info, "Backer updated successfully.")
+            |> redirect(to: "/backerzone/profile-setting")
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            random_donees = Account.get_random_donee(3)
+
+            conn
+            |> put_flash(:error, "Something is wrong. Check red part below")
+            |> render("backerzone_profile_setting.html",
+              backer: backer,
+              random_donees: random_donees,
+              changeset: changeset,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+
+            # id_types = Constant.accepted_id_kyc()
+            # render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
+        end
     end
   end
 
