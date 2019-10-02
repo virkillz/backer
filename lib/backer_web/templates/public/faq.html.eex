@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 rounded cursor-pointer flex">
-					<div class="px-8">1</div>
+					<div class="px-8">3</div>
 					<div>Siapa saja yang bisa menjadi Donee? Adakah contohnya?</div>
 				</div>
 				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
@@ -49,29 +49,62 @@
 				</div>
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
-					<div class="px-8">3</div>
+					<div class="px-8">4</div>
 					<div>Mengapa saya perlu mendukung Donee?</div>
 				</div>
 				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
 					Tentu saja agar kegiatan positif <b>Donee</b> bisa terus berlangsung. Dengan mendukung <b>Donee</b> kamu memastikan kerja-kerja positif yang telah 
-					dilakukan dapat memberi dampak yang lebih luas dan berkesinambungan. <b>Donee</b> yang terdaftar 
+					dilakukan dapat memberi dampak yang lebih luas dan berkesinambungan. 
+					<br>
+					<br>
+					<b>Donee</b> yang terdaftar 
 					dalam <b>Backer.id</b> adalah mereka yang telah terbukti bekerja di masyarakat, namun karena satu dan lain hal mereka tidak bisa mengakses bantuan dari 
 					lembaga resmi negara, lembaga donor, atau menerima bentuk investasi formal lainnya.
 				</div>
 
 				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
-					<div class="px-8">3</div>
+					<div class="px-8">5</div>
 					<div>Apa itu Backer?</div>
 				</div>
 				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
-					<b>Backer</b> adalah mereka yang mendukung kegiatan dan inisiatif positif dari para <b>Donee</b>. 
-					
-					Tentu saja agar kegiatan positif <b>Donee</b> bisa terus berlangsung. Dengan mendukung <b>Donee</b> kamu memastikan kerja-kerja positif yang telah 
-					dilakukan dapat memberi dampak yang lebih luas dan berkesinambungan. <b>Donee</b> yang terdaftar 
-					dalam <b>Backer.id</b> adalah mereka yang telah terbukti bekerja di masyarakat, namun karena satu dan lain hal mereka tidak bisa mengakses bantuan dari 
-					lembaga resmi negara, lembaga donor, atau menerima bentuk investasi formal lainnya.
+					<b>Backer</b> adalah orang-orang yang mendukung kegiatan dan inisiatif positif dari para <b>Donee</b>. <b>Backer</b> dapat 
+					memilih membantu kegiatan para <b>Donee</b> yang sesuai dengan aspirasi dan minat mereka. 
+					<br>
+					<br>
+					Melalui <b>Backer.id</b>, para <b>Backer</b> dapat memilih jumlah serta durasi donasi sesuai kemampuan masing-masing.
 				</div>
 				
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">6</div>
+					<div>Berapa jumlah donasi dan durasi yang bisa dipilih oleh Backer?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					Saat ini, <b>Backer</b> dapat memilih tiga tingkatan jumlah donasi, yaitu sebesar Rp. 10.000,-, Rp. 50.000,- dan Rp 100.000,-. 
+					Sedangkan untuk durasi dukungan, <b>Backer</b> dapat menentukan untuk mendukung selama sebulan hingga setahun. Setelah periode dukungan 
+					berakhir, <b>Backer.id</b> akan mengirimkan pengingat bagi para <b>Backer</b> agar mereka dapat melanjutkan dukungannya. 
+				</div>
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">7</div>
+					<div>Bagaimana mekanisme pembayaran donasi di Backer.id?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					Seluruh jumlah donasi yang diberikan oleh para <b>Backer</b> akan ditransfer ke rekening <b>Donee</b> sekaligus, setelah dipotong biaya
+					operasional <b>Backer.id</b> sebesar 12%. Jumlah uang yang ditransfer <b>Backer</b> mungkin akan ditambah biaya administrasi tambahan
+					 yang diberlakukan oleh bank pilihan kamu.
+				</div>
+
+
+				<div class="accordion px-4 my-2 py-2 shadow bg-gray-200 cursor-pointer flex">
+					<div class="px-8">8</div>
+					<div>Mengapa Backer.id mengambil potongan biaya?</div>
+				</div>
+				<div class="panel hidden bg-white rounded transition-all transition-ease transition-1000 p-4">
+					<b>Backer.id</b> adalah perusahaan etis yang bermisi sosial (social enterprise). Potongan yang diambil oleh <b>Backer.id</b> akan digunakan
+					 untuk keperluan operasional perusahaan, mempekerjakan orang-orang profesional untuk pengembangan platform, serta untuk membantu
+					 <b>Donee</b> membangun profil yang sempurna agar bisa menarik donasi sebanyak-banyaknya dengan menyediakan editor video serta manajer komunitas.
+				</div>
+
 			</div>
 
 		</div>
