@@ -2,13 +2,13 @@
 	                <div class="pt-20 lg:hidden"></div>
 	                
 	                <div class="flex items-center lg:hidden">
-	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	                    <img src="<%= @donee_info.avatar %>" class="cursor-pointer rounded-lg object-cover object-center w-12 h-12 mr-4" id="nav-toggle" alt="">
 	                    <div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @donee_info.display_name %></span></div>
 	                </div>
 	                
                     <a href="/donee/<%= @donee_info.username %>">
 	                <div class="wow fadeIn pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                    <img src="<%= @donee_info.avatar %>" class="rounded-lg object-center object-cover mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
 	                        <div class="text-center font-bold font-title text-gray-700"><%= @donee_info.display_name %></div>

@@ -46,7 +46,7 @@
 									<a href="/backer/<%= invoice.backer.username %>">
 	                                <div class="flex">
 	                                    <div class="">
-	                                        <img src="<%= invoice.backer.avatar %>" alt="<%= invoice.backer.display_name %>" class="w-8 h-8 rounded-lg mr-2">
+	                                        <img src="<%= invoice.backer.avatar %>" alt="<%= invoice.backer.display_name %>" class="w-8 h-8 object-center object-cover rounded-lg mr-2">
 	                                    </div>
 	                                    <div class=" text-blue-500">
 	                                        <div class="font-bold"><%= invoice.backer.display_name %></div>

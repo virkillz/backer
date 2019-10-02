@@ -1,7 +1,7 @@
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
 	                <div class="wow fadeIn pt-10 bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+	                    <img src="<%= @donee.avatar %>" class="object-center object-cover rounded-lg mx-auto w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
 	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.display_name %></div>
@@ -35,7 +35,7 @@
 							<%= for random <- @random_backer do %>
 							<a href="/backer/<%= random.username %>" data-tippy-content="<%= random.display_name %>" class="tippy">
 	                        <img src="<%= random.avatar %>"
-	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md rounded-lg w-12 h-12 m-2">
+	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-lg w-12 h-12 m-2">
 							</a>
 							<% end %>
 	                    </div>

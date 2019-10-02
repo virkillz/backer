@@ -37,7 +37,7 @@
                     <div class="flex">
                         <div class="w-1/2 p-2">
                             <div class="w-full">
-                                <img src="<%= @donee_info.avatar %>" class="w-40 h-40 mx-auto rounded-lg ">
+                                <img src="<%= @donee_info.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-lg ">
                             </div>
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">

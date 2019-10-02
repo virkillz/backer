@@ -4,7 +4,7 @@
     <img src="<%= @donee.donee.background %>" alt="<%= @donee.display_name %>"
         class="mt-16 object-cover h-64 w-full border-b-8 border-white shadow-lg">
     <img src="<%= @donee.avatar %>"
-        class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 border-white shadow-lg">
+        class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
 
     <div class="py-4 max-w-3xl mx-auto px-2">
 

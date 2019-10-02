@@ -61,7 +61,7 @@
 	
 	                    <div class="flex items-center p-4">
 	                        <div class="ml-4">
-	                            <img src="<%= donee.avatar %>" class="rounded-lg border-4 border-white mr-2 h-20">
+	                            <img src="<%= donee.avatar %>" class="rounded-lg border-4 object-center object-cover border-white mr-2 h-20">
 	                        </div>
 	                        <div class="p-2">
 	                            <div class=" font-bold "><%= donee.display_name %></div>
