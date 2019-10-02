@@ -55,24 +55,26 @@ Target:
 - [x] Make top backer in public donee profile works
 - [x] Invoice should capture 'nominal'
 - [x] Make backerzone 'keuangan' works 
+- [x] Donee can edit their own profile
+- [x] Backer can edit their own profile
+- [x] Connect to cloud image storage
+- [x] All avatar display must show object fit cover and center
+- [x] Validate image type
+- [x] Make the upload button better
+- [x] Logout menu when mobile view didn't worked
+- [ ] Background upload can connct to S3 bucket.
 - [ ] Make search functioning
 - [ ] Make notification functioning for backer payment approved.
 - [ ] Make notification functioning for backer waiting for payment.
 - [ ] Make notification functioning for donee got new backer.
 - [ ] Backer can edit social media link
-- [x] Donee can edit their own profile
-- [x] Backer can edit their own profile
-- [x] Connect to cloud image storage
 - [ ] Preview mode: /preview
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.
 - [ ] Connect to image processing service.
-- [x] All avatar display must show object fit cover and center
-- [x] Validate image type
-- [x] make the upload button better
 - [ ] fix footer looks really ugly in mobile
 - [ ] explore looks bad in mobile
-- [x] Logout menu when mobile view didn't worked
+
 
 
 
