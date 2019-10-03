@@ -1,11 +1,15 @@
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
 	                <div class="wow fadeIn pt-10 bg-white rounded shadow py-6 px-4">
-	                    <img src="<%= @donee.avatar %>" class="object-center object-cover rounded-lg mx-auto w-20 h-20">
-	                
+						<div class="flex justify-center">
+						<a href="<%= Backer.Helper.imgix @donee.avatar, %{h: 300, w: 300, fit: "crop"} %>" class="progressive replace" >
+	                   		<img src="<%= Backer.Helper.imgix(@donee.avatar, %{h: 20, w: 20, fit: "crop"}) %>" class="preview object-center object-cover rounded-lg mx-auto w-20 h-20">
+	                	</a>
+						</div>
+
 	                    <div class="py-4 text-gray-800">
 	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.title.name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.tagline %></div>
 	                    </div>
 	                
 	                    <div class="flex pt-4">

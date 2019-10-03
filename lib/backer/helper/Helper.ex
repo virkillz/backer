@@ -1,4 +1,14 @@
 defmodule Backer.Helper do
+  def imgix(img_url, options \\ %{}) do
+    if String.contains?(img_url, "https://vkbacker.s3.amazonaws.com") do
+      img_url
+      |> String.replace("https://vkbacker.s3.amazonaws.com", "")
+      |> Imgex.url(options)
+    else
+      img_url
+    end
+  end
+
   def upload_s3_helper(file) do
     file_uuid = Ecto.UUID.generate()
     image_filename = file.filename

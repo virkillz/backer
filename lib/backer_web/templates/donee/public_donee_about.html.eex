@@ -1,7 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee.donee.background %>" alt="Belajar Bersama Bimo" class="mt-16 object-cover h-64 w-full">
-	
+	<img src="<%= Backer.Helper.imgix @donee.donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: true } %>" alt="<%= @donee.display_name %>" class="mt-16 object-cover h-64 w-full">
+
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
@@ -16,24 +16,9 @@
 	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class=" bg-white shadow pb-8 mb-4">
-					<iframe width="100%" height="350" src="https://www.youtube.com/embed/lAeAO51aVKA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="350" src="https://www.youtube.com/embed/<%= @donee.donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<div class="p-8">
-					<div class="py-4 text-xl text-center font-bold "><%= @donee.display_name %></div>
-					<div class="text-justify leading-loose">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien nec ipsum maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor. Integer vestibulum justo malesuada, pharetra lacus sed, euismod odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sodales tempus tristique. Sed scelerisque non nibh ac sollicitudin. Vivamus tincidunt mi felis, sit amet ornare magna convallis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque consequat enim non varius pretium. Ut ut ante eu felis porttitor tristique. Cras ultricies purus id sollicitudin rutrum.
-					</div>
-
-					<div class="py-4 text-lg font-bold ">Alamat</div>
-
-					<div class="text-justify leading-loose px-8">
-					Jl. Pelan pelan banyak anak anak 17, Jakarta Utara
-					</div>
-
-					<div class="py-4 text-lg font-bold ">Visi</div>
-
-					<div class="text-justify leading-loose px-8">
-					Mensejahterakan bangsa
-					</div>					
+					<%= raw @donee.donee.donee_overview %>
 					</div>					
 
 	            </div>
@@ -60,7 +45,7 @@
 	
 	
 	
-<div class="bottom-0 fixed w-full">
+<div class=" w-full">
 	    <!-- footer -->
 	    <footer class="font-sans bg-white shadow-lg border-gray-300 border-t-2 text-gray-700 py-2 px-4">
 	      <div class="mx-auto container overflow-hidden flex justify-between items-center">
