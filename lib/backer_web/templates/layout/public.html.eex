@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/progressive-image.css">
+
     <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
         <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
     <% end %>
@@ -247,12 +249,15 @@
     <script src="https://unpkg.com/tippy.js@4"></script>
     <script>
     new WOW().init();
+
     tippy('.tippy', {placement: 'bottom'});
     </script>
 
     <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
         <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
     <% end %>
+
+    <script src="/assets/js/progressive-image.min.js"></script>
 
 
 
