@@ -62,7 +62,7 @@
 
 <section class="bg-white border-b py-8 text-gray-700">
 	<div class="container max-w-6xl mx-auto m-8">
-		<div class="text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Seperti aktivitas mereka
+		<div class="text-2xl lg:text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Seperti aktivitas mereka
 		</div>
 				<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -72,7 +72,7 @@
 		<!-- Highlight Donee -->
 		<div class="lg:flex items-center">
 			<div class="wow fadeInLeft flex p-6 lg:w-7/12">
-				<img src="<%= @highlight_donee.background %>" class=" rounded-lg w-full object-cover" alt="">
+				<img src="<%= @highlight_donee.background %>" class=" rounded-lg w-full h-64 object-cover" alt="">
 			</div>
 
 			<div class="wow fadeInRight pl-6 lg:w-5/12 mx-auto p-6">
@@ -116,7 +116,7 @@
 
 <section class="bg-gray-200 py-8 text-gray-700">
 	<div class="container max-w-6xl mx-auto m-8">
-		<div class="text-4xl text-gray-800 text-center mt-2 mb-8 leading-tight font-bold font-title">Atau mereka..</div>
+		<div class="text-2xl lg:text-4xl text-gray-800 text-center mt-2 mb-8 leading-tight font-bold font-title">Atau mereka..</div>
 
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -126,7 +126,7 @@
 
 			<%= for donee <- @random_donee do %>
 
-			<div class="w-1/3 py-4 px-4 wow fadeInUp">
+			<div class="md:w-1/2 lg:w-1/3 py-4 px-4 wow fadeInUp">
 				<div class=" ">
 					<a href="/donee/<%= donee.username %>">
 						<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
@@ -191,7 +191,7 @@
 <section class=" py-8">
 
 	<div class="container mx-auto flex flex-wrap pt-4 pb-12">
-		<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white font-title">Misi kami </h1>
+		<h1 class="w-full my-2 text-2xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Misi kami </h1>
 
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -260,7 +260,7 @@
 
 <section class="bg-white py-8">
 	<div class="container max-w-5xl mx-auto m-8">
-		<div class="text-5xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Daftarkan komunitasmu</div>
+		<div class="text-2xl lg:text-4xl mb-4  text-gray-800 text-center my-2 leading-tight font-bold font-title">Daftarkan komunitasmu</div>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
@@ -349,12 +349,12 @@
 
 	<section class="container mx-auto text-center py-6 mb-12 ">
 
-		<h1 class="wow fadeIn w-full my-2 text-5xl font-bold leading-tight text-center text-white font-title">Yuk! Mulai sekarang</h1>
+		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Yuk! Mulai sekarang</h1>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
-		<h3 class="wow fadeIn my-8 text-2xl font-light leading-loose text-white max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
+		<h3 class="wow fadeIn my-8 px-4 text-2xl font-light leading-loose text-white max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
 			untuk
 			mendukung
 			kelangsungan aktifitas
