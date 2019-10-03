@@ -1,7 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.backer.display_name %>"
-		class="mt-16 hidden lg:block object-cover h-64 w-full">
+                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
 		<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
