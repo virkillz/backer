@@ -63,11 +63,11 @@ Target:
 - [x] Make the upload button better
 - [x] Logout menu when mobile view didn't worked
 - [x] Background upload can connct to S3 bucket.
-- [ ] Make public donee profile dynamic from DB
+- [x] Make public donee profile dynamic from DB
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
 - [ ] Update seed for backing pitch
-- [ ] Change title into tagline
+- [x] Change title into tagline
 - [ ] Make search functioning
 - [ ] Custom style oerview with UL/LI/ title, etc
 - [ ] Make notification functioning for backer payment approved.
