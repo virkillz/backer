@@ -1,10 +1,11 @@
-<div class="hidden lg:block">
-	<div class="mt-2 px-2 font-bold text-right text-lg font-title  text-gray-700">Recommended Community</div>
+<div class="">
+	<div class="mt-2 px-2 mb-4 lg:mb-0 font-bold text-lg font-title text-center text-gray-700">Recommended Community</div>
 
+	<div class="flex lg:block flex-wrap">
 	<%= for donee <- @donees do %>
-	<div class="py-2">
+	<div class="py-2 px-2 lg:px-0 w-1/2 lg:w-full">
 		<a href="/donee/<%= donee.username %>">
-			<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
+			<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg h-64">
 				<div
 					class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-purple-500">
 					<%= donee.donee.backer_count %>
@@ -22,9 +23,8 @@
 				</div>
 			</div>
 		</a>
-
 	</div>
-
 	<% end %>
+	</div>
 
 </div>

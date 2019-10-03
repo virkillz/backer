@@ -1,6 +1,6 @@
 	            <div class="transition-all" style="top: 56px; position: sticky;">
 	
-	                <div class="wow fadeIn pt-10 bg-white rounded shadow py-6 px-4">
+	                <div class="wow fadeIn pt-10 lg:bg-white rounded lg:shadow -mt-32 lg:m-0 py-6 px-4">
 						<div class="flex justify-center">
 						<a href="<%= Backer.Helper.imgix @donee.avatar, %{h: 300, w: 300, fit: "crop"} %>" class="progressive replace" >
 	                   		<img src="<%= Backer.Helper.imgix(@donee.avatar, %{h: 20, w: 20, fit: "crop"}) %>" class="preview object-center object-cover rounded-lg mx-auto w-20 h-20">
@@ -12,7 +12,7 @@
 	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.tagline %></div>
 	                    </div>
 	                
-	                    <div class="flex pt-4">
+	                    <div class="flex lg:pt-4 ">
 	                        <div class="w-1/2">
 	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.donee.backer_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Backer</div>

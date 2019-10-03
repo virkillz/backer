@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= Backer.Helper.imgix @donee.donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: true } %>" alt="<%= @donee.display_name %>" class="mt-16 object-cover h-64 w-full">
+	<img src="<%= Backer.Helper.imgix @donee.donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: true } %>" alt="<%= @donee.display_name %>" class="mt-16 object-cover h-40 lg:h-64 w-full">
 
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
