@@ -17,13 +17,12 @@
         <div class="">
 
             <div class="p-8 max-w-4xl mx-auto">
-                <div class="p-12 bg-white shadow rounded-lg mx-auto text-justify leading-loose">
-                <div class="text-4xl pb-4  font-semibold font-title">Daftar Komunitas</div>
+                <div class="p-4 md:p-8 lg:p-12 bg-white shadow rounded-lg mx-auto text-justify leading-loose">
+                <div class="text-xl md:text-2xl text-center md:text-left lg:text-left lg:text-4xl pb-4  font-semibold font-title">Daftar Komunitas</div>
                 <div class="lg:flex md:flex items-start whitespace-normal shadow mb-6 rounded-lg text-white bg-purple-400 p-6">
                 <i class="la la-bullhorn text-6xl p-6"></i>
                 <p class="">
-                    We are currently at heavy development and testing stage. We want to make sure everything is right.
-                    At this stage Community registration will be manually selected and orboarded. Please submit the
+                    During the beta stage, community registration will be manually selected and orboarded. Please submit the
                     basic information of your community and we will in contact with you very shortly.
                 </p>
                 </div>
