@@ -65,28 +65,37 @@ Target:
 - [x] Make public donee profile dynamic from DB
 - [x] Change title into tagline
 - [x] Add tag meta SEO dynamic into the front page
-
 - [x] Remove Manual amount input in donate page
 - [x] Change default tier
-
-- [ ] Dedicated search page
-- [ ] Create backing aggregate.
-
 - [x] Fix footer simple version and make it component.
 - [x] Make the link footer works.
+
+
+- [ ] Make notification schema and function works.
+- [ ] Make notification functioning for backer payment approved.
+- [ ] Make notification functioning for backer waiting for payment.
+- [ ] Make notification functioning for donee got new backer.
+
+
+- [ ] Dedicated search page
+- [ ] Make search functioning
+
+- [ ] Create backing aggregate.
+
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
 - [ ] Update seed for backing pitch
 
-- [ ] Make search functioning
+
 - [ ] Custom style oerview with UL/LI/ title, etc
-- [ ] Make notification functioning for backer payment approved.
-- [ ] Make notification functioning for backer waiting for payment.
-- [ ] Make notification functioning for donee got new backer.
+
+
+
 - [ ] Backer can edit social media link
 
-- [] Create meta tag placeholder
+- [x] Create meta tag placeholder
 
+- [ ] Admin portal must be able to find backer instead of drop down select
 
 - [ ] Preview mode: /preview
 - [ ] Publish on and off

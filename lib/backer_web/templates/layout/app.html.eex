@@ -183,6 +183,8 @@
           </li>                      
           <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Content</span></a>
             <ul class="menu-content">
+              <li class="nav-item <%= activate(@conn.request_path, "/admin/notifications") %>"><a href="/admin/notifications" up-target=".main" up-transition="move-right">Notifications</a>
+              </li>
               <li class="<%= activate(@conn.request_path, "/admin/forums") %>"><a class="menu-item" href="/admin/forums" up-target=".main" up-transition="move-right">Forum Posts</a>
               </li>
               <li class="<%= activate(@conn.request_path, "/admin/posts") %>"><a class="menu-item" href="/admin/posts" up-target=".main" up-transition="move-right">Donee Posts</a>

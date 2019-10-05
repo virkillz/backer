@@ -62,6 +62,7 @@ defmodule BackerWeb.Router do
     resources("/backers", BackerController)
     resources("/donees", DoneeController)
     resources "/submissions", SubmissionController
+    resources "/notifications", NotificationController
     resources("/badges", BadgeController)
     resources("/badge_members", BadgeMemberController, except: [:index])
     get("/badge_members/new/:badgeid", BadgeMemberController, :newmember)
