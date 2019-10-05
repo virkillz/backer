@@ -51,18 +51,28 @@ defmodule Backer.Constant do
     [
       %{
         "amount" => 10_000,
+        "description" => "Equal to a cup of tea. Treat us once in a month maybe?",
+        "title" => "Tea Backer"
+      },
+      %{
+        "amount" => 20_000,
         "description" => "Equal to a cup of coffee. Treat us once in a month maybe?",
-        "title" => "Light Backer"
+        "title" => "Coffee Backer"
       },
       %{
         "amount" => 50_000,
         "description" => "You treat us decent meal, once a month. Really appreciate it.",
-        "title" => "Heavy Backer"
+        "title" => "Meal Backer"
       },
       %{
         "amount" => 100_000,
-        "description" => "We can do some stuff with this definitely. Thanks!",
-        "title" => "Ultra Backer"
+        "description" => "We can buy martabak once a month. Thanks!",
+        "title" => "Martabak Backer"
+      },
+      %{
+        "amount" => 200_000,
+        "description" => "Equal to buy us pizza one a month. Great Thanks!",
+        "title" => "Pizza Backer"
       }
     ]
   end
