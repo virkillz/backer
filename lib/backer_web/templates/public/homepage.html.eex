@@ -6,13 +6,13 @@
 	<div class="container px-3 mx-auto text-white flex flex-wrap flex-col md:flex-row items-start">
 		<!--Left Col-->
 		<div class="lg:text-left w-full md:w-3/5 items-start text-center md:text-left">
-			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Visi kami: kegiatan positif di
+			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Kami ingin kegiatan positif di
 				Indonesia dapat
 				terus hidup.</div>
 			<p class="wow fadeIn lg:text-xl font-lightx text-justifyx md:text-lg mb-8 mt-8 leading-loose">Puluhan ribu komunitas dan
-				individu berkegiatan positif sering terhenti oleh
-				minimnya support dan dana. Platform ini adalah usaha kami untuk
-				membantu merubah itu.</p>
+				individu yang menggagas kegiatan positif di masyarakat sering terhambat oleh
+				kurangnya dukungan dan pendanaan. Platform ini adalah usaha kami untuk
+				membantu mengubah keadaan itu.</p>
 
 
 			<div class="pt-4 flex lg:block justify-center">
