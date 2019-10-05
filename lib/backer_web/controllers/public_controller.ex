@@ -43,6 +43,26 @@ defmodule BackerWeb.PublicController do
     )
   end
 
+  def search(conn, %{"q" => q}) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("search_result.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      meta: meta
+    )
+  end
+
+  def search(conn, params) do
+    meta = %{title: "Welcome to backer"}
+
+    conn
+    |> render("search_form.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      meta: meta
+    )
+  end
+
   def forgot_password(conn, _params) do
     meta = %{title: "Welcome to backer"}
 

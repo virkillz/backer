@@ -103,7 +103,7 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home", BackerController, :home)
-    get("/notifications", BackerController, :notifications)
+    get("/notifications", BackerController, :backerzone_notifications)
 
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)
@@ -113,6 +113,7 @@ defmodule BackerWeb.Router do
     get("/backerzone/invoice/:id", BackerController, :backerzone_invoice_detail)
     get("/backerzone/profile-setting", BackerController, :backerzone_profile_setting)
     put("/backerzone/profile-setting", BackerController, :backerzone_profile_setting_post)
+    get("/backerzone/notifications/:id", BackerController, :backerzone_notification_forwarder)
     # post("/backerzone/link-setting", BackerController, :backerzone_link_setting_post)
 
     get("/home/invoice/:id", BackerController, :invoice_display)
@@ -192,6 +193,7 @@ defmodule BackerWeb.Router do
     pipe_through(:browser)
 
     get("/avatar", PublicController, :color)
+    get("/search", PublicController, :search)
 
     get("/admin/login", UserController, :login)
     post("/admin/login", UserController, :auth)

@@ -1,0 +1,26 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+<div class="pt-20 pb-20" style="min-height: calc(100vh - 250px)">
+
+
+
+    <form method="get" action="/search" class="mt-16">
+    <div class="text-white font-bold py-8 px-2 text-center text-2xl">Search</div>
+        <div class="flex max-w-3xl mx-auto px-4 mb-12 rounded-lg">
+            <input type="search" class="shadow border-b py-2 px-4 flex-grow focus:outline-none rounded-l-lg" name="q">
+            <button type="submit"
+                class="bg-purple-500 py-2 px-4 shadow border-2 border-purple-500 rounded-r-lg text-white"><i
+                    class="la font-bold la-search"></i>
+                Search</button>
+
+        </div>
+    </form>
+
+
+
+
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

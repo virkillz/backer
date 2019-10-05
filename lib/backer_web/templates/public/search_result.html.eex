@@ -1,0 +1,84 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+<div class="pt-10 pb-20 bg-gray-200 " style="margin-top:56px;">
+
+    <form method="get" action="/search" class="">
+        <div class="flex max-w-3xl mx-auto px-4 mb-12 rounded-lg">
+            <input type="search" class="shadow border-b py-2 px-4 flex-grow focus:outline-none rounded-l-lg" name="q">
+            <button type="submit"
+                class="bg-purple-500 py-2 px-4 shadow border-2 border-purple-500 rounded-r-lg text-white"><i
+                    class="la font-bold la-search"></i>
+                Search</button>
+
+        </div>
+    </form>
+
+    <div class="max-w-3xl mx-auto px-4 mb-4">
+        <div class="bg-white rounded-lg shadow px-2">
+            <div class="flex">
+                <a href="#">
+                    <div
+                        class="border-b-4 border-orange-500 py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease font-semibold">
+                        All
+                    </div>
+                </a>
+                <a href="#">
+                    <div
+                        class="py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease font-semibold">
+                        Donee
+                    </div>
+                </a>
+                <a href="#">
+                    <div
+                        class="py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease hover:bg-gray-100 font-semibold">
+                        Backer
+                    </div>
+                </a>
+                <a href="#">
+                    <div
+                        class="py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease hover:bg-gray-100 font-semibold">
+                        Public Post
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="max-w-3xl mx-auto px-4">
+
+        <div class="bg-white text-gray-700 rounded-lg  px-4 py-4 shadow">
+            <div class="font-bold text-lg">Donee</div>
+            <div class="border-b my-4"></div>
+            <div class="">
+                <a href="#">
+                    <div class="flex p-3 border-t bg-indigo-100">
+                        <img src="/assets/images/bg/avatar-default6.jpg" alt="" class="rounded-lg w-12 h-12 mr-4">
+                        <div class="">
+                            <div class=""><span class="font-semibold">Sekolah Kerukunan Beragama</span></div>
+                            <div class="">@segama </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex p-3 border-t bg-indigo-100">
+                        <img src="/assets/images/bg/avatar-default2.jpg" alt="" class="rounded-lg w-12 h-12 mr-4">
+                        <div class="">
+                            <div class=""><span class="font-semibold">Sekolah Kerukunan Beragama</span></div>
+                            <div class="">@segama </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

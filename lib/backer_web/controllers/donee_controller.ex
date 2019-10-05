@@ -380,8 +380,6 @@ defmodule BackerWeb.DoneeController do
             |> redirect(to: "/backerzone/payment-history")
 
           {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
-            IO.inspect(changeset)
-
             conn
             |> render("public_donee_donate.html",
               donee: donee,
@@ -390,7 +388,10 @@ defmodule BackerWeb.DoneeController do
             )
 
           other ->
-            text(conn, "Ecto Multi give unhandled error, check your console")
+            text(
+              conn,
+              "Unexpected error happened when created Invoice. Sorry for the inconvenience."
+            )
         end
 
         text(conn, "lanjut cek console.")
