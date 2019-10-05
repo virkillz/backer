@@ -48,18 +48,24 @@
                             </div>
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-github text-2xl hover:text-purple-500"></i></a>
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-linkedin text-2xl  hover:text-purple-500"></i></a>
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-facebook text-2xl  hover:text-purple-500"></i></a>
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-dribbble text-2xl  hover:text-purple-500"></i></a>
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-youtube text-2xl  hover:text-purple-500"></i></a>
-                                    <a href="#" class="mx-1"><i
-                                            class="la la-twitter text-2xl  hover:text-purple-500"></i></a>
+                                    <%= if @user_links["youtube"] != "" && not is_nil @user_links["youtube"] do %>
+                                        <a href="<%= @user_links["youtube"] %>" class="mx-1"><i class="la la-youtube text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>
+                                    <%= if @user_links["twitter"] != "" && not is_nil @user_links["twitter"] do %>
+                                        <a href="<%= @user_links["twitter"] %>" class="mx-1"><i class="la la-twitter text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>
+                                    <%= if @user_links["instagram"] != "" && not is_nil @user_links["instagram"] do %>
+                                        <a href="<%= @user_links["instagram"] %>" class="mx-1"><i class="la la-instagram text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>
+                                    <%= if @user_links["dribbble"] != "" && not is_nil @user_links["dribbble"] do %>
+                                        <a href="<%= @user_links["dribbble"] %>" class="mx-1"><i class="la la-dribbble text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>
+                                    <%= if @user_links["linkedin"] != "" && not is_nil @user_links["linkedin"] do %>
+                                        <a href="<%= @user_links["linkedin"] %>" class="mx-1"><i class="la la-linkedin text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>
+                                    <%= if @user_links["github"] != "" && not is_nil @user_links["github"] do %>
+                                        <a href="<%= @user_links["github"] %>" class="mx-1"><i class="la la-github text-2xl hover:text-purple-500"></i></a>
+                                    <% end %>	
                                 </div>
                             </div>
                         </div>

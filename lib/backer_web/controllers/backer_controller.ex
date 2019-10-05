@@ -184,8 +184,22 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def backerzone_profile_setting(conn, params) do
+  def backerzone_user_link_post(conn, params) do
     backer = conn.assigns.current_backer
+
+    params
+    |> Map.delete("_csrf_token")
+    |> Map.delete("_utf8")
+    |> Account.batch_user_link_upsert(backer.id)
+
+    conn
+    |> put_flash(:info, "Link sudah berhasil disimpan")
+    |> redirect(to: "/backerzone/profile-setting")
+  end
+
+  def backerzone_profile_setting(conn, _params) do
+    backer = conn.assigns.current_backer
+    user_links = Account.get_user_links_of(backer.id) |> IO.inspect()
 
     case backer do
       nil ->
@@ -200,6 +214,7 @@ defmodule BackerWeb.BackerController do
           backer: backer,
           random_donees: random_donees,
           changeset: changeset,
+          user_links: user_links,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
@@ -380,19 +395,19 @@ defmodule BackerWeb.BackerController do
   end
 
   def public_profile(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
-
-    case backer do
+    case Account.get_backer(%{"username" => username}) do
       nil ->
         redirect(conn, to: "/404")
 
-      _ ->
+      backer ->
+        user_links = Account.get_user_links_of(backer.id)
         list_my_active_donee = Finance.list_my_active_donee(:backer_id, backer.id)
         count_all_donee = Finance.count_my_donee(:backer_id, backer.id) |> IO.inspect()
 
         conn
         |> render("public_backer_profile.html",
           backer: backer,
+          user_links: user_links,
           active_donee: list_my_active_donee,
           count_all_donee: count_all_donee,
           layout: {BackerWeb.LayoutView, "public.html"}

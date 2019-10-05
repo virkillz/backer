@@ -66,6 +66,7 @@ defmodule BackerWeb.DoneeController do
     random_donee = Account.get_random_donee(3)
     donee = Account.get_donee!(donee_info.donee_id)
     changeset = Account.change_donee(donee)
+    user_links = Account.get_user_links_of(backer_info.id)
 
     conn
     |> render("doneezone_setting.html",
@@ -75,6 +76,7 @@ defmodule BackerWeb.DoneeController do
       script: %{wysiwyg: true},
       style: %{wysiwyg: true},
       changeset: changeset,
+      user_links: user_links,
       layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
@@ -561,112 +563,6 @@ defmodule BackerWeb.DoneeController do
         layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
       )
     end
-  end
-
-  def dashboard_post_update(conn, %{"id" => id, "post" => post_params}) do
-    post = Content.get_post!(id)
-
-    case Content.update_post(post, post_params) do
-      {:ok, post} ->
-        conn
-        |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: Router.donee_path(conn, :dashboard_post_show, post))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        donee_id = conn.assigns.current_donee.donee_id
-        tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee_id})
-
-        render_target =
-          case post.type do
-            "image" -> "front_dashboard_post_new_image.html"
-            "video" -> "front_dashboard_post_new_video.html"
-            _other -> "frontx_dashboard_post_new.html"
-          end
-
-        post_type =
-          case post.type do
-            "image" -> :image
-            "video" -> :video
-            _other -> :other
-          end
-
-        conn
-        |> render(render_target,
-          post: post,
-          intent: :edit,
-          changeset: changeset,
-          tiers: tiers,
-          type: post_type,
-          layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
-        )
-    end
-  end
-
-  def dashboard_post_delete(conn, %{"id" => id}) do
-    post = Content.get_post!(id)
-    {:ok, _post} = Content.delete_post(post)
-
-    conn
-    |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: Router.donee_path(conn, :dashboard_post))
-  end
-
-  def dashboard_backers(conn, _params) do
-    donee_id = conn.assigns.current_donee.donee_id
-    backers = Finance.list_all_backers(%{"donee_id" => donee_id})
-
-    conn
-    |> render("front_dashboard_backers.html",
-      active: :dashboard,
-      backers: backers,
-      layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
-    )
-  end
-
-  def dashboard_backers_active(conn, _params) do
-    donee_id = conn.assigns.current_donee.donee_id
-
-    backers =
-      Finance.list_all_backers(%{"donee_id" => donee_id})
-      |> Enum.filter(fn x -> x.status == "active" end)
-
-    conn
-    |> render("front_dashboard_backers.html",
-      active: :dashboard,
-      backers: backers,
-      layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
-    )
-  end
-
-  def dashboard_backers_inactive(conn, _params) do
-    donee_id = conn.assigns.current_donee.donee_id
-
-    backers =
-      Finance.list_all_backers(%{"donee_id" => donee_id})
-      |> Enum.filter(fn x -> x.status == "inactive" end)
-
-    conn
-    |> render("front_dashboard_backers.html",
-      active: :dashboard,
-      backers: backers,
-      layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
-    )
-  end
-
-  def dashboard_earning(conn, _params) do
-    conn
-    |> render("front_dashboard_earning.html",
-      active: :donation,
-      layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
-    )
-  end
-
-  def dashboard_edit_profile(conn, _params) do
-    conn
-    |> render("dashboard.html",
-      active: :edit_profile,
-      layout: {BackerWeb.LayoutView, "dashboard_donee.html"}
-    )
   end
 
   def dashboard_page_setting(conn, _params) do

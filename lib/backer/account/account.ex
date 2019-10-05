@@ -12,6 +12,7 @@ defmodule Backer.Account do
   alias Backer.Masterdata.Tier
   alias Backer.Account.Donee
   alias Backer.Settings
+  alias Backer.Account.Metadata
 
   @doc """
   Returns the list of user.
@@ -579,5 +580,150 @@ defmodule Backer.Account do
   """
   def change_donee(%Donee{} = donee) do
     Donee.changeset(donee, %{})
+  end
+
+  def get_user_links_of(backer_id) do
+    query =
+      from(m in Metadata,
+        where: m.backer_id == ^backer_id,
+        where: m.group == "user_link"
+      )
+
+    query
+    |> Repo.all()
+    |> Enum.reduce(%{}, fn x, acc -> Map.put(acc, x.key, x.value_string) end)
+  end
+
+  def user_link_upsert(%{"backer_id" => backer_id, "key" => key, "group" => group} = attrs) do
+    query =
+      from(m in Metadata,
+        where: m.backer_id == ^backer_id,
+        where: m.key == ^key,
+        where: m.group == ^group
+      )
+
+    metadata = Repo.one(query)
+
+    if is_nil(metadata) do
+      # create metadata
+      create_metadata(attrs)
+      # :ok
+    else
+      # no need update if value is the same
+      if metadata.value_string == attrs["value_string"] do
+        {:ok, metadata}
+      else
+        update_metadata(metadata, %{"value_string" => attrs["value_string"]})
+      end
+    end
+  end
+
+  def batch_user_link_upsert(attrs, backer_id) do
+    keys =
+      attrs
+      |> Map.keys()
+      |> Enum.map(fn x ->
+        %{
+          "backer_id" => backer_id,
+          "key" => x,
+          "value_string" => attrs[x],
+          "group" => "user_link"
+        }
+      end)
+      |> Enum.map(fn x -> user_link_upsert(x) end)
+  end
+
+  @doc """
+  Returns the list of metadatas.
+
+  ## Examples
+
+      iex> list_metadatas()
+      [%Metadata{}, ...]
+
+  """
+  def list_metadatas do
+    Repo.all(Metadata)
+  end
+
+  @doc """
+  Gets a single metadata.
+
+  Raises `Ecto.NoResultsError` if the Metadata does not exist.
+
+  ## Examples
+
+      iex> get_metadata!(123)
+      %Metadata{}
+
+      iex> get_metadata!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_metadata!(id), do: Repo.get!(Metadata, id)
+
+  @doc """
+  Creates a metadata.
+
+  ## Examples
+
+      iex> create_metadata(%{field: value})
+      {:ok, %Metadata{}}
+
+      iex> create_metadata(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_metadata(attrs \\ %{}) do
+    %Metadata{}
+    |> Metadata.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a metadata.
+
+  ## Examples
+
+      iex> update_metadata(metadata, %{field: new_value})
+      {:ok, %Metadata{}}
+
+      iex> update_metadata(metadata, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_metadata(%Metadata{} = metadata, attrs) do
+    metadata
+    |> Metadata.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Metadata.
+
+  ## Examples
+
+      iex> delete_metadata(metadata)
+      {:ok, %Metadata{}}
+
+      iex> delete_metadata(metadata)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_metadata(%Metadata{} = metadata) do
+    Repo.delete(metadata)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking metadata changes.
+
+  ## Examples
+
+      iex> change_metadata(metadata)
+      %Ecto.Changeset{source: %Metadata{}}
+
+  """
+  def change_metadata(%Metadata{} = metadata) do
+    Metadata.changeset(metadata, %{})
   end
 end

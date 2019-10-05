@@ -69,18 +69,32 @@ Target:
 - [x] Change default tier
 - [x] Fix footer simple version and make it component.
 - [x] Make the link footer works.
+- [x] Create meta tag placeholder
+- [x] Connect to image processing service.
+- [x] fix footer looks really ugly in mobile
+- [x] explore looks bad in mobile
 
-
-- [ ] Make notification schema and function works.
-- [ ] Make notification functioning for backer payment approved.
-- [ ] Make notification functioning for backer waiting for payment.
+### Notification Feature
+- [x] Make notification schema and function works.
+- [x] Make notification functioning for backer waiting for payment.
+- [ ] Make admin tidier.
+- [ ] Broadcast notification.
 - [ ] Make notification functioning for donee got new backer.
+- [ ] Make notification functioning for backer payment approved.
 
-
-- [ ] Dedicated search page
+### Search Feature
+- [x] Dedicated search page
 - [ ] Make search functioning
 
-- [ ] Create backing aggregate.
+
+### Backing Aggregate
+- [ ] Create backing aggregate schema. [backer_id, donee_id, last_amount, last_tier, status, score, backer_start]
+- [ ] Create script to update backing aggregate score.
+- [ ] Create schema for scoring history.
+- [ ] Create function to update backing status single.
+- [ ] Create function to update backing status batch.
+
+
 
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
@@ -93,16 +107,11 @@ Target:
 
 - [ ] Backer can edit social media link
 
-- [x] Create meta tag placeholder
-
 - [ ] Admin portal must be able to find backer instead of drop down select
 
 - [ ] Preview mode: /preview
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.
-- [ ] Connect to image processing service.
-- [ ] fix footer looks really ugly in mobile
-- [ ] explore looks bad in mobile
 
 
 

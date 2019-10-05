@@ -180,7 +180,9 @@
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
           <li class="nav-item <%= activate(@conn.request_path, "/admin/donees") %>"><a href="/admin/donees" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Donees</span></a>
-          </li>                      
+          </li>  
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/metadatas") %>"><a href="/admin/metadatas" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">User Metadata</span></a>
+          </li>                        
           <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Content</span></a>
             <ul class="menu-content">
               <li class="nav-item <%= activate(@conn.request_path, "/admin/notifications") %>"><a href="/admin/notifications" up-target=".main" up-transition="move-right">Notifications</a>

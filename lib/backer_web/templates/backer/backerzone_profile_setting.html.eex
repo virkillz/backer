@@ -114,20 +114,22 @@
 
 
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+
+                    <%= form_for @conn, "/backerzone/user_links ", fn _f -> %>
+
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Links</div>
-                        <button
+                        <button type="submit"
                             class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Save</button>
                     </div>
 
                     <div class="border-b my-2"></div>
 
-
                     <div class="my-2">
                         <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Link</label>
                         <div class="flex px-2"><span class="z-10">https://youtube.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="youtube" value="<%= @user_links["youtube"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
 
@@ -135,7 +137,7 @@
                         <label for="display_name" class="px-2 text-xs text-gray-600">Twitter Link</label>
                         <div class="flex px-2"><span class="z-10">https://twitter.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="twitter" value="<%= @user_links["twitter"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
 
@@ -143,7 +145,7 @@
                         <label for="display_name" class="px-2 text-xs text-gray-600">Facebook Link</label>
                         <div class="flex px-2"><span class="z-10">https://facebook.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="facebook" value="<%= @user_links["facebook"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
 
@@ -151,7 +153,7 @@
                         <label for="display_name" class="px-2 text-xs text-gray-600">Github Link</label>
                         <div class="flex px-2"><span class="z-10">https://github.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="github" value="<%= @user_links["github"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
 
@@ -159,23 +161,25 @@
                         <label for="display_name" class="px-2 text-xs text-gray-600">LinkedIn Link</label>
                         <div class="flex px-2"><span class="z-10">https://linkedin.com/</span><input
                                 class="inline  w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="linkedin" value="<%= @user_links["linkedin"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
                     <div class="my-2">
                         <label for="display_name" class="px-2 text-xs text-gray-600">Dribbble Link</label>
                         <div class="flex px-2"><span class="z-10">https://dribbble.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="dribbble" value="<%= @user_links["dribbble"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
                     <div class="my-2">
                         <label for="display_name" class="px-2 text-xs text-gray-600">Instagram Link</label>
                         <div class="flex px-2"><span class="z-10">https://instagram.com/</span><input
                                 class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
-                                type="text" name="display_name" value="untaro"></div>
+                                type="text" name="instagram" value="<%= @user_links["instagram"] %>"></div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
                     </div>
+
+                    <% end %>
 
                 </div>
 
