@@ -73,6 +73,7 @@ Target:
 - [x] Connect to image processing service.
 - [x] fix footer looks really ugly in mobile
 - [x] explore looks bad in mobile
+- [x] Backer can edit social media link
 
 ### Notification Feature
 - [x] Make notification schema and function works.
@@ -102,10 +103,6 @@ Target:
 
 
 - [ ] Custom style oerview with UL/LI/ title, etc
-
-
-
-- [ ] Backer can edit social media link
 
 - [ ] Admin portal must be able to find backer instead of drop down select
 

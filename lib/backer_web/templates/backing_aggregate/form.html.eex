@@ -1,0 +1,53 @@
+  <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :last_amount, class: "control-label" %>
+    <%= number_input f, :last_amount, class: "form-control" %>
+    <%= error_tag f, :last_amount %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :last_tier, class: "control-label" %>
+    <%= text_input f, :last_tier, class: "form-control" %>
+    <%= error_tag f, :last_tier %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :backing_status, class: "control-label" %>
+    <%= text_input f, :backing_status, class: "form-control" %>
+    <%= error_tag f, :backing_status %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :accumulative_donation, class: "control-label" %>
+    <%= number_input f, :accumulative_donation, class: "form-control" %>
+    <%= error_tag f, :accumulative_donation %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :score, class: "control-label" %>
+    <%= number_input f, :score, class: "form-control" %>
+    <%= error_tag f, :score %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :backer_since, class: "control-label" %>
+    <%= datetime_select f, :backer_since, class: "form-control" %>
+    <%= error_tag f, :backer_since %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <span><%= link "Cancel", to: Router.backing_aggregate_path(@conn, :index), class: "btn btn-warning" %></span>
+  </div>
+<% end %>
+</div>
+</div>
