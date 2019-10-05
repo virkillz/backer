@@ -70,19 +70,19 @@
 
 		<%= if not is_nil @highlight_donee do %>
 		<!-- Highlight Donee -->
-		<div class="lg:flex items-center">
+		<div class="lg:flex items-begin">
 			<div class="wow fadeInLeft flex p-6 lg:w-7/12">
-				<img src="<%= @highlight_donee.background %>" class=" rounded-lg w-full h-64 object-cover" alt="">
+							<iframe class="rounded-lg" width="100%" heighxt="350" src="https://www.youtube.com/embed/<%= @highlight_donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 
 			<div class="wow fadeInRight pl-6 lg:w-5/12 mx-auto p-6">
 
-				<div class="flex">
+				<div class="">
 					<img src="<%= @highlight_donee.backer.avatar %>" class=" object-center object-cover border-2 border-white rounded-lg w-16 h-16"
 						alt="">
-					<div class="">
-						<div class="text-lg  pl-5 font-semibold"><%= @highlight_donee.backer.display_name %></div>
-						<div class="text-sm  pl-5 text-gray-600">@<%= @highlight_donee.backer.username %></div>
+					<div class="py-2">
+						<div class="text-2xl font-semibold"><%= @highlight_donee.backer.display_name %></div>
+												<div class=""><%= @highlight_donee.tagline %></div>
 					</div>
 				</div>
 

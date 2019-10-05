@@ -51,7 +51,6 @@ Target:
 - [x] If no backing yet, show somehting in doneezone
 - [x] Make backer in doneezone and public donee works
 - [x] Invoice must record donee_id and month directly. Not only through detail 
-- [ ] Create backing aggregate.
 - [x] Make top backer in public donee profile works
 - [x] Invoice should capture 'nominal'
 - [x] Make backerzone 'keuangan' works 
@@ -64,16 +63,31 @@ Target:
 - [x] Logout menu when mobile view didn't worked
 - [x] Background upload can connct to S3 bucket.
 - [x] Make public donee profile dynamic from DB
+- [x] Change title into tagline
+- [x] Add tag meta SEO dynamic into the front page
+
+- [ ] Remove Manual amount input in donate page
+- [ ] Change default tier
+
+- [ ] Dedicated search page
+- [ ] Create backing aggregate.
+
+- [ ] Fix footer simple version and make it component.
+- [ ] Make the link works.
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
 - [ ] Update seed for backing pitch
-- [x] Change title into tagline
+
 - [ ] Make search functioning
 - [ ] Custom style oerview with UL/LI/ title, etc
 - [ ] Make notification functioning for backer payment approved.
 - [ ] Make notification functioning for backer waiting for payment.
 - [ ] Make notification functioning for donee got new backer.
 - [ ] Backer can edit social media link
+
+- [] Create meta tag placeholder
+
+
 - [ ] Preview mode: /preview
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.

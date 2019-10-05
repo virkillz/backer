@@ -10,6 +10,13 @@ defmodule BackerWeb.PublicController do
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
+
+    meta_attrs = [
+      %{name: "keywords", content: "........"},
+      %{name: "description", content: "........."},
+      %{property: "og:image", content: "......"}
+    ]
+
     random_donee = Account.get_random_donee(6)
     highlight_donee = Account.get_highlight_donee_homepage() |> IO.inspect()
 
@@ -17,6 +24,7 @@ defmodule BackerWeb.PublicController do
     |> render("homepage.html",
       layout: {BackerWeb.LayoutView, "public.html"},
       meta: meta,
+      meta_attrs: meta_attrs,
       highlight_donee: highlight_donee,
       random_donee: random_donee
     )

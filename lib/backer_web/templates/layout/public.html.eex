@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backer :: <%= @conn.assigns[:meta][:title] %></title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <%= if not (is_nil @conn.assigns[:meta_attrs]), do: meta_tags(@conn.assigns[:meta_attrs]) %>
 
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
@@ -160,65 +158,56 @@
     <script>
     function adjustAmount(amount, target_id) {
         var inputAmount = document.getElementById("amount");
-        inputAmount.value = amount;
+        var labelAmount = document.getElementById("labelAmount");
         var allTiers = document.getElementsByClassName("tier");
         var targetTier = document.getElementById(target_id);
+        var month = document.getElementById("month");
+        var total = document.getElementById("total"); 
 
         for (var i = 0; i < allTiers.length; i++) {
             allTiers[i].classList.remove("border-orange-500");
             // list[i] is a node with the desired class name
         }
-       var month = document.getElementById("month");
-       var total = document.getElementById("total"); 
+       
+       labelAmount.innerHTML = amount.toLocaleString("en");;
+       inputAmount.value = amount;
        total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
 
-        targetTier.classList.add("border-orange-500");
+       targetTier.classList.add("border-orange-500");
 
     }
 
-    function amountChanged() {
+    function changePaymentMonth(month) {
+        var monthInput = document.getElementById("month");
         var inputAmount = document.getElementById("amount");
-        var submitDonate = document.getElementById("submitDonate");
+        //var labelAmount = document.getElementById("labelAmount");
+        var labelMonth = document.getElementById("labelMonth");        
+        var monthBox = document.getElementById(month + "-mth");
+        var total = document.getElementById("total");
+        var allMonths = document.getElementsByClassName("months");
 
-        if (inputAmount.value < 10000) {
-            submitDonate.classList.remove("bg-orange-500");
-            submitDonate.classList.remove("hover:bg-orange-600");
-            submitDonate.classList.remove("btn-glow-orange");
-            submitDonate.classList.remove("border-orange-500");
-            submitDonate.classList.add("bg-gray-500"); 
-            submitDonate.disabled = true;
+        monthInput.value = month;
+        labelMonth.innerHTML = month;
+        total.innerHTML = (monthInput.value * inputAmount.value).toLocaleString("en");
 
-        }
-        else {
-            submitDonate.classList.add("bg-orange-500");
-            submitDonate.classList.add("hover:bg-orange-600");
-            submitDonate.classList.add("border-orange-500");
-            submitDonate.classList.add("btn-glow-orange");
-            submitDonate.classList.remove("bg-gray-500"); 
-            submitDonate.disabled = false; 
+
+        for (var x = 0; x < allMonths.length; x++) {
+            allMonths[x].classList.remove("border-orange-500");
         }
 
-       var month = document.getElementById("month");
-       var total = document.getElementById("total"); 
-       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
+        monthBox.classList.add("border-orange-500");
 
-        console.log(inputAmount.value); 
-
-    }
-
-    function changeMonth() {
-       var month = document.getElementById("month");
-       var inputAmount = document.getElementById("amount");
-       var total = document.getElementById("total"); 
-       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
     }
 
     function changePaymentMethod(paymentMethod) {
         var paymentMethodInput = document.getElementById("paymentMethodInput");
         paymentMethodInput.value = paymentMethod;
+        var labelPaymentMethod = document.getElementById("labelPaymentMethod");
+        paymentMethod = paymentMethod.replace("_", " ");
+        labelPaymentMethod.innerHTML = paymentMethod[0].toUpperCase() + paymentMethod.substring(1);
 
         // remove all border-purple-500
-        paymentmethods = document.getElementsByClassName("payment-methods");
+        var paymentmethods = document.getElementsByClassName("payment-methods");
         for (var i = 0; i < paymentmethods.length; i++) {
            paymentmethods[i].classList.remove("border-orange-500");
         } 
@@ -227,7 +216,6 @@
         var paymentMethodSelected = document.getElementById(paymentMethod);
         paymentMethodSelected.classList.add("border-orange-500")
 
-        console.log(paymentMethod);
     }
 
     

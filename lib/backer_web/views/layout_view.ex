@@ -13,6 +13,14 @@ defmodule BackerWeb.LayoutView do
     end
   end
 
+  def meta_tags(attrs_list) do
+    Enum.map(attrs_list, &meta_tag/1)
+  end
+
+  def meta_tag(attrs) do
+    tag(:meta, Enum.into(attrs, []))
+  end
+
   # def render_layout(layout, assigns, do: content) do
   #  	render(layout, Map.put(assigns, :inner_layout, content))
   # end
