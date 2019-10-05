@@ -1,6 +1,4 @@
 defmodule BackerWeb.Plugs.BackerSignCheck do
-  import Plug.Conn
-
   def init(_params) do
   end
 
