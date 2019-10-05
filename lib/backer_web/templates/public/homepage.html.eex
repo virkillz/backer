@@ -6,13 +6,13 @@
 	<div class="container px-3 mx-auto text-white flex flex-wrap flex-col md:flex-row items-start">
 		<!--Left Col-->
 		<div class="lg:text-left w-full md:w-3/5 items-start text-center md:text-left">
-			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Visi kami: kegiatan positif di
+			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Kami ingin kegiatan positif di
 				Indonesia dapat
 				terus hidup.</div>
 			<p class="wow fadeIn lg:text-xl font-lightx text-justifyx md:text-lg mb-8 mt-8 leading-loose">Puluhan ribu komunitas dan
-				individu berkegiatan positif sering terhenti oleh
-				minimnya support dan dana. Platform ini adalah usaha kami untuk
-				membantu merubah itu.</p>
+				individu yang menggagas kegiatan positif di masyarakat sering terhambat oleh
+				kurangnya dukungan dan pendanaan. Platform ini adalah usaha kami untuk
+				membantu mengubah keadaan itu.</p>
 
 
 			<div class="pt-4 flex lg:block justify-center">
@@ -191,7 +191,7 @@
 <section class=" py-8">
 
 	<div class="container mx-auto flex flex-wrap pt-4 pb-12">
-		<h1 class="w-full my-2 text-2xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Misi kami </h1>
+		<h1 class="w-full my-2 text-2xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Tiga fondasi kami adalah.. </h1>
 
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -201,9 +201,10 @@
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/bg/discover.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
-					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Discoverability</div>
+					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Keberlanjutan</div>
 					<p class="text-gray-800 text-base">
-						Kami berusaha membantu mereka bertemu dengan backer yang memiliki visi dan minat yang sama.
+						Kami memudahkan pembayaran dan manajemen donasi atau iuran dukungan 
+						bulanan untuk memastikan kegiatan-kegiatan positif dapat terus berjalan.
 					</p>
 				</a>
 			</div>
@@ -213,9 +214,10 @@
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/bg/payment.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
-					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Transparancy</div>
+					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Komunitas</div>
 					<p class="text-gray-800 text-base">
-						Kami ingin mempermudah pembayaran dan manajemen donasi atau iuran keanggotaan bulanan.
+						Kami membantu individu atau organisasi bertemu dengan mereka yang sevisi;
+						menciptakan komunitas gotong-royong demi kebaikan bersama.
 					</p>
 				</a>
 			</div>
@@ -225,10 +227,10 @@
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/bg/interaction.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
-					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Sustainability</div>
+					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Transparansi</div>
 					<p class="text-gray-800 text-base">
-						Kami ingin mempermudah interaksi antara pengelola kegiatan atau pemilik konten dengan para
-						backer yang mendukungnya.
+						Kami menyediakan ruang bagi para penggiat untuk berbagi kegiatan terbaru yang dapat terlaksana berkat dukungan para
+						donatur dan laporan-laporan lainnya dalam bentuk konten kreatif.
 					</p>
 				</a>
 			</div>
@@ -302,7 +304,7 @@
 			<div class="w-5/6 sm:w-1/2 p-6">
 				<h4 class="font-bold font-title mb-2">Langkah 3</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Terus posting update dan jalin komunikasi dengan para backermu</h3>
-				<p class="text-gray-600 mb-8 leading-loose"> Gunakan paltform untuk terus mengupdate kegiatan komunitasmu dan jalin komunikasi dengan backer secara lebih mudah dan transparan.
+				<p class="text-gray-600 mb-8 leading-loose"> Gunakan paltform untuk terus menginformasikan kegiatan komunitasmu dan jalin komunikasi dengan backer secara lebih mudah dan transparan.
 
 
 			</div>
@@ -349,7 +351,7 @@
 
 	<section class="container mx-auto text-center py-6 mb-12 ">
 
-		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Yuk! Mulai sekarang</h1>
+		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-white font-title">Yuk, mulai sekarang!</h1>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
@@ -357,7 +359,7 @@
 		<h3 class="wow fadeIn my-8 px-4 text-2xl font-light leading-loose text-white max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
 			untuk
 			mendukung
-			kelangsungan aktifitas
+			kelangsungan aktivitas
 			komunitasmu.</h3>
 
 		<a href="/register-donee">
