@@ -66,14 +66,14 @@ Target:
 - [x] Change title into tagline
 - [x] Add tag meta SEO dynamic into the front page
 
-- [ ] Remove Manual amount input in donate page
-- [ ] Change default tier
+- [x] Remove Manual amount input in donate page
+- [x] Change default tier
 
 - [ ] Dedicated search page
 - [ ] Create backing aggregate.
 
-- [ ] Fix footer simple version and make it component.
-- [ ] Make the link works.
+- [x] Fix footer simple version and make it component.
+- [x] Make the link footer works.
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
 - [ ] Update seed for backing pitch
