@@ -21,6 +21,10 @@ defmodule BackerWeb.LayoutView do
     tag(:meta, Enum.into(attrs, []))
   end
 
+  def count_notification(conn) do
+    Backer.Content.count_notification(conn.assigns.backer.id)
+  end
+
   # def render_layout(layout, assigns, do: content) do
   #  	render(layout, Map.put(assigns, :inner_layout, content))
   # end

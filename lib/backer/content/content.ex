@@ -15,6 +15,9 @@ defmodule Backer.Content do
   alias Backer.Content.PostLike
   alias Backer.Content.PCommentLike
 
+  alias Backer.Finance.Invoice
+  alias Backer.Account
+
   @doc """
   Returns the list of forums.
 
@@ -1203,6 +1206,49 @@ defmodule Backer.Content do
     PCommentLike.changeset(p_comment_like, %{})
   end
 
+  def list_notification_of(backer_id) do
+    query =
+      from(n in Notification,
+        where: n.user_id == ^backer_id,
+        order_by: [desc: n.id]
+      )
+
+    Repo.all(query)
+    |> Enum.map(fn x ->
+      x |> Map.from_struct() |> link_builder
+    end)
+  end
+
+  def link_builder(notification) do
+    case notification.type do
+      "invoice" ->
+        notification
+        |> Map.put(:icon, "<i class=\"la la-credit-card text-blue-500\"></i>")
+
+      _ ->
+        notification
+        |> Map.put(:icon, "<i class=\"la la-credit-card text-blue-500\"></i>")
+    end
+  end
+
+  def count_notification(backer_id) do
+    Repo.one(from(n in Notification, where: n.user_id == ^backer_id, select: count(n.id)))
+  end
+
+  def build_notification(:invoice, :waiting_payment, %Invoice{} = invoice) do
+    backer = Account.get_backer!(invoice.backer_id)
+
+    attrs = %{
+      "type" => "invoice",
+      "user_id" => invoice.backer_id,
+      "thumbnail" => backer.avatar,
+      "content" => "<span class=\"font-bold\">Invoice-#{invoice.id}</span> menunggu pembayaran.",
+      "other_ref_id" => invoice.id
+    }
+
+    create_notification(attrs)
+  end
+
   @doc """
   Returns the list of notifications.
 
@@ -1231,6 +1277,8 @@ defmodule Backer.Content do
 
   """
   def get_notification!(id), do: Repo.get!(Notification, id)
+
+  def get_notification(id), do: Repo.get(Notification, id)
 
   @doc """
   Creates a notification.

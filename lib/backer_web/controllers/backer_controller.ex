@@ -226,7 +226,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def notifications(conn, _params) do
+  def backerzone_notifications(conn, _params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -235,12 +235,34 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         random_donees = Account.get_random_donee(3)
+        list_notifications = Content.list_notification_of(backer.id) |> IO.inspect()
 
         conn
         |> render("private_notification.html",
           backer: backer,
+          notifications: list_notifications,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
+    end
+  end
+
+  def backerzone_notification_forwarder(conn, %{"id" => id}) do
+    get_notification = Content.get_notification(id)
+    backer = conn.assigns.current_backer
+
+    case get_notification do
+      nil ->
+        redirect(conn, to: "/404")
+
+      notification ->
+        if notification.user_id != backer.id do
+          redirect(conn, to: "/403")
+        else
+          case notification.type do
+            "invoice" -> redirect(conn, to: "/backerzone/invoice/#{notification.other_ref_id}")
+            _ -> text(conn, "Unknown type of notification")
+          end
+        end
     end
   end
 

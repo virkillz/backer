@@ -12,6 +12,7 @@ defmodule Backer.Finance do
   alias Backer.Account.Donee
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
+  alias Backer.Content
 
   @doc """
   Returns the list of invoices.
@@ -142,6 +143,9 @@ defmodule Backer.Finance do
     |> Ecto.Multi.insert(:invoice, invoice_changeset)
     |> Ecto.Multi.run(:user, fn _repo, %{invoice: invoice} ->
       create_invoice_detail_donation(invoice, attrs)
+    end)
+    |> Ecto.Multi.run(:notification, fn _repo, %{invoice: invoice} ->
+      Content.build_notification(:invoice, :waiting_payment, invoice)
     end)
     |> Repo.transaction()
   end

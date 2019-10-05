@@ -19,10 +19,15 @@
 	                    </a>
 	                    <a href="/notifications"
 	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
-	                            class="la la-bell"></i><span
-	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded">10</span>
+	                            class="la la-bell"></i>
+								<% count_notif = Backer.Content.count_notification(@conn.assigns.current_backer.id) %>
+								<%= if count_notif > 0 do %>
+								<span
+	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded"><%= Backer.Content.count_notification(@conn.assigns.current_backer.id) %></span>
+								<% end %>
+
 	                    </a>
-	                    <a href="#"
+	                    <a href="/search"
 	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                            class="la la-search"></i>
 	                    </a>
@@ -59,10 +64,16 @@
 	                        </a>
 	                        <a href="/notifications"
 	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
-	                                class="la la-bell"></i><span
-	                                class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded">10</span>
+	                                class="la la-bell"></i>
+									
+								<% count_notif = Backer.Content.count_notification(@conn.assigns.current_backer.id) %>
+								<%= if count_notif > 0 do %>
+								<span
+	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded"><%= Backer.Content.count_notification(@conn.assigns.current_backer.id) %></span>
+								<% end %>
+
 	                        </a>
-	                        <a href="#"
+	                        <a href="/search"
 	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                                class="la la-search"></i>
 	                        </a>

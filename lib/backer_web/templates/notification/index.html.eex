@@ -60,7 +60,7 @@
                         <%= notification.type %>
                       </td>
                        <td>
-                        <%= notification.content %>
+                        <%= raw notification.content %>
                       </td>
                        <td>
                         <%= notification.is_read %>

@@ -8,6 +8,7 @@ defmodule Backer.Repo.Migrations.CreateNotifications do
       add(:is_read, :boolean, default: false, null: false)
       add(:other_ref_id, :integer)
       add(:additional_note, :string)
+      add(:thumbnail, :string)
       add(:user_id, references(:backers, on_delete: :nothing))
       add(:backer_id, references(:backers, on_delete: :nothing))
       add(:donee_id, references(:donees, on_delete: :nothing))

@@ -11,6 +11,7 @@ defmodule Backer.Content.Notification do
     field(:user_id, :id)
     field(:backer_id, :id)
     field(:donee_id, :id)
+    field(:thumbnail, :string)
 
     timestamps()
   end
@@ -26,8 +27,9 @@ defmodule Backer.Content.Notification do
       :content,
       :is_read,
       :other_ref_id,
-      :additional_note
+      :additional_note,
+      :thumbnail
     ])
-    |> validate_required([:type, :content, :is_read, :other_ref_id, :additional_note])
+    |> validate_required([:type, :content, :is_read, :user_id])
   end
 end
