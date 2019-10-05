@@ -180,6 +180,8 @@
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backers") %>"><a href="/admin/backers" up-target=".main" up-transition="move-right"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Backers</span></a>
           </li>                    
           <li class="nav-item <%= activate(@conn.request_path, "/admin/donees") %>"><a href="/admin/donees" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Donees</span></a>
+          </li> 
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/backingaggregates") %>"><a href="/admin/backingaggreggates" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Backing Aggregates</span></a>
           </li>  
           <li class="nav-item <%= activate(@conn.request_path, "/admin/metadatas") %>"><a href="/admin/metadatas" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">User Metadata</span></a>
           </li>                        

@@ -8,6 +8,20 @@ defmodule Backer.Aggregate do
 
   alias Backer.Aggregate.BackingAggregate
 
+  def build_aggregate(backer_id, donee_id) do
+    case get_backingaggregate(backer_id, donee_id) do
+      nil -> :create_one
+      item -> :update
+    end
+  end
+
+  def get_backingaggregate(backer_id, donee_id) do
+    query = from b in BackingAggregate,
+          where: b.backer_id == ^backer_id,
+          where: b.donee_id == ^donee_id,
+    Repo.one(query)
+  end
+
   @doc """
   Returns the list of backingaggregates.
 

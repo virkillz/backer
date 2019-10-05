@@ -89,13 +89,14 @@ Target:
 
 
 ### Backing Aggregate
-- [ ] Create backing aggregate schema. [backer_id, donee_id, last_amount, last_tier, status, score, backer_start]
+- [x] Create backing aggregate schema. [backer_id, donee_id, last_amount, last_tier, status, score, backer_start]
+- [ ] update_aggregate
 - [ ] Create script to update backing aggregate score.
 - [ ] Create schema for scoring history.
 - [ ] Create function to update backing status single.
 - [ ] Create function to update backing status batch.
 
-
+- [ ] resize logo
 
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
