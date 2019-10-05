@@ -226,6 +226,24 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def notifications(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donees = Account.get_random_donee(3)
+
+        conn
+        |> render("private_notification.html",
+          backer: backer,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
   def backerzone_profile_setting_post(conn, %{"backer" => backer_params} = attrs) do
     backer = conn.assigns.current_backer
     avatar = backer_params["avatar"]

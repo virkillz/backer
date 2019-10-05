@@ -1,0 +1,45 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+	
+
+<div class="pt-20 pb-20 bg-gray-200  " style="margin-top:56px;">
+    <div class="lg:w-3/4 mx-auto px-4">
+
+        <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lg">
+            <div class="font-bold text-lg">Your notification</div>
+            <div class="border-b my-4"></div>
+            <div class="">
+                <a href="#">
+                    <div class="flex p-3 border-t bg-indigo-100">
+                        <img src="/assets/images/bg/avatar-default6.jpg" alt="" class="rounded-lg w-12 h-12 mr-4">
+                        <div class="">
+                            <div class=""><span class="font-semibold">Username</span> create new post!</div>
+                            <div class="">5 h </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex p-3 border-t bg-white">
+                        <img src="/assets/images/bg/avatar-default3.jpg" alt="" class="rounded-lg w-12 h-12 mr-4">
+                        <div class="">
+                            <div class=""><span class="font-semibold">Username</span> create new post!</div>
+                            <div class="">6 h </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex p-3 border-t bg-indigo-100">
+                        <img src="/assets/images/bg/avatar-default9.jpg" alt="" class="rounded-lg w-12 h-12 mr-4">
+                        <div class="">
+                            <div class=""><span class="font-semibold">Username</span> back you up!</div>
+                            <div class="">5 h </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+

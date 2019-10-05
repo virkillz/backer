@@ -102,6 +102,7 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home", BackerController, :home)
+    get("/notifications", BackerController, :notifications)
 
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)

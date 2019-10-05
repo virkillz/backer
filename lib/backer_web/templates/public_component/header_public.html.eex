@@ -17,7 +17,7 @@
 	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                            class="la la-home"></i>
 	                    </a>
-	                    <a href="#"
+	                    <a href="/notifications"
 	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                            class="la la-bell"></i><span
 	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded">10</span>
@@ -57,7 +57,7 @@
 	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                                class="la la-home"></i>
 	                        </a>
-	                        <a href="#"
+	                        <a href="/notifications"
 	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                                class="la la-bell"></i><span
 	                                class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded">10</span>
