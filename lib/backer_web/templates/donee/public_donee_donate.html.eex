@@ -195,20 +195,4 @@
 
     </div>
 
-
-
-    <div class="bottom-0 fixedx w-full">
-        <!-- footer -->
-        <footer class="font-sans bg-white shadow-lg border-gray-300 border-t-2 text-gray-700 py-2 px-4">
-            <div class="mx-auto container overflow-hidden flex justify-between items-center">
-                <p class="inline-block py-2 px-3 "> ©2019 VirKill. All rights reserved.</p>
-                <ul class=" flex items-center">
-                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Product</a></li>
-                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Company</a></li>
-                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">FAQs</a></li>
-                    <li><a href="#" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">About Us</a></li>
-                </ul>
-            </div>
-        </footer>
-        <!-- /footer -->
-    </div>
+<%= BackerWeb.PublicComponentView.render "footer_private.html", conn: @conn %>

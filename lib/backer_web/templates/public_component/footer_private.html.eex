@@ -1,0 +1,12 @@
+        <!-- footer -->
+        <footer class="font-sans bg-white shadow-lg border-gray-300 border-t-2 text-gray-700 py-2 px-4">
+            <div class="mx-auto container overflow-hidden flex justify-between items-center">
+                <p class="inline-block py-2 px-3 "> ©<%= DateTime.utc_now.year %> Backer.id. All rights reserved.</p>
+                <ul class="text-sm lg:text-base flex items-center">
+                    <li><a href="/about-us" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">About Us</a></li>
+                    <li><a href="/faq" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">FAQs</a></li>
+                    <li><a href="/contact-us" class="inline-block py-2 px-3  hover:text-gray-400 no-underline">Contact</a></li>                                      
+                </ul>
+            </div>
+        </footer>
+        <!-- /footer -->
