@@ -14,13 +14,13 @@ defmodule HashColor do
   def random_color(options \\ []) do
     seed = Enum.random(1..359)
     saturation = Keyword.get(options, :saturation, @default_saturation)
-    value = Keyword.get(options, :value, @default_value)    
+    value = Keyword.get(options, :value, @default_value)
     hsv_to_rgb(%{hue: seed, saturation: saturation, value: value}) |> rgb_to_hex
   end
 
   def set_color(hue_value, options \\ []) do
     saturation = Keyword.get(options, :saturation, @default_saturation)
-    value = Keyword.get(options, :value, @default_value)    
+    value = Keyword.get(options, :value, @default_value)
     hsv_to_rgb(%{hue: hue_value, saturation: saturation, value: value}) |> rgb_to_hex
   end
 
@@ -60,8 +60,7 @@ defmodule HashColor do
   end
 
   def gen_avatar(rawtext, options \\ []) do
-
-  	text = if rawtext == nil,do: "V K", else: rawtext
+    text = if rawtext == nil, do: "V K", else: rawtext
 
     color = Keyword.get(options, :color, @default_color)
     shape = Keyword.get(options, :shape, @default_shape)
@@ -81,75 +80,74 @@ defmodule HashColor do
       end
 
     case shape do
-	 "rect" ->
-    '<svg width="#{size}" height="#{size}">
-  <rect width="#{size}" height="#{size}" fill="#{
-      background_color
-    }" />
+      "rect" ->
+        '<svg width="#{size}" height="#{size}">
+  <rect width="#{size}" height="#{size}" fill="#{background_color}" />
   <text fill="white" x="50%" y="65%" text-anchor="middle" style="font: bold #{fontsize}px sans-serif;" >#{
-      get_initial(text)
-    }</text>
+          get_initial(text)
+        }</text>
   </circle>
 	 </svg>'
 
       _other ->
-    '<svg width="#{size}" height="#{size}">
+        '<svg width="#{size}" height="#{size}">
   <circle cx="#{diameter}" cy="#{diameter}" r="#{diameter}" stroke="white" stroke-width="4" fill="#{
-      background_color
-    }" />
+          background_color
+        }" />
   <text fill="white" x="50%" y="67%" text-anchor="middle" style="font: bold #{fontsize}px sans-serif;" >#{
-      get_initial(text)
-    }</text>
+          get_initial(text)
+        }</text>
   </circle>
 	 </svg>'
-	end	 
-
-
+    end
   end
 
   def get_initial(name) do
-	clean_character = Regex.replace(~r/[\p{P}\p{S}\p{C}\p{N}]+/, name, "") |> String.trim |> String.split
+    clean_character =
+      Regex.replace(~r/[\p{P}\p{S}\p{C}\p{N}]+/, name, "") |> String.trim() |> String.split()
 
-	case Enum.count(clean_character) do
-		0 -> "VK"		
-		1 -> clean_character |> List.first |> String.at(0) |> String.upcase
-		other -> first = clean_character |> List.first |> String.at(0) |> String.upcase
-			 second = clean_character |> List.last |> String.at(0) |> String.upcase
-			 first <> second
-	end
+    case Enum.count(clean_character) do
+      0 ->
+        "VK"
+
+      1 ->
+        clean_character |> List.first() |> String.at(0) |> String.upcase()
+
+      _other ->
+        first = clean_character |> List.first() |> String.at(0) |> String.upcase()
+        second = clean_character |> List.last() |> String.at(0) |> String.upcase()
+        first <> second
+    end
   end
 
   def minihash(string) do
-  	:crypto.hash(:md5, string) 
-  	|> Base.encode16() 
-  	|> String.slice(0..3) 
-  	|> String.graphemes
-  	|> string_to_int
-  	|> rem(359)
+    :crypto.hash(:md5, string)
+    |> Base.encode16()
+    |> String.slice(0..3)
+    |> String.graphemes()
+    |> string_to_int
+    |> rem(359)
   end
 
   def string_to_int(list) do
-  	Enum.reduce(list, 1, fn x, acc -> 
-  		case Integer.parse(x) do
-  			{0, _} -> 1 * acc
-  			{number, _} -> number * acc
-  			:error -> letter_to_integer(x) * acc
-  		end
-  	end)
+    Enum.reduce(list, 1, fn x, acc ->
+      case Integer.parse(x) do
+        {0, _} -> 1 * acc
+        {number, _} -> number * acc
+        :error -> letter_to_integer(x) * acc
+      end
+    end)
   end
 
   def letter_to_integer(letter) do
-  	case letter do
-  		"A" -> 1
-  		"B" -> 2
-  		"C" -> 3
-  		"D" -> 4
-  		"E" -> 5
-  		"F" -> 6
-  		other -> 1
-  	end
-  	
+    case letter do
+      "A" -> 1
+      "B" -> 2
+      "C" -> 3
+      "D" -> 4
+      "E" -> 5
+      "F" -> 6
+      _other -> 1
+    end
   end
-
-
 end

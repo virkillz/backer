@@ -1379,8 +1379,8 @@ staying",
     chance = Enum.random([1, 2])
 
     case chance do
-      1 -> (adj <> noun <> two_digit_number) |> String.downcase()
-      2 -> (verb <> noun <> two_digit_number) |> String.downcase()
+      1 -> (adj() <> noun() <> two_digit_number()) |> String.downcase()
+      2 -> (verb() <> noun() <> two_digit_number()) |> String.downcase()
     end
   end
 end

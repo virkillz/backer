@@ -209,41 +209,39 @@ defmodule Backer.Account.Backer do
   defp validate_username(changeset) do
     uname = get_field(changeset, :username)
 
-    return =
-      case uname do
-        "" ->
-          changeset
+    case uname do
+      "" ->
+        changeset
 
-        _ ->
-          case Validate.validate_alphanumeric(uname) do
-            {:ok, _} ->
-              changeset
+      _ ->
+        case Validate.validate_alphanumeric(uname) do
+          {:ok, _} ->
+            changeset
 
-            {:error, _reason} ->
-              add_error(
-                changeset,
-                :username,
-                "Username only can consisted of alphanumeric character"
-              )
-          end
-      end
+          {:error, _reason} ->
+            add_error(
+              changeset,
+              :username,
+              "Username only can consisted of alphanumeric character"
+            )
+        end
+    end
   end
 
   defp validate_display_name(changeset) do
     display_name = get_field(changeset, :display_name, "")
 
-    return =
-      case Validate.validate_alphanumeric_and_space(display_name) do
-        {:ok, _} ->
-          changeset
+    case Validate.validate_alphanumeric_and_space(display_name) do
+      {:ok, _} ->
+        changeset
 
-        {:error, _reason} ->
-          add_error(
-            changeset,
-            :display_name,
-            "Display name only can consisted of alphanumeric character"
-          )
-      end
+      {:error, _reason} ->
+        add_error(
+          changeset,
+          :display_name,
+          "Display name only can consisted of alphanumeric character"
+        )
+    end
   end
 
   defp add_random_username(changeset) do
@@ -252,7 +250,7 @@ defmodule Backer.Account.Backer do
     case username do
       nil -> changeset |> change(username: Generator.random())
       "" -> changeset |> change(username: Generator.random())
-      other -> changeset
+      _other -> changeset
     end
   end
 

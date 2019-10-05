@@ -65,17 +65,16 @@ defmodule Backer.Finance.Invoice do
   defp validate_paid(changeset, invoice) do
     status = get_field(changeset, :status)
 
-    return =
-      case status != "paid" and invoice.status == "paid" do
-        false ->
-          changeset
+    case status != "paid" and invoice.status == "paid" do
+      false ->
+        changeset
 
-        true ->
-          add_error(
-            changeset,
-            :status,
-            "Paid invoice cannot be changed."
-          )
-      end
+      true ->
+        add_error(
+          changeset,
+          :status,
+          "Paid invoice cannot be changed."
+        )
+    end
   end
 end

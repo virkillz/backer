@@ -7,7 +7,6 @@ defmodule Backer.Masterdata do
   alias Backer.Repo
 
   alias Backer.Masterdata.Category
-  alias Backer.Account.Donee
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
 

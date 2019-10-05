@@ -228,26 +228,12 @@ defmodule Backer.Finance do
     Invoice.changeset(invoice, %{})
   end
 
-  @doc """
-  Returns the list of incoming_payments.
-
-  ## Examples
-
-      iex> list_incoming_payments()
-      [%IncomingPayment{}, ...]
-
-  """
-  def list_incoming_payments(params) do
-    query = from(i in IncomingPayment, order_by: [desc: :id])
-    Repo.paginate(query)
-  end
-
   def list_new_incoming_payments() do
     query = from(i in IncomingPayment, where: i.status != "Executed", order_by: [desc: :id])
     Repo.all(query)
   end
 
-  def list_incoming_payments(%{"status" => status}, params) do
+  def list_incoming_payments(%{"status" => status}, _params) do
     query = from(i in IncomingPayment, where: i.status == ^status, order_by: [desc: :id])
     Repo.paginate(query)
   end
@@ -257,7 +243,21 @@ defmodule Backer.Finance do
     Repo.all(query)
   end
 
-  def list_old_incoming_payments(params) do
+  @doc """
+  Returns the list of incoming_payments.
+
+  ## Examples
+
+      iex> list_incoming_payments()
+      [%IncomingPayment{}, ...]
+
+  """
+  def list_incoming_payments(_params) do
+    query = from(i in IncomingPayment, order_by: [desc: :id])
+    Repo.paginate(query)
+  end
+
+  def list_old_incoming_payments(_params) do
     query = from(i in IncomingPayment, where: i.status == "Executed", order_by: [desc: :id])
     Repo.paginate(query)
   end

@@ -79,7 +79,7 @@ defmodule Backer.Account.Donee do
       case background do
         nil -> changeset |> change(background: title.default_background)
         "" -> changeset |> change(username: title.default_background)
-        other -> changeset
+        _other -> changeset
       end
     end
   end
