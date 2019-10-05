@@ -40,6 +40,19 @@ config :cloudex,
   secret: "iKEo1f8h7Y2wxT1mptdcB7nFHjY",
   cloud_name: "backer"
 
+config :imgex,
+  imgix_domain: "https://backer.imgix.net",
+  secure_token: "3355q2QZupnmhBR9"
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  s3: [
+    scheme: "https://",
+    host: "vkbacker.s3.amazonaws.com",
+    region: "ap-southeast-1"
+  ]
+
 config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom

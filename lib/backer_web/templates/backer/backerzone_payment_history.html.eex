@@ -100,13 +100,6 @@
 
 		<div class="lg:w-1/4 px-4">
 
-			<div class="py-1">
-				<div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
-					<i class="la la-search text-white mr-2"></i></i>
-					<input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
-				</div>
-			</div>
-			<div class="border-b my-4"></div>
 
 			<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees %>
 

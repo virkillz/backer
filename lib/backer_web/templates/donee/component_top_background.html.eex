@@ -1,0 +1,2 @@
+	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.backer.display_name %>"
+		class="mt-16 hidden lg:block object-cover h-64 w-full" />

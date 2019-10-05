@@ -61,7 +61,7 @@
 	
 	                    <div class="flex items-center p-4">
 	                        <div class="ml-4">
-	                            <img src="<%= donee.avatar %>" class="rounded-lg border-4 border-white mr-2 h-20">
+	                            <img src="<%= donee.avatar %>" class="rounded-lg border-4 object-center object-cover border-white mr-2 h-20">
 	                        </div>
 	                        <div class="p-2">
 	                            <div class=" font-bold "><%= donee.display_name %></div>
@@ -112,17 +112,9 @@
 
 
 	        <div class="lg:w-1/4 px-4">
-	
-	            <div class="py-1">
-	                <div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
-	                    <i class="la la-search text-white mr-2"></i></i>
-	                    <input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
-	                </div>
-	            </div>
-	            <div class="border-b my-4"></div>
+
 	
 				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees %>
-
 	        </div>
 	    </div>
 	

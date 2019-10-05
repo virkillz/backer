@@ -1,7 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
-		class="mt-16 hidden lg:block object-cover h-64 w-full">
+                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
 		<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
@@ -18,43 +17,12 @@
 	
 <div class="lg:w-2/4 px-4 pb-20">
 	
-	            <div class=" font-bold text-xl text-gray-700">Pengaturan Donee</div>
+	            <div class=" font-bold text-xl text-gray-700">Statistic</div>
 	
 	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class="bg-white px-8 text-gray-600 py-4 mb-2 border shadow">
-	                <div class="flex py-4">
-	                    <div class="w-full ml-4">
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Category</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Music</option>
-	                                <option>Art</option>
-	                            </select>
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Title</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Musisi</option>
-	                                <option>Komunitas</option>
-	                                <option>Individu</option>
-	                            </select>
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Tagline</div>
-	                            <input type="text" class="p-2 flex-grow focus:outline-none border bg-gray-200 rounded">
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Cover Image</div>
-	                            <input type="text" class="p-2 flex-grow focus:outline-none border bg-gray-200 rounded">
-	                        </div>
-	                        <div class="pt-4">
-	                            <button class="px-8 shadow py-2 rounded-lg bg-purple-500 text-white">Save</button>
-	                        </div>
-	                    </div>
-	
-	                </div>
-	
+					Currently no content for here yet
 	            </div>
 	
 	

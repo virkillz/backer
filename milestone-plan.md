@@ -51,21 +51,36 @@ Target:
 - [x] If no backing yet, show somehting in doneezone
 - [x] Make backer in doneezone and public donee works
 - [x] Invoice must record donee_id and month directly. Not only through detail 
-- [ ] Create daily scheduler works for monthly data.
+- [ ] Create backing aggregate.
 - [x] Make top backer in public donee profile works
-- [ ] Invoice should capture 'nominal'
-- [ ] Make backerzone 'keuangan' works 
+- [x] Invoice should capture 'nominal'
+- [x] Make backerzone 'keuangan' works 
+- [x] Donee can edit their own profile
+- [x] Backer can edit their own profile
+- [x] Connect to cloud image storage
+- [x] All avatar display must show object fit cover and center
+- [x] Validate image type
+- [x] Make the upload button better
+- [x] Logout menu when mobile view didn't worked
+- [x] Background upload can connct to S3 bucket.
+- [x] Make public donee profile dynamic from DB
+- [ ] Update the seed containing better tagline, profile overview and youtube video
+- [ ] Create migration for backing_pitch
+- [ ] Update seed for backing pitch
+- [x] Change title into tagline
 - [ ] Make search functioning
+- [ ] Custom style oerview with UL/LI/ title, etc
 - [ ] Make notification functioning for backer payment approved.
 - [ ] Make notification functioning for backer waiting for payment.
 - [ ] Make notification functioning for donee got new backer.
 - [ ] Backer can edit social media link
-- [ ] Donee can edit their own profile
-- [ ] Backer can edit their own profile
-- [ ] Connect to cloud image storage
 - [ ] Preview mode: /preview
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.
+- [ ] Connect to image processing service.
+- [ ] fix footer looks really ugly in mobile
+- [ ] explore looks bad in mobile
+
 
 
 

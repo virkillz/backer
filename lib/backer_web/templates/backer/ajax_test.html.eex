@@ -78,7 +78,7 @@
                     <%= for comment <- post.pcomment do %>
 
                       <div class="post-comment">
-                        <img src="<%= comment.avatar %>" alt="" class="profile-photo-sm">
+                        <img src="<%= comment.avatar %>" alt="" class="object-center object-cover profile-photo-sm">
                         <p class="commentbox" style="width:100%;"><a href="/<%= comment.username %>" class="profile-link"><%= comment.display_name %> </a> <%= comment.content %> </p>
                       </div>
 

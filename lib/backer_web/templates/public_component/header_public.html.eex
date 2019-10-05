@@ -10,9 +10,9 @@
 	        </div>
 	
 	
-	        <div class="block lg:hidden pr-4 flex items-center">
-	            <div class=" rounded-lg py-1 px-4 bg-gray-200 mx-2">
-	                <div class=" rounded-lg py-1 lg:px-8 bg-gray-200 mx-2">
+	        <div class="block lg:hidden flex items-center">
+	            <div class=" rounded-lg py-1 px-2 lg:px-2 bg-gray-200 mx-2">
+	                <div class=" rounded-lgx py-1x lg:px-8x bg-gray-200x">
 	                    <a href="/home"
 	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
 	                            class="la la-home"></i>
@@ -29,7 +29,7 @@
 	                </div>
 	            </div>
 	            <button id="nav-toggle"
-	                class="flex items-center px-3 py-2 border rounded text-gray-800 border-gray-800 appearance-none focus:outline-none">
+	                class="flex mr-1 items-center px-3 py-2 border rounded text-gray-800 border-gray-800 appearance-none focus:outline-none">
 	                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 	                    <title>Menu</title>
 	                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -49,7 +49,7 @@
 	                    <a class="inline-block font-semibold py-2 px-4" href="#">Blog</a>
 	                </li>
 	                <li class="mr-3 lg:hidden block">
-	                    <a class="inline-block font-semibold py-2 px-4" href="#">Logout</a>
+	                    <a class="inline-block font-semibold py-2 px-4" href="/signout">Logout</a>
 	                </li>
 	                <li class="hidden lg:block">
 	                    <div class=" rounded-lg py-1 px-8 bg-gray-200 mx-2">
@@ -74,7 +74,7 @@
 	                </li>
 	            </ul>
 	
-	            <img src="<%= @conn.assigns.current_backer.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 hidden lg:block"
+	            <img src="<%= @conn.assigns.current_backer.avatar %>" class="cursor-pointer rounded-lg object-center object-cover w-12 h-12 hidden lg:block"
 	                alt="">
 	
 	        </div>

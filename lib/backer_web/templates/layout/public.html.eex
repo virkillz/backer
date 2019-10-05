@@ -11,10 +11,15 @@
     <meta name="author" content="">
 
     <!--Replace with your tailwind.css once created-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/progressive-image.css">
+
+    <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
+    <% end %>
 
 </head>
 
@@ -224,6 +229,19 @@
 
         console.log(paymentMethod);
     }
+
+    
+    </script>
+
+    <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
     </script>
 
     <script src="/js/wow.min.js"></script>
@@ -231,8 +249,15 @@
     <script src="https://unpkg.com/tippy.js@4"></script>
     <script>
     new WOW().init();
+
     tippy('.tippy', {placement: 'bottom'});
     </script>
+
+    <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
+    <% end %>
+
+    <script src="/assets/js/progressive-image.min.js"></script>
 
 
 

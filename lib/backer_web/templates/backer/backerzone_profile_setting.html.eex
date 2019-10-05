@@ -35,38 +35,155 @@
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
-	
-	            <div class="py-2">
-	
-	
-	                <div class="bg-white flex p-4 mb-8 relative shadow-md rounded-lg text-gray-600 hover:shadow-lg">
-	                    <div class="w-1/3">
-	                        <div class="flex justify-center">
-	                            <img src="/assets/images/bg/avatar.jpeg" class="rounded-lg border-4 border-white ">
-	                        </div>
-	                        <div class="mt-2 text-center"><button
-	                                class="px-2 py-px rounded text-purple-600 border border-purple-600">Change</button>
-	                        </div>
-	                    </div>
-	                    <div class="w-2/3">
-	                        <div class="text-center font-bold  pt-2 text-lg">VirKill Suprapto</div>
-	                        <div class="text-center py-2">vkprap ● vprap@gmail.com </div>
-	                        <div class="text-center py-4 px-4">
-	                            <div class="text-xs">Bio:</div>
-	                            <textarea col="4"
-	                                class="focus:outline-none text-center w-full bg-gray-200 rounded-lg p-4">Just a humble and generous Backer</textarea>
-	                        </div>
-	                        <div class="text-center"><button
-	                                class="px-6 py-2 rounded text-white bg-purple-600">Save</button>
-	                        </div>
-	                    </div>
-	
-	                </div>
-	
-	
-	
-	            </div>
-	
+
+			<%= if not is_nil get_flash(@conn, :info) do  %>
+			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+			<% end %>
+
+			<%= if not is_nil get_flash(@conn, :error) do  %>
+			<div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
+			<% end %>
+
+            <div class="pb-2">
+
+
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+				<%= form_for @changeset, "/backerzone/profile-setting",[multipart: true] ,fn f -> %>
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">Edit Profile</div>
+                        <button type="submit"
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Save</button>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+                    <div class="flex">
+					 
+                        <div class="w-1/2 p-2">
+                            <div class="w-full">
+                                <img src="<%= @backer.avatar %>" id="output" class="h-40 w-40 object-cover object-center mx-auto rounded-lg ">
+                            </div>
+                            <div class="p-4 text-center">
+                            <div class="upload-btn-wrapper">
+                                <label for="upload" 
+                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-purple-600 rounded text-purple-600 border border-purple-600">Change
+                            <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="backer[avatar]" type="file">
+                            </label>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="w-1/2 p-2">
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Display Name</label>
+								<%= text_input f, :display_name, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none" %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :display_name %></p>
+                            </div>
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Username</label>
+                                <div class="flex"><span class="z-10">@</span>
+								<%= text_input f, :username, class: "inline border-b-2 -ml-3 pl-4 flex-grow focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %>
+								</div>
+								<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :username %></p>
+                            </div>
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Email</label>
+                                <div class=" text-gray-600 w-full block px-2 pb-1  focus:outline-none" type="text">
+
+                                    <%= @backer.email %>
+                                </div>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                            </div>
+
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Bio</label>
+								<%= textarea f, :backer_bio, [class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none", rows: 3] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :backer_bio %></p>
+                            </div>
+
+                        </div>
+					
+                    </div>
+				<% end %>
+
+                </div>
+
+
+
+            </div>
+            <div class="py-2">
+
+
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">Links</div>
+                        <button
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Save</button>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Link</label>
+                        <div class="flex px-2"><span class="z-10">https://youtube.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Twitter Link</label>
+                        <div class="flex px-2"><span class="z-10">https://twitter.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Facebook Link</label>
+                        <div class="flex px-2"><span class="z-10">https://facebook.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Github Link</label>
+                        <div class="flex px-2"><span class="z-10">https://github.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">LinkedIn Link</label>
+                        <div class="flex px-2"><span class="z-10">https://linkedin.com/</span><input
+                                class="inline  w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Dribbble Link</label>
+                        <div class="flex px-2"><span class="z-10">https://dribbble.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Instagram Link</label>
+                        <div class="flex px-2"><span class="z-10">https://instagram.com/</span><input
+                                class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+                                type="text" name="display_name" value="untaro"></div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
 	
 	
 			</div>
@@ -74,13 +191,6 @@
 
 	        <div class="lg:w-1/4 px-4">
 	
-	            <div class="py-1">
-	                <div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
-	                    <i class="la la-search text-white mr-2"></i></i>
-	                    <input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
-	                </div>
-	            </div>
-	            <div class="border-b my-4"></div>
 	
 				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees  %>
 

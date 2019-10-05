@@ -1,7 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee_info.background %>" alt="<%= @donee_info.display_name %>"
-		class="mt-16 hidden lg:block object-cover h-64 w-full">
+                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
 		<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
@@ -18,44 +17,164 @@
 
 <div class="lg:w-2/4 px-4 pb-20">
 	
-	            <div class=" font-bold text-xl text-gray-700">Pengaturan Donee</div>
-	
-	            <div class="border-b-2  mb-6"></div>
-	
-	            <div class="bg-white px-8 text-gray-600 py-4 mb-2 border shadow">
-	                <div class="flex py-4">
-	                    <div class="w-full ml-4">
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Category</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Music</option>
-	                                <option>Art</option>
-	                            </select>
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Title</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Musisi</option>
-	                                <option>Komunitas</option>
-	                                <option>Individu</option>
-	                            </select>
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Tagline</div>
-	                            <input type="text" class="p-2 flex-grow focus:outline-none border bg-gray-200 rounded">
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Cover Image</div>
-	                            <input type="text" class="p-2 flex-grow focus:outline-none border bg-gray-200 rounded">
-	                        </div>
-	                        <div class="pt-4">
-	                            <button class="px-8 shadow py-2 rounded-lg bg-purple-500 text-white">Save</button>
-	                        </div>
-	                    </div>
-	
-	                </div>
-	
-	            </div>
+
+    			<%= if not is_nil get_flash(@conn, :info) do  %>
+			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+			<% end %>
+
+			<%= if not is_nil get_flash(@conn, :error) do  %>
+			<div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
+			<% end %>
+
+            <div class="pb-2">
+
+
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">General Profile</div>
+
+                        <a href="/backerzone/profile-setting">
+                        <button
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Edit</button>
+                            </a>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+
+                    <div class="flex">
+                        <div class="w-1/2 p-2">
+                            <div class="w-full">
+                                <img src="<%= @donee_info.backer.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-lg ">
+                            </div>
+                            <div class="p-4 text-center">
+                                <div class="py-4 flex justify-center">
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-github text-2xl hover:text-purple-500"></i></a>
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-linkedin text-2xl  hover:text-purple-500"></i></a>
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-facebook text-2xl  hover:text-purple-500"></i></a>
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-dribbble text-2xl  hover:text-purple-500"></i></a>
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-youtube text-2xl  hover:text-purple-500"></i></a>
+                                    <a href="#" class="mx-1"><i
+                                            class="la la-twitter text-2xl  hover:text-purple-500"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="w-1/2 p-2">
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Display Name</label>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.display_name %></div>
+                            </div>
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Username</label>
+                                <div class="px-2 pb-1">@<%= @donee_info.backer.username %></div>
+                            </div>
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Email</label>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.email %></div>
+                            </div>
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Backer Bio</label>
+                                <div class="px-2 pb-1"><%= @donee_info.backer.backer_bio %></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+            </div>
+			<%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
+
+            <div class="py-2">
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">Donee Profile</div>
+                        <button
+                            class="hidden focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Save</button>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+
+                    <div class="flex">
+                        <div class="w-1/2 p-2">
+
+                            <div class="w-full">
+                                <img src="<%= @donee_info.background %>" id="output" class="mx-auto h-40 object-cover rounded-lg ">
+                            </div>
+                            <div class="flex justify-center mt-4">
+                            <label for="upload" 
+                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-purple-600 rounded hover:text-white text-purple-600 border border-purple-600">Change
+                                    <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="donee[background]" type="file">
+                            </label>
+                            </div>  
+                        </div>
+
+                        <div class="w-1/2 p-2">
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Category</label>
+                                <select
+                                    class="block border-b-2 focus:border-blue-500 border-blue-200 focus:outline-none text-sm h-8 w-full bg-white">
+                                    <option>Music</option>
+                                    <option>Art</option>
+                                </select>
+                            </div>
+
+
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Tagline</label>
+                                  <%= textarea f, :tagline, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :tagline%></p>
+                            </div>
+
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Backing Pitch</label>
+                                 <%= textarea f, :backing_pitch, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :backing_pitch %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-2">
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="">
+                        <div class="font-title text-xl font-bold">Profile Content</div>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Video Link</label>
+                        <div class="flex "><span class="z-10">https://youtube.com/watch?v=</span><%= text_input f, :video_profile, class: "inline border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %> </div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :video_profile %></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Profile Content</label>
+                        <%= textarea f, :donee_overview, [id: "wysiwyg", class: ""] %>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :donee_overview %></p>
+                    </div>
+
+                    <button
+                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg w-full">Submit
+                        for review & publish</button>
+
+                </div>
+            </div>
+
+            <% end %>
+
 	
 	
 	        </div>

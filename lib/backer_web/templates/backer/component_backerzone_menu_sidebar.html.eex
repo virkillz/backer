@@ -1,14 +1,18 @@
 <div>
 
-	<div class="flex items-center lg:hidden px-6">
-		<img src="<%= @backer.avatar %>" class="cursor-pointer rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+	<div class="flex items-center lg:hidden">
+		<img src="<%= @backer.avatar %>" class="cursor-pointer object-center object-cover rounded-lg w-12 h-12 mr-4" id="nav-toggle" alt="">
+
+		<div>
 		<div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @backer.display_name %></span>
+		</div>
+		                        <div class="text-sm">You are in <span class="text-purple-500 font-semibold">Backer</span> mode, to go to Donee mode, <a href="/doneezone/about" class="text-blue-500 underline"> click here</a></div>
 		</div>
 	</div>
 
 	<a href="/backer/<%= @backer.username %>">
 	<div class="pt-10 hidden lg:block bg-white rounded-lg shadow py-6 px-4">
-		<img src="<%= @backer.avatar %>" class="rounded-lg mx-auto w-20 h-20">
+		<img src="<%= @backer.avatar %>" class="rounded-lg mx-auto object-cover object-center w-20 h-20">
 
 		<div class="py-4 text-gray-800">
 			<div class="text-center font-semibold  text-gray-700"><%= @backer.display_name %></div>
@@ -29,7 +33,7 @@
 	</div>
 
 	<%= if @backer.is_donee do %>
-	<div class="pt-6 w-full">
+	<div class="pt-6 w-full hidden lg:block">
 		<a href="/doneezone/about"> <button
 				class="w-full focus:outline-none py-2 hover:shadow-xl hover:bg-orange-500 text-center text-sm rounded text-white bg-orange-400">Go
 				to Doneezone </button></a>
@@ -74,6 +78,7 @@
 				<div class=" lg:text-lg md:text-md text-sm"> Pengaturan</div>
 			</div>
 		</a>
+		
 	</div>
 
 </div>

@@ -42,6 +42,7 @@ defmodule Backer.Account.Donee do
       :status,
       :backer_id,
       :title_id,
+      :tagline,
       :category_id,
       :featured_post,
       :address_public,
@@ -52,11 +53,18 @@ defmodule Backer.Account.Donee do
       :title_id,
       :category_id
     ])
+    |> sanitize_html
     |> unique_constraint(:backer_id,
       name: :donees_backers,
       message: "This backer already a Donee"
     )
     |> add_background
+  end
+
+  def sanitize_html(changeset) do
+    overview = get_field(changeset, :donee_overview)
+
+    changeset |> change(donee_overview: HtmlSanitizeEx.basic_html(overview))
   end
 
   defp add_background(changeset) do

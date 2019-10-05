@@ -193,13 +193,81 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         random_donees = Account.get_random_donee(3)
+        changeset = Account.change_backer(backer)
 
         conn
         |> render("backerzone_profile_setting.html",
           backer: backer,
           random_donees: random_donees,
+          changeset: changeset,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
+    end
+  end
+
+  def upload_s3_helper(file) do
+    file_uuid = Ecto.UUID.generate()
+    image_filename = file.filename
+    unique_filename = "#{file_uuid}-#{image_filename}"
+    {:ok, image_binary} = File.read(file.path)
+
+    cond do
+      not String.contains?(file.content_type, "image") ->
+        "error"
+
+      true ->
+        bucket_name = System.get_env("BUCKET_NAME")
+
+        image =
+          ExAws.S3.put_object(bucket_name, unique_filename, image_binary)
+          |> ExAws.request!()
+
+        "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+    end
+  end
+
+  def backerzone_profile_setting_post(conn, %{"backer" => backer_params} = attrs) do
+    backer = conn.assigns.current_backer
+    avatar = backer_params["avatar"]
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        # build the image url and add to the params to be stored
+        updated_params =
+          if is_nil(avatar) do
+            backer_params
+          else
+            backer_params
+            |> Map.put(
+              "avatar",
+              upload_s3_helper(avatar)
+            )
+          end
+
+        case Account.update_backer(backer, updated_params) do
+          {:ok, backer} ->
+            conn
+            |> put_flash(:info, "Backer updated successfully.")
+            |> redirect(to: "/backerzone/profile-setting")
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            random_donees = Account.get_random_donee(3)
+
+            conn
+            |> put_flash(:error, "Something is wrong. Check red part below")
+            |> render("backerzone_profile_setting.html",
+              backer: backer,
+              random_donees: random_donees,
+              changeset: changeset,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+
+            # id_types = Constant.accepted_id_kyc()
+            # render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
+        end
     end
   end
 
