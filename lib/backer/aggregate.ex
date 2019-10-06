@@ -16,9 +16,12 @@ defmodule Backer.Aggregate do
   end
 
   def get_backingaggregate(backer_id, donee_id) do
-    query = from b in BackingAggregate,
-          where: b.backer_id == ^backer_id,
-          where: b.donee_id == ^donee_id,
+    query =
+      from(b in BackingAggregate,
+        where: b.backer_id == ^backer_id,
+        where: b.donee_id == ^donee_id
+      )
+
     Repo.one(query)
   end
 
