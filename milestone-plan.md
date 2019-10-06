@@ -96,6 +96,13 @@ Target:
 - [ ] Create function to update backing status single.
 - [ ] Create function to update backing status batch.
 
+- [ ] Fix Backerzone/my-donee-list avatar size not square
+- [ ] Fix Backerzone/my-donee-list riwayat donasi unclickable
+- [ ] Fix Backerzone/my-donee-list inactive color supposed to be gray
+- [ ] Side searchbar is redundant
+
+- [ ] Remove text go to donee mode if not donee!
+
 - [ ] resize logo
 
 - [ ] Update the seed containing better tagline, profile overview and youtube video

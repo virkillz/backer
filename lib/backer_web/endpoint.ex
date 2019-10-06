@@ -42,6 +42,8 @@ defmodule BackerWeb.Endpoint do
     signing_salt: "23VfcC7o"
   )
 
+  plug CORSPlug, origin: ["http://localhost:3000"]
+
   plug(BackerWeb.Router)
 
   @doc """

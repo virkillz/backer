@@ -100,6 +100,13 @@ defmodule Stringhelper do
     |> String.reverse()
   end
 
+  def format_ago(datetime) do
+    {:ok, relative_str} =
+      DateTime.from_naive!(datetime, "Etc/UTC") |> Timex.format("{relative}", :relative)
+
+    relative_str
+  end
+
   def validate_alphanumeric_and_space(string) do
     if string == nil do
       {:error, "Cannot be empty"}

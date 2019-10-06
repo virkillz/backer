@@ -7,6 +7,7 @@ defmodule BackerWeb.PublicController do
   alias Backer.Temporary.Submission
   alias Backer.Temporary
   alias Backer.Temporary.Contact
+  alias Backer.Content
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -467,6 +468,23 @@ defmodule BackerWeb.PublicController do
           )
       end
     end
+  end
+
+  # Delete hapus when finish testing
+  def hapus_notification(conn, _params) do
+    notifs =
+      Content.list_notification_of(1)
+      |> Enum.map(fn x ->
+        %{
+          "content" => x.content,
+          "icon" => x.icon,
+          "thumbnail" => x.thumbnail,
+          "ago" => Stringhelper.format_ago(x.inserted_at),
+          "id" => x.id |> Integer.to_string()
+        }
+      end)
+
+    json(conn, notifs)
   end
 
   def signout(conn, _parms) do

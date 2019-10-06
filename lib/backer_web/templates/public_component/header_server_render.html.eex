@@ -1,0 +1,145 @@
+<%= if @conn.assigns.backer_signed_in? do %>
+	<nav class="h-18 fixed bg-white shadow transition-all transition-ease w-full z-30 top-0 text-white">
+	
+	    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+	
+	        <div class="pl-4 flex items-center">
+	            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+	                <img src="/assets/images/logo/backer-bg-white.png" class="h-8 " id="brandx" alt="">
+	            </a>
+	        </div>
+	
+	
+	        <div class="block lg:hidden flex items-center">
+	            <div class=" rounded-lg py-1 px-2 lg:px-2 bg-gray-200 mx-2">
+	                <div class=" rounded-lgx py-1x lg:px-8x bg-gray-200x">
+	                    <a href="/home"
+	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                            class="la la-home"></i>
+	                    </a>
+	                    <a href="/notifications"
+	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                            class="la la-bell"></i>
+								<% count_notif = Backer.Content.count_notification(@conn.assigns.current_backer.id) %>
+								<%= if count_notif > 0 do %>
+								<span
+	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded"><%= Backer.Content.count_notification(@conn.assigns.current_backer.id) %></span>
+								<% end %>
+
+	                    </a>
+	                    <a href="/search"
+	                        class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                            class="la la-search"></i>
+	                    </a>
+	                </div>
+	            </div>
+	            <button id="nav-toggle"
+	                class="flex mr-1 items-center px-3 py-2 border rounded text-gray-800 border-gray-800 appearance-none focus:outline-none">
+	                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	                    <title>Menu</title>
+	                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+	                </svg>
+	            </button>
+	            <img src="/assets/images/bg/avatar3.jpeg" class="hidden cursor-pointer rounded-lg w-12 h-12" id="nav-toggle"
+	                alt="">
+	        </div>
+	
+	        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-black lg:bg-transparent text-black p-4 lg:p-0 z-20"
+	            id="nav-content">
+	            <ul class="list-reset lg:flex text-white lg:text-gray-700  justify-end flex-1 items-center" id="navItem">
+	                <li class="mr-3">
+	                    <a class="inline-block py-2 px-4 font-semibold" href="/explore">Explore Community</a>
+	                </li>
+	                <li class="mr-3">
+	                    <a class="inline-block font-semibold py-2 px-4" href="#">Blog</a>
+	                </li>
+	                <li class="mr-3 lg:hidden block">
+	                    <a class="inline-block font-semibold py-2 px-4" href="/signout">Logout</a>
+	                </li>
+	                <li class="hidden lg:block">
+	                    <div class=" rounded-lg py-1 px-8 bg-gray-200 mx-2">
+	                        <a href="/home"
+	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                                class="la la-home"></i>
+	                        </a>
+	                        <a href="/notifications"
+	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                                class="la la-bell"></i>
+									
+								<% count_notif = Backer.Content.count_notification(@conn.assigns.current_backer.id) %>
+								<%= if count_notif > 0 do %>
+								<span
+	                            class="text-xs bg-red-500 text-white p-1 -ml-3 hiddenx rounded"><%= Backer.Content.count_notification(@conn.assigns.current_backer.id) %></span>
+								<% end %>
+
+	                        </a>
+	                        <a href="/search"
+	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                                class="la la-search"></i>
+	                        </a>
+	                        <a href="/signout"
+	                            class="inline-block text-3xl text-gray-700 hover:text-orange-500 no-underline px-1 transition-all"><i
+	                                class="la la-sign-out"></i>
+	                        </a>                            
+	                    </div>
+	                </li>
+	            </ul>
+	
+	            <img src="<%= @conn.assigns.current_backer.avatar %>" class="cursor-pointer rounded-lg object-center object-cover w-12 h-12 hidden lg:block"
+	                alt="">
+	
+	        </div>
+	    </div>
+	
+	</nav>
+<% else %>
+
+<nav id="header" class="h-18 fixed transition-all transition-ease-in-out w-full z-30 top-0 text-white">
+
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+
+        <div class="pl-4 flex items-center">
+            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                <img src="/assets/images/logo/backer-bg-indigo.png" class="h-8 " id="brand" alt="">
+            </a>
+        </div>
+
+        <div class="block lg:hidden pr-4">
+            <button id="nav-toggle"
+                class="flex items-center px-3 py-2 border rounded text-white border-white appearance-none focus:outline-none">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-black lg:bg-transparent text-black p-4 lg:p-0 z-20"
+            id="nav-content">
+            <ul class="list-reset lg:flex text-white  justify-end flex-1 items-center" id="navItem">
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 font-bold font-title" href="/">Home</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block font-semibold py-2 px-4 font-title" href="/explore">Explore</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block transition-all font-semibold py-2 px-4 font-title" href="/about-us">About us
+    </a>
+                </li>
+            </ul>
+
+
+            <a href="/sign_up"> <button id="navAction"
+                    class="mr-2 hover:bg-orange-600 transition-ease transition-all bg-orange-500 text-white font-semibold rounded-lg mt-4 lg:mt-0 py-2 px-8 shadow font-title focus:outline-none">Sign
+                    Up</button></a>
+
+            <a href="/login"> <button
+                    class="bg-white border-orange-500 hover:text-white transition-ease transition-all hover:bg-orange-500 font-semibold text-orange-500 rounded-lg mt-4 lg:mt-0 py-2 px-8 font-title focus:outline-none">Login</button></a>
+
+        </div>
+    </div>
+
+</nav>
+
+<% end %>

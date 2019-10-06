@@ -10,6 +10,7 @@
 
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -246,6 +247,19 @@
     <% end %>
 
     <script src="/assets/js/progressive-image.min.js"></script>
+    <script src="/assets/js/navbar.min.js"></script>
+
+    <script>
+        const node = document.getElementById('navbar-elm');
+        const avatar = node.getAttribute('data-avatar');
+        const notifCount = node.getAttribute('data-notif-count');
+        const isDonee = (node.getAttribute('data-is-donee') == "true");
+
+        Elm.Main.init({
+        node: node,
+        flags: [avatar, isDonee, notifCount]
+        });
+    </script>
 
 
 

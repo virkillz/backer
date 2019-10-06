@@ -63,7 +63,8 @@ defmodule Backer.Mixfile do
       {:html_sanitize_ex, "~> 1.3"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
-      {:imgex, "~> 0.2.0"}
+      {:imgex, "~> 0.2.0"},
+      {:cors_plug, "~> 2.0"}
     ]
   end
 

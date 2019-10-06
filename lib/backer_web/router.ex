@@ -228,4 +228,10 @@ defmodule BackerWeb.Router do
     get("/505", PublicController, :page505)
     get("/:backer", PublicController, :redirector)
   end
+
+  scope "/", BackerWeb do
+    pipe_through(:api)
+    # DELETE THIS WHEN LIVE
+    get("/private/notification", PublicController, :hapus_notification)
+  end
 end
