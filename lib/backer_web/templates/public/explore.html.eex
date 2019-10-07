@@ -57,7 +57,7 @@
 	                <div class="">
 	                    <div class="text-md  font-semibold"><%= donee.backer.display_name %></div>
 	                    <div class="text-xs  text-gray-600">@<%= donee.backer.username %></div>
-	                    <div class="py-4 text-sm text-gray-600"><%= donee.title.name %></div>
+	                    <div class="py-4 text-sm text-gray-600"><%= donee.tagline %></div>
 	                </div>
 	            </div>
 	        </div>
