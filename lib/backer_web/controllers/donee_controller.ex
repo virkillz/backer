@@ -102,6 +102,7 @@ defmodule BackerWeb.DoneeController do
     case Account.update_donee(donee, updated_params) do
       {:ok, new_donee} ->
         changeset = Account.change_donee(new_donee)
+        user_links = Account.get_user_links_of(backer_info.id)
 
         conn
         |> put_flash(:info, "Donee updated successfully.")
@@ -109,6 +110,7 @@ defmodule BackerWeb.DoneeController do
           backer_info: backer_info,
           donee_info: new_donee,
           recommended_donees: random_donee,
+          user_links: user_links,
           script: %{wysiwyg: true},
           style: %{wysiwyg: true},
           changeset: changeset,
