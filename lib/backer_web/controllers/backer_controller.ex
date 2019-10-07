@@ -261,6 +261,25 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def backerzone_notification_api(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    notifs =
+      Content.list_notification_of(backer.id)
+      |> Enum.map(fn x ->
+        %{
+          "content" => x.content,
+          "icon" => x.icon,
+          "thumbnail" => x.thumbnail,
+          "ago" => Stringhelper.format_ago(x.inserted_at),
+          "id" => x.id |> Integer.to_string()
+        }
+      end)
+      |> Enum.take(5)
+
+    json(conn, notifs)
+  end
+
   def backerzone_notification_forwarder(conn, %{"id" => id}) do
     get_notification = Content.get_notification(id)
     backer = conn.assigns.current_backer

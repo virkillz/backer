@@ -104,8 +104,10 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
+    get("/backerzone", BackerController, :backerzone_my_donee_list)
     get("/home", BackerController, :home)
     get("/notifications", BackerController, :backerzone_notifications)
+    get("/private/notification", BackerController, :backerzone_notification_api)
 
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)
@@ -140,6 +142,7 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
+    get("/doneezone", DoneeController, :doneezone_about)
     get("/doneezone/posts", DoneeController, :doneezone_posts)
     get("/doneezone/about", DoneeController, :doneezone_about)
     get("/doneezone/backers", DoneeController, :doneezone_backers)
@@ -232,6 +235,6 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through(:api)
     # DELETE THIS WHEN LIVE
-    get("/private/notification", PublicController, :hapus_notification)
+    # get("/private/notification", PublicController, :hapus_notification)
   end
 end

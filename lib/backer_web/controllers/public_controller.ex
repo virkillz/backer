@@ -47,9 +47,16 @@ defmodule BackerWeb.PublicController do
   def search(conn, %{"q" => q}) do
     meta = %{title: "Welcome to backer"}
 
+    query = "%#{q}%"
+    search_result_backer = Account.search_backer(query)
+    search_result_donee = Account.search_donee(query) |> IO.inspect()
+
     conn
     |> render("search_result.html",
       layout: {BackerWeb.LayoutView, "public.html"},
+      search_term: q,
+      search_result_backer: search_result_backer,
+      search_result_donee: search_result_donee,
       meta: meta
     )
   end

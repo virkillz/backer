@@ -594,6 +594,60 @@ defmodule Backer.Account do
     |> Enum.reduce(%{}, fn x, acc -> Map.put(acc, x.key, x.value_string) end)
   end
 
+  def search_backer(q) do
+    query_backer =
+      from(b in Backerz,
+        where: like(b.display_name, ^q),
+        or_where: like(b.username, ^q),
+        or_where: like(b.email, ^q),
+        or_where: like(b.display_name, ^q),
+        or_where: like(b.backer_bio, ^q),
+        preload: [:donee]
+      )
+
+    Repo.all(query_backer)
+  end
+
+  def search_donee(q) do
+    query_donee =
+      from(b in Donee,
+        where: like(b.donee_overview, ^q),
+        or_where: like(b.tagline, ^q),
+        preload: [:backer]
+      )
+
+    backer_list =
+      q
+      |> search_backer()
+      |> Enum.filter(fn x -> x.is_donee end)
+      |> Enum.map(fn x ->
+        %{
+          display_name: x.display_name,
+          avatar: x.avatar,
+          username: x.username,
+          tagline: x.donee.tagline,
+          background: x.donee.background,
+          backer_count: x.donee.backer_count
+        }
+      end)
+
+    donee_list =
+      query_donee
+      |> Repo.all()
+      |> Enum.map(fn x ->
+        %{
+          display_name: x.backer.display_name,
+          avatar: x.backer.avatar,
+          username: x.backer.username,
+          tagline: x.tagline,
+          background: x.background,
+          backer_count: x.backer_count
+        }
+      end)
+
+    donee_list ++ backer_list
+  end
+
   def user_link_upsert(%{"backer_id" => backer_id, "key" => key, "group" => group} = attrs) do
     query =
       from(m in Metadata,
