@@ -98,7 +98,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def home(conn, params) do
+  def home(conn, _params) do
     # This is redirector function. If user is donee, home means redirect to /doneezone
     # If he is regular backer, just redirect to /backerzone
 
@@ -125,7 +125,7 @@ defmodule BackerWeb.BackerController do
     # end
   end
 
-  def timeline(conn, params) do
+  def timeline(conn, _params) do
     backer = conn.assigns.current_backer
 
     # {donation, rawposts} = Content.timeline(backer.id)
@@ -147,7 +147,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def placeholder(conn, params) do
+  def placeholder(conn, _params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -162,7 +162,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def backerzone_my_donee_list(conn, params) do
+  def backerzone_my_donee_list(conn, _params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -345,7 +345,30 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def backerzone_payment_history(conn, params) do
+  def backerzone_payment_history(conn, %{"donee_id" => donee_id}) do
+    IO.inspect("HERE?")
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee_id})
+
+        random_donees = Account.get_random_donee(3)
+
+        conn
+        |> render("backerzone_payment_history.html",
+          backer: backer,
+          invoices: invoices,
+          random_donees: random_donees,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def backerzone_payment_history(conn, _params) do
     backer = conn.assigns.current_backer
 
     case backer do
@@ -521,7 +544,7 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def ajax_test(conn, params) do
+  def ajax_test(conn, _params) do
     if conn.assigns.backer_signed_in? do
       {donation, posts} =
         Content.timeline(%{"backer_id" => conn.assigns.current_backer.id}) |> IO.inspect()
