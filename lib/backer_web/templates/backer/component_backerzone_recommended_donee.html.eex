@@ -1,9 +1,11 @@
 <div class="hidden lg:block md:block">
 	<div class="py-1">
+		<form action="/search" method="get">
 		<div class="bg-purple-200 px-4 py-2 rounded-lg w-full flex items-center">
 			<i class="la la-search text-white mr-2"></i></i>
-			<input type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
+			<input name="q" type="text" class="text-gray-600 bg-purple-200 focus:outline-none">
 		</div>
+		</form>
 	</div>
 	<div class="border-b my-4"></div>
 
