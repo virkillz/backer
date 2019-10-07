@@ -32,6 +32,18 @@ defmodule Backer.Finance do
     Repo.all(query)
   end
 
+  def list_invoices(%{"backer_id" => backer_id, "donee_id" => donee_id}) do
+    query =
+      from(i in Invoice,
+        where: i.backer_id == ^backer_id,
+        where: i.donee_id == ^donee_id,
+        order_by: [desc: :id],
+        preload: [:invoice_detail]
+      )
+
+    Repo.all(query)
+  end
+
   def list_invoices(%{"backer_id" => id}) do
     query =
       from(i in Invoice,
@@ -659,7 +671,7 @@ defmodule Backer.Finance do
       |> Enum.filter(fn y -> y.month == today.month && y.year == today.year end)
 
     summary = %{
-      id: x.donee_id,
+      id: x.donee.id,
       display_name: x.donee.backer.display_name,
       avatar: x.donee.backer.avatar,
       background: x.donee.background,
