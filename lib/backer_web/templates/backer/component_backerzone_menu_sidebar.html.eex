@@ -6,7 +6,9 @@
 		<div>
 		<div class="font-bold text-xl">Hello, <span class="font-semibold"><%= @backer.display_name %></span>
 		</div>
-		                        <div class="text-sm">You are in <span class="text-purple-500 font-semibold">Backer</span> mode, to go to Donee mode, <a href="/doneezone/about" class="text-blue-500 underline"> click here</a></div>
+			<%= if @backer.is_donee do %>
+            		     <div class="text-sm">You are in <span class="text-purple-500 font-semibold">Backer</span> mode, to go to Donee mode, <a href="/doneezone/about" class="text-blue-500 underline"> click here</a></div>
+			<% end %>
 		</div>
 	</div>
 
