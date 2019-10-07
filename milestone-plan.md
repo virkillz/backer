@@ -103,6 +103,10 @@ Target:
 
 - [ ] Remove text go to donee mode if not donee!
 
+- [ ] Explore list must contain tagiline instead of title
+
+- [ ] Result page in search must contain tagile as well. Make it similar with explore
+
 - [ ] resize logo
 
 - [ ] Update the seed containing better tagline, profile overview and youtube video
