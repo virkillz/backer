@@ -74,6 +74,14 @@ Target:
 - [x] fix footer looks really ugly in mobile
 - [x] explore looks bad in mobile
 - [x] Backer can edit social media link
+- [x] Fix Backerzone/my-donee-list avatar size not square
+- [x] Fix Backerzone/my-donee-list riwayat donasi unclickable
+- [x] Fix Backerzone/my-donee-list inactive color supposed to be gray
+- [x] Side searchbar is redundant
+- [x] Remove text go to donee mode if not donee!
+- [x] Riwayat donasi when black must show soamething.
+- [x] Explore list must contain tagline instead of title
+- [x] Result page in search must contain tagile as well. Make it similar with explore
 
 ### Notification Feature
 - [x] Make notification schema and function works.
@@ -82,10 +90,12 @@ Target:
 - [ ] Broadcast notification.
 - [ ] Make notification functioning for donee got new backer.
 - [ ] Make notification functioning for backer payment approved.
+- [x] Error after edit tagline.
 
 ### Search Feature
 - [x] Dedicated search page
-- [ ] Make search functioning
+- [x] Make search functioning
+- [ ] Make search filter functioning
 
 
 ### Backing Aggregate
@@ -95,17 +105,6 @@ Target:
 - [ ] Create schema for scoring history.
 - [ ] Create function to update backing status single.
 - [ ] Create function to update backing status batch.
-
-- [ ] Fix Backerzone/my-donee-list avatar size not square
-- [ ] Fix Backerzone/my-donee-list riwayat donasi unclickable
-- [ ] Fix Backerzone/my-donee-list inactive color supposed to be gray
-- [ ] Side searchbar is redundant
-
-- [ ] Remove text go to donee mode if not donee!
-
-- [ ] Explore list must contain tagiline instead of title
-
-- [ ] Result page in search must contain tagile as well. Make it similar with explore
 
 - [ ] resize logo
 
