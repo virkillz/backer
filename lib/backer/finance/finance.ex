@@ -871,6 +871,18 @@ defmodule Backer.Finance do
     Repo.all(query)
   end
 
+  def list_donations(%{"backer_id" => backer_id, "donee_id" => donee_id}) do
+    query =
+      from(d in Donation,
+        where: d.backer_id == ^backer_id,
+        where: d.donee_id == ^donee_id,
+        order_by: d.id,
+        preload: [:backer_tier]
+      )
+
+    Repo.all(query)
+  end
+
   def list_donations(params) do
     Repo.paginate(Donation, params)
   end
