@@ -98,25 +98,52 @@ Target:
 - [ ] Make search filter functioning
 
 
+- [ ] If backer already backing a donee. they cannot backing. they can only upgrade or extend.
+
 ### Backing Aggregate
 - [x] Create backing aggregate schema. [backer_id, donee_id, last_amount, last_tier, status, score, backer_start]
+- [ ] continue Backer.Aggregate.build_aggregate
+
+This is the first function called when somebody donate to a donee.
+
 - [ ] update_aggregate
 - [ ] Create script to update backing aggregate score.
-- [ ] Create schema for scoring history.
+- [ ] Create schema for scoring history. score come from contribution point accumulation.
 - [ ] Create function to update backing status single.
 - [ ] Create function to update backing status batch.
 
+### Contribution_point
+
+- [ ] schema contribution poin
+
+### Reccomendation 
+
+- [ ] figure it out how it worked.
+
+
+### Connect to email service.
+- [ ] what is the best email service?
+
+### Create landing page for backer.
+- [ ] Design landing page
+- [ ] Create email form to inform when it launched.
+
+### Optimize web performance
 - [ ] resize logo
 
+
+### Small changes
 - [ ] Update the seed containing better tagline, profile overview and youtube video
 - [ ] Create migration for backing_pitch
 - [ ] Update seed for backing pitch
-
-
 - [ ] Custom style oerview with UL/LI/ title, etc
 
+### Admin Portal
+- [ ] Change to tailwind Proof of COncept
+- [ ] Dashboard must works
 - [ ] Admin portal must be able to find backer instead of drop down select
 
+### Preview mode
 - [ ] Preview mode: /preview
 - [ ] Publish on and off
 - [ ] If publish is off will show special page.
