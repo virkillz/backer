@@ -366,7 +366,7 @@ defmodule Backer.Finance do
         %{"status" => "Executed"} = attrs
       ) do
     pay_invoice_attr = %{"status" => "paid"}
-    invoice = get_invoice(incoming_payment.invoice_id) |> IO.inspect()
+    invoice = get_invoice(incoming_payment.invoice_id)
     invoice_changeset = Invoice.change_status_changeset(invoice, pay_invoice_attr)
 
     case invoice.type do
@@ -397,11 +397,9 @@ defmodule Backer.Finance do
   end
 
   defp create_batch_donation(invoice_id) do
-    IO.inspect("----- checkpoint 3 ---")
     invoice_details = list_invoice_details(%{"invoice_id" => invoice_id})
 
-    case Enum.each(invoice_details, fn x -> create_donation_from_invoice_detail(x) end)
-         |> IO.inspect() do
+    case Enum.each(invoice_details, fn x -> create_donation_from_invoice_detail(x) end) do
       :ok -> {:ok, "executed"}
       _other -> {:error, "failed to create"}
     end
@@ -810,7 +808,7 @@ defmodule Backer.Finance do
   end
 
   defp aggregate_backers_list(list, backer) do
-    result = Enum.find(list, fn x -> x.backer_id == backer.backer_id end) |> IO.inspect()
+    result = Enum.find(list, fn x -> x.backer_id == backer.backer_id end)
 
     if result != nil do
       Map.put(backer, :status, "active") |> Map.put(:tier, result.tier)
