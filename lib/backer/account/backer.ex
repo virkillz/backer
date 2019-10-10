@@ -163,6 +163,14 @@ defmodule Backer.Account.Backer do
     |> unique_constraint(:username)
   end
 
+  def bypass_email_verification(changeset) do
+    case Backer.Settings.get_setting(:key, "bypass_email_verification") do
+      nil -> changeset
+      "" -> changeset
+      _ -> change(changeset, is_email_verified: true)
+    end
+  end
+
   def validate_avatar(changeset) do
     if get_field(changeset, :avatar) == "error" do
       add_error(

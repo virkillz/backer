@@ -193,21 +193,36 @@ defmodule BackerWeb.PublicController do
       {:not_yet, backer} ->
         Account.validate_backer(backer)
 
-        render(conn, "verify.html",
-          status: :not_yet,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        render(conn, "generic.html",
+          data: %{
+            title: "Berhasil!",
+            message: "Email anda sudah terverifikasi. Silahkan login.",
+            btn_text: "Login",
+            btn_path: "/login"
+          },
+          layout: {BackerWeb.LayoutView, "public.html"}
         )
 
       {:error, _} ->
-        render(conn, "verify.html",
-          status: :error,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        render(conn, "generic.html",
+          data: %{
+            title: "Ups!",
+            message: "Kode verifikasi yang digunakan tidak valid",
+            btn_text: "Kembali ke Halaman Utama",
+            btn_path: "/"
+          },
+          layout: {BackerWeb.LayoutView, "public.html"}
         )
 
       {:already, _} ->
-        render(conn, "verify.html",
-          status: :already,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        render(conn, "generic.html",
+          data: %{
+            title: "Ups!",
+            message: "Email anda sudah terverifikasi. Silahkan login.",
+            btn_text: "Login",
+            btn_path: "/login"
+          },
+          layout: {BackerWeb.LayoutView, "public.html"}
         )
     end
   end
@@ -346,7 +361,9 @@ defmodule BackerWeb.PublicController do
 
   def createuser(conn, %{"backer" => params}) do
     case Account.sign_up_backer(params) do
-      {:ok, _user} ->
+      {:ok, user} ->
+        SendMail.verification(user.email, user.display_name, user.email_verification_code)
+
         conn
         |> put_flash(
           :info,

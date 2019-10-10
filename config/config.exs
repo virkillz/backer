@@ -9,6 +9,8 @@ use Mix.Config
 config :backer,
   ecto_repos: [Backer.Repo]
 
+config :backer, env: Mix.env()
+
 config :backer, BackerWeb.Gettext, default_locale: "id", locales: ~w(en id)
 
 # Configures the endpoint
@@ -43,6 +45,9 @@ config :cloudex,
 config :imgex,
   imgix_domain: "https://backer.imgix.net",
   secure_token: "3355q2QZupnmhBR9"
+
+config :sendgrid,
+  api_key: "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"
 
 config :ex_aws,
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
