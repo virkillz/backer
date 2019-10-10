@@ -7,11 +7,42 @@ defmodule Backer.Aggregate do
   alias Backer.Repo
 
   alias Backer.Aggregate.BackingAggregate
+  alias Backer.Finance
 
   def build_aggregate(backer_id, donee_id) do
     case get_backingaggregate(backer_id, donee_id) do
-      nil -> :create_one
-      item -> :update
+      nil ->
+        list_donation =
+          Finance.list_donations(%{"backer_id" => backer_id, "donee_id" => donee_id})
+
+        IO.inspect(list_donation)
+
+        if Enum.count(list_donation) == 0 do
+          {:error, "No donation founded fom backer_id #{backer_id} to donee_id #{donee_id}"}
+        else
+          first = List.first(list_donation)
+          {:ok, backer_since} = NaiveDateTime.new(first.year, first.month, 1, 0, 0, 0)
+          last = List.last(list_donation)
+          total = Enum.reduce(list_donation, 0, fn x, acc -> x.amount + acc end)
+          {:ok, now} = DateTime.now("Etc/UTC")
+
+          [current] =
+            Enum.filter(list_donation, fn x -> x.month == now.month && x.year == now.year end)
+
+          %{
+            "accumulative_donation" => total,
+            "backer_id" => backer_id,
+            "donee_id" => donee_id,
+            "backing_status" => "active",
+            "last_amount" => last.amount,
+            "last_tier" => last.backer_tier.title,
+            "score" => total,
+            "backer_since" => backer_since
+          }
+        end
+
+      item ->
+        :update
     end
   end
 
