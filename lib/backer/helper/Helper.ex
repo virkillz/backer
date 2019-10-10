@@ -12,7 +12,7 @@ defmodule Backer.Helper do
   def upload_s3_helper(file) do
     file_uuid = Ecto.UUID.generate()
     image_filename = file.filename
-    unique_filename = "#{file_uuid}-#{image_filename}"
+    unique_filename = "#{file_uuid}-#{image_filename |> String.replace(" ", "_")}"
     {:ok, image_binary} = File.read(file.path)
 
     cond do
