@@ -86,11 +86,7 @@
 					</div>
 				</div>
 
-				<div class="text-justify leading-loose pt-10">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque sapien nec ipsum
-					maximus, suscipit pretium urna iaculis. Vestibulum sed scelerisque quam, a convallis tortor. Integer
-					vestibulum justo malesuada, pharetra lacus sed, euismod odio.
-				</div>
+				<div class="text-justify leading-loose pt-10">Lembaga Bantuan Hukum (LBH) Jakarta didirikan atas gagasan yang disampaikan pada Kongres Persatuan Advokat Indonesia (Peradin) ke III tahun 1969. Gagasan tersebut mendapat persetujuan dari Dewan Pimpinan Pusat Peradin melalui Surat Keputusan Nomor 001/Kep/10/1970 tanggal 26 Oktober 1970 yang isi penetapan pendirian Lembaga Bantuan Hukum Jakarta dan Lembaga Pembela Umum yang mulai berlaku tanggal 28 Oktober 1970.</div>
 
 				<div class="pt-5 ">
 					<a href="/donee/<%= @highlight_donee.backer.username %>">
@@ -200,7 +196,7 @@
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
-					<img src="/assets/images/bg/discover.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
+					<img src="/assets/images/bg/discover.jpeg" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Keberlanjutan</div>
 					<p class="text-gray-800 text-base">
 						Kami memudahkan pembayaran dan manajemen donasi atau iuran dukungan 
@@ -213,7 +209,7 @@
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
-					<img src="/assets/images/bg/payment.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
+					<img src="/assets/images/bg/payment.jpeg" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Komunitas</div>
 					<p class="text-gray-800 text-base">
 						Kami membantu individu atau organisasi bertemu dengan mereka yang sevisi;
@@ -226,7 +222,7 @@
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lg">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
-					<img src="/assets/images/bg/interaction.jpeg" alt="discover" class="wow bounceIn mx-auto w-full max-w-sm">
+					<img src="/assets/images/bg/interaction.jpeg" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Transparansi</div>
 					<p class="text-gray-800 text-base">
 						Kami menyediakan ruang bagi para penggiat untuk berbagi kegiatan terbaru yang dapat terlaksana berkat dukungan para
