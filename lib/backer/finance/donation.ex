@@ -5,7 +5,6 @@ defmodule Backer.Finance.Donation do
   schema "donations" do
     field(:amount, :integer)
     field(:month, :integer)
-    # field(:tier, :integer)
     field(:year, :integer)
     field(:is_executed, :boolean, default: true)
     field(:invoice_id, :id)

@@ -217,7 +217,8 @@ defmodule BackerWeb.DoneeController do
   end
 
   def donate(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username})
+    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
+    backer = conn.assigns.current_backer
     changeset = Finance.change_invoice(%Invoice{})
 
     case donee do
@@ -225,26 +226,50 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
+        # if not donee
         if donee.donee == nil do
           redirect(conn, to: "/404")
         else
-          tiers =
-            Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id}) |> IO.inspect()
+          tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id})
 
-          payment_methods = Backer.Constant.default_payment_methods() |> IO.inspect()
+          payment_methods = Backer.Constant.default_payment_methods()
           default_tier = List.first(tiers)
           default_payment_method = List.first(payment_methods)
 
-          conn
-          |> render("public_donee_donate.html",
-            donee: donee,
-            changeset: changeset,
-            tiers: tiers,
-            default_tier: default_tier,
-            payment_methods: payment_methods,
-            default_payment_method: default_payment_method,
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
+          # if backer not logged in, go on!
+          if is_nil(backer) do
+            conn
+            |> render("public_donee_donate.html",
+              donee: donee,
+              changeset: changeset,
+              tiers: tiers,
+              default_tier: default_tier,
+              payment_methods: payment_methods,
+              default_payment_method: default_payment_method,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+          else
+            # if backer logged in, see if he have active donation going
+            if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+              conn
+              |> render("public_donee_donate.html",
+                donee: donee,
+                changeset: changeset,
+                tiers: tiers,
+                default_tier: default_tier,
+                payment_methods: payment_methods,
+                default_payment_method: default_payment_method,
+                layout: {BackerWeb.LayoutView, "public.html"}
+              )
+            else
+              conn
+              |> render("donee_donate_forbidden.html",
+                donee: donee,
+                backer: backer,
+                layout: {BackerWeb.LayoutView, "public.html"}
+              )
+            end
+          end
         end
     end
   end
@@ -298,25 +323,35 @@ defmodule BackerWeb.DoneeController do
 
   def about(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
+    current_backer = conn.assigns.current_backer
 
     case donee do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
-        random_donee = Account.get_random_donee(4)
-        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
-        backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-        backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
-
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
+          visitor_backing_status =
+            if is_nil(current_backer) do
+              false
+            else
+              Finance.is_backer_have_active_donations?(current_backer.id, donee.donee.id)
+            end
+
+          random_donee = Account.get_random_donee(4)
+          active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
+          backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
+          backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+
           conn
           |> render("public_donee_about.html",
             donee: donee,
             backing: backing,
             backers: backers,
+            current_backer: current_backer,
+            is_visitor_already_backing?: visitor_backing_status,
             active_backers: active_backers,
             random_donee: random_donee,
             layout: {BackerWeb.LayoutView, "public.html"}
@@ -361,7 +396,7 @@ defmodule BackerWeb.DoneeController do
 
   def donate_post(conn, params) do
     # 1. if backer not logged in, put session and redirect to login with friendly flash message.
-    # 2. if backer logged in, check if donee exist. If not, throw 403.
+    # 2. if backer logged in, check if donee exist. If yes, check if he already a donee. If not exist, throw 403.
     # 3. if all is valid, send params to invoice creation.
     # backer_info = conn.assigns.current_backer
     if conn.assigns.backer_signed_in? do
@@ -371,34 +406,36 @@ defmodule BackerWeb.DoneeController do
       if is_nil(donee) do
         redirect(conn, to: "/403")
       else
-        attrs =
-          params["invoice"]
-          |> Map.put("donee_id", donee.donee.id)
-          |> Map.put("backer_id", backer.id)
-          |> Map.put("type", "backing")
+        if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+          attrs =
+            params["invoice"]
+            |> Map.put("donee_id", donee.donee.id)
+            |> Map.put("backer_id", backer.id)
+            |> Map.put("type", "backing")
 
-        case Finance.create_donation_invoice(attrs) do
-          {:ok, %{invoice: invoice}} ->
-            conn
-            |> put_flash(:info, "Please make Payment.")
-            |> redirect(to: "/backerzone/payment-history")
+          case Finance.create_donation_invoice(attrs) do
+            {:ok, %{invoice: invoice}} ->
+              conn
+              |> put_flash(:info, "Please make Payment.")
+              |> redirect(to: "/backerzone/payment-history")
 
-          {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
-            conn
-            |> render("public_donee_donate.html",
-              donee: donee,
-              changeset: changeset,
-              layout: {BackerWeb.LayoutView, "public.html"}
-            )
+            {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
+              conn
+              |> render("public_donee_donate.html",
+                donee: donee,
+                changeset: changeset,
+                layout: {BackerWeb.LayoutView, "public.html"}
+              )
 
-          other ->
-            text(
-              conn,
-              "Unexpected error happened when created Invoice. Sorry for the inconvenience."
-            )
+            other ->
+              text(
+                conn,
+                "Unexpected error happened when created Invoice. Sorry for the inconvenience."
+              )
+          end
+        else
+          redirect(conn, to: "/403")
         end
-
-        text(conn, "lanjut cek console.")
       end
     else
       conn
