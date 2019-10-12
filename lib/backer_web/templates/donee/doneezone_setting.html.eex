@@ -155,8 +155,12 @@
 
             <div class="py-2">
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
-                    <div class="">
+                    <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Profile Content</div>
+                           <a href="/doneezone/preview" target="_blank">
+                        <div
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Preview</div>
+                            </a>
                     </div>
 
                     <div class="border-b my-2"></div>
@@ -177,7 +181,8 @@
                         <%= select f, :status, [{"Unpublished", "unpublished"}, {"Published", "published"}], [selected: @donee_info.status, class: "h-8 w-40 border border-blue-500"] %>
                     </div>
 
-                    <button
+
+                    <button type="submit"
                         class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg w-full">Save</button>
 
                 </div>

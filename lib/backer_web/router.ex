@@ -146,6 +146,7 @@ defmodule BackerWeb.Router do
 
     get("/doneezone", DoneeController, :doneezone_default)
     get("/doneezone/posts", DoneeController, :doneezone_posts)
+    get("/doneezone/preview", DoneeController, :doneezone_preview)
     get("/doneezone/about", DoneeController, :doneezone_about)
     get("/doneezone/backers", DoneeController, :doneezone_backers)
     get("/doneezone/finance", DoneeController, :doneezone_finance)

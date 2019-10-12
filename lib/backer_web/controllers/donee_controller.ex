@@ -226,6 +226,27 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
+  def doneezone_preview(conn, _params) do
+    current_backer = conn.assigns.current_backer
+    donee = Account.get_donee(%{"username" => current_backer.username})
+
+    random_donee = Account.get_random_donee(4)
+    active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
+    backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
+    backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+
+    conn
+    |> render("public_donee_about.html",
+      donee: donee,
+      backing: backing,
+      is_visitor_already_backing?: false,
+      backers: backers,
+      active_backers: active_backers,
+      random_donee: random_donee,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
   def render_unpublished(conn, donee) do
     conn
     |> render("unpublished.html",

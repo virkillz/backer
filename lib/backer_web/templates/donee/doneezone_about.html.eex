@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
+   <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
@@ -16,7 +16,9 @@
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
-
+				<%= if @donee.status == "unpublished" do %>
+					<div class="p-4 rounded border-orange-400 border">Saat ini halaman kamu sedang dalam mode <span class="font-bold">unpublished</span> sehingga tidak bisa dilihat secara umum. Untuk merubahnya, <a class="text-blue-500 underline" href="/doneezone/setting">klik disini</a></div>
+				<% end %>
                 <%= render "component_doneezone_top_menu.html", conn: @conn %>
 
 
