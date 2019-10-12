@@ -97,6 +97,8 @@ defmodule BackerWeb.Router do
     get("/approval/:id", FinanceController, :approval_form)
     put("/approval/:id", FinanceController, :update)
 
+    get("/email-template/send-email-verification", EmailController, :send_email_verification)
+    get("/email-template/send-reset-password-link", EmailController, :send_reset_password_link)
     resources("/articles", ArticleController)
   end
 
@@ -189,9 +191,8 @@ defmodule BackerWeb.Router do
     get("/resend-email", PublicController, :resend)
     get("/forgot-password", PublicController, :forgot_password)
     post("/forgot-password", PublicController, :forgot_password_post)
-    get("/change-password", PublicController, :change_password)
-    put("/change-password", PublicController, :change_password_post)
-    post("/change-password", PublicController, :change_password_post)
+    get("/reset-password", PublicController, :reset_password)
+    post("/reset-password", PublicController, :reset_password_post)
   end
 
   # This route area is for public route
@@ -219,6 +220,7 @@ defmodule BackerWeb.Router do
     post("/contact-us", PublicController, :contact_us_post)
     get("/about-us", PublicController, :about_us)
     get("/forgot-password", PublicController, :forgot_password)
+    post("/forgot-password", PublicController, :forgot_password_post)
     get("/faq", PublicController, :faq)
     get("/terms", PublicController, :terms)
     get("/privacy-policy", PublicController, :privacy_policy)

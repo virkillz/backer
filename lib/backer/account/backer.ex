@@ -91,7 +91,7 @@ defmodule Backer.Account.Backer do
     |> validate_required([:password, :passwordrepeat, :code])
     |> validate_change_password
     |> reset_password_recovery_code
-    |> validate_length(:password, min: 5)
+    |> validate_length(:password, min: 6)
     |> put_password_hash
   end
 

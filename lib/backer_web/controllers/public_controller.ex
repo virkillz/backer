@@ -415,80 +415,88 @@ defmodule BackerWeb.PublicController do
     end
   end
 
-  def forgot_password(conn, _params) do
-    render(conn, "recover.html", layout: {BackerWeb.LayoutView, "frontend_header_footer.html"})
-  end
-
   def forgot_password_post(conn, %{"email" => email}) do
     # if user founded, generate new recovery key
     backer = Account.get_backer(%{"email" => email})
 
     if backer != nil do
-      params = %{"password_recovery_code" => Ecto.UUID.generate()}
+      new_code = Ecto.UUID.generate()
+      params = %{"password_recovery_code" => new_code}
       Account.update_backer(backer, params)
+
+      spawn(fn -> SendMail.send_reset_password(backer.email, backer.display_name, new_code) end)
     end
 
-    payload = %{
+    data = %{
       title: "Done!",
       message:
-        "If we found your email in our database, we will sent the password recodery link. Please check your email."
+        "If we found your email in our database, we will sent the password recodery link. Please check your email.",
+      btn_text: "Kembali ke Halaman Utama",
+      btn_path: "/"
     }
 
     render(conn, "generic.html",
-      payload: payload,
-      layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+      data: data,
+      layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
 
-  def change_password(conn, %{"code" => code}) do
+  def reset_password(conn, %{"code" => code}) do
     backer = Account.get_backer(%{"password_recovery_code" => code})
-    changeset = Account.change_password_backer(%Backerz{}) |> IO.inspect()
+    changeset = Account.change_password_backer(%Backerz{})
 
     if backer == nil do
-      payload = %{
+      data = %{
         title: "Invalid",
-        message:
-          "The link is invalid. Please use again recover-password menu to generate and resend the code to your email."
+        message: "Link yang anda gunakan tidak ditemukan atau sudah tidak berlaku.",
+        btn_path: "/",
+        btn_text: "Kembali ke halaman utama"
       }
 
-      render(conn, "generic.html",
-        payload: payload,
-        layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-      )
+      render(conn, "generic.html", layout: {BackerWeb.LayoutView, "public.html"}, data: data)
     else
-      render(conn, "change-password.html",
+      render(conn, "reset_password.html",
         code: code,
         changeset: changeset,
-        layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+        layout: {BackerWeb.LayoutView, "public.html"}
       )
     end
   end
 
-  def change_password(conn, _params) do
+  def reset_password(conn, _params) do
     redirect(conn, to: "/404")
   end
 
-  def change_password_post(conn, %{"backer" => params}) do
-    backer = Account.get_backer(%{"password_recovery_code" => params["code"]})
+  def reset_password_post(conn, %{"code" => code} = params) do
+    backer = Account.get_backer(%{"password_recovery_code" => code})
 
     if backer == nil do
-      # GIVE SCARY FORBIDDEN PAGE HERE
-      text(conn, "503. forbidden. please don't do that :(")
+      data = %{
+        title: "Forbidden",
+        message: "Please don't do that.",
+        btn_path: "/",
+        btn_text: "Kembali ke halaman utama"
+      }
+
+      conn
+      |> put_status(:forbidden)
+      |> render("generic.html", layout: {BackerWeb.LayoutView, "public.html"}, data: data)
     else
       case Account.update_password_backer(backer, params) do
         {:ok, _user} ->
           conn
           |> put_flash(
             :info,
-            "Password updated successfully. Now you can login."
+            "Password telah berhasil dirubah. Silahkan login kembali"
           )
           |> redirect(to: "/login")
 
         {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "change-password.html",
+          conn
+          |> put_flash(:error, "Password tidak sama.")
+          |> render("reset_password.html",
             code: params["code"],
-            changeset: changeset,
-            layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
+            layout: {BackerWeb.LayoutView, "public.html"}
           )
       end
     end
