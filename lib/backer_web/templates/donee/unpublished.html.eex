@@ -1,0 +1,21 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16 text-gray-700">
+    <img src="<%= @donee.donee.background %>" alt="<%= @donee.display_name %>"
+        class="mt-16 object-cover h-64 w-full border-b-8 border-white shadow-lg">
+    <img src="<%= @donee.avatar %>"
+        class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
+
+
+    <div class="container mx-auto pb-20">
+        <div class="font-bold text-center text-3xl py-8  text-gray-700"><%= @donee.display_name %></div>
+
+        <div class="py-4 max-w-3xl mx-auto px-2">
+            <div class="py-4 text-justify bg-white rounded shadow px-6 text-gray-700 leading-relaxed">Halaman ini sedang di non aktifkan oleh administrator <span class="font-bold"><%= @donee.display_name %></span>. Silahkan dicoba kembali beberapa saat lagi.
+               </div>
+        </div>
+
+
+    </div>
+
+<%= BackerWeb.PublicComponentView.render "footer_private.html", conn: @conn %>

@@ -21,19 +21,19 @@
             <div class="flex">
                 <a href="/search?q=<%= @search_term %>">
                     <div
-                        class="border-b-4 border-orange-500 py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease font-semibold">
+                        class="<%= if @filter == "all", do: " border-orange-500 ", else: " border-transparent " %> border-b-4 py-3 px-6 border-b-4 hover:border-orange-500 transition-all transition-ease font-semibold">
                         All
                     </div>
                 </a>
                 <a href="/search?q=<%= @search_term %>&filter=donee">
                     <div
-                        class="py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease font-semibold">
+                        class="<%= if @filter == "donee", do: " border-orange-500 ", else: " border-transparent " %> py-3 px-6 border-b-4 hover:border-orange-500 transition-all transition-ease font-semibold">
                         Donee
                     </div>
                 </a>
                 <a href="/search?q=<%= @search_term %>&filter=backer">
                     <div
-                        class="py-3 px-6 border-b-4 border-transparent hover:border-orange-500 transition-all transition-ease hover:bg-gray-100 font-semibold">
+                        class="<%= if @filter == "backer", do: " border-orange-500 ", else: " border-transparent " %> py-3 px-6 border-b-4 hover:border-orange-500 transition-all transition-ease hover:bg-gray-100 font-semibold">
                         Backer
                     </div>
                 </a>
@@ -42,77 +42,85 @@
         </div>
     </div>
 
-    <div class="max-w-3xl mx-auto px-4">
+    <%= if @filter == "all" or @filter == "donee" do %>
+        <div class="max-w-3xl mx-auto px-4">
 
-        <div class=" text-gray-700  px-4 py-4">
-            <div class="font-bold text-lg">Donee</div>
-            <div class="border-b my-4"></div>
-            <div class="">
-            <%= if Enum.count(@search_result_donee) == 0 do %>
-            <div class="bg-gray-100 rounded-lg p-4 text-center text-sm">Tidak ditemukan Donee yang sesuai dengan kata pencarian tersebut</div>
-            <% end %>
-
-            <%= for donee <- @search_result_donee do %>
-            <a href="/donee/<%= donee.username %>">
-			<div class="px-2x">
-		    <img src="<%= donee.background %>" class="lg:hidden sm:hidden md:hidden shadow rounded-t-lg h-40 w-full object-cover lg:w-64" alt="">
-	        <div class=" mb-8 lg:my-8 md:my-8 sm:my-8 flex items-center cursor-pointer hover:shadow-xl bg-white rounded-b-lg sm:rounded-lg md:rounded-lg lg:rounded-lg shadow">
-	            <img src="<%= donee.background %>" class="hidden sm:block md:block lg:block shadow rounded-l-lg h-48 object-cover w-48 lg:w-64" alt="">
-	            <img src="<%= donee.avatar %>" class="z-10 ml-4 sm:-ml-8 md:-ml-8 lg:-ml-8 shadow border-white border-2 shadow-lg object-center object-cover rounded-lg w-16 h-16" alt="<%= donee.display_name %>">
-	            <div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
-	                <div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
-                    <%= donee.backer_count %> Backer</div>
-	                <div class="">
-	                    <div class="text-md  font-semibold"><%= donee.display_name %></div>
-	                    <div class="text-xs  text-gray-600">@<%= donee.username %></div>
-	                    <div class="py-4 text-sm text-gray-600"><%= donee.tagline %></div>
-	                </div>
-	            </div>
-	        </div>
-			</div>
-			</a>
-
+            <div class=" text-gray-700  px-4 py-4">
+                <%= if @filter == "all" do %>
+                <div class="font-bold text-lg">Donee</div>
+                <div class="border-b my-4"></div>
                 <% end %>
 
+                <div class="">
+
+                <%= if Enum.count(@search_result_donee) == 0 do %>
+                <div class="bg-gray-100 rounded-lg p-4 text-center text-sm">Tidak ditemukan Donee yang sesuai dengan kata pencarian tersebut</div>
+                <% end %>
+
+                <%= for donee <- @search_result_donee do %>
+                <a href="/donee/<%= donee.username %>">
+                <div class="px-2x">
+                <img src="<%= donee.background %>" class="lg:hidden sm:hidden md:hidden shadow rounded-t-lg h-40 w-full object-cover lg:w-64" alt="">
+                <div class=" mb-8 lg:my-8 md:my-8 sm:my-8 flex items-center cursor-pointer hover:shadow-xl bg-white rounded-b-lg sm:rounded-lg md:rounded-lg lg:rounded-lg shadow">
+                    <img src="<%= donee.background %>" class="hidden sm:block md:block lg:block shadow rounded-l-lg h-48 object-cover w-48 lg:w-64" alt="">
+                    <img src="<%= donee.avatar %>" class="z-10 ml-4 sm:-ml-8 md:-ml-8 lg:-ml-8 shadow border-white border-2 shadow-lg object-center object-cover rounded-lg w-16 h-16" alt="<%= donee.display_name %>">
+                    <div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
+                        <div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
+                        <%= donee.backer_count %> Backer</div>
+                        <div class="">
+                            <div class="text-md  font-semibold"><%= donee.display_name %></div>
+                            <div class="text-xs  text-gray-600">@<%= donee.username %></div>
+                            <div class="py-4 text-sm text-gray-600"><%= donee.tagline %></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </a>
+
+                    <% end %>
+
+
+                </div>
 
             </div>
-
         </div>
-    </div>
+    <% end %>
 
+    <%= if @filter == "all" or @filter == "backer" do %>
+        <div class="max-w-3xl mx-auto px-4">
 
-    <div class="max-w-3xl mx-auto px-4">
-
-        <div class=" text-gray-700  px-4 py-4">
-            <div class="font-bold text-lg">Backer</div>
-            <div class="border-b my-4"></div>
-            <div class="">
-            <%= if Enum.count(@search_result_backer) == 0 do %>
-            <div class="bg-gray-100 rounded-lg p-4 text-center text-sm">Tidak ditemukan Backer yang sesuai dengan kata pencarian tersebut</div>
+            <div class=" text-gray-700  px-4 py-4">
+            <%= if @filter == "all" do %>
+                <div class="font-bold text-lg">Backer</div>
+                <div class="border-b my-4"></div>
             <% end %>
-                <%= for backer <- @search_result_backer do %>
-                <a href="/backer/<%= backer.username %>">
-                    <div class="mb-4 flex items-center cursor-pointer">
-                        <img src="<%= backer.avatar %>" class="z-10 rounded-lg shadow object-center object-cover w-16 h-16" alt="">
-                        <div class="flex p-4 h-32 bg-white -ml-8 z-0 flex-grow hover:text-blue-500  hover:shadow-lg shadow rounded-lg relative">
-                            <div class="pl-8">
-                                <div class="text-md  font-semibold"><%= backer.display_name %></div>
-                                <div class="text-xs  text-gray-600">@<%= backer.username %></div>
-                                <div>
+                <div class="">
+                <%= if Enum.count(@search_result_backer) == 0 do %>
+                <div class="bg-gray-100 rounded-lg p-4 text-center text-sm">Tidak ditemukan Backer yang sesuai dengan kata pencarian tersebut</div>
+                <% end %>
+                    <%= for backer <- @search_result_backer do %>
+                    <a href="/backer/<%= backer.username %>">
+                        <div class="mb-4 flex items-center cursor-pointer">
+                            <img src="<%= backer.avatar %>" class="z-10 rounded-lg shadow object-center object-cover w-16 h-16" alt="">
+                            <div class="flex p-4 h-32 bg-white -ml-8 z-0 flex-grow hover:text-blue-500  hover:shadow-lg shadow rounded-lg relative">
+                                <div class="pl-8">
+                                    <div class="text-md  font-semibold"><%= backer.display_name %></div>
+                                    <div class="text-xs  text-gray-600">@<%= backer.username %></div>
+                                    <div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <% end %>
+                    <% end %>
 
+
+                </div>
 
             </div>
-
         </div>
-    </div>
-
+    <% end %>
 
 
 </div>

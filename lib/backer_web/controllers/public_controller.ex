@@ -44,17 +44,48 @@ defmodule BackerWeb.PublicController do
     )
   end
 
-  def search(conn, %{"q" => q}) do
+  def search(conn, %{"q" => q, "filter" => filter}) do
     meta = %{title: "Welcome to backer"}
 
     query = "%#{q}%"
-    search_result_backer = Account.search_backer(query)
-    search_result_donee = Account.search_donee(query) |> IO.inspect()
+
+    search_result_backer =
+      if filter == "backer" do
+        Account.search_backer(query)
+      else
+        []
+      end
+
+    search_result_donee =
+      if filter == "donee" do
+        Account.search_donee(query)
+      else
+        []
+      end
 
     conn
     |> render("search_result.html",
       layout: {BackerWeb.LayoutView, "public.html"},
       search_term: q,
+      filter: filter,
+      search_result_backer: search_result_backer,
+      search_result_donee: search_result_donee,
+      meta: meta
+    )
+  end
+
+  def search(conn, %{"q" => q}) do
+    meta = %{title: "Welcome to backer"}
+
+    query = "%#{q}%"
+    search_result_backer = Account.search_backer(query)
+    search_result_donee = Account.search_donee(query)
+
+    conn
+    |> render("search_result.html",
+      layout: {BackerWeb.LayoutView, "public.html"},
+      search_term: q,
+      filter: "all",
       search_result_backer: search_result_backer,
       search_result_donee: search_result_donee,
       meta: meta
@@ -360,8 +391,6 @@ defmodule BackerWeb.PublicController do
   end
 
   def createuser(conn, %{"backer" => params}) do
-    IO.inspect(params)
-
     case Account.sign_up_backer(params) do
       {:ok, user} ->
         SendMail.verification(user.email, user.display_name, user.email_verification_code)

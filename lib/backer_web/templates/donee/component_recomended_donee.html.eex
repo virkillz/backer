@@ -4,22 +4,22 @@
 	<div class="flex lg:block flex-wrap">
 	<%= for donee <- @donees do %>
 	<div class="py-2 px-2 lg:px-0 w-1/2 lg:w-full">
-		<a href="/donee/<%= donee.username %>">
+		<a href="/donee/<%= donee.backer.username %>">
 			<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg h-64">
 				<div
 					class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-purple-500">
-					<%= donee.donee.backer_count %>
+					<%= donee.backer_count %>
 					Backer
 				</div>
-				<img src="<%= donee.donee.background %>" class="h-24 rounded-lg w-full object-cover">
+				<img src="<%= donee.background %>" class="h-24 rounded-lg w-full object-cover">
 				<div class="flex justify-center">
-					<img src="<%= donee.avatar %>"
+					<img src="<%= donee.backer.avatar %>"
 						class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
 				</div>
 				<div class="py-1 px-2">
-					<div class=" font-semibold text-center"><%= donee.display_name %></div>
-					<div class="font-light text-center text-xs text-gray-600"><%= donee.username %></div>
-					<div class="text-sm font-light text-center my-2"><%= donee.donee.tagline %></div>
+					<div class=" font-semibold text-center"><%= donee.backer.display_name %></div>
+					<div class="font-light text-center text-xs text-gray-600"><%= donee.backer.username %></div>
+					<div class="text-sm font-light text-center my-2"><%= donee.tagline %></div>
 				</div>
 			</div>
 		</a>

@@ -16,6 +16,10 @@ defmodule BackerWeb.DoneeController do
     render(conn, "index.html", donees: donees)
   end
 
+  def doneezone_default(conn, _params) do
+    redirect(conn, to: "/doneezone/about")
+  end
+
   def doneezone_posts(conn, params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
@@ -68,10 +72,16 @@ defmodule BackerWeb.DoneeController do
     changeset = Account.change_donee(donee)
     user_links = Account.get_user_links_of(backer_info.id)
 
+    option = [
+      [key: "Unpublished", value: "unpublished"],
+      [key: "Published", value: "published"]
+    ]
+
     conn
     |> render("doneezone_setting.html",
       backer_info: backer_info,
       donee_info: donee,
+      option: option,
       recommended_donees: random_donee,
       script: %{wysiwyg: true},
       style: %{wysiwyg: true},
@@ -216,8 +226,16 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
+  def render_unpublished(conn, donee) do
+    conn
+    |> render("unpublished.html",
+      donee: donee,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
   def donate(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
+    donee = Account.get_donee(%{"username" => username})
     backer = conn.assigns.current_backer
     changeset = Finance.change_invoice(%Invoice{})
 
@@ -230,27 +248,17 @@ defmodule BackerWeb.DoneeController do
         if donee.donee == nil do
           redirect(conn, to: "/404")
         else
-          tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id})
-
-          payment_methods = Backer.Constant.default_payment_methods()
-          default_tier = List.first(tiers)
-          default_payment_method = List.first(payment_methods)
-
-          # if backer not logged in, go on!
-          if is_nil(backer) do
-            conn
-            |> render("public_donee_donate.html",
-              donee: donee,
-              changeset: changeset,
-              tiers: tiers,
-              default_tier: default_tier,
-              payment_methods: payment_methods,
-              default_payment_method: default_payment_method,
-              layout: {BackerWeb.LayoutView, "public.html"}
-            )
+          if donee.donee.status == "unpublished" do
+            render_unpublished(conn, donee)
           else
-            # if backer logged in, see if he have active donation going
-            if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+            tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id})
+
+            payment_methods = Backer.Constant.default_payment_methods()
+            default_tier = List.first(tiers)
+            default_payment_method = List.first(payment_methods)
+
+            # if backer not logged in, go on!
+            if is_nil(backer) do
               conn
               |> render("public_donee_donate.html",
                 donee: donee,
@@ -262,12 +270,26 @@ defmodule BackerWeb.DoneeController do
                 layout: {BackerWeb.LayoutView, "public.html"}
               )
             else
-              conn
-              |> render("donee_donate_forbidden.html",
-                donee: donee,
-                backer: backer,
-                layout: {BackerWeb.LayoutView, "public.html"}
-              )
+              # if backer logged in, see if he have active donation going
+              if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+                conn
+                |> render("public_donee_donate.html",
+                  donee: donee,
+                  changeset: changeset,
+                  tiers: tiers,
+                  default_tier: default_tier,
+                  payment_methods: payment_methods,
+                  default_payment_method: default_payment_method,
+                  layout: {BackerWeb.LayoutView, "public.html"}
+                )
+              else
+                conn
+                |> render("donee_donate_forbidden.html",
+                  donee: donee,
+                  backer: backer,
+                  layout: {BackerWeb.LayoutView, "public.html"}
+                )
+              end
             end
           end
         end
@@ -333,29 +355,33 @@ defmodule BackerWeb.DoneeController do
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
-          visitor_backing_status =
-            if is_nil(current_backer) do
-              false
-            else
-              Finance.is_backer_have_active_donations?(current_backer.id, donee.donee.id)
-            end
+          if donee.donee.status == "unpublished" do
+            render_unpublished(conn, donee)
+          else
+            visitor_backing_status =
+              if is_nil(current_backer) do
+                false
+              else
+                Finance.is_backer_have_active_donations?(current_backer.id, donee.donee.id)
+              end
 
-          random_donee = Account.get_random_donee(4)
-          active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
-          backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-          backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+            random_donee = Account.get_random_donee(4)
+            active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
+            backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
+            backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
 
-          conn
-          |> render("public_donee_about.html",
-            donee: donee,
-            backing: backing,
-            backers: backers,
-            current_backer: current_backer,
-            is_visitor_already_backing?: visitor_backing_status,
-            active_backers: active_backers,
-            random_donee: random_donee,
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
+            conn
+            |> render("public_donee_about.html",
+              donee: donee,
+              backing: backing,
+              backers: backers,
+              current_backer: current_backer,
+              is_visitor_already_backing?: visitor_backing_status,
+              active_backers: active_backers,
+              random_donee: random_donee,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+          end
         end
     end
   end
@@ -640,13 +666,17 @@ defmodule BackerWeb.DoneeController do
         if donee.donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
-          conn
-          |> render("public_donee_backers.html",
-            donee: donee,
-            active_backers: active_backers,
-            random_donee: random_donee,
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
+          if donee.donee.status == "unpublished" do
+            render_unpublished(conn, donee)
+          else
+            conn
+            |> render("public_donee_backers.html",
+              donee: donee,
+              active_backers: active_backers,
+              random_donee: random_donee,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+          end
         end
     end
   end

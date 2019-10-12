@@ -106,7 +106,7 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
-    get("/backerzone", BackerController, :backerzone_my_donee_list)
+    get("/backerzone", BackerController, :backerzone_default)
     get("/home", BackerController, :home)
     get("/notifications", BackerController, :backerzone_notifications)
     get("/private/notification", BackerController, :backerzone_notification_api)
@@ -144,7 +144,7 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
-    get("/doneezone", DoneeController, :doneezone_about)
+    get("/doneezone", DoneeController, :doneezone_default)
     get("/doneezone/posts", DoneeController, :doneezone_posts)
     get("/doneezone/about", DoneeController, :doneezone_about)
     get("/doneezone/backers", DoneeController, :doneezone_backers)

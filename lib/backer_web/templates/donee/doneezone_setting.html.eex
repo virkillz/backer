@@ -172,9 +172,13 @@
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :donee_overview %></p>
                     </div>
 
+                    <div class="mb-6">
+                        <label for="status" class="px-2 text-xs text-gray-600">Status publikasi</label>
+                        <%= select f, :status, [{"Unpublished", "unpublished"}, {"Published", "published"}], [selected: @donee_info.status, class: "h-8 w-40 border border-blue-500"] %>
+                    </div>
+
                     <button
-                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg w-full">Submit
-                        for review & publish</button>
+                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg w-full">Save</button>
 
                 </div>
             </div>

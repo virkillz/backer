@@ -24,6 +24,10 @@ defmodule BackerWeb.BackerController do
     )
   end
 
+  def backerzone_default(conn, _params) do
+    redirect(conn, to: "/backerzone/my-donee-list")
+  end
+
   def invoice_display(conn, %{"id" => id, "username" => username}) do
     invoice = Finance.get_invoice!(id) |> IO.inspect()
     invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
