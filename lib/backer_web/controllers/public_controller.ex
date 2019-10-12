@@ -360,6 +360,8 @@ defmodule BackerWeb.PublicController do
   end
 
   def createuser(conn, %{"backer" => params}) do
+    IO.inspect(params)
+
     case Account.sign_up_backer(params) do
       {:ok, user} ->
         SendMail.verification(user.email, user.display_name, user.email_verification_code)

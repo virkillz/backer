@@ -9,19 +9,19 @@
 
                 <div class="py-2">
                         <label for="name" class="text-gray-700 text-sm tracking-wide pl-1 ">Display Name</label>
-                        <%= text_input f, :display_name, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full" %>
+                        <%= text_input f, :display_name, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :display_name  %></div>
                 </div>
 
                 <div class="py-2">
                         <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 ">Email</label>
-                        <%= email_input f, :email, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full" %>
+                        <%= email_input f, :email, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :email  %></div>
                 </div>
 
                 <div class="py-2">
                         <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">Password</label>
-                        <%= password_input f, :password, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full" %>
+                        <%= password_input f, :password, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true, minlength: 6 %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :password  %></div>
                 </div>
 
@@ -29,6 +29,7 @@
                         <%= checkbox f, :is_agree_term %>
                         <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">By clicking this, I
                                 accept all <a href="#" class="text-blue-500">terms and conditions</a></label>
+                                                        <div class="text-red-400 px-2 text-sm"><%= error_tag f, :is_agree_term  %></div>
                 </div>
 
                 <div class="pt-2">

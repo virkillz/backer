@@ -192,6 +192,7 @@ defmodule Backer.Account.Backer do
       :password
     ])
     |> validate_required([:email, :display_name, :password])
+    |> validate_agree_term
     |> validate_display_name
     |> unique_constraint(:email)
     |> unique_constraint(:username)
@@ -211,6 +212,16 @@ defmodule Backer.Account.Backer do
 
       _ ->
         changeset
+    end
+  end
+
+  defp validate_agree_term(changeset) do
+    is_agree = get_field(changeset, :is_agree_term)
+
+    if is_agree do
+      changeset
+    else
+      add_error(changeset, :is_agree_term, "Anda belum menyetujui syarat dan ketentuan.")
     end
   end
 
@@ -253,41 +264,51 @@ defmodule Backer.Account.Backer do
   end
 
   defp add_random_username(changeset) do
-    username = get_field(changeset, :username)
+    if changeset.valid? do
+      username = get_field(changeset, :username)
 
-    case username do
-      nil -> changeset |> change(username: Generator.random())
-      "" -> changeset |> change(username: Generator.random())
-      _other -> changeset
+      case username do
+        nil -> changeset |> change(username: Generator.random())
+        "" -> changeset |> change(username: Generator.random())
+        _other -> changeset
+      end
+    else
+      changeset
     end
   end
 
   defp add_random_avatar(changeset) do
-    list = ["1", "2", "3", "4"]
-    number = Enum.random(list)
+    if changeset.valid? do
+      list = ["1", "2", "3", "4"]
+      number = Enum.random(list)
 
-    avatar = "/img/avatar" <> number <> ".jpg"
-    changeset |> change(avatar: avatar)
+      avatar = "/img/avatar" <> number <> ".jpg"
+      changeset |> change(avatar: avatar)
+    else
+      changeset
+    end
   end
 
   defp add_random_bio(changeset) do
-    list = Constant.profile_generator()
-    bio = Enum.random(list)
-    changeset |> change(backer_bio: bio)
+    if changeset.valid? do
+      list = Constant.profile_generator()
+      bio = Enum.random(list)
+      changeset |> change(backer_bio: bio)
+    else
+      changeset
+    end
   end
 
   defp add_email_verification_code(changeset) do
-    changeset |> change(email_verification_code: Ecto.UUID.generate())
+    if changeset.valid? do
+      changeset |> change(email_verification_code: Ecto.UUID.generate())
+    else
+      changeset
+    end
   end
 
   defp reset_password_recovery_code(changeset) do
     changeset |> change(password_recovery_code: "")
-  end
-
-  defp add_email_verification_code(changeset) do
-    random_string = Ecto.UUID.generate()
-    verification_code = :crypto.hash(:md5, random_string) |> Base.encode16(case: :lower)
-    changeset |> change(email_verification_code: verification_code)
   end
 
   defp validate_full_name(changeset) do
