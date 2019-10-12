@@ -18,12 +18,11 @@
 
             <div class="p-8 max-w-4xl mx-auto">
                 <div class="p-4 md:p-8 lg:p-12 bg-white shadow rounded-lg mx-auto text-justify leading-loose">
-                <div class="text-xl md:text-2xl text-center md:text-left lg:text-left lg:text-4xl pb-4  font-semibold font-title">Daftar Komunitas</div>
+                <div class="text-xl md:text-2xl text-center md:text-left lg:text-left lg:text-4xl pb-4  font-semibold font-title"><%= gettext "Daftar Komunitas" %></div>
                 <div class="lg:flex md:flex items-start whitespace-normal shadow mb-6 rounded-lg text-white bg-purple-400 p-6">
                 <i class="la la-bullhorn text-6xl p-6"></i>
                 <p class="">
-                    During the beta stage, community registration will be manually selected and orboarded. Please submit the
-                    basic information of your community and we will in contact with you very shortly.
+                    <%= gettext "Selama versi beta, pengajuan donee akan memerlukan persetujuan manual dari admin Backer.id." %>
                 </p>
                 </div>
                     <%= form_for @changeset, "/register-donee", fn f -> %>
@@ -34,49 +33,45 @@
                         <% end %>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Community
-                                Name</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama Komunitas/Organisasi/Brand" %>
+                                </label>
                             <%= text_input f, :donee_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_name %></div>
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Community
-                                Website/Facebook link/Twitter link, etc</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Tautan website/facebook/youtube dll"%></label>
                             <%= text_input f, :donee_website, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_website %></div>                               
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Describe Your
-                                Community</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Deskripsikan kegiatan Komunitas/Organisasi mu" %></label>
                             <%= textarea f, :donee_description, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_description %></div>                                
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Name</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama Penanggung Jawab" %></label>
                             <%= text_input f, :applicant_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_name %></div>
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Email</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Email Penanggung Jawab" %></label>
                             <%= text_input f, :applicant_email, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_email %></div>
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">Your Mobile
-                                Phone</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nomor Telfon Penanggung Jawab" %>
+                                </label>
                             <%= text_input f, :applicant_phone, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_phone %></div>
                         </div>
 
                         <div class="py-2 w-full">
-                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 ">How you would like
-                                to be
-                                contacted?</label>
+                            <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Bagaimana sebaiknya kami mengontak anda?" %></label>
                             <div class="flex justify-between">
                                 <div class=""><%= checkbox f, :phone_preffered, class: "mr-2" %> Phone call</div>
                                 <div class=""><%= checkbox f, :whatsapp_preffered, class: "mr-2" %> Whatsapp</div>
@@ -86,7 +81,7 @@
 
                         <div class="pt-4">
                             <button
-                                class="w-full btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Submit</button>
+                                class="w-full btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg"><%= gettext "Kirim" %></button>
                         </div>
                     <% end %>
 

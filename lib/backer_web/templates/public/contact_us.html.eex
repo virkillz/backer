@@ -4,8 +4,8 @@
 <div class="pt-10 polkadot text-white">
 
     <div class="container px-3 py-20 mx-auto">
-        <div class="text-4xl  text-center font-semibold font-title">Hubungi Kami</div>
-        <div class="text-center">Home / <span class="underline">Hubungi Kami</span></div>
+        <div class="text-4xl  text-center font-semibold font-title"><%= gettext "Hubungi Kami" %></div>
+        <div class="text-center">Home / <span class="underline"><%= gettext "Hubungi Kami" %></span></div>
 
 
     </div>
@@ -49,7 +49,7 @@
                 <div class="text-xs text-red-500"><%= error_tag f, :title %></div>
             </div>                                                            
             <button type="submit"
-                class="btn-glow-indigo w-full mt-4 tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-purple-500 border-purple-500 hover:bg-purple-600 border-2 text-white rounded-lg">Submit</button>
+                class="btn-glow-indigo w-full mt-4 tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-purple-500 border-purple-500 hover:bg-purple-600 border-2 text-white rounded-lg"><%= gettext "Kirim" %></button>
         <% end %>
         </div>
     </div>

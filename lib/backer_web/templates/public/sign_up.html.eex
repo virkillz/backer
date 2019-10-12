@@ -8,13 +8,13 @@
                 <%= form_for @changeset, "/sign_up", [], fn f -> %>
 
                 <div class="py-2">
-                        <label for="name" class="text-gray-700 text-sm tracking-wide pl-1 ">Display Name</label>
+                        <label for="name" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama" %></label>
                         <%= text_input f, :display_name, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :display_name  %></div>
                 </div>
 
                 <div class="py-2">
-                        <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 ">Email</label>
+                        <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Email" %></label>
                         <%= email_input f, :email, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :email  %></div>
                 </div>
@@ -27,20 +27,20 @@
 
                 <div class="py-2">
                         <%= checkbox f, :is_agree_term %>
-                        <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">By clicking this, I
-                                accept all <a href="#" class="text-blue-500">terms and conditions</a></label>
+                        <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Dengan ini saya menyetujui semua
+                                 " %><a href="#" class="text-blue-500"><%= gettext "syarat dan ketentuan" %></a></label>
                                                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :is_agree_term  %></div>
                 </div>
 
                 <div class="pt-2">
                         <button type="submit"
-                                class="tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Sign
-                                up</button>
+                                class="tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg"><%= gettext "Daftar
+                                " %></button>
                 </div>
 
                 <% end %>
-                <div class="pt-4 text-center text-sm">Already have account? <a href="/login" class="text-blue-500">Login
-                                here</a></div>
+                <div class="pt-4 text-center text-sm"><%= gettext "Sudah memiliki akun? " %> <a href="/login" class="text-blue-500"><%= gettext "Masuk disini" %>
+                                </a></div>
         </div>
 
 </div>

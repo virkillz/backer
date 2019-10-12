@@ -34,8 +34,8 @@
                 </ul>
 
                 <div class="flex py-2">
-                    <a href="?locale=en" class=""> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
-                    <a href="?locale=id" class="pl-4"> <img src="/assets/images/lang-en.png" class="w-6 h-6" alt=""></a>
+                    <a href="?locale=id" class=""> <img src="/assets/images/lang-id.png" class="w-6 h-6" alt=""></a>
+                    <a href="?locale=en" class="pl-4"> <img src="/assets/images/lang-en.png" class="w-6 h-6" alt=""></a>
                 </div>                
 
                 <div class="pt-2">© 2019 PT Backer Kreasi Republik</div>
