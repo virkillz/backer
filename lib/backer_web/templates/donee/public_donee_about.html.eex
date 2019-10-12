@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= Backer.Helper.imgix @donee.donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: true } %>" alt="<%= @donee.display_name %>" class="mt-16 object-cover h-40 lg:h-64 w-full">
+	<img src="<%= Backer.Helper.imgix @donee.donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: "compress" } %>" alt="<%= @donee.display_name %>" class="mt-16 object-cover h-40 lg:h-64 w-full">
 
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
@@ -16,7 +16,7 @@
 	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class=" bg-white shadow pb-8 mb-4">
-					<iframe width="100%" height="350" src="https://www.youtube.com/embed/<%= @donee.donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="350" src="" data-src="https://www.youtube.com/embed/<%= @donee.donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<div class="p-8">
 					<%= raw @donee.donee.donee_overview %>
 					</div>					

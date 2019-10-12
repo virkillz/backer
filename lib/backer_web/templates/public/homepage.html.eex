@@ -72,7 +72,7 @@
 		<!-- Highlight Donee -->
 		<div class="lg:flex items-begin">
 			<div class="wow fadeInLeft flex p-6 lg:w-7/12">
-							<iframe class="rounded-lg" width="100%" heighxt="350" src="https://www.youtube.com/embed/<%= @highlight_donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe class="rounded-lg" width="100%" heighxt="350" src="" data-src="https://www.youtube.com/embed/<%= @highlight_donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 
 			<div class="wow fadeInRight pl-6 lg:w-5/12 mx-auto p-6">
@@ -131,7 +131,7 @@
 								<%= donee.backer_count %>
 								Backer
 							</div>
-							<img src="<%= donee.background %>" class="h-32 rounded-lg w-full object-cover">
+							<img src="<%= Backer.Helper.imgix donee.background, %{auto: "compress", w: 336, h: 128, fit: "crop", crop: "faces", auto: true } %>" class="h-32 rounded-lg w-full object-cover">
 							<div class="flex justify-center">
 								<img src="<%= donee.backer.avatar %>"
 									class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
