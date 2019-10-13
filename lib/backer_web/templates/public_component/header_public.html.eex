@@ -38,13 +38,13 @@
                 </li>
             </ul>
 
-
+            <a href="/login"> <button
+                    class="mr-2 bg-white border-orange-500 hover:text-white transition-ease transition-all hover:bg-orange-500 font-semibold text-orange-500 rounded-lg mt-4 lg:mt-0 py-2 px-8 font-title focus:outline-none">Login</button></a>
             <a href="/sign_up"> <button id="navAction"
-                    class="mr-2 hover:bg-orange-600 transition-ease transition-all bg-orange-500 text-white font-semibold rounded-lg mt-4 lg:mt-0 py-2 px-8 shadow font-title focus:outline-none">Sign
+                    class="hover:bg-orange-600 transition-ease transition-all bg-orange-500 text-white font-semibold rounded-lg mt-4 lg:mt-0 py-2 px-8 shadow font-title focus:outline-none">Sign
                     Up</button></a>
 
-            <a href="/login"> <button
-                    class="bg-white border-orange-500 hover:text-white transition-ease transition-all hover:bg-orange-500 font-semibold text-orange-500 rounded-lg mt-4 lg:mt-0 py-2 px-8 font-title focus:outline-none">Login</button></a>
+
 
         </div>
     </div>
