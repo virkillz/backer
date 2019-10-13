@@ -13,6 +13,7 @@ defmodule Backer.Finance do
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
   alias Backer.Content
+  alias Backer.Aggregate
 
   @doc """
   Returns the list of invoices.
@@ -27,8 +28,8 @@ defmodule Backer.Finance do
     Repo.all(Invoice)
   end
 
-  def list_invoices(%{"status" => "not_paid"}) do
-    query = from(i in Invoice, where: i.status != "paid")
+  def list_invoices(%{"status" => status}) do
+    query = from(i in Invoice, where: i.status == ^status)
     Repo.all(query)
   end
 
@@ -391,6 +392,9 @@ defmodule Backer.Finance do
         |> Ecto.Multi.update(:invoice, invoice_changeset)
         |> Ecto.Multi.run(:backing, fn _repo, _ ->
           create_batch_donation(invoice.id) |> IO.inspect()
+        end)
+        |> Ecto.Multi.run(:aggregate, fn _repo, %{invoice: invoice} ->
+          Aggregate.build_backing_aggregate(invoice.backer_id, invoice.donee_id)
         end)
         |> Repo.transaction()
     end

@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee.donee.background %>" alt="Belajar Bersama Bimo" class="mt-16 object-cover h-64 w-full">
+	<img src="<%= @donee.background %>" alt="<%= @donee.backer.display_name %>" class="mt-16 object-cover h-64 w-full">
 	
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
@@ -23,7 +23,7 @@
 
 					<p class="py-8">Donee ini belum memiliki backer. Kamu bisa jadi yang pertama!</p>
 
-						    <a href="/donee/<%= @donee.username %>/donate" class=""><button
+						    <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button
 	                        class="rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 					</div>
 					<% end %>   
@@ -52,7 +52,7 @@
 	        <div class="lg:w-1/4 px-4 pb-20">
 	
 	            <div class="pb-1 hidden lg:block">
-	                <a href="/donee/<%= @donee.username %>/donate" class=""><button
+	                <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button
 	                        class="rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 	            </div>
 	

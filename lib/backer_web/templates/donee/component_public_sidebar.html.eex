@@ -2,24 +2,24 @@
 	
 	                <div class="wow fadeIn pt-10 lg:bg-white rounded lg:shadow -mt-32 lg:m-0 py-6 px-4">
 						<div class="flex justify-center">
-						<a href="<%= Backer.Helper.imgix @donee.avatar, %{h: 300, w: 300, fit: "crop"} %>" class="progressive replace" >
-	                   		<img src="<%= Backer.Helper.imgix(@donee.avatar, %{h: 20, w: 20, fit: "crop"}) %>" class="preview object-center object-cover rounded-lg mx-auto w-20 h-20">
+						<a href="<%= Backer.Helper.imgix @donee.backer.avatar, %{h: 300, w: 300, fit: "crop"} %>" class="progressive replace" >
+	                   		<img src="<%= Backer.Helper.imgix(@donee.backer.avatar, %{h: 20, w: 20, fit: "crop"}) %>" class="preview object-center object-cover rounded-lg mx-auto w-20 h-20">
 	                	</a>
 						</div>
 
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee.donee.tagline %></div>
+	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.backer.display_name %></div>
+	                        <div class="text-center text-sm text-gray-600"><%= @donee.tagline %></div>
 	                    </div>
 	                
 	                    <div class="flex lg:pt-4 ">
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.donee.backer_count %></div>
+	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.backer_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Backer</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.donee.post_count %></div>
+	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.post_count %></div>
 	                            <div class="text-center text-gray-600 text-sm">Posts</div>
 	                        </div>
 	                    </div>
@@ -27,7 +27,7 @@
 	                
 	                </div>
 	                <div class="pb-1 pt-5 lg:hidden block">
-	                    <a href="/donee/<%= @donee.username %>/donate" class=""><button
+	                    <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button
 	                            class="rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 	                </div>
 	

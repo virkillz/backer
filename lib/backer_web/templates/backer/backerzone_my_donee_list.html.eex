@@ -87,7 +87,7 @@
 	
 	                    <div class="flex text-center justify-center p-4">
 	                        <div class="mx-2">
-							<a href="/backerzone/payment-history?donee_id=<%= donee.id %>">
+							<a href="/backerzone/my-donee/<%= donee.username %>">
 	                            <button
 	                                class="px-6 py-2 text-sm rounded-lg hover:bg-purple-600 hover:text-white transition-all transition-500 text-purple-600 border border-purple-600">Riwayat
 	                                Donasi</button>

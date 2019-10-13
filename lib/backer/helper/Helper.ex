@@ -5,7 +5,12 @@ defmodule Backer.Helper do
       |> String.replace("https://vkbacker.s3.amazonaws.com", "")
       |> Imgex.url(options)
     else
-      img_url
+      if String.starts_with?(img_url, "/") do
+        img_url
+        # Imgex.proxy_url("http://alpha.backer.id/assets/images/bg/tuli.jpeg", options)
+      else
+        img_url
+      end
     end
   end
 

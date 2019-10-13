@@ -2,6 +2,16 @@ defmodule Backer.Aggregate.BackingAggregate do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @doc """
+  Backing aggregate is an aggregate where we summarize a backing history.
+  one is created teh first time a backer backing a donee, and must be
+  updated every beginning of the month, or everytime backer update,
+  or extend donation.
+
+  Oh, it also need to be updated each time application is restarted manually
+  if the shutdown period pass 1st date of the month.
+  """
+
   schema "backingaggregates" do
     field(:accumulative_donation, :integer)
     field(:backer_since, :naive_datetime)
@@ -21,6 +31,8 @@ defmodule Backer.Aggregate.BackingAggregate do
     |> cast(attrs, [
       :last_amount,
       :last_tier,
+      :backer_id,
+      :donee_id,
       :backing_status,
       :accumulative_donation,
       :score,

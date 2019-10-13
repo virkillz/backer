@@ -13,7 +13,7 @@ defmodule BackerWeb.IncomingPaymentController do
   end
 
   def new(conn, _params) do
-    unpaid_invoices = Finance.list_invoices(%{"status" => "not_paid"})
+    unpaid_invoices = Finance.list_invoices(%{"status" => "unpaid"})
     statuses = Constant.incoming_payment_status()
     actions = Constant.incoming_payment_action()
     sources = Constant.incoming_payment_source()

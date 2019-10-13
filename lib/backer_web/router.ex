@@ -115,6 +115,7 @@ defmodule BackerWeb.Router do
     get("/backerzone/timeline/:id", BackerController, :show_post)
 
     get("/backerzone/my-donee-list", BackerController, :backerzone_my_donee_list)
+    get("/backerzone/my-donee/:donee_username", BackerController, :backerzone_my_donee_detail)
     get("/backerzone/payment-history", BackerController, :backerzone_payment_history)
     get("/backerzone/invoice/:id", BackerController, :backerzone_invoice_detail)
     get("/backerzone/profile-setting", BackerController, :backerzone_profile_setting)

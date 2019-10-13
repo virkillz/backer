@@ -373,23 +373,23 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
-          if donee.donee.status == "unpublished" do
+          if donee.status == "unpublished" do
             render_unpublished(conn, donee)
           else
             visitor_backing_status =
               if is_nil(current_backer) do
                 false
               else
-                Finance.is_backer_have_active_donations?(current_backer.id, donee.donee.id)
+                Finance.is_backer_have_active_donations?(current_backer.id, donee.id)
               end
 
             random_donee = Account.get_random_donee(4)
-            active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
+            active_backers = Finance.list_active_backers(:donee_id, donee.id)
             backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-            backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+            backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
             conn
             |> render("public_donee_about.html",
@@ -673,21 +673,21 @@ defmodule BackerWeb.DoneeController do
   end
 
   def backers(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
-    # backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+    donee = Account.get_donee(%{"username" => username})
+    # backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
     case donee do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
-        active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
+        active_backers = Finance.list_active_backers(:donee_id, donee.id)
         random_donee = Account.get_random_donee(4)
 
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
-          if donee.donee.status == "unpublished" do
+          if donee.status == "unpublished" do
             render_unpublished(conn, donee)
           else
             conn

@@ -6,58 +6,45 @@ defmodule BackerWeb.BackerController do
   alias Backer.Constant
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Content
-
-  def featured(conn, _params) do
-    backers = Account.list_backers()
-
-    page_data = %{
-      header_img: "/front/images/banner/bg-header2.png",
-      title: "Backers"
-    }
-
-    conn
-    |> render("public_backer_list.html",
-      backers: backers,
-      page_data: page_data,
-      layout: {BackerWeb.LayoutView, "layout_front_custom_header.html"}
-      # layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-    )
-  end
+  alias Backer.Aggregate
 
   def backerzone_default(conn, _params) do
     redirect(conn, to: "/backerzone/my-donee-list")
   end
 
-  def invoice_display(conn, %{"id" => id, "username" => username}) do
-    invoice = Finance.get_invoice!(id) |> IO.inspect()
-    invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
-    backer = Account.get_backer(%{"username" => username})
+  def backerzone_my_donee_detail(conn, %{"donee_username" => donee_username}) do
+    backer = conn.assigns.current_backer
+    donee = Account.get_donee(%{"username" => donee_username})
 
-    conn
-    |> render("component_invoice.html",
-      invoice: invoice,
-      invoice_details: invoice_details,
-      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-    )
-  end
-
-  def public_overviewx(conn, %{"username" => username}) do
-    backer = Account.get_backer(%{"username" => username})
-    donees = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-    recomendation = Account.random_donee(3)
-
-    case backer do
+    case donee do
       nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
+        redirect(conn, to: "/404")
 
       _ ->
-        conn
-        |> render("front_public_overview.html",
-          backer: backer,
-          donees: donees,
-          menu: :overview,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-        )
+        list_donation =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        backing_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
+
+        list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        list_donations =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+          |> IO.inspect()
+
+        if Enum.count(list_donation) == 0 do
+          redirect(conn, to: "/403")
+        else
+          conn
+          |> render("backerzone_my_donee_detail.html",
+            backer: backer,
+            donee: donee,
+            list_invoices: list_invoices,
+            list_donations: list_donations,
+            backing_aggregate: backing_aggregate,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
     end
   end
 

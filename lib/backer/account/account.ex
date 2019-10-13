@@ -457,10 +457,16 @@ defmodule Backer.Account do
     query =
       from(p in Backerz,
         where: p.username == ^username and p.is_donee == true,
-        preload: [donee: [:title, :tier]]
+        preload: [donee: [:backer, :title, :tier]]
       )
 
-    Repo.one(query)
+    result = Repo.one(query)
+
+    if is_nil(result) do
+      nil
+    else
+      result.donee
+    end
   end
 
   def get_donee(%{"category_id" => id}) do

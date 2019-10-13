@@ -52,7 +52,7 @@
 
   <div class="form-group">
     <%= label f, :invoice_id, class: "control-label" %>
-        <%= select f, :invoice_id, Enum.map(@unpaid_invoices, &{"#" <> Integer.to_string(&1.id) <> " - " <>Integer.to_string(&1.amount), &1.id}), class: "form-control" %>
+        <%= select f, :invoice_id, Enum.map(@unpaid_invoices, &{"#" <> Integer.to_string(&1.id) <> " - " <>Integer.to_string(&1.amount + &1.unique_amount), &1.id}), class: "form-control" %>
     <%= error_tag f, :invoice_id %>
   </div> 
 
