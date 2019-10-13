@@ -6,7 +6,7 @@
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 ">
-			<%= render "component_public_sidebar.html", donee: @donee, random_backer: @active_backers %>
+			<%= render "component_public_sidebar.html", donee: @donee, top_backer: @active_backers %>
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">

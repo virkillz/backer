@@ -12,39 +12,65 @@ defmodule BackerWeb.BackerController do
     redirect(conn, to: "/backerzone/my-donee-list")
   end
 
+  def backerzone_my_donee_detail_post(conn, %{"donee_username" => donee_username} = params) do
+    donee = Account.get_donee(%{"username" => donee_username})
+    backer = conn.assigns.current_backer
+
+    if is_nil(donee) do
+      redirect(conn, to: "/403")
+    else
+      backing_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
+
+      if is_nil(backing_aggregate) do
+        redirect(conn, to: "/403")
+      else
+        case Aggregate.update_backing_aggregate(backing_aggregate, params["backing_aggregate"]) do
+          {:ok, _} ->
+            conn
+            |> put_flash(:info, "Pengaturan telah berhasil di perbaharui.")
+            |> redirect(to: "/backerzone/my-donee/#{donee.backer.username}")
+
+          _ ->
+            conn
+            |> put_flash(:error, "Something is wrong.")
+            |> redirect(to: "/backerzone/my-donee/#{donee.backer.username}")
+        end
+      end
+    end
+
+    IO.inspect(params)
+    text(conn, "really")
+  end
+
   def backerzone_my_donee_detail(conn, %{"donee_username" => donee_username}) do
     backer = conn.assigns.current_backer
     donee = Account.get_donee(%{"username" => donee_username})
 
-    case donee do
-      nil ->
-        redirect(conn, to: "/404")
+    if is_nil(donee) do
+      redirect(conn, to: "/404")
+    else
+      list_donation = Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-      _ ->
-        list_donation =
-          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+      backing_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
 
-        backing_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
+      list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-        list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
+      list_donations = Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-        list_donations =
-          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
-          |> IO.inspect()
-
-        if Enum.count(list_donation) == 0 do
-          redirect(conn, to: "/403")
-        else
-          conn
-          |> render("backerzone_my_donee_detail.html",
-            backer: backer,
-            donee: donee,
-            list_invoices: list_invoices,
-            list_donations: list_donations,
-            backing_aggregate: backing_aggregate,
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
-        end
+      if Enum.count(list_donation) == 0 do
+        redirect(conn, to: "/403")
+      else
+        conn
+        |> render("backerzone_my_donee_detail.html",
+          backer: backer,
+          donee: donee,
+          list_invoices: list_invoices,
+          list_donations: list_donations,
+          backing_aggregate: backing_aggregate,
+          changeset: Aggregate.change_backing_aggregate(backing_aggregate),
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+      end
     end
   end
 
@@ -434,8 +460,9 @@ defmodule BackerWeb.BackerController do
 
       backer ->
         user_links = Account.get_user_links_of(backer.id)
-        list_my_active_donee = Finance.list_my_active_donee(:backer_id, backer.id)
-        count_all_donee = Finance.count_my_donee(:backer_id, backer.id) |> IO.inspect()
+        # list_my_active_donee = Finance.list_my_active_donee(:backer_id, backer.id)
+        list_my_active_donee = Aggregate.list_donee_of_a_backer(backer.id, 100) |> IO.inspect()
+        count_all_donee = Finance.count_my_donee(:backer_id, backer.id)
 
         conn
         |> render("public_backer_profile.html",

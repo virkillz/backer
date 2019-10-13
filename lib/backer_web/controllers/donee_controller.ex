@@ -8,6 +8,7 @@ defmodule BackerWeb.DoneeController do
   alias Backer.Content.Post
   alias Backer.Finance
   alias Backer.Finance.Invoice
+  alias Backer.Aggregate
 
   alias Backer.Masterdata
 
@@ -150,7 +151,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
           conn
@@ -171,7 +172,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
           conn
@@ -192,7 +193,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
           conn
@@ -213,7 +214,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
           conn
@@ -231,9 +232,9 @@ defmodule BackerWeb.DoneeController do
     donee = Account.get_donee(%{"username" => current_backer.username})
 
     random_donee = Account.get_random_donee(4)
-    active_backers = Finance.list_active_backers(:donee_id, donee.donee.id)
-    backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-    backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+    active_backers = Finance.list_active_backers(:donee_id, donee.id)
+    backing = Finance.list_all_backerfor(%{"backer_id" => donee.backer.id})
+    backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
     conn
     |> render("public_donee_about.html",
@@ -266,13 +267,13 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         # if not donee
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
-          if donee.donee.status == "unpublished" do
+          if donee.status == "unpublished" do
             render_unpublished(conn, donee)
           else
-            tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee.donee.id})
+            tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee.id})
 
             payment_methods = Backer.Constant.default_payment_methods()
             default_tier = List.first(tiers)
@@ -292,7 +293,7 @@ defmodule BackerWeb.DoneeController do
               )
             else
               # if backer logged in, see if he have active donation going
-              if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+              if not Finance.is_backer_have_active_donations?(backer.id, donee.id) do
                 conn
                 |> render("public_donee_donate.html",
                   donee: donee,
@@ -387,7 +388,7 @@ defmodule BackerWeb.DoneeController do
               end
 
             random_donee = Account.get_random_donee(4)
-            active_backers = Finance.list_active_backers(:donee_id, donee.id)
+            active_backers = Aggregate.list_top_backer(donee.id, 4)
             backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
             backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
@@ -418,11 +419,11 @@ defmodule BackerWeb.DoneeController do
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-        backers = Finance.list_active_backers(%{"donee_id" => donee.donee.id})
+        backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
-        posts = Content.timeline_donee(donee.donee.id) |> IO.inspect()
+        posts = Content.timeline_donee(donee.id) |> IO.inspect()
 
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: "/404")
         else
           conn
@@ -453,10 +454,10 @@ defmodule BackerWeb.DoneeController do
       if is_nil(donee) do
         redirect(conn, to: "/403")
       else
-        if not Finance.is_backer_have_active_donations?(backer.id, donee.donee.id) do
+        if not Finance.is_backer_have_active_donations?(backer.id, donee.id) do
           attrs =
             params["invoice"]
-            |> Map.put("donee_id", donee.donee.id)
+            |> Map.put("donee_id", donee.id)
             |> Map.put("backer_id", backer.id)
             |> Map.put("type", "backing")
 
@@ -674,6 +675,7 @@ defmodule BackerWeb.DoneeController do
 
   def backers(conn, %{"username" => username}) do
     donee = Account.get_donee(%{"username" => username})
+    current_backer = conn.assigns.current_backer
     # backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
     case donee do
@@ -681,7 +683,10 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        active_backers = Finance.list_active_backers(:donee_id, donee.id)
+        active_backers =
+          Aggregate.list_top_backer(donee.id, 100)
+          |> Enum.filter(fn x -> x.backing_status == "active" end)
+
         random_donee = Account.get_random_donee(4)
 
         if donee == nil do
@@ -690,11 +695,19 @@ defmodule BackerWeb.DoneeController do
           if donee.status == "unpublished" do
             render_unpublished(conn, donee)
           else
+            visitor_backing_status =
+              if is_nil(current_backer) do
+                false
+              else
+                Finance.is_backer_have_active_donations?(current_backer.id, donee.id)
+              end
+
             conn
             |> render("public_donee_backers.html",
               donee: donee,
               active_backers: active_backers,
               random_donee: random_donee,
+              is_visitor_already_backing?: visitor_backing_status,
               layout: {BackerWeb.LayoutView, "public.html"}
             )
           end
@@ -710,7 +723,7 @@ defmodule BackerWeb.DoneeController do
         redirect(conn, to: "/404")
 
       _ ->
-        if donee.donee == nil do
+        if donee == nil do
           redirect(conn, to: Router.page_path(conn, :page404))
         else
           conn
@@ -848,7 +861,7 @@ defmodule BackerWeb.DoneeController do
       else
         case Integer.parse(tier) do
           {number, _} ->
-            tiers = Masterdata.list_tiers(%{"donee_id" => donee.donee.id})
+            tiers = Masterdata.list_tiers(%{"donee_id" => donee.id})
 
             selected_tier =
               if number > Enum.count(tiers) do

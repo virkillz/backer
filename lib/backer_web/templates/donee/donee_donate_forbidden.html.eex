@@ -1,9 +1,9 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 <div class="bg-gray-200 mt-16 text-gray-700">
-    <img src="<%= @donee.donee.background %>" alt="<%= @donee.display_name %>"
+    <img src="<%= @donee.background %>" alt="<%= @donee.backer.display_name %>"
         class="mt-16 object-cover h-64 w-full border-b-8 border-white shadow-lg">
-    <img src="<%= @donee.avatar %>"
+    <img src="<%= @donee.backer.avatar %>"
         class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
 
 

@@ -1,9 +1,9 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 <div class="bg-gray-200 mt-16 text-gray-700">
-    <img src="<%= @donee.donee.background %>" alt="<%= @donee.display_name %>"
+    <img src="<%= @donee.background %>" alt="<%= @donee.backer.display_name %>"
         class="mt-16 object-cover h-64 w-full border-b-8 border-white shadow-lg">
-    <img src="<%= @donee.avatar %>"
+    <img src="<%= @donee.backer.avatar %>"
         class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
 
     <div class="py-4 max-w-3xl mx-auto px-2">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <%= form_for @changeset, "/donee/#{@donee.username}/donate", [], fn f -> %>
+            <%= form_for @changeset, "/donee/#{@donee.backer.username}/donate", [], fn f -> %>
             
             <input type="text" id="paymentMethodInput" name="invoice[method]" value="<%= @default_payment_method.id %>"
                 hidden>
@@ -139,13 +139,13 @@
                             <div class="w-1/3"><label class="font-semibold text-gray-800">Donasi Untuk</label></div>
                             
                             <div class="w-2/3 flex items-center">
-                            <img src="<%= @donee.avatar %>" alt="<%= @donee.display_name %>" class="h-12 w-12 object-cover object-center">
-                                <div>
+                            <img src="<%= @donee.backer.avatar %>" alt="<%= @donee.backer.display_name %>" class="h-12 w-12 object-cover object-center">
+                                <div class="pl-4">
                                     <div class="font-bold text-lg">
-                                    <%= @donee.display_name %>
+                                    <%= @donee.backer.display_name %>
                                     </div>
                                     <div class="text-sm">
-                                    @<%= @donee.username %>
+                                    @<%= @donee.backer.username %>
                                     </div>                                
                                 </div>
 

@@ -64,21 +64,37 @@
 
 				<%= for donee <- @active_donee do %>
 
-					<a href="/donee/<%= donee.username %>">
+
+				<%= if donee.is_donee_anonymous do %>
+
+				<div class="max-w-3xl mx-auto">
+					<div class="wow bounceInUp flex items-center justify-center text-center my-8 h-48 max-w-2xl mx-auto bg-white rounded-lg shadow" >
+					<div class="bg-gray-100 w-full py-8">
+								<i class="la la-lock text-3xl"></i>
+								<div class="text-md  font-semibold">Secret Donee</div>
+								<div class="text-xs  text-gray-600">[Info Donee ini disembunyikan oleh Backer]</div>
+					</div>
+					</div>
+				</div>
+
+				<% else %>
+					<a href="/donee/<%= donee.donee.backer.username %>">
 					<div class="wow bounceInUp my-8 max-w-2xl mx-auto flex items-center cursor-pointer hover:shadow-xl bg-white rounded-lg shadow">
-						<img src="<%= donee.background %>" class="shadow rounded-l-lg h-48 object-cover w-48 lg:w-64" alt="">
-						<img src="<%= donee.avatar %>" class="z-10 -ml-8 object-center object-cover shadow border-white border-2 shadow-lg rounded-lg w-16 h-16" alt="">
+						<img src="<%= donee.donee.background %>" class="shadow rounded-l-lg h-48 object-cover w-48 lg:w-64" alt="">
+						<img src="<%= donee.donee.backer.avatar %>" class="z-10 -ml-8 object-center object-cover shadow border-white border-2 shadow-lg rounded-lg w-16 h-16" alt="">
 						<div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
 							<div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
-							<%= donee.backer_count %> Backer</div>
+							<%= donee.donee.backer_count %> Backer</div>
 							<div class="">
-								<div class="text-md  font-semibold"><%= donee.display_name %></div>
-								<div class="text-xs  text-gray-600">@<%= donee.username %></div>
-								<div class="py-4 text-sm text-gray-600"><%= donee.tagline %></div>
+								<div class="text-md  font-semibold"><%= donee.donee.backer.display_name %></div>
+								<div class="text-xs  text-gray-600">@<%= donee.donee.backer.username %></div>
+								<div class="py-4 text-sm text-gray-600"><%= donee.donee.tagline %></div>
 							</div>
 						</div>
 					</div>
 					</a>
+				<% end %>
+
 				<% end %>
 
 

@@ -934,16 +934,14 @@ defmodule Backer.Finance do
         limit: 1
       )
 
-    result = Repo.one(query)
+    result = Repo.one(query) |> IO.inspect()
 
-    case result do
-      nil ->
-        false
-
-      something ->
-        {ok, last_donation} = NaiveDateTime.new(result.year, result.month, 1, 0, 0, 0)
-        {ok, current_time} = NaiveDateTime.new(now.year, now.month, 1, 0, 0, 0)
-        current_time > last_donation
+    if is_nil(result) do
+      false
+    else
+      {ok, last_donation} = NaiveDateTime.new(result.year, result.month, 1, 0, 0, 0)
+      {ok, current_time} = NaiveDateTime.new(now.year, now.month, 1, 0, 0, 0)
+      current_time >= last_donation
     end
   end
 

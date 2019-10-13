@@ -93,6 +93,30 @@ defmodule Backer.Aggregate do
     Repo.all(BackingAggregate)
   end
 
+  def list_top_backer(donee_id, limit) do
+    query =
+      from(b in BackingAggregate,
+        where: b.donee_id == ^donee_id,
+        order_by: b.accumulative_donation,
+        limit: ^limit,
+        preload: [:backer]
+      )
+
+    Repo.all(query)
+  end
+
+  def list_donee_of_a_backer(backer_id, limit) do
+    query =
+      from(b in BackingAggregate,
+        where: b.backer_id == ^backer_id,
+        order_by: b.accumulative_donation,
+        limit: ^limit,
+        preload: [donee: [:backer]]
+      )
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single backing_aggregate.
 
