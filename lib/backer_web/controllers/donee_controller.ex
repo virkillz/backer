@@ -451,10 +451,52 @@ defmodule BackerWeb.DoneeController do
       donee = Account.get_donee(%{"username" => params["username"]})
       backer = conn.assigns.current_backer
 
-      if is_nil(donee) do
-        redirect(conn, to: "/403")
-      else
-        if donee.backer.id == backer.id do
+      if not is_nil(donee) do
+        if donee.backer.id != backer.id do
+          if not Finance.is_backer_have_active_donations?(backer.id, donee.id) do
+            if not Finance.is_backer_have_unpaid_invoice?(backer.id, donee.id) do
+              attrs =
+                params["invoice"]
+                |> Map.put("donee_id", donee.id)
+                |> Map.put("backer_id", backer.id)
+                |> Map.put("type", "backing")
+
+              case Finance.create_donation_invoice(attrs) do
+                {:ok, %{invoice: invoice}} ->
+                  conn
+                  |> put_flash(:info, "Please make Payment.")
+                  |> redirect(to: "/backerzone/payment-history")
+
+                {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
+                  conn
+                  |> render("public_donee_donate.html",
+                    donee: donee,
+                    changeset: changeset,
+                    layout: {BackerWeb.LayoutView, "public.html"}
+                  )
+
+                other ->
+                  text(
+                    conn,
+                    "Unexpected error happened when created Invoice. Sorry for the inconvenience."
+                  )
+              end
+            else
+              render(conn, "generic.html",
+                data: %{
+                  title: "Maaf!",
+                  message:
+                    "Anda memiliki invoice yang belum terbayarkan kepada Donee ini. Tunggu expired setelah 24 jam sebelum membuat Invoice baru.",
+                  btn_text: "Kembali ke halaman utama.",
+                  btn_path: "/"
+                },
+                layout: {BackerWeb.LayoutView, "public.html"}
+              )
+            end
+          else
+            redirect(conn, to: "/403")
+          end
+        else
           render(conn, "generic.html",
             data: %{
               title: "Maaf!",
@@ -464,38 +506,10 @@ defmodule BackerWeb.DoneeController do
             },
             layout: {BackerWeb.LayoutView, "public.html"}
           )
-        else
-          if not Finance.is_backer_have_active_donations?(backer.id, donee.id) do
-            attrs =
-              params["invoice"]
-              |> Map.put("donee_id", donee.id)
-              |> Map.put("backer_id", backer.id)
-              |> Map.put("type", "backing")
-
-            case Finance.create_donation_invoice(attrs) do
-              {:ok, %{invoice: invoice}} ->
-                conn
-                |> put_flash(:info, "Please make Payment.")
-                |> redirect(to: "/backerzone/payment-history")
-
-              {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
-                conn
-                |> render("public_donee_donate.html",
-                  donee: donee,
-                  changeset: changeset,
-                  layout: {BackerWeb.LayoutView, "public.html"}
-                )
-
-              other ->
-                text(
-                  conn,
-                  "Unexpected error happened when created Invoice. Sorry for the inconvenience."
-                )
-            end
-          else
-            redirect(conn, to: "/403")
-          end
         end
+
+        redirect(conn, to: "/403")
+      else
       end
     else
       conn

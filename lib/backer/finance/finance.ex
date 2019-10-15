@@ -934,7 +934,7 @@ defmodule Backer.Finance do
         limit: 1
       )
 
-    result = Repo.one(query) |> IO.inspect()
+    result = Repo.one(query)
 
     if is_nil(result) do
       false
@@ -943,6 +943,40 @@ defmodule Backer.Finance do
       {ok, current_time} = NaiveDateTime.new(now.year, now.month, 1, 0, 0, 0)
       current_time >= last_donation
     end
+  end
+
+  def is_backer_have_unpaid_invoice?(backer_id, donee_id) do
+    query =
+      from(i in Invoice,
+        where: i.status == "unpaid",
+        where: i.donee_id == ^donee_id,
+        where: i.backer_id == ^backer_id
+      )
+
+    Enum.count(Repo.all(query)) > 0
+  end
+
+  def expiry_unpaid_invoice() do
+    IO.puts("Scan expired invoices...")
+    now = NaiveDateTime.utc_now()
+
+    result =
+      list_invoice_with_(:status, :unpaid)
+      |> Enum.filter(fn x -> NaiveDateTime.diff(now, x.inserted_at) > 86400 end)
+      |> Enum.map(fn x -> update_invoice(x, %{"status" => "expired"}) end)
+      |> Enum.count()
+
+    IO.puts("#{result} invoice/s changed to expired status")
+    {:ok, result}
+  end
+
+  def list_invoice_with_(:status, :unpaid) do
+    query =
+      from(i in Invoice,
+        where: i.status == "unpaid"
+      )
+
+    Repo.all(query)
   end
 
   @doc """
