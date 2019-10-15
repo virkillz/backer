@@ -50,7 +50,7 @@ defmodule Backer.Finance do
       from(i in Invoice,
         where: i.backer_id == ^id,
         order_by: [desc: :id],
-        preload: [:invoice_detail]
+        preload: [invoice_detail: [], donee: [:backer]]
       )
 
     Repo.all(query)

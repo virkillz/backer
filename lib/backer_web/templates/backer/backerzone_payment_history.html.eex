@@ -55,13 +55,17 @@
 					<a href="/backerzone/invoice/<%= invoice.id %>">
 					<div class="bg-white mb-8 p-6 relative shadow-md rounded-lg text-gray-600 hover:shadow-lg">
 						<div class="">
-
+								<div class="<%= if invoice.status == "paid", do: "bg-green-500", else: "bg-red-400" %> right-0 mt-4 rounded-l-lg absolute text-center font-bold text-xs text-white px-4 py-2 uppercase tracking-wider">
+						<%= invoice.status %>
+					</div>
 							<div class="px-2 flex items-center">
 								<div class="flex w-2/5 items-center mr-4">
-									<div class="font-bold text-4xl  mr-4"><%= invoice.inserted_at.day %></div>
 									<div>
-										<div><%= stringify(invoice.inserted_at.month) %> <%= invoice.inserted_at.year %></div>
-										<div class="text-xs"><%= "#{invoice.inserted_at.hour}:#{invoice.inserted_at.minute}:#{invoice.inserted_at.second}" %></div>
+									<img src="<%= invoice.donee.backer.avatar %>" class="rounded object-center object-cover border-white mr-2 h-12 w-12">
+									</div>
+									<div class="pl-2 flex-grow">
+										<div class="text-xs"><%= invoice.donee.backer.display_name %> </div>
+										<div class="text-xs">@<%= invoice.donee.backer.username %></div>
 									</div>
 								</div>
 								<div class="w-1/5 mr-4">
@@ -80,10 +84,14 @@
 
 							<div class="px-2 mt-4 flex items-center">
 
-								<div class="w-2/5 mr-4 text-center">
-									<div
-										class="<%= if invoice.status == "paid", do: "bg-green-500", else: "bg-red-400" %> px-4 py-1 rounded-lg text-white text-xs uppercase tracking-wide  font-semibold text-center inline">
-										<%= invoice.status %> </div>
+								<div class="w-2/5 mr-4">
+								<div class="flex items-center mr-4">
+									<div class="font-bold text-4xl h-12 w-12 text-center"><%= invoice.inserted_at.day %></div>
+									<div class="pl-2 flex-grow">
+										<div class="text-sm"><%= stringify(invoice.inserted_at.month) %> <%= invoice.inserted_at.year %></div>
+										<div class="text-xs"><%= "#{invoice.inserted_at.hour}:#{invoice.inserted_at.minute}:#{invoice.inserted_at.second}" %></div>
+									</div>
+								</div>
 								</div>
 								<div class="w-1/5 mr-4">
 									<div class="text-sm">Total</div>
