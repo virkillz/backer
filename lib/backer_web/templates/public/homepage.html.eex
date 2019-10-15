@@ -72,7 +72,7 @@
 		<!-- Highlight Donee -->
 		<div class="lg:flex items-begin">
 			<div class="wow fadeInLeft flex p-6 lg:w-7/12">
-							<iframe class="rounded-lg" width="100%" heighxt="350" src="" data-src="https://www.youtube.com/embed/<%= @highlight_donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe class="rounded-lg" width="100%" height="400" src="" data-src="https://www.youtube.com/embed/<%= @highlight_donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 
 			<div class="wow fadeInRight pl-6 lg:w-5/12 mx-auto p-6">
