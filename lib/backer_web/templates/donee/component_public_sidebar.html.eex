@@ -26,16 +26,38 @@
 	                
 	                
 	                </div>
+
+				<div class="lg:hidden block">
+				<%= if @is_visitor_already_backing? do %>
+				<div class="p-4 bg-white shadow rounded-lg">Terima kasih sudah mendukung kami, <span class="font-semibold"><%= @current_backer.display_name %></span>!</div>
+	
+				<% else %>
+					<%= if @current_backer != nil do %>
+
+					<div class="p-2">Berkenan membantu kami, <span class="font-bold"><%= @current_backer.display_name %></span>?</div>
+
+					<% end %>
+	            <div class="pb-1">
+	                <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button
+	                        class="wow rubberBand rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
+	            </div>
+				<% end %>
+
+				</div>
+
+					<!--
 	                <div class="pb-1 pt-5 lg:hidden block">
 	                    <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button
 	                            class="rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">Backing</button></a>
 	                </div>
+
+					-->
 	
 
 	                <div class="pb-10">
 	                    <div class=" text-gray-700 font-bold py-1 px-2 mt-8">Top Backer</div>
 	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= if Enum.count(@top_backer) == 0 do %> <p>Belum memiliki backer</p> <% end %>
+							<%= if Enum.count(@top_backer) == 0 do %> <p><%= @donee.backer.display_name %> belum memiliki backer</p> <% end %>
 							
 							<%= for bckr <- @top_backer do %>
 
