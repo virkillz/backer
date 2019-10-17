@@ -95,19 +95,19 @@ Target:
 ### Search Feature
 - [x] Dedicated search page
 - [x] Make search functioning
-- [ ] Make search filter functioning
+- [x] Make search filter functioning
 
 
-- [ ] If backer already backing a donee. they cannot backing. they can only upgrade or extend.
+- [x] If backer already backing a donee. they cannot backing. they can only upgrade or extend.
 
 ### Backing Aggregate
 - [x] Create backing aggregate schema. [backer_id, donee_id, last_amount, last_tier, status, score, backer_start]
-- [ ] continue Backer.Aggregate.build_aggregate
+- [x] continue Backer.Aggregate.build_aggregate
 
 This is the first function called when somebody donate to a donee.
 
-- [ ] update_aggregate
-- [ ] Create script to update backing aggregate score.
+- [x] update_aggregate
+- [x] Create script to update backing aggregate score.
 - [ ] Create schema for scoring history. score come from contribution point accumulation.
 - [ ] Create function to update backing status single.
 - [ ] Create function to update backing status batch.
@@ -122,10 +122,10 @@ This is the first function called when somebody donate to a donee.
 
 
 ### Connect to email service.
-- [ ] what is the best email service?
+- [x] what is the best email service?
 
 ### Create landing page for backer.
-- [ ] Design landing page
+- [x] Design landing page
 - [ ] Create email form to inform when it launched.
 
 ### Optimize web performance
@@ -138,18 +138,10 @@ This is the first function called when somebody donate to a donee.
 - [ ] Update seed for backing pitch
 - [ ] Custom style oerview with UL/LI/ title, etc
 
-### Admin Portal
-- [ ] Change to tailwind Proof of COncept
-- [ ] Dashboard must works
-- [ ] Admin portal must be able to find backer instead of drop down select
-
 ### Preview mode
-- [ ] Preview mode: /preview
-- [ ] Publish on and off
-- [ ] If publish is off will show special page.
-
-
-
+- [x] Preview mode: /preview
+- [x] Publish on and off
+- [x] If publish is off will show special page.
 
 
 ### November target
@@ -158,9 +150,16 @@ Target:
 - [ ] Donee can create post.
 - [ ] Backer can see correct post in timeline.
 - [ ] Like and comment works
-- [ ] Connect to email service
+- [x] Connect to email service
 - [ ] Connect to Facebook login and google.
 - [ ] all multilang translation are finished
+
+### Admin Portal
+- [ ] Change to tailwind Proof of Concept
+- [ ] Dashboard must works
+- [ ] Admin portal must be able to find backer instead of drop down select
+
+
 
 ### December
 
@@ -168,7 +167,7 @@ Target:
 - [ ] Notification works
 - [ ] Suggestion box works
 - [ ] Go live
-- [ ] Go crazy with front end transition and animation
+- [x] Go crazy with front end transition and animation
 
 
 Milestone 1: finding stable feature
