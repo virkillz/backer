@@ -14,6 +14,7 @@ defmodule Backer.Finance do
   alias Backer.Masterdata.Title
   alias Backer.Content
   alias Backer.Aggregate
+  alias Backer.Finance.Settlement
 
   @doc """
   Returns the list of invoices.
@@ -1273,5 +1274,195 @@ defmodule Backer.Finance do
   """
   def change_withdrawal(%Withdrawal{} = withdrawal) do
     Withdrawal.changeset(withdrawal, %{})
+  end
+
+  @doc """
+  Returns the list of settlements.
+
+  ## Examples
+
+      iex> list_settlements()
+      [%Settlement{}, ...]
+
+  """
+  def list_settlements do
+    Repo.all(Settlement)
+  end
+
+  @doc """
+  Gets a single settlement.
+
+  Raises `Ecto.NoResultsError` if the Settlement does not exist.
+
+  ## Examples
+
+      iex> get_settlement!(123)
+      %Settlement{}
+
+      iex> get_settlement!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_settlement!(id), do: Repo.get!(Settlement, id)
+
+  @doc """
+  Creates a settlement.
+
+  ## Examples
+
+      iex> create_settlement(%{field: value})
+      {:ok, %Settlement{}}
+
+      iex> create_settlement(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_settlement(attrs \\ %{}) do
+    %Settlement{}
+    |> Settlement.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a settlement.
+
+  ## Examples
+
+      iex> update_settlement(settlement, %{field: new_value})
+      {:ok, %Settlement{}}
+
+      iex> update_settlement(settlement, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_settlement(%Settlement{} = settlement, attrs) do
+    settlement
+    |> Settlement.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Settlement.
+
+  ## Examples
+
+      iex> delete_settlement(settlement)
+      {:ok, %Settlement{}}
+
+      iex> delete_settlement(settlement)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_settlement(%Settlement{} = settlement) do
+    Repo.delete(settlement)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking settlement changes.
+
+  ## Examples
+
+      iex> change_settlement(settlement)
+      %Ecto.Changeset{source: %Settlement{}}
+
+  """
+  def change_settlement(%Settlement{} = settlement) do
+    Settlement.changeset(settlement, %{})
+  end
+
+  alias Backer.Finance.SettlementDetail
+
+  @doc """
+  Returns the list of settlement_details.
+
+  ## Examples
+
+      iex> list_settlement_details()
+      [%SettlementDetail{}, ...]
+
+  """
+  def list_settlement_details do
+    Repo.all(SettlementDetail)
+  end
+
+  @doc """
+  Gets a single settlement_detail.
+
+  Raises `Ecto.NoResultsError` if the Settlement detail does not exist.
+
+  ## Examples
+
+      iex> get_settlement_detail!(123)
+      %SettlementDetail{}
+
+      iex> get_settlement_detail!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_settlement_detail!(id), do: Repo.get!(SettlementDetail, id)
+
+  @doc """
+  Creates a settlement_detail.
+
+  ## Examples
+
+      iex> create_settlement_detail(%{field: value})
+      {:ok, %SettlementDetail{}}
+
+      iex> create_settlement_detail(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_settlement_detail(attrs \\ %{}) do
+    %SettlementDetail{}
+    |> SettlementDetail.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a settlement_detail.
+
+  ## Examples
+
+      iex> update_settlement_detail(settlement_detail, %{field: new_value})
+      {:ok, %SettlementDetail{}}
+
+      iex> update_settlement_detail(settlement_detail, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_settlement_detail(%SettlementDetail{} = settlement_detail, attrs) do
+    settlement_detail
+    |> SettlementDetail.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a SettlementDetail.
+
+  ## Examples
+
+      iex> delete_settlement_detail(settlement_detail)
+      {:ok, %SettlementDetail{}}
+
+      iex> delete_settlement_detail(settlement_detail)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_settlement_detail(%SettlementDetail{} = settlement_detail) do
+    Repo.delete(settlement_detail)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking settlement_detail changes.
+
+  ## Examples
+
+      iex> change_settlement_detail(settlement_detail)
+      %Ecto.Changeset{source: %SettlementDetail{}}
+
+  """
+  def change_settlement_detail(%SettlementDetail{} = settlement_detail) do
+    SettlementDetail.changeset(settlement_detail, %{})
   end
 end

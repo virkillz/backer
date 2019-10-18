@@ -160,7 +160,9 @@
           <li class=" nav-item"><a href="#"><i class="ft-percent"></i><span class="menu-title" data-i18n="">Finance</span></a>
             <ul class="menu-content">              
           <li class="nav-item <%= activate(@conn.request_path, "/admin/invoices") %>"><a href="/admin/invoices" up-target=".main" up-transition="move-right">Invoices</a>
-          </li>  
+          </li> 
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/settlements") %>"><a href="/admin/settlements" up-target=".main" up-transition="move-right">Settlements</a>
+          </li>   
           <li class="nav-item <%= activate(@conn.request_path, "/admin/incoming_payments") %>"><a href="/admin/incoming_payments" up-target=".main" up-transition="move-right">Incoming Payments
             <%= if @conn.assigns.incoming_payment_pending_count > 0 do %>
             <span class="badge badge-pill badge-danger"><%= @conn.assigns.incoming_payment_pending_count %></span>
@@ -184,7 +186,9 @@
           <li class="nav-item <%= activate(@conn.request_path, "/admin/backingaggregates") %>"><a href="/admin/backingaggreggates" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Backing Aggregates</span></a>
           </li>  
           <li class="nav-item <%= activate(@conn.request_path, "/admin/metadatas") %>"><a href="/admin/metadatas" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">User Metadata</span></a>
-          </li>                        
+          </li>     
+          <li class="nav-item <%= activate(@conn.request_path, "/admin/payment_accounts") %>"><a href="/admin/payment_accounts" up-target=".main" up-transition="move-right"><i class="ft-star"></i><span class="menu-title" data-i18n="">Payment Accounts</span></a>
+          </li>                     
           <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Content</span></a>
             <ul class="menu-content">
               <li class="nav-item <%= activate(@conn.request_path, "/admin/notifications") %>"><a href="/admin/notifications" up-target=".main" up-transition="move-right">Notifications</a>
@@ -203,7 +207,9 @@
               <li class="<%= activate(@conn.request_path, "/admin/titles") %>"><a class="menu-item" href="/admin/titles" up-target=".main" up-transition="move-right">Title</a>
               </li>
               <li class="<%= activate(@conn.request_path, "/admin/tiers") %>"><a class="menu-item" href="/admin/tiers" up-target=".main" up-transition="move-right">Tiers</a>
-              </li>              
+              </li> 
+              <li class="<%= activate(@conn.request_path, "/admin/banks") %>"><a class="menu-item" href="/admin/banks" up-target=".main" up-transition="move-right">Banks</a>
+              </li>               
             </ul>
           </li>  
 

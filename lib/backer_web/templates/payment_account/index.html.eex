@@ -1,0 +1,118 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-4 col-12 mb-2">
+    <h3 class="content-header-title">Payment account List</h3>
+  </div>
+  <div class="content-header-right col-md-8 col-12">
+    <div class="breadcrumbs-top float-md-right">
+      <div class="breadcrumb-wrapper mr-1">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/admin/payment_accounts">Payment accounts List</a>
+          </li>
+          <li class="breadcrumb-item active">Index
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Revenue, Hit Rate & Deals -->
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Payment account List</h4>
+          <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li>
+              <a href="<%= Router.payment_account_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Payment account</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-content collapse show">
+          <div class="card-body p-0 pb-0">
+            <br>
+
+            
+            <div class="container">
+
+              <table class="table">
+                <thead class="bg-primary white">
+                  <tr>
+                     <th>Account holder name</th>
+                     <th>Account number</th>
+                     <th>Branch</th>
+                     <th>Type</th>
+                     <th>Email ref</th>
+                     <th>Phone ref</th>
+                     <th>Other ref</th>
+                     <th>Ownership evidence</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for payment_account <- @payment_accounts do %>
+                    <tr>
+                       <td>
+                        <%= payment_account.account_holder_name %>
+                      </td>
+                       <td>
+                        <%= payment_account.account_number %>
+                      </td>
+                       <td>
+                        <%= payment_account.branch %>
+                      </td>
+                       <td>
+                        <%= payment_account.type %>
+                      </td>
+                       <td>
+                        <%= payment_account.email_ref %>
+                      </td>
+                       <td>
+                        <%= payment_account.phone_ref %>
+                      </td>
+                       <td>
+                        <%= payment_account.other_ref %>
+                      </td>
+                       <td>
+                        <%= payment_account.ownership_evidence %>
+                      </td>
+                      
+                      <td class="text-right">
+                        <span>
+                          <%= link "Show" , to: Router.payment_account_path(@conn, :show,
+                            payment_account), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Edit" , to: Router.payment_account_path(@conn, :edit,
+                            payment_account), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Delete" , to: Router.payment_account_path(@conn, :delete,
+                            payment_account), method: :delete, data: [confirm: "Are you sure?" ],
+                            class: "btn btn-danger btn-xs" %>
+                        </span>
+                      </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+
+            </div>
+            <br>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

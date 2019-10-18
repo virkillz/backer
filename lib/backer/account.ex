@@ -13,6 +13,7 @@ defmodule Backer.Account do
   alias Backer.Account.Donee
   alias Backer.Settings
   alias Backer.Account.Metadata
+  alias Backer.Account.PaymentAccount
 
   @doc """
   Returns the list of user.
@@ -271,6 +272,100 @@ defmodule Backer.Account do
 
     Repo.one(query)
     |> check_password(plain_text_password)
+  end
+
+  @doc """
+  Returns the list of payment_accounts.
+
+  ## Examples
+
+      iex> list_payment_accounts()
+      [%PaymentAccount{}, ...]
+
+  """
+  def list_payment_accounts do
+    Repo.all(PaymentAccount)
+  end
+
+  @doc """
+  Gets a single payment_account.
+
+  Raises `Ecto.NoResultsError` if the Payment account does not exist.
+
+  ## Examples
+
+      iex> get_payment_account!(123)
+      %PaymentAccount{}
+
+      iex> get_payment_account!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_payment_account!(id), do: Repo.get!(PaymentAccount, id)
+
+  @doc """
+  Creates a payment_account.
+
+  ## Examples
+
+      iex> create_payment_account(%{field: value})
+      {:ok, %PaymentAccount{}}
+
+      iex> create_payment_account(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_payment_account(attrs \\ %{}) do
+    %PaymentAccount{}
+    |> PaymentAccount.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a payment_account.
+
+  ## Examples
+
+      iex> update_payment_account(payment_account, %{field: new_value})
+      {:ok, %PaymentAccount{}}
+
+      iex> update_payment_account(payment_account, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_payment_account(%PaymentAccount{} = payment_account, attrs) do
+    payment_account
+    |> PaymentAccount.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a PaymentAccount.
+
+  ## Examples
+
+      iex> delete_payment_account(payment_account)
+      {:ok, %PaymentAccount{}}
+
+      iex> delete_payment_account(payment_account)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_payment_account(%PaymentAccount{} = payment_account) do
+    Repo.delete(payment_account)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking payment_account changes.
+
+  ## Examples
+
+      iex> change_payment_account(payment_account)
+      %Ecto.Changeset{source: %PaymentAccount{}}
+
+  """
+  def change_payment_account(%PaymentAccount{} = payment_account) do
+    PaymentAccount.changeset(payment_account, %{})
   end
 
   def get_current_user(%Plug.Conn{private: %{:plug_session => %{"current_user_id" => id}}}) do

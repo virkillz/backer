@@ -58,11 +58,16 @@ defmodule BackerWeb.Router do
     resources "/backingaggregates", BackingAggregateController
     resources "/contacts", ContactController
     resources "/metadatas", MetadataController
+
+    # masterdata
     resources("/categories", CategoryController)
     resources("/titles", TitleController)
+    resources "/banks", BankController
+
     resources("/general_settings", SettingController)
     resources("/backers", BackerController)
     resources("/donees", DoneeController)
+    resources "/payment_accounts", PaymentAccountController
     resources "/submissions", SubmissionController
     resources "/notifications", NotificationController
     resources("/badges", BadgeController)
@@ -82,12 +87,15 @@ defmodule BackerWeb.Router do
     get("/pcomments/new/:post_id", PostCommentController, :newcomment)
     resources("/pcomment_likes", PCommentLikeController)
 
+    # finance
     get("/invoices/newbacking", InvoiceController, :newbacking)
     get("/invoices/newdeposit", InvoiceController, :newdeposit)
     post("/invoices/create_deposit", InvoiceController, :create_deposit)
     post("/invoices/create_backing", InvoiceController, :create_backing)
     resources("/invoices", InvoiceController, except: [:new, :create])
     resources("/incoming_payments", IncomingPaymentController)
+    resources "/settlements", SettlementController
+    resources "/settlement_details", SettlementDetailController
     resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
     resources("/donations", DonationController)
     resources("/mutations", MutationController, only: [:index, :show, :delete])

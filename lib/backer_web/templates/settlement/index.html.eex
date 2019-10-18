@@ -1,0 +1,130 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-4 col-12 mb-2">
+    <h3 class="content-header-title">Settlement List</h3>
+  </div>
+  <div class="content-header-right col-md-8 col-12">
+    <div class="breadcrumbs-top float-md-right">
+      <div class="breadcrumb-wrapper mr-1">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/admin/settlements">Settlements List</a>
+          </li>
+          <li class="breadcrumb-item active">Index
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Revenue, Hit Rate & Deals -->
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Settlement List</h4>
+          <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li>
+              <a href="<%= Router.settlement_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Settlement</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-content collapse show">
+          <div class="card-body p-0 pb-0">
+            <br>
+
+            
+            <div class="container">
+
+              <table class="table">
+                <thead class="bg-primary white">
+                  <tr>
+                     <th>Method</th>
+                     <th>Evidence</th>
+                     <th>Tx</th>
+                     <th>Transaction date</th>
+                     <th>Status</th>
+                     <th>Amount</th>
+                     <th>Tax</th>
+                     <th>Platform fee</th>
+                     <th>Platform fee percentage</th>
+                     <th>Transaction fee</th>
+                     <th>Net amount</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for settlement <- @settlements do %>
+                    <tr>
+                       <td>
+                        <%= settlement.method %>
+                      </td>
+                       <td>
+                        <%= settlement.evidence %>
+                      </td>
+                       <td>
+                        <%= settlement.tx_id %>
+                      </td>
+                       <td>
+                        <%= settlement.transaction_date %>
+                      </td>
+                       <td>
+                        <%= settlement.status %>
+                      </td>
+                       <td>
+                        <%= settlement.amount %>
+                      </td>
+                       <td>
+                        <%= settlement.tax %>
+                      </td>
+                       <td>
+                        <%= settlement.platform_fee %>
+                      </td>
+                       <td>
+                        <%= settlement.platform_fee_percentage %>
+                      </td>
+                       <td>
+                        <%= settlement.transaction_fee %>
+                      </td>
+                       <td>
+                        <%= settlement.net_amount %>
+                      </td>
+                      
+                      <td class="text-right">
+                        <span>
+                          <%= link "Show" , to: Router.settlement_path(@conn, :show,
+                            settlement), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Edit" , to: Router.settlement_path(@conn, :edit,
+                            settlement), class: "btn btn-default btn-xs" %>
+                        </span>
+                        <span>
+                          <%= link "Delete" , to: Router.settlement_path(@conn, :delete,
+                            settlement), method: :delete, data: [confirm: "Are you sure?" ],
+                            class: "btn btn-danger btn-xs" %>
+                        </span>
+                      </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+
+            </div>
+            <br>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
