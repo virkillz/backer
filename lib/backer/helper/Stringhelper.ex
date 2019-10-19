@@ -100,6 +100,10 @@ defmodule Stringhelper do
     |> String.reverse()
   end
 
+  def datetime_to_human(datetime) do
+    "#{datetime.day} #{stringify(datetime.month)} #{datetime.year}"
+  end
+
   def format_ago(datetime) do
     {:ok, relative_str} =
       DateTime.from_naive!(datetime, "Etc/UTC") |> Timex.format("{relative}", :relative)

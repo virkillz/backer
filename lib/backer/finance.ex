@@ -894,7 +894,12 @@ defmodule Backer.Finance do
   end
 
   def list_donations(params) do
-    Repo.paginate(Donation, params)
+    query =
+      from(d in Donation,
+        preload: [backer: [], donee: [:backer]]
+      )
+
+    Repo.paginate(query, params)
   end
 
   @doc """
@@ -1369,6 +1374,12 @@ defmodule Backer.Finance do
           |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
           |> get_oldest_date
         )
+        |> Map.put(
+          :invoice_count,
+          invoices
+          |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
+          |> Enum.count()
+        )
       end)
   end
 
@@ -1395,7 +1406,15 @@ defmodule Backer.Finance do
       ** (Ecto.NoResultsError)
 
   """
-  def get_settlement!(id), do: Repo.get!(Settlement, id)
+  def get_settlement!(id) do
+    query =
+      from(s in Settlement,
+        where: s.id == ^id,
+        preload: [donee: [:backer]]
+      )
+
+    Repo.one!(query)
+  end
 
   @doc """
   Creates a settlement.
@@ -1427,10 +1446,66 @@ defmodule Backer.Finance do
       {:error, %Ecto.Changeset{}}
 
   """
-  def initiate_settlement(attrs \\ %{}) do
-    %Settlement{}
-    |> Settlement.changeset_new(attrs)
-    |> Repo.insert()
+  def initiate_settlement(%{"donee_id" => donee_id} = attrs) do
+    unsettled_invoices = get_unsettled_donee(donee_id)
+    amount = Enum.reduce(unsettled_invoices, 0, fn x, acc -> acc + x.amount end)
+
+    {fee, net_amount} = Backer.Constant.calculate_platform_fee(amount, donee_id)
+
+    new_attrs =
+      attrs
+      |> Map.put("amount", amount)
+      |> Map.put("platform_fee", fee)
+      |> Map.put("net_amount", net_amount)
+      |> Map.put("platform_fee_percentage", trunc(Backer.Constant.default_platform_fee() * 100))
+
+    # 1.get(unpaid(invoice))
+    # 2.sum(the(total(amount)))
+    # 3.create(settlement)
+    # 4.write(settlement(detail))
+    # 5. Edit invoice status to become "under process"
+    settlement_changeset =
+      %Settlement{}
+      |> Settlement.changeset_new(new_attrs)
+
+    Ecto.Multi.new()
+    |> Ecto.Multi.insert(:settlement, settlement_changeset)
+    |> Ecto.Multi.run(:settlement_detail, fn _repo, %{settlement: settlement} ->
+      create_settlement_detail_batch(unsettled_invoices, settlement)
+    end)
+    |> Ecto.Multi.run(:invoice_update, fn _repo, %{settlement: settlement} ->
+      update_invoice_settlement_status(unsettled_invoices, "processing")
+    end)
+    |> Repo.transaction()
+  end
+
+  defp update_invoice_settlement_status(invoices, status) do
+    result =
+      Enum.map(invoices, fn x ->
+        attrs = %{"settlement_status" => status}
+        {:ok, new_invoice} = update_invoice(x, attrs)
+      end)
+
+    {:ok, result}
+  end
+
+  defp create_settlement_detail_batch(invoices, settlement) do
+    result =
+      Enum.map(invoices, fn x ->
+        attrs = %{
+          "amount" => x.amount,
+          "settlement_id" => settlement.id,
+          "invoice_id" => x.id,
+          "donee_id" => x.donee_id,
+          "backer_id" => x.backer_id,
+          "remark" => "Penyaluran pembayaran dari invoice #INV-#{x.id} sebesar #{x.amount}"
+        }
+
+        {:ok, settlement_detail} = create_settlement_detail(attrs)
+        settlement_detail
+      end)
+
+    {:ok, result}
   end
 
   @doc """
@@ -1478,6 +1553,10 @@ defmodule Backer.Finance do
   """
   def change_settlement(%Settlement{} = settlement) do
     Settlement.changeset(settlement, %{})
+  end
+
+  def change_settlement_extra(%Settlement{} = settlement, attrs) do
+    Settlement.changeset(settlement, attrs)
   end
 
   alias Backer.Finance.SettlementDetail

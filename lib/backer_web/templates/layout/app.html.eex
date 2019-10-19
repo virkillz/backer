@@ -169,8 +169,6 @@
             <% end %>
           </a>
           </li> 
-          <li class="nav-item <%= activate(@conn.request_path, "/admin/invoice_details") %>"><a href="/admin/invoice_details" up-target=".main" up-transition="move-right">Invoice Details</a>
-          </li> 
           <li class="nav-item <%= activate(@conn.request_path, "/admin/donations") %>"><a href="/admin/donations" up-target=".main" up-transition="move-right">Donations</a>
           </li>
           <li class="nav-item <%= activate(@conn.request_path, "/admin/mutations") %>"><a href="/admin/mutations" up-target=".main" up-transition="move-right">Mutation</a>

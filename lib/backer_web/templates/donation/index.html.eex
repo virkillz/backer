@@ -7,7 +7,7 @@
             <div class="breadcrumbs-top float-md-right">
               <div class="breadcrumb-wrapper mr-1">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
                   <li class="breadcrumb-item"><a href="/admin/donations">Donations List</a>
                   </li>                  
@@ -27,11 +27,7 @@
                 <h4 class="card-title">Donation List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Donation", to: Router.donation_path(@conn, :new), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
-                        </li>
-                    </ul>
+
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -44,13 +40,14 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
+                                  <th>#</th>
+                                  <th>Date</th>
+                                  <th>Donee ID</th>
+                                  <th>Backer ID</th>
                                   <th>Amount</th>
                                   <th>Tier</th>
                                   <th>Month</th>
-                                  <th>Year</th>
-                                  <th>Donee ID</th>
-                                  <th>Backer ID</th>
-                                  <th>Invoice ID</th>                                                                                                      
+                                  <th>Year</th>                                                                                                     
                             
                                   <th></th>
                                 </tr>
@@ -58,18 +55,17 @@
                                 <tbody>
                                   <%= for donation <- @donations do %>
                                       <tr>
-                                        <td><%= donation.amount %></td>
+                                      <td><%= donation.id %></td>
+                                        <td><%= Stringhelper.datetime_to_human donation.inserted_at %></td>
+                                        <td><%= donation.donee.backer.display_name %> <br> @<%= donation.donee.backer.username %></td>
+                                        <td><%= donation.backer.display_name %><br> @<%= donation.backer.username %></td>
+                                        <td>Rp.<%= Stringhelper.format_thousand donation.amount %>,-</td>
                                         <td><%= donation.tier %></td>
-                                        <td><%= donation.month %></td>
+                                        <td><%= Stringhelper.stringify donation.month %></td>
                                         <td><%= donation.year %></td>
-                                        <td><%= donation.donee_id %></td>
-                                        <td><%= donation.backer_id %></td>
-                                        <td><%= donation.invoice_id %></td>
                                   
                                         <td class="text-right">
                                           <span><%= link "Show", to: Router.donation_path(@conn, :show, donation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Edit", to: Router.donation_path(@conn, :edit, donation), class: "btn btn-default btn-xs" %></span>
-                                          <span><%= link "Delete", to: Router.donation_path(@conn, :delete, donation), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
                                         </td>
                                       </tr>
                                   <% end %>

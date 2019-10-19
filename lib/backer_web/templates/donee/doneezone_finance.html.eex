@@ -57,7 +57,7 @@
 	                            <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(invoice.donation, @conn) %>,- </td>
 	                            <td class="p-1 text-right"><%= invoice.month %> bulan</td>
 	                            <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(invoice.amount, @conn) %>,-</td>
-	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
+	                            <td class="p-1 text-right"><%= if invoice.settlement_status == "paid" do %> <a href="#" class="underline text-blue-500"> <%= gettext "Terbayarkan" %> </a> <% else %> - <% end %> </td>
 	                        </tr>
 				
 						<% end %>

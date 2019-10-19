@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a>
           </li>
-          <li class="breadcrumb-item"><a href="/admin/settlements">Settlements List</a>
+          <li class="breadcrumb-item"><a href="/admin/settlements">Process New Settlement</a>
           </li>
           <li class="breadcrumb-item active">Index
           </li>
@@ -24,14 +24,10 @@
     <div class="col-lg-12 col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Settlement List</h4>
+          <h4 class="card-title">Process New Settlement</h4>
           <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
           <div class="heading-elements">
-            <ul class="list-inline mb-0">
-              <li>
-              <a href="<%= Router.settlement_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Settlement</button></a>
-              </li>
-            </ul>
+
           </div>
         </div>
         <div class="card-content collapse show">
@@ -46,6 +42,7 @@
                   <tr>
                      <th>Donee</th>
                      <th>Oldest Invoice</th>
+                     <th>Invoice Count</th>
                      <th>Amount</th>
                     
                     <th></th>
@@ -61,6 +58,9 @@
                       </td>
                       <td>
                         <%= donee.oldest_invoice_date %>
+                      </td>
+                      <td>
+                        <%= donee.invoice_count %>
                       </td>
                        <td>
                         <%= donee.amount_total %>

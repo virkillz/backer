@@ -96,11 +96,13 @@ defmodule BackerWeb.Router do
     resources("/incoming_payments", IncomingPaymentController)
     resources "/settlements", SettlementController
     get "/settlements/new/:id", SettlementController, :build_settlement
-    resources "/settlement_details", SettlementDetailController
-    resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
-    resources("/donations", DonationController)
+    resources("/donations", DonationController, only: [:index, :show])
     resources("/mutations", MutationController, only: [:index, :show, :delete])
     resources("/withdrawals", WithdrawalController)
+
+    # Better disable for security reason
+    # resources "/settlement_details", SettlementDetailController
+    # resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
 
     get("/approval", FinanceController, :index)
     get("/approval/:id", FinanceController, :approval_form)

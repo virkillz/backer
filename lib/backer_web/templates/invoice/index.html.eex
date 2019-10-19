@@ -7,7 +7,7 @@
             <div class="breadcrumbs-top float-md-right">
               <div class="breadcrumb-wrapper mr-1">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
                   <li class="breadcrumb-item"><a href="/admin/invoice">invoice List</a>
                   </li>                  
@@ -29,10 +29,10 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Invoice Deposit", to: Router.invoice_path(@conn, :newdeposit), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
+                          <a href="<%= Router.invoice_path(@conn, :newdeposit) %>"><button type="button" class="btn btn-primary">New Invoice Deposit</button></a>
                         </li>
                         <li>
-                          <%= link "New Invoice Backing", to: Router.invoice_path(@conn, :newbacking), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
+                                                    <a href="<%= Router.invoice_path(@conn, :newbacking) %>"><button type="button" class="btn btn-primary">New Invoice Backing</button></a>
                         </li>                        
                     </ul>
                 </div>

@@ -30,9 +30,6 @@
                 <h4 class="card-title">Donation List</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a href="<%= Router.donation_path(@conn, :edit, @donation) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Edit Donation</button></a></li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">

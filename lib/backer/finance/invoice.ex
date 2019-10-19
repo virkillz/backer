@@ -11,12 +11,13 @@ defmodule Backer.Finance.Invoice do
     field(:status, :string, default: "unpaid")
     field(:type, :string)
     field(:donation, :integer)
+    field(:settlement_id, :id)
     field(:settlement_status, :string, default: "unpaid")
     field(:month, :integer)
     field(:unique_amount, :integer, default: 0)
 
     belongs_to(:backer, Backerz)
-    has_one(:setlement, Backer.Finance.Settlement)
+    has_one(:settlement, {"settlement", Backer.Finance.Settlement})
     belongs_to(:donee, {"donees", Backer.Account.Donee})
     has_many(:invoice_detail, Backer.Finance.InvoiceDetail)
 
@@ -26,7 +27,15 @@ defmodule Backer.Finance.Invoice do
   @doc false
   def changeset(invoice, attrs) do
     invoice
-    |> cast(attrs, [:amount, :status, :method, :backer_id, :type])
+    |> cast(attrs, [
+      :amount,
+      :settlement_status,
+      :settlement_id,
+      :status,
+      :method,
+      :backer_id,
+      :type
+    ])
     |> validate_number(:amount, greater_than_or_equal_to: Constant.minimum_deposit())
     |> validate_required([:amount, :status, :method, :backer_id, :type])
     |> validate_paid(invoice)
@@ -34,7 +43,7 @@ defmodule Backer.Finance.Invoice do
 
   def change_status_changeset(invoice, attrs) do
     invoice
-    |> cast(attrs, [:status])
+    |> cast(attrs, [:status, :settlement_status, :settlement_id])
     |> validate_required([:status])
   end
 

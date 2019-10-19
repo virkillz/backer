@@ -24,12 +24,12 @@
     <div class="col-lg-12 col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Settlement List</h4>
+          <h4 class="card-title">Payment Request</h4>
           <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
           <div class="heading-elements">
             <ul class="list-inline mb-0">
               <li>
-              <a href="<%= Router.settlement_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Settlement</button></a>
+              <a href="<%= Router.settlement_path(@conn, :new) %>"><button type="button" class="btn btn-primary">New Settlement</button></a>
               </li>
             </ul>
           </div>
@@ -55,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <%= for settlement <- @settlements do %>
+                  <%= for settlement <- Enum.filter(@settlements, fn x -> x.status == "waiting payment" end) do %>
                     <tr>
                        <td>
                         <%= settlement.id %>
@@ -81,16 +81,11 @@
                       <td class="text-right">
                         <span>
                           <%= link "Show" , to: Router.settlement_path(@conn, :show,
-                            settlement), class: "btn btn-default btn-xs" %>
+                            settlement), class: "btn btn-secondary btn-xs" %>
                         </span>
                         <span>
-                          <%= link "Edit" , to: Router.settlement_path(@conn, :edit,
-                            settlement), class: "btn btn-default btn-xs" %>
-                        </span>
-                        <span>
-                          <%= link "Delete" , to: Router.settlement_path(@conn, :delete,
-                            settlement), method: :delete, data: [confirm: "Are you sure?" ],
-                            class: "btn btn-danger btn-xs" %>
+                          <%= link "Proceed" , to: Router.settlement_path(@conn, :edit,
+                            settlement), class: "btn btn-danger btn-xs" %>
                         </span>
                       </td>
                     </tr>
@@ -108,5 +103,79 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Settlement History</h4>
+          <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+          <div class="heading-elements">
+          </div>
+        </div>
+        <div class="card-content collapse show">
+          <div class="card-body p-0 pb-0">
+            <br>
+
+            
+            <div class="container">
+
+              <table class="table">
+                <thead class="bg-primary white">
+                  <tr>
+                     <th> # </th>
+                     <th>Donee ID</th>
+                     <th>Created Date</th>
+                     <th>Transaction date</th>
+                     <th>Status</th>
+                     <th>Amount</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for settlement <- Enum.filter(@settlements, fn x -> x.status != "waiting payment" end) do %>
+                    <tr>
+                       <td>
+                        <%= settlement.id %>
+                      </td>
+                       <td>
+                        ID: <%= settlement.donee_id %> <br>
+                        <%= settlement.donee.backer.display_name %> <br>
+                        @<%= settlement.donee.backer.username %>
+                      </td>
+                       <td>
+                        <%= settlement.inserted_at %>
+                      </td>
+                       <td>
+                        <%= settlement.transaction_date %>
+                      </td>
+                       <td>
+                        <%= settlement.status %>
+                      </td>
+                       <td>
+                        <%= settlement.amount %>
+                      </td>
+                      
+                      <td class="text-right">
+                        <span>
+                          <%= link "Show" , to: Router.settlement_path(@conn, :show,
+                            settlement), class: "btn btn-secondary btn-xs" %>
+                        </span>
+
+                      </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+
+            </div>
+            <br>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

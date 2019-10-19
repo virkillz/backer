@@ -9,6 +9,58 @@
   <% end %>
 
   <div class="form-group">
+    <label class="control-label">Settlement ID</label>
+    <div>#<%= @settlement.id %></div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Donee</label>
+    <div class="d-flex">
+    <img src="<%= @settlement.donee.backer.avatar %>" alt="<%= @settlement.donee.backer.display_name%>" style="height: 3em; width: 3em;">
+    <div class="ml-1">
+        <div><%= @settlement.donee.backer.display_name %></div>
+            <div>@<%= @settlement.donee.backer.username %></div>
+    </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Amount</label>
+    <div><%= @settlement.amount %></div>
+  </div>
+
+    <div class="form-group">
+    <%= label f, :tax, class: "control-label" %>
+    <%= number_input f, :tax, [class: "form-control", id: "settlement-amount"] %>
+    <%= error_tag f, :tax %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :platform_fee, class: "control-label" %>
+    <%= number_input f, :platform_fee, class: "form-control", readonly: true %>
+    <%= error_tag f, :platform_fee %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :platform_fee_percentage, class: "control-label" %>
+    <%= number_input f, :platform_fee_percentage, class: "form-control", readonly: true %>
+    <%= error_tag f, :platform_fee_percentage %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :transaction_fee, class: "control-label" %>
+    <%= number_input f, :transaction_fee, class: "form-control" %>
+    <%= error_tag f, :transaction_fee %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :net_amount, class: "control-label" %>
+    <%= number_input f, :net_amount, [class: "form-control", readonly: true] %>
+    <div class="text-sm text-danger">When you put tax and transaction fee this number will be changed on submit.</div>
+  </div>
+
+  <div class="form-group">
     <%= label f, :method, class: "control-label" %>
     <%= select f, :method, [{"Cash", "cash"}, {"Bank Transfer", "bank_transfer"}], class: "form-control" %>
     <%= error_tag f, :method %>
@@ -34,45 +86,11 @@
 
   <div class="form-group">
     <%= label f, :status, class: "control-label" %>
-    <%= select f, :status, [{"Draft", "draft"}, {"Completed", "completed"}] , [class: "select2 form-control", id: "id_h5_single"] %>
+    <%= select f, :status, [{"Waiting Payment", "waiting payment"}, {"Paid", "paid"}] , [class: "select2 form-control", id: "id_h5_single"] %>
     <%= error_tag f, :status %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :amount, class: "control-label" %>
-    <%= number_input f, :amount, class: "form-control" %>
-    <%= error_tag f, :amount %>
-  </div>
 
-  <div class="form-group">
-    <%= label f, :tax, class: "control-label" %>
-    <%= number_input f, :tax, class: "form-control" %>
-    <%= error_tag f, :tax %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :platform_fee, class: "control-label" %>
-    <%= number_input f, :platform_fee, class: "form-control" %>
-    <%= error_tag f, :platform_fee %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :platform_fee_percentage, class: "control-label" %>
-    <%= number_input f, :platform_fee_percentage, class: "form-control" %>
-    <%= error_tag f, :platform_fee_percentage %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :transaction_fee, class: "control-label" %>
-    <%= number_input f, :transaction_fee, class: "form-control" %>
-    <%= error_tag f, :transaction_fee %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :net_amount, class: "control-label" %>
-    <%= number_input f, :net_amount, class: "form-control" %>
-    <%= error_tag f, :net_amount %>
-  </div>
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>

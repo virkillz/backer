@@ -9,7 +9,7 @@ defmodule Backer.Finance.Settlement do
     field(:net_amount, :integer)
     field(:platform_fee, :integer)
     field(:platform_fee_percentage, :integer)
-    field(:status, :string, default: "draft")
+    field(:status, :string, default: "waiting payment")
     field(:tax, :integer)
     field(:transaction_date, :naive_datetime)
     field(:transaction_fee, :integer)
@@ -28,6 +28,10 @@ defmodule Backer.Finance.Settlement do
     settlement
     |> cast(attrs, [
       :donee_id,
+      :amount,
+      :net_amount,
+      :platform_fee,
+      :platform_fee_percentage,
       :status
     ])
     |> validate_required([
@@ -54,16 +58,12 @@ defmodule Backer.Finance.Settlement do
     ])
     |> validate_required([
       :method,
-      :evidence,
-      :tx_id,
       :transaction_date,
       :status,
       :amount,
       :donee_id,
-      :tax,
       :platform_fee,
       :platform_fee_percentage,
-      :transaction_fee,
       :net_amount
     ])
     |> unique_constraint(:tx_id)
