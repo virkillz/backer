@@ -19,8 +19,8 @@ defmodule Backer.Aggregate.BackingAggregate do
     field(:last_amount, :integer)
     field(:last_tier, :string)
     field(:score, :integer)
-    field(:is_backer_anonymous, :boolean, default: true)
-    field(:is_donee_anonymous, :boolean, default: true)
+    field(:is_backer_anonymous, :boolean, default: false)
+    field(:is_donee_anonymous, :boolean, default: false)
 
     belongs_to(:backer, {"backers", Backer.Account.Backer})
     belongs_to(:donee, {"donees", Backer.Account.Donee})
