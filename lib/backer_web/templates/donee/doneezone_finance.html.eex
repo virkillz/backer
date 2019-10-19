@@ -54,9 +54,9 @@
 	                                </div>
 									</a>
 	                            </td>
-	                            <td class="p-1 text-right">Rp. <%= invoice.donation %>,- </td>
+	                            <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(invoice.donation, @conn) %>,- </td>
 	                            <td class="p-1 text-right"><%= invoice.month %> bulan</td>
-	                            <td class="p-1 text-right">Rp. <%= invoice.amount %>,-</td>
+	                            <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(invoice.amount, @conn) %>,-</td>
 	                            <td class="p-1 text-right"><a href="#" class="underline text-blue-500">13 Sep 2019</a></td>
 	                        </tr>
 				
