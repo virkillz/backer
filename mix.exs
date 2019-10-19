@@ -65,7 +65,8 @@ defmodule Backer.Mixfile do
       {:ex_aws_s3, "~> 2.0"},
       {:imgex, "~> 0.2.0"},
       {:cors_plug, "~> 2.0"},
-      {:sendgrid, "~> 2.0"}
+      {:sendgrid, "~> 2.0"},
+      {:cachex, "~> 3.2"}
     ]
   end
 

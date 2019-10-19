@@ -23,7 +23,7 @@ defmodule BackerWeb.DoneeController do
 
   def doneezone_posts(conn, params) do
     backer_info = conn.assigns.current_backer
-    donee_info = conn.assigns.current_donee
+    donee_info = Account.get_donee(%{"username" => backer_info.username})
     random_donee = Account.get_random_donee(3)
 
     conn
@@ -96,7 +96,7 @@ defmodule BackerWeb.DoneeController do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
-    donee = Account.get_donee!(donee_info.donee_id) |> IO.inspect()
+    donee = Account.get_donee!(donee_info.donee_id)
     background = donee_params["background"]
 
     updated_params =
@@ -366,7 +366,7 @@ defmodule BackerWeb.DoneeController do
   end
 
   def about(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
+    donee = Account.get_donee(%{"username" => username})
     current_backer = conn.assigns.current_backer
 
     case donee do
@@ -384,11 +384,7 @@ defmodule BackerWeb.DoneeController do
               if is_nil(current_backer) do
                 false
               else
-                IO.inspect(current_backer.id)
-                IO.inspect(donee.id)
-
                 Finance.is_backer_have_active_donations?(current_backer.id, donee.id)
-                |> IO.inspect()
               end
 
             random_donee = Account.get_random_donee(4)
@@ -425,7 +421,7 @@ defmodule BackerWeb.DoneeController do
         backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
         backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 
-        posts = Content.timeline_donee(donee.id) |> IO.inspect()
+        posts = Content.timeline_donee(donee.id)
 
         if donee == nil do
           redirect(conn, to: "/404")
@@ -442,7 +438,6 @@ defmodule BackerWeb.DoneeController do
   end
 
   def donate_postx(conn, params) do
-    IO.inspect(params)
     text(conn, "check console")
   end
 
@@ -536,7 +531,7 @@ defmodule BackerWeb.DoneeController do
 
   def dashboard_post(conn, _params) do
     donee_id = conn.assigns.current_donee.donee_id
-    posts = Content.list_posts(%{"donee_id" => donee_id}) |> IO.inspect()
+    posts = Content.list_posts(%{"donee_id" => donee_id})
 
     conn
     |> render("front_dashboard_post.html",
@@ -697,10 +692,6 @@ defmodule BackerWeb.DoneeController do
       categories: categories,
       layout: {BackerWeb.LayoutView, "layout_front_donee_private.html"}
     )
-  end
-
-  def dashboard_page_setting_update(conn, params) do
-    IO.inspect(params)
   end
 
   def backers(conn, %{"username" => username}) do
@@ -869,11 +860,9 @@ defmodule BackerWeb.DoneeController do
           )
 
         {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
-          IO.inspect(changeset)
           text(conn, "something is wrong, check console")
 
         other ->
-          IO.inspect(other)
           text(conn, "Ecto Multi give unhandled error, check your console")
       end
     end
@@ -884,7 +873,7 @@ defmodule BackerWeb.DoneeController do
 
     if conn.assigns.backer_signed_in? do
       backer = conn.assigns.current_backer
-      donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
+      donee = Account.get_donee(%{"username" => username})
 
       if donee == nil do
         redirect(conn, to: "/404")

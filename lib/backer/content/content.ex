@@ -1225,6 +1225,10 @@ defmodule Backer.Content do
         notification
         |> Map.put(:icon, "<i class=\"la la-credit-card text-blue-500\"></i>")
 
+      "receive_payment" ->
+        notification
+        |> Map.put(:icon, "<i class=\"la la-money text-blue-500\"></i>")
+
       _ ->
         notification
         |> Map.put(:icon, "<i class=\"la la-credit-card text-blue-500\"></i>")
@@ -1233,6 +1237,22 @@ defmodule Backer.Content do
 
   def count_notification(backer_id) do
     Repo.one(from(n in Notification, where: n.user_id == ^backer_id, select: count(n.id)))
+  end
+
+  def list_notification_count() do
+    query =
+      from(p in Notification,
+        where: p.is_read == false,
+        group_by: p.user_id,
+        select: %{backer_id: p.user_id, unread_notif: count(p.id)}
+      )
+
+    Repo.all(query)
+  end
+
+  def mark_notification_as_read(%Notification{} = notif) do
+    notif
+    |> update_notification(%{"is_read" => true})
   end
 
   def build_notification(:invoice, :waiting_payment, %Invoice{} = invoice) do
@@ -1247,6 +1267,35 @@ defmodule Backer.Content do
     }
 
     create_notification(attrs)
+  end
+
+  def build_notification(:invoice, :payment_received, %Invoice{} = invoice) do
+    backer = Account.get_backer!(invoice.backer_id)
+    donee = Account.get_donee!(invoice.donee_id)
+
+    attrs_donee = %{
+      "type" => "receive_payment",
+      "user_id" => donee.backer.id,
+      "thumbnail" => backer.avatar,
+      "content" =>
+        "Anda mendapatkan pembayaran dari #{backer.display_name} sebesar #{invoice.amount}",
+      "other_ref_id" => invoice.id
+    }
+
+    create_notification(attrs_donee)
+
+    attrs_backer = %{
+      "type" => "invoice",
+      "user_id" => invoice.backer_id,
+      "thumbnail" => donee.backer.avatar,
+      "content" =>
+        "Pembayaran untuk <span class=\"font-bold\">Invoice-#{invoice.id}</span> telah diterima. Anda resmi menjadi Backer Aktif untuk #{
+          donee.backer.display_name
+        }",
+      "other_ref_id" => invoice.id
+    }
+
+    create_notification(attrs_backer)
   end
 
   @doc """

@@ -159,6 +159,10 @@ defmodule Backer.Finance do
       create_invoice_detail_donation(invoice, attrs)
     end)
     |> Ecto.Multi.run(:notification, fn _repo, %{invoice: invoice} ->
+      # Increase notification count
+      Cachex.incr(:notification, "backer:#{invoice.backer_id}")
+
+      # Create notification for Backer
       Content.build_notification(:invoice, :waiting_payment, invoice)
     end)
     |> Repo.transaction()
@@ -392,9 +396,12 @@ defmodule Backer.Finance do
         )
         |> Ecto.Multi.update(:invoice, invoice_changeset)
         |> Ecto.Multi.run(:backing, fn _repo, _ ->
-          create_batch_donation(invoice.id) |> IO.inspect()
+          create_batch_donation(invoice.id)
         end)
         |> Ecto.Multi.run(:aggregate, fn _repo, %{invoice: invoice} ->
+          Content.build_notification(:invoice, :payment_received, invoice)
+          |> IO.inspect()
+
           Aggregate.build_backing_aggregate(invoice.backer_id, invoice.donee_id)
         end)
         |> Repo.transaction()

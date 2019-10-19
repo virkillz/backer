@@ -12,7 +12,6 @@ defmodule BackerWeb.FinanceController do
   end
 
   def approval_form(conn, %{"id" => id}) do
-    IO.inspect(conn)
     incoming_payment = Finance.get_incoming_payment!(id)
     changeset = Finance.change_incoming_payment(incoming_payment)
     render(conn, "edit.html", incoming_payment: incoming_payment, changeset: changeset)
@@ -20,7 +19,7 @@ defmodule BackerWeb.FinanceController do
 
   def update(conn, %{"id" => id, "incoming_payment" => params}) do
     user_id = conn.private.guardian_default_resource.id
-    incoming_payment = Finance.get_incoming_payment!(id) |> IO.inspect()
+    incoming_payment = Finance.get_incoming_payment!(id)
 
     case Finance.process_incoming_payment(
            incoming_payment,
@@ -38,7 +37,6 @@ defmodule BackerWeb.FinanceController do
         render(conn, "edit.html", changeset: changeset, incoming_payment: incoming_payment)
 
       other ->
-        IO.inspect(other)
         text(conn, "cek console")
     end
   end

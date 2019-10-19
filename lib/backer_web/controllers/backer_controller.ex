@@ -12,6 +12,22 @@ defmodule BackerWeb.BackerController do
     redirect(conn, to: "/backerzone/my-donee-list")
   end
 
+  def reset_counter(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    if is_nil(backer) do
+      conn |> put_status(:forbidden) |> json(%{success: false, message: "403"})
+    else
+      get_count_notif = Cachex.get!(:notification, "backer:#{backer.id}")
+
+      count_notif = if is_nil(get_count_notif), do: 0, else: get_count_notif
+
+      Cachex.del(:notification, "backer:#{backer.id}")
+
+      conn |> json(%{success: true, message: "#{count_notif} notification count flushed"})
+    end
+  end
+
   def backerzone_my_donee_detail_post(conn, %{"donee_username" => donee_username} = params) do
     donee = Account.get_donee(%{"username" => donee_username})
     backer = conn.assigns.current_backer
@@ -37,9 +53,6 @@ defmodule BackerWeb.BackerController do
         end
       end
     end
-
-    IO.inspect(params)
-    text(conn, "really")
   end
 
   def backerzone_my_donee_detail(conn, %{"donee_username" => donee_username}) do
@@ -304,7 +317,8 @@ defmodule BackerWeb.BackerController do
           "icon" => x.icon,
           "thumbnail" => x.thumbnail,
           "ago" => Stringhelper.format_ago(x.inserted_at),
-          "id" => x.id |> Integer.to_string()
+          "id" => x.id |> Integer.to_string(),
+          "is_read" => x.is_read
         }
       end)
       |> Enum.take(5)
@@ -324,9 +338,17 @@ defmodule BackerWeb.BackerController do
         if notification.user_id != backer.id do
           redirect(conn, to: "/403")
         else
+          Content.mark_notification_as_read(notification)
+
           case notification.type do
-            "invoice" -> redirect(conn, to: "/backerzone/invoice/#{notification.other_ref_id}")
-            _ -> text(conn, "Unknown type of notification")
+            "invoice" ->
+              redirect(conn, to: "/backerzone/invoice/#{notification.other_ref_id}")
+
+            "receive_payment" ->
+              redirect(conn, to: "/doneezone/finance")
+
+            _ ->
+              text(conn, "Unknown type of notification")
           end
         end
     end

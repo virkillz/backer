@@ -81,7 +81,7 @@ defmodule BackerWeb.IncomingPaymentController do
       |> put_flash(:error, "Executed incoming payment cannot be edited.")
       |> redirect(to: Router.incoming_payment_path(conn, :index))
     else
-      unpaid_invoices = Finance.list_invoices(%{"status" => "not_paid"})
+      unpaid_invoices = Finance.list_invoices(%{"status" => "unpaid"})
       statuses = Constant.incoming_payment_status()
       actions = Constant.incoming_payment_action()
       sources = Constant.incoming_payment_source()

@@ -119,6 +119,7 @@ defmodule BackerWeb.Router do
     get("/home", BackerController, :home)
     get("/notifications", BackerController, :backerzone_notifications)
     get("/private/notification", BackerController, :backerzone_notification_api)
+    get("/private/notification/reset-counter", BackerController, :reset_counter)
 
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)

@@ -1,6 +1,7 @@
 <%= if @conn.assigns.backer_signed_in? do %>
+        <% count_notif = Cachex.get!(:notification, "backer:#{@conn.assigns.current_backer.id}") |> IO.inspect  %>
             <div id="navbar-elm" data-avatar="<%= @conn.assigns.current_backer.avatar %>" data-is-donee="<%= @conn.assigns.current_backer.is_donee %>"
-        data-notif-count="<%= count_notif = Backer.Content.count_notification(@conn.assigns.current_backer.id) %>"></div>
+        data-notif-count="<%= if is_nil(count_notif), do: 0, else: count_notif  %>"></div>
 <% else %>
 
 <nav id="header" class="h-18 fixed transition-all transition-ease-in-out w-full z-30 top-0 text-white">
