@@ -44,17 +44,12 @@
               <table class="table">
                 <thead class="bg-primary white">
                   <tr>
-                     <th>Method</th>
-                     <th>Evidence</th>
-                     <th>Tx</th>
+                     <th> # </th>
+                     <th>Donee ID</th>
+                     <th>Created Date</th>
                      <th>Transaction date</th>
                      <th>Status</th>
                      <th>Amount</th>
-                     <th>Tax</th>
-                     <th>Platform fee</th>
-                     <th>Platform fee percentage</th>
-                     <th>Transaction fee</th>
-                     <th>Net amount</th>
                     
                     <th></th>
                   </tr>
@@ -63,13 +58,15 @@
                   <%= for settlement <- @settlements do %>
                     <tr>
                        <td>
-                        <%= settlement.method %>
+                        <%= settlement.id %>
                       </td>
                        <td>
-                        <%= settlement.evidence %>
+                        ID: <%= settlement.donee_id %> <br>
+                        <%= settlement.donee.backer.display_name %> <br>
+                        @<%= settlement.donee.backer.username %>
                       </td>
                        <td>
-                        <%= settlement.tx_id %>
+                        <%= settlement.inserted_at %>
                       </td>
                        <td>
                         <%= settlement.transaction_date %>
@@ -79,21 +76,6 @@
                       </td>
                        <td>
                         <%= settlement.amount %>
-                      </td>
-                       <td>
-                        <%= settlement.tax %>
-                      </td>
-                       <td>
-                        <%= settlement.platform_fee %>
-                      </td>
-                       <td>
-                        <%= settlement.platform_fee_percentage %>
-                      </td>
-                       <td>
-                        <%= settlement.transaction_fee %>
-                      </td>
-                       <td>
-                        <%= settlement.net_amount %>
                       </td>
                       
                       <td class="text-right">

@@ -459,6 +459,18 @@ defmodule Backer.Account do
     Repo.all(query)
   end
 
+  def list_donees_minimum do
+    list_donees
+    |> Enum.map(fn x ->
+      %{
+        donee_id: x.id,
+        username: x.backer.username,
+        display_name: x.backer.display_name,
+        email: x.backer.email
+      }
+    end)
+  end
+
   def list_donees(params) do
     query = from(p in Donee, preload: [:backer, :category, :title])
 

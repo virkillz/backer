@@ -924,9 +924,7 @@ defmodule Backer.Finance do
     |> Repo.insert()
   end
 
-  def is_backer_have_active_donations?(backer_id, donee_id) do
-    now = DateTime.utc_now()
-
+  def is_backer_have_donations_ever?(backer_id, donee_id) do
     query =
       from(d in Donation,
         where: d.backer_id == ^backer_id,
@@ -937,13 +935,34 @@ defmodule Backer.Finance do
 
     result = Repo.one(query)
 
-    if is_nil(result) do
-      false
-    else
-      {ok, last_donation} = NaiveDateTime.new(result.year, result.month, 1, 0, 0, 0)
-      {ok, current_time} = NaiveDateTime.new(now.year, now.month, 1, 0, 0, 0)
-      current_time >= last_donation
-    end
+    not is_nil(result)
+  end
+
+  def is_backer_have_active_donations?(backer_id, donee_id) do
+    now = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.backer_id == ^backer_id,
+        where: d.donee_id == ^donee_id,
+        where: d.month == ^now.month,
+        where: d.year == ^now.year,
+        order_by: [desc: d.id],
+        limit: 1
+      )
+
+    result = Repo.one(query)
+
+    #  WRONG LOGIC but afraid to delete. What was I thinking??
+    # if is_nil(result) do
+    #   false
+    # else
+    #   {ok, last_donation} = NaiveDateTime.new(result.year, result.month, 1, 0, 0, 0)
+    #   {ok, current_time} = NaiveDateTime.new(now.year, now.month, 1, 0, 0, 0)
+    #   current_time >= last_donation
+    # end
+
+    not is_nil(result)
   end
 
   def is_backer_have_unpaid_invoice?(backer_id, donee_id) do
@@ -1286,7 +1305,73 @@ defmodule Backer.Finance do
 
   """
   def list_settlements do
-    Repo.all(Settlement)
+    query =
+      from(s in Settlement,
+        preload: [donee: [:backer]]
+      )
+
+    Repo.all(query)
+  end
+
+  def list_unsettled_invoice do
+    query =
+      from(i in Invoice,
+        where: i.settlement_status == "unpaid",
+        where: i.status == "paid",
+        preload: [donee: [:backer]]
+      )
+
+    Repo.all(query)
+  end
+
+  def list_unsettled_invoice_by(:donee_id, donee_id) do
+    query =
+      from(i in Invoice,
+        where: i.settlement_status == "unpaid",
+        where: i.status == "paid",
+        where: i.donee_id == ^donee_id
+      )
+
+    Repo.all(query)
+  end
+
+  def list_unsettled_donee do
+    invoices = list_unsettled_invoice
+
+    donee =
+      Enum.uniq_by(invoices, fn x -> x.donee_id end)
+      |> Enum.map(fn x ->
+        %{
+          donee_id: x.donee_id,
+          avatar: x.donee.backer.avatar,
+          display_name: x.donee.backer.display_name,
+          username: x.donee.backer.username
+        }
+      end)
+      |> Enum.map(fn x ->
+        x
+        |> Map.put(
+          :amount_total,
+          invoices
+          |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
+          |> Enum.reduce(0, fn z, acc -> acc + z.amount end)
+        )
+        |> Map.put(
+          :oldest_invoice_date,
+          invoices
+          |> Enum.filter(fn y -> y.donee_id == x.donee_id end)
+          |> get_oldest_date
+        )
+      end)
+  end
+
+  defp get_oldest_date(list) do
+    oldest = Enum.min_by(list, fn x -> x.id end)
+    oldest.inserted_at
+  end
+
+  def get_unsettled_donee(donee_id) do
+    invoices = list_unsettled_invoice_by(:donee_id, donee_id)
   end
 
   @doc """
@@ -1320,6 +1405,24 @@ defmodule Backer.Finance do
   def create_settlement(attrs \\ %{}) do
     %Settlement{}
     |> Settlement.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Creates a settlement.
+
+  ## Examples
+
+      iex> create_settlement(%{field: value})
+      {:ok, %Settlement{}}
+
+      iex> create_settlement(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def initiate_settlement(attrs \\ %{}) do
+    %Settlement{}
+    |> Settlement.changeset_new(attrs)
     |> Repo.insert()
   end
 

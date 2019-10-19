@@ -95,6 +95,7 @@ defmodule BackerWeb.Router do
     resources("/invoices", InvoiceController, except: [:new, :create])
     resources("/incoming_payments", IncomingPaymentController)
     resources "/settlements", SettlementController
+    get "/settlements/new/:id", SettlementController, :build_settlement
     resources "/settlement_details", SettlementDetailController
     resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
     resources("/donations", DonationController)

@@ -3,6 +3,7 @@ defmodule BackerWeb.SettlementController do
 
   alias Backer.Finance
   alias Backer.Finance.Settlement
+  alias Backer.Account
 
   def index(conn, _params) do
     settlements = Finance.list_settlements()
@@ -10,16 +11,26 @@ defmodule BackerWeb.SettlementController do
   end
 
   def new(conn, _params) do
+    donees = Finance.list_unsettled_donee()
+
     changeset = Finance.change_settlement(%Settlement{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, donees: donees)
+  end
+
+  def build_settlement(conn, %{"id" => id}) do
+    Finance.get_unsettled_donee(id)
+    text(conn, "test")
   end
 
   def create(conn, %{"settlement" => settlement_params}) do
-    case Finance.create_settlement(settlement_params) do
+    IO.inspect(settlement_params)
+
+    case Finance.initiate_settlement(settlement_params) do
       {:ok, settlement} ->
         conn
         |> put_flash(:info, "Settlement created successfully.")
-        |> redirect(to: Router.settlement_path(conn, :show, settlement))
+        |> redirect(to: Router.settlement_path(conn, :index))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,6 +55,7 @@ defmodule BackerWeb.SettlementController do
         conn
         |> put_flash(:info, "Settlement updated successfully.")
         |> redirect(to: Router.settlement_path(conn, :show, settlement))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", settlement: settlement, changeset: changeset)
     end

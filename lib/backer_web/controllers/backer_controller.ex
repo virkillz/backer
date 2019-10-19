@@ -49,27 +49,42 @@ defmodule BackerWeb.BackerController do
     if is_nil(donee) do
       redirect(conn, to: "/404")
     else
-      list_donation = Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+      if Finance.is_backer_have_donations_ever?(backer.id, donee.id) do
+        list_donation =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-      backing_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
+        get_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
 
-      list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
+        backing_aggregate =
+          if is_nil(get_aggregate) do
+            Aggregate.build_backing_aggregate(backer.id, donee.id)
+          else
+            get_aggregate
+          end
 
-      list_donations = Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+        backing_aggregate |> IO.inspect()
 
-      if Enum.count(list_donation) == 0 do
-        redirect(conn, to: "/403")
+        list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        list_donations =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        if Enum.count(list_donation) == 0 do
+          redirect(conn, to: "/403")
+        else
+          conn
+          |> render("backerzone_my_donee_detail.html",
+            backer: backer,
+            donee: donee,
+            list_invoices: list_invoices,
+            list_donations: list_donations,
+            backing_aggregate: backing_aggregate,
+            changeset: Aggregate.change_backing_aggregate(backing_aggregate),
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
       else
-        conn
-        |> render("backerzone_my_donee_detail.html",
-          backer: backer,
-          donee: donee,
-          list_invoices: list_invoices,
-          list_donations: list_donations,
-          backing_aggregate: backing_aggregate,
-          changeset: Aggregate.change_backing_aggregate(backing_aggregate),
-          layout: {BackerWeb.LayoutView, "public.html"}
-        )
+        redirect(conn, to: "/403")
       end
     end
   end

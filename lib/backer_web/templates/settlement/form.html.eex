@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <%= label f, :method, class: "control-label" %>
-    <%= text_input f, :method, class: "form-control" %>
+    <%= select f, :method, [{"Cash", "cash"}, {"Bank Transfer", "bank_transfer"}], class: "form-control" %>
     <%= error_tag f, :method %>
   </div>
 
@@ -34,7 +34,7 @@
 
   <div class="form-group">
     <%= label f, :status, class: "control-label" %>
-    <%= text_input f, :status, class: "form-control" %>
+    <%= select f, :status, [{"Draft", "draft"}, {"Completed", "completed"}] , [class: "select2 form-control", id: "id_h5_single"] %>
     <%= error_tag f, :status %>
   </div>
 

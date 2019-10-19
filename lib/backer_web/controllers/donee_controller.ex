@@ -366,7 +366,7 @@ defmodule BackerWeb.DoneeController do
   end
 
   def about(conn, %{"username" => username}) do
-    donee = Account.get_donee(%{"username" => username})
+    donee = Account.get_donee(%{"username" => username}) |> IO.inspect()
     current_backer = conn.assigns.current_backer
 
     case donee do
@@ -384,7 +384,11 @@ defmodule BackerWeb.DoneeController do
               if is_nil(current_backer) do
                 false
               else
+                IO.inspect(current_backer.id)
+                IO.inspect(donee.id)
+
                 Finance.is_backer_have_active_donations?(current_backer.id, donee.id)
+                |> IO.inspect()
               end
 
             random_donee = Account.get_random_donee(4)

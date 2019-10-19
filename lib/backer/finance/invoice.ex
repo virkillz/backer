@@ -11,10 +11,12 @@ defmodule Backer.Finance.Invoice do
     field(:status, :string, default: "unpaid")
     field(:type, :string)
     field(:donation, :integer)
+    field(:settlement_status, :string, default: "unpaid")
     field(:month, :integer)
     field(:unique_amount, :integer, default: 0)
 
     belongs_to(:backer, Backerz)
+    has_one(:setlement, Backer.Finance.Settlement)
     belongs_to(:donee, {"donees", Backer.Account.Donee})
     has_many(:invoice_detail, Backer.Finance.InvoiceDetail)
 
