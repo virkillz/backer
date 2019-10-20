@@ -27,11 +27,6 @@
           <h4 class="card-title">Backing aggregate List</h4>
           <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
           <div class="heading-elements">
-            <ul class="list-inline mb-0">
-              <li>
-              <a href="<%= Router.backing_aggregate_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Backing aggregate</button></a>
-              </li>
-            </ul>
           </div>
         </div>
         <div class="card-content collapse show">
@@ -44,10 +39,10 @@
               <table class="table">
                 <thead class="bg-primary white">
                   <tr>
-                     <th>Last amount</th>
+                    <th>Donee</th>
+                    <th>Backer</th>
                      <th>Last tier</th>
                      <th>Backing status</th>
-                     <th>Accumulative donation</th>
                      <th>Score</th>
                      <th>Backer since</th>
                     
@@ -57,38 +52,43 @@
                 <tbody>
                   <%= for backing_aggregate <- @backingaggregates do %>
                     <tr>
+                      <td>
+                      <div class="d-flex">
+                      <div><img class="avatar" src="<%= backing_aggregate.donee.backer.avatar %>" alt="<%= backing_aggregate.donee.backer.display_name %>"></div>
+                       <div class="ml-1"> <div class="text-bold-700"><%= backing_aggregate.donee.backer.display_name %></div>@<%= backing_aggregate.donee.backer.username %>
+                      </div>
+                      </div>
+                      </td>
                        <td>
-                        <%= backing_aggregate.last_amount %>
+                      <div class="d-flex">
+                      <div><img class="avatar" src="<%= backing_aggregate.backer.avatar %>" alt="<%= backing_aggregate.backer.display_name %>"></div>
+                       <div class="ml-1"> <div class="text-bold-700"><%= backing_aggregate.backer.display_name %></div>@<%= backing_aggregate.backer.username %>
+                      </div>
+                      </div>
                       </td>
                        <td>
                         <%= backing_aggregate.last_tier %>
                       </td>
                        <td>
+                       <%= if backing_aggregate.backing_status == "active" do %>
+                        <span class="badge badge-success">
+                       <% else %>
+                        <span class="badge badge-secondary">
+                       <% end %>
                         <%= backing_aggregate.backing_status %>
+                        </span>
                       </td>
                        <td>
-                        <%= backing_aggregate.accumulative_donation %>
+                        <%= Stringhelper.format_thousand backing_aggregate.score %>
                       </td>
                        <td>
-                        <%= backing_aggregate.score %>
-                      </td>
-                       <td>
-                        <%= backing_aggregate.backer_since %>
+                        <%= "#{Stringhelper.stringify backing_aggregate.backer_since.month} #{backing_aggregate.backer_since.year}" %>
                       </td>
                       
                       <td class="text-right">
                         <span>
                           <%= link "Show" , to: Router.backing_aggregate_path(@conn, :show,
                             backing_aggregate), class: "btn btn-default btn-xs" %>
-                        </span>
-                        <span>
-                          <%= link "Edit" , to: Router.backing_aggregate_path(@conn, :edit,
-                            backing_aggregate), class: "btn btn-default btn-xs" %>
-                        </span>
-                        <span>
-                          <%= link "Delete" , to: Router.backing_aggregate_path(@conn, :delete,
-                            backing_aggregate), method: :delete, data: [confirm: "Are you sure?" ],
-                            class: "btn btn-danger btn-xs" %>
                         </span>
                       </td>
                     </tr>

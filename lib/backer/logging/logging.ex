@@ -18,7 +18,8 @@ defmodule Backer.Logging do
 
   """
   def list_activity(params) do
-    Activity |> Repo.paginate(params)
+    query = from(a in Activity, order_by: [desc: a.id])
+    query |> Repo.paginate(params)
   end
 
   def get_last_x_activity(amount) do

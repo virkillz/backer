@@ -29,7 +29,7 @@
           <div class="heading-elements">
             <ul class="list-inline mb-0">
               <li>
-              <a href="<%= Router.contact_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Contact</button></a>
+              <a href="<%= Router.contact_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink"><i class="ft-plus"></i> New Contact</button></a>
               </li>
             </ul>
           </div>

@@ -29,7 +29,7 @@
           <div class="heading-elements">
             <ul class="list-inline mb-0">
               <li>
-              <a href="<%= Router.metadata_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Metadata</button></a>
+              <a href="<%= Router.metadata_path(@conn, :new) %>"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> New Metadata</button></a>
               </li>
             </ul>
           </div>
@@ -44,11 +44,10 @@
               <table class="table">
                 <thead class="bg-primary white">
                   <tr>
+                     <th>Backer ID</th>
                      <th>Group</th>
                      <th>Key</th>
-                     <th>Value integer</th>
                      <th>Value string</th>
-                     <th>Value boolean</th>
                     
                     <th></th>
                   </tr>
@@ -56,6 +55,9 @@
                 <tbody>
                   <%= for metadata <- @metadatas do %>
                     <tr>
+                      <td>
+                        <%= metadata.backer_id %>
+                      </td>
                        <td>
                         <%= metadata.group %>
                       </td>
@@ -63,13 +65,7 @@
                         <%= metadata.key %>
                       </td>
                        <td>
-                        <%= metadata.value_integer %>
-                      </td>
-                       <td>
                         <%= metadata.value_string %>
-                      </td>
-                       <td>
-                        <%= metadata.value_boolean %>
                       </td>
                       
                       <td class="text-right">

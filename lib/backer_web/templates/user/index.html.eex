@@ -28,7 +28,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a href="/admin/user/new"><button type="button" class="btn btn-glow btn-bg-gradient-x-red-pink">Create New User</button></a></li>
+                     <a href="Router.user_path(@conn, :new)"><button class="btn btn-primary"><i class="ft-plus"></i> New Staff</button></a>
                     </ul>
                 </div>
             </div>

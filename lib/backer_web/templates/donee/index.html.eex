@@ -26,11 +26,6 @@
             <div class="card-header">
                 <h4 class="card-title">Donee List</h4>
                 <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li>
-                          <%= link "New Donee", to: Router.donee_path(@conn, :new), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="card-content collapse show">
@@ -43,11 +38,10 @@
                             <table class="table">
                                 <thead class="bg-primary white">
                                 <tr>
-                                  <th>Donee ID</th>
-                                  <th>Backer Email</th>
+                                  <th>Donee</th>
                                   <th>Category</th>
-                                  <th>Title</th>
-                                  <th>Status</th>
+                                  <th>Backer Count</th>
+                                  <th>Join Date</th>
                             
                                   <th></th>
                                 </tr>
@@ -55,11 +49,16 @@
                                 <tbody>
                                   <%= for donee <- @donees do %>
                                       <tr>
-                                        <td><%= donee.id %></td>
-                                        <td><%= donee.backer.email %></td>
+                                        <td>
+                                                              <div class="d-flex">
+                      <div><img class="avatar" src="<%= donee.backer.avatar %>" alt="<%= donee.backer.display_name %>"></div>
+                       <div class="ml-1"> <div class="text-bold-700"><%= donee.backer.display_name %></div><div class="text-sm">@<%= donee.backer.username %></div><div><%= donee.backer.email %></div>
+                      </div>
+                      </div>
+                                        </td>
                                         <td><%= donee.category.name %></td>
-                                        <td><%= donee.title.name %></td>                                               
-                                        <td><%= donee.status %></td>
+                                        <td><%= donee.backer_count %></td>                                               
+                                        <td><%= Stringhelper.datetime_to_human donee.inserted_at %></td>
                                   
                                         <td class="text-right">
                                           <%= link to: Router.donee_path(@conn, :show, donee) do %>
@@ -67,9 +66,6 @@
                                           <% end %>                                            
                                           <%= link to: Router.donee_path(@conn, :edit, donee) do %>
                                            <button type="button" class="btn btn-outline-warning mr-1"><i class="ft-edit"></i></button>
-                                          <% end %>                                       
-                                          <%= link to: Router.donee_path(@conn, :delete, donee), method: :delete, data: [confirm: "Are you sure?"] do %>
-                                           <button type="button" class="btn btn-outline-danger mr-1"><i class="ft-trash-2"></i></button>
                                           <% end %>
                                         </td>
 

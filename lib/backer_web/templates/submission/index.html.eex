@@ -29,7 +29,7 @@
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Submission", to: Router.submission_path(@conn, :new), class: "btn btn-glow btn-round btn-bg-gradient-x-red-pink" %>
+                        <a href="Router.submission_path(@conn, :new)"><button class="btn btn-glow btn-bg-gradient-x-red-pink"><i class="ft-plus"></i> New Submission</button></a>
                         </li>
                     </ul>
                 </div>

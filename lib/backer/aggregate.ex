@@ -90,7 +90,12 @@ defmodule Backer.Aggregate do
 
   """
   def list_backingaggregates do
-    Repo.all(BackingAggregate)
+    query =
+      from(b in BackingAggregate,
+        preload: [backer: [], donee: [:backer]]
+      )
+
+    Repo.all(query)
   end
 
   def list_top_backer(donee_id, limit) do

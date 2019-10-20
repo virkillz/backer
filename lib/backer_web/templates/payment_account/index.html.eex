@@ -29,7 +29,7 @@
           <div class="heading-elements">
             <ul class="list-inline mb-0">
               <li>
-              <a href="<%= Router.payment_account_path(@conn, :new) %>"><button type="button" class="btn btn-glow btn-round btn-bg-gradient-x-red-pink">New Payment account</button></a>
+              <a href="<%= Router.payment_account_path(@conn, :new) %>"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> New Payment account</button></a>
               </li>
             </ul>
           </div>
@@ -48,10 +48,6 @@
                      <th>Account number</th>
                      <th>Branch</th>
                      <th>Type</th>
-                     <th>Email ref</th>
-                     <th>Phone ref</th>
-                     <th>Other ref</th>
-                     <th>Ownership evidence</th>
                     
                     <th></th>
                   </tr>
@@ -70,18 +66,6 @@
                       </td>
                        <td>
                         <%= payment_account.type %>
-                      </td>
-                       <td>
-                        <%= payment_account.email_ref %>
-                      </td>
-                       <td>
-                        <%= payment_account.phone_ref %>
-                      </td>
-                       <td>
-                        <%= payment_account.other_ref %>
-                      </td>
-                       <td>
-                        <%= payment_account.ownership_evidence %>
                       </td>
                       
                       <td class="text-right">

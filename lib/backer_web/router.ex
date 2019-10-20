@@ -55,7 +55,7 @@ defmodule BackerWeb.Router do
     resources("/user", UserController)
     get("/logout", UserController, :logout)
 
-    resources "/backingaggregates", BackingAggregateController
+    resources "/backingaggregates", BackingAggregateController, only: [:index, :show]
     resources "/contacts", ContactController
     resources "/metadatas", MetadataController
 

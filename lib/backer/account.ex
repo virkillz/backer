@@ -170,11 +170,21 @@ defmodule Backer.Account do
 
   """
   def list_backers do
-    Repo.all(Backerz)
+    query =
+      from(b in Backerz,
+        order_by: [desc: b.id]
+      )
+
+    Repo.all(query)
   end
 
   def list_backers(params) do
-    Backerz |> Repo.paginate(params)
+    query =
+      from(b in Backerz,
+        order_by: [desc: b.id]
+      )
+
+    query |> Repo.paginate(params)
   end
 
   @doc """
@@ -454,7 +464,7 @@ defmodule Backer.Account do
 
   """
   def list_donees do
-    query = from(p in Donee, preload: [:backer, :category, :title])
+    query = from(d in Donee, order_by: [desc: d.id], preload: [:backer, :category, :title])
 
     Repo.all(query)
   end
