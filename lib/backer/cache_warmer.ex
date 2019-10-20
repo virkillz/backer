@@ -6,7 +6,6 @@ defmodule CacheWarmer do
     debug("warming the cache")
 
     Backer.Content.list_notification_count()
-    |> IO.inspect()
     |> Enum.each(fn x -> Cachex.put(:notification, "backer:#{x.backer_id}", x.unread_notif) end)
 
     # ...

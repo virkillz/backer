@@ -98,6 +98,19 @@ defmodule Backer.Aggregate do
     Repo.all(query)
   end
 
+  @doc """
+  Returns the list of backingaggregates.
+
+  ## Examples
+
+      iex> list_backingaggregates()
+      [%BackingAggregate{}, ...]
+
+  """
+  def list_backingaggregates_no_preload do
+    Repo.all(BackingAggregate)
+  end
+
   def list_top_backer(donee_id, limit) do
     query =
       from(b in BackingAggregate,
@@ -212,5 +225,32 @@ defmodule Backer.Aggregate do
       )
 
     Repo.all(query) |> IO.inspect()
+  end
+
+  def update_backer_aggregate_batch() do
+    # This logic only turn active into inactive. If you think we should check inactive
+    # into active, can alter this function.
+
+    now = DateTime.utc_now()
+    list_all_backer_aggregate = list_backingaggregates_no_preload()
+    active_donation = Finance.list_donation_active()
+
+    Enum.map(list_all_backer_aggregate, fn x ->
+      if x.backing_status == "active" do
+        find_active_donation =
+          Enum.filter(active_donation, fn y -> y.month == now.month && y.year == now.year end)
+
+        if(Enum.count(find_active_donation) > 0) do
+          # still active
+          x
+        else
+          # not active anymore, need to update.
+          {ok, new} = update_backing_aggregate(x, %{"backing_status" => "inactive"})
+          new
+        end
+      else
+        x
+      end
+    end)
   end
 end

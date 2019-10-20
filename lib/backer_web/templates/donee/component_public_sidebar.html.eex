@@ -57,7 +57,7 @@
 	                <div class="pb-10">
 	                    <div class=" text-gray-700 font-bold py-1 px-2 mt-8">Top Backer</div>
 	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= if Enum.count(@top_backer) == 0 do %> <p><%= @donee.backer.display_name %> belum memiliki backer</p> <% end %>
+							<%= if Enum.count(@top_backer) == 0 do %> <p><%= @donee.backer.display_name %> tidak memiliki backer aktif saat ini</p> <% end %>
 							
 							<%= for bckr <- @top_backer do %>
 

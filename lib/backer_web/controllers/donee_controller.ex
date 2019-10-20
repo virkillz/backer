@@ -388,7 +388,11 @@ defmodule BackerWeb.DoneeController do
               end
 
             random_donee = Account.get_random_donee(4)
-            active_backers = Aggregate.list_top_backer(donee.id, 4)
+
+            active_backers =
+              Aggregate.list_top_backer(donee.id, 4)
+              |> Enum.filter(fn x -> x.backing_status == "active" end)
+
             backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
             backers = Finance.list_active_backers(%{"donee_id" => donee.id})
 

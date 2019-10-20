@@ -25,6 +25,19 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+# This will update new active status every month. But currently run every midnight for good measure.
+config :backer, Backer.CronScheduler,
+  jobs: [
+    update_backer_aggregate: [
+      schedule: "@midnight",
+      task: {Backer.Aggregate, :update_backer_aggregate_batch, []}
+    ],
+    update_active_backer_count: [
+      schedule: "@midnight",
+      task: {Backer.Account, :update_donee_backer_count_batch, []}
+    ]
+  ]
+
 # Configures Guardian
 config :backer, Backer.Auth.Guardian,
   issuer: "backer",

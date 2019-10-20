@@ -927,4 +927,29 @@ defmodule Backer.Account do
   def change_metadata(%Metadata{} = metadata) do
     Metadata.changeset(metadata, %{})
   end
+
+  def update_donee_increase_backer_count(donee_id) do
+    donee = get_donee(:id, donee_id)
+
+    if not is_nil(donee) do
+      attrs = %{"backer_count" => donee.backer_count + 1}
+      update_donee(donee, attrs)
+    else
+      {:error, "Donee cannot be founded."}
+    end
+  end
+
+  def update_donee_backer_count_batch() do
+    # Get list of active donation and grouped into donee_id
+    list_active_backer_count = Backer.Finance.list_count_active_backer()
+
+    # get each of donee_id, if the numebr is different, update.
+    Enum.each(list_active_backer_count, fn x ->
+      donee = get_donee!(x.donee_id)
+
+      if donee.backer_count != x.active_backer do
+        update_donee(donee, %{"backer_count" => x.active_backer})
+      end
+    end)
+  end
 end

@@ -39,6 +39,8 @@ defmodule Backer.Account.Donee do
       :bank_book_picture,
       :account_name,
       :account_id,
+      :backer_count,
+      :post_count,
       :status,
       :backer_id,
       :title_id,

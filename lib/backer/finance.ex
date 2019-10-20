@@ -10,6 +10,7 @@ defmodule Backer.Finance do
   alias Backer.Finance.IncomingPayment
   alias Backer.Finance.InvoiceDetail
   alias Backer.Account.Donee
+  alias Backer.Account
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Masterdata.Title
   alias Backer.Content
@@ -399,9 +400,13 @@ defmodule Backer.Finance do
           create_batch_donation(invoice.id)
         end)
         |> Ecto.Multi.run(:aggregate, fn _repo, %{invoice: invoice} ->
+          # build notification
           Content.build_notification(:invoice, :payment_received, invoice)
-          |> IO.inspect()
 
+          # increase_donee's backercount
+          Account.update_donee_increase_backer_count(invoice.donee_id)
+
+          # build backing aggregate
           Aggregate.build_backing_aggregate(invoice.backer_id, invoice.donee_id)
         end)
         |> Repo.transaction()
@@ -1698,6 +1703,46 @@ defmodule Backer.Finance do
         select: sum(i.amount)
       )
 
-    Repo.one(query) |> IO.inspect()
+    Repo.one(query)
+  end
+
+  def count_active_backer_of(donee_id) do
+    now = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.donee_id == ^donee_id,
+        where: d.month == ^now.month,
+        where: d.year == ^now.year,
+        select: count(d.id)
+      )
+
+    Repo.one(query)
+  end
+
+  def list_count_active_backer() do
+    now = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.month == ^now.month,
+        where: d.year == ^now.year,
+        group_by: d.donee_id,
+        select: %{donee_id: d.donee_id, active_backer: count(d.id)}
+      )
+
+    Repo.all(query)
+  end
+
+  def list_donation_active() do
+    now = DateTime.utc_now()
+
+    query =
+      from(d in Donation,
+        where: d.month == ^now.month,
+        where: d.year == ^now.year
+      )
+
+    Repo.all(query)
   end
 end

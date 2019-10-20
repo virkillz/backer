@@ -91,13 +91,17 @@ defmodule Stringhelper do
     end
   end
 
-  def format_thousand(integer) do
+  def format_thousand(integer) when is_integer(integer) do
     integer
     |> Integer.to_char_list()
     |> Enum.reverse()
     |> Enum.chunk(3, 3, [])
     |> Enum.join(",")
     |> String.reverse()
+  end
+
+  def format_thousand(integer) when is_nil(integer) do
+    0
   end
 
   def datetime_to_human(datetime) do

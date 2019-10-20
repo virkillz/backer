@@ -15,6 +15,7 @@ defmodule Backer.Application do
       worker(Backer.HourlyScheduler, []),
       worker(CUID, [CUID]),
       worker(Cachex, [:notification, []], id: :cachex_1),
+      worker(Backer.CronScheduler, []),
       worker(Task, [&CacheWarmer.warm/0], restart: :temporary)
       # Start your own worker by calling: Backer.Worker.start_link(arg1, arg2, arg3)
       # worker(Backer.Worker, [arg1, arg2, arg3]),
