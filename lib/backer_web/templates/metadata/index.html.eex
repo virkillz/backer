@@ -87,7 +87,7 @@
                     <% end %>
                 </tbody>
               </table>
-
+              <%= pagination_links @conn, @metadatas, view_style: :bootstrap_v4, distance: 5, next: "next", previous: "prev", first: true, last: true %>
             </div>
             <br>
             

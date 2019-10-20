@@ -843,8 +843,8 @@ defmodule Backer.Account do
       [%Metadata{}, ...]
 
   """
-  def list_metadatas do
-    Repo.all(Metadata)
+  def list_metadatas(params) do
+    Repo.paginate(Metadata, params)
   end
 
   @doc """

@@ -4,8 +4,8 @@ defmodule BackerWeb.MetadataController do
   alias Backer.Account
   alias Backer.Account.Metadata
 
-  def index(conn, _params) do
-    metadatas = Account.list_metadatas()
+  def index(conn, params) do
+    metadatas = Account.list_metadatas(params)
     render(conn, "index.html", metadatas: metadatas)
   end
 
@@ -20,6 +20,7 @@ defmodule BackerWeb.MetadataController do
         conn
         |> put_flash(:info, "Metadata created successfully.")
         |> redirect(to: Router.metadata_path(conn, :show, metadata))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,6 +45,7 @@ defmodule BackerWeb.MetadataController do
         conn
         |> put_flash(:info, "Metadata updated successfully.")
         |> redirect(to: Router.metadata_path(conn, :show, metadata))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", metadata: metadata, changeset: changeset)
     end
