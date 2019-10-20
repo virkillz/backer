@@ -92,7 +92,7 @@ defmodule BackerWeb.Router do
     get("/invoices/newdeposit", InvoiceController, :newdeposit)
     post("/invoices/create_deposit", InvoiceController, :create_deposit)
     post("/invoices/create_backing", InvoiceController, :create_backing)
-    resources("/invoices", InvoiceController, except: [:new, :create])
+    resources("/invoices", InvoiceController, only: [:index, :edit, :update, :show])
     resources("/incoming_payments", IncomingPaymentController)
     resources "/settlements", SettlementController
     get "/settlements/new/:id", SettlementController, :build_settlement
