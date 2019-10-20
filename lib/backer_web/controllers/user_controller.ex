@@ -5,6 +5,8 @@ defmodule BackerWeb.UserController do
   alias Backer.Account
   alias Backer.Account.User
   alias Backer.Auth.Guardian
+  alias Backer.Finance
+  alias Backer.Aggregate
 
   def index(conn, _params) do
     user = Account.list_user()
@@ -190,7 +192,18 @@ defmodule BackerWeb.UserController do
   end
 
   def dashboard(conn, _) do
-    render(conn, "dashboard.html")
+    data = %{
+      count_backer: Account.count_backer(),
+      count_donee: Account.count_donee(),
+      count_backing: Finance.count_invoice_paid(),
+      count_active_backer: Enum.count(Aggregate.count_active_backer()),
+      count_unsettled_invoice: Finance.count_unsettled_invoice(),
+      count_unpaid_invoice: Finance.count_unpaid_invoice(),
+      count_settlement_ongoing: Finance.count_settlement_ongoing(),
+      count_total_revenue: Finance.count_total_revenue()
+    }
+
+    render(conn, "dashboard.html", data: data)
   end
 
   def profile(conn, _) do

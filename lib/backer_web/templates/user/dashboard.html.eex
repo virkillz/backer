@@ -29,14 +29,14 @@
             <div class="col-12">
             <div class="card pull-up border-top-info border-top-3 rounded-0">
             <div class="card-header">
-                <h4 class="card-title">Today's New Backer <span class="badge badge-pill badge-info float-right m-0">5+</span></h4>
+                <h4 class="card-title">Today's New Backer <span class="badge badge-pill badge-info float-right m-0">0+</span></h4>
             </div>
             <div class="card-content collapse show">
                 <div class="card-body p-1">
-                    <h4 class="font-large-1 text-bold-400">18 <i class="ft-users float-right"></i></h4>
+                    <h4 class="font-large-1 text-bold-400">0 <i class="ft-users float-right"></i></h4>
                 </div>
                 <div class="card-footer p-1">
-                    <span class="text-muted"><i class="la la-arrow-circle-o-up info"></i> 23.67% increase</span>
+                    <span class="text-muted"><i class="la la-arrow-circle-o-up info"></i> 0% increase</span>
                 </div>
             </div>
         </div>
@@ -46,14 +46,14 @@
             <div class="col-12">
         <div class="card pull-up border-top-info border-top-3 rounded-0">
             <div class="card-header">
-                <h4 class="card-title">Today's New Donee <span class="badge badge-pill badge-info float-right m-0">5+</span></h4>
+                <h4 class="card-title">Today's New Donee <span class="badge badge-pill badge-info float-right m-0">0+</span></h4>
             </div>
             <div class="card-content collapse show">
                 <div class="card-body p-1">
-                    <h4 class="font-large-1 text-bold-400">1 <i class="ft-users float-right"></i></h4>
+                    <h4 class="font-large-1 text-bold-400">0 <i class="ft-users float-right"></i></h4>
                 </div>
                 <div class="card-footer p-1">
-                    <span class="text-muted"><i class="la la-arrow-circle-o-up info"></i> 23.67% increase</span>
+                    <span class="text-muted"><i class="la la-arrow-circle-o-up info"></i> 0% increase</span>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Backer</span>
-                                <h1 class="danger mb-0">6235</h1>
+                                <h1 class="danger mb-0"><%= @data.count_backer %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-cup icon-opacity danger font-large-4"></i>
@@ -91,7 +91,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Donee</span>
-                                <h1 class="success mb-0">486</h1>
+                                <h1 class="success mb-0"><%= @data.count_donee %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-moustache icon-opacity success font-large-4"></i>
@@ -109,7 +109,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Backing</span>
-                                <h1 class="warning mb-0">18421</h1>
+                                <h1 class="warning mb-0"><%= @data.count_backing %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-heart icon-opacity warning font-large-4"></i>
@@ -126,7 +126,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Active Backer</span>
-                                <h1 class="info mb-0">1681</h1>
+                                <h1 class="info mb-0"><%= @data.count_active_backer %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-fire icon-opacity info font-large-4"></i>
@@ -152,7 +152,7 @@
                             </div>
                             <div class="media-body text-right align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Post</span>
-                                <h1 class="warning mb-0">8654 Post</h1>
+                                <h1 class="warning mb-0">0 Post</h1>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                             </div>
                             <div class="media-body text-right align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Revenue</span>
-                                <h1 class="info mb-0">687,142 K</h1>
+                                <h1 class="info mb-0"><%= Stringhelper.format_thousand @data.count_total_revenue %></h1>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="media-body text-right align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Payout</span>
-                                <h1 class="success mb-0">1562 K</h1>
+                                <h1 class="success mb-0">- K</h1>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="media-body text-right align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Total Profit</span>
-                                <h1 class="danger mb-0">18,123 K</h1>
+                                <h1 class="danger mb-0">- K</h1>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Unsettled Invoice</span>
-                                <h1 class="danger mb-0">6235</h1>
+                                <h1 class="danger mb-0"><%= @data.count_unsettled_invoice %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-tag icon-opacity danger font-large-4"></i>
@@ -239,7 +239,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Unpaid Invoice</span>
-                                <h1 class="success mb-0">486</h1>
+                                <h1 class="success mb-0"><%= @data.count_unpaid_invoice %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-earphones-alt icon-opacity success font-large-4"></i>
@@ -257,7 +257,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Ongoing Settlement</span>
-                                <h1 class="warning mb-0">18 Hrs</h1>
+                                <h1 class="warning mb-0"><%= @data.count_settlement_ongoing %></h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-speedometer icon-opacity warning font-large-4"></i>
@@ -274,7 +274,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left align-self-bottom mt-3">
                                 <span class="d-block mb-1 font-medium-1">Oldest Settlement</span>
-                                <h1 class="info mb-0">3 days</h1>
+                                <h1 class="info mb-0">- days</h1>
                             </div>
                             <div class="align-self-top">
                                 <i class="icon-like icon-opacity info font-large-4"></i>

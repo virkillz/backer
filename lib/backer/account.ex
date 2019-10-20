@@ -28,6 +28,18 @@ defmodule Backer.Account do
     Repo.all(User)
   end
 
+  def count_backer do
+    Repo.one(from(b in Backerz, select: count(b.id)))
+  end
+
+  def count_donee do
+    Repo.one(from(d in Donee, select: count(d.id)))
+  end
+
+  def count_backer_new_today do
+    0
+  end
+
   @doc """
   Gets a single user.
 

@@ -202,4 +202,15 @@ defmodule Backer.Aggregate do
   def change_backing_aggregate(%BackingAggregate{} = backing_aggregate) do
     BackingAggregate.changeset(backing_aggregate, %{})
   end
+
+  def count_active_backer do
+    query =
+      from(b in BackingAggregate,
+        where: b.backing_status == "active",
+        group_by: b.backer_id,
+        select: %{backer_id: b.backer_id, count: count(b.id)}
+      )
+
+    Repo.all(query) |> IO.inspect()
+  end
 end

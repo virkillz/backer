@@ -1654,4 +1654,50 @@ defmodule Backer.Finance do
   def change_settlement_detail(%SettlementDetail{} = settlement_detail) do
     SettlementDetail.changeset(settlement_detail, %{})
   end
+
+  def count_invoice_paid do
+    query = from(i in Invoice, where: i.status == "paid", select: count(i.id))
+    Repo.one(query)
+  end
+
+  def count_unsettled_invoice do
+    query =
+      from(i in Invoice,
+        where: i.status == "paid",
+        where: i.settlement_status != "paid",
+        select: count(i.id)
+      )
+
+    Repo.one(query)
+  end
+
+  def count_unpaid_invoice do
+    query =
+      from(i in Invoice,
+        where: i.status == "unpaid",
+        select: count(i.id)
+      )
+
+    Repo.one(query)
+  end
+
+  def count_settlement_ongoing do
+    query =
+      from(s in Settlement,
+        where: s.status == "waiting payment",
+        select: count(s.id)
+      )
+
+    Repo.one(query)
+  end
+
+  def count_total_revenue do
+    query =
+      from(i in Invoice,
+        where: i.status == "paid",
+        select: sum(i.amount)
+      )
+
+    Repo.one(query) |> IO.inspect()
+  end
 end
