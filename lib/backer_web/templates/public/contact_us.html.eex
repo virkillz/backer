@@ -26,8 +26,17 @@
 
     <div class="rounded bg-white shadow p-6 mx-auto max-w-lg">
         <div class="text-3xl  font-semibold text-center">Kirim Pesan</div>
+
+                    <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> bg-blue-400 text-white text-sm rounded">
+                        <%= get_flash(@conn, :info) %>
+                    </div> 
+
+                    <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :error) |> is_nil, do: "hidden" %> bg-red-400 text-white text-sm rounded">
+                        <%= get_flash(@conn, :error) %>
+                    </div>
+
         <div class="">
-        <%= form_for @changeset, "/contact-us", fn f ->  %>
+        <%= form_for @changeset, "/contact-us", [id: "invisible-recaptcha-form"] ,fn f ->  %>
             <div class="">
                 <%= text_input f, :name, [placeholder: "Nama", class: "w-full py-2 px-2 my-1 rounded border bg-gray-100"] %>
                 <div class="text-xs text-red-500"><%= error_tag f, :name %></div>
@@ -47,9 +56,8 @@
             <div class="">
                 <%= textarea f, :message, [placeholder: "Pesan",  rows: 10, class: "w-full py-2 px-2 my-1 rounded border bg-gray-100"] %>
                 <div class="text-xs text-red-500"><%= error_tag f, :title %></div>
-            </div>                                                            
-            <button type="submit"
-                class="btn-glow-indigo w-full mt-4 tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-purple-500 border-purple-500 hover:bg-purple-600 border-2 text-white rounded-lg"><%= gettext "Kirim" %></button>
+            </div>   
+            <button class="g-recaptcha tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg" data-sitekey="6Lewj74UAAAAAPNao4lXeZv2ekznpdxw7hhtgKhT" data-callback='onSubmit'><%= gettext "Kirim" %></button>
         <% end %>
         </div>
     </div>

@@ -67,7 +67,8 @@ defmodule Backer.Mixfile do
       {:cors_plug, "~> 2.0"},
       {:sendgrid, "~> 2.0"},
       {:cachex, "~> 3.2"},
-      {:quantum, "~> 2.3"}
+      {:quantum, "~> 2.3"},
+      {:httpoison, "~> 1.5"}
     ]
   end
 

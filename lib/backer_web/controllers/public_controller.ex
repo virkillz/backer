@@ -131,11 +131,27 @@ defmodule BackerWeb.PublicController do
     |> render("contact_us.html",
       layout: {BackerWeb.LayoutView, "public.html"},
       meta: meta,
+      recaptcha: true,
       changeset: changeset
     )
   end
 
-  def contact_us_post(conn, %{"contact" => contact_params}) do
+  def contact_us_post(conn, %{"contact" => contact_params} = params) do
+    case Backer.Helper.verify_recaptcha(params["g-recaptcha-response"]) do
+      :ok ->
+        contact_us_post_continue(conn, contact_params)
+
+      :wrongcaptcha ->
+        conn
+        |> put_flash(:error, "Oops, wrong captcha")
+        |> redirect(to: "/contact-us")
+
+      _ ->
+        contact_us_post_continue(conn, contact_params)
+    end
+  end
+
+  defp contact_us_post_continue(conn, contact_params) do
     meta = %{title: "Welcome to backer"}
 
     case Temporary.create_contact(contact_params) do
@@ -152,6 +168,7 @@ defmodule BackerWeb.PublicController do
         |> render("contact_us.html",
           layout: {BackerWeb.LayoutView, "public.html"},
           meta: meta,
+          recaptcha: true,
           changeset: changeset
         )
     end
@@ -321,11 +338,27 @@ defmodule BackerWeb.PublicController do
     |> render("register_donee.html",
       layout: {BackerWeb.LayoutView, "public.html"},
       changeset: changeset,
+      recaptcha: true,
       meta: meta
     )
   end
 
-  def register_donee_post(conn, %{"submission" => submission_params}) do
+  def register_donee_post(conn, %{"submission" => submission_params} = params) do
+    case Backer.Helper.verify_recaptcha(params["g-recaptcha-response"]) do
+      :ok ->
+        register_donee_post_continue(conn, submission_params)
+
+      :wrongcaptcha ->
+        conn
+        |> put_flash(:error, "Oops, wrong captcha")
+        |> redirect(to: "/register_donee")
+
+      _ ->
+        register_donee_post_continue(conn, submission_params)
+    end
+  end
+
+  def register_donee_post_continue(conn, submission_params) do
     meta = %{title: "Welcome to backer"}
 
     case Temporary.create_submission(submission_params) do
@@ -338,22 +371,14 @@ defmodule BackerWeb.PublicController do
         )
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
-
         conn
         |> render("register_donee.html",
           layout: {BackerWeb.LayoutView, "public.html"},
           changeset: changeset,
+          recaptcha: true,
           meta: meta
         )
     end
-
-    # conn
-    # |> render("register_donee.html",
-    #   layout: {BackerWeb.LayoutView, "public.html"},
-    #   changeset: changeset,
-    #   meta: meta
-    # )
   end
 
   def page403(conn, _params) do
@@ -377,7 +402,8 @@ defmodule BackerWeb.PublicController do
 
     render(conn, "login.html",
       layout: {BackerWeb.LayoutView, "public.html"},
-      changeset: changeset
+      changeset: changeset,
+      recaptcha: true
     )
   end
 
@@ -386,11 +412,27 @@ defmodule BackerWeb.PublicController do
 
     render(conn, "sign_up.html",
       changeset: changeset,
+      recaptcha: true,
       layout: {BackerWeb.LayoutView, "public.html"}
     )
   end
 
-  def createuser(conn, %{"backer" => params}) do
+  def createuser(conn, %{"backer" => params} = all_params) do
+    case Backer.Helper.verify_recaptcha(all_params["g-recaptcha-response"]) do
+      :ok ->
+        createuser_continue(conn, params)
+
+      :wrongcaptcha ->
+        conn
+        |> put_flash(:error, "Oops, wrong captcha")
+        |> redirect(to: "/sign_up")
+
+      _ ->
+        createuser_continue(conn, params)
+    end
+  end
+
+  def createuser_continue(conn, params) do
     case Account.sign_up_backer(params) do
       {:ok, user} ->
         SendMail.verification(user.email, user.display_name, user.email_verification_code)
@@ -405,12 +447,28 @@ defmodule BackerWeb.PublicController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "sign_up.html",
           layout: {BackerWeb.LayoutView, "public.html"},
-          changeset: changeset
+          changeset: changeset,
+          recaptcha: true
         )
     end
   end
 
   def auth(conn, %{"email" => email, "password" => password} = params) do
+    case Backer.Helper.verify_recaptcha(params["g-recaptcha-response"]) do
+      :ok ->
+        auth_continue(conn, email, password)
+
+      :wrongcaptcha ->
+        conn
+        |> put_flash(:error, "Oops, wrong captcha")
+        |> redirect(to: "/login")
+
+      _ ->
+        auth_continue(conn, email, password)
+    end
+  end
+
+  def auth_continue(conn, email, password) do
     case Account.authenticate_backer_front(email, password) do
       {:ok, backer} ->
         if backer.is_email_verified do
@@ -440,6 +498,7 @@ defmodule BackerWeb.PublicController do
         conn
         |> put_flash(:error, reason)
         |> render("login.html",
+          recaptcha: true,
           layout: {BackerWeb.LayoutView, "public.html"},
           changeset: changeset
         )

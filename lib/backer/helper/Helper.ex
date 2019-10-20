@@ -34,4 +34,30 @@ defmodule Backer.Helper do
         "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
     end
   end
+
+  def verify_recaptcha(response) do
+    req_body =
+      URI.encode_query(%{
+        "secret" => "6Lewj74UAAAAAD9440WMSi6ZsIppWhWGYieMLe0X",
+        "response" => response
+      })
+
+    call_result =
+      HTTPoison.post(
+        "https://www.google.com/recaptcha/api/siteverify",
+        req_body,
+        %{"Content-Type" => "application/x-www-form-urlencoded"}
+      )
+
+    case call_result do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        case Jason.decode(body) do
+          {:ok, %{"success" => true}} -> :ok
+          _ -> :wrongcaptcha
+        end
+
+      _ ->
+        :connerror
+    end
+  end
 end
