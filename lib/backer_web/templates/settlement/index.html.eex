@@ -24,7 +24,7 @@
     <div class="col-lg-12 col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Payment Request</h4>
+          <h4 class="card-title">Unhandled Settlement</h4>
           <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
           <div class="heading-elements">
             <ul class="list-inline mb-0">
@@ -42,7 +42,7 @@
             <div class="container">
 
               <table class="table">
-                <thead class="bg-primary white">
+                <thead class="bg-danger white">
                   <tr>
                      <th> # </th>
                      <th>Donee ID</th>

@@ -98,11 +98,11 @@ defmodule BackerWeb.Router do
     get "/settlements/new/:id", SettlementController, :build_settlement
     resources("/donations", DonationController, only: [:index, :show])
     resources("/mutations", MutationController, only: [:index, :show, :delete])
-    resources("/withdrawals", WithdrawalController)
 
     # Better disable for security reason
     # resources "/settlement_details", SettlementDetailController
     # resources("/invoice_details", InvoiceDetailController, only: [:index, :show])
+    # resources("/withdrawals", WithdrawalController)
 
     get("/approval", FinanceController, :index)
     get("/approval/:id", FinanceController, :approval_form)

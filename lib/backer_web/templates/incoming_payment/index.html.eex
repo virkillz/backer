@@ -7,7 +7,7 @@
             <div class="breadcrumbs-top float-md-right">
               <div class="breadcrumb-wrapper mr-1">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/admin>Home</a>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a>
                   </li>
                   <li class="breadcrumb-item"><a href="/admin/incoming_payments">Incoming Payments List</a>
                   </li>                  
@@ -24,12 +24,12 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Incoming payment List</h4>
+                <h4 class="card-title">Unhandled Incoming Payment</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li>
-                          <%= link "New Incoming payment", to: Router.incoming_payment_path(@conn, :new), class: "btn btn-glow btn-bg-gradient-x-red-pink" %>
+                        <a href="Router.incoming_payment_path(@conn, :new)"><button class="btn btn-primary">New Incoming Payment</button></a>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,7 @@
 <div class="container">
 
                             <table class="table">
-                                <thead class="bg-primary white">
+                                <thead class="bg-danger white">
                                 <tr>
                                   <th>#</th>
                                   <th>Date</th>                                  
@@ -68,7 +68,7 @@
                                             <%= if incoming_payment.status == "Revision Request" do %>
                                               <span class="badge badge-danger">
                                             <% else %>
-                                              <span>
+                                              <span class="badge badge-success">
                                             <% end %>
                                             
                                           <%= incoming_payment.status %>
@@ -146,7 +146,7 @@
                                         <td><%= incoming_payment.amount %></td>
                                         <td>
                                         
-                                              <span class="badge badge-dark">
+                                              <span class="badge badge-success">
 
                                             
                                           <%= incoming_payment.status %>
