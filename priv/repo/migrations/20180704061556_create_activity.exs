@@ -3,12 +3,12 @@ defmodule Backer.Repo.Migrations.CreateActivity do
 
   def change do
     create table(:activity) do
-      add :activity, :string
-      add :user_id, references(:user, on_delete: :nothing)
+      add(:activity, :string)
+      add(:user_id, references(:user, on_delete: :delete_all))
 
       timestamps()
     end
 
-    create index(:activity, [:user_id])
+    create(index(:activity, [:user_id]))
   end
 end

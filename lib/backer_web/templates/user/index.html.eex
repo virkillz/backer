@@ -28,7 +28,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                     <a href="Router.user_path(@conn, :new)"><button class="btn btn-primary"><i class="ft-plus"></i> New Staff</button></a>
+                     <a href="<%= Router.user_path(@conn, :new) %>"><button class="btn btn-primary"><i class="ft-plus"></i> New Staff</button></a>
                     </ul>
                 </div>
             </div>

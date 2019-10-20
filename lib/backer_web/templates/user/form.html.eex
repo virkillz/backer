@@ -27,7 +27,7 @@
 
   <div class="form-group">
     <%= label f, :role, class: "control-label" %>
-    <%= text_input f, :role, class: "form-control" %>
+    <%= select f, :role, [{"Administrator", "administrator"}],class: "form-control" %>
     <%= error_tag f, :role %>
   </div>
 

@@ -220,7 +220,7 @@ defmodule BackerWeb.UserController do
       |> Enum.group_by(fn x -> x.day end)
       |> IO.inspect()
 
-    render(conn, "profile.html",
+    render(conn, "profile_admin.html",
       logs: histories,
       user: user,
       changeset: changeset,
