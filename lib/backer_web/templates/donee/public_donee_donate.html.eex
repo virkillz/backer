@@ -21,23 +21,12 @@
     </div>
 
     <div class="container mx-auto pb-20">
-        <div class="font-bold text-center text-3xl py-8  text-gray-700">Back me up!</div>
-
-        <div class="py-4 max-w-3xl mx-auto px-2">
-            <div class="py-4 text-justify bg-white rounded shadow px-6 text-gray-700 leading-relaxed">Operasi bulanan
-                kami
-                membutuhkan
-                setidaknya 300rb
-                rupiah
-                untuk sekedar penyewaan
-                gedung. Segalanya saat ini masih berupa donasi dari pemilik usaha.</div>
-        </div>
-
+        <div class="font-bold text-center text-3xl py-8  text-gray-700"><%= @donee.backer.display_name %></div>
 
 
         <div class="max-w-3xl mx-auto">
             <div class="py-4">
-                <div class="font-bold text-center  text-2xl">1. Pilih Level Donasi</div>
+                <div class="font-bold text-2xl">1. Pilih Level Donasi</div>
                 <div class="flex flex-wrap">
                     <%= for tier <- @tiers do %>
                     <div class="lg:w-1/3 md:w-1/3 w-1/2 p-2">
@@ -66,7 +55,7 @@
             <input id="month" value="1" type="number" name="invoice[month]" hidden>
 
             <div class="py-4 mx-auto">
-                <div class="font-bold text-center  py-2 text-2xl">2. Pilih Jumlah Bulan Donasi</div>
+                <div class="font-bold py-2 text-2xl">2. Pilih Jumlah Bulan Donasi</div>
 
                 <div class="">
 
@@ -111,7 +100,7 @@
             </div>
 
             <div class="py-4 max-w-3xl mx-auto">
-                <div class="font-bold text-center  text-2xl">3. Pilih Metode Pembayaran</div>
+                <div class="font-bold text-2xl">3. Pilih Metode Pembayaran</div>
                 <div class="flex flex-wrap">
 
                     <%= for payment_method <- @payment_methods do %>
@@ -131,7 +120,7 @@
             </div>
 
             <div class="py-4 mx-auto px-2">
-                <div class="font-bold text-center  py-2 text-2xl">4. Ringkasan</div>
+                <div class="font-bold py-2 text-2xl">4. Ringkasan</div>
 
                 <div class="bg-white rounded p-6 shadow">
                     <div class="max-w-xl">
