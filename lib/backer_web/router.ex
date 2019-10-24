@@ -172,6 +172,7 @@ defmodule BackerWeb.Router do
     get("/doneezone/finance", DoneeController, :doneezone_finance)
     get("/doneezone/setting", DoneeController, :doneezone_setting)
     put("/doneezone/setting", DoneeController, :doneezone_setting_post)
+    get("/doneezone/tiers", DoneeController, :doneezone_tiers)
     get("/doneezone/statistic", DoneeController, :doneezone_statistic)
 
     get("/doneezone/dashboard", DoneeController, :dashboard)

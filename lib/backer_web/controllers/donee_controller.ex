@@ -92,6 +92,33 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
+  def doneezone_tiers(conn, params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = conn.assigns.current_donee
+    random_donee = Account.get_random_donee(3)
+    donee = Account.get_donee!(donee_info.donee_id)
+    changeset = Account.change_donee(donee)
+    user_links = Account.get_user_links_of(backer_info.id)
+
+    option = [
+      [key: "Unpublished", value: "unpublished"],
+      [key: "Published", value: "published"]
+    ]
+
+    conn
+    |> render("doneezone_tiers.html",
+      backer_info: backer_info,
+      donee_info: donee,
+      option: option,
+      recommended_donees: random_donee,
+      script: %{wysiwyg: true},
+      style: %{wysiwyg: true},
+      changeset: changeset,
+      user_links: user_links,
+      layout: {BackerWeb.LayoutView, "public.html"}
+    )
+  end
+
   def doneezone_setting_post(conn, %{"donee" => donee_params}) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
@@ -352,7 +379,9 @@ defmodule BackerWeb.DoneeController do
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
 
-        active_backers = Finance.list_active_backers(:donee_id, donee.id)
+        active_backers =
+          Aggregate.list_top_backer(donee.id, 100)
+          |> Enum.filter(fn x -> x.backing_status == "active" end)
 
         conn
         |> render("doneezone_backers.html",

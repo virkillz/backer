@@ -9,9 +9,9 @@ defmodule BackerWeb.DoneeView do
 
   def topbar_active(conn, current_path) do
     if conn.request_path == current_path do
-      " border-purple-600 text-purple-600 "
+      " border-purple-600 text-purple-600x "
     else
-      " border_transparent text-gray-600 "
+      " border_transparent text-gray-600x "
     end
   end
 

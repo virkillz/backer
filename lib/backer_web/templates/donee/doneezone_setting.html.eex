@@ -16,7 +16,21 @@
 	
 
 <div class="lg:w-2/4 px-4 pb-20">
-	
+
+            <div class="flex">
+    <a href="/doneezone/setting">
+        <div class=" border-purple-600 text-purple-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent  font-title  cursor-pointer pb-4 ">
+            <%= gettext "Profil Umum" %>
+        </div>
+    </a>   
+    <a href="/doneezone/tiers">
+        <div class=" border-transparent text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent font-title cursor-pointer pb-4 ">
+            <%= gettext "Pengaturan Tier" %>
+        </div>
+    </a>
+</div>
+
+<div class="border-b-2  mb-6"></div>
 
     			<%= if not is_nil get_flash(@conn, :info) do  %>
 			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>

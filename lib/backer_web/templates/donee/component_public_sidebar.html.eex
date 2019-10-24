@@ -7,20 +7,20 @@
 	                	</a>
 						</div>
 
-	                    <div class="py-4 text-gray-800">
+	                    <div class="py-6 text-gray-800">
 	                        <div class="text-center font-bold  text-gray-700 font-title"><%= @donee.backer.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee.tagline %></div>
+	                        <div class="text-center text-sm text-gray-600">@<%= @donee.backer.username %></div>
 	                    </div>
 	                
 	                    <div class="flex lg:pt-4 ">
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.backer_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Backer</div>
+	                            <div class="text-2xl text-center font-semibold"><%= @donee.backer_count %></div>
+	                            <div class="text-center text-thin text-gray-600 text-sm">Backer</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-semibold  text-purple-400"><%= @donee.post_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Posts</div>
+	                            <div class="text-2xl text-center font-semibold "><%= @donee.post_count %></div>
+	                            <div class="text-center text-thin text-gray-600 text-sm">Posts</div>
 	                        </div>
 	                    </div>
 	                
@@ -55,9 +55,9 @@
 	
 
 	                <div class="pb-10">
-	                    <div class=" text-gray-700 font-bold py-1 px-2 mt-8">Top Backer</div>
+	                    <div class=" text-gray-700 font-bold py-2 px-2 mt-8">Top Backer</div>
 	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= if Enum.count(@top_backer) == 0 do %> <p><%= @donee.backer.display_name %> tidak memiliki backer aktif saat ini</p> <% end %>
+							<%= if Enum.count(@top_backer) == 0 do %> <p class="font-light py-2"><%= @donee.backer.display_name %> tidak memiliki backer aktif saat ini</p> <% end %>
 							
 							<%= for bckr <- @top_backer do %>
 

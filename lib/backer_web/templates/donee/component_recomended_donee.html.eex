@@ -17,9 +17,9 @@
 						class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
 				</div>
 				<div class="py-1 px-2">
-					<div class=" font-semibold text-center"><%= donee.backer.display_name %></div>
-					<div class="font-light text-center text-xs text-gray-600"><%= donee.backer.username %></div>
-					<div class="text-sm font-light text-center my-2"><%= donee.tagline %></div>
+					<div class=" font-semibold text-center font-title"><%= donee.backer.display_name %></div>
+					<div class="font-light text-center text-xs text-gray-600">@<%= donee.backer.username %></div>
+					<div class="text-sm font-light text-center my-4"><%= donee.tagline %></div>
 				</div>
 			</div>
 		</a>
