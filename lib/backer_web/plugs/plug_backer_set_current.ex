@@ -10,16 +10,14 @@ defmodule BackerWeb.Plugs.SetCurrentBacker do
   def call(conn, _params) do
     backer_id = Plug.Conn.get_session(conn, :current_backer_id)
 
-    cond do
-      current_backer = backer_id && Repo.get(Backerz, backer_id) ->
-        conn
-        |> assign(:current_backer, current_backer)
-        |> assign(:backer_signed_in?, true)
-
-      true ->
-        conn
-        |> assign(:current_backer, nil)
-        |> assign(:backer_signed_in?, false)
+    if (current_backer = backer_id) && Repo.get(Backerz, backer_id) do
+      conn
+      |> assign(:current_backer, current_backer)
+      |> assign(:backer_signed_in?, true)
+    else
+      conn
+      |> assign(:current_backer, nil)
+      |> assign(:backer_signed_in?, false)
     end
   end
 end

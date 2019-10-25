@@ -51,7 +51,7 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
                             </div>
                         </div>
                     </div>
-				<%= else %>
+				<% else %>
                 <a href="/backer-8">
                     <div class="mb-4 flex items-center cursor-pointer">
                         <img src="<%= backer.backer.avatar %>" class="z-10 rounded-lg shadow object-center object-cover w-16 h-16" alt="">

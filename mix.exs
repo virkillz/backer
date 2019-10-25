@@ -68,7 +68,8 @@ defmodule Backer.Mixfile do
       {:sendgrid, "~> 2.0"},
       {:cachex, "~> 3.2"},
       {:quantum, "~> 2.3"},
-      {:httpoison, "~> 1.5"}
+      {:httpoison, "~> 1.5"},
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
     ]
   end
 

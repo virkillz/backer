@@ -10,7 +10,7 @@ defmodule SendMail do
     |> Email.put_phoenix_template("email_verify.html",
       display_name: display_name,
       verification_code: verification_code,
-      domain: get_domain
+      domain: get_domain()
     )
     |> SendGrid.Mail.send()
   end

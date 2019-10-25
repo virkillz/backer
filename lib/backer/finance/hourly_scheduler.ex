@@ -14,7 +14,7 @@ defmodule Backer.HourlyScheduler do
   def handle_info(:work, state) do
     # Do the work you desire here
     # Reschedule once more
-    Backer.Finance.expiry_unpaid_invoice()
+    schedule_work()
     {:noreply, state}
   end
 

@@ -24,7 +24,7 @@ defmodule Backer.Aggregate do
   def build_backing_aggregate(backer_id, donee_id) do
     list_donation = Finance.list_donations(%{"backer_id" => backer_id, "donee_id" => donee_id})
 
-    if Enum.count(list_donation) == 0 do
+    if list_donation == [] do
       {:error, "No donation founded fom backer_id #{backer_id} to donee_id #{donee_id}"}
     else
       first = List.first(list_donation)
@@ -36,14 +36,14 @@ defmodule Backer.Aggregate do
       current = Enum.filter(list_donation, fn x -> x.month == now.month && x.year == now.year end)
 
       last =
-        if Enum.count(current) == 0 do
+        if current == [] do
           List.last(list_donation)
         else
           List.last(current)
         end
 
       backing_status =
-        if Enum.count(current) == 0 do
+        if current == [] do
           "inactive"
         else
           "active"
@@ -240,12 +240,12 @@ defmodule Backer.Aggregate do
         find_active_donation =
           Enum.filter(active_donation, fn y -> y.month == now.month && y.year == now.year end)
 
-        if(Enum.count(find_active_donation) > 0) do
+        if Enum.count(find_active_donation) > 0 do
           # still active
           x
         else
           # not active anymore, need to update.
-          {ok, new} = update_backing_aggregate(x, %{"backing_status" => "inactive"})
+          {_ok, new} = update_backing_aggregate(x, %{"backing_status" => "inactive"})
           new
         end
       else

@@ -44,8 +44,6 @@ defmodule BackerWeb.SettlementController do
       |> put_status(:forbidden)
       |> text("not found.")
     end
-
-    # jadi ada list invoice sama donee mana yang mau dipake.
   end
 
   def create(conn, %{"settlement" => settlement_params}) do

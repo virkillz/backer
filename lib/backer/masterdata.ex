@@ -264,7 +264,7 @@ defmodule Backer.Masterdata do
 
     result = Repo.all(query)
 
-    if Enum.count(result) == 0 do
+    if result == [] do
       generate_default_tier(donee_id)
     else
       result

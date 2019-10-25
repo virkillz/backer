@@ -1,4 +1,8 @@
 defmodule Backer.Constant do
+  @moduledoc """
+    Constant
+  """
+
   def accepted_id_kyc() do
     [KTP: "ktp", Passport: "pasport"]
   end
@@ -16,11 +20,11 @@ defmodule Backer.Constant do
   end
 
   def minimum_deposit() do
-    10000
+    10_000
   end
 
   def minimum_tier() do
-    10000
+    10_000
   end
 
   def default_platform_fee do

@@ -999,7 +999,7 @@ defmodule Backer.Finance do
 
     result =
       list_invoice_with_(:status, :unpaid)
-      |> Enum.filter(fn x -> NaiveDateTime.diff(now, x.inserted_at) > 86400 end)
+      |> Enum.filter(fn x -> NaiveDateTime.diff(now, x.inserted_at) > 86_400 end)
       |> Enum.map(fn x -> update_invoice(x, %{"status" => "expired"}) end)
       |> Enum.count()
 

@@ -1,4 +1,8 @@
 defmodule Generator.Username do
+  @moduledoc """
+    Used to create pretty pastel color
+  """
+
   @verbing [
     "abashing",
     "abating",

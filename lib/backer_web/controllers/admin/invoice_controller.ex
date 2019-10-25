@@ -47,7 +47,7 @@ defmodule BackerWeb.InvoiceController do
         methods = Constant.payment_method_deposit()
         render(conn, "new_deposit.html", changeset: changeset, backers: backers, methods: methods)
 
-      other ->
+      _other ->
         text(conn, "Ecto Multi give unhandled error, check your console")
     end
   end
@@ -58,7 +58,7 @@ defmodule BackerWeb.InvoiceController do
       |> Map.put("type", "backing")
 
     case Finance.create_donation_invoice(invoice_params) do
-      {:ok, %{invoice: invoice}} ->
+      {:ok, %{invoice: _invoice}} ->
         conn
         |> put_flash(:info, "Invoice created successfully.")
         |> redirect(to: Router.invoice_path(conn, :index))
@@ -75,7 +75,7 @@ defmodule BackerWeb.InvoiceController do
           methods: methods
         )
 
-      other ->
+      _other ->
         text(conn, "Ecto Multi give unhandled error, check your console")
     end
   end

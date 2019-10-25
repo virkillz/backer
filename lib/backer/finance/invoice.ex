@@ -1,4 +1,8 @@
 defmodule Backer.Finance.Invoice do
+  @moduledoc """
+    Invoice
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -274,16 +274,12 @@ defmodule Backer.Account do
 
   """
   def create_backer(attrs \\ %{}) do
-    attrs
-
     %Backerz{}
     |> Backerz.create_changeset(attrs)
     |> Repo.insert()
   end
 
   def sign_up_backer(attrs \\ %{}) do
-    attrs
-
     %Backerz{}
     |> Backerz.sign_up_changeset(attrs)
     |> Repo.insert()
@@ -482,7 +478,7 @@ defmodule Backer.Account do
   end
 
   def list_donees_minimum do
-    list_donees
+    list_donees()
     |> Enum.map(fn x ->
       %{
         donee_id: x.id,

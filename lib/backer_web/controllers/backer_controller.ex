@@ -82,7 +82,7 @@ defmodule BackerWeb.BackerController do
         list_donations =
           Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-        if Enum.count(list_donation) == 0 do
+        if list_donation = [] do
           redirect(conn, to: "/403")
         else
           conn
@@ -271,18 +271,16 @@ defmodule BackerWeb.BackerController do
     unique_filename = "#{file_uuid}-#{image_filename}"
     {:ok, image_binary} = File.read(file.path)
 
-    cond do
-      not String.contains?(file.content_type, "image") ->
-        "error"
+    if String.contains?(file.content_type, "image") do
+      bucket_name = System.get_env("BUCKET_NAME")
 
-      true ->
-        bucket_name = System.get_env("BUCKET_NAME")
+      image =
+        ExAws.S3.put_object(bucket_name, unique_filename, image_binary)
+        |> ExAws.request!()
 
-        image =
-          ExAws.S3.put_object(bucket_name, unique_filename, image_binary)
-          |> ExAws.request!()
-
-        "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+      "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+    else
+      "error"
     end
   end
 

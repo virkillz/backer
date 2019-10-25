@@ -1,4 +1,8 @@
 defmodule Stringhelper do
+  @moduledoc """
+    Helper for anything related to string manipulation
+  """
+
   def validate_alphanumeric(string) do
     if Regex.match?(~r/^[0-9A-Za-z]+$/, string) do
       {:ok, "correct"}

@@ -33,10 +33,9 @@ defmodule BackerWeb.BackerView do
   end
 
   def get_payment_method_detail(method_id) do
-    payment_method_detail =
-      Backer.Constant.default_payment_methods()
-      |> Enum.filter(fn x -> x.id == method_id end)
-      |> List.first()
+    Backer.Constant.default_payment_methods()
+    |> Enum.filter(fn x -> x.id == method_id end)
+    |> List.first()
   end
 
   def ago(datetime) do

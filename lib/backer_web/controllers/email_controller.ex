@@ -1,7 +1,7 @@
 defmodule BackerWeb.EmailController do
   use BackerWeb, :controller
 
-  def send_email_verification(conn, params) do
+  def send_email_verification(conn, _params) do
     conn
     |> put_layout(false)
     |> render("send_email_verification.html",
@@ -11,7 +11,7 @@ defmodule BackerWeb.EmailController do
     )
   end
 
-  def send_reset_password_link(conn, params) do
+  def send_reset_password_link(conn, _params) do
     conn
     |> put_layout(false)
     |> render("send_reset_password_link.html",

@@ -54,7 +54,7 @@
 							<%= if bckr.is_backer_anonymous do %>
 	                        <img src="/assets/images/bg/avatar-anonymous.png"
 	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-lg w-12 h-12 m-2">
-							<%= else %>
+							<% else %>
 							<a href="/backer/<%= bckr.backer.username %>" data-tippy-content="<%= bckr.backer.display_name %>" class="tippy">
 	                        <img src="<%= bckr.backer.avatar %>"
 	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-lg w-12 h-12 m-2">

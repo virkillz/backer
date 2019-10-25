@@ -16,7 +16,7 @@
                 <br>                   
                     <div class="card-body">
 
-                    <%= form_for @changeset, "/admin/login", [class: "form-horizontal"], fn f -> %> 
+                    <%= form_for @changeset, "/admin/login", [class: "form-horizontal"], fn _f -> %> 
                             <fieldset class="form-group position-relative has-icon-left">
                                 <input type="text" name="username" class="form-control" id="user-name" placeholder="Your Username" required>
                                 <div class="form-control-position">

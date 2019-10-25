@@ -1,4 +1,8 @@
 defmodule HashColor do
+  @moduledoc """
+    Used to create pretty pastel color
+  """
+
   @default_color :pastel
   @default_shape :circle
   @default_size 100
@@ -87,7 +91,7 @@ defmodule HashColor do
           get_initial(text)
         }</text>
   </circle>
-	 </svg>'
+  </svg>'
 
       _other ->
         '<svg width="#{size}" height="#{size}">
@@ -96,9 +100,7 @@ defmodule HashColor do
         }" />
   <text fill="white" x="50%" y="67%" text-anchor="middle" style="font: bold #{fontsize}px sans-serif;" >#{
           get_initial(text)
-        }</text>
-  </circle>
-	 </svg>'
+        }</text></circle></svg>'
     end
   end
 

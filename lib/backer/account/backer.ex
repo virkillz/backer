@@ -158,6 +158,7 @@ defmodule Backer.Account.Backer do
     |> validate_required([:email, :display_name])
     |> validate_avatar
     |> validate_display_name
+    |> validate_username
     |> unique_constraint(:email)
     |> unique_constraint(:phone)
     |> unique_constraint(:username)
@@ -311,21 +312,20 @@ defmodule Backer.Account.Backer do
     changeset |> change(password_recovery_code: "")
   end
 
-  defp validate_full_name(changeset) do
+  def validate_full_name(changeset) do
     full_name = get_field(changeset, :full_name)
 
-    return =
-      case Validate.validate_alphanumeric_and_space(full_name) do
-        {:ok, _} ->
-          changeset
+    case Validate.validate_alphanumeric_and_space(full_name) do
+      {:ok, _} ->
+        changeset
 
-        {:error, _reason} ->
-          add_error(
-            changeset,
-            :full_name,
-            "Full Name only can consisted of alphanumeric character"
-          )
-      end
+      {:error, _reason} ->
+        add_error(
+          changeset,
+          :full_name,
+          "Full Name only can consisted of alphanumeric character"
+        )
+    end
   end
 
   defp validate_change_password(changeset) do
