@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :backer, Backer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "indodax",
   password: "postgres",
   database: "backer_test",
   hostname: "localhost",
