@@ -8,6 +8,7 @@ defmodule BackerWeb.PublicController do
   alias Backer.Temporary
   alias Backer.Temporary.Contact
   alias Backer.Content
+  alias Phoenix.LiveView
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -29,6 +30,10 @@ defmodule BackerWeb.PublicController do
       highlight_donee: highlight_donee,
       random_donee: random_donee
     )
+  end
+
+  def test(conn, _params) do
+    LiveView.Controller.live_render(conn, BackerWeb.TestLiveView, session: %{})
   end
 
   def explore(conn, _params) do

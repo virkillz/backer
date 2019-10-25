@@ -20,6 +20,11 @@ config :backer, BackerWeb.Endpoint,
   render_errors: [view: BackerWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Backer.PubSub, adapter: Phoenix.PubSub.PG2]
 
+config :backer, BackerWeb.Endpoint,
+  live_view: [
+    signing_salt: "pcn+irkQjXqR3dNKr5IsDyPzv4ywu4pN"
+  ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

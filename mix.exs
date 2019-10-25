@@ -69,6 +69,8 @@ defmodule Backer.Mixfile do
       {:cachex, "~> 3.2"},
       {:quantum, "~> 2.3"},
       {:httpoison, "~> 1.5"},
+      {:phoenix_live_view, "~> 0.3.0"},
+      {:floki, ">= 0.0.0", only: :test},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
     ]
   end

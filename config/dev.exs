@@ -20,7 +20,9 @@ config :backer, BackerWeb.Endpoint,
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/backer_web/views/.*(ex)$}
+      ~r{lib/backer_web/views/.*(ex)$},
+      ~r{lib/cryptomonitor_web/templates/.*(eex)$},
+      ~r{lib/my_app_web/live/.*(ex)$}
     ]
   ]
 

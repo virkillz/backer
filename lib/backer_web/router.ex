@@ -7,6 +7,7 @@ defmodule BackerWeb.Router do
     plug(:accepts, ["html"])
     plug(:fetch_session)
     plug(:fetch_flash)
+    plug Phoenix.LiveView.Flash
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
     plug(BackerWeb.Plugs.SetCurrentUser)
@@ -247,6 +248,7 @@ defmodule BackerWeb.Router do
     get("/terms", PublicController, :terms)
     get("/privacy-policy", PublicController, :privacy_policy)
     get("/explore", PublicController, :explore)
+    get("/test", PublicController, :test)
 
     get("/category/:id", CategoryController, :list_donee)
     get("/404", PublicController, :page404)

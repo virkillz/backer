@@ -2,6 +2,7 @@ defmodule BackerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :backer
 
   socket("/socket", BackerWeb.UserSocket, websocket: true)
+  socket "/live", Phoenix.LiveView.Socket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
