@@ -1,7 +1,16 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-	<img src="<%= @donee.background %>" alt="<%= @donee.backer.display_name %>" class="mt-16 object-cover h-64 w-full">
-	
+	<div class="mt-16 object-cover h-64 lg:h-72 w-full" style="background-image:
+linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.73)),
+url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: "compress" } %>'); background-position: center; background-size: cover;">
+
+						<div class="flex justify-center pt-16">
+	                   		<img src="<%= Backer.Helper.imgix(@donee.backer.avatar, %{h: 80, w: 80, fit: "crop", corner_radius: "10,10,10,10"}) %>" class="object-center object-cover rounded-lg mx-auto w-20 h-20">
+						</div>
+						<div class="text-center pt-4 font-bold text-2xl text-white font-title"><%= @donee.backer.display_name %></div>
+						<div class="text-center text-white "><%= @donee.tagline %></div>
+</div>
+
 	<div class="bg-gray-200">
 	    <div class="pt-10 container mx-auto lg:flex">
 	

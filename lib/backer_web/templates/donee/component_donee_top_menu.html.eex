@@ -1,7 +1,7 @@
 <div class="pt-4 flex">
     <a href="/donee/<%= @donee.backer.username %>">
         <div
-            class="<%= topbar_active(@conn, "/donee/#{@donee.backer.username}") %> px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent  font-title  cursor-pointer pb-4 ">
+            class="<%= topbar_active(@conn, "/donee/#{@donee.backer.username}") %> px-4  font-bold lg:text-xl md:text-lg transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
             About
         </div>
     </a>   
@@ -15,7 +15,7 @@
     -->
     <a href="/donee/<%= @donee.backer.username %>/backers">
         <div
-            class="<%= topbar_active(@conn, "/donee/#{@donee.backer.username}/backers") %> px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent font-title cursor-pointer pb-4 ">
+            class="<%= topbar_active(@conn, "/donee/#{@donee.backer.username}/backers") %> px-4  font-bold lg:text-xl md:text-lg transition-all hover:border-orange-500 border-b-4 border-transparent font-title cursor-pointer pb-4 ">
             Backer
         </div>
     </a>

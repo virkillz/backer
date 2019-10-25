@@ -1,10 +1,13 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 <div class="bg-gray-200 mt-16 text-gray-700">
+
     <img src="<%= @donee.background %>" alt="<%= @donee.backer.display_name %>"
         class="mt-16 object-cover h-64 w-full border-b-8 border-white shadow-lg">
+
+
     <img src="<%= @donee.backer.avatar %>"
-        class="rounded-lg mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
+        class="rounded-lg z-30 mx-auto w-40 h-40 -mt-20 border-8 object-center object-cover border-white shadow-lg">
 
     <div class="py-4 max-w-3xl mx-auto px-2">
 
@@ -26,7 +29,7 @@
 
         <div class="max-w-3xl mx-auto">
             <div class="py-4">
-                <div class="font-bold text-2xl">1. Pilih Level Donasi</div>
+                <div class="font-bold text-center text-xl">1. Pilih Level Donasi</div>
                 <div class="flex flex-wrap">
                     <%= for tier <- @tiers do %>
                     <div class="lg:w-1/3 md:w-1/3 w-1/2 p-2">
@@ -55,7 +58,7 @@
             <input id="month" value="1" type="number" name="invoice[month]" hidden>
 
             <div class="py-4 mx-auto">
-                <div class="font-bold py-2 text-2xl">2. Pilih Jumlah Bulan Donasi</div>
+                <div class="font-bold text-center py-2 text-xl">2. Pilih Jumlah Bulan Donasi</div>
 
                 <div class="">
 
@@ -100,7 +103,7 @@
             </div>
 
             <div class="py-4 max-w-3xl mx-auto">
-                <div class="font-bold text-2xl">3. Pilih Metode Pembayaran</div>
+                <div class="font-bold text-center text-xl">3. Pilih Metode Pembayaran</div>
                 <div class="flex flex-wrap">
 
                     <%= for payment_method <- @payment_methods do %>
@@ -120,7 +123,7 @@
             </div>
 
             <div class="py-4 mx-auto px-2">
-                <div class="font-bold py-2 text-2xl">4. Ringkasan</div>
+                <div class="font-bold text-center py-2 text-xl">4. Ringkasan</div>
 
                 <div class="bg-white rounded p-6 shadow">
                     <div class="max-w-xl">
