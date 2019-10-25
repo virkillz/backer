@@ -11,8 +11,8 @@ defmodule Backer.Repo.Migrations.CreatePaymentAccounts do
       add :phone_ref, :string
       add :other_ref, :string
       add :ownership_evidence, :string
-      add :bank_id, references(:banks, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
+      add :bank_id, references(:banks, on_delete: :nilify_all)
+      add :backer_id, references(:backers, on_delete: :delete_all)
 
       timestamps()
     end

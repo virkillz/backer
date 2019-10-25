@@ -8,7 +8,7 @@ defmodule Backer.Repo.Migrations.CreateMetadatas do
       add(:value_integer, :integer)
       add(:value_string, :string)
       add(:value_boolean, :boolean, default: false, null: false)
-      add(:backer_id, references(:backers, on_delete: :nothing))
+      add(:backer_id, references(:backers, on_delete: :delete_all))
 
       timestamps()
     end

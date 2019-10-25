@@ -9,9 +9,9 @@ defmodule Backer.Repo.Migrations.CreateNotifications do
       add(:other_ref_id, :integer)
       add(:additional_note, :string)
       add(:thumbnail, :string)
-      add(:user_id, references(:backers, on_delete: :nothing))
-      add(:backer_id, references(:backers, on_delete: :nothing))
-      add(:donee_id, references(:donees, on_delete: :nothing))
+      add(:user_id, references(:backers, on_delete: :delete_all))
+      add(:backer_id, references(:backers, on_delete: :nilify_all))
+      add(:donee_id, references(:donees, on_delete: :delete_all))
 
       timestamps()
     end

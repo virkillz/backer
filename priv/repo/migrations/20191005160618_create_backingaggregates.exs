@@ -9,8 +9,8 @@ defmodule Backer.Repo.Migrations.CreateBackingaggregates do
       add(:accumulative_donation, :integer)
       add(:score, :integer)
       add(:backer_since, :naive_datetime)
-      add(:backer_id, references(:backers, on_delete: :nothing))
-      add(:donee_id, references(:donees, on_delete: :nothing))
+      add(:backer_id, references(:backers, on_delete: :delete_all))
+      add(:donee_id, references(:donees, on_delete: :delete_all))
 
       timestamps()
     end

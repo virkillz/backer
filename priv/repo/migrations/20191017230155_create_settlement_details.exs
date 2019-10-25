@@ -6,9 +6,9 @@ defmodule Backer.Repo.Migrations.CreateSettlementDetails do
       add(:amount, :integer)
       add(:remark, :string)
       add(:settlement_id, references(:settlements, on_delete: :delete_all))
-      add(:invoice_id, references(:invoices, on_delete: :nothing))
-      add(:donee_id, references(:donees, on_delete: :nothing))
-      add(:backer_id, references(:backers, on_delete: :nothing))
+      add(:invoice_id, references(:invoices, on_delete: :nilify_all))
+      add(:donee_id, references(:donees, on_delete: :nilify_all))
+      add(:backer_id, references(:backers, on_delete: :nilify_all))
 
       timestamps()
     end

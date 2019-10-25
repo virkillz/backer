@@ -14,10 +14,10 @@ defmodule Backer.Repo.Migrations.CreateSettlements do
       add :platform_fee_percentage, :integer
       add :transaction_fee, :integer
       add :net_amount, :integer
-      add :payment_account_id, references(:payment_accounts, on_delete: :nothing)
-      add :reviewer_id, references(:user, on_delete: :nothing)
-      add :backer_id, references(:backers, on_delete: :nothing)
-      add :donee_id, references(:donees, on_delete: :nothing)
+      add :payment_account_id, references(:payment_accounts, on_delete: :nilify_all)
+      add :reviewer_id, references(:user, on_delete: :nilify_all)
+      add :backer_id, references(:backers, on_delete: :nilify_all)
+      add :donee_id, references(:donees, on_delete: :nilify_all)
 
       timestamps()
     end
