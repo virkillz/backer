@@ -70,7 +70,7 @@ defmodule BackerWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    pcomments = Content.list_pcomments(%{"post_id" => id}) |> IO.inspect()
+    pcomments = Content.list_pcomments(%{"post_id" => id})
     post = Content.get_post!(id)
     render(conn, "show.html", post: post, pcomments: pcomments)
   end

@@ -19,7 +19,7 @@ defmodule BackerWeb.PublicController do
     ]
 
     random_donee = Account.get_random_donee(6)
-    highlight_donee = Account.get_highlight_donee_homepage() |> IO.inspect()
+    highlight_donee = Account.get_highlight_donee_homepage()
 
     conn
     |> render("homepage.html",

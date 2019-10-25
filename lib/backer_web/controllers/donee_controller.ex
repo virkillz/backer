@@ -589,7 +589,7 @@ defmodule BackerWeb.DoneeController do
     end
 
     # donee_id = conn.assigns.current_donee.donee_id
-    # posts = Content.list_posts(%{"donee_id" => donee_id}) |> IO.inspect
+    # posts = Content.list_posts(%{"donee_id" => donee_id})
   end
 
   def dashboard_post_new(conn, _params) do

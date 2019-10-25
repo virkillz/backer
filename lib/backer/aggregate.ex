@@ -120,7 +120,7 @@ defmodule Backer.Aggregate do
         preload: [:backer]
       )
 
-    Repo.all(query) |> IO.inspect()
+    Repo.all(query)
   end
 
   def list_donee_of_a_backer(backer_id, limit) do
@@ -224,7 +224,7 @@ defmodule Backer.Aggregate do
         select: %{backer_id: b.backer_id, count: count(b.id)}
       )
 
-    Repo.all(query) |> IO.inspect()
+    Repo.all(query)
   end
 
   def update_backer_aggregate_batch() do

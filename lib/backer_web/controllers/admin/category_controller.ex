@@ -17,7 +17,7 @@ defmodule BackerWeb.CategoryController do
 
   def list_donee(conn, %{"id" => id}) do
     category = Masterdata.get_category!(id)
-    donees = Account.get_donee(%{"category_id" => id}) |> IO.inspect()
+    donees = Account.get_donee(%{"category_id" => id})
 
     page_data = %{
       header_img:

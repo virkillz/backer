@@ -75,7 +75,7 @@ defmodule BackerWeb.BackerController do
             get_aggregate
           end
 
-        backing_aggregate |> IO.inspect()
+        backing_aggregate
 
         list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
@@ -244,7 +244,7 @@ defmodule BackerWeb.BackerController do
 
   def backerzone_profile_setting(conn, _params) do
     backer = conn.assigns.current_backer
-    user_links = Account.get_user_links_of(backer.id) |> IO.inspect()
+    user_links = Account.get_user_links_of(backer.id)
 
     case backer do
       nil ->
@@ -295,7 +295,7 @@ defmodule BackerWeb.BackerController do
 
       _ ->
         random_donees = Account.get_random_donee(3)
-        list_notifications = Content.list_notification_of(backer.id) |> IO.inspect()
+        list_notifications = Content.list_notification_of(backer.id)
 
         conn
         |> render("private_notification.html",
@@ -400,7 +400,6 @@ defmodule BackerWeb.BackerController do
   end
 
   def backerzone_payment_history(conn, %{"donee_id" => donee_id}) do
-    IO.inspect("HERE?")
     backer = conn.assigns.current_backer
 
     case backer do
@@ -446,8 +445,7 @@ defmodule BackerWeb.BackerController do
 
   def backerzone_invoice_detail(conn, %{"id" => invoice_id}) do
     backer = conn.assigns.current_backer
-    invoice = Finance.get_invoice_compact(invoice_id) |> IO.inspect()
-    IO.inspect(get_session(conn, :locale))
+    invoice = Finance.get_invoice_compact(invoice_id)
 
     case backer do
       nil ->
@@ -498,7 +496,7 @@ defmodule BackerWeb.BackerController do
       backer ->
         user_links = Account.get_user_links_of(backer.id)
         # list_my_active_donee = Finance.list_my_active_donee(:backer_id, backer.id)
-        list_my_active_donee = Aggregate.list_donee_of_a_backer(backer.id, 100) |> IO.inspect()
+        list_my_active_donee = Aggregate.list_donee_of_a_backer(backer.id, 100)
         count_all_donee = Finance.count_my_donee(:backer_id, backer.id)
 
         conn
@@ -601,8 +599,7 @@ defmodule BackerWeb.BackerController do
 
   def ajax_test(conn, _params) do
     if conn.assigns.backer_signed_in? do
-      {donation, posts} =
-        Content.timeline(%{"backer_id" => conn.assigns.current_backer.id}) |> IO.inspect()
+      {donation, posts} = Content.timeline(%{"backer_id" => conn.assigns.current_backer.id})
 
       conn |> put_layout(false) |> render("ajax_test.html", posts: posts)
     else
@@ -622,7 +619,6 @@ defmodule BackerWeb.BackerController do
   end
 
   def create(conn, %{"backer" => backer_params}) do
-    IO.inspect(backer_params)
     text(conn, "test berhasil cek console")
     # case Account.create_backer(backer_params) do
     #   {:ok, backer} ->
@@ -665,13 +661,12 @@ defmodule BackerWeb.BackerController do
   end
 
   def update_x(conn, %{"id" => id, "backer" => backer_params}) do
-    IO.inspect(backer_params)
     backer = Account.get_backer!(id)
     try_upload = backer_upload_avatar(backer_params["avatar"])
 
     case try_upload do
       {:ok, img_url} ->
-        attrs = Map.put(backer_params, "avatar", img_url) |> IO.inspect()
+        attrs = Map.put(backer_params, "avatar", img_url)
 
         # try to submit real photo
         case Account.update_backer(backer, attrs) do
@@ -681,7 +676,6 @@ defmodule BackerWeb.BackerController do
             |> redirect(to: Router.backer_path(conn, :show, backer))
 
           {:error, %Ecto.Changeset{} = changeset} ->
-            IO.inspect("nyampe sini dan ternyata error")
             id_types = Constant.accepted_id_kyc()
             render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
         end

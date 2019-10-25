@@ -22,7 +22,7 @@ defmodule BackerWeb.ForumCommentController do
   end
 
   def create(conn, %{"forum_comment" => forum_comment_params}) do
-    forum_comment_params |> IO.inspect()
+    forum_comment_params
 
     case Content.create_forum_comment(forum_comment_params) do
       {:ok, forum_comment} ->

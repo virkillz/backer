@@ -547,7 +547,7 @@ defmodule Backer.Account do
         where: p.backer_id == ^backer_id
       )
 
-    donee = Repo.one(query) |> IO.inspect()
+    donee = Repo.one(query)
 
     if donee != nil do
       %{

@@ -48,7 +48,6 @@ defmodule BackerWeb.InvoiceController do
         render(conn, "new_deposit.html", changeset: changeset, backers: backers, methods: methods)
 
       other ->
-        IO.inspect(other)
         text(conn, "Ecto Multi give unhandled error, check your console")
     end
   end
@@ -57,7 +56,6 @@ defmodule BackerWeb.InvoiceController do
     invoice_params =
       params
       |> Map.put("type", "backing")
-      |> IO.inspect()
 
     case Finance.create_donation_invoice(invoice_params) do
       {:ok, %{invoice: invoice}} ->
@@ -83,7 +81,7 @@ defmodule BackerWeb.InvoiceController do
   end
 
   def show(conn, %{"id" => id}) do
-    invoice = Finance.get_invoice!(id) |> IO.inspect()
+    invoice = Finance.get_invoice!(id)
 
     invoice_details = Finance.get_invoice_detail(%{"invoice_id" => id}) |> Enum.with_index()
 

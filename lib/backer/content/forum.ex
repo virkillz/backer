@@ -19,6 +19,5 @@ defmodule Backer.Content.Forum do
     forum
     |> cast(attrs, [:title, :content, :is_visible, :status, :like_count, :backer_id, :donee_id])
     |> validate_required([:donee_id, :backer_id, :title, :content])
-    |> IO.inspect()
   end
 end

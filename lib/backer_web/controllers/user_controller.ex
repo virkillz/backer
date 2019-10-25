@@ -77,7 +77,6 @@ defmodule BackerWeb.UserController do
         |> redirect(to: Router.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
         render(conn, "edit.html", user: user, changeset: changeset)
     end
   end
@@ -107,7 +106,6 @@ defmodule BackerWeb.UserController do
         |> redirect(to: Router.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
         render(conn, "edit.html", user: user, changeset: changeset)
     end
   end
@@ -218,7 +216,6 @@ defmodule BackerWeb.UserController do
       |> Enum.map(fn x -> getday(x) end)
       |> Enum.map(fn x -> getago(x) end)
       |> Enum.group_by(fn x -> x.day end)
-      |> IO.inspect()
 
     render(conn, "profile_admin.html",
       logs: histories,

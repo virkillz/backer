@@ -79,9 +79,7 @@ defmodule BackerWeb.SettlementController do
       new_params =
         settlement_params
         |> calculate_tax
-        |> IO.inspect()
         |> calculate_transaction_fee
-        |> IO.inspect()
 
       case Finance.update_settlement(settlement, new_params) do
         {:ok, settlement} ->

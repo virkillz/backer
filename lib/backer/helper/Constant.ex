@@ -28,8 +28,6 @@ defmodule Backer.Constant do
   end
 
   def calculate_platform_fee(amount, _donee_id) do
-    IO.inspect(amount)
-    IO.inspect(default_platform_fee)
     fee = trunc(default_platform_fee() * amount)
     {fee, amount - fee}
   end
