@@ -18,10 +18,6 @@
 				<%= if @donee.status == "unpublished" do %>
 					<div class="p-4 rounded border-orange-400 border">Saat ini halaman kamu sedang dalam mode <span class="font-bold">unpublished</span> sehingga tidak bisa dilihat secara umum. Untuk merubahnya, <a class="text-blue-500 underline" href="/doneezone/setting">klik disini</a></div>
 				<% end %>
-                <%= render "component_doneezone_top_menu.html", conn: @conn %>
-
-
-	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class=" bg-white shadow pb-8 mb-4">
 					<iframe width="100%" height="350" src="https://www.youtube.com/embed/<%= @donee.video_profile %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

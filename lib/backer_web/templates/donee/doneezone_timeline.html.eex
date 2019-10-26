@@ -1,8 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
-		<div class="bg-gray-200">
+		<div class="bg-gray-200 lg:mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
@@ -14,57 +13,48 @@
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
-
-                <%= render "component_doneezone_top_menu.html", conn: @conn %>
-
-
-	            <div class="border-b-2  mb-6"></div>
 	
 	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow">
-	                <div class="flex">
+	                <div class="flex justify-end">
 	                    <div
-	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-purple-500 transition-all border-purple-500 flex items-center">
-	                        <i class="la la-edit text-2xl mr-2"></i>
-	                        <div>Text</div>
+	                        class="hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-l-lg transition-all border shadow-inner bg-gray-100 flex items-center">
+	                        <i class="la la-edit text-xl mr-2"></i>
+	                        <div class="text-xs">Text</div>
 	                    </div>
 	                    <div
-	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-purple-500 transition-all flex items-center">
-	                        <i class="la la-photo text-2xl mr-2"></i>
-	                        <div>Image</div>
+	                        class="hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 transition-all flex border items-center">
+	                        <i class="la la-photo text-xl mr-2"></i>
+	                        <div class="text-xs">Image</div>
 	                    </div>
 	                    <div
-	                        class="cursor-pointer mx-2 px-6 py-1 border-2 rounded-lg hover:border-purple-500 transition-all flex items-center">
-	                        <i class="la la-youtube text-2xl mr-2"></i>
-	                        <div>Video</div>
+	                        class="hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-r-lg transition-all border flex items-center">
+	                        <i class="la la-youtube text-xl mr-2"></i>
+	                        <div class="text-xs ">Video</div>
 	                    </div>
 	                </div>
 	                <div class="flex py-4">
 	                    <img src="<%= @donee_info.backer.avatar %>" class="object-center object-cover w-12 h-12 rounded-lg" alt="">
 	                    <div class="w-full ml-4">
 	                        <input type="text" placeholder="Judul"
-	                            class="focus:outline-none rounded-lg bg-gray-100 w-full  mb-2 p-4">
+	                            class="focus:outline-none rounded-lg bg-gray-100 w-full  mb-2 px-4 py-2">
 	                        <textarea name="post" id="" cols="30" rows="5"
 	                            class="focus:outline-none rounded-lg bg-gray-100 w-full  p-4"
 	                            placeholder="Konten..."></textarea>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Status Publikasi</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Draft</option>
-	                                <option>Public</option>
-	                            </select>
-	                        </div>
-	                        <div class="py-2 flex">
-	                            <div class="w-40">Dapat dilihat oleh</div>
-	                            <select class="border h-8 w-40">
-	                                <option>Semua orang</option>
+
+							<div class="flex pt-1 justify-between items-center flex-wrap">
+	                        <div class="py-2 ">
+	                            <div class="mr-2 text-xs px-2 pb-px">Dapat dilihat oleh</div>
+	                            <select class="border h-8 w-40 focus:outline-none bg-white">
+	                                <option class="bg-white py-1">Semua orang</option>
 	                                <option>Tier 1</option>
 	                                <option>Tier 2</option>
 	                            </select>
 	                        </div>
-	                        <div class="pt-4">
+	                        <div class="">
 	                            <button
-	                                class="btn-glow-orange tracking-wide shadow focus:outline-none px-16 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Post</button>
+	                                class="hover:shadow-lg tracking-wide shadow focus:outline-none px-12 w-full py-3 outline-none transition-all transition-ease bg-orange-500 text-white rounded-lg">Post</button>
 	                        </div>
+							</div>
 	                    </div>
 	
 	                </div>
@@ -185,17 +175,18 @@
 
 	            </div>
 	
--->
 
 	            <div class="py-8 text-center">
 	                <button
 	                    class="focus:outline-none tracking-wide px-8 py-2 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Load
 	                    More</button>
 	            </div>
+
+				-->
 	        </div>
 	        <div class="lg:w-1/4 px-4">
 	
-	            <div class="pb-20">
+	            <div class="pb-20 hidden lg:block">
 
 					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
 	            

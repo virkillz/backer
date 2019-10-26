@@ -1,12 +1,8 @@
 <div class="hidden lg:block md:block">
 
-	
-
-
-	<div class="border-b my-4"></div>
 
 	<div class="pb-10">
-		<div class="mt-2 px-2 font-bold text-right text-lg  text-gray-700">Recommended Community</div>
+		<div class="px-2 font-semibold text-rightx text-gray-600">Recommended Community</div>
 
 		<%= for donee <- @donees do %>
 		<div class="py-2">
@@ -23,8 +19,7 @@
 							class="rounded-lg -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
 					</div>
 					<div class="py-1 px-2">
-						<div class=" font-semibold text-center"><%= donee.backer.display_name %></div>
-						<div class="font-light text-center text-xs text-gray-600">@<%= donee.backer.username %></div>
+						<div class=" font-semibold text-title text-center"><%= donee.backer.display_name %></div>
 						<div class="text-sm font-light text-center my-2"><%= donee.tagline %></div>
 					</div>
 				</div>

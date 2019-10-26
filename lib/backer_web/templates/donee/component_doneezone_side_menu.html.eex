@@ -1,5 +1,5 @@
 	
-	                <div class="pt-20 lg:hidden"></div>
+	                <div class="pt-16 lg:hidden"></div>
 	                
 	                <div class="flex items-center lg:hidden">
 	                    <div class="w-2/3">
@@ -8,8 +8,8 @@
 
                         <div class="w-1/3">
                         <div class="rounded-full justify-center flex text-center text-sm">
-                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none hover:bg-indigo-500 w-full px-4 py-1 rounded-l-lg bg-gray-300 text-white transition transition-all">Backer</button></a></div>
-                            <div class="w-1/2"><button class="w-full px-4 py-1 rounded-r-lg bg-orange-400 text-white focus:outline-none">Donee</button></div>
+                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none shadow hover:shadow-lg bg-indigo-500 w-full px-4 py-1 rounded-l-lg text-white transition transition-all">Backer</button></a></div>
+                            <div class="w-1/2"><div class="w-full px-4 py-1 rounded-r-lg bg-gray-300 text-white focus:outline-none shadow-inner">Donee</div></div>
                         </div>
                         </div>
 	                </div>
@@ -36,9 +36,9 @@
 	                        </div>
 	                    </div>
 
-                        <div class="rounded-full justify-center pt-4 flex text-center">
-                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none hover:bg-indigo-500 w-full px-8 py-2 rounded-l-lg bg-gray-300 text-white transition transition-all">Backer</button></a></div>
-                            <div class="w-1/2"><button class="w-full px-8 py-2 rounded-r-lg bg-orange-400 text-white focus:outline-none">Donee</button></div>
+                        <div class="mt-4 rounded-full justify-center flex text-center text-sm">
+                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none shadow hover:shadow-lg bg-indigo-500 w-full px-4 py-1 rounded-l-lg text-white transition transition-all">Backer</button></a></div>
+                            <div class="w-1/2"><div class="w-full px-4 py-1 rounded-r-lg bg-gray-400 text-white focus:outline-none shadow-inner">Donee</div></div>
                         </div>
 
 	                
@@ -52,6 +52,17 @@
 
 
 <div class="flex lg:block justify-center items-center">
+
+
+    <a href="/doneezone/posts">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/posts") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-newspaper-o text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Posts</div>
+        </div>
+    </a>
+
+
     <a href="/doneezone/about">
         <div
             class="<%= sidebar_active(@conn, "/doneezone/about") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
@@ -59,6 +70,16 @@
             <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Page</div>
         </div>
     </a>
+
+        <a href="/doneezone/backers">
+        <div
+            class="<%= sidebar_active(@conn, "/doneezone/backers") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-users text-2xl lg:mr-4"></i>
+            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Backers</div>
+        </div>
+    </a>
+
+
 
     <a href="/doneezone/statistic">
         <div

@@ -26,8 +26,43 @@
 <body class="text-gray-700 gradient polkadot">
 
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+
+       <div class="bg-gray-200 mt-16">
+	    <div class="pt-10 container mx-auto lg:flex">
 	
+	        <div class="lg:w-1/4 px-4">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+
+
+					<%= BackerWeb.BackerView.render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+	
+	
+	                <div class="border-b-2 my-8"></div>
+
+
+	            </div>
+	        </div>
+	
+	<div class="lg:w-2/4 px-4 pb-20">
+
     <%= render @view_module, @view_template, assigns %>
+
+    </div>
+
+
+	        <div class="lg:w-1/4 px-4">
+
+	
+				<%= BackerWeb.BackerView.render "component_backerzone_recommended_donee.html", donees: @random_donees %>
+	        </div>
+	    </div>
+	
+	</div>
+   
+
+
 
     <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
 
