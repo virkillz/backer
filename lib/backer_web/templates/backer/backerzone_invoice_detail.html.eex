@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="lg:w-2/4 px-4 pb-20">
-
+            <div class="py-2 text-gray-600 ml-2 text-sm"><i class="fa fa-home mr-2"></i><a href="/" class="underline">Home</a> <i class="la la-angle-right"></i> <a href="/backerzone/payment-history" class="underline">Riwayat Pembayaran</a> <i class="la la-angle-right"></i> <a href="#">Detail Invoice</a></div>
 
 			<div class="py-2">
 

@@ -114,26 +114,11 @@
         /*Toggle dropdown list*/
         /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
-        var navMenuDiv = document.getElementById("nav-content");
-        var navMenu = document.getElementById("nav-toggle");
 
         document.onclick = check;
         function check(e) {
             var target = (e && e.target) || (event && event.srcElement);
 
-            //Nav Menu
-            if (!checkParent(target, navMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, navMenu)) {
-                    // click on the link
-                    if (navMenuDiv.classList.contains("hidden")) {
-                        navMenuDiv.classList.remove("hidden");
-                    } else { navMenuDiv.classList.add("hidden"); }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    navMenuDiv.classList.add("hidden");
-                }
-            }
 
         }
         function checkParent(t, elm) {
@@ -268,9 +253,11 @@
 
     <script src="/assets/js/progressive-image.min.js"></script>
     <script src="/assets/js/navbar.min.js"></script>
-
+    <script src="/js/app.js"></script>
     <script>
         const node = document.getElementById('navbar-elm');
+
+        if (node) {
         const avatar = node.getAttribute('data-avatar');
         const notifCount = node.getAttribute('data-notif-count');
         const isDonee = (node.getAttribute('data-is-donee') == "true");
@@ -279,6 +266,7 @@
         node: node,
         flags: [avatar, isDonee, notifCount]
         });
+        };
     </script>
 
 

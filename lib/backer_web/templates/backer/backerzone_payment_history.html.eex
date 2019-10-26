@@ -34,9 +34,9 @@
 		</div>
 
 		<div class="lg:w-2/4 px-4 pb-20">
+			<div class="py-2 text-gray-600 ml-2 text-sm"><i class="fa fa-home mr-2"></i><a href="/" class="underline">Home</a> <i class="la la-angle-right"></i> <a href="#">Riwayat Pembayaran</a></div>
 
-
-			<div class="pb-2">
+			<div class="py-2">
 
 					<%= if Enum.count(@invoices) == 0 do %>
 						<div class="bg-white py-8 px-6 rounded-lg text-center shadow">

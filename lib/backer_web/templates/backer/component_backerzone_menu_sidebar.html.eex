@@ -14,22 +14,14 @@
 
 	<a href="/backer/<%= @backer.username %>">
 	<div class="pt-10 hidden lg:block bg-white rounded-lg shadow py-6 px-4">
+		<div class="absolute right-0 -mt-6 mr-2 rounded-full bg-indigo-500 px-4 py-1 text-white uppercase text-xs">Backer</div>
 		<img src="<%= @backer.avatar %>" class="rounded-lg mx-auto object-cover object-center w-20 h-20">
 
 		<div class="py-4 text-gray-800">
 			<div class="text-center font-semibold  text-gray-700"><%= @backer.display_name %></div>
-			<div class="text-center font-light text-xs text-gray-600">@<%= @backer.username %></div>
 			<div class="text-center font-light pt-4 text-sm text-gray-600"><%= @backer.backer_bio %></div>
 		</div>
 
-		<div class="flex pt-4 w-full">
-			<div class="px-8 mx-auto">
-				<div class="text-center text-gray-600 text-sm">Backer for</div>	
-				<div class="text-xl text-center font-semibold  text-purple-600">12</div>
-				<div class="text-center text-gray-600 text-sm">Donee</div>
-			</div>
-
-		</div>
 	</a>
 
 	</div>
@@ -42,7 +34,7 @@
 	</div>
 	<% end %>
 
-	<div class="border-b-2 my-6"></div>
+	<div class="border-b-2x my-6"></div>
 
 	<div class="flex lg:block items-center">
 
@@ -59,25 +51,25 @@
 
 		<a href="/backerzone/my-donee-list">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/my-donee-list") %>">
-				<i class="la la-leaf text-2xl lg:mr-4"></i>
-				<div class=" lg:text-lg md:text-md text-sm"> Donee </div>
+				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-orange-500 hover:bg-orange-200x transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/my-donee-list") %>">
+				<i class="la la-leaf text-3xl lg:mr-4"></i>
+				<div class=" lg:text-lg md:text-md text-sm text-gray-600"> Dukungan Saya </div>
 			</div>
 		</a>
 
 		<a href="/backerzone/payment-history">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/payment-history") %>">
-				<i class="la la-credit-card text-2xl lg:mr-4"></i>
-				<div class=" lg:text-lg md:text-md text-sm"> Riwayat Donasi</div>
+				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-orange-500 hover:bg-orange-200x transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/payment-history") %>">
+				<i class="la la-credit-card text-3xl lg:mr-4"></i>
+				<div class=" lg:text-lg md:text-md text-sm text-gray-600"> Riwayat Dukungan</div>
 			</div>
 		</a>
 
 		<a href="/backerzone/profile-setting">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-purple-700 hover:bg-purple-200 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/profile-setting") %>">
-				<i class="la la-cog text-2xl lg:mr-4"></i>
-				<div class=" lg:text-lg md:text-md text-sm"> Pengaturan</div>
+				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 text-lg rounded-lg hover:text-orange-500 hover:bg-orange-200x transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/profile-setting") %>">
+				<i class="la la-cog text-3xl lg:mr-4"></i>
+				<div class=" lg:text-lg md:text-md text-sm text-gray-600"> Pengaturan</div>
 			</div>
 		</a>
 		

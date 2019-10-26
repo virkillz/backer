@@ -9,7 +9,7 @@ alias Backer.Settings.Setting
 alias Backer.Account.Backer, as: Backerz
 
 Repo.insert!(%User{
-  fullname: "Joe Admin",
+  fullname: "Arif Virkill",
   username: "administrator",
   password_hash: "$2b$12$8As.fIX4fQsbZuhcIhKr7OU3fqxaaPsfYuFZ/S6fUEDd2HDkzN.Tu",
   avatar: "/images/default.png",
@@ -17,17 +17,17 @@ Repo.insert!(%User{
 })
 
 Repo.insert!(%Tier{
-  title: "Light Backer",
+  title: "Tea Backer",
   amount: 10_000
 })
 
 Repo.insert!(%Tier{
-  title: "Heavy Backer",
+  title: "Meal Backer",
   amount: 50_000
 })
 
 Repo.insert!(%Tier{
-  title: "Ultra Backer",
+  title: "Martabak Backer",
   amount: 100_000
 })
 
@@ -290,7 +290,7 @@ Repo.insert!(%Backerz{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/ngamen.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Musisi Jalanan",
   is_searchable: true,
   backer_id: 11,
   category_id: 1,
@@ -302,7 +302,7 @@ Repo.insert!(%Donee{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/kucingmalas.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Portal pecinta kucing",
   is_searchable: true,
   backer_id: 12,
   category_id: 1,
@@ -314,7 +314,7 @@ Repo.insert!(%Donee{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/podcast.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Podcast politik",
   is_searchable: true,
   backer_id: 13,
   category_id: 1,
@@ -326,7 +326,7 @@ Repo.insert!(%Donee{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/kapitalis.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Klub Kapitalis",
   is_searchable: true,
   backer_id: 14,
   category_id: 1,
@@ -338,7 +338,7 @@ Repo.insert!(%Donee{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/donate.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Kelompok Sedekah",
   is_searchable: true,
   backer_id: 15,
   category_id: 1,
@@ -350,7 +350,7 @@ Repo.insert!(%Donee{
 Repo.insert!(%Donee{
   background: "/assets/images/bg/tuli.jpeg",
   is_listed: true,
-  tagline: "11",
+  tagline: "Komunitas Tuli",
   is_searchable: true,
   backer_id: 16,
   category_id: 1,

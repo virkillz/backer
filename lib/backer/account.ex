@@ -9,7 +9,6 @@ defmodule Backer.Account do
   alias Backer.Account.User
   alias Comeonin.Bcrypt
   alias Backer.Account.Backer, as: Backerz
-  alias Backer.Masterdata.Tier
   alias Backer.Account.Donee
   alias Backer.Settings
   alias Backer.Account.Metadata

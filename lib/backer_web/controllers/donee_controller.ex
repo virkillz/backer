@@ -3,7 +3,6 @@ defmodule BackerWeb.DoneeController do
 
   alias Backer.Account
   alias Backer.Account.Donee
-  alias Backer.Constant
   alias Backer.Content
   alias Backer.Content.Post
   alias Backer.Finance
@@ -21,7 +20,7 @@ defmodule BackerWeb.DoneeController do
     redirect(conn, to: "/doneezone/about")
   end
 
-  def doneezone_posts(conn, params) do
+  def doneezone_posts(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = Account.get_donee(%{"username" => backer_info.username})
     random_donee = Account.get_random_donee(3)
@@ -35,7 +34,7 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
-  def doneezone_finance(conn, params) do
+  def doneezone_finance(conn, _params) do
     donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
     backer_info = conn.assigns.current_backer
     random_donee = Account.get_random_donee(3)
@@ -51,7 +50,7 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
-  def doneezone_statistic(conn, params) do
+  def doneezone_statistic(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
     random_donee = Account.get_random_donee(3)
@@ -65,7 +64,7 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
-  def doneezone_setting(conn, params) do
+  def doneezone_setting(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
@@ -92,7 +91,7 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
-  def doneezone_tiers(conn, params) do
+  def doneezone_tiers(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
     random_donee = Account.get_random_donee(3)
@@ -404,7 +403,7 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         if donee == nil do
-          redirect(conn, to: Router.page_path(conn, :page404))
+          redirect(conn, to: "/404")
         else
           if donee.status == "unpublished" do
             render_unpublished(conn, donee)
@@ -451,10 +450,6 @@ defmodule BackerWeb.DoneeController do
       _ ->
         random_backer = Account.get_random_backer(4)
         random_donee = Account.get_random_donee(4)
-        backing = Finance.list_all_backerfor(%{"backer_id" => donee.id})
-        backers = Finance.list_active_backers(%{"donee_id" => donee.id})
-
-        posts = Content.timeline_donee(donee.id)
 
         if donee == nil do
           redirect(conn, to: "/404")
@@ -470,9 +465,6 @@ defmodule BackerWeb.DoneeController do
     end
   end
 
-  def donate_postx(conn, params) do
-    text(conn, "check console")
-  end
 
   def donate_post(conn, params) do
     # 1. if backer not logged in, put session and redirect to login with friendly flash message.
@@ -494,7 +486,7 @@ defmodule BackerWeb.DoneeController do
                 |> Map.put("type", "backing")
 
               case Finance.create_donation_invoice(attrs) do
-                {:ok, %{invoice: invoice}} ->
+                {:ok, %{invoice: _invoice}} ->
                   conn
                   |> put_flash(:info, "Please make Payment.")
                   |> redirect(to: "/backerzone/payment-history")
@@ -507,7 +499,7 @@ defmodule BackerWeb.DoneeController do
                     layout: {BackerWeb.LayoutView, "public.html"}
                   )
 
-                other ->
+                _other ->
                   text(
                     conn,
                     "Unexpected error happened when created Invoice. Sorry for the inconvenience."
@@ -644,7 +636,7 @@ defmodule BackerWeb.DoneeController do
     post_params = params |> Map.put("donee_id", donee_id)
 
     case Content.create_post(post_params) do
-      {:ok, post} ->
+      {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
         |> redirect(to: Router.donee_path(conn, :dashboard_post))
@@ -681,7 +673,7 @@ defmodule BackerWeb.DoneeController do
     donee_id = conn.assigns.current_donee.donee_id
     tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee_id})
 
-    if post == nil do
+    if is_nil post do
       redirect(conn, to: "/404")
     else
       render_target =
@@ -778,7 +770,7 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         if donee == nil do
-          redirect(conn, to: Router.page_path(conn, :page404))
+          redirect(conn, to: "/404")
         else
           conn
           |> render("public_donee_forum.html",
@@ -898,49 +890,6 @@ defmodule BackerWeb.DoneeController do
         other ->
           text(conn, "Ecto Multi give unhandled error, check your console")
       end
-    end
-  end
-
-  def checkout(conn, %{"tier" => tier, "username" => username}) do
-    # check kalau donee ga bisa support dirinya sendiri
-
-    if conn.assigns.backer_signed_in? do
-      backer = conn.assigns.current_backer
-      donee = Account.get_donee(%{"username" => username})
-
-      if donee == nil do
-        redirect(conn, to: "/404")
-      else
-        case Integer.parse(tier) do
-          {number, _} ->
-            tiers = Masterdata.list_tiers(%{"donee_id" => donee.id})
-
-            selected_tier =
-              if number > Enum.count(tiers) do
-                List.last(tiers)
-              else
-                index = number - 1
-                Enum.at(tiers, index)
-              end
-
-            conn
-            |> render("component_checkout.html",
-              tier: selected_tier,
-              donee: donee,
-              layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-            )
-
-          _ ->
-            redirect(conn, to: "/404")
-        end
-      end
-    else
-      conn
-      |> put_flash(
-        :info,
-        "You need to login first."
-      )
-      |> redirect(to: "/login")
     end
   end
 

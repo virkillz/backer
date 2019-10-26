@@ -6,18 +6,17 @@
 	<div class="container px-3 mx-auto text-white flex flex-wrap flex-col md:flex-row items-start">
 		<!--Left Col-->
 		<div class="lg:text-left w-full md:w-3/5 items-start text-center md:text-left">
-			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Platform untuk mereka yang mau berkontribusi untuk perubahan</div>
+			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Bagi kamu yang mau berkontribusi demi perubahan</div>
 			<p class="wow fadeIn lg:text-xl font-lightx text-justifyx md:text-lg mb-8 mt-8 leading-loose">Puluhan ribu komunitas dan
-				individu yang menggagas kegiatan positif di masyarakat sering terhambat oleh
-				kurangnya dukungan dan pendanaan. Platform ini adalah usaha kami untuk
-				membantu mengubah keadaan itu.</p>
+				individu berkegiatan positif di Indonesia sering terhambat karena
+				kurangnya atensi dan pendanaan. Yuk, bantu mereka tetap berjalan!</p>
 
 
 			<div class="pt-4 flex lg:block justify-center">
-				<a href="/register-donee">
+				<a href="/explore">
 				<button
-					class="wow rubberBand btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Daftarkan
-					Komunitasmu</button>
+					class="wow rubberBand btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg">Lihat selengkapnya
+					</button>
 				</a>
 			</div>
 
@@ -125,7 +124,7 @@
 					<a href="/donee/<%= donee.backer.username %>">
 						<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
 							<div
-								class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-purple-500">
+								class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-orange-500">
 								<%= donee.backer_count %>
 								Backer
 							</div>
@@ -136,7 +135,7 @@
 							</div>
 							<div class="py-1 px-2">
 								<div class=" font-semibold text-center"><%= donee.backer.display_name %></div>
-								<div class="font-light text-center text-xs text-gray-600">@<%= donee.backer.username %></div>
+
 								<div class="text-sm font-light text-center my-2"><%= donee.tagline %></div>
 							</div>
 						</div>

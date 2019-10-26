@@ -264,8 +264,10 @@ defmodule Backer.Masterdata do
 
     result = Repo.all(query)
 
+    #  if not exist generate default tier
     if result == [] do
       generate_default_tier(donee_id)
+      Repo.all(query)
     else
       result
     end
