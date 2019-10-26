@@ -17,9 +17,9 @@ defmodule BackerWeb.DoneeView do
 
   def sidebar_active(conn, current_path) do
     if conn.request_path == current_path do
-      "font-semibold bg-purple-200 text-purple-700 "
+      " border-orange-500 text-orange-500 "
     else
-      "text-gray-700 "
+      " border-transparent text-gray-700 "
     end
   end
 end

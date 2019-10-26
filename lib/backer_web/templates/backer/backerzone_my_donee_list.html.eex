@@ -115,6 +115,7 @@
 
 	        <div class="lg:w-1/4 px-4">
 
+
 	
 				<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees %>
 	        </div>

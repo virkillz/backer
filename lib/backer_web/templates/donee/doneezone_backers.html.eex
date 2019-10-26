@@ -1,8 +1,8 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
+                    <%# render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
-		<div class="bg-gray-200">
+		<div class="bg-gray-200 mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
@@ -56,6 +56,13 @@
 
 	        </div>
 	        <div class="lg:w-1/4 px-4">
+
+			<div>
+				<div class="rounded-full bg-gray-200 justify-center py-1 flex text-center">
+					<div class="w-1/2 z-0 switcher"><a href="/backerzone/" ><button class="focus:outline-none hover:bg-indigo-500 w-full px-8 py-2 rounded-full bg-gray-300 text-white transition transition-all">Backer</button></a></div>
+					<div class="w-1/2 -ml-8 z-10"><a href="#" ><button class="w-full px-8 py-2 rounded-full bg-orange-500 text-white">Donee</button></a></div>
+				</div>
+			</div>
 	
 	            <div class="pb-20">
 

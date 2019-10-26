@@ -19,12 +19,12 @@
 
             <div class="flex">
     <a href="/doneezone/setting">
-        <div class=" border-purple-600 text-purple-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent  font-title  cursor-pointer pb-4 ">
+        <div class=" border-orange-500  px-4  font-bold lg:text-xl md:text-lg transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
             <%= gettext "Profil Umum" %>
         </div>
     </a>   
     <a href="/doneezone/tiers">
-        <div class=" border-transparent text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent font-title cursor-pointer pb-4 ">
+        <div class=" border-transparent text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all border-b-4 hover:border-orange-500 border-transparent font-title cursor-pointer pb-4 ">
             <%= gettext "Pengaturan Tier" %>
         </div>
     </a>
@@ -49,7 +49,7 @@
 
                         <a href="/backerzone/profile-setting">
                         <button
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Edit</button>
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-indigo-500 transition-all transition-ease hover:bg-indigo-600 hover:text-white rounded-lg border-indigo-500 border-2">Edit</button>
                             </a>
                     </div>
 
@@ -63,22 +63,22 @@
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">
                                     <%= if @user_links["youtube"] != "" && not is_nil @user_links["youtube"] do %>
-                                        <a href="<%= @user_links["youtube"] %>" class="mx-1"><i class="la la-youtube text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["youtube"] %>" class="mx-1"><i class="la la-youtube text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["twitter"] != "" && not is_nil @user_links["twitter"] do %>
-                                        <a href="<%= @user_links["twitter"] %>" class="mx-1"><i class="la la-twitter text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["twitter"] %>" class="mx-1"><i class="la la-twitter text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["instagram"] != "" && not is_nil @user_links["instagram"] do %>
-                                        <a href="<%= @user_links["instagram"] %>" class="mx-1"><i class="la la-instagram text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["instagram"] %>" class="mx-1"><i class="la la-instagram text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["dribbble"] != "" && not is_nil @user_links["dribbble"] do %>
-                                        <a href="<%= @user_links["dribbble"] %>" class="mx-1"><i class="la la-dribbble text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["dribbble"] %>" class="mx-1"><i class="la la-dribbble text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["linkedin"] != "" && not is_nil @user_links["linkedin"] do %>
-                                        <a href="<%= @user_links["linkedin"] %>" class="mx-1"><i class="la la-linkedin text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["linkedin"] %>" class="mx-1"><i class="la la-linkedin text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["github"] != "" && not is_nil @user_links["github"] do %>
-                                        <a href="<%= @user_links["github"] %>" class="mx-1"><i class="la la-github text-2xl hover:text-purple-500"></i></a>
+                                        <a href="<%= @user_links["github"] %>" class="mx-1"><i class="la la-github text-2xl hover:text-indigo-500"></i></a>
                                     <% end %>	
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Donee Profile</div>
                         <button
-                            class="hidden focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Save</button>
+                            class="hidden focus:outline-none tracking-wide px-6 py-1 outline-none text-indigo-500 transition-all transition-ease hover:bg-indigo-600 hover:text-white rounded-lg border-indigo-500 border-2">Save</button>
                     </div>
 
                     <div class="border-b my-2"></div>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="flex justify-center mt-4">
                             <label for="upload" 
-                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-purple-600 rounded hover:text-white text-purple-600 border border-purple-600">Change
+                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-indigo-600 rounded hover:text-white text-indigo-600 border border-indigo-600">Change
                                     <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="donee[background]" type="file">
                             </label>
                             </div>  
@@ -173,7 +173,7 @@
                         <div class="font-title text-xl font-bold">Profile Content</div>
                            <a href="/doneezone/preview" target="_blank">
                         <div
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Preview</div>
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-indigo-500 transition-all transition-ease hover:bg-indigo-600 hover:text-white rounded-lg border-indigo-500 border-2">Preview</div>
                             </a>
                     </div>
 

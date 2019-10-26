@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/assets/css/progressive-image.css">
 
+    <style>
+    .switcher:hover {
+        z-index:90;
+    }
+
+    </style>
+
    <%= if not is_nil @conn.assigns[:recaptcha] do %> 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
          <script>
