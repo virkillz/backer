@@ -19,7 +19,7 @@ defmodule BackerWeb.PublicController do
       %{property: "og:image", content: "......"}
     ]
 
-    random_donee = Account.get_random_donee(6)
+    random_donee = Account.get_random_donee(6) |> IO.inspect
     highlight_donee = Account.get_highlight_donee_homepage()
 
     conn
@@ -33,7 +33,12 @@ defmodule BackerWeb.PublicController do
   end
 
   def test(conn, _params) do
-    LiveView.Controller.live_render(conn, BackerWeb.TestLiveView, session: %{})
+
+    backer = conn.assigns.current_backer
+
+    conn
+    |> put_layout("doneezone_live_layout.html")
+    |> LiveView.Controller.live_render(BackerWeb.TestLiveView, session: %{backer: backer})
   end
 
   def explore(conn, _params) do
@@ -97,7 +102,7 @@ defmodule BackerWeb.PublicController do
     )
   end
 
-  def search(conn, params) do
+  def search(conn, _params) do
     meta = %{title: "Welcome to backer"}
 
     conn
@@ -160,7 +165,7 @@ defmodule BackerWeb.PublicController do
     meta = %{title: "Welcome to backer"}
 
     case Temporary.create_contact(contact_params) do
-      {:ok, contact} ->
+      {:ok, _contact} ->
         conn
         |> put_flash(:info, "Contact created successfully.")
         |> render("thanks-contact-us.html",
@@ -204,7 +209,7 @@ defmodule BackerWeb.PublicController do
           layout: {BackerWeb.LayoutView, "public.html"}
         )
 
-      other ->
+      _other ->
         if backer.is_donee do
           redirect(conn, to: "/donee/" <> username)
         else
@@ -294,7 +299,6 @@ defmodule BackerWeb.PublicController do
           }
 
         backer ->
-          payload =
             if backer.is_email_verified do
               %{
                 title: "Email cannot be sent",
@@ -321,7 +325,7 @@ defmodule BackerWeb.PublicController do
   end
 
   # if no parameter
-  def static_page(conn, params) do
+  def static_page(conn, _params) do
     redirect(conn, to: "/404")
   end
 
@@ -367,7 +371,7 @@ defmodule BackerWeb.PublicController do
     meta = %{title: "Welcome to backer"}
 
     case Temporary.create_submission(submission_params) do
-      {:ok, submission} ->
+      {:ok, _submission} ->
         conn
         |> put_flash(:info, "Submission created successfully.")
         |> render("thanks-for-register.html",
@@ -412,7 +416,7 @@ defmodule BackerWeb.PublicController do
     )
   end
 
-  def sign_up(conn, params) do
+  def sign_up(conn, _params) do
     changeset = Account.change_backer(%Backerz{})
 
     render(conn, "sign_up.html",
@@ -586,7 +590,7 @@ defmodule BackerWeb.PublicController do
           )
           |> redirect(to: "/login")
 
-        {:error, %Ecto.Changeset{} = changeset} ->
+        {:error, %Ecto.Changeset{}} ->
           conn
           |> put_flash(:error, "Password tidak sama.")
           |> render("reset_password.html",
