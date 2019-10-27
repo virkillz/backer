@@ -8,7 +8,7 @@ defmodule BackerWeb.PublicController do
   alias Backer.Temporary
   alias Backer.Temporary.Contact
   alias Backer.Content
-  alias Phoenix.LiveView
+
 
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -32,14 +32,7 @@ defmodule BackerWeb.PublicController do
     )
   end
 
-  def test(conn, _params) do
 
-    backer = conn.assigns.current_backer
-
-    conn
-    |> put_layout("doneezone_live_layout.html")
-    |> LiveView.Controller.live_render(BackerWeb.TestLiveView, session: %{backer: backer})
-  end
 
   def explore(conn, _params) do
     meta = %{title: "Welcome to backer"}

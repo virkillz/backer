@@ -4,7 +4,7 @@ defmodule BackerWeb.TestLiveView do
   def render(assigns) do
     IO.inspect(assigns)
 
-    Phoenix.View.render(BackerWeb.PublicView, "test.html", assigns)
+    Phoenix.View.render(BackerWeb.BackerView, "test.html", assigns)
   end
 
   def mount(session, socket) do

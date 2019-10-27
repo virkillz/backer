@@ -154,6 +154,8 @@ defmodule BackerWeb.Router do
 
     get("/donee/:username/tier/:tier", DoneeController, :checkout)
     post("/checkout", DoneeController, :checkout_post)
+
+    get("/test", BackerController, :test)
   end
 
   # This route area is for signed in backer and only for himself
@@ -166,7 +168,10 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
     get("/doneezone", DoneeController, :doneezone_default)
+
     get("/doneezone/posts", DoneeController, :doneezone_posts)
+    get("/doneezone/timeline-live", DoneeController, :doneezone_timeline_live)
+
     get("/doneezone/preview", DoneeController, :doneezone_preview)
     get("/doneezone/about", DoneeController, :doneezone_about)
     get("/doneezone/backers", DoneeController, :doneezone_backers)
@@ -248,7 +253,7 @@ defmodule BackerWeb.Router do
     get("/terms", PublicController, :terms)
     get("/privacy-policy", PublicController, :privacy_policy)
     get("/explore", PublicController, :explore)
-    get("/test", PublicController, :test)
+
 
     get("/category/:id", CategoryController, :list_donee)
     get("/404", PublicController, :page404)

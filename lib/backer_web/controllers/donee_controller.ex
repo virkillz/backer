@@ -8,6 +8,7 @@ defmodule BackerWeb.DoneeController do
   alias Backer.Finance
   alias Backer.Finance.Invoice
   alias Backer.Aggregate
+  alias Phoenix.LiveView
 
   alias Backer.Masterdata
 
@@ -19,6 +20,8 @@ defmodule BackerWeb.DoneeController do
   def doneezone_default(conn, _params) do
     redirect(conn, to: "/doneezone/about")
   end
+
+
 
   def doneezone_posts(conn, _params) do
     backer_info = conn.assigns.current_backer
@@ -736,7 +739,7 @@ defmodule BackerWeb.DoneeController do
         random_donee = Account.get_random_donee(4)
 
         if donee == nil do
-          redirect(conn, to: Router.page_path(conn, :page404))
+          redirect(conn, to: "/404")
         else
           if donee.status == "unpublished" do
             render_unpublished(conn, donee)
@@ -884,10 +887,10 @@ defmodule BackerWeb.DoneeController do
                 "/invoice/" <> Integer.to_string(invoice.id)
           )
 
-        {:error, :invoice, %Ecto.Changeset{} = changeset, _} ->
+        {:error, :invoice, %Ecto.Changeset{} = _changeset, _} ->
           text(conn, "something is wrong, check console")
 
-        other ->
+        _other ->
           text(conn, "Ecto Multi give unhandled error, check your console")
       end
     end
@@ -900,5 +903,18 @@ defmodule BackerWeb.DoneeController do
     conn
     |> put_flash(:info, "Donee deleted successfully.")
     |> redirect(to: Router.donee_path(conn, :index))
+  end
+
+  def doneezone_timeline_live(conn, _params) do
+    backer_info = conn.assigns.current_backer
+    donee_info = Account.get_donee(%{"username" => backer_info.username})
+    random_donee = Account.get_random_donee(3)
+
+    conn
+    |> put_layout("doneezone_live_layout.html")
+    |> assign(:backer_info, backer_info)
+    |> assign(:donee_info, donee_info)
+    |> assign(:recommended_donees, random_donee)
+    |> LiveView.Controller.live_render(BackerWeb.DoneezoneTimelineLive, session: %{donee_info: donee_info, backer_info: backer_info})
   end
 end

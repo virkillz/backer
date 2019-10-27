@@ -7,6 +7,7 @@ defmodule BackerWeb.BackerController do
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Content
   alias Backer.Aggregate
+  alias Phoenix.LiveView
 
   def backerzone_default(conn, _params) do
     redirect(conn, to: "/backerzone/my-donee-list")
@@ -757,5 +758,16 @@ defmodule BackerWeb.BackerController do
     conn
     |> put_flash(:info, "Backer deleted successfully.")
     |> redirect(to: Router.backer_path(conn, :index))
+  end
+
+  def test(conn, _params) do
+
+    backer = conn.assigns.current_backer
+
+    conn
+    |> put_layout("doneezone_live_layout.html")
+    |> assign(:backer, backer)
+    |> assign(:random_donees, Account.get_random_donee(3))
+    |> LiveView.Controller.live_render(BackerWeb.TestLiveView, session: %{backer: backer})
   end
 end

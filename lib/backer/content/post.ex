@@ -8,11 +8,11 @@ defmodule Backer.Content.Post do
     field(:featured_link, :string)
     field(:featured_video, :string)
     field(:like_count, :integer, default: 0)
-    field(:comment_count, :integer)
+    field(:comment_count, :integer, default: 0)
     field(:min_tier, :integer)
     field(:title, :string)
     field(:type, :string)
-    field(:publish_status, :string, default: "draft")
+    field(:publish_status, :string, default: "published")
 
     has_many(:pcomment, Backer.Content.PostComment)
     belongs_to(:donee, Backer.Account.Donee)

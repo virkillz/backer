@@ -77,6 +77,17 @@ defmodule Stringhelper do
     relative_str
   end
 
+  def min_amount_to_tier(amount, tiers) do
+
+    if amount == 0 do
+      "public"
+    else
+      tier = Enum.filter(tiers, fn x -> x.amount >= amount end) |> Enum.min_by(fn x -> x.amount end)
+      tier.title
+    end
+
+  end
+
   def format_thousand(integer, conn) do
     locale = Plug.Conn.get_session(conn, :locale)
 

@@ -421,14 +421,40 @@ defmodule Backer.Content do
   def list_posts(%{"donee_id" => donee_id}) do
     # Repo.all(Post)
 
-    query = from(p in Post, where: p.donee_id == ^donee_id)
+    query = from(p in Post, where: p.donee_id == ^donee_id, order_by: [desc: p.id])
 
     Repo.all(query)
   end
 
+
   def list_posts(params) do
     # Repo.all(Post)
     Post |> Repo.paginate(params)
+  end
+
+  def list_own_posts(donee_id, backer_id, limit, last_id) when (is_integer(limit) and is_integer(donee_id) and is_integer(last_id)) do
+
+    query =
+    if last_id == 0 do
+      from(p in Post, where: p.donee_id == ^donee_id, order_by: [desc: p.id], limit: ^limit)
+    else
+      from(p in Post, where: p.donee_id == ^donee_id, where: p.id < ^last_id, limit: ^limit, order_by: [desc: p.id])
+    end
+
+    result = Repo.all(query) |> Enum.map(fn x -> Map.from_struct(x) end)
+    result_ids = Enum.map(result, fn x -> x.id end)
+
+    query_likes = from(p in PostLike, where: p.post_id in ^result_ids, where: p.backer_id == ^backer_id)
+    get_likes = Repo.all(query_likes) |> Enum.map(fn x -> x.post_id end)
+
+    Enum.map(result, fn x ->
+      if Enum.member?(get_likes, x.id) do
+        Map.put(x, :is_liked?, true)
+      else
+        Map.put(x, :is_liked?, false)
+      end
+
+    end)
   end
 
   def timeline(%{"backer_id" => backer_id}) do
@@ -1393,4 +1419,31 @@ defmodule Backer.Content do
   def change_notification(%Notification{} = notification) do
     Notification.changeset(notification, %{})
   end
+
+  def increase_post_like_count(post_id) do
+    post = get_post!(post_id)
+    update_post(post, %{"like_count" => post.like_count + 1}) |> IO.inspect
+  end
+
+  def decrease_post_like_count(post_id) do
+    post = get_post!(post_id)
+    update_post(post, %{"like_count" => post.like_count - 1}) |> IO.inspect
+  end
+
+  def toggle_post_like(post_id, backer_id) do
+    query = from p in PostLike,
+      where: p.post_id == ^post_id,
+      where: p.backer_id == ^backer_id,
+      limit: 1
+
+    case Repo.one(query) do
+      nil -> spawn fn -> increase_post_like_count(post_id) end
+              spawn fn -> create_post_like(%{"post_id" =>  post_id, "backer_id" => backer_id}) end
+              true
+      post_like -> spawn fn -> delete_post_like(post_like) end
+              spawn fn -> decrease_post_like_count(post_id) end
+              false
+    end
+  end
+
 end

@@ -25,46 +25,165 @@
 
 <body class="text-gray-700 gradient polkadot">
 
+
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-
-       <div class="bg-gray-200 mt-16">
+		
+		<div class="bg-gray-200 lg:mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
-	        <div class="lg:w-1/4 px-4">
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
 	            <div class="transition-all" style="top: 56px; position: sticky;">
-	
 
-
-					<%= BackerWeb.BackerView.render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
-	
-	
-	                <div class="border-b-2 my-8"></div>
-
+                    <%= BackerWeb.DoneeView.render "component_doneezone_side_menu.html", conn: @conn, donee_info: @donee_info %>
 
 	            </div>
 	        </div>
 	
-	<div class="lg:w-2/4 px-4 pb-20">
+	        <div class="lg:w-2/4 px-4 pb-20">
 
-    <%= render @view_module, @view_template, assigns %>
-
-    </div>
-
-
-	        <div class="lg:w-1/4 px-4">
+                <%= render @view_module, @view_template, assigns %>
+	
 
 	
-				<%= BackerWeb.BackerView.render "component_backerzone_recommended_donee.html", donees: @random_donees %>
+	<!--
+
+	            <div class=" bg-white shadow p-4 mb-4">
+	
+	                <div class="flex items-center">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-12 h-12 object-center object-cover rounded-lg border-4 border-white mr-2">
+	                    <div class="">
+	                        <div class="text-gray-600 font-semibold">Mr.Pokemon</div>
+	                        <div class="text-gray-500 text-xs">
+	                            21
+	                            m</div>
+	                    </div>
+	                </div>
+	                <div class="border-b my-2 mb-4x"></div>
+	                <div class="text-gray-600 my-2 font-semibold  text-center text-xl px-2"> Ini judul yang bisa
+	                    dibuat sangat
+	                    menarik </div>
+	                <div class="p-2 text-gray-600 text-justify leading-relaxed">
+	                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+	                    et
+	                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+	                    aliquip
+	                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+	                    dolore eu
+	                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+	                    deserunt mollit anim id est laborum.
+	                </div>
+	
+	                <div class="text-xs text-right mt-4 text-gray-600">1 like • 32 comments</div>
+	                <div class="border-b mt-2"></div>
+	                <div class="flex text-gray-600">
+	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
+	                            class="la la-thumbs-up mr-2"></i>
+	                        Like</div>
+	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
+	                            class="la la-comment mr-2"></i>
+	                        Comment</div>
+	                </div>
+	                <div class="border-b mb-2"></div>
+	                <div class="flex">
+	
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-12 h-12 rounded-lg object-center object-cover border-4 border-white mr-2">
+	                    <input placeholder="Ketik komentar kamu..."
+	                        class="flex-grow border px-4 focus:outline-none bg-gray-100 rounded-lg">
+	                    <button
+	                        class="px-6 transition-all ml-2 rounded-lg text-sm text-orange-500 hover:text-orange-600 tracking-wide">Kirim</button>
+	                </div>
+	            </div>
+	
+	
+	            <div class=" bg-white shadow p-4">
+	                <div class="flex items-center">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-12 h-12 rounded-lg border-4 object-center object-cover border-white mr-2">
+	                    <div class="">
+	                        <div class="text-gray-600 font-semibold">Mr.Pokemon</div>
+	                        <div class="text-gray-500 text-xs">
+	                            21
+	                            m</div>
+	                    </div>
+	                </div>
+	                <div class="border-b my-2 mb-4x"></div>
+	                <div class="text-gray-600 my-2 font-semibold  text-center text-xl px-2"> Ini judul yang bisa
+	                    dibuat sangat
+	                    menarik </div>
+	                <div class="p-2 text-gray-600 text-justify leading-relaxed">
+	                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+	                    et
+	                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+	                    aliquip
+	                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+	                    dolore eu
+	                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+	                    deserunt mollit anim id est laborum.
+	                </div>
+	
+	                <div class="text-xs text-right mt-4 text-gray-600">1 like • <a href="#" class="hover:underline">32
+	                        comments</a></div>
+	                <div class="border-b mt-2"></div>
+	                <div class="flex text-gray-600">
+	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
+	                            class="la la-thumbs-up mr-2"></i>
+	                        Like</div>
+	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
+	                            class="la la-comment mr-2"></i>
+	                        Comment</div>
+	                </div>
+	                <div class="border-b mb-2"></div>
+	
+	
+	                <div class="my-4">
+	                    <div class="flex items-center">
+	                        <img src="<%= @donee_info.backer.avatar %>"
+	                            class="w-10 h-10  rounded-lg object-center object-cover border-4 border-white mr-2">
+	                        <div
+	                            class="px-4 text-gray-600 py-1 text-sm align-middle focus:outline-none bg-gray-200 rounded-lg">
+	                            <span class="font-bold mr-2 text-sm">Subhan</span>Nggak
+	                            kok
+	                        </div>
+	                    </div>
+	                    <div class="ml-12 text-xs text-gray-600"><a href="#">Like</a> • 6 jam lalu</div>
+	                </div>
+	
+	
+	                <div class="flex mt-4">
+	
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-10 h-10 object-center object-cover rounded-lg border-4 border-white mr-2">
+	                    <input placeholder="Ketik komentar kamu..."
+	                        class="flex-grow border text-sm px-4 focus:outline-none bg-gray-200 rounded-lg">
+	                    <button
+	                        class="px-6 transition-all ml-2 rounded-lg text-sm text-orange-500 hover:text-orange-600 tracking-wide">Kirim</button>
+	                </div>
+
+	            </div>
+	
+
+	            <div class="py-8 text-center">
+	                <button
+	                    class="focus:outline-none tracking-wide px-8 py-2 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Load
+	                    More</button>
+	            </div>
+
+				-->
+	        </div>
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="pb-20 hidden lg:block">
+
+					<%= BackerWeb.DoneeView.render "component_recomended_donee.html", donees: @recommended_donees %>
+	            
+	            
+	            </div>
 	        </div>
 	    </div>
 	
 	</div>
-   
 
+        <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
 
-
-    <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
 
 
 
