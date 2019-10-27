@@ -142,6 +142,7 @@ defmodule BackerWeb.Router do
     put("/backerzone/profile-setting", BackerController, :backerzone_profile_setting_post)
     get("/backerzone/notifications/:id", BackerController, :backerzone_notification_forwarder)
     post("/backerzone/user_links", BackerController, :backerzone_user_link_post)
+    get("/backerzone/timeline-live", BackerController, :backerzone_timeline_live)
     # post("/backerzone/link-setting", BackerController, :backerzone_link_setting_post)
 
     get("/home/invoice/:id", BackerController, :invoice_display)
@@ -155,7 +156,6 @@ defmodule BackerWeb.Router do
     get("/donee/:username/tier/:tier", DoneeController, :checkout)
     post("/checkout", DoneeController, :checkout_post)
 
-    get("/test", BackerController, :test)
   end
 
   # This route area is for signed in backer and only for himself

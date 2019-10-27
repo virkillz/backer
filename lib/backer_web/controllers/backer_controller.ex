@@ -10,7 +10,7 @@ defmodule BackerWeb.BackerController do
   alias Phoenix.LiveView
 
   def backerzone_default(conn, _params) do
-    redirect(conn, to: "/backerzone/my-donee-list")
+    redirect(conn, to: "/backerzone/timeline-live")
   end
 
   def reset_counter(conn, _params) do
@@ -107,7 +107,7 @@ defmodule BackerWeb.BackerController do
     if conn.assigns.current_backer.is_donee do
       redirect(conn, to: "/doneezone/timeline-live")
     else
-      redirect(conn, to: "/backerzone/timeline")
+      redirect(conn, to: "/backerzone/timeline-live")
     end
   end
 
@@ -633,7 +633,7 @@ defmodule BackerWeb.BackerController do
         {:ok, %Cloudex.UploadedImage{} = result} ->
           {:ok, result.secure_url}
 
-        {:error, reason} ->
+        {:error, _reason} ->
           {:error,
            %Ecto.Changeset{
              action: :update,
@@ -669,7 +669,7 @@ defmodule BackerWeb.BackerController do
           # give the imag link
           {:ok, result.secure_url}
 
-        {:error, reason} ->
+        {:error, _reason} ->
           {:error,
            %Ecto.Changeset{
              action: :update,
@@ -700,14 +700,14 @@ defmodule BackerWeb.BackerController do
     |> redirect(to: Router.backer_path(conn, :index))
   end
 
-  def test(conn, _params) do
+  def backerzone_timeline_live(conn, _params) do
 
     backer = conn.assigns.current_backer
 
     conn
-    |> put_layout("doneezone_live_layout.html")
+    |> put_layout("backerzone_live_layout.html")
     |> assign(:backer, backer)
     |> assign(:random_donees, Account.get_random_donee(3))
-    |> LiveView.Controller.live_render(BackerWeb.TestLiveView, session: %{backer: backer})
+    |> LiveView.Controller.live_render(BackerWeb.BackerzoneTimelineLive, session: %{backer: backer})
   end
 end

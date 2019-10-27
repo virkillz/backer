@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backer :: <%= @conn.assigns[:meta][:title] %></title>
+    <%= if not (is_nil @conn.assigns[:meta_attrs]), do: meta_tags(@conn.assigns[:meta_attrs]) %>
+
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/progressive-image.css">
+
+
+    <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
+    <% end %>
+
+</head>
+
+<body class="text-gray-700 gradient polkadot">
+
+
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+	
+    <div class="bg-gray-200 mt-16">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4">
+	            <div class="transition-all" style="top: 56px; position: sticky;">
+	
+
+					<%= BackerWeb.BackerView.render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+	
+	
+	                <div class="border-b-2 my-8"></div>
+
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+
+                <%= render @view_module, @view_template, assigns %>
+            
+            </div>
+
+	
+	        <div class="lg:w-1/4 px-4">
+	
+	
+				<%= BackerWeb.BackerView.render "component_backerzone_recommended_donee.html", conn: @conn, donees: [] %>
+
+	        </div>
+	    </div>
+	
+	</div>
+
+    <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+
+
+
+
+
+    <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        var navcontent = document.getElementById("nav-content");
+        var navaction = document.getElementById("navAction");
+        var navtoggle = document.getElementById("nav-toggle");
+        var navitem = document.getElementById("navItem");
+        var brandname = document.getElementById("brand");
+        var toToggle = document.querySelectorAll(".toggleColour");
+
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                brandname.src = "/assets/images/logo/backer-bg-white.png";
+                navaction.classList.remove("bg-white");
+                navitem.classList.remove("text-white");
+                navitem.classList.add("text-gray-700");
+                navaction.classList.add("gradient");
+                navtoggle.classList.remove("text-white");
+                navtoggle.classList.remove("border-white");
+                navtoggle.classList.add("text-gray-800");
+                navtoggle.classList.add("border-gray-800");
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-gray-800");
+                    toToggle[i].classList.remove("text-white");
+                }
+                header.classList.add("shadow");
+                header.classList.add("bg-white");
+                header.classList.remove("bg-transparent");
+                navcontent.classList.remove("bg-black");
+                navcontent.classList.add("bg-white");
+            }
+            else {
+                brandname.src = "/assets/images/logo/backer-bg-indigo.png";
+                header.classList.remove("bg-white");
+                header.classList.add("bg-tranparant");
+                header.classList.add("shadow");
+                navaction.classList.remove("gradient");
+                navaction.classList.add("bg-white");
+                navitem.classList.remove("text-gray-700");
+                navitem.classList.add("text-white");
+
+
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-white");
+                    toToggle[i].classList.remove("text-gray-800");
+                }
+
+                header.classList.remove("shadow");
+                navcontent.classList.remove("bg-white");
+                navcontent.classList.add("bg-black");
+                navtoggle.classList.add("text-white");
+                navtoggle.classList.add("border-white");
+                navtoggle.classList.remove("text-gray-800");
+                navtoggle.classList.remove("border-gray-800");
+
+            }
+
+        });
+
+
+    </script>
+
+    <script>
+
+
+        /*Toggle dropdown list*/
+        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+
+        document.onclick = check;
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+
+        }
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) { return true; }
+                t = t.parentNode;
+            }
+            return false;
+        }
+    </script>
+
+    <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
+
+    <script>
+    function init() {
+        var vidDefer = document.getElementsByTagName('iframe');
+        for (var i=0; i<vidDefer.length; i++) {
+        if(vidDefer[i].getAttribute('data-src')) {
+        vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+        } } }
+        window.onload = init;
+    </script>
+
+    <script src="/js/wow.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script>
+    new WOW().init();
+
+    tippy('.tippy', {placement: 'bottom'});
+    </script>
+
+    <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
+    <% end %>
+
+    <script src="/assets/js/progressive-image.min.js"></script>
+    <script src="/assets/js/navbar.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        const node = document.getElementById('navbar-elm');
+
+        if (node) {
+        const avatar = node.getAttribute('data-avatar');
+        const notifCount = node.getAttribute('data-notif-count');
+        const isDonee = (node.getAttribute('data-is-donee') == "true");
+
+        Elm.Main.init({
+        node: node,
+        flags: [avatar, isDonee, notifCount]
+        });
+        };
+    </script>
+
+
+
+</body>
+
+</html>

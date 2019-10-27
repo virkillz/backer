@@ -1,5 +1,6 @@
-defmodule BackerWeb.TestLiveView do
+defmodule BackerWeb.BackerzoneTimelineLive do
   use Phoenix.LiveView
+  alias Backer.Content
 
   def render(assigns) do
     IO.inspect(assigns)
@@ -8,12 +9,13 @@ defmodule BackerWeb.TestLiveView do
   end
 
   def mount(session, socket) do
+    timeline = Content.list_public_post(5)
+
     new_socket =
       socket
-      |> assign(deploy_step: "mbul")
       |> assign(backer: session.backer)
-      |> assign(my_donee_list: [])
       |> assign(random_donee: [])
+      |> assign(timeline: timeline)
     {:ok, new_socket}
   end
 

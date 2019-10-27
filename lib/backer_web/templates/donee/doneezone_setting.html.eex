@@ -1,8 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
-		
-		<div class="bg-gray-200">
+		<div class="bg-gray-200 mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">

@@ -638,6 +638,12 @@ defmodule Backer.Content do
     Repo.one(query)
   end
 
+
+  def list_public_post(limit) when is_integer(limit) do
+    query = from(p in Post, order_by: [desc: p.id], preload: [donee: [:backer] ],limit: ^limit)
+    Repo.all(query)
+  end
+
   @doc """
   Creates a post.
 

@@ -18,7 +18,7 @@ defmodule BackerWeb.DoneeController do
   end
 
   def doneezone_default(conn, _params) do
-    redirect(conn, to: "/doneezone/about")
+    redirect(conn, to: "/doneezone/timeline-live")
   end
 
 

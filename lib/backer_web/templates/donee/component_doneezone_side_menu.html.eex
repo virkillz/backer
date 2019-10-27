@@ -1,28 +1,42 @@
-	
-	                <div class="pt-16 lg:hidden"></div>
-	                
-	                <div class="lg:hidden">
-                        <div class="text-xl font-title"><span class="font-bold">Hello, </span><span class=""><%= @donee_info.backer.display_name %></span>!</div>
-	                </div>
-	                
-	                <div class="wow fadeIn pt-10x hidden lg:block bg-whitex roundedx shadowx py-6x px-4">
-                    		<%# <div class="absolute right-0 -mt-6 mr-2 rounded-full bg-orange-500 px-4 py-1 text-white uppercase text-xs">Donee</div> %>
-	                    <img src="<%= @donee_info.backer.avatar %>" class="rounded-lg object-center object-cover mx-autox w-20 h-20">
-	                
-	                    <div class="py-4 text-gray-800">
-	                        <div class="text-centerx font-bold font-title text-gray-700"><%= @donee_info.backer.display_name %></div>
-	                        <div class="text-centerx text-sm text-gray-600">@<%= @donee_info.backer.username %></div>
-	                    </div>
+<div class="pt-16 lg:hidden"></div>
 
-	                </div>
-	
-
-<div class="flex justify-between mt-6">
-<a href="/backerzone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">backer menu</div></a>
-<a href="/doneezone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-orange-500">donee menu</div></a>
+<div class="lg:hidden">
+    <div class="text-xl font-title"><span class="font-bold">Hello, </span><span
+            class=""><%= @donee_info.backer.display_name %></span>!</div>
 </div>
 
-	<div class="border-b-2 mb-6"></div>
+
+
+                       	<div class="wow fadeIn hidden lg:block">
+
+                        <div class="flex items-center">
+                           <div class="mr-2">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-10 h-10 object-center object-cover rounded">
+                        </div>
+
+	                    <div class="">
+	                        <div class="text-gray-700 font-title font-semibold"><%= @donee_info.backer.display_name %></div>
+	                        <div class="text-gray-500 text-xs">
+	                		@<%= @donee_info.backer.username %></div>
+	                    </div>
+                        </div>
+	               		 </div>
+
+
+<div class="flex justify-between mt-6">
+    <a href="/backerzone">
+        <div
+            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">
+            backer menu</div>
+    </a>
+    <a href="/doneezone">
+        <div
+            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-orange-500">
+            donee menu</div>
+    </a>
+</div>
+
+<div class="border-b-2 mb-6"></div>
 
 <div class="flex lg:block justify-center items-start my-6">
     <a href="/doneezone/timeline-live">
@@ -42,7 +56,7 @@
         </div>
     </a>
 
-        <a href="/doneezone/backers">
+    <a href="/doneezone/backers">
         <div
             class="<%= sidebar_active(@conn, "/doneezone/backers") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
             <i class="la la-users text-xl lg:mr-4"></i>
@@ -75,5 +89,5 @@
             <div class=" font-title"> Pengaturan</div>
         </div>
     </a>
-   
+
 </div>

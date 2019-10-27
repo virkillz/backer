@@ -1,8 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-                    <%= render "component_top_background.html", conn: @conn, donee_info: @donee_info %>
 		
-		<div class="bg-gray-200">
+		<div class="bg-gray-200 mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
@@ -19,12 +18,12 @@
 
             <div class="flex">
     <a href="/doneezone/setting">
-        <div class=" text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 border-transparent  font-title  cursor-pointer pb-4 ">
+        <div class=" text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-indigo-600 border-b-4 hover:border-indigo-600 border-transparent  font-title  cursor-pointer pb-4 ">
             <%= gettext "Profil Umum" %>
         </div>
     </a>   
     <a href="/doneezone/tiers">
-        <div class=" border-purple-600 text-purple-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-purple-600 border-b-4 hover:border-purple-600 font-title cursor-pointer pb-4 ">
+        <div class=" border-indigo-600 text-indigo-600  px-4  font-bold lg:text-xl md:text-lg transition-all hover:text-indigo-600 border-b-4 hover:border-indigo-600 font-title cursor-pointer pb-4 ">
             <%= gettext "Pengaturan Tier" %>
         </div>
     </a>
