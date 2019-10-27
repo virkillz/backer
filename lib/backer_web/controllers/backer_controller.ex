@@ -76,14 +76,13 @@ defmodule BackerWeb.BackerController do
             get_aggregate
           end
 
-        backing_aggregate
 
         list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
         list_donations =
           Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
-        if list_donation = [] do
+        if list_donation == [] do
           redirect(conn, to: "/403")
         else
           conn
@@ -103,72 +102,13 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def overview(conn, _params) do
-    backer = Account.get_backer(%{"username" => conn.assigns.current_backer.username})
-    donees = Finance.list_active_backerfor(%{"backer_id" => backer.id, "limit" => 4})
-    recomendation = Account.random_donee(3)
-
-    case backer do
-      nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
-
-      _ ->
-        conn
-        |> render("front_overview.html",
-          backer: backer,
-          donees: donees,
-          menu: :overview,
-          owner: true,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-        )
-    end
-  end
-
-  def show_post(conn, %{"id" => id}) do
-    backer = conn.assigns.current_backer
-    post = Content.get_post(%{"id" => id, "backer_id" => backer.id})
-
-    case backer do
-      nil ->
-        redirect(conn, to: Router.page_path(conn, :page400))
-
-      _ ->
-        conn
-        |> render("front_timeline_show.html",
-          backer: backer,
-          owner: true,
-          menu: :timeline,
-          post: post,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-        )
-    end
-  end
 
   def home(conn, _params) do
-    # This is redirector function. If user is donee, home means redirect to /doneezone
-    # If he is regular backer, just redirect to /backerzone
-
-    backer = conn.assigns.current_backer
-
     if conn.assigns.current_backer.is_donee do
-      redirect(conn, to: "/doneezone/about")
+      redirect(conn, to: "/doneezone/timeline-live")
     else
-      redirect(conn, to: "/backerzone/my-donee-list")
+      redirect(conn, to: "/backerzone/timeline")
     end
-
-    # {donation, rawposts} = Content.timeline(backer.id)
-    # posts = rawposts |> Enum.map(fn x -> Map.put(x, :current_avatar, backer.avatar) end)
-
-    # case backer do
-    #   nil ->
-    #     redirect(conn, to: Router.page_path(conn, :page404))
-
-    #   _ ->
-    #     conn
-    #     |> render("private_backer_timeline.html",
-    #       layout: {BackerWeb.LayoutView, "public.html"}
-    #     )
-    # end
   end
 
   def timeline(conn, _params) do

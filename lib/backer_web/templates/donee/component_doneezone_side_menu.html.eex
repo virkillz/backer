@@ -1,81 +1,52 @@
 	
 	                <div class="pt-16 lg:hidden"></div>
 	                
-	                <div class="flex items-center lg:hidden">
-	                    <div class="w-2/3">
-                        <div class="text-xl font-title"><span class="font-bold">Hello, </span><span class=""><%= @donee_info.backer.display_name %></span></div>
-                        </div>
-
-                        <div class="w-1/3">
-                        <div class="rounded-full justify-center flex text-center text-sm">
-                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none shadow hover:shadow-lg bg-indigo-500 w-full px-4 py-1 rounded-l-lg text-white transition transition-all">Backer</button></a></div>
-                            <div class="w-1/2"><div class="w-full px-4 py-1 rounded-r-lg bg-gray-300 text-white focus:outline-none shadow-inner">Donee</div></div>
-                        </div>
-                        </div>
+	                <div class="lg:hidden">
+                        <div class="text-xl font-title"><span class="font-bold">Hello, </span><span class=""><%= @donee_info.backer.display_name %></span>!</div>
 	                </div>
 	                
-                    <a href="/donee/<%= @donee_info.backer.username %>">
-	                <div class="wow fadeIn pt-10 hidden lg:block bg-white rounded shadow py-6 px-4">
+	                <div class="wow fadeIn pt-10x hidden lg:block bg-whitex roundedx shadowx py-6x px-4">
                     		<%# <div class="absolute right-0 -mt-6 mr-2 rounded-full bg-orange-500 px-4 py-1 text-white uppercase text-xs">Donee</div> %>
-	                    <img src="<%= @donee_info.backer.avatar %>" class="rounded-lg object-center object-cover mx-auto w-20 h-20">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="rounded-lg object-center object-cover mx-autox w-20 h-20">
 	                
 	                    <div class="py-4 text-gray-800">
-	                        <div class="text-center font-bold font-title text-gray-700"><%= @donee_info.backer.display_name %></div>
-	                        <div class="text-center text-sm text-gray-600"><%= @donee_info.tagline %></div>
-	                    </div>
-	                
-	                    <div class="flex pt-4">
-	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-bold  text-gray-600"><%= @donee_info.backer_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Backer</div>
-	                        </div>
-	                
-	                        <div class="w-1/2">
-	                            <div class="text-2xl text-center font-bold  text-gray-600"><%= @donee_info.post_count %></div>
-	                            <div class="text-center text-gray-600 text-sm">Posts</div>
-	                        </div>
+	                        <div class="text-centerx font-bold font-title text-gray-700"><%= @donee_info.backer.display_name %></div>
+	                        <div class="text-centerx text-sm text-gray-600">@<%= @donee_info.backer.username %></div>
 	                    </div>
 
-                        <div class="mt-4 rounded-full justify-center flex text-center text-sm">
-                            <div class="w-1/2"><a href="/backerzone/" ><button class="focus:outline-none shadow hover:shadow-lg bg-indigo-500 w-full px-4 py-1 rounded-l-lg text-white transition transition-all">Backer</button></a></div>
-                            <div class="w-1/2"><div class="w-full px-4 py-1 rounded-r-lg bg-gray-400 text-white focus:outline-none shadow-inner">Donee</div></div>
-                        </div>
-
-	                
-	                
 	                </div>
-                    </a>
 	
-	
-	
-	                <div class=" my-6"></div>
 
+<div class="flex justify-between mt-6">
+<a href="/backerzone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">backer menu</div></a>
+<a href="/doneezone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-orange-500">donee menu</div></a>
+</div>
 
-<div class="flex lg:block justify-center items-center">
+	<div class="border-b-2 mb-6"></div>
 
-
-    <a href="/doneezone/posts">
+<div class="flex lg:block justify-center items-start my-6">
+    <a href="/doneezone/timeline-live">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/posts") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-newspaper-o text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Posts</div>
+            class="<%= sidebar_active(@conn, "/doneezone/timeline-live") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 lg:border-b-0 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-newspaper-o text-xl lg:mr-4"></i>
+            <div class="font-title"> My Posts</div>
         </div>
     </a>
 
 
     <a href="/doneezone/about">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/about") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-home text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Page</div>
+            class="<%= sidebar_active(@conn, "/doneezone/about") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-home text-xl lg:mr-4"></i>
+            <div class="font-title"> My Page</div>
         </div>
     </a>
 
         <a href="/doneezone/backers">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/backers") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px lg:px-6 border-b-4 lg:border-b-0 lg:border-l-4 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-users text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> My Backers</div>
+            class="<%= sidebar_active(@conn, "/doneezone/backers") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-users text-xl lg:mr-4"></i>
+            <div class="font-title"> My Backers</div>
         </div>
     </a>
 
@@ -83,25 +54,25 @@
 
     <a href="/doneezone/statistic">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/statistic") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px border-b-4 lg:border-b-0 lg:border-l-4 lg:px-6 text-lg text-gray-700 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-bar-chart-o text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> Statistic </div>
+            class="<%= sidebar_active(@conn, "/doneezone/statistic") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-bar-chart-o text-xl lg:mr-4"></i>
+            <div class=" font-title"> Statistic </div>
         </div>
     </a>
 
     <a href="/doneezone/finance">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/finance") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-4 mx-px border-b-4 lg:border-b-0 lg:border-l-4 lg:px-6 text-lg text-gray-700 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-credit-card text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> Keuangan</div>
+            class="<%= sidebar_active(@conn, "/doneezone/finance") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-credit-card text-xl lg:mr-4"></i>
+            <div class="font-title"> Keuangan</div>
         </div>
     </a>
 
     <a href="/doneezone/setting">
         <div
-            class="<%= sidebar_active(@conn, "/doneezone/setting") %> mb-2 lg:flex text-center hover:border-orange-500 cursor-pointer py-2 px-2 mx-px border-b-4 lg:border-b-0 lg:border-l-4 lg:px-6 text-lg text-gray-700 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-cog text-2xl lg:mr-4"></i>
-            <div class="text-sm md:text-base lg:text-lg font-title text-gray-600"> Pengaturan</div>
+            class="<%= sidebar_active(@conn, "/doneezone/setting") %> mb-2 lg:flex text-center cursor-pointer py-2 px-2 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
+            <i class="la la-cog text-xl lg:mr-4"></i>
+            <div class=" font-title"> Pengaturan</div>
         </div>
     </a>
    

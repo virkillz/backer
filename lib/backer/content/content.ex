@@ -615,66 +615,16 @@ defmodule Backer.Content do
         where: like.backer_id == ^backer_id and like.post_id == ^post_id
       )
 
-    post_like? = if query_like_post |> first |> Repo.one() == nil, do: false, else: true
+     if query_like_post |> first |> Repo.one() == nil, do: false, else: true
   end
 
   def list_liked_comments(comments, backer_id) do
-    query =
+
       PCommentLike
       |> where([p], p.pcomment_id in ^comments)
       |> where([p], p.backer_id == ^backer_id)
       |> select([p], p.pcomment_id)
       |> Repo.all()
-  end
-
-  def get_post(%{"id" => id}) do
-    query =
-      from(post in Post,
-        where: post.id == ^id,
-        join: donee in Donee,
-        join: backer in Backerz,
-        on: donee.backer_id == backer.id,
-        on: post.donee_id == donee.id,
-        select: %{
-          id: post.id,
-          title: post.title,
-          min_tier: post.min_tier,
-          avatar: backer.avatar,
-          username: backer.username,
-          type: post.type,
-          image: post.featured_image,
-          video: post.featured_video,
-          link: post.featured_link,
-          content: post.content,
-          like_count: post.like_count,
-          comment_count: post.comment_count,
-          display_name: backer.display_name,
-          inserted_at: post.inserted_at
-        }
-      )
-
-    query_comment =
-      from(comment in PostComment,
-        where: comment.post_id == ^id,
-        join: backer in Backerz,
-        on: comment.backer_id == backer.id,
-        order_by: comment.id,
-        select: %{
-          id: comment.id,
-          content: comment.content,
-          avatar: backer.avatar,
-          username: backer.username,
-          like_count: comment.like_count,
-          inserted_at: comment.inserted_at,
-          display_name: backer.display_name,
-          is_featured: comment.is_featured
-        }
-      )
-
-    post = Repo.one(query)
-    comment = Repo.all(query_comment)
-
-    {post, comment}
   end
 
   def get_post!(id) do
@@ -701,13 +651,23 @@ defmodule Backer.Content do
 
   """
   def create_post(attrs \\ %{}) do
+
+  result =
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+
+  # if successfull insert, increase post_count
+    case result do
+      {:ok, post} -> Account.increase_donee_post_count(post.donee_id)
+      _ -> :nothing
+    end
+
+  result
   end
 
   def list_post_from_array(list) do
-    posts = Post |> where([p], p.id in ^list) |> Repo.all()
+    Post |> where([p], p.id in ^list) |> Repo.all()
   end
 
   @doc """

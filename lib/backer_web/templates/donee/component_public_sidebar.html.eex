@@ -17,31 +17,6 @@
 	                
 	                </div>
 
-				<div class="lg:hidden block">
-				<%= if @is_visitor_already_backing? do %>
-				<div class="p-4 bg-white shadow rounded-lg">Terima kasih sudah mendukung kami, <span class="font-semibold"><%= @current_backer.display_name %></span>!</div>
-	
-				<% else %>
-					<%= if @current_backer != nil do %>
-
-					<div class="p-2">Berkenan membantu kami, <span class="font-bold"><%= @current_backer.display_name %></span>?</div>
-
-					<% end %>
-	            <div class="pb-1">
-						<a href="/donee/<%= @donee.backer.username %>/donate" class=""><div
-								class="wow rubberBand flex items-center justify-between rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
-								<div>
-								Bergabung menjadi Backer 
-								</div>
-								<div>
-									<i class="la la-angle-right text-xl"></i>
-								</div>
-								</div></a>
-	            </div>
-				<% end %>
-
-				</div>
-
 					<!--
 	                <div class="pb-1 pt-5 lg:hidden block">
 	                    <a href="/donee/<%= @donee.backer.username %>/donate" class=""><button

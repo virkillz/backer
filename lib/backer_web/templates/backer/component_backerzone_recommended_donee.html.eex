@@ -2,8 +2,7 @@
 
 
 	<div class="pb-10">
-		<div class="px-2 font-semibold text-rightx text-gray-600">Recommended Community</div>
-
+	<div class=" px-2 mb-4 lg:mb-0 tracking-wide font-title text-gray-600 uppercase text-sm">Recommended Community</div>
 		<%= for donee <- @donees do %>
 		<div class="py-2">
 			<a href="/donee/<%= donee.backer.username %>">

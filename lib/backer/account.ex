@@ -35,6 +35,18 @@ defmodule Backer.Account do
     Repo.one(from(d in Donee, select: count(d.id)))
   end
 
+  def increase_donee_post_count(donee_id) do
+    donee = get_donee!(donee_id)
+    update_donee(donee, %{"post_count" => donee.post_count + 1})
+    :ok
+  end
+
+  def decrease_donee_post_count(donee_id) do
+    donee = get_donee!(donee_id)
+    update_donee(donee, %{"post_count" => donee.post_count - 1})
+    :ok
+  end
+
   def count_backer_new_today do
     0
   end

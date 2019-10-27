@@ -48,9 +48,9 @@ defmodule BackerWeb.BackerView do
   def sidebar_active(conn, current_path) do
 
     cond do
-      (current_path == "/backerzone/payment-history") && String.starts_with?(conn.request_path, "/backerzone/invoice/") -> " font-semibold border-indigo-500 text-indigo-500 "
-      conn.request_path == current_path  -> " font-semibold border-indigo-500 text-indigo-500 "
-      true -> " font-base text-gray-600 border-transparent "
+      (current_path == "/backerzone/payment-history") && String.starts_with?(conn.request_path, "/backerzone/invoice/") -> " font-semiboldx text-indigo-500 "
+      conn.request_path == current_path  -> " font-semiboldx text-indigo-500 "
+      true -> " font-basex text-gray-600 "
     end
 
 

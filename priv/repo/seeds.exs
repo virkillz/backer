@@ -295,8 +295,8 @@ Repo.insert!(%Donee{
   backer_id: 11,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Donee{
@@ -307,8 +307,8 @@ Repo.insert!(%Donee{
   backer_id: 12,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Donee{
@@ -319,8 +319,8 @@ Repo.insert!(%Donee{
   backer_id: 13,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Donee{
@@ -331,8 +331,8 @@ Repo.insert!(%Donee{
   backer_id: 14,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Donee{
@@ -343,8 +343,8 @@ Repo.insert!(%Donee{
   backer_id: 15,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Donee{
@@ -355,8 +355,8 @@ Repo.insert!(%Donee{
   backer_id: 16,
   category_id: 1,
   title_id: 1,
-  backer_count: 17,
-  post_count: 42
+  backer_count: 0,
+  post_count: 0
 })
 
 Repo.insert!(%Setting{

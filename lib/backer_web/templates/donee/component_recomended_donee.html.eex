@@ -1,5 +1,5 @@
 <div class="">
-	<div class="mt-2 px-2 mb-4 lg:mb-0 font-bold text-lg font-title text-center text-gray-700">Recommended Community</div>
+	<div class=" px-2 mb-4 lg:mb-0 tracking-wide font-title text-gray-600 uppercase text-sm">Recommended Community</div>
 
 	<div class="flex lg:block flex-wrap">
 	<%= for donee <- @donees do %>
