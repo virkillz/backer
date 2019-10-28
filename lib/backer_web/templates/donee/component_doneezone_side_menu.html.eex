@@ -17,22 +17,22 @@
 	                    <div class="">
 	                        <div class="text-gray-700 font-title font-semibold"><%= @donee_info.backer.display_name %></div>
 	                        <div class="text-gray-500 text-xs">
-	                		@<%= @donee_info.backer.username %></div>
+	                		@<%= @donee_info.backer.username %> <a href="/donee/<%= @donee_info.backer.username %>" target="_blank"><span class="ml-4 font-semibold text-xs uppercase text-indigo-400">profil donee <i class="la la-external-link"></i></span></div>
 	                    </div>
                         </div>
 	               		 </div>
 
 
 <div class="flex justify-between mt-6">
-    <a href="/backerzone">
-        <div
-            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">
-            backer menu</div>
-    </a>
     <a href="/doneezone">
         <div
             class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-orange-500">
             donee menu</div>
+    </a>
+    <a href="/backerzone">
+        <div
+            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">
+            backer menu</div>
     </a>
 </div>
 
