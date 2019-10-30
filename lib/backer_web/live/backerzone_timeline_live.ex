@@ -3,9 +3,7 @@ defmodule BackerWeb.BackerzoneTimelineLive do
   alias Backer.Content
 
   def render(assigns) do
-    IO.inspect(assigns)
-
-    Phoenix.View.render(BackerWeb.BackerView, "test.html", assigns)
+    Phoenix.View.render(BackerWeb.BackerView, "backerzone_timeline_live.html", assigns)
   end
 
   def mount(session, socket) do
@@ -16,13 +14,11 @@ defmodule BackerWeb.BackerzoneTimelineLive do
       |> assign(backer: session.backer)
       |> assign(random_donee: [])
       |> assign(timeline: timeline)
+
     {:ok, new_socket}
   end
 
   def handle_event("cobadeh", _value, socket) do
-
-
-
     {:noreply, assign(socket, deploy_step: "Creating GitHub org...")}
   end
 end

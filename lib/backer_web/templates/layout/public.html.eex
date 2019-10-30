@@ -39,7 +39,7 @@
 
 </head>
 
-<body class="text-gray-700 gradient polkadot">
+<body class="text-gray-800 gradient polkadot font-light">
 
 
     <%= render @view_module, @view_template, assigns %>

@@ -76,7 +76,6 @@ defmodule BackerWeb.BackerController do
             get_aggregate
           end
 
-
         list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
 
         list_donations =
@@ -101,7 +100,6 @@ defmodule BackerWeb.BackerController do
       end
     end
   end
-
 
   def home(conn, _params) do
     if conn.assigns.current_backer.is_donee do
@@ -150,7 +148,6 @@ defmodule BackerWeb.BackerController do
 
   def backerzone_my_donee_list(conn, _params) do
     backer = conn.assigns.current_backer
-
 
     case backer do
       nil ->
@@ -701,13 +698,56 @@ defmodule BackerWeb.BackerController do
   end
 
   def backerzone_timeline_live(conn, _params) do
-
     backer = conn.assigns.current_backer
 
     conn
     |> put_layout("backerzone_live_layout.html")
     |> assign(:backer, backer)
     |> assign(:random_donees, Account.get_random_donee(3))
-    |> LiveView.Controller.live_render(BackerWeb.BackerzoneTimelineLive, session: %{backer: backer})
+    |> LiveView.Controller.live_render(BackerWeb.BackerzoneTimelineLive,
+      session: %{backer: backer}
+    )
+  end
+
+  def backerzone_timeline_post_live(conn, %{"post_id" => post_id}) do
+    backer = conn.assigns.current_backer
+
+    # first is to ensure the person is deserved the post. Either by check whether its public or backing.
+
+    # id is integer?
+    case Integer.parse(post_id) do
+      {id, _} ->
+        case Content.get_post(id) do
+          nil ->
+            redirect(conn, to: "/404")
+
+          post ->
+            # is it public post?
+            if post.min_tier == 0 do
+              render_post_detail(conn, post)
+            else
+              if Aggregate.is_backer_active?(backer.id, post.donee_id) do
+                render_post_detail(conn, post)
+              else
+                redirect(conn, to: "/403")
+              end
+            end
+        end
+
+      :error ->
+        redirect(conn, to: "/404")
+    end
+  end
+
+  defp render_post_detail(conn, post) do
+    backer = conn.assigns.current_backer
+
+    conn
+    |> put_layout("backerzone_live_layout.html")
+    |> assign(:backer, backer)
+    |> assign(:random_donees, Account.get_random_donee(3))
+    |> LiveView.Controller.live_render(BackerWeb.BackerzonePostLive,
+      session: %{backer: backer, post: post}
+    )
   end
 end

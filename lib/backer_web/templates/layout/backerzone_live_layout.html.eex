@@ -32,7 +32,7 @@
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4">
-	            <div class="transition-all" style="top: 56px; position: sticky;">
+	            <div class="transition-all" style="top: 96px; position: sticky;">
 	
 
 					<%= BackerWeb.BackerView.render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>

@@ -1,7 +1,7 @@
-<div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow">
+<div class="bg-white px-4 text-gray-600 py-4 mb-4 border rounded-lg shadow">
     <div class="flex justify-end">
         <div phx-click="switch-mode" phx-value-mode="text"
-            class="<%= if @mode == "text", do: " shadow-inner bg-gray-100 "  %> hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-l-lg transition-all border flex items-center">
+            class="<%= if @mode == "text", do: " shadow-inner bg-gray-100 "  %> hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-l-full transition-all border flex items-center">
             <i class="la la-edit text-xl mr-2"></i>
             <div class="text-xs">Text</div>
         </div>
@@ -11,23 +11,23 @@
             <div class="text-xs">Image</div>
         </div>
         <div phx-click="switch-mode" phx-value-mode="video"
-            class="<%= if @mode == "video", do: " shadow-inner bg-gray-100 "  %> hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-r-lg transition-all border flex items-center">
+            class="<%= if @mode == "video", do: " shadow-inner bg-gray-100 "  %> hover:shadow-inner hover:bg-gray-100  cursor-pointer px-6 py-1 rounded-r-full transition-all border flex items-center">
             <i class="la la-youtube text-xl mr-2"></i>
             <div class="text-xs ">Video</div>
         </div>
     </div>
-    <div class="flex py-4">
-        <img src="<%= @donee_info.backer.avatar %>" class="object-center object-cover w-12 h-12 rounded-lg" alt="">
+    <div class="flex pt-4">
+        <img src="<%= @donee_info.backer.avatar %>" class="object-center object-cover w-12 h-12 rounded-full" alt="">
         <div class="w-full ml-4">
             <form action="#" phx-submit="post">
             <input type="text" maxlength="160" placeholder="Judul" name="title" value="<%= @title %>"
-                class="focus:outline-none rounded-lg bg-gray-100 w-full  mb-2 px-4 py-2">
+                class="focus:outline-none border-b text-sm rounded-fullx bg-gray-100x w-full  mb-2 px-4 py-2">
 
 
             <div maxlength="160"
                 class="<%= if @mode != "image", do: " hidden "  %> flex items-center px-4 rounded-lg bg-gray-100 mb-2">
                 <i class="la la-photo text-xl mr-2"></i> <input type="text" placeholder="http://link-to-image" name="image-link"
-                    class="focus:outline-none bg-gray-100 w-full py-2">
+                    class="focus:outline-none text-sm bg-gray-100 w-full py-2">
             </div>
 
 
@@ -36,19 +36,19 @@
                 <i class="la la-youtube text-xl mr-2"></i>
                 <div class="flex py-1"> <span class="z-10 text-gray-500">https://youtube.com/watch?v=</span><input
                         type="text" name="video"
-                        class="inline border-b-2 focus:border-green-500 bg-gray-100 border-gray-500 block pr-2 pb-1 focus:outline-none">
+                        class="inline border-b-2 text-sm focus:border-green-500 bg-gray-100 border-gray-500 block pr-2 pb-1 focus:outline-none">
                 </div>
             </div>
 
 
 
             <textarea name="content" maxlength="2000" name="post" id="" cols="30" rows="5"
-                class="focus:outline-none rounded-lg bg-gray-100 w-full  p-4" placeholder="Konten..."><%= @content %></textarea>
+                class="focus:outline-none text-sm rounded-lg bg-gray-100 w-full  p-4" placeholder="Konten..."><%= @content %></textarea>
 
             <div class="flex pt-1 justify-between items-center flex-wrap">
-                <div class="py-2 ">
+                <div class="py-2 flex items-center">
                     <div class="mr-2 text-xs px-2 pb-px">Dapat dilihat oleh</div>
-                    <select name="min-tier" class="border h-8 w-40 focus:outline-none bg-white">
+                    <select name="min-tier" class=" h-8 w-40 focus:outline-none bg-white">
                         <option value="0">Semua orang</option>
                         <%= for tier <- Enum.reverse @donee_info.tier  do %>
                         <option value="<%= tier.amount %>"><%= tier.title %></option>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="">
                     <button type="submit" phx-disable-with="Submitting.."
-                        class="hover:shadow-lg tracking-wide shadow focus:outline-none px-12 w-full py-3 outline-none transition-all transition-ease bg-orange-500 text-white rounded-lg">Post</button>
+                        class="hover:shadow-lg tracking-wide shadow focus:outline-none px-12 w-full py-2 outline-none transition-all transition-ease bg-orange-500 text-white rounded-full">Post</button>
                 </div>
             </div>
             </form>
@@ -67,46 +67,62 @@
 
 </div>
 
+<div class=" px-2 mb-2 tracking-wide font-semibold font-title text-gray-600 uppercase text-sm">Postingan terbaru</div>
 	
 <%= for post <- @posts do %>
-	            <div class=" bg-white shadow pt-4 mb-4 relative">
-                    <div class="px-6 py-1 rounded-l-full <%= if post.min_tier > 0, do: "bg-indigo-500", else: "bg-gray-400" %> text-white absolute right-0 mt-px text-xs uppercase tracking-wider font-semibold"> <%= Stringhelper.min_amount_to_tier(post.min_tier, @donee_info.tier) %> </div>
-                    <div class="flex justify-between items-end px-4">
 
+<div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
+
+				<div class="flex justify-between items-center">
 	                <div class="flex items-center">
-	                    <img src="<%= @donee_info.backer.avatar %>" class="w-12 h-12 object-center object-cover rounded-lg border-4 border-white mr-2">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
 	                    <div class="">
-	                        <div class="text-gray-600 font-semibold"><%= @donee_info.backer.display_name %></div>
-	                        <div class="text-gray-500 text-xs">
-	                                    <%= Stringhelper.ago post.inserted_at %></div>
+	                        <div class="text-gray-600 text-sm font-title font-semibold"><%= @donee_info.backer.display_name %></div>
+	                        <div class="text-gray-500 text-xs"><%= Stringhelper.ago post.inserted_at %></div>
 	                    </div>
-	                </div>
+	               		 </div>
 
-                    <div class="text-gray-600 text-xs py-px">
-                        <div>
-                        <span class="font-semibold"><%= post.like_count %></span> <span class="font-light">likes</span> •
-                        <span class="font-semibold"><%= post.comment_count %></span> <span class="font-light">comments</span></div>
+						<div class="">
+
+							<div class="text-right <%= if post.min_tier > 0, do: "bg-indigo-500", else: "bg-gray-400" %> text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-gray-400 font-semibold"> <%= Stringhelper.min_amount_to_tier(post.min_tier, @donee_info.tier) %> </div>
+
+						</div>
+
                     </div>
 
-                    </div>
-	                <div class="border-b my-2 mb-4x"></div>
-
-                    <div class="p-4">
-	                <div class="text-gray-600 my-2 font-semibold  text-center text-xl px-2"> <%= post.title %>
-	                     </div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed"> <%= post.content %>
-	                </div>
-                    </div>
+	                <div class="border-bx mt-4 mb-4"></div>
+	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2"><%= post.title %></div>
+	                <div class="p-2 text-gray-600 text-justify leading-relaxed"><%= post.content %></div>
 	
-	                <div class="flex text-gray-600 bg-gray-100x">
-	                    <div phx-click="toggle_like" phx-value-post-id="<%= post.id %>" class="<%= if post.is_liked?, do: " text-indigo-500 " %>  border-t text-center w-1/2 py-3 cursor-pointer hover:bg-gray-200"><i
-	                            class="la la-thumbs-up mr-2"></i>
-	                        Like</div>
-	                    <div class="border-t border-l text-center w-1/2 py-3 cursor-pointer hover:bg-gray-200"><i
-	                            class="la la-comment mr-2"></i>
-	                        Comment</div>
+
+
+					<div class="flex justify-between items-center mt-4">
+					<div>
+
+					</div>
+	                <div class="text-xs text-right mt-4 text-gray-600"><span>
+					</span><%= post.like_count %> like • <%= post.comment_count %> comments</div>
+					</div>
+
+
+
+	                <div class="border-bx mt-2"></div>
+	                <div class="flex text-gray-600">
+                    	                    <div phx-click="toggle_like" phx-value-post-id="<%= post.id %>" class="text-center <%= if post.is_liked?, do: " text-indigo-500 " %> w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
+						<div class="w-1/2"><a href="/backerzone/timeline-live/<%= post.id %>"><div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div></a></div>
+
+	                </div>
+
+	                <div class="border-b mb-2"></div>
+	                <div class="flex items-center">
+	
+	                    <img src="<%= @donee_info.backer.avatar %>" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
+	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
+	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-indigo-500 uppercase tracking-wide">Kirim</button>
+	
 	                </div>
 	            </div>
+
             <% end %>
 	
                 <!--

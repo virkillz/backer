@@ -1,16 +1,16 @@
-	            <div class="transition-all" style="top: 56px; position: sticky;">
+	            <div class="transition-all" style="top: 100px; position: sticky;">
 	
-	                <div class="wow fadeIn lg:bg-white rounded lg:shadow py-6 px-4">
+	                <div class="wow fadeIn lg:bg-white rounded-lg lg:shadow py-6 px-4">
 	                
 	                    <div class="flex ">
 	                        <div class="w-1/2">
 	                            <div class="text-2xl text-center font-semibold"><%= @donee.backer_count %></div>
-	                            <div class="text-center text-thin text-gray-600 text-sm">Backer</div>
+	                            <div class="text-center text-thin  text-sm">Backer</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">
 	                            <div class="text-2xl text-center font-semibold "><%= @donee.post_count %></div>
-	                            <div class="text-center text-thin text-gray-600 text-sm">Posts</div>
+	                            <div class="text-center text-thin  text-sm">Posts</div>
 	                        </div>
 	                    </div>
 	                
@@ -28,18 +28,18 @@
 
 	                <div class="pb-10">
 	                    <div class=" text-gray-700 font-bold py-2 px-2 mt-8">Top Backer</div>
-	                    <div class="bg-white p-4 rounded flex shadow">
-							<%= if Enum.count(@top_backer) == 0 do %> <p class="font-light py-2"><%= @donee.backer.display_name %> tidak memiliki backer aktif saat ini</p> <% end %>
+	                    <div class="bg-white p-2 rounded-lg flex shadow">
+							<%= if Enum.count(@top_backer) == 0 do %> <p class="font-light text-sm py-2"><%= @donee.backer.display_name %> tidak memiliki backer aktif saat ini</p> <% end %>
 							
 							<%= for bckr <- @top_backer do %>
 
 							<%= if bckr.is_backer_anonymous do %>
 	                        <img src="/assets/images/bg/avatar-anonymous.png"
-	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-lg w-12 h-12 m-2">
+							class="wow fadeIn hover:border-indigo-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-full w-12 h-12 m-2">
 							<% else %>
 							<a href="/backer/<%= bckr.backer.username %>" data-tippy-content="<%= bckr.backer.display_name %>" class="tippy">
 	                        <img src="<%= bckr.backer.avatar %>"
-	                            class="wow fadeIn hover:border-purple-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-lg w-12 h-12 m-2">
+							class="wow fadeIn hover:border-indigo-500 border-2 hover:border-2 hover:shadow-md object-center object-cover rounded-full w-12 h-12 m-2">
 							</a>
 
 							<% end %>

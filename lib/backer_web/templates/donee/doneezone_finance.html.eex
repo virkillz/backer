@@ -1,7 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 		
-		<div class="bg-gray-200 mt-16">
+		<div class="bg-gray-200 lg:mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
@@ -22,16 +22,16 @@
 	
 	            <div class="border-b-2  mb-6"></div>
 	
-	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow rounded">
+	            <div class="bg-white px-4 text-gray-600 py-4 mb-2 border shadow rounded-lg">
 	
 	                <table class="table-fixedx w-full">
-	                    <thead class="text-sm">
+	                    <thead class="text-xs uppercase">
 	                        <tr>
 	                            <th>Tanggal</th>
 	                            <th class="w-32">Backer</th>
-	                            <th>Nominal</th>
-	                            <th>Bulan</th>
-	                            <th>Total</th>
+	                            <th class="text-right">Nominal</th>
+	                            <th class="text-right">Bulan</th>
+	                            <th class="text-right">Total</th>
 	                            <th>Settlement</th>
 	                        </tr>
 	                    </thead>
@@ -39,14 +39,24 @@
 
 						<%= for invoice <- @invoices do %>
 	                        <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
-	                            <td class="p-1"><%= datetime_to_date invoice.inserted_at %></td>
+	                            <td class="p-1">
+								<div class="flex items-center">
+									<div class="text-2xl mr-2 font-title font-bold"><%= invoice.inserted_at.day %></div>
+									<div>
+									<div><%= Stringhelper.stringify invoice.inserted_at.month %></div>
+									<div><%= invoice.inserted_at.year %></div>
+									</div>
+								</div>
+								
+								
+								</td>
 	                            <td class="p-1 text-center w-32">
 									<a href="/backer/<%= invoice.backer.username %>">
 	                                <div class="flex">
-	                                    <div class="">
-	                                        <img src="<%= invoice.backer.avatar %>" alt="<%= invoice.backer.display_name %>" class="w-8 h-8 object-center object-cover rounded-lg mr-2">
+	                                    <div class="mr-2">
+	                                        <img src="<%= invoice.backer.avatar %>" alt="<%= invoice.backer.display_name %>" class="w-10 h-10 object-center object-cover rounded-full">
 	                                    </div>
-	                                    <div class=" text-blue-500">
+	                                    <div class=" text-indigo-500 text-left">
 	                                        <div class="font-bold"><%= invoice.backer.display_name %></div>
 	                                        <div class="">@<%= invoice.backer.username %></div>
 	                                    </div>

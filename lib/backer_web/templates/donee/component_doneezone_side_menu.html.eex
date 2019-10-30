@@ -10,33 +10,35 @@
                        	<div class="wow fadeIn hidden lg:block">
 
                         <div class="flex items-center">
-                           <div class="mr-2">
-	                    <img src="<%= @donee_info.backer.avatar %>" class="w-10 h-10 object-center object-cover rounded">
+                           <div class="mr-2 z-20">
+	                    <img src="<%= @donee_info.backer.avatar %>" class="w-16 h-16 shadow object-center object-cover rounded-full">
                         </div>
 
-	                    <div class="">
+	                    <div class="z-10 py-2 pl-16 -ml-16 pr-4 shadow rounded-full bg-white">
 	                        <div class="text-gray-700 font-title font-semibold"><%= @donee_info.backer.display_name %></div>
-	                        <div class="text-gray-500 text-xs">
-	                		@<%= @donee_info.backer.username %> <a href="/donee/<%= @donee_info.backer.username %>" target="_blank"><span class="ml-4 font-semibold text-xs uppercase text-indigo-400">profil donee <i class="la la-external-link"></i></span></div>
+	                        <div class=" text-xs">
+	                		@<%= @donee_info.backer.username %> <a href="/donee/<%= @donee_info.backer.username %>" target="_blank"><span class="ml-4 font-semibold text-xs uppercase text-indigo-400">profil donee <i class="la la-external-link"></i></span></a></div>
 	                    </div>
                         </div>
 	               		 </div>
 
 
 <div class="flex justify-between mt-6">
-    <a href="/doneezone">
-        <div
-            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-orange-500">
-            donee menu</div>
-    </a>
     <a href="/backerzone">
         <div
-            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-indigo-500">
+            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title font-semibold  uppercase text-sm border-b-8 border-transparent hover:border-indigo-500">
             backer menu</div>
     </a>
+    <a href="/doneezone">
+        <div
+            class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title font-semibold uppercase text-sm border-b-8 border-orange-500">
+            donee menu</div>
+    </a>
+
 </div>
 
-<div class="border-b-2 mb-6"></div>
+<div class="border-b-2 mb-6 -mt-px"></div>
+
 
 <div class="flex lg:block justify-center items-start my-6">
     <a href="/doneezone/timeline-live">
@@ -44,15 +46,6 @@
             class="<%= sidebar_active(@conn, "/doneezone/timeline-live") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 lg:border-b-0 hover:text-orange-500 transition-all transition-ease transition-500">
             <i class="la la-newspaper-o text-xl lg:mr-4"></i>
             <div class="font-title"> My Posts</div>
-        </div>
-    </a>
-
-
-    <a href="/doneezone/about">
-        <div
-            class="<%= sidebar_active(@conn, "/doneezone/about") %> mb-2 lg:flex text-center cursor-pointer py-2 px-4 mx-px lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500">
-            <i class="la la-home text-xl lg:mr-4"></i>
-            <div class="font-title"> My Page</div>
         </div>
     </a>
 

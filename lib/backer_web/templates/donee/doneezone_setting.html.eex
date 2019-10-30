@@ -1,6 +1,6 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-		<div class="bg-gray-200 mt-16">
+		<div class="bg-gray-200 lg:mt-16">
 	    <div class="pt-10 container mx-auto lg:flex">
 	
 	        <div class="lg:w-1/4 px-4 lg:pb-10">
@@ -47,7 +47,7 @@
 
                         <a href="/backerzone/profile-setting">
                         <button
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Edit</button>
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Edit</button>
                             </a>
                     </div>
 
@@ -56,7 +56,7 @@
                     <div class="flex">
                         <div class="w-1/2 p-2">
                             <div class="w-full">
-                                <img src="<%= @donee_info.backer.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-lg ">
+                                <img src="<%= @donee_info.backer.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-full ">
                             </div>
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">
@@ -117,7 +117,7 @@
             <div class="py-2">
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
                     <div class="flex justify-between">
-                        <div class="font-title text-xl font-bold">Donee Profile</div>
+                        <div class="font-title text-xl font-bold">Profil Donee</div>
                         <button
                             class="hidden focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Save</button>
                     </div>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="flex justify-center mt-4">
                             <label for="upload" 
-                                    class="mx-auto cursor-pointer px-2 py-1 hover:bg-orange-600 rounded hover:text-white text-orange-600 border border-orange-600">Change
+                                    class="mx-auto cursor-pointer px-6 py-1 hover:bg-orange-600 rounded-full hover:text-white text-orange-600 border border-orange-600">Change
                                     <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="donee[background]" type="file">
                             </label>
                             </div>  
@@ -171,7 +171,7 @@
                         <div class="font-title text-xl font-bold">Profile Content</div>
                            <a href="/doneezone/preview" target="_blank">
                         <div
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Preview</div>
+                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Preview</div>
                             </a>
                     </div>
 
@@ -195,7 +195,7 @@
 
 
                     <button type="submit"
-                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg w-full">Save</button>
+                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full w-full">Save</button>
 
                 </div>
             </div>

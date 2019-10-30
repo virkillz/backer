@@ -1,69 +1,86 @@
 <div>
 
 	<div class="lg:hidden">
-		<div class="text-xl font-title"><span class="font-bold">Hello, </span><span class=""><%= @backer.display_name %></span>!
+		<div class="text-xl font-title"><span class="font-bold">Hello, </span><span
+				class=""><%= @backer.display_name %></span>!
 		</div>
 	</div>
 
-	<div class="pt-10x hidden lg:block">
 
-	<div class="flex items-center">
-	                    <img src="<%= @backer.avatar %>" class="w-10 h-10 object-center object-cover rounded mr-2">
-	                    <div class="">
+                       	<div class="wow fadeIn hidden lg:block">
+
+                        <div class="flex items-center">
+                           <div class="mr-2 z-20">
+	                    <img src="<%= @backer.avatar %>" class="w-16 h-16 shadow object-center object-cover rounded-full">
+                        </div>
+
+	                    <div class="z-10 py-2 pl-16 -ml-16 pr-4 shadow rounded-full bg-white">
 	                        <div class="text-gray-700 font-title font-semibold"><%= @backer.display_name %></div>
 	                        <div class="text-gray-500 text-xs">
-	                		@<%= @backer.username %> <a href="/backer/<%= @backer.username %>" target="_blank"><span class="ml-4 font-semibold text-xs uppercase text-indigo-400">profil backer <i class="la la-external-link"></i></span></div>
+	                		@<%= @backer.username %> <a href="/backer/<%= @backer.username %>" target="_blank"><span class="ml-4 font-semibold text-xs uppercase text-indigo-400">profil backer <i class="la la-external-link"></i></span></a></div>
 	                    </div>
+                        </div>
 	               		 </div>
 
+
+	<%= if @backer.is_donee do %>
+
+	<div class="flex justify-between mt-6">
+		<a href="/backerzone">
+			<div
+				class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-semibold font-title text-gray-600x uppercase text-sm border-b-4 border-transparent border-indigo-500">
+				backer menu</div>
+		</a>
+		<a href="/doneezone">
+			<div
+				class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-semibold font-title text-gray-600x uppercase text-sm border-b-4 border-transparent hover:border-orange-500">
+				donee menu</div>
+		</a>
 	</div>
-
-			<%= if @backer.is_donee do %>
-
-<div class="flex justify-between mt-6">
-<a href="/backerzone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent border-indigo-500">backer menu</div></a>
-<a href="/doneezone"><div class=" px-2 py-4 lg:mb-0 text-center tracking-wide font-title text-gray-600 uppercase text-sm border-b-4 border-transparent hover:border-orange-500">donee menu</div></a>
-</div>
-			<% end %>
-
 	<div class="border-b-2 mb-6"></div>
+	<% else %>
+
+	<div class="border-b-2 my-6"></div>
+	<% end %>
+
+
 
 	<div class="flex lg:block items-start">
 
-	<a href="/backerzone/timeline-live">
+		<a href="/backerzone/timeline-live" class="flex-1">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 hover:text-indigo-500 hover:bg-orange-200x transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/timeline-live") %>">
-				<i class="la la-home text-xl lg:mr-4"></i>
-				<div class="font-title text-gray-600x"> Linimasa </div>
+				class="mb-1 text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-indigo-500 hover:bg-orange-200x transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/timeline-live") %>">
+				<div class="rounded-full bg-gray-100 h-10 w-10 flex items-center justify-center lg:mr-4 text-center"><i class="la la-home text-lg"></i></div>
+				<div class="font-title text-xs md:text-sm lg:text-base font-semibold"> Linimasa </div>
 			</div>
 		</a>
 
-		
 
-		<a href="/backerzone/my-donee-list">
+
+		<a href="/backerzone/my-donee-list" class="flex-1">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/my-donee-list") %>">
-				<i class="la la-leaf text-xl lg:mr-4"></i>
-				<div class="font-title text-gray-600x"> Dukungan Saya </div>
+				class="mb-1 mx-px text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/my-donee-list") %>">
+				<div class="rounded-full bg-gray-100 h-10 w-10 flex items-center justify-center lg:mr-4 text-center"><i class="la la-leaf text-lg"></i></div>
+				<div class="font-title text-xs md:text-sm lg:text-base font-semibold"> Dukungan Saya </div>
 			</div>
 		</a>
 
-		<a href="/backerzone/payment-history">
+		<a href="/backerzone/payment-history" class="flex-1">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/payment-history") %>">
-				<i class="la la-credit-card text-xl lg:mr-4"></i>
-				<div class="font-title text-gray-600x"> Riwayat Dukungan</div>
+				class="mb-1 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/payment-history") %>">
+								<div class="rounded-full bg-gray-100 h-10 w-10 flex items-center justify-center lg:mr-4 text-center"><i class="la la-credit-card text-lg"></i></div>
+				<div class="font-title text-xs md:text-sm lg:text-base font-semibold"> Riwayat Dukungan</div>
 			</div>
 		</a>
 
-		<a href="/backerzone/profile-setting">
+		<a href="/backerzone/profile-setting" class="flex-1">
 			<div
-				class="mb-2 mx-1 text-center lg:text-left lg:flex cursor-pointer py-2 tracking-wide px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/profile-setting") %>">
-				<i class="la la-cog text-xl lg:mr-4"></i>
-				<div class="font-title text-gray-600x"> Pengaturan</div>
+				class="mb-1 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-indigo-500 transition-all transition-ease transition-500 <%= sidebar_active(@conn, "/backerzone/profile-setting") %>">
+				<div class="rounded-full bg-gray-100 h-10 w-10 flex items-center justify-center lg:mr-4 text-center"><i class="la la-cog text-lg"></i></div>
+				<div class="font-title text-xs md:text-sm lg:text-base font-semibold"> Pengaturan</div>
 			</div>
 		</a>
-		
+
 	</div>
 
 </div>

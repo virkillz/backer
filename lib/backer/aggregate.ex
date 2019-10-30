@@ -80,6 +80,17 @@ defmodule Backer.Aggregate do
     Repo.one(query)
   end
 
+  def is_backer_active?(backer_id, donee_id) do
+    query =
+      from(b in BackingAggregate,
+        where: b.backer_id == ^backer_id,
+        where: b.donee_id == ^donee_id,
+        where: b.backing_status == "active"
+      )
+
+    not is_nil(Repo.one(query))
+  end
+
   @doc """
   Returns the list of backingaggregates.
 

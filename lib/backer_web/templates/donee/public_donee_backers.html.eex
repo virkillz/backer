@@ -1,13 +1,13 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-<div class="mt-16 object-cover h-64 lg:h-72 w-full"
+<div class="mt-16 object-cover h-72 w-full"
 	style="background-image:
 linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.73)),
 url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: "compress" } %>'); background-position: center; background-size: cover;">
 
-	<div class="flex justify-center pt-16">
+	<div class="flex justify-center pt-12">
 		<img src="<%= Backer.Helper.imgix(@donee.backer.avatar, %{h: 80, w: 80, fit: "crop", corner_radius: "10,10,10,10"}) %>"
-			class="object-center object-cover rounded-lg mx-auto w-20 h-20">
+			class="object-center object-cover rounded-full mx-auto w-32 h-32 border-white border-dashed border-2 p-2">
 	</div>
 	<div class="text-center pt-4 font-bold text-2xl text-white font-title"><%= @donee.backer.display_name %></div>
 	<div class="text-center text-white "><%= @donee.tagline %></div>
@@ -71,9 +71,9 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 
 					<a href="/donee/<%= @donee.backer.username %>/donate" class="">
 						<div
-							class="wow rubberBand flex items-center justify-between rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
+							class="wow rubberBand flex items-center justify-center rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
 							<div>
-								Bergabung menjadi Backer
+								Ikut menjadi Backer
 							</div>
 							<div>
 								<i class="la la-angle-right text-xl"></i>
@@ -99,10 +99,10 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 				</div>
 			</div>
 			<% else %>
-			<a href="/backer-8">
+			<a href="/<%= backer.backer.username %>">
 				<div class="mb-4 flex items-center cursor-pointer">
 					<img src="<%= backer.backer.avatar %>"
-						class="z-10 rounded-lg shadow object-center object-cover w-16 h-16" alt="">
+						class="z-10 rounded-full shadow object-center object-cover w-16 h-16" alt="">
 					<div
 						class="flex p-4 h-32 bg-white -ml-8 z-0 flex-grow hover:text-blue-500  hover:shadow-lg shadow rounded-lg relative">
 						<div class="bg-black px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
@@ -137,9 +137,9 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 				<div class="pb-1">
 					<a href="/donee/<%= @donee.backer.username %>/donate" class="">
 						<div
-							class="wow rubberBand flex items-center justify-between rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
+							class="wow rubberBand flex items-center justify-center rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
 							<div>
-								Bergabung menjadi Backer
+								Ikut menjadi Backer
 							</div>
 							<div>
 								<i class="la la-angle-right text-xl"></i>
@@ -175,9 +175,9 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 		<div class="pb-1">
 			<a href="/donee/<%= @donee.backer.username %>/donate" class="">
 				<div
-					class="wow rubberBand flex items-center justify-between rounded-lg hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
+					class="wow rubberBand flex items-center justify-between rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
 					<div>
-						Bergabung menjadi Backer
+						Ikut menjadi Backer
 					</div>
 					<div>
 						<i class="la la-angle-right text-xl"></i>

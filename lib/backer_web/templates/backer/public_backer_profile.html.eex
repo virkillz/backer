@@ -4,9 +4,9 @@
 	
 	    <div class="container mx-auto pt-20 pb-20">
 	
-	        <div class="px-4"><img src="<%= @backer.avatar %>" class="rounded-lg mx-auto w-40 shadow object-center object-cover h-40 border-8 border-white" alt="">
-	            <div class="bg-white rounded shadow-lg px-4 pb-4 pt-20 -mt-16 max-w-2xl mx-auto">
-	                <h2 class="text-xl font-title text-center font-bold"><%= @backer.display_name %></h2>
+	        <div class="px-4"><img src="<%= @backer.avatar %>" class="rounded-full shadow mx-auto w-40 shadow object-center object-cover h-40 border-8 border-white" alt="">
+	            <div class="bg-white rounded-lg shadow px-4 pb-4 pt-20 max-w-2xl mx-auto" style="margin-top: -80px;">
+	                <h2 class="text-xl font-title text-center font-bold mt-2"><%= @backer.display_name %></h2>
 	                <h4 class="text-center opacity-75">@<%= @backer.username %></h4>
 	                <div class="py-4 flex justify-center">
 					<%= if @user_links["youtube"] != "" && not is_nil @user_links["youtube"] do %>
@@ -28,7 +28,7 @@
 	                    <a href="<%= @user_links["github"] %>" class="mx-1"><i class="la la-github text-2xl hover:text-purple-500"></i></a>
 					<% end %>	
 	                </div>
-	                <div class="text-center py-8 font-thin text-gray-700"><%= @backer.backer_bio %></div>
+	                <div class="text-center py-4 font-thin text-gray-700"><%= @backer.backer_bio %></div>
 	                <div class="flex py-4">
 	                    <div class="w-1/3 rounded-lg p-2 text-center bg-gray-200x">
 	                        <div class=" font-boldx text-sm text-gray-700">Backer for</div>
@@ -81,7 +81,7 @@
 					<a href="/donee/<%= donee.donee.backer.username %>">
 					<div class="wow bounceInUp my-8 max-w-2xl mx-auto flex items-center cursor-pointer hover:shadow-xl bg-white rounded-lg shadow">
 						<img src="<%= donee.donee.background %>" class="shadow rounded-l-lg h-48 object-cover w-48 lg:w-64" alt="">
-						<img src="<%= donee.donee.backer.avatar %>" class="z-10 -ml-8 object-center object-cover shadow border-white border-2 shadow-lg rounded-lg w-16 h-16" alt="">
+						<img src="<%= donee.donee.backer.avatar %>" class="z-10 -ml-8 object-center object-cover shadow border-white border-2 shadow-lg rounded-full w-16 h-16" alt="">
 						<div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
 							<div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
 							<%= donee.donee.backer_count %> Backer</div>

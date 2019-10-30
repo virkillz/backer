@@ -426,25 +426,31 @@ defmodule Backer.Content do
     Repo.all(query)
   end
 
-
   def list_posts(params) do
     # Repo.all(Post)
     Post |> Repo.paginate(params)
   end
 
-  def list_own_posts(donee_id, backer_id, limit, last_id) when (is_integer(limit) and is_integer(donee_id) and is_integer(last_id)) do
-
+  def list_own_posts(donee_id, backer_id, limit, last_id)
+      when is_integer(limit) and is_integer(donee_id) and is_integer(last_id) do
     query =
-    if last_id == 0 do
-      from(p in Post, where: p.donee_id == ^donee_id, order_by: [desc: p.id], limit: ^limit)
-    else
-      from(p in Post, where: p.donee_id == ^donee_id, where: p.id < ^last_id, limit: ^limit, order_by: [desc: p.id])
-    end
+      if last_id == 0 do
+        from(p in Post, where: p.donee_id == ^donee_id, order_by: [desc: p.id], limit: ^limit)
+      else
+        from(p in Post,
+          where: p.donee_id == ^donee_id,
+          where: p.id < ^last_id,
+          limit: ^limit,
+          order_by: [desc: p.id]
+        )
+      end
 
     result = Repo.all(query) |> Enum.map(fn x -> Map.from_struct(x) end)
     result_ids = Enum.map(result, fn x -> x.id end)
 
-    query_likes = from(p in PostLike, where: p.post_id in ^result_ids, where: p.backer_id == ^backer_id)
+    query_likes =
+      from(p in PostLike, where: p.post_id in ^result_ids, where: p.backer_id == ^backer_id)
+
     get_likes = Repo.all(query_likes) |> Enum.map(fn x -> x.post_id end)
 
     Enum.map(result, fn x ->
@@ -453,7 +459,6 @@ defmodule Backer.Content do
       else
         Map.put(x, :is_liked?, false)
       end
-
     end)
   end
 
@@ -615,16 +620,15 @@ defmodule Backer.Content do
         where: like.backer_id == ^backer_id and like.post_id == ^post_id
       )
 
-     if query_like_post |> first |> Repo.one() == nil, do: false, else: true
+    if query_like_post |> first |> Repo.one() == nil, do: false, else: true
   end
 
   def list_liked_comments(comments, backer_id) do
-
-      PCommentLike
-      |> where([p], p.pcomment_id in ^comments)
-      |> where([p], p.backer_id == ^backer_id)
-      |> select([p], p.pcomment_id)
-      |> Repo.all()
+    PCommentLike
+    |> where([p], p.pcomment_id in ^comments)
+    |> where([p], p.backer_id == ^backer_id)
+    |> select([p], p.pcomment_id)
+    |> Repo.all()
   end
 
   def get_post!(id) do
@@ -632,15 +636,18 @@ defmodule Backer.Content do
     |> Repo.preload(:pcomment)
   end
 
-  def get_post_simple(donee_id, id) do
-    query = from(p in Post, where: p.id == ^id and p.donee_id == ^donee_id)
+  def get_post_no_preload!(id) do
+    Repo.get!(Post, id)
+  end
+
+  def get_post(id) do
+    query = from(p in Post, where: p.id == ^id, preload: [donee: [:backer]])
 
     Repo.one(query)
   end
 
-
   def list_public_post(limit) when is_integer(limit) do
-    query = from(p in Post, order_by: [desc: p.id], preload: [donee: [:backer] ],limit: ^limit)
+    query = from(p in Post, order_by: [desc: p.id], preload: [donee: [:backer]], limit: ^limit)
     Repo.all(query)
   end
 
@@ -657,19 +664,18 @@ defmodule Backer.Content do
 
   """
   def create_post(attrs \\ %{}) do
+    result =
+      %Post{}
+      |> Post.changeset(attrs)
+      |> Repo.insert()
 
-  result =
-    %Post{}
-    |> Post.changeset(attrs)
-    |> Repo.insert()
-
-  # if successfull insert, increase post_count
+    # if successfull insert, increase post_count
     case result do
       {:ok, post} -> Account.increase_donee_post_count(post.donee_id)
       _ -> :nothing
     end
 
-  result
+    result
   end
 
   def list_post_from_array(list) do
@@ -954,7 +960,7 @@ defmodule Backer.Content do
   end
 
   def list_pcomments(%{"post_id" => post_id}) do
-    query = from(p in PostComment, where: p.post_id == ^post_id)
+    query = from(p in PostComment, where: p.post_id == ^post_id, preload: :backer)
 
     Repo.all(query)
   end
@@ -999,7 +1005,7 @@ defmodule Backer.Content do
     Ecto.Multi.new()
     |> Ecto.Multi.insert(:comment, comment_changeset)
     |> Ecto.Multi.run(:post, fn repo, %{comment: comment} ->
-      post = get_post!(comment.post_id)
+      post = get_post_no_preload!(comment.post_id)
 
       count = comment_count(post.id)
       # attrs = %{"comment_count" => count.count}
@@ -1388,28 +1394,32 @@ defmodule Backer.Content do
 
   def increase_post_like_count(post_id) do
     post = get_post!(post_id)
-    update_post(post, %{"like_count" => post.like_count + 1}) |> IO.inspect
+    update_post(post, %{"like_count" => post.like_count + 1}) |> IO.inspect()
   end
 
   def decrease_post_like_count(post_id) do
     post = get_post!(post_id)
-    update_post(post, %{"like_count" => post.like_count - 1}) |> IO.inspect
+    update_post(post, %{"like_count" => post.like_count - 1}) |> IO.inspect()
   end
 
   def toggle_post_like(post_id, backer_id) do
-    query = from p in PostLike,
-      where: p.post_id == ^post_id,
-      where: p.backer_id == ^backer_id,
-      limit: 1
+    query =
+      from(p in PostLike,
+        where: p.post_id == ^post_id,
+        where: p.backer_id == ^backer_id,
+        limit: 1
+      )
 
     case Repo.one(query) do
-      nil -> spawn fn -> increase_post_like_count(post_id) end
-              spawn fn -> create_post_like(%{"post_id" =>  post_id, "backer_id" => backer_id}) end
-              true
-      post_like -> spawn fn -> delete_post_like(post_like) end
-              spawn fn -> decrease_post_like_count(post_id) end
-              false
+      nil ->
+        spawn(fn -> increase_post_like_count(post_id) end)
+        spawn(fn -> create_post_like(%{"post_id" => post_id, "backer_id" => backer_id}) end)
+        true
+
+      post_like ->
+        spawn(fn -> delete_post_like(post_like) end)
+        spawn(fn -> decrease_post_like_count(post_id) end)
+        false
     end
   end
-
 end
