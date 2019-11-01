@@ -11,6 +11,20 @@ defmodule BackerWeb.BackerController do
 
   def backerzone_default(conn, _params) do
     redirect(conn, to: "/backerzone/timeline-live")
+
+    # backer = conn.assigns.current_backer
+
+    # case backer do
+    #   nil ->
+    #     redirect(conn, to: "/404")
+
+    #   _ ->
+    #     conn
+    #     |> render("backerzone_default.html",
+    #       backer: backer,
+    #       layout: {BackerWeb.LayoutView, "public.html"}
+    #     )
+    # end
   end
 
   def reset_counter(conn, _params) do

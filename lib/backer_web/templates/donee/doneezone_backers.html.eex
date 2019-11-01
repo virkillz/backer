@@ -17,6 +17,17 @@
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
 
+				            <div class="flex">
+                <a href="/doneezone/backers">
+                    <div
+                        class=" border-orange-500  px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
+                        <%= gettext "Profil Umum" %>
+                    </div>
+                </a>
+            </div>
+
+            <div class="border-b-2  mb-6 -mt-px"></div>
+
 					<%= if @active_backers == [] do %>
 					<div class="bg-white py-8 px-6 rounded-lg text-center shadow">
 

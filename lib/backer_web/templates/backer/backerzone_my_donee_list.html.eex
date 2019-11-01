@@ -35,6 +35,17 @@
 	        </div>
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
+
+			<div class="flex">
+                <a href="/backerzone/my-donee-list">
+                    <div
+                        class=" border-indigo-500  px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-indigo-500 border-transparent  font-title  cursor-pointer pb-4 ">
+                        <%= gettext "Dukungan Saya" %>
+                    </div>
+                </a>
+            </div>
+
+            <div class="border-b-2  mb-6 -mt-px"></div>
 	
 	            <div class="pb-2">
 

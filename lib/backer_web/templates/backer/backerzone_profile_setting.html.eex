@@ -36,6 +36,17 @@
 	
 	        <div class="lg:w-2/4 px-4 pb-20">
 
+            <div class="flex">
+                <a href="/backerzone/profile-setting">
+                    <div
+                        class=" border-indigo-500  px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-indigo-500 border-transparent  font-title  cursor-pointer pb-4 ">
+                        <%= gettext "Pengaturan" %>
+                    </div>
+                </a>
+            </div>
+
+            <div class="border-b-2  mb-6 -mt-px"></div>
+
 			<%= if not is_nil get_flash(@conn, :info) do  %>
 			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
 			<% end %>

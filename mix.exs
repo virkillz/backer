@@ -71,7 +71,10 @@ defmodule Backer.Mixfile do
       {:httpoison, "~> 1.5"},
       {:phoenix_live_view, "~> 0.3.0"},
       {:floki, ">= 0.0.0", only: :test},
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:absinthe, "~> 1.4.16"},
+      {:absinthe_ecto, "~> 0.1.3"},
+      {:absinthe_plug, "~> 1.4.7"}
     ]
   end
 

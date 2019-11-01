@@ -1,42 +1,44 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-		<div class="bg-gray-200 lg:mt-16">
-	    <div class="pt-10 container mx-auto lg:flex">
-	
-	        <div class="lg:w-1/4 px-4 lg:pb-10">
-	            <div class="transition-all" style="top: 56px; position: sticky;">
-	
-                    <%= render "component_doneezone_side_menu.html", conn: @conn, donee_info: @donee_info %>
+<div class="bg-gray-200 lg:mt-16">
+    <div class="pt-10 container mx-auto lg:flex">
+
+        <div class="lg:w-1/4 px-4 lg:pb-10">
+            <div class="transition-all" style="top: 56px; position: sticky;">
+
+                <%= render "component_doneezone_side_menu.html", conn: @conn, donee_info: @donee_info %>
 
 
-	            </div>
-	        </div>
-	
+            </div>
+        </div>
 
-<div class="lg:w-2/4 px-4 pb-20">
+
+        <div class="lg:w-2/4 px-4 pb-20">
 
             <div class="flex">
-    <a href="/doneezone/setting">
-        <div class=" border-orange-500  px-4  font-bold lg:text-xl md:text-lg transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
-            <%= gettext "Profil Umum" %>
-        </div>
-    </a>   
-    <a href="/doneezone/tiers">
-        <div class=" border-transparent text-gray-600  px-4  font-bold lg:text-xl md:text-lg transition-all border-b-4 hover:border-orange-500 border-transparent font-title cursor-pointer pb-4 ">
-            <%= gettext "Pengaturan Tier" %>
-        </div>
-    </a>
-</div>
+                <a href="/doneezone/setting">
+                    <div
+                        class=" border-orange-500  px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
+                        <%= gettext "Profil Umum" %>
+                    </div>
+                </a>
+                <a href="/doneezone/tiers">
+                    <div
+                        class=" border-transparent text-gray-600  px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent font-title cursor-pointer pb-4 ">
+                        <%= gettext "Pengaturan Tier" %>
+                    </div>
+                </a>
+            </div>
 
-<div class="border-b-2  mb-6"></div>
+            <div class="border-b-2  mb-6 -mt-px"></div>
 
-    			<%= if not is_nil get_flash(@conn, :info) do  %>
-			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
-			<% end %>
+            <%= if not is_nil get_flash(@conn, :info) do  %>
+            <div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+            <% end %>
 
-			<%= if not is_nil get_flash(@conn, :error) do  %>
-			<div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
-			<% end %>
+            <%= if not is_nil get_flash(@conn, :error) do  %>
+            <div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
+            <% end %>
 
             <div class="pb-2">
 
@@ -46,9 +48,9 @@
                         <div class="font-title text-xl font-bold">General Profile</div>
 
                         <a href="/backerzone/profile-setting">
-                        <button
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Edit</button>
-                            </a>
+                            <button
+                                class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Edit</button>
+                        </a>
                     </div>
 
                     <div class="border-b my-2"></div>
@@ -56,28 +58,35 @@
                     <div class="flex">
                         <div class="w-1/2 p-2">
                             <div class="w-full">
-                                <img src="<%= @donee_info.backer.avatar %>" class="w-40 h-40 mx-auto object-center object-cover rounded-full ">
+                                <img src="<%= @donee_info.backer.avatar %>"
+                                    class="w-40 h-40 mx-auto object-center object-cover rounded-full ">
                             </div>
                             <div class="p-4 text-center">
                                 <div class="py-4 flex justify-center">
                                     <%= if @user_links["youtube"] != "" && not is_nil @user_links["youtube"] do %>
-                                        <a href="<%= @user_links["youtube"] %>" class="mx-1"><i class="la la-youtube text-2xl hover:text-orange-500"></i></a>
+                                    <a href="<%= @user_links["youtube"] %>" class="mx-1"><i
+                                            class="la la-youtube text-2xl hover:text-orange-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["twitter"] != "" && not is_nil @user_links["twitter"] do %>
-                                        <a href="<%= @user_links["twitter"] %>" class="mx-1"><i class="la la-twitter text-2xl hover:text-orange-500"></i></a>
+                                    <a href="<%= @user_links["twitter"] %>" class="mx-1"><i
+                                            class="la la-twitter text-2xl hover:text-orange-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["instagram"] != "" && not is_nil @user_links["instagram"] do %>
-                                        <a href="<%= @user_links["instagram"] %>" class="mx-1"><i class="la la-instagram text-2xl hover:text-orange-500"></i></a>
+                                    <a href="<%= @user_links["instagram"] %>" class="mx-1"><i
+                                            class="la la-instagram text-2xl hover:text-orange-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["dribbble"] != "" && not is_nil @user_links["dribbble"] do %>
-                                        <a href="<%= @user_links["dribbble"] %>" class="mx-1"><i class="la la-dribbble text-2xl hover:text-orange-500"></i></a>
+                                    <a href="<%= @user_links["dribbble"] %>" class="mx-1"><i
+                                            class="la la-dribbble text-2xl hover:text-orange-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["linkedin"] != "" && not is_nil @user_links["linkedin"] do %>
-                                        <a href="<%= @user_links["linkedin"] %>" class="mx-1"><i class="la la-linkedin text-2xl hover:text-orange-500"></i></a>
+                                    <a href="<%= @user_links["linkedin"] %>" class="mx-1"><i
+                                            class="la la-linkedin text-2xl hover:text-orange-500"></i></a>
                                     <% end %>
                                     <%= if @user_links["github"] != "" && not is_nil @user_links["github"] do %>
-                                        <a href="<%= @user_links["github"] %>" class="mx-1"><i class="la la-github text-2xl hover:text-orange-500"></i></a>
-                                    <% end %>	
+                                    <a href="<%= @user_links["github"] %>" class="mx-1"><i
+                                            class="la la-github text-2xl hover:text-orange-500"></i></a>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +121,7 @@
 
 
             </div>
-			<%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
+            <%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
 
             <div class="py-2">
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
@@ -128,14 +137,16 @@
                         <div class="w-1/2 p-2">
 
                             <div class="w-full">
-                                <img src="<%= @donee_info.background %>" id="output" class="mx-auto h-40 object-cover rounded-lg ">
+                                <img src="<%= @donee_info.background %>" id="output"
+                                    class="mx-auto h-40 object-cover rounded-lg ">
                             </div>
                             <div class="flex justify-center mt-4">
-                            <label for="upload" 
+                                <label for="upload"
                                     class="mx-auto cursor-pointer px-6 py-1 hover:bg-orange-600 rounded-full hover:text-white text-orange-600 border border-orange-600">Change
-                                    <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload" name="donee[background]" type="file">
-                            </label>
-                            </div>  
+                                    <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload"
+                                        name="donee[background]" type="file">
+                                </label>
+                            </div>
                         </div>
 
                         <div class="w-1/2 p-2">
@@ -151,14 +162,16 @@
 
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Tagline</label>
-                                  <%= textarea f, :tagline, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
-                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :tagline%></p>
+                                <%= textarea f, :tagline, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                                    <%= error_tag f, :tagline%></p>
                             </div>
 
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Backing Pitch</label>
-                                 <%= textarea f, :backing_pitch, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
-                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :backing_pitch %></p>
+                                <%= textarea f, :backing_pitch, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                                    <%= error_tag f, :backing_pitch %></p>
                             </div>
                         </div>
                     </div>
@@ -169,23 +182,28 @@
                 <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Profile Content</div>
-                           <a href="/doneezone/preview" target="_blank">
-                        <div
-                            class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Preview</div>
-                            </a>
+                        <a href="/doneezone/preview" target="_blank">
+                            <div
+                                class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">
+                                Preview</div>
+                        </a>
                     </div>
 
                     <div class="border-b my-2"></div>
                     <div class="my-2">
                         <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Video Link</label>
-                        <div class="flex "><span class="z-10">https://youtube.com/watch?v=</span><%= text_input f, :video_profile, class: "inline border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %> </div>
-                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :video_profile %></p>
+                        <div class="flex "><span
+                                class="z-10">https://youtube.com/watch?v=</span><%= text_input f, :video_profile, class: "inline border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %>
+                        </div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                            <%= error_tag f, :video_profile %></p>
                     </div>
 
                     <div class="my-2">
                         <label for="display_name" class="px-2 text-xs text-gray-600">Profile Content</label>
                         <%= textarea f, :donee_overview, [id: "wysiwyg", class: ""] %>
-                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"><%= error_tag f, :donee_overview %></p>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                            <%= error_tag f, :donee_overview %></p>
                     </div>
 
                     <div class="mb-6">
@@ -202,21 +220,21 @@
 
             <% end %>
 
-	
-	
-	        </div>
 
-	        <div class="lg:w-1/4 px-4">
-	
-	            <div class="pb-20">
 
-					<%= render "component_recomended_donee.html", donees: @recommended_donees %>
-	            
-	            
-	            </div>
-	        </div>
-	    </div>
-	
-	</div>
+        </div>
+
+        <div class="lg:w-1/4 px-4">
+
+            <div class="pb-20">
+
+                <%= render "component_recomended_donee.html", donees: @recommended_donees %>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>

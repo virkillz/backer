@@ -43,6 +43,11 @@ defmodule BackerWeb.Router do
     plug(BackerWeb.Plugs.DoneeCheck)
   end
 
+  pipeline :graphql do
+    # custom plug written into lib/graphql_web/plug/context.ex folder
+    plug BackerWeb.Context
+  end
+
   # ============================================================#
 
   # This route area is for admin Portal
@@ -221,6 +226,17 @@ defmodule BackerWeb.Router do
     post("/forgot-password", PublicController, :forgot_password_post)
     get("/reset-password", PublicController, :reset_password)
     post("/reset-password", PublicController, :reset_password_post)
+  end
+
+  scope "/" do
+    # pipeline through which the request have to be routed
+    pipe_through(:api)
+
+    forward "/api", Absinthe.Plug, schema: BackerWeb.Schema
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: BackerWeb.Schema,
+      interface: :simple
   end
 
   # This route area is for public route

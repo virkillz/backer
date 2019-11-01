@@ -272,6 +272,11 @@ defmodule Backer.Account do
 
   def get_backer(id), do: Repo.get(Backerz, id)
 
+  def get_backer_preload_donee(id) do
+    query = from(b in Backerz, where: b.id == ^id, preload: [:donee])
+    Repo.one(query)
+  end
+
   @doc """
   Creates a backer.
 
