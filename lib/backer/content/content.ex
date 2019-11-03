@@ -455,9 +455,9 @@ defmodule Backer.Content do
 
     Enum.map(result, fn x ->
       if Enum.member?(get_likes, x.id) do
-        Map.put(x, :is_liked?, true)
+        Map.put(x, :is_liked, true)
       else
-        Map.put(x, :is_liked?, false)
+        Map.put(x, :is_liked, false)
       end
     end)
   end
