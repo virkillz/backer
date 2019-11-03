@@ -233,7 +233,7 @@ defmodule Backer.Account do
     Repo.all(query)
   end
 
-  def get_random_donee(limit) do
+  def list_random_donee(limit) do
     query =
       from(d in Donee,
         where: d.status == "published",
@@ -245,7 +245,7 @@ defmodule Backer.Account do
     Repo.all(query)
   end
 
-  def get_random_doneex(limit) do
+  def list_random_doneex(limit) do
     query =
       from(p in Backerz,
         where: p.is_donee == true,

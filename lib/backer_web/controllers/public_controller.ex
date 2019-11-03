@@ -9,7 +9,6 @@ defmodule BackerWeb.PublicController do
   alias Backer.Temporary.Contact
   alias Backer.Content
 
-
   def index(conn, _params) do
     meta = %{title: "Welcome to backer"}
 
@@ -19,7 +18,7 @@ defmodule BackerWeb.PublicController do
       %{property: "og:image", content: "......"}
     ]
 
-    random_donee = Account.get_random_donee(6) |> IO.inspect
+    random_donee = Account.list_random_donee(6) |> IO.inspect()
     highlight_donee = Account.get_highlight_donee_homepage()
 
     conn
@@ -31,8 +30,6 @@ defmodule BackerWeb.PublicController do
       random_donee: random_donee
     )
   end
-
-
 
   def explore(conn, _params) do
     meta = %{title: "Welcome to backer"}
@@ -292,19 +289,19 @@ defmodule BackerWeb.PublicController do
           }
 
         backer ->
-            if backer.is_email_verified do
-              %{
-                title: "Email cannot be sent",
-                message: "Either we don't recognize this email or it has been verified."
-              }
-            else
-              # SENT THE ACTUAL FRIGGNI EMAIL HERE
-              %{
-                title: "Email sent!",
-                message:
-                  "Please check your email, we already re-sent your email verification instruction."
-              }
-            end
+          if backer.is_email_verified do
+            %{
+              title: "Email cannot be sent",
+              message: "Either we don't recognize this email or it has been verified."
+            }
+          else
+            # SENT THE ACTUAL FRIGGNI EMAIL HERE
+            %{
+              title: "Email sent!",
+              message:
+                "Please check your email, we already re-sent your email verification instruction."
+            }
+          end
       end
 
     render(conn, "generic.html",

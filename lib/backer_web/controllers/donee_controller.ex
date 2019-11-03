@@ -21,12 +21,10 @@ defmodule BackerWeb.DoneeController do
     redirect(conn, to: "/doneezone/timeline-live")
   end
 
-
-
   def doneezone_posts(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = Account.get_donee(%{"username" => backer_info.username})
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
 
     conn
     |> render("doneezone_timeline.html",
@@ -40,7 +38,7 @@ defmodule BackerWeb.DoneeController do
   def doneezone_finance(conn, _params) do
     donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
     backer_info = conn.assigns.current_backer
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
     invoices = Finance.list_incoming_payment(:donee_id, donee.id)
 
     conn
@@ -56,7 +54,7 @@ defmodule BackerWeb.DoneeController do
   def doneezone_statistic(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee = Account.get_donee!(conn.assigns.current_donee.donee_id)
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
 
     conn
     |> render("doneezone_statistic.html",
@@ -70,7 +68,7 @@ defmodule BackerWeb.DoneeController do
   def doneezone_setting(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
     donee = Account.get_donee!(donee_info.donee_id)
     changeset = Account.change_donee(donee)
     user_links = Account.get_user_links_of(backer_info.id)
@@ -97,7 +95,7 @@ defmodule BackerWeb.DoneeController do
   def doneezone_tiers(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
     donee = Account.get_donee!(donee_info.donee_id)
     changeset = Account.change_donee(donee)
     user_links = Account.get_user_links_of(backer_info.id)
@@ -124,7 +122,7 @@ defmodule BackerWeb.DoneeController do
   def doneezone_setting_post(conn, %{"donee" => donee_params}) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
     donee = Account.get_donee!(donee_info.donee_id)
     background = donee_params["background"]
 
@@ -260,7 +258,7 @@ defmodule BackerWeb.DoneeController do
     current_backer = conn.assigns.current_backer
     donee = Account.get_donee(%{"username" => current_backer.username})
 
-    random_donee = Account.get_random_donee(4)
+    random_donee = Account.list_random_donee(4)
     active_backers = Finance.list_active_backers(:donee_id, donee.id)
     backing = Finance.list_all_backerfor(%{"backer_id" => donee.backer.id})
     backers = Finance.list_active_backers(%{"donee_id" => donee.id})
@@ -357,7 +355,7 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         random_backer = Account.get_random_backer(4)
-        random_donee = Account.get_random_donee(4)
+        random_donee = Account.list_random_donee(4)
 
         conn
         |> render("doneezone_about.html",
@@ -379,7 +377,7 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         random_backer = Account.get_random_backer(4)
-        random_donee = Account.get_random_donee(4)
+        random_donee = Account.list_random_donee(4)
 
         active_backers =
           Aggregate.list_top_backer(donee.id, 100)
@@ -418,7 +416,7 @@ defmodule BackerWeb.DoneeController do
                 Finance.is_backer_have_active_donations?(current_backer.id, donee.id)
               end
 
-            random_donee = Account.get_random_donee(4)
+            random_donee = Account.list_random_donee(4)
 
             active_backers =
               Aggregate.list_top_backer(donee.id, 4)
@@ -452,7 +450,7 @@ defmodule BackerWeb.DoneeController do
 
       _ ->
         random_backer = Account.get_random_backer(4)
-        random_donee = Account.get_random_donee(4)
+        random_donee = Account.list_random_donee(4)
 
         if donee == nil do
           redirect(conn, to: "/404")
@@ -467,7 +465,6 @@ defmodule BackerWeb.DoneeController do
         end
     end
   end
-
 
   def donate_post(conn, params) do
     # 1. if backer not logged in, put session and redirect to login with friendly flash message.
@@ -676,7 +673,7 @@ defmodule BackerWeb.DoneeController do
     donee_id = conn.assigns.current_donee.donee_id
     tiers = Masterdata.list_tiers_for_select(%{"donee_id" => donee_id})
 
-    if is_nil post do
+    if is_nil(post) do
       redirect(conn, to: "/404")
     else
       render_target =
@@ -736,7 +733,7 @@ defmodule BackerWeb.DoneeController do
           Aggregate.list_top_backer(donee.id, 100)
           |> Enum.filter(fn x -> x.backing_status == "active" end)
 
-        random_donee = Account.get_random_donee(4)
+        random_donee = Account.list_random_donee(4)
 
         if donee == nil do
           redirect(conn, to: "/404")
@@ -908,13 +905,15 @@ defmodule BackerWeb.DoneeController do
   def doneezone_timeline_live(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = Account.get_donee(%{"username" => backer_info.username})
-    random_donee = Account.get_random_donee(3)
+    random_donee = Account.list_random_donee(3)
 
     conn
     |> put_layout("doneezone_live_layout.html")
     |> assign(:backer_info, backer_info)
     |> assign(:donee_info, donee_info)
     |> assign(:recommended_donees, random_donee)
-    |> LiveView.Controller.live_render(BackerWeb.DoneezoneTimelineLive, session: %{donee_info: donee_info, backer_info: backer_info})
+    |> LiveView.Controller.live_render(BackerWeb.DoneezoneTimelineLive,
+      session: %{donee_info: donee_info, backer_info: backer_info}
+    )
   end
 end

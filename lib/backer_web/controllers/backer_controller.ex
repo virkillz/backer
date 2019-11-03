@@ -134,7 +134,7 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_donee = Account.get_random_donee(3)
+        random_donee = Account.list_random_donee(3)
 
         conn
         |> render("backerzone_timeline.html",
@@ -170,7 +170,7 @@ defmodule BackerWeb.BackerController do
       _ ->
         my_donee_list = Finance.list_my_donee(:backer_id, backer.id)
 
-        random_donees = Account.get_random_donee(3)
+        random_donees = Account.list_random_donee(3)
 
         conn
         |> render("backerzone_my_donee_list.html",
@@ -204,7 +204,7 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_donees = Account.get_random_donee(3)
+        random_donees = Account.list_random_donee(3)
         changeset = Account.change_backer(backer)
 
         conn
@@ -245,7 +245,7 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_donees = Account.get_random_donee(3)
+        random_donees = Account.list_random_donee(3)
         list_notifications = Content.list_notification_of(backer.id)
 
         conn
@@ -333,7 +333,7 @@ defmodule BackerWeb.BackerController do
             |> redirect(to: "/backerzone/profile-setting")
 
           {:error, %Ecto.Changeset{} = changeset} ->
-            random_donees = Account.get_random_donee(3)
+            random_donees = Account.list_random_donee(3)
 
             conn
             |> put_flash(:error, "Something is wrong. Check red part below")
@@ -360,7 +360,7 @@ defmodule BackerWeb.BackerController do
       _ ->
         invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee_id})
 
-        random_donees = Account.get_random_donee(3)
+        random_donees = Account.list_random_donee(3)
 
         conn
         |> render("backerzone_payment_history.html",
@@ -382,7 +382,7 @@ defmodule BackerWeb.BackerController do
       _ ->
         invoices = Finance.list_invoices(%{"backer_id" => backer.id})
 
-        random_donees = Account.get_random_donee(3)
+        random_donees = Account.list_random_donee(3)
 
         conn
         |> render("backerzone_payment_history.html",
@@ -717,7 +717,7 @@ defmodule BackerWeb.BackerController do
     conn
     |> put_layout("backerzone_live_layout.html")
     |> assign(:backer, backer)
-    |> assign(:random_donees, Account.get_random_donee(3))
+    |> assign(:random_donees, Account.list_random_donee(3))
     |> LiveView.Controller.live_render(BackerWeb.BackerzoneTimelineLive,
       session: %{backer: backer}
     )
@@ -759,7 +759,7 @@ defmodule BackerWeb.BackerController do
     conn
     |> put_layout("backerzone_live_layout.html")
     |> assign(:backer, backer)
-    |> assign(:random_donees, Account.get_random_donee(3))
+    |> assign(:random_donees, Account.list_random_donee(3))
     |> LiveView.Controller.live_render(BackerWeb.BackerzonePostLive,
       session: %{backer: backer, post: post}
     )
