@@ -108,7 +108,7 @@
 
 	                <div class="border-bx mt-2"></div>
 	                <div class="flex text-gray-600">
-                    	                    <div phx-click="toggle_like" phx-value-post-id="<%= post.id %>" class="text-center <%= if post.is_liked?, do: " text-indigo-500 " %> w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
+                    	                    <div phx-click="toggle_like" phx-value-post-id="<%= post.id %>" class="text-center <%= if post.is_liked, do: " text-indigo-500 " %> w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
 						<div class="w-1/2"><a href="/backerzone/timeline-live/<%= post.id %>"><div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div></a></div>
 
 	                </div>
