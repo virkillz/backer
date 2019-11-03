@@ -18,6 +18,8 @@ defmodule BackerWeb.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
+    plug(:fetch_session)
+    plug(BackerWeb.Plugs.SetCurrentBacker)
   end
 
   pipeline :auth do
@@ -230,7 +232,7 @@ defmodule BackerWeb.Router do
 
   scope "/" do
     # pipeline through which the request have to be routed
-    pipe_through(:api)
+    pipe_through([:api, :graphql])
 
     forward "/api", Absinthe.Plug, schema: BackerWeb.Schema
 
