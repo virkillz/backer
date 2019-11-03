@@ -17,12 +17,18 @@ defmodule BackerWeb.Context do
   Return the current user context based on the authorization header
   """
   def build_context(conn) do
-    with ["Bearer " <> token] <- get_req_header(conn, "authorization"),
-         {:ok, current_user} <- authorize(token) do
-      %{current_user: current_user}
+    if conn.assigns.backer_signed_in? do
+      %{my_info: conn.assigns.current_backer}
     else
-      _ -> %{}
+      %{}
     end
+
+    # with ["Bearer " <> token] <- get_req_header(conn, "authorization"),
+    #      {:ok, current_user} <- authorize(token) do
+    #   %{current_user: current_user}
+    # else
+    #   _ -> %{}
+    # end
   end
 
   defp authorize(token) do
