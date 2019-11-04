@@ -4,19 +4,19 @@
         data-notif-count="<%= if is_nil(count_notif), do: 0, else: count_notif  %>"></div>
 <% else %>
 
-<nav id="header" class="h-18 fixed transition-all transition-ease-in-out w-full z-30 top-0 text-white">
+<nav id="header" class="h-18 fixed transition-all transition-ease-in-out w-full z-30 top-0 text-whitex bg-white">
 
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
 
         <div class="pl-4 flex items-center">
             <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
-                <img src="/assets/images/logo/backer-bg-indigo.png" class="h-8 " id="brand" alt="">
+                <img src="/assets/images/logo/backer-bg-white.png" class="h-8 " id="brand" alt="">
             </a>
         </div>
 
         <div class="block lg:hidden pr-4">
             <button id="nav-toggle"
-                class="flex items-center px-3 py-2 border rounded text-white border-white appearance-none focus:outline-none">
+                class="flex items-center px-3 py-2 border rounded text-whitex border-white appearance-none focus:outline-none">
                 <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <title>Menu</title>
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -26,7 +26,7 @@
 
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-black lg:bg-transparent text-black p-4 lg:p-0 z-20"
             id="nav-content">
-            <ul class="list-reset lg:flex text-white  justify-end flex-1 items-center" id="navItem">
+            <ul class="list-reset lg:flex text-whitex  justify-end flex-1 items-center" id="navItemx">
                 <li class="mr-3">
                     <a class="inline-block py-2 px-4 font-bold font-title" href="/">Home</a>
                 </li>
@@ -42,7 +42,7 @@
             <a href="/login"> <button
                     class="mr-2 bg-white border-orange-500 hover:text-white transition-ease transition-all hover:bg-orange-500 font-semibold text-orange-500 rounded-lg mt-4 lg:mt-0 py-2 px-8 font-title focus:outline-none">Login</button></a>
             <a href="/sign_up"> <button id="navAction"
-                    class="hover:bg-orange-600 transition-ease transition-all bg-orange-500 text-white font-semibold rounded-lg mt-4 lg:mt-0 py-2 px-8 shadow font-title focus:outline-none">Sign
+                    class="hover:bg-orange-600 transition-ease transition-all bg-orange-500 text-white font-semibold rounded-full mt-4 lg:mt-0 py-2 px-8 shadow font-title focus:outline-none">Sign
                     Up</button></a>
 
 
