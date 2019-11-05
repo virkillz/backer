@@ -1,17 +1,21 @@
 
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
+<div class="bg-gray-100">
+<div class="pt-32 px-4 container mx-auto">
 
-<div class="py-32 px-4 container mx-auto">
+<div class="lg:flex items-center justify-between">
 
-<div class="flex items-center relative">
 
-        <div class="w-1/2">
+        <div class="lg:w-1/2 hidden lg:block">
+              <img src="/assets/images/ouch/blob.png" alt="step3" class="">
+        </div>
+        <div class="lg:w-1/2 max-w-xl">
                 <div class="hidden text-center mb-4 p-4 rounded border border-white">Akun sudah selesai diverifikasi.
                         Silahkan
                         login.</div>
 
-                <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lgx">
+                <div class="bg-white text-gray-700 rounded-lg  p-12 border shadow-lg">
 
                     <div class="text-4xl  font-semibold font-title">Selamat datang kembali</div>
 
@@ -27,13 +31,13 @@
                         <div class="py-2">
                                 <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 ">Email</label>
                                 <input type="email" name="email" 
-                                        class="block px-4 transition-all focus:border-purple-500 focus:outline-none rounded-full py-3 border w-full" required>
+                                        class="block px-4 transition-all focus:border-orange-500 focus:outline-none rounded-full py-3 border w-full" required>
                         </div>
 
                         <div class="py-2">
                                 <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">Password</label>
                                 <input type="password" name="password"
-                                        class="block px-4 transition-all focus:border-purple-500 focus:outline-none rounded-full py-3 border w-full" required>
+                                        class="block px-4 transition-all focus:border-orange-500 focus:outline-none rounded-full py-3 border w-full" required>
                         </div>
 
 
@@ -51,13 +55,6 @@
                 </div>
         </div>
 
-        <div class="w-1/2 absolute right-0 top-0">
-                <div class="">
-                                <img src="/assets/images/ouch/blob.svg" alt="step3" class="absolute top-0">
-                <img src="/assets/images/ouch/flame-5.png" alt="step3" class="absolute top-0">
-                </div>
-        </div>
-
 
 </div>
 
@@ -65,3 +62,4 @@
 </div>
 
 	<%= BackerWeb.PublicComponentView.render "footer_public.html",conn: @conn %>
+</div>

@@ -518,6 +518,7 @@ defmodule BackerWeb.PublicController do
 
     data = %{
       title: "Done!",
+      image: "/assets/images/ouch/flame-searching.png",
       message:
         "If we found your email in our database, we will sent the password recodery link. Please check your email.",
       btn_text: "Kembali ke Halaman Utama",

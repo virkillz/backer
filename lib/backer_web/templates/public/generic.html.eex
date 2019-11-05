@@ -1,7 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-
-<div class="pt-32 pb-32 lg:px-20 flex justify-center ">
+<div class="bg-gray-200">
+<div class="pt-32 lg:px-20 flex justify-center ">
 
 
 
@@ -9,13 +9,19 @@
     <div class="max-w-2xl">
 
         <div class="bg-white text-gray-700 rounded-lg  p-8 shadow-lg">
+            
+            <%= if not is_nil @data[:image] do %>
+                <div class="flex justify-center mb-4">
+                <img src="<%= @data[:image] %>" alt="img" class="w-64">
+                </div>
+            <% end %>
 
             <div class="text-4xl  text-center text-orange-500 font-bold"><%= @data.title %></div>
             <div class="text-xl py-6 text-center"><%= @data.message %></div>
 
             <div class="py-2 text-center">
                 <a href="<%= @data.btn_path %>"> <button type="submit"
-                        class="tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg"><%= @data.btn_text %></button></a>
+                        class="tracking-wide focus:outline-none px-8 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full"><%= @data.btn_text %></button></a>
 
             </div>
         </div>
@@ -25,4 +31,7 @@
 
 </div>
 
+</div>
+<div class="bg-gray-200">
 <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+</div>

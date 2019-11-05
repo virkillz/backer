@@ -1,6 +1,17 @@
-<%= BackerWeb.PublicComponentView.render "header_empty.html", conn: @conn %>
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-<div class=" py-32 px-4">
+
+<div class="bg-gray-100">
+<div class="pt-32 px-4 container mx-auto">
+
+<div class="lg:flex items-center justify-between">
+
+
+        <div class="lg:w-1/2 hidden lg:block">
+              <img src="/assets/images/ouch/flame-sign-up.png" alt="step3" class="">
+        </div>
+        <div class="lg:w-1/2 max-w-xl">
+
         <div class="bg-white text-gray-700 max-w-md container mx-auto rounded-lg p-8 shadow-lg">
 
                 <div class="text-4xl pb-4  font-semibold font-title"><%= gettext "Daftar" %></div>
@@ -17,19 +28,19 @@
 
                 <div class="py-2">
                         <label for="name" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama" %></label>
-                        <%= text_input f, :display_name, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
+                        <%= text_input f, :display_name, class: "block transition-all px-4 focus:border-orange-500 focus:outline-none rounded-full py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :display_name  %></div>
                 </div>
 
                 <div class="py-2">
                         <label for="email" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Email" %></label>
-                        <%= email_input f, :email, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true %>
+                        <%= email_input f, :email, class: "block transition-all px-4 focus:border-orange-500 focus:outline-none rounded-full py-3 border-2 w-full", required: true %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :email  %></div>
                 </div>
 
                 <div class="py-2">
                         <label for="pasword" class="text-gray-700 text-sm tracking-wide pl-1 ">Password</label>
-                        <%= password_input f, :password, class: "block transition-all px-2 focus:border-purple-500 focus:outline-none rounded py-3 border-2 w-full", required: true, minlength: 6 %>
+                        <%= password_input f, :password, class: "block transition-all px-4 focus:border-orange-500 focus:outline-none rounded-full py-3 border-2 w-full", required: true, minlength: 6 %>
                         <div class="text-red-400 px-2 text-sm"><%= error_tag f, :password  %></div>
                 </div>
 
@@ -42,7 +53,7 @@
 
 
                 <div class="pt-2">
-                                <button class="g-recaptcha tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg" data-sitekey="6Lewj74UAAAAAPNao4lXeZv2ekznpdxw7hhtgKhT" data-callback='onSubmit'><%= gettext "Daftar
+                                <button class="g-recaptcha tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full" data-sitekey="6Lewj74UAAAAAPNao4lXeZv2ekznpdxw7hhtgKhT" data-callback='onSubmit'><%= gettext "Daftar
                                 " %></button>
                 </div>
 
@@ -51,6 +62,15 @@
                                 </a></div>
         </div>
 
+
+        </div>
+
+
 </div>
 
+
+</div>
+
+
 <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+</div>

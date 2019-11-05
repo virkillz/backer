@@ -67,4 +67,6 @@
 	
 	</section>
 
+<div class="bg-gray-200">
     <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+</div>

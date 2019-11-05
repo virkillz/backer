@@ -101,7 +101,7 @@
 			<div class="md:w-1/2 lg:w-1/3 py-4 px-4 wow fadeInUp">
 				<div class=" ">
 					<a href="/donee/<%= donee.backer.username %>">
-						<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg">
+						<div class="bg-white relative shadow p-2 rounded-lg text-gray-800 hover:shadow-lg">
 							<div
 								class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-orange-500">
 								<%= donee.backer_count %>
@@ -112,8 +112,8 @@
 								<img src="<%= donee.backer.avatar %>"
 									class="rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
 							</div>
-							<div class="py-1 px-2">
-								<div class=" font-semibold text-center"><%= donee.backer.display_name %></div>
+							<div class="py-2 px-2">
+								<div class=" font-bold font-title text-center"><%= donee.backer.display_name %></div>
 
 								<div class="text-sm font-light text-center my-2"><%= donee.tagline %></div>
 							</div>
@@ -129,7 +129,7 @@
 
 
 	</div>
-	<div class="text-center text-sm"> <a href="#" class="text-blue-500 font-semibold">dan masih banyak lagi...
+	<div class="text-center text-smx"> <a href="#" class="text-orange-500 transition transition-all hover:underline font-semibold">dan masih banyak lagi...<span class="px-4 py-2 bg-orange-500 rounded-full ml-2 shadow-lg"> <i class="la la-arrow-right text-white"></i></span>
 		</a></div>
 </section>
 
@@ -163,7 +163,7 @@
 <section class=" py-8">
 
 	<div class="container mx-auto flex flex-wrap pt-4 pb-12">
-		<h1 class="w-full my-2 text-2xl lg:text-4xl font-bold leading-tight text-center font-title">Tiga fondasi kami adalah.. </h1>
+		<h1 class="w-full my-2 text-2xl lg:text-4xl font-bold leading-tight text-center font-title">Tiga pilar kami adalah.. </h1>
 
 		<div class="w-full mb-4">
 					<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -227,7 +227,7 @@
 			<div class="w-5/6 sm:w-1/2 p-6">
 				<h4 class="font-bold font-title mb-4 text-gray-700">Langkah 1</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Daftar sebagai Donee dan bangun profil komunitasmu</h3>
-				<p class="text-gray-600 mb-8 leading-loose">Luangkan waktu sejenak untuk mendaftar dan mengisi informasi kegiatan komunitas atau organisasimu agar mudah ditemukan oleh publik.<br /><br />
+				<p class="text-gray-600 mb-8 leading-loose">Daftar dan isi informasi kegiatan komunitas atau organisasimu agar mudah ditemukan oleh publik.<br /><br />
 
 
 			</div>
@@ -248,8 +248,8 @@
 			<div class="w-full sm:w-1/2 p-6 mt-6">
 				<div class="align-middle">
 							<h4 class="font-bold font-title mb-2">Langkah 2</h4>
-					<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Kumpulkan donasi dan perluas jaringan backermu</h3>
-					<p class="text-gray-600 mb-8 leading-loose"> Gunakan platfom untuk memantau pembayaran donasi dan menemukan lebih banyak backer yang sevisi dengan kegiatanmu.
+					<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Bagi tautan ke para anggotamu dan mulai kumpulkan iuran</h3>
+					<p class="text-gray-600 mb-8 leading-loose"> Gunakan platfom untuk memantau pembayaran iuran dan menemukan lebih banyak backer yang sevisi dengan kegiatanmu.
 					</p>
 				</div>
 			</div>
@@ -298,16 +298,12 @@
 
 	<section class="container mx-auto text-center py-6 mb-12 ">
 
-		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-whitex font-title">Yuk, mulai sekarang!</h1>
+		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-whitex font-title">Yuk, gabung!</h1>
 		<div class="w-full mb-4">
 			<div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
-		<h3 class="wow fadeIn my-8 px-4 text-2xl font-light leading-loose text-whitex max-w-xl mx-auto">Daftar dan dapatkan donasi bulanan dari para Backer
-			untuk
-			mendukung
-			kelangsungan aktivitas
-			komunitasmu.</h3>
+		<h3 class="wow fadeIn my-8 px-4 text-2xl font-light leading-loose text-whitex max-w-xl mx-auto">Jadi bagian dari lingkaran yang saling mendukung!</h3>
 
 		<div class="flex text-xl justify-center items-center border-4 border-dashed mx-auto border-orange-500 max-w-2xl py-4 ">
 		
