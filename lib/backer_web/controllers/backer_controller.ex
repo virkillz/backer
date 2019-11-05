@@ -422,23 +422,6 @@ defmodule BackerWeb.BackerController do
     end
   end
 
-  def badges(conn, %{"username" => username}) do
-    backer = conn.assigns.current_backer
-
-    case backer do
-      nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
-
-      _ ->
-        conn
-        |> render("public_backer_badges.html",
-          backer: backer,
-          owner: true,
-          layout: {BackerWeb.LayoutView, "frontend_header_footer.html"}
-        )
-    end
-  end
-
   def public_profile(conn, %{"username" => username}) do
     case Account.get_backer(%{"username" => username}) do
       nil ->
@@ -457,85 +440,6 @@ defmodule BackerWeb.BackerController do
           active_donee: list_my_active_donee,
           count_all_donee: count_all_donee,
           layout: {BackerWeb.LayoutView, "public.html"}
-        )
-    end
-  end
-
-  def backing(conn, _paramsms) do
-    backer = conn.assigns.current_backer
-
-    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
-
-    case backer do
-      nil ->
-        redirect(conn, to: Router.page_path(conn, :page404))
-
-      _ ->
-        conn
-        |> render("front_backerfor.html",
-          backer: backer,
-          donees: donees,
-          menu: :backing,
-          owner: true,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-        )
-    end
-  end
-
-  def finance(conn, _params) do
-    backer = conn.assigns.current_backer
-
-    balance = Finance.get_balance(%{"backer_id" => conn.assigns.current_backer.id})
-    invoices = Finance.list_invoices(%{"backer_id" => conn.assigns.current_backer.id})
-    pending_invoice = Enum.count(invoices, fn x -> x.status == "unpaid" end)
-
-    conn
-    |> render("front_finance.html",
-      backer: conn.assigns.current_backer,
-      invoices: invoices,
-      balance: balance,
-      menu: :finance,
-      owner: true,
-      pending_invoice: pending_invoice,
-      layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
-    )
-  end
-
-  def backing_history(conn, %{"username" => username}) do
-    text(conn, "backing history. put auth")
-  end
-
-  def profile_setting_update(conn, %{"backer" => params}) do
-    backer = conn.assigns.current_backer
-    donees = Finance.list_all_backerfor(%{"backer_id" => backer.id})
-
-    # check if avatar exist
-    attrs =
-      if params["avatar"] == nil do
-        params
-      else
-        params |> Map.put("avatar", try_upload(params["avatar"], backer.avatar))
-      end
-
-    # try to submit real edited data
-    case Account.update_backer(backer, attrs) do
-      {:ok, backer} ->
-        conn
-        |> put_flash(:info, "Backer updated successfully.")
-        |> redirect(to: "/home/profile-setting")
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        id_types = Constant.accepted_id_kyc()
-        render(conn, "edit.html", backer: backer, changeset: changeset, id_types: id_types)
-
-        conn
-        |> render("front_profile_setting.html",
-          backer: backer,
-          donees: donees,
-          menu: :profile_setting,
-          changeset_backer: changeset,
-          owner: true,
-          layout: {BackerWeb.LayoutView, "layout_front_focus.html"}
         )
     end
   end

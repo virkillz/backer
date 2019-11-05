@@ -125,6 +125,8 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
+    get("/home/timeline/all", BackerController, :home_timeline_all)
+
     get("/backerzone", BackerController, :backerzone_default)
     get("/home", BackerController, :home)
     get("/notifications", BackerController, :backerzone_notifications)
@@ -153,21 +155,7 @@ defmodule BackerWeb.Router do
     get("/backerzone/timeline-live/:post_id", BackerController, :backerzone_timeline_post_live)
     # post("/backerzone/link-setting", BackerController, :backerzone_link_setting_post)
 
-    get("/home/invoice/:id", BackerController, :invoice_display)
-    get("/home/overview", BackerController, :overview)
-    get("/home/finance", BackerController, :finance)
-    get("/home/backing-history", BackerController, :backing_history)
-    get("/home/backing", BackerController, :backing)
-    get("/home/profile-setting", BackerController, :profile_setting)
-    put("/home/edit_profile", BackerController, :profile_setting_update)
-
-    get("/donee/:username/tier/:tier", DoneeController, :checkout)
     post("/checkout", DoneeController, :checkout_post)
-  end
-
-  # This route area is for signed in backer and only for himself
-  scope "/", BackerWeb do
-    pipe_through([:browser, :backer_self_check])
   end
 
   # This route area is for signed in donee
@@ -208,7 +196,7 @@ defmodule BackerWeb.Router do
     put("/doneezone/page-setting", DoneeController, :dashboard_page_setting_update)
   end
 
-  # must not sign in
+  # Must not sign in. SIgned in user cannot access following pages.
   scope "/", BackerWeb do
     pipe_through([:browser, :must_not_sign_in])
 
@@ -230,8 +218,8 @@ defmodule BackerWeb.Router do
     post("/reset-password", PublicController, :reset_password_post)
   end
 
+  # This is route for graphql endpoint
   scope "/" do
-    # pipeline through which the request have to be routed
     pipe_through([:api, :graphql])
 
     forward "/api", Absinthe.Plug, schema: BackerWeb.Schema
