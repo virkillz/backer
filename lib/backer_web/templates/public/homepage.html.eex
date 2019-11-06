@@ -1,7 +1,7 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
 
-<div class="pt-40">
+<div class="lg:pt-32 pt-24">
 
 	<div class="container px-3 mx-auto flex-col-reverse flex flex-wrap md:flex-row items-start">
 		<!--Left Col-->
@@ -16,14 +16,14 @@
 
 				<a href="/explore">
 				<button
-					class="wow rubberBand btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full">Daftar!
+					class="wow rubberBand shadow btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full">Daftar!
 					</button>
 				</a>
 			</div>
 
 		</div>
 		<!--Right Col-->
-		<div class="w-full md:w-1/2 px-6 hiddenx lg:block">
+		<div class="w-full md:w-1/2 px-6 hiddenx lg:block ">
 			<img src="/assets/images/ouch/flame-education-1.png" class="mx-auto wow fadeIn" style="max-height: 30em;" alt="">
 
 
@@ -223,7 +223,7 @@
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
-		<div class="flex my-6 flex-wrap flex-col-reverse md:flex-row lg:flex-row">
+		<div class="flex my-6 flex-col-reverse md:flex-row lg:flex-row">
 			<div class="lg:w-3/5 md:w-3/5 w-full p-6">
 				<h4 class="font-bold font-title mb-4 text-gray-700">Langkah 1</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Daftar sebagai Donee dan bangun profil komunitasmu</h3>
@@ -239,7 +239,7 @@
 		</div>
 
 
-		<div class="flex my-6 flex-wrap flex-col-reverse sm:flex-row">
+		<div class="flex my-6 flex-col sm:flex-row">
 			<div class="lg:w-2/5 md:w-2/5 w-3/5 mx-auto p-6">
 
 			<img src="/assets/images/ouch/flame-welcome.png" alt="step2" class="max-w-smc">
@@ -256,7 +256,7 @@
 
 		</div>
 
-		<div class="flex my-6 flex-wrap flex-col-reverse md:flex-row lg:flex-row">
+		<div class="flex my-6 flex-col-reverse md:flex-row lg:flex-row">
 			<div class="lg:w-3/5 md:w-3/5 w-full p-6">
 				<h4 class="font-bold font-title mb-2">Langkah 3</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Terus posting update dan jalin komunikasi dengan para backermu</h3>
