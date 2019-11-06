@@ -3,7 +3,7 @@
 
 <div class="pt-40">
 
-	<div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-start">
+	<div class="container px-3 mx-auto flex-col-reverse flex flex-wrap md:flex-row items-start">
 		<!--Left Col-->
 		<div class="lg:text-left w-full md:w-1/2 items-start text-center md:text-left">
 			<div class="wow fadeIn lg:text-5xl md:text-4xl text-3xl font-bold font-title">Bagi kamu yang mau berkontribusi demi perubahan</div>
@@ -170,7 +170,7 @@
 		</div>
 
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lgx">
+			<div class="">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/ouch/flame-page-under-construction.png" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Keberlanjutan</div>
@@ -183,7 +183,7 @@
 		</div>
 
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lgx">
+			<div class="">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/ouch/flame-8.png" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Komunitas</div>
@@ -196,7 +196,7 @@
 		</div>
 
 		<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-			<div class="flex-1 bg-white rounded-lg overflow-hidden shadow-lgx">
+			<div class="">
 				<a href="#" class="flex flex-wrap no-underline hover:no-underline p-6">
 					<img src="/assets/images/ouch/flame-order-complete.png" alt="discover" class="mx-auto w-full max-w-sm">
 					<div class="w-full font-bold text-xl text-center text-gray-800 py-6">Transparansi</div>
@@ -223,15 +223,15 @@
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 		</div>
 
-		<div class="flex my-6 flex-wrap">
-			<div class="w-5/6 sm:w-1/2 p-6">
+		<div class="flex my-6 flex-wrap flex-col-reverse md:flex-row lg:flex-row">
+			<div class="lg:w-3/5 md:w-3/5 w-full p-6">
 				<h4 class="font-bold font-title mb-4 text-gray-700">Langkah 1</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Daftar sebagai Donee dan bangun profil komunitasmu</h3>
 				<p class="text-gray-600 mb-8 leading-loose">Daftar dan isi informasi kegiatan komunitas atau organisasimu agar mudah ditemukan oleh publik.<br /><br />
 
 
 			</div>
-			<div class="w-full sm:w-1/2 p-6">
+			<div class="lg:w-2/5 md:w-2/5 w-3/5 mx-auto p-6">
 
 			<img src="/assets/images/ouch/flame-sign-up.png" alt="step1">
 
@@ -240,12 +240,12 @@
 
 
 		<div class="flex my-6 flex-wrap flex-col-reverse sm:flex-row">
-			<div class="w-full sm:w-1/2 p-6 mt-6">
+			<div class="lg:w-2/5 md:w-2/5 w-3/5 mx-auto p-6">
 
-			<img src="/assets/images/ouch/flame-welcome.png" alt="step2" class="max-w-sm">
+			<img src="/assets/images/ouch/flame-welcome.png" alt="step2" class="max-w-smc">
 
 			</div>
-			<div class="w-full sm:w-1/2 p-6 mt-6">
+			<div class="lg:w-3/5 md:w-3/5 w-full p-6">
 				<div class="align-middle">
 							<h4 class="font-bold font-title mb-2">Langkah 2</h4>
 					<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Bagi tautan ke para anggotamu dan mulai kumpulkan iuran</h3>
@@ -256,15 +256,15 @@
 
 		</div>
 
-		<div class="flex my-6 flex-wrap">
-			<div class="w-5/6 sm:w-1/2 p-6">
+		<div class="flex my-6 flex-wrap flex-col-reverse md:flex-row lg:flex-row">
+			<div class="lg:w-3/5 md:w-3/5 w-full p-6">
 				<h4 class="font-bold font-title mb-2">Langkah 3</h4>
 				<h3 class="text-xl lg:text-3xl text-gray-800 font-bold mb-8 font-title">Terus posting update dan jalin komunikasi dengan para backermu</h3>
 				<p class="text-gray-600 mb-8 leading-loose"> Gunakan paltform untuk terus menginformasikan kegiatan komunitasmu dan jalin komunikasi dengan backer secara lebih mudah dan transparan.
 
 
 			</div>
-			<div class="w-full sm:w-1/2 p-6">
+			<div class="lg:w-2/5 md:w-2/5 w-3/5 mx-auto p-6">
 
 			<img src="/assets/images/ouch/flame-teamwork.png" alt="step3">
 
@@ -296,7 +296,7 @@
 	</g>
 </svg>
 
-	<section class="container mx-auto text-center py-6 mb-12 ">
+	<section class="container mx-auto text-center py-6 mb-12 px-2 ">
 
 		<h1 class="wow fadeIn w-full my-2 text-3xl lg:text-4xl font-bold leading-tight text-center text-whitex font-title">Yuk, gabung!</h1>
 		<div class="w-full mb-4">
@@ -305,10 +305,10 @@
 
 		<h3 class="wow fadeIn my-8 px-4 text-2xl font-light leading-loose text-whitex max-w-xl mx-auto">Jadi bagian dari lingkaran yang saling mendukung!</h3>
 
-		<div class="flex text-xl justify-center items-center border-4 border-dashed mx-auto border-orange-500 max-w-2xl py-4 ">
+		<div class="lg:flex md:flex text-xl justify-center items-center border-4 border-dashed mx-auto border-orange-500 max-w-2xl py-4 ">
 		
 		<div class="font-semibold  p-2"><span class="text-gray-800">backer.id</span><span class="text-orange-500 mx-1 text-3xl">/</span><input type="text" class="focus:outline-none border rounded px-2 py-1" placeholder="username"/></div>
-		<button class="px-6 py-2 rounded-full bg-orange-500 text-white shadow ml-2">Check <i class="la la-arrow-right"></i></button>
+		<button class="px-6 py-2 rounded-full focus:outline-none bg-orange-500 text-white shadow ml-2">Check <i class="la la-arrow-right"></i></button>
 		
 		</div>
 

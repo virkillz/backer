@@ -55,13 +55,13 @@
                     </ul>
                 </div>
                 <div class="">
-                    <p class="uppercase text-gray-200 md:mb-4 font-bold">Legal</p>
+                    <p class="uppercase md:mb-4 font-bold">Legal</p>
                     <ul class=" mb-6">
                         <li class="mt-2 ">
-                            <a href="/terms" class="text-gray-200 hover:text-blue-500">Terms</a>
+                            <a href="/terms" class=" hover:text-blue-500">Terms</a>
                         </li>
                         <li class="mt-2 ">
-                            <a href="/privacy-policy" class="text-gray-800 hover:text-blue-500">Privacy</a>
+                            <a href="/privacy-policy" class="hover:text-blue-500">Privacy</a>
                         </li>
                     </ul>
                 </div>
