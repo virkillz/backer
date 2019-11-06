@@ -77,6 +77,43 @@
 	                </div>
 	
 	
+
+					<div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+					<div>
+						<div class="flex justify-between">
+							<div class="font-title text-xl font-bold">Riwayat Backing</div>
+						</div>
+						<div class="border-b my-2"></div>
+					</div>
+					<div>
+	                        <table class="table-fixedx w-full">
+	                            <thead class="text-sm">
+	                                <tr>
+	                                    <th>Tahun</th>
+	                                    <th>Bulan</th>
+	                                    <th>Nominal</th>
+	                                    <th>Tier</th>
+	                                    <th>Referensi Invoice</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody class="text-xs">
+								<%= for donation <- @list_donations do %>
+	                                <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
+	                                    <td class="p-1"><%= donation.year %></td>
+	                                    <td class="p-1 text-center w-32">
+	                                        <%= Stringhelper.stringify donation.month %>
+	                                    </td>
+	                                    <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(donation.amount, @conn) %>,- </td>
+	                                    <td class="p-1 text-right"><%= donation.backer_tier.title %></td>
+	                                    <td class="p-1 text-right"><a href="/backerzone/invoice/<%= donation.invoice_id %>" class="underline text-blue-500">#<%= donation.invoice_id %></a></td>
+	                                </tr>
+								<% end %>
+	                            </tbody>
+	                        </table>
+				</div>
+		
+                </div>
+
 	
 	                <div class="mb-8">
 	                    <div class="mb-2 px-2 tracking-wide font-semibold uppercase font-title text-xs text-gray-600">Riwayat Backing</div>
@@ -96,7 +133,7 @@
 								<%= for donation <- @list_donations do %>
 	                                <tr class="hover:bg-gray-200 border-t-8 border-b-8 border-transparent">
 	                                    <td class="p-1"><%= donation.year %></td>
-	                                    <td class="p-1 text-center w-32">
+	                                    <td class="p-1 text-left w-32">
 	                                        <%= Stringhelper.stringify donation.month %>
 	                                    </td>
 	                                    <td class="p-1 text-right">Rp. <%= Stringhelper.format_thousand(donation.amount, @conn) %>,- </td>

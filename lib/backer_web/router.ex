@@ -144,8 +144,10 @@ defmodule BackerWeb.Router do
 
     get("/home/finance/incoming", BackerController, :home_finance_incoming)
     get("/home/finance/outgoing", BackerController, :home_finance_outgoing)
+    get("/home/settings/donee", BackerController, :home_settings_donee)
     get("/home/settings/backer", BackerController, :home_setting_backer)
-
+    put("/home/settings/backer", BackerController, :home_setting_backer_post)
+    post("/home/settings/backer/user-link", BackerController, :home_setting_backer_link_post)
     get("/backerzone", BackerController, :backerzone_default)
     get("/home", BackerController, :home)
     get("/notifications", BackerController, :backerzone_notifications)

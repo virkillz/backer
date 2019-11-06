@@ -35,7 +35,7 @@
 	            <div class="transition-all" style="top: 96px; position: sticky;">
 	
 
-					<%= BackerWeb.BackerView.render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+					<%= BackerWeb.BackerView.render "component_home_sidebar.html", conn: @conn, backer: @backer %>
 	
 	
 	                <div class="border-b-2 my-8"></div>

@@ -1,0 +1,133 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16" style="min-height: calc(100vh - 120px);">
+    <div class="pt-10 container mx-auto lg:flex">
+
+        <div class="lg:w-1/4 px-4">
+            <%= render "component_home_sidebar.html", conn: @conn, backer: @backer %>
+
+        </div>
+
+        <div class="lg:w-2/4 px-4 pb-20">
+
+            <div class="my-6">
+                <div class="flex">
+                    <a href="/home/finance/outgoing">
+                        <div
+                            class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
+                            Outgoing</div>
+                    </a>
+                    <%= if @backer.is_donee do %>
+                    <a href="/home/finance/incoming">
+                        <div
+                            class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-orange-500  font-title  cursor-pointer pb-4 ">
+                            Incoming</div>
+                    </a>
+                    <% end %>
+
+                </div>
+                <div class="border-b-2 -mt-px"></div>
+            </div>
+
+
+            <div class="pb-2">
+
+                <%= if Enum.count(@invoices) == 0 do %>
+                <div class="bg-white py-8 px-6 rounded-lg text-center shadow">
+
+                    <div class="flex justify-center mb-4">
+                        <img src="/assets/images/ouch/flame-waiting.png" alt="img" class="w-64">
+                    </div>
+
+                    <p class="py-8">Saat ini kamu belum membacking siapapun sehingga halaman ini kosong. Temukan hal hal
+                        yang menarik untuk kamu dukung.</p>
+                    <a href="/explore" class=""><button
+                            class="wow rubberBand btn-glow-orange font-semibold tracking-wide focus:outline-none px-12 py-2 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full shadow">Explore
+                            donee
+                        </button></a>
+                </div>
+                <% end %>
+
+                <%= for invoice <- @invoices do %>
+
+                <a href="/home/finance/invoice/<%= invoice.id %>">
+                    <div class="bg-white mb-8 p-6 relative shadow-md rounded-lg hover:shadow-lg">
+
+                        <div class="px-2 flex items-center">
+                            <div class="flex w-2/5 items-center mr-4">
+                                <div>
+                                    <img src="<%= invoice.backer.avatar %>"
+                                        class="rounded-full object-center object-cover border-white mr-2 h-12 w-12">
+                                </div>
+                                <div class="pl-4 flex-grow">
+                                    <div class=" font-semibold font-title"><%= invoice.backer.display_name %> </div>
+                                    <div class="text-xs">@<%= invoice.backer.username %></div>
+                                </div>
+                            </div>
+                            <div class="w-1/5 mr-4">
+                                <div class="text-xs uppercase font-semibold text-gray-600">Nilai</div>
+                                <div class="text-sm">Rp <span
+                                        class="font-bold"><%= Stringhelper.format_thousand(trunc(invoice.amount / Enum.count(invoice.invoice_detail)), @conn)  %></span>
+                                </div>
+                            </div>
+                            <div class="w-2/5">
+                                <div class="text-xs uppercase font-semibold text-gray-600">Durasi</div>
+                                <div class="text-sm"><span
+                                        class="font-bold"><%= Enum.count(invoice.invoice_detail) %></span> bulan</div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="px-2 mt-4 flex items-center">
+
+                            <div class="w-2/5 mr-4">
+                                <div class="flex items-center mr-4">
+                                    <div class="font-bold text-4xl h-12 w-12 text-center"><%= invoice.inserted_at.day %>
+                                    </div>
+                                    <div class="pl-4 flex-grow">
+                                        <div class="text-xs uppercase font-semibold">
+                                            <%= stringify(invoice.inserted_at.month) %> <%= invoice.inserted_at.year %>
+                                        </div>
+                                        <div class="text-xs">
+                                            <%= "#{invoice.inserted_at.hour}:#{invoice.inserted_at.minute}:#{invoice.inserted_at.second}" %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-1/5 mr-4">
+                                <div class="text-xs uppercase font-semibold text-gray-600">Total</div>
+                                <div class="text-xs">Rp
+                                    <%= Stringhelper.format_thousand(invoice.amount + invoice.unique_amount, @conn) %>
+                                </div>
+                            </div>
+                            <div class="w-2/5">
+                                <div class="text-xs uppercase font-semibold text-gray-600">Settlement date</div>
+                                <div class="px-4"> - </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <% end %>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="lg:w-1/4 px-4">
+
+
+            <%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donee %>
+
+        </div>
+    </div>
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_private.html", conn: @conn %>

@@ -666,7 +666,7 @@ defmodule Backer.Finance do
     query =
       from(i in Invoice,
         where: i.donee_id == ^donee_id,
-        preload: [:backer]
+        preload: [:backer, :invoice_detail]
       )
 
     Repo.all(query)

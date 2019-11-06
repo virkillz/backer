@@ -17,7 +17,7 @@
 
 		<div class="lg:w-2/4 px-4 pb-20">
 <div class="my-6">
-				<a href="/home/support/my-donees">
+				<a href="<%= @referer %>">
 				<div class="flex">
 					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 border-transparent font-title  cursor-pointer pb-4 ">
 						<i class="la la-arrow-left bg-white rounded-full p-2 h-8 w-8 text-center mr-2"></i>  Invoice Detail</div>

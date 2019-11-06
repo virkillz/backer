@@ -68,6 +68,7 @@ config :sendgrid,
   api_key: "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"
 
 config :ex_aws,
+  # run source .env in root if this part got issues
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
   secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
   s3: [

@@ -15,13 +15,16 @@
 
 			<div class="my-6">
 				<div class="flex">
+
 					<div
 						class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-orange-500  font-title  cursor-pointer pb-4 ">
 						Outgoing</div>
 					<%= if @backer.is_donee do %>
+					<a href="/home/finance/incoming">
 					<div
 						class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
 						Incoming</div>
+						</a>
 					<% end %>
 
 				</div>

@@ -117,9 +117,9 @@ defmodule BackerWeb.BackerController do
 
   def home(conn, _params) do
     if conn.assigns.current_backer.is_donee do
-      redirect(conn, to: "/doneezone/timeline-live")
+      redirect(conn, to: "/home/timeline/all")
     else
-      redirect(conn, to: "/backerzone/timeline-live")
+      redirect(conn, to: "/home/timeline/all")
     end
   end
 
@@ -153,7 +153,8 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_donee = Account.list_random_donee(3)
+        random_donee = Account.list_random_donee(3) |> IO.inspect()
+        IO.inspect("atas sini apa")
 
         conn
         |> render("home_timeline_all.html",
@@ -217,45 +218,50 @@ defmodule BackerWeb.BackerController do
     if is_nil(backer) do
       redirect(conn, to: "/404")
     else
-      # check first if self is donee
-
-      if Finance.is_backer_have_donations_ever?(backer.id, my.donee.id) do
-        list_donation =
-          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
-
-        get_aggregate = Aggregate.get_backingaggregate(backer.id, my.donee.id)
-        random_donee = Account.list_random_donee(3)
-
-        backing_aggregate =
-          if is_nil(get_aggregate) do
-            Aggregate.build_backing_aggregate(backer.id, my.donee.id)
-          else
-            get_aggregate
-          end
-
-        list_invoices =
-          Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
-
-        list_donations =
-          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
-
-        if list_donation == [] do
-          redirect(conn, to: "/403")
-        else
-          conn
-          |> render("home_support_my_backer_detail.html",
-            backer: backer,
-            donee: my,
-            list_invoices: list_invoices,
-            list_donations: list_donations,
-            random_donee: random_donee,
-            backing_aggregate: backing_aggregate,
-            changeset: Aggregate.change_backing_aggregate(backing_aggregate),
-            layout: {BackerWeb.LayoutView, "public.html"}
-          )
-        end
-      else
+      if not my.is_donee do
+        IO.inspect("sini bang")
         redirect(conn, to: "/403")
+      else
+        if Finance.is_backer_have_donations_ever?(backer.id, my.donee.id) do
+          list_donation =
+            Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+          get_aggregate = Aggregate.get_backingaggregate(backer.id, my.donee.id)
+          random_donee = Account.list_random_donee(3)
+
+          backing_aggregate =
+            if is_nil(get_aggregate) do
+              Aggregate.build_backing_aggregate(backer.id, my.donee.id)
+            else
+              get_aggregate
+            end
+
+          list_invoices =
+            Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+          list_donations =
+            Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+          if list_donation == [] do
+            IO.inspect("sana bang")
+            redirect(conn, to: "/403")
+          else
+            conn
+            |> render("home_support_my_backer_detail.html",
+              backer: backer,
+              donee: my,
+              list_invoices: list_invoices,
+              list_donations: list_donations,
+              random_donee: random_donee,
+              backing_aggregate: backing_aggregate,
+              changeset: Aggregate.change_backing_aggregate(backing_aggregate),
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+          end
+        else
+          IO.inspect("situ bang")
+          redirect(conn, to: "/403")
+        end
       end
     end
   end
@@ -307,22 +313,140 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def home_settings_donee(conn, _params) do
+    backer_info = conn.assigns.current_backer
+
+    if not backer_info.is_donee do
+      redirect(conn, to: "/403")
+    else
+      random_donee = Account.list_random_donee(3)
+      donee = Account.get_donee(%{"username" => backer_info.username})
+      changeset = Account.change_donee(donee)
+      user_links = Account.get_user_links_of(backer_info.id)
+
+      option = [
+        [key: "Unpublished", value: "unpublished"],
+        [key: "Published", value: "published"]
+      ]
+
+      conn
+      |> render("home_settings_donee.html",
+        backer_info: backer_info,
+        donee_info: donee,
+        option: option,
+        random_donees: random_donee,
+        script: %{wysiwyg: true},
+        style: %{wysiwyg: true},
+        changeset: changeset,
+        user_links: user_links,
+        layout: {BackerWeb.LayoutView, "public.html"}
+      )
+    end
+  end
+
+  def home_setting_backer_link_post(conn, params) do
+    backer = conn.assigns.current_backer
+
+    params
+    |> Map.delete("_csrf_token")
+    |> Map.delete("_utf8")
+    |> Account.batch_user_link_upsert(backer.id)
+
+    conn
+    |> put_flash(:info, "Link sudah berhasil disimpan")
+    |> redirect(to: "/home/settings/backer")
+  end
+
   def home_setting_backer(conn, _params) do
     backer = conn.assigns.current_backer
+    user_links = Account.get_user_links_of(backer.id)
 
     case backer do
       nil ->
         redirect(conn, to: "/404")
 
       _ ->
-        random_donee = Account.list_random_donee(3)
+        random_donees = Account.list_random_donee(3)
+        changeset = Account.change_backer(backer)
 
         conn
         |> render("home_setting_backer.html",
           backer: backer,
-          random_donee: random_donee,
+          random_donees: random_donees,
+          changeset: changeset,
+          user_links: user_links,
           layout: {BackerWeb.LayoutView, "public.html"}
         )
+    end
+  end
+
+  def home_setting_backer_post(conn, %{"backer" => backer_params} = attrs) do
+    backer = conn.assigns.current_backer
+    avatar = backer_params["avatar"]
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        # build the image url and add to the params to be stored
+        updated_params =
+          if is_nil(avatar) do
+            backer_params
+          else
+            backer_params
+            |> Map.put(
+              "avatar",
+              upload_s3_helper(avatar)
+            )
+          end
+
+        case Account.update_backer(backer, updated_params) do
+          {:ok, backer} ->
+            conn
+            |> put_flash(:info, "Backer updated successfully.")
+            |> redirect(to: "/home/settings/backer")
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            random_donees = Account.list_random_donee(3)
+            user_links = Account.get_user_links_of(backer.id)
+
+            conn
+            |> put_flash(:error, "Something is wrong. Check red part below")
+            |> render("home_setting_backer.html",
+              backer: backer,
+              random_donees: random_donees,
+              changeset: changeset,
+              user_links: user_links,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+        end
+    end
+  end
+
+  def home_finance_incoming(conn, _params) do
+    my = conn.assigns.current_backer
+
+    case my do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if not my.is_donee do
+          redirect(conn, to: "/403")
+        else
+          donee = Account.get_donee(%{"backer_id" => my.id})
+          random_donee = Account.list_random_donee(3)
+          invoices = Finance.list_incoming_payment(:donee_id, donee.id) |> IO.inspect()
+
+          conn
+          |> render("home_finance_incoming.html",
+            backer: my,
+            invoices: invoices,
+            random_donee: random_donee,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
     end
   end
 
@@ -347,7 +471,17 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def donee_owner?(backer, invoice) do
+    if backer.is_donee do
+      donee = Account.get_donee(%{"backer_id" => backer.id})
+      invoice.backer_id == donee.id
+    else
+      false
+    end
+  end
+
   def home_finance_invoice(conn, %{"id" => invoice_id}) do
+    IO.inspect(conn)
     backer = conn.assigns.current_backer
     invoice = Finance.get_invoice_compact(invoice_id)
 
@@ -360,17 +494,17 @@ defmodule BackerWeb.BackerController do
           is_nil(invoice) ->
             redirect(conn, to: "/404")
 
-          invoice.backer_id != backer.id ->
-            redirect(conn, to: "/403")
-
-          true ->
-            # text(conn, "blah")
+          invoice.backer_id == backer.id || donee_owner?(backer, invoice) ->
             conn
             |> render("home_finance_invoice.html",
               backer: backer,
               invoice: invoice,
+              referer: get_req_header(conn, "referer"),
               layout: {BackerWeb.LayoutView, "public.html"}
             )
+
+          true ->
+            redirect(conn, to: "/403")
         end
     end
   end

@@ -1,0 +1,158 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16">
+    <div class="pt-10 container mx-auto lg:flex">
+
+        <div class="lg:w-1/4 px-4 lg:pb-10">
+            <div class="transition-all" style="top: 56px; position: sticky;">
+
+                <%= render "component_home_sidebar.html", conn: @conn, backer: @backer_info %>
+
+
+            </div>
+        </div>
+
+
+        <div class="lg:w-2/4 px-4 pb-20">
+
+            <div class="my-6">
+				<div class="flex">
+
+                    <a href="/home/settings/backer">
+					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
+						Pengaturan Backer</div>
+                    </a>
+
+					<a href="/home/settings/donee">
+					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-orange-500  font-title  cursor-pointer pb-4 ">
+						Pengaturan Donee</div>
+						</a>
+
+				</div>
+				<div class="border-b-2 -mt-px"></div>
+			</div>
+
+            <%= if not is_nil get_flash(@conn, :info) do  %>
+            <div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+            <% end %>
+
+            <%= if not is_nil get_flash(@conn, :error) do  %>
+            <div class="p-2 bg-red-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :error) %></div>
+            <% end %>
+
+            <%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
+
+            <div class="pb-2">
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">Profil Donee</div>
+                        <button
+                            class="hidden focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-lg border-orange-500 border-2">Save</button>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+
+                    <div class="flex">
+                        <div class="w-1/2 p-2">
+
+                            <div class="w-full">
+                                <img src="<%= @donee_info.background %>" id="output"
+                                    class="mx-auto h-40 object-cover rounded-lg ">
+                            </div>
+                            <div class="flex justify-center mt-4">
+                                <label for="upload"
+                                    class="mx-auto cursor-pointer px-6 py-1 hover:bg-orange-600 rounded-full hover:text-white text-orange-600 border border-orange-600">Change
+                                    <input class="hidden" accept="image/*" onchange="loadFile(event)" id="upload"
+                                        name="donee[background]" type="file">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="w-1/2 p-2">
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Category</label>
+                                <select
+                                    class="block border-b-2 focus:border-blue-500 border-blue-200 focus:outline-none text-sm h-8 w-full bg-white">
+                                    <option>Music</option>
+                                    <option>Art</option>
+                                </select>
+                            </div>
+
+
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Tagline</label>
+                                <%= textarea f, :tagline, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                                    <%= error_tag f, :tagline%></p>
+                            </div>
+
+                            <div class="my-2">
+                                <label for="display_name" class="px-2 text-xs text-gray-600">Backing Pitch</label>
+                                <%= textarea f, :backing_pitch, [rows: 2, class: "focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"] %>
+                                <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                                    <%= error_tag f, :backing_pitch %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-2">
+                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                    <div class="flex justify-between">
+                        <div class="font-title text-xl font-bold">Profile Content</div>
+                        <a href="/doneezone/preview" target="_blank">
+                            <div
+                                class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">
+                                Preview</div>
+                        </a>
+                    </div>
+
+                    <div class="border-b my-2"></div>
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Video Link</label>
+                        <div class="flex "><span
+                                class="z-10">https://youtube.com/watch?v=</span><%= text_input f, :video_profile, class: "inline border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %>
+                        </div>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                            <%= error_tag f, :video_profile %></p>
+                    </div>
+
+                    <div class="my-2">
+                        <label for="display_name" class="px-2 text-xs text-gray-600">Profile Content</label>
+                        <%= textarea f, :donee_overview, [id: "wysiwyg", class: ""] %>
+                        <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
+                            <%= error_tag f, :donee_overview %></p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="status" class="px-2 text-xs text-gray-600">Status publikasi</label>
+                        <%= select f, :status, [{"Unpublished", "unpublished"}, {"Published", "published"}], [selected: @donee_info.status, class: "h-8 w-40 border border-blue-500"] %>
+                    </div>
+
+
+                    <button type="submit"
+                        class="btn-glow-orange tracking-wide focus:outline-none px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full w-full">Save</button>
+
+                </div>
+            </div>
+
+            <% end %>
+
+
+
+        </div>
+
+        <div class="lg:w-1/4 px-4">
+
+            <div class="pb-20">
+
+            <%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donees  %>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
