@@ -15,9 +15,9 @@
                         Silahkan
                         login.</div>
 
-                <div class="bg-white text-gray-700 rounded-lg  p-12 border shadow-lg">
+                <div class="bg-white text-gray-700 rounded-lg  p-6 md:p-8 lg:p-12 border shadow-lg">
 
-                    <div class="text-4xl  font-semibold font-title">Selamat datang kembali</div>
+                    <div class="text-2xl lg:text-4xl  font-semibold font-title">Login</div>
 
                     <div class="py-3 px-4 my-4 <%= if get_flash(@conn, :info) |> is_nil, do: "hidden" %> bg-blue-400 text-white text-sm rounded">
                         <%= get_flash(@conn, :info) %>
@@ -47,9 +47,9 @@
 
                         <% end %>
 
-                        <div class="pt-8 text-center text-smx text-gray-600">Forgot your password? <a
+                        <div class="pt-8 text-center md:text-md lg:text-base xs:text-xs sm:text-sm text-gray-600">Forgot your password? <a
                                         href="/forgot-password" class="text-indigo-500">Reset your password</a></div>
-                        <div class="pt-2 text-center text-gray-600 text-smx">Don't have account yet? <a
+                        <div class="pt-2 text-center text-gray-600 md:text-md lg:text-base xs:text-xs sm:text-sm ">Don't have account yet? <a
                                         href="/sign_up" class="text-indigo-500">Sign up
                                         here</a></div>
                 </div>

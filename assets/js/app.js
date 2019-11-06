@@ -25,20 +25,8 @@ window.__socket = require("phoenix").Socket;
 // import socket from "./socket"
 import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
-import { Elm } from "../src/Backerzone.elm";
 
 let liveSocket = new LiveSocket("/live", Socket)
 liveSocket.connect()
 
-const node = document.getElementById('backerzone');
 
-if (node) {
-    const avatar = node.getAttribute('data-avatar');
-    const notifCount = node.getAttribute('data-notif-count');
-    const isDonee = (node.getAttribute('data-is-donee') == "true");
-
-    Elm.Backerzone.init({
-        node: node,
-        flags: [avatar, isDonee, notifCount]
-    });
-}

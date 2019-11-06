@@ -43,7 +43,7 @@
             <%= form_for @changeset, "/doneezone/setting", [multipart: true],fn f -> %>
 
             <div class="pb-2">
-                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                <div class="bg-white p-4 lg:p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Profil Donee</div>
                         <button
@@ -52,8 +52,8 @@
 
                     <div class="border-b my-2"></div>
 
-                    <div class="flex">
-                        <div class="w-1/2 p-2">
+                    <div class="lg:flex">
+                        <div class="lg:w-1/2 p-2">
 
                             <div class="w-full">
                                 <img src="<%= @donee_info.background %>" id="output"
@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="w-1/2 p-2">
+                        <div class="lg:w-1/2 p-2">
                             <div class="my-2">
                                 <label for="display_name" class="px-2 text-xs text-gray-600">Category</label>
                                 <select
@@ -98,7 +98,7 @@
             </div>
 
             <div class="py-2">
-                <div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+                <div class="bg-white p-4 lg:p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
                     <div class="flex justify-between">
                         <div class="font-title text-xl font-bold">Profile Content</div>
                         <a href="/doneezone/preview" target="_blank">
@@ -110,9 +110,10 @@
 
                     <div class="border-b my-2"></div>
                     <div class="my-2">
-                        <label for="display_name" class="px-2 text-xs text-gray-600">Youtube Video Link</label>
-                        <div class="flex "><span
-                                class="z-10">https://youtube.com/watch?v=</span><%= text_input f, :video_profile, class: "inline border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none" %>
+                        <label for="display_name" class="px-2 text-xs text-gray-600"><i class="la la-youtube mr-1"></i> Youtube Video Link</label>
+                        <div class="flex text-xs sm:text-sm md:text-md lg:text-base">
+                        <div class="z-10">youtube.com/watch?v=</div>
+                        <%= text_input f, :video_profile, class: "w-12 flex-grow border-b-2 focus:border-indigo-500 border-indigo-200 block pr-2 pb-1 focus:outline-none" %>
                         </div>
                         <p class="text-red-500 text-xs px-2" style="min-height: 1.5em;">
                             <%= error_tag f, :video_profile %></p>

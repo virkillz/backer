@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -6649,6 +6649,10 @@ nav a.active, a.btn.active{
   color: #44337a;
 }
 
+.text-xxs {
+  font-size: 0.5rem;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
@@ -13237,6 +13241,10 @@ nav a.active, a.btn.active{
 
   .sm\:focus\:text-purple-900:focus {
     color: #44337a;
+  }
+
+  .sm\:text-xxs {
+    font-size: 0.5rem;
   }
 
   .sm\:text-xs {
@@ -19830,6 +19838,10 @@ nav a.active, a.btn.active{
     color: #44337a;
   }
 
+  .md\:text-xxs {
+    font-size: 0.5rem;
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
   }
@@ -26421,6 +26433,10 @@ nav a.active, a.btn.active{
     color: #44337a;
   }
 
+  .lg\:text-xxs {
+    font-size: 0.5rem;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
   }
@@ -33010,6 +33026,10 @@ nav a.active, a.btn.active{
 
   .xl\:focus\:text-purple-900:focus {
     color: #44337a;
+  }
+
+  .xl\:text-xxs {
+    font-size: 0.5rem;
   }
 
   .xl\:text-xs {
