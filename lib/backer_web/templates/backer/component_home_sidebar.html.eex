@@ -1,0 +1,105 @@
+<div class="transition-all" style="top: 96px; position: sticky;">
+
+
+
+	<div class="hidden lg:block">
+		<a href="/<%= @backer.username %>">
+			<div class="bg-white relative shadow p-4 rounded-lg  hover:shadow-lg">
+				<div
+					class="hidden right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-orange-500">
+					123
+					Backer
+				</div>
+				<div class="flex justify-center">
+					<img src="<%= @backer.avatar %>"
+						class="rounded-full p-2 border-2 border-black border-dashed mr-2 h-20 w-20">
+				</div>
+				<div class="py-4 px-2">
+					<div class="font-semibold font-title text-center"> <%= @backer.display_name %> </div>
+					<div class="text-center text-xs my-1">
+						<%= @backer.username %>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+
+
+	<div class="hidden lg:block border-b-2 mb-6"></div>
+
+	<div class="flex lg:block items-stretch">
+
+		<div class="lg:w-full w-1/4">
+			<a href="/home/timeline/all">
+				<div
+					class="<%= home_sidebar_active(@conn, "/home/timeline") %> mx-px flex-1 rounded-lg border lg:border-none lg:bg-transparent hover:bg-white hover:font-semibold">
+					<div
+						class="my-2 text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  ">
+						<div
+							class="rounded-full bg-white  h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-home text-lg"></i></div>
+						<div class="font-title text-xs md:text-sm lg:text-base"> Linimasa </div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="lg:w-full w-1/4">
+			<a href="/home/support/my-donees">
+				<div
+					class=" <%= home_sidebar_active(@conn, "/home/support") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					<div
+						class="my-2 mx-px text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						<div
+							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-leaf text-lg"></i></div>
+						<div class="font-title text-xs md:text-sm lg:text-base"> Dukungan </div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="lg:w-full w-1/4">
+			<a href="/home/finance/outgoing">
+				<div
+					class=" <%= home_sidebar_active(@conn, "/home/finance") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					<div
+						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						<div
+							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-credit-card text-lg"></i></div>
+						<div class="font-title text-xs md:text-sm lg:text-base"> Keuangan
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="lg:w-full w-1/4">
+			<a href="/home/settings/backer">
+				<div
+					class=" <%= home_sidebar_active(@conn, "/home/settings") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					<div
+						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						<div
+							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-cog text-lg"></i></div>
+						<div class="font-title text-xs md:text-sm lg:text-base"> Pengaturan</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+
+	</div>
+
+
+	<div class="border-b-2 my-6"></div>
+
+	<div class="lg:hidden mb-6">
+		<div class="text-xl font-title"><span class="font-bold">Hello, </span><span class="">LBH Jakarta</span>!
+		</div>
+	</div>
+
+</div>

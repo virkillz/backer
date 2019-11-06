@@ -27,7 +27,7 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 			<div class="border-b-2  mb-6"></div>
 
 			<div class="">
-				<%= if Enum.count(@active_backers) == 0 do %>
+				<%= if @active_backers == [] do %>
 				<div class="bg-white py-8 px-6 rounded-lg text-center shadow">
 
 			<img src="/assets/images/ouch/flame-waiting.png" class="mx-auto wow fadeIn" style="max-height: 15em;" alt="">

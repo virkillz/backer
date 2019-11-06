@@ -1,0 +1,203 @@
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+<div class="bg-gray-200 mt-16">
+	<div class="pt-10 container mx-auto lg:flex">
+
+		<div class="lg:w-1/4 px-4">
+
+
+			<%= render "component_home_sidebar.html", conn: @conn, backer: @backer %>
+
+
+
+
+		</div>
+
+		<div class="lg:w-2/4 px-4 pb-20">
+
+			<div class="my-6">
+				<div class="flex">
+					<div
+						class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-orange-500  font-title  cursor-pointer pb-4 ">
+						Backer Setting</div>
+					<%= if @backer.is_donee do %>
+					<div
+						class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
+						Donee Setting</div>
+					<% end %>
+				</div>
+				<div class="border-b-2 -mt-px"></div>
+			</div>
+
+			<div class="pb-2">
+
+
+				<div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+					<form accept-charset="UTF-8" action="/backerzone/profile-setting" enctype="multipart/form-data"
+						method="post"><input name="_method" type="hidden" value="put"><input name="_csrf_token"
+							type="hidden" value="IQpZJSoLByoNPmgZBzZJPQg4TBpbACsQSN6lzNsKgf0Rfe9KpB5V2FcR"><input
+							name="_utf8" type="hidden" value="✓">
+						<div class="flex justify-between">
+							<div class="font-title text-xl font-bold">Edit Profile</div>
+							<button type="submit"
+								class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Save</button>
+						</div>
+
+						<div class="border-b my-2"></div>
+						<div class="flex">
+
+							<div class="w-1/2 p-2">
+								<div class="w-full">
+									<img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png"
+										id="output" class="h-40 w-40 object-cover object-center mx-auto rounded-full ">
+								</div>
+								<div class="p-4 text-center">
+									<div class="upload-btn-wrapper">
+										<label for="upload"
+											class="mx-auto cursor-pointer px-6 py-1 hover:bg-orange-600 hover:text-white transition transition-all rounded-full text-orange-600 border border-orange-600">Change
+											<input class="hidden" accept="image/*" onchange="loadFile(event)"
+												id="upload" name="backer[avatar]" type="file">
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="w-1/2 p-2">
+								<div class="my-2">
+									<label for="display_name" class="px-2 text-xs text-gray-600">Display Name</label>
+									<input
+										class="focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"
+										id="backer_display_name" name="backer[display_name]" type="text"
+										value="LBH Jakarta">
+									<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+								</div>
+								<div class="my-2">
+									<label for="display_name" class="px-2 text-xs text-gray-600">Username</label>
+									<div class="flex"><span class="z-10">@</span>
+										<input
+											class="inline border-b-2 -ml-3 pl-4 flex-grow focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+											id="backer_username" name="backer[username]" type="text" value="donee-1">
+									</div>
+									<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+								</div>
+								<div class="my-2">
+									<label for="display_name" class="px-2 text-xs text-gray-600">Email</label>
+									<div class=" text-gray-600 w-full block px-2 pb-1  focus:outline-none" type="text">
+
+										donee1@tester.com </div>
+									<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+								</div>
+
+								<div class="my-2">
+									<label for="display_name" class="px-2 text-xs text-gray-600">Bio</label>
+									<textarea
+										class="focus:border-blue-500 w-full block px-2 pb-1 border-b-2 border-blue-200 focus:outline-none"
+										id="backer_backer_bio" name="backer[backer_bio]"
+										rows="3">Lembaga Bantuan Hukum Jakarta</textarea>
+									<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+								</div>
+
+							</div>
+
+						</div>
+					</form>
+				</div>
+
+
+
+			</div>
+			<div class="py-2">
+
+
+				<div class="bg-white p-8 mb-8 relative shadow-md rounded-lg text-gray-800 hover:shadow-lg">
+
+					<form accept-charset="UTF-8" action="/backerzone/user_links " method="post"><input
+							name="_csrf_token" type="hidden"
+							value="IQpZJSoLByoNPmgZBzZJPQg4TBpbACsQSN6lzNsKgf0Rfe9KpB5V2FcR"><input name="_utf8"
+							type="hidden" value="✓">
+						<div class="flex justify-between">
+							<div class="font-title text-xl font-bold">Links</div>
+							<button type="submit"
+								class="focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Save</button>
+						</div>
+
+						<div class="border-b my-2"></div>
+
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Youtube Link</label>
+							<div class="flex px-2"><span class="z-10">https://youtube.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="youtube" value="channel/UCAjU4UTUJQ6aLDg3qnDVvsA"></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Twitter Link</label>
+							<div class="flex px-2"><span class="z-10">https://twitter.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="twitter" value="lbh_jakarta"></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Facebook Link</label>
+							<div class="flex px-2"><span class="z-10">https://facebook.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="facebook" value=""></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Github Link</label>
+							<div class="flex px-2"><span class="z-10">https://github.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="github" value=""></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">LinkedIn Link</label>
+							<div class="flex px-2"><span class="z-10">https://linkedin.com/</span><input
+									class="inline  w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="linkedin" value=""></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Dribbble Link</label>
+							<div class="flex px-2"><span class="z-10">https://dribbble.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="dribbble" value=""></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+						<div class="my-2">
+							<label for="display_name" class="px-2 text-xs text-gray-600">Instagram Link</label>
+							<div class="flex px-2"><span class="z-10">https://instagram.com/</span><input
+									class="inline w-full border-b-2 focus:border-blue-500 border-blue-200 block pr-2 pb-1 focus:outline-none"
+									type="text" name="instagram" value=""></div>
+							<p class="text-red-500 text-xs px-2" style="min-height: 1.5em;"></p>
+						</div>
+
+					</form>
+				</div>
+
+
+
+			</div>
+
+
+
+
+		</div>
+
+
+		<div class="lg:w-1/4 px-4">
+
+
+			<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donee %>
+
+		</div>
+	</div>
+
+</div>
+
+<%= BackerWeb.PublicComponentView.render "footer_private.html", conn: @conn %>

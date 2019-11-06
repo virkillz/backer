@@ -7,19 +7,24 @@
 			<div class="transition-all" style="top: 56px; position: sticky;">
 
 
-				<%= render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+				<%= render "component_home_sidebar.html", conn: @conn, backer: @backer %>
 
 
 				<div class="border-b-2 my-8"></div>
-
-
 
 			</div>
 		</div>
 
 		<div class="lg:w-2/4 px-4 pb-20">
-            <div class="py-2 text-gray-600 ml-2 text-sm"><i class="fa fa-home mr-2"></i><a href="/" class="underline">Home</a> <i class="la la-angle-right"></i> <a href="/backerzone/payment-history" class="underline">Riwayat Pembayaran</a> <i class="la la-angle-right"></i> <a href="#">Detail Invoice</a></div>
-
+<div class="my-6">
+				<a href="/home/support/my-donees">
+				<div class="flex">
+					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 border-transparent font-title  cursor-pointer pb-4 ">
+						<i class="la la-arrow-left bg-white rounded-full p-2 h-8 w-8 text-center mr-2"></i>  Invoice Detail</div>
+				</div>
+				</a>
+				<div class="border-b-2 -mt-px"></div>
+			</div>
 			<div class="py-2">
 
 

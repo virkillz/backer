@@ -4,19 +4,28 @@
 	<div class="pt-10 container mx-auto lg:flex">
 
 		<div class="lg:w-1/4 px-4">
-			<div class="transition-all" style="top: 56px; position: sticky;">
 
 
-				<%= render "component_backerzone_menu_sidebar.html", conn: @conn, backer: @backer %>
+			<%= render "component_home_sidebar.html", conn: @conn, backer: @backer %>
 
 
-				<div class="border-b-2 my-8"></div>
 
 
-			</div>
 		</div>
 
+
+
 		<div class="lg:w-2/4 px-4 pb-20">
+
+			<div class="my-6">
+				<a href="/home/support/my-donees">
+				<div class="flex">
+					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 border-transparent  font-title  cursor-pointer pb-4 ">
+						<i class="la la-arrow-left bg-white rounded-full p-2 h-8 w-8 text-center mr-2"></i>  My-Donee Detail</div>
+				</div>
+				</a>
+				<div class="border-b-2 -mt-px"></div>
+			</div>
 
 			<%= if not is_nil get_flash(@conn, :info) do  %>
 			<div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
@@ -30,32 +39,32 @@
             <div class="mb-8">
 	
 	                <div class="mb-8">
-	                    <div class="mb-2 px-2 font-bold text-xl font-title text-gray-700">Detail Backing</div>
+	                    <div class="mb-2 px-2 tracking-wide font-semibold uppercase font-title text-xs text-gray-600">Detail Backing</div>
 						<a href="/donee/<%= @donee.backer.username %>">
 	                    <div class="bg-white relative py-4 shadow hover:shadow-lg rounded-lg text-gray-800 ">
 	                        <div class=" text-gray-600 ">
 	
 	                            <div class="flex items-center ">
 	                                <div class="ml-4">
-	                                    <img src="<%= @donee.backer.avatar %>" class="rounded-lg border-4 object-center object-cover border-white mr-2 h-20 w-20">
+	                                    <img src="<%= @donee.backer.avatar %>" class="rounded-full border-4 object-center object-cover border-white mr-2 h-20 w-20">
 	                                </div>
 	                                <div class="p-2">
-	                                    <div class=" font-bold "><%= @donee.backer.display_name %></div>
-	                                    <div class="font-semibold text-sm text-gray-600">@<%= @donee.backer.username %></div>
+	                                    <div class=" font-semibold font-title"><%= @donee.backer.display_name %></div>
+	                                    <div class=" text-sm text-gray-600">@<%= @donee.backer.username %></div>
 	                                </div>
 	                            </div>
 	                            <div class="px-4 mt-2">
-	                                <div class="flex text-center rounded justify-between p-2 bg-gray-200">
+	                                <div class="flex text-center rounded-lg justify-between p-2 bg-gray-100">
 	                                    <div class="w-1/3">
-	                                        <div class="font-semibold text-sm text-gray-600">Status Backing</div>
+	                                        <div class="font-semibold text-xs uppercase text-gray-600">Status Backing</div>
 	                                        <div class="text-center <%= if @backing_aggregate.backing_status == "active", do: "text-green-500", else: "text-gray-700" %>"><%= String.capitalize @backing_aggregate.backing_status %></div>
 	                                    </div>
 	                                    <div class="w-1/3">
-	                                        <div class="font-semibold text-sm text-gray-600">Backer sejak</div>
+	                                        <div class="font-semibold text-xs uppercase text-gray-600">Backer sejak</div>
 	                                        <div class="text-center"><%= "#{Stringhelper.stringify @backing_aggregate.backer_since.month} #{@backing_aggregate.backer_since.year}" %></div>
 	                                    </div>
 	                                    <div class="w-1/3">
-	                                        <div class="font-semibold text-sm text-gray-600">Level</div>
+	                                        <div class="font-semibold text-xs uppercase text-gray-600">Level</div>
 	                                        <div class="text-center"><%= @backing_aggregate.last_tier %></div>
 	                                    </div>
 	                                </div>
@@ -70,8 +79,8 @@
 	
 	
 	                <div class="mb-8">
-	                    <div class="my-2 px-2 font-bold text-lg font-title text-gray-700">Riwayat Backing</div>
-	                    <div class="bg-white p-4 text-gray-600 mb-2 border shadow rounded">
+	                    <div class="mb-2 px-2 tracking-wide font-semibold uppercase font-title text-xs text-gray-600">Riwayat Backing</div>
+	                    <div class="bg-white p-4 text-gray-600 mb-2 border shadow rounded-lg">
 	
 	                        <table class="table-fixedx w-full">
 	                            <thead class="text-sm">
@@ -104,8 +113,8 @@
 	
 	
 	                <div class="mb-8">
-	                    <div class="my-2 px-2 font-bold text-lg font-title text-gray-700">Riwayat Invoice</div>
-	                    <div class="bg-white p-4 text-gray-600 mb-2 border shadow rounded">
+	                    <div class="mb-2 px-2 tracking-wide font-semibold uppercase font-title text-xs text-gray-600">Riwayat Invoice</div>
+	                    <div class="bg-white p-4 text-gray-600 mb-2 border shadow rounded-lg">
 	
 	                        <table class="table-fixedx w-full">
 	                            <thead class="text-sm">
@@ -135,8 +144,8 @@
 	                </div>
 	
 	                <div class="mb-8">
-	                    <div class="my-2 px-2 font-bold text-lg font-title text-gray-700">Pengaturan</div>
-	                    <div class="bg-white px-8 py-8 text-gray-600 mb-2 border shadow rounded">
+	                    <div class="mb-2 px-2 tracking-wide font-semibold uppercase font-title text-xs text-gray-600">Pengaturan</div>
+	                    <div class="bg-white px-8 py-8 text-gray-600 mb-2 border shadow rounded-lg">
 	
 	                        <%= form_for @changeset, "/backerzone/my-donee/#{@donee.backer.username}", fn f -> %>
 	                            <div class="">
@@ -148,7 +157,7 @@
 	                                <label class="px-2 text-sm" for="anonymous">Tampilkan donee ini sebagai anonymous di halaman profil saya.</label>
 	                            </div>
 	
-	                            <div class="text-center"> <button class="mt-8 focus:outline-none tracking-wide px-6 py-1 outline-none text-purple-500 transition-all transition-ease hover:bg-purple-600 hover:text-white rounded-lg border-purple-500 border-2">Simpan
+	                            <div class="text-center"> <button class="mt-8 focus:outline-none tracking-wide px-6 py-1 outline-none text-orange-500 transition-all transition-ease hover:bg-orange-600 hover:text-white rounded-full border-orange-500 border-2">Simpan
 	                                </button></div>
 	
 	                        <% end %>
@@ -165,11 +174,12 @@
 
 		<div class="lg:w-1/4 px-4">
 
-			<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: [] %>
+
+			<%= render "component_backerzone_recommended_donee.html", conn: @conn, donees: @random_donee %>
 
 		</div>
 	</div>
 
 </div>
 
-<%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+<%= BackerWeb.PublicComponentView.render "footer_private.html", conn: @conn %>

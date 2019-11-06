@@ -126,6 +126,25 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check])
 
     get("/home/timeline/all", BackerController, :home_timeline_all)
+    get("/home/support/my-donees", BackerController, :home_support_my_donees)
+    get("/home/support/my-backers", BackerController, :home_support_my_backers)
+    get("/home/finance/invoice/:id", BackerController, :home_finance_invoice)
+
+    get(
+      "/home/support/my-donee/detail/:donee_username",
+      BackerController,
+      :home_support_my_donee_detail
+    )
+
+    get(
+      "/home/support/my-backer/detail/:backer_username",
+      BackerController,
+      :home_support_my_backer_detail
+    )
+
+    get("/home/finance/incoming", BackerController, :home_finance_incoming)
+    get("/home/finance/outgoing", BackerController, :home_finance_outgoing)
+    get("/home/settings/backer", BackerController, :home_setting_backer)
 
     get("/backerzone", BackerController, :backerzone_default)
     get("/home", BackerController, :home)

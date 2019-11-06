@@ -145,6 +145,236 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def home_timeline_all(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donee = Account.list_random_donee(3)
+
+        conn
+        |> render("home_timeline_all.html",
+          backer: backer,
+          random_donee: random_donee,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def home_support_my_donees(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donee = Account.list_random_donee(3)
+        my_donee_list = Finance.list_my_donee(:backer_id, backer.id)
+
+        conn
+        |> render("home_support_my_donee.html",
+          backer: backer,
+          random_donee: random_donee,
+          my_donee_list: my_donee_list,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def home_support_my_backers(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        if not backer.is_donee do
+          redirect(conn, to: "/403")
+        else
+          random_donee = Account.list_random_donee(3)
+          my_backer_list = Aggregate.list_top_backer(backer.donee.id, 100) |> IO.inspect()
+
+          conn
+          |> render("home_support_my_backer.html",
+            backer: backer,
+            random_donee: random_donee,
+            my_backer_list: my_backer_list,
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+    end
+  end
+
+  def home_support_my_backer_detail(conn, %{"backer_username" => backer_username}) do
+    my = conn.assigns.current_backer
+    backer = Account.get_backer(%{"username" => backer_username})
+
+    if is_nil(backer) do
+      redirect(conn, to: "/404")
+    else
+      # check first if self is donee
+
+      if Finance.is_backer_have_donations_ever?(backer.id, my.donee.id) do
+        list_donation =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+        get_aggregate = Aggregate.get_backingaggregate(backer.id, my.donee.id)
+        random_donee = Account.list_random_donee(3)
+
+        backing_aggregate =
+          if is_nil(get_aggregate) do
+            Aggregate.build_backing_aggregate(backer.id, my.donee.id)
+          else
+            get_aggregate
+          end
+
+        list_invoices =
+          Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+        list_donations =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
+
+        if list_donation == [] do
+          redirect(conn, to: "/403")
+        else
+          conn
+          |> render("home_support_my_backer_detail.html",
+            backer: backer,
+            donee: my,
+            list_invoices: list_invoices,
+            list_donations: list_donations,
+            random_donee: random_donee,
+            backing_aggregate: backing_aggregate,
+            changeset: Aggregate.change_backing_aggregate(backing_aggregate),
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+      else
+        redirect(conn, to: "/403")
+      end
+    end
+  end
+
+  def home_support_my_donee_detail(conn, %{"donee_username" => donee_username}) do
+    backer = conn.assigns.current_backer
+    donee = Account.get_donee(%{"username" => donee_username})
+
+    if is_nil(donee) do
+      redirect(conn, to: "/404")
+    else
+      if Finance.is_backer_have_donations_ever?(backer.id, donee.id) do
+        list_donation =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        get_aggregate = Aggregate.get_backingaggregate(backer.id, donee.id)
+        random_donee = Account.list_random_donee(3)
+
+        backing_aggregate =
+          if is_nil(get_aggregate) do
+            Aggregate.build_backing_aggregate(backer.id, donee.id)
+          else
+            get_aggregate
+          end
+
+        list_invoices = Finance.list_invoices(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        list_donations =
+          Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => donee.id})
+
+        if list_donation == [] do
+          redirect(conn, to: "/403")
+        else
+          conn
+          |> render("home_support_my_donee_detail.html",
+            backer: backer,
+            donee: donee,
+            list_invoices: list_invoices,
+            list_donations: list_donations,
+            random_donee: random_donee,
+            backing_aggregate: backing_aggregate,
+            changeset: Aggregate.change_backing_aggregate(backing_aggregate),
+            layout: {BackerWeb.LayoutView, "public.html"}
+          )
+        end
+      else
+        redirect(conn, to: "/403")
+      end
+    end
+  end
+
+  def home_setting_backer(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donee = Account.list_random_donee(3)
+
+        conn
+        |> render("home_setting_backer.html",
+          backer: backer,
+          random_donee: random_donee,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def home_finance_outgoing(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donee = Account.list_random_donee(3)
+        invoices = Finance.list_invoices(%{"backer_id" => backer.id})
+
+        conn
+        |> render("home_finance_outgoing.html",
+          backer: backer,
+          invoices: invoices,
+          random_donee: random_donee,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
+  def home_finance_invoice(conn, %{"id" => invoice_id}) do
+    backer = conn.assigns.current_backer
+    invoice = Finance.get_invoice_compact(invoice_id)
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        cond do
+          is_nil(invoice) ->
+            redirect(conn, to: "/404")
+
+          invoice.backer_id != backer.id ->
+            redirect(conn, to: "/403")
+
+          true ->
+            # text(conn, "blah")
+            conn
+            |> render("home_finance_invoice.html",
+              backer: backer,
+              invoice: invoice,
+              layout: {BackerWeb.LayoutView, "public.html"}
+            )
+        end
+    end
+  end
+
   def placeholder(conn, _params) do
     backer = conn.assigns.current_backer
 

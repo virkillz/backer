@@ -45,6 +45,12 @@ defmodule BackerWeb.BackerView do
     relative_str
   end
 
+  def home_sidebar_active(conn, current_path) do
+    if String.starts_with?(conn.request_path, current_path) do
+      " bg-white font-semibold text-orange-500 "
+    end
+  end
+
   def sidebar_active(conn, current_path) do
     cond do
       current_path == "/backerzone/payment-history" &&
@@ -57,11 +63,5 @@ defmodule BackerWeb.BackerView do
       true ->
         " font-basex "
     end
-
-    # if conn.request_path == current_path do
-    #   " font-semibold bg-orange-200x text-orange-500 "
-    # else
-    #   " font-base text-gray-700 "
-    # end
   end
 end
