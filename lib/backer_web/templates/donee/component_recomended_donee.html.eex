@@ -3,9 +3,9 @@
 
 	<div class="flex lg:block flex-wrap">
 	<%= for donee <- @donees do %>
-	<div class="py-2 px-2 lg:px-0 w-1/2 lg:w-full">
+	<div class="py-2 px-2 lg:px-0 w-full md:w-1/2 lg:w-full">
 		<a href="/donee/<%= donee.backer.username %>">
-			<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg h-64">
+			<div class="bg-white relative shadow p-2 rounded-lg text-gray-600 hover:shadow-lg h-72 lg:h-64">
 				<div
 					class="right-0 mt-4 rounded-l-full absolute text-center font-bold text-xs text-white px-2 py-1 bg-orange-500">
 					<%= donee.backer_count %>
@@ -17,8 +17,8 @@
 						class="rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-16 w-16">
 				</div>
 				<div class="py-1 px-2">
-					<div class=" font-semibold text-center font-title"><%= donee.backer.display_name %></div>
-					<div class="font-light text-center text-xs text-gray-600">@<%= donee.backer.username %></div>
+					<div class="text-sm sm:text-base lg:text-base font-semibold text-center font-title"><%= donee.backer.display_name %></div>
+					<div class="font-light text-center text-xs">@<%= donee.backer.username %></div>
 					<div class="text-sm font-light text-center my-4"><%= donee.tagline %></div>
 				</div>
 			</div>

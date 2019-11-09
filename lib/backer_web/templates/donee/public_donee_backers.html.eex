@@ -1,16 +1,15 @@
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
 
-<div class="mt-16 object-cover h-72 w-full"
-	style="background-image:
-linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.73)),
+<div class="bg-gray-200">
+	<div class="shadow-xl mt-16 object-cover lg:h-72 h-64 w-full" style="background-image:
+linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.80)),
 url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", crop: "faces", auto: "compress" } %>'); background-position: center; background-size: cover;">
 
-	<div class="flex justify-center pt-12">
-		<img src="<%= Backer.Helper.imgix(@donee.backer.avatar, %{h: 80, w: 80, fit: "crop", corner_radius: "10,10,10,10"}) %>"
-			class="object-center object-cover rounded-full mx-auto w-32 h-32 border-white border-dashed border-2 border-orange-500 p-2">
-	</div>
-	<div class="text-center pt-4 font-bold text-2xl text-white font-title"><%= @donee.backer.display_name %></div>
-	<div class="text-center text-white "><%= @donee.tagline %></div>
+						<div class="flex justify-center pt-12">
+	                   		<img src="<%= Backer.Helper.imgix(@donee.backer.avatar, %{h: 80, w: 80, fit: "crop", corner_radius: "10,10,10,10"}) %>" class="object-center object-cover rounded-full mx-auto lg:w-32 lg:h-32 md:w-24 md:h-24 w-24 h-24 border-white border-dashed border-2 p-2">
+						</div>
+						<div class="text-center pt-4 font-bold text-lg md:text-xl lg:text-2xl text-white font-title"><%= @donee.backer.display_name %></div>
+						<div class="text-center text-white "><%= @donee.tagline %></div>
 </div>
 
 <div class="bg-gray-200">
@@ -30,23 +29,21 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 				<%= if @active_backers == [] do %>
 				<div class="bg-white py-8 px-6 rounded-lg text-center shadow">
 
-			<img src="/assets/images/ouch/flame-waiting.png" class="mx-auto wow fadeIn" style="max-height: 15em;" alt="">
+			<img src="/assets/images/ouch/flame-waiting.png" class="mx-auto wow fadeIn" style="max-height: 12em;" alt="">
 
 
 					<p class="py-8">Donee ini belum memiliki backer. Kamu bisa jadi yang pertama!</p>
 
 
-					<a href="/donee/<%= @donee.backer.username %>/donate" class="">
-						<div
-							class="wow rubberBand flex items-center justify-center rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
-							<div>
-								Support
-							</div>
-							<div>
-								<i class="la la-angle-right text-xl"></i>
-							</div>
-						</div>
-					</a>
+						<a href="/donee/<%= @donee.backer.username %>/donate" class=""><div
+								class="wow rubberBand flex items-center rounded-lg justify-center hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-black px-6 py-3 text-white">
+								<div>
+								Jadi Backer 
+								</div>
+								<div>
+									<i class="ml-4 la la-arrow-right text-orange-500 hover:text-black font-bold text-xl"></i>
+								</div>
+								</div></a>
 
 				</div>
 				<% end %>
@@ -102,17 +99,15 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 
 				<% end %>
 				<div class="pb-1">
-					<a href="/donee/<%= @donee.backer.username %>/donate" class="">
-						<div
-							class="wow rubberBand flex items-center justify-center rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
-							<div>
-								Support
-							</div>
-							<div>
-								<i class="la la-angle-right text-xl"></i>
-							</div>
-						</div>
-					</a>
+						<a href="/donee/<%= @donee.backer.username %>/donate" class=""><div
+								class="wow rubberBand flex items-center rounded-lg justify-center hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-black px-6 py-3 text-white">
+								<div>
+								Jadi Backer 
+								</div>
+								<div>
+									<i class="ml-4 la la-arrow-right text-orange-500 hover:text-black font-bold text-xl"></i>
+								</div>
+								</div></a>
 				</div>
 				<% end %>
 			</div>
@@ -135,22 +130,20 @@ url('<%= Backer.Helper.imgix @donee.background, %{w: 2880, h: 512, fit: "crop", 
 	<div class="pb-1 bg-white border p-2">
 		<%= if @current_backer != nil do %>
 
-		<div class="p-2">Berkenan membantu kami, <span class="font-bold"><%= @current_backer.display_name %></span>?
+		<div class="p-2">Yuk gabung, <span class="font-bold"><%= @current_backer.display_name %></span>!
 		</div>
 
 		<% end %>
 		<div class="pb-1">
-			<a href="/donee/<%= @donee.backer.username %>/donate" class="">
-				<div
-					class="wow rubberBand flex items-center justify-between rounded-full hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-orange-500 px-6 py-3 text-white">
-					<div>
-						Support
-					</div>
-					<div>
-						<i class="la la-angle-right text-xl"></i>
-					</div>
-				</div>
-			</a>
+						<a href="/donee/<%= @donee.backer.username %>/donate" class=""><div
+								class="wow rubberBand flex items-center rounded-lg justify-center hover:bg-orange-400 transition-bg hover:shadow-none transition-500 shadow tracking-wider w-full bg-black px-6 py-3 text-white">
+								<div>
+								Jadi Backer 
+								</div>
+								<div>
+									<i class="ml-4 la la-arrow-right text-orange-500 hover:text-black font-bold text-xl"></i>
+								</div>
+								</div></a>
 		</div>
 	</div>
 </div>

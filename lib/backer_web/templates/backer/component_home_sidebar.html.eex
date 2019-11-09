@@ -33,12 +33,12 @@
 		<div class="lg:w-full w-1/4">
 			<a href="/home/timeline/all">
 				<div
-					class="<%= home_sidebar_active(@conn, "/home/timeline") %> mx-px flex-1 rounded-lg border lg:border-none lg:bg-transparent hover:bg-white hover:font-semibold">
+					class="<%= home_sidebar_active(@conn, "/home/timeline") %> mx-px flex-1 rounded-lg border lg:border-none lg:bg-transparent hover:bg-black">
 					<div
-						class="my-2 text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  ">
+						class="my-2 text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   ">
 						<div
-							class="rounded-full bg-white  h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-home text-lg"></i></div>
+							class="rounded-full bg-white  h-12 w-12 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-home text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Linimasa </div>
 					</div>
 				</div>
@@ -48,12 +48,12 @@
 		<div class="lg:w-full w-1/4">
 			<a href="/home/support/my-donees">
 				<div
-					class=" <%= home_sidebar_active(@conn, "/home/support") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					class=" <%= home_sidebar_active(@conn, "/home/support") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-black">
 					<div
-						class="my-2 mx-px text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						class="my-2 mx-px text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
-							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-leaf text-lg"></i></div>
+							class="rounded-full bg-white h-12 w-12 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-leaf text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Dukungan </div>
 					</div>
 				</div>
@@ -63,12 +63,12 @@
 		<div class="lg:w-full w-1/4">
 			<a href="/home/finance/outgoing">
 				<div
-					class=" <%= home_sidebar_active(@conn, "/home/finance") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					class=" <%= home_sidebar_active(@conn, "/home/finance") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-black">
 					<div
-						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
-							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-credit-card text-lg"></i></div>
+							class="rounded-full bg-white h-12 w-12 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-credit-card text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Keuangan
 						</div>
 					</div>
@@ -77,15 +77,15 @@
 		</div>
 
 		<div class="lg:w-full w-1/4">
-			<a href="/home/settings/backer">
+			<a href="/explore">
 				<div
-					class=" <%= home_sidebar_active(@conn, "/home/settings") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-white">
+					class=" <%= home_sidebar_active(@conn, "/explore") %> mx-px rounded-lg flex-1 border lg:border-none hover:bg-black">
 					<div
-						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease transition-500  font-basex ">
+						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
-							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-cog text-lg"></i></div>
-						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Pengaturan</div>
+							class="rounded-full bg-white h-12 w-12 flex items-center justify-center lg:mr-4 text-center">
+							<i class="la la-globe text-2xl"></i></div>
+						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Explore</div>
 					</div>
 				</div>
 			</a>

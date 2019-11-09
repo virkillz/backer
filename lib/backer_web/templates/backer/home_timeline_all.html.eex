@@ -99,345 +99,153 @@
 	                <div class="border-b-2 -mt-px"></div>
 	            </div>
 	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
+				<!-- post -->
+	            <div class="rounded shadow mb-4 bg-white">
 	
-	                <div class="flex justify-between items-center">
+	                <div class="flex bg-gray-100 justify-between items-center pb-2 pt-4 px-5 rounded-t">
 	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
+	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-10 h-10 object-center object-cover rounded-full border-4 border-white mr-2">
 	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">1 day ago</div>
+	                            <div class="text-xs font-title font-semibold">LBH Jakarta</div>
+	                            <div class="text-gray-700 text-xs">1 day ago</div>
 	                        </div>
 	                    </div>
 	
 	                    <div class="">
 	
-	                        <div class="text-right bg-black text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            public </div>
-	
+	                        <div class="bg-black shadow text-white underlinex px-4 py-1 text-xs uppercasex rounded-full cursor-pointer ">
+	                            Jadi Backer <i class="la la-arrow-right text-orange-500"></i></div>	
 	                    </div>
 	
 	                </div>
 	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">qewqwe</div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">wfdgfsdffwdsfadsf</div>
+
+					<div class="px-4 pt-4 bg-white rounded-t border-t">
+						<div class="font-semibold font-title text-lg text-centerx p-2">Kesepakatan bersama tanggal 17 juli 1985</div>
+						<div class="p-2 text-justify leading-relaxed">Pada hari itu memang terjadi sesuatu hal yang sangat ditunggu tunggu oleh khalayak nusa dan bangsa.</div>
+		
+		
+		
+						<div class="flex justify-between items-center mt-4">
+							<div>
+		
+							</div>
+							<div class="text-xs text-right mt-4 text-gray-600"><span>
+								</span>0 like • 0 comments</div>
+						</div>
+					</div>
 	
 	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>0 like • 0 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="6" class="text-center  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/6">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
+	                <div class="flex text-gray-600 bg-gray-100 rounded-b">
+
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:text-orange-500 border-t">
+								<i class="la la-thumbs-up text-xl mr-2"></i> Like</div>
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:text-orange-500 border-t border-l">
+								<i class="la la-comment text-xl mr-2"></i> Comments</div>
 	
 	                </div>
+
 	            </div>
+				<!-- /post -->	
+
+				<!-- post -->
+	            <div class="rounded shadow mb-4 bg-white">
 	
-	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
-	
-	                <div class="flex justify-between items-center">
+	                <div class="flex bg-gray-100 justify-between items-center pb-2 pt-4 px-5 rounded-t">
 	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
+	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-10 h-10 object-center object-cover rounded-full border-4 border-white mr-2">
 	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">1 day ago</div>
+	                            <div class="text-xs font-title font-semibold">LBH Jakarta</div>
+	                            <div class="text-gray-700 text-xs">1 day ago</div>
 	                        </div>
 	                    </div>
 	
 	                    <div class="">
 	
-	                        <div class="text-right bg-black text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            public </div>
-	
+	                        <div class="bg-black shadow text-white underlinex px-4 py-1 text-xs uppercasex rounded-full cursor-pointer ">
+	                            Jadi Backer <i class="la la-arrow-right text-orange-500"></i></div>	
 	                    </div>
 	
 	                </div>
 	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">qweqe</div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">qweqweqwe</div>
+					<img src="http://localhost:4000/assets/images/bg/ngamen.jpeg">
+
+					<div class="px-4 pt-4 bg-white rounded-t border-t">
+						<div class="font-semibold font-title text-lg text-centerx p-2">Kesepakatan bersama tanggal 17 juli 1985</div>
+						<div class="p-2 text-justify leading-relaxed">Pada hari itu memang terjadi sesuatu hal yang sangat ditunggu tunggu oleh khalayak nusa dan bangsa.</div>
+		
+		
+		
+						<div class="flex justify-between items-center mt-4">
+							<div>
+		
+							</div>
+							<div class="text-xs text-right py-2 text-gray-600"><span>
+								</span>0 like • 0 comments</div>
+						</div>
+					</div>
 	
 	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>0 like • 0 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="5" class="text-center  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/5">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
+	                <div class="flex text-gray-600 bg-gray-100 rounded-b">
+
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t">
+								<i class="la la-thumbs-up mr-2 text-xl"></i> Like</div>
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t border-l">
+								<i class="la la-comment mr-2 text-xl"></i> Comments</div>
 	
 	                </div>
+
 	            </div>
+				<!-- /post -->					
+
+				<!-- post -->
+	            <div class="rounded shadow mb-4 bg-white">
 	
-	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
-	
-	                <div class="flex justify-between items-center">
+	                <div class="flex justify-between bg-gray-100 items-center pb-2 pt-4 px-5 rounded-t">
 	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
+	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-10 h-10 object-center object-cover rounded-full border-4 border-white mr-2">
 	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">2 days ago</div>
+	                            <div class="text-xs font-title font-semibold">LBH Jakarta</div>
+	                            <div class="text-gray-700 text-xs">233 Active Backer ∙ <i class="la la-heart"></i> Backer Only </div>
 	                        </div>
 	                    </div>
 	
 	                    <div class="">
 	
-	                        <div class="text-right bg-black text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            public </div>
+	                        <div class="bg-black shadow text-white underlinex px-4 py-2 text-xs uppercasex rounded-full cursor-pointer flex items-center">
+	                            Jadi Backer <i class="la la-arrow-right text-orange-500 font-semibold ml-1"></i></div>
 	
 	                    </div>
 	
 	                </div>
 	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">jlhlkhjkljklj
-	                </div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">jkljkljkljljkljklj</div>
+					<iframe width="100%" height="300" src="https://www.youtube.com/embed/XpDsk374LDE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+					<div class="px-4 pt-4 bg-white rounded-t border-t">
+						<div class="font-semibold font-title text-lg">Kesepakatan bersama tanggal 17 juli 1985</div>
+
+						<div class="text-justify leading-relaxed py-6">Pada hari itu memang terjadi sesuatu hal yang sangat ditunggu tunggu oleh khalayak nusa dan bangsa.</div>
+		
+		
+		
+						<div class="flex justify-between text-xs text-gray-600 items-center py-2">
+								<div class="text-xs"><i class="la la-calendar mr-1"></i>1 days ago </div><div> <i class="la la-lock mr-1"></i> Backer only Post </div>
+								<div><i class="la la-thumbs-up mr-1"></i>0 like </div><div><i class="la la-comments mr-1"></i>0 comments</div>
+					</div>
 	
 	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>0 like • 0 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="4" class="text-center  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/4">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
+	                <div class="flex text-gray-600 bg-gray-100 rounded-b">
+
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t">
+								<i class="la la-thumbs-up mr-2"></i> Like</div>
+	                    <div class="text-center text-sm w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t border-l">
+								<i class="la la-comment mr-2"></i> Comments</div>
 	
 	                </div>
+
 	            </div>
-	
-	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
-	
-	                <div class="flex justify-between items-center">
-	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
-	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">2 days ago</div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="">
-	
-	                        <div class="text-right bg-black text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            public </div>
-	
-	                    </div>
-	
-	                </div>
-	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">Test</div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">adsad</div>
-	
-	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>0 like • 0 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="3" class="text-center  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t"><i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/3">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
-	
-	                </div>
-	            </div>
-	
-	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
-	
-	                <div class="flex justify-between items-center">
-	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
-	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">3 days ago</div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="">
-	
-	                        <div class="text-right bg-orange-500 text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            Light Backer </div>
-	
-	                    </div>
-	
-	                </div>
-	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">Highcharts Demo
-	                </div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">sdfsdfdsf</div>
-	
-	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>1 like • 6 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="2" class="text-center  text-orange-500  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t">
-	                        <i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/2">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
-	
-	                </div>
-	            </div>
-	
-	
-	            <div class="rounded-lg bg-white shadow pt-4 px-4 pb-2 mb-4">
-	
-	                <div class="flex justify-between items-center">
-	                    <div class="flex items-center">
-	                        <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="w-12 h-12 object-center object-cover rounded-full border-4 border-white mr-2">
-	                        <div class="">
-	                            <div class="text-gray-600 text-sm font-title font-semibold">LBH Jakarta</div>
-	                            <div class="text-gray-500 text-xs">3 days ago</div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="">
-	
-	                        <div class="text-right bg-black text-white mt-px text-xs uppercase py-px px-4 rounded-full bg-black font-semibold">
-	                            public </div>
-	
-	                    </div>
-	
-	                </div>
-	
-	                <div class="border-bx mt-4 mb-4"></div>
-	                <div class="text-gray-600 my-8 font-semibold font-title text-center text-xlx px-2">Highcharts Demo
-	                </div>
-	                <div class="p-2 text-gray-600 text-justify leading-relaxed">test satu dya . tiuga</div>
-	
-	
-	
-	                <div class="flex justify-between items-center mt-4">
-	                    <div>
-	
-	                    </div>
-	                    <div class="text-xs text-right mt-4 text-gray-600"><span>
-	                        </span>1 like • 0 comments</div>
-	                </div>
-	
-	
-	
-	                <div class="border-bx mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div phx-click="toggle_like" phx-value-post-id="1" class="text-center  text-orange-500  w-1/2 py-2 cursor-pointer hover:bg-gray-100 border-t">
-	                        <i class="la la-thumbs-up mr-2"></i> Like</div>
-	                    <div class="w-1/2"><a href="/backerzone/timeline-live/1">
-	                            <div class="text-center border-t py-2 cursor-pointer hover:bg-gray-100"><i class="la la-comment mr-2"></i> Comment</div>
-	                        </a></div>
-	
-	                </div>
-	
-	                <div class="border-b mb-2"></div>
-	                <div class="flex items-center">
-	
-	                    <img src="https://vkbacker.s3.amazonaws.com/vkbacker/ed67d595-fe0f-47cf-afa9-9aa7d2390579-lbhjakartalogo.png" class="rounded-full border-4 border-white mr-2 h-12 w-12 object-cover object-center">
-	                    <input placeholder="Tulis komentar kamu..." class="flex-grow py-2 border text-sm px-4 focus:outline-none bg-gray-100 rounded-full">
-	                    <button class="px-4 text-xs focus:outline-none font-semibold font-title text-orange-500 uppercase tracking-wide">Kirim</button>
-	
-	                </div>
-	            </div>
+				<!-- /post -->		
 	           </div>
 
 

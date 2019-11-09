@@ -4,14 +4,14 @@
 	
 	    <div class="container px-3 pt-10 pb-10 mx-auto max-w-6xl">
 
-		<div class="w-full flex justify-center">
-			<div class="w-1/3">
-			<img src="/assets/images/ouch/flame-sign-up.png" alt="step3" class="w-64">
+		<div class="w-full md:flex lg:flex justify-center">
+			<div class="lg:w-1/3 md:w-1/3 p-4">
+			<img src="/assets/images/ouch/flame-sign-up.png" alt="step3" class="w-48 md:w-56 lg:w-64 mx-auto">
 			</div>
 
-			<div class="w-2/3">
-				        <div class="text-5xl tracking-wide font-bold font-title">Daftar Komunitas</div>
-				<div class=" text-xl pt-12 leading-relaxed">Temukan komunitas , organisasi dan kreator favoritmu
+			<div class="lg:w-2/3 md:w-1/3 p-4 lg:text-left text-center">
+				        <div class="text-3xl md:text-4xl lg:text-5xl tracking-wide font-bold font-title">Daftar Komunitas</div>
+				<div class=" md:text-lg lg:text-xl pt-12 leading-relaxed">Temukan komunitas , organisasi dan kreator favoritmu
 					dan
 					dukung
 					mereka. Kamu juga bisa
@@ -34,11 +34,6 @@
                 <div class="text-xl md:text-2xl text-center md:text-left lg:text-left lg:text-4xl pb-4  font-semibold font-title"><%= gettext "Daftar Komunitas" %></div>
                 <div class="lg:flex md:flex items-center whitespace-normal shadow mb-6 rounded-lg text-white bg-indigo-400 p-6">
                 
-                <div>
-                <div class="h-24 w-24 rounded-full bg-white">
-                <i class="la la-bullhorn text-6xl p-4 text-indigo-400"></i>
-                </div>
-                </div>
 
                 <p class="ml-4">
                     <%= gettext "Selama versi beta, pengajuan donee akan memerlukan persetujuan manual dari admin Backer.id." %>
@@ -63,38 +58,38 @@
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama Komunitas/Organisasi/Brand" %>
                                 </label>
-                            <%= text_input f, :donee_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= text_input f, :donee_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_name %></div>
                         </div>
 
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Tautan website/facebook/youtube dll"%></label>
-                            <%= text_input f, :donee_website, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= text_input f, :donee_website, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_website %></div>                               
                         </div>
 
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Deskripsikan kegiatan Komunitas/Organisasi mu" %></label>
-                            <%= textarea f, :donee_description, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= textarea f, :donee_description, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :donee_description %></div>                                
                         </div>
 
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nama Penanggung Jawab" %></label>
-                            <%= text_input f, :applicant_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= text_input f, :applicant_name, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_name %></div>
                         </div>
 
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Email Penanggung Jawab" %></label>
-                            <%= text_input f, :applicant_email, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= text_input f, :applicant_email, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_email %></div>
                         </div>
 
                         <div class="py-2 w-full">
                             <label for="username" class="text-gray-700 text-sm tracking-wide pl-1 "><%= gettext "Nomor Telfon Penanggung Jawab" %>
                                 </label>
-                            <%= text_input f, :applicant_phone, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-full py-2 border-2 w-full" %>
+                            <%= text_input f, :applicant_phone, class: "block transition-all  px-2 focus:border-indigo-500 focus:outline-none rounded-lg py-2 border-2 w-full" %>
                             <div class="text-red-500"><%= error_tag f, :applicant_phone %></div>
                         </div>
 
@@ -108,7 +103,7 @@
                         </div>
 
                         <div class="pt-4">
-                           <button class="g-recaptcha tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full" data-sitekey="6Lewj74UAAAAAPNao4lXeZv2ekznpdxw7hhtgKhT" data-callback='onSubmit'><%= gettext "Kirim" %></button>
+                           <button class="g-recaptcha tracking-wide focus:outline-none w-full px-8 py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg" data-sitekey="6Lewj74UAAAAAPNao4lXeZv2ekznpdxw7hhtgKhT" data-callback='onSubmit'><%= gettext "Kirim" %></button>
                         </div>
                     <% end %>
 

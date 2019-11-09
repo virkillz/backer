@@ -1,11 +1,11 @@
 	            <div class="transition-all" style="top: 100px; position: sticky;">
 	
-	                <div class="wow fadeIn lg:bg-white rounded-lg lg:shadow py-6 px-4">
+	                <div class="wow fadeIn lg:bg-white rounded-lg lg:shadow lg:py-6 px-4">
 	                
 	                    <div class="flex ">
 	                        <div class="w-1/2">
 	                            <div class="text-2xl text-center font-semibold"><%= @donee.backer_count %></div>
-	                            <div class="text-center text-thin  text-sm">Backer</div>
+	                            <div class="text-center text-thin  text-sm">Backer Aktif</div>
 	                        </div>
 	                
 	                        <div class="w-1/2">

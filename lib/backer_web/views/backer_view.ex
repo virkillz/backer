@@ -47,7 +47,7 @@ defmodule BackerWeb.BackerView do
 
   def home_sidebar_active(conn, current_path) do
     if String.starts_with?(conn.request_path, current_path) do
-      " bg-white font-semibold text-orange-500 "
+      " bg-black font-semibold text-orange-500 "
     end
   end
 

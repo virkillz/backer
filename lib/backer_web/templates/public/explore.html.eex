@@ -5,14 +5,14 @@
 	
 	    <div class="container px-3 pt-10 pb-10 mx-auto max-w-6xl">
 
-		<div class="w-full flex justify-center">
-			<div class="w-1/3">
-			<img src="/assets/images/ouch/flame-searching.png" alt="step3" class="w-64 h-64">
+		<div class="w-full md:flex lg:flex justify-center">
+			<div class="lg:w-1/3 md:w-1/3 p-4">
+			<img src="/assets/images/ouch/flame-searching.png" alt="step3" class="h-48 w-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mx-auto">
 			</div>
 
-			<div class="w-2/3">
-				        <div class="text-5xl tracking-wide font-bold font-title">Explore</div>
-				<div class=" text-xl pt-12 leading-relaxed">Temukan komunitas , organisasi dan kreator favoritmu
+			<div class="lg:w-2/3 md:w-1/3 p-4 lg:text-left text-center">
+				        <div class="text-3xl md:text-4xl lg:text-5xl tracking-wide font-bold font-title">Explore</div>
+				<div class=" md:text-lg lg:text-xl pt-12 leading-relaxed">Temukan komunitas , organisasi dan kreator favoritmu
 					dan
 					dukung
 					mereka. Kamu juga bisa
@@ -20,8 +20,8 @@
 		
 				<a href="/register-donee">
 				<button
-					class="wow rubberBand mt-12 btn-glow-orange tracking-wide focus:outline-none px-16 font-semibold py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-full shadow">Daftarkan
-					Komunitasmu</button>
+					class="wow rubberBand mt-12 btn-glow-orange tracking-wide focus:outline-none px-16 font-semibold py-3 outline-none transition-all transition-ease bg-orange-500 border-orange-500 hover:bg-orange-600 border-2 text-white rounded-lg text-sm md:text-base lg:text-base shadow">
+					Buat Halaman</button>
 				</a>
 			</div>
 	    </div>
@@ -47,7 +47,7 @@
 	                alt="">
 	            <img src="<%= donee.backer.avatar %>"
 	                class="z-10 ml-4 sm:-ml-8 md:-ml-8 lg:-ml-8 shadow border-white border-2 shadow-lg object-center object-cover rounded-full w-16 h-16" alt="">
-	            <div class="flex p-4 z-0 flex-grow hover:text-blue-500 rounded-r-lg relative">
+	            <div class="flex p-4 z-0 flex-grow hover:text-indigo-500 rounded-r-lg relative">
 	                <div class="bg-orange-500 px-3 mt-6 py-1 rounded-l-full absolute right-0 text-sm text-white">
 	                    <%= donee.backer_count %> 
 	                    Backer</div>

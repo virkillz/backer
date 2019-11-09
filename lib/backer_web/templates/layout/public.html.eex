@@ -40,75 +40,28 @@
 </head>
 
 <body class="text-gray-800 gradientx polkadotx font-light"><%= render @view_module, @view_template, assigns %>
-    <script>
 
-        var scrollpos = window.scrollY;
-        var header = document.getElementById("header");
-        var navcontent = document.getElementById("nav-content");
-        var navaction = document.getElementById("navAction");
-        var navtoggle = document.getElementById("nav-toggle");
-        var navitem = document.getElementById("navItem");
-        var brandname = document.getElementById("brand");
-        var toToggle = document.querySelectorAll(".toggleColour");
-
-        document.addEventListener('scroll', function () {
-
-            /*Apply classes for slide in bar*/
-            scrollpos = window.scrollY;
-
-            if (scrollpos > 10) {
-                navitem.classList.remove("text-white");
-                navitem.classList.add("text-gray-700");
-                navtoggle.classList.remove("text-white");
-                navtoggle.classList.remove("border-white");
-                navtoggle.classList.add("text-gray-800");
-                navtoggle.classList.add("border-gray-800");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-gray-800");
-                }
-                <%# header.classList.add("shadow"); %>
-                navcontent.classList.remove("bg-black");
-            }
-            else {
-                header.classList.add("shadow");
-                navitem.classList.remove("text-gray-700");
-                navitem.classList.add("text-white");
-
-
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-white");
-                    toToggle[i].classList.remove("text-gray-800");
-                }
-
-                navcontent.classList.remove("bg-white");
-                navcontent.classList.add("bg-black");
-                navtoggle.classList.add("text-white");
-                navtoggle.classList.add("border-white");
-                navtoggle.classList.remove("text-gray-800");
-                navtoggle.classList.remove("border-gray-800");
-                
-
-            }
-
-        });
-
-
-    </script>
-
-    <script>
-
-
+ <script>
         /*Toggle dropdown list*/
         /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-
+        var navMenuDiv = document.getElementById("nav-content");
+        var navMenu = document.getElementById("nav-toggle");
         document.onclick = check;
         function check(e) {
             var target = (e && e.target) || (event && event.srcElement);
-
-
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                // click NOT on the menu
+                if (checkParent(target, navMenu)) {
+                    // click on the link
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else { navMenuDiv.classList.add("hidden"); }
+                } else {
+                    // click both outside link and outside menu, hide menu
+                    navMenuDiv.classList.add("hidden");
+                }
+            }
         }
         function checkParent(t, elm) {
             while (t.parentNode) {
@@ -256,6 +209,28 @@
         flags: [avatar, isDonee, notifCount]
         });
         };
+    </script>
+
+        <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                header.classList.add("shadow");
+            }
+            else {
+                header.classList.remove("shadow");
+            }
+
+        });
+
+
     </script>
 
 
