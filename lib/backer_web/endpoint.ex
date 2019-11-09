@@ -1,7 +1,10 @@
 defmodule BackerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :backer
 
-  socket("/socket", BackerWeb.UserSocket, websocket: true)
+  socket("/socket", BackerWeb.UserSocket,
+    websocket: true,
+    check_origin: ["//localhost", "//*.backer.id", "//*.backr.id"]
+  )
 
   socket "/live", Phoenix.LiveView.Socket
 

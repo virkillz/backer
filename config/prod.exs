@@ -16,7 +16,6 @@ use Mix.Config
 config :backer, BackerWeb.Endpoint,
   load_from_system_env: true,
   code_reloader: false,
-  check_origin: ["http://backer.id", "//backr.id", "//alpha.backr.id", "//localhost:4000"]
   url: [host: "backer.id", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
