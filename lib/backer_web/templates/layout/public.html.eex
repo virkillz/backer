@@ -194,7 +194,7 @@
     <% end %>
 
     <script src="/assets/js/progressive-image.min.js"></script>
-    <script src="/assets/js/navbar.min.js"></script>
+    <script src="/assets/js/navbar.min.js?1"></script>
     <script src="/js/app.js"></script>
     <script>
         const node = document.getElementById('navbar-elm');
