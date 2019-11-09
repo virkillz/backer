@@ -6,7 +6,9 @@ defmodule BackerWeb.Endpoint do
     check_origin: ["//localhost", "//*.backer.id", "//*.backr.id"]
   )
 
-  socket "/live", Phoenix.LiveView.Socket
+  socket "/live", Phoenix.LiveView.Socket,
+    websocket: true,
+    check_origin: ["//localhost", "//*.backer.id", "//*.backr.id"]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
