@@ -1,7 +1,11 @@
 defmodule BackerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :backer
 
-  socket("/socket", BackerWeb.UserSocket, websocket: true)
+  socket("/socket", BackerWeb.UserSocket,
+    websocket: true,
+    check_origin: ["http://backer.id", "//backr.id", "//alpha.backr.id", "//localhost:4000"]
+  )
+
   socket "/live", Phoenix.LiveView.Socket
 
   # Serve at "/" the static files from "priv/static" directory.
@@ -44,7 +48,12 @@ defmodule BackerWeb.Endpoint do
   )
 
   plug CORSPlug,
-    origin: ["http://localhost:3000", "http://alpha.backer.id", "http://alpha.backr.id"]
+    origin: [
+      "http://localhost:3000",
+      "http://alpha.backer.id",
+      "http://alpha.backr.id",
+      "http://localhost:4000"
+    ]
 
   plug(BackerWeb.Router)
 
