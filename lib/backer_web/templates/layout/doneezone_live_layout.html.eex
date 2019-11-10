@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="text-gray-700 gradient polkadot">
+<body class="text-gray-700 bg-gray-200">
 
 
 <%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
@@ -187,78 +187,6 @@
 
 
 
-
-
-
-    <script>
-
-        var scrollpos = window.scrollY;
-        var header = document.getElementById("header");
-        var navcontent = document.getElementById("nav-content");
-        var navaction = document.getElementById("navAction");
-        var navtoggle = document.getElementById("nav-toggle");
-        var navitem = document.getElementById("navItem");
-        var brandname = document.getElementById("brand");
-        var toToggle = document.querySelectorAll(".toggleColour");
-
-        document.addEventListener('scroll', function () {
-
-            /*Apply classes for slide in bar*/
-            scrollpos = window.scrollY;
-
-            if (scrollpos > 10) {
-                brandname.src = "/assets/images/logo/backer-bg-white.png";
-                navaction.classList.remove("bg-white");
-                navitem.classList.remove("text-white");
-                navitem.classList.add("text-gray-700");
-                navaction.classList.add("gradient");
-                navtoggle.classList.remove("text-white");
-                navtoggle.classList.remove("border-white");
-                navtoggle.classList.add("text-gray-800");
-                navtoggle.classList.add("border-gray-800");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-gray-800");
-                    toToggle[i].classList.remove("text-white");
-                }
-                header.classList.add("shadow");
-                header.classList.add("bg-white");
-                header.classList.remove("bg-transparent");
-                navcontent.classList.remove("bg-black");
-                navcontent.classList.add("bg-white");
-            }
-            else {
-                brandname.src = "/assets/images/logo/backer-bg-indigo.png";
-                header.classList.remove("bg-white");
-                header.classList.add("bg-tranparant");
-                header.classList.add("shadow");
-                navaction.classList.remove("gradient");
-                navaction.classList.add("bg-white");
-                navitem.classList.remove("text-gray-700");
-                navitem.classList.add("text-white");
-
-
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-white");
-                    toToggle[i].classList.remove("text-gray-800");
-                }
-
-                header.classList.remove("shadow");
-                navcontent.classList.remove("bg-white");
-                navcontent.classList.add("bg-black");
-                navtoggle.classList.add("text-white");
-                navtoggle.classList.add("border-white");
-                navtoggle.classList.remove("text-gray-800");
-                navtoggle.classList.remove("border-gray-800");
-
-            }
-
-        });
-
-
-    </script>
-
     <script>
 
 
@@ -322,17 +250,43 @@
         const node = document.getElementById('navbar-elm');
 
         if (node) {
-        const avatar = node.getAttribute('data-avatar');
-        const notifCount = node.getAttribute('data-notif-count');
-        const isDonee = (node.getAttribute('data-is-donee') == "true");
+            const avatar = node.getAttribute('data-avatar');
+            const notifCount = node.getAttribute('data-notif-count');
+            const domain = node.getAttribute('data-domain');
+            const isDonee = (node.getAttribute('data-is-donee') == "true");
 
-        Elm.Main.init({
-        node: node,
-        flags: [avatar, isDonee, notifCount]
-        });
+            const flags = { avatar: avatar, domain: domain, notifCount: notifCount, isDonee: isDonee }
+            console.log(flags);
+            
+            Elm.Main.init({
+            node: node,
+            flags: flags
+            });
+
         };
     </script>
 
+        <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                header.classList.add("shadow");
+            }
+            else {
+                header.classList.remove("shadow");
+            }
+
+        });
+
+
+    </script>
 
 
 </body>

@@ -127,6 +127,7 @@ defmodule BackerWeb.Router do
 
     get("/backerprofile", BackerController, :home_backer_profile)
 
+    get("/home/timeline", BackerController, :home_timeline_live)
     get("/home/timeline/all", BackerController, :home_timeline_all)
     get("/home/support/my-donees", BackerController, :home_support_my_donees)
     get("/home/support/my-backers", BackerController, :home_support_my_backers)

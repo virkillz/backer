@@ -31,7 +31,7 @@
 	<div class="flex lg:block items-stretch">
 
 		<div class="lg:w-full w-1/4">
-			<a href="/home/timeline/all">
+			<a href="/home/timeline">
 				<div
 					class="<%= home_sidebar_active(@conn, "/home/timeline") %> mx-px flex-1 rounded-lg border lg:border-none lg:bg-transparent hover:bg-black">
 					<div

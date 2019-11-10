@@ -1016,6 +1016,19 @@ defmodule BackerWeb.BackerController do
     )
   end
 
+  def home_timeline_live(conn, _params) do
+    backer = conn.assigns.current_backer
+    random_donee = Account.list_random_donee(3)
+
+    conn
+    |> put_layout("home_live.html")
+    |> assign(:backer, backer)
+    |> assign(:recommended_donees, random_donee)
+    |> LiveView.Controller.live_render(BackerWeb.TimelineLive,
+      session: %{backer: backer}
+    )
+  end
+
   def backerzone_timeline_post_live(conn, %{"post_id" => post_id}) do
     backer = conn.assigns.current_backer
 

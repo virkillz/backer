@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backer :: <%= @conn.assigns[:meta][:title] %></title>
+    <%= if not (is_nil @conn.assigns[:meta_attrs]), do: meta_tags(@conn.assigns[:meta_attrs]) %>
+
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/progressive-image.css">
+
+
+    <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
+    <% end %>
+
+</head>
+
+<body class="text-gray-700 bg-gray-200">
+
+
+<%= BackerWeb.PublicComponentView.render "header_public.html", conn: @conn %>
+
+		
+		<div class="bg-gray-200 mt-16">
+	    <div class="pt-10 container mx-auto lg:flex">
+	
+	        <div class="lg:w-1/4 px-4 lg:pb-10">
+	            <div class="transition-all" style="top: 96px; position: sticky;">
+
+                    <%= BackerWeb.BackerView.render "component_home_sidebar.html", conn: @conn, backer: @backer %>
+
+	            </div>
+	        </div>
+	
+	        <div class="lg:w-2/4 px-4 pb-20">
+
+                <%= render @view_module, @view_template, assigns %>
+	
+	        </div>
+	        <div class="lg:w-1/4 px-4">
+	
+	            <div class="pb-20 hidden lg:block">
+
+					<%= BackerWeb.DoneeView.render "component_recomended_donee.html", donees: @recommended_donees %>
+	            
+	            
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+
+        <%= BackerWeb.PublicComponentView.render "footer_public.html", conn: @conn %>
+
+
+
+
+    <script>
+
+
+        /*Toggle dropdown list*/
+        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+
+        document.onclick = check;
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+
+        }
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) { return true; }
+                t = t.parentNode;
+            }
+            return false;
+        }
+    </script>
+
+    <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
+
+    <script>
+    function init() {
+        var vidDefer = document.getElementsByTagName('iframe');
+        for (var i=0; i<vidDefer.length; i++) {
+        if(vidDefer[i].getAttribute('data-src')) {
+        vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+        } } }
+        window.onload = init;
+    </script>
+
+    <script src="/js/wow.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script>
+    new WOW().init();
+
+    tippy('.tippy', {placement: 'bottom'});
+    </script>
+
+    <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
+        <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
+    <% end %>
+
+    <script src="/assets/js/progressive-image.min.js"></script>
+    <script src="/assets/js/navbar.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        const node = document.getElementById('navbar-elm');
+
+        if (node) {
+            const avatar = node.getAttribute('data-avatar');
+            const notifCount = node.getAttribute('data-notif-count');
+            const domain = node.getAttribute('data-domain');
+            const isDonee = (node.getAttribute('data-is-donee') == "true");
+
+            const flags = { avatar: avatar, domain: domain, notifCount: notifCount, isDonee: isDonee }
+            console.log(flags);
+            
+            Elm.Main.init({
+            node: node,
+            flags: flags
+            });
+
+        };
+    </script>
+
+        <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                header.classList.add("shadow");
+            }
+            else {
+                header.classList.remove("shadow");
+            }
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
