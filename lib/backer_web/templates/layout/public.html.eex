@@ -49,6 +49,7 @@
         document.onclick = check;
         function check(e) {
             var target = (e && e.target) || (event && event.srcElement);
+            console.log(target);
             //Nav Menu
             if (!checkParent(target, navMenuDiv)) {
                 // click NOT on the menu
@@ -200,14 +201,19 @@
         const node = document.getElementById('navbar-elm');
 
         if (node) {
-        const avatar = node.getAttribute('data-avatar');
-        const notifCount = node.getAttribute('data-notif-count');
-        const isDonee = (node.getAttribute('data-is-donee') == "true");
+            const avatar = node.getAttribute('data-avatar');
+            const notifCount = node.getAttribute('data-notif-count');
+            const domain = node.getAttribute('data-domain');
+            const isDonee = (node.getAttribute('data-is-donee') == "true");
 
-        Elm.Main.init({
-        node: node,
-        flags: [avatar, isDonee, notifCount]
-        });
+            const flags = { avatar: avatar, domain: domain, notifCount: notifCount, isDonee: isDonee }
+            console.log(flags);
+            
+            Elm.Main.init({
+            node: node,
+            flags: flags
+            });
+
         };
     </script>
 

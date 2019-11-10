@@ -33,7 +33,7 @@
 			</div>
 
             <%= if not is_nil get_flash(@conn, :info) do  %>
-            <div class="p-2 bg-teal-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
+            <div class="p-2 bg-green-500 mb-6 rounded text-white text-center"><%= get_flash(@conn, :info) %></div>
             <% end %>
 
             <%= if not is_nil get_flash(@conn, :error) do  %>

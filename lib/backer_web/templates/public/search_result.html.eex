@@ -5,9 +5,9 @@
 
     <form method="get" action="/search" class="">
         <div class="flex max-w-3xl mx-auto px-4 mb-6 rounded-lg">
-            <input type="search" class="shadow border-b py-2 px-4 flex-grow focus:outline-none rounded-l-full" name="q">
+            <input type="search" class="shadow border-b py-2 px-4 flex-grow focus:outline-none rounded-lg" name="q">
             <button type="submit"
-                class="bg-purple-500 py-2 px-4 shadow border-2 border-indigo-500 rounded-r-full text-white"><i
+                class="bg-indigo-500 py-2 px-4 ml-2 shadow border-2 border-indigo-500 rounded-lg text-white"><i
                     class="la font-bold la-search"></i>
                 Search</button>
 

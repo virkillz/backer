@@ -1,10 +1,12 @@
 <%= if not is_nil @conn.assigns[:backer_signed_in?] do %>
     <%= if @conn.assigns.backer_signed_in? do %>
-
+    <% IO.inspect(@conn) %>
     <% count_notif = Cachex.get!(:notification, "backer:#{@conn.assigns.current_backer.id}")  %>
     <div id="navbar-elm" data-avatar="<%= @conn.assigns.current_backer.avatar %>"
         data-is-donee="<%= @conn.assigns.current_backer.is_donee %>"
-        data-notif-count="<%= if is_nil(count_notif), do: 0, else: count_notif  %>"></div>
+        data-notif-count="<%= if is_nil(count_notif), do: 0, else: count_notif  %>"
+        data-domain="<%= Plug.Conn.get_req_header(@conn, "host") %>"
+        ></div>
 
     <% else %>
 
@@ -29,7 +31,7 @@
         </div>
 
         <div class="flex lg:hidden pr-4">
-            <button class="text-xs md:text-base lg:text-base border border-orange-500 rounded px-4 py-1 mr-2 text-orange-500 ">Buat Halaman</button>
+           <a href="/register-donee"> <button class="text-xs md:text-base lg:text-base border border-orange-500 rounded px-4 py-1 mr-2 text-orange-500 ">Buat Halaman</button></a>
             <button id="nav-toggle"
                 class="flex items-center px-3 py-2 border rounded text-whitex border-black appearance-none focus:outline-none">
                 <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
