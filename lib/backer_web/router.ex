@@ -125,10 +125,12 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
+    get("/home", BackerController, :home)
     get("/backerprofile", BackerController, :home_backer_profile)
 
     get("/home/timeline", BackerController, :home_timeline_live)
     get("/home/timeline/all", BackerController, :home_timeline_all)
+    get("/home/timeline/:post_id", BackerController, :home_post_live)
     get("/home/support/my-donees", BackerController, :home_support_my_donees)
     get("/home/support/my-backers", BackerController, :home_support_my_backers)
     get("/home/finance/invoice/:id", BackerController, :home_finance_invoice)
@@ -151,11 +153,11 @@ defmodule BackerWeb.Router do
     get("/home/settings/backer", BackerController, :home_setting_backer)
     put("/home/settings/backer", BackerController, :home_setting_backer_post)
     post("/home/settings/backer/user-link", BackerController, :home_setting_backer_link_post)
-    get("/backerzone", BackerController, :backerzone_default)
-    get("/home", BackerController, :home)
     get("/notifications", BackerController, :home_notifications)
     get("/private/notification", BackerController, :backerzone_notification_api)
     get("/private/notification/reset-counter", BackerController, :reset_counter)
+
+    get("/backerzone", BackerController, :backerzone_default)
 
     get("/backerzone/timeline", BackerController, :timeline)
     get("/backerzone/timeline/:id", BackerController, :show_post)

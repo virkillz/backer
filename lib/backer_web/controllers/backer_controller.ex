@@ -117,9 +117,9 @@ defmodule BackerWeb.BackerController do
 
   def home(conn, _params) do
     if conn.assigns.current_backer.is_donee do
-      redirect(conn, to: "/home/timeline/all")
+      redirect(conn, to: "/home/timeline")
     else
-      redirect(conn, to: "/home/timeline/all")
+      redirect(conn, to: "/home/timeline")
     end
   end
 
@@ -1016,6 +1016,36 @@ defmodule BackerWeb.BackerController do
     )
   end
 
+  def home_post_live(conn, %{"post_id" => post_id}) do
+    backer = conn.assigns.current_backer
+
+    # first is to ensure the person is deserved the post. Either by check whether its public or backing.
+
+    # id is integer?
+    case Integer.parse(post_id) do
+      {id, _} ->
+        case Content.get_post(id) do
+          nil ->
+            redirect(conn, to: "/404")
+
+          post ->
+            # is it public post?
+            if post.min_tier == 0 do
+              render_post_detail(conn, post)
+            else
+              if Aggregate.is_backer_active?(backer.id, post.donee_id) do
+                render_post_detail(conn, post)
+              else
+                redirect(conn, to: "/403")
+              end
+            end
+        end
+
+      :error ->
+        redirect(conn, to: "/404")
+    end
+  end
+
   def home_timeline_live(conn, _params) do
     backer = conn.assigns.current_backer
     random_donee = Account.list_random_donee(3)
@@ -1061,11 +1091,12 @@ defmodule BackerWeb.BackerController do
 
   defp render_post_detail(conn, post) do
     backer = conn.assigns.current_backer
+    random_donee = Account.list_random_donee(3)
 
     conn
-    |> put_layout("backerzone_live_layout.html")
+    |> put_layout("home_live.html")
     |> assign(:backer, backer)
-    |> assign(:random_donees, Account.list_random_donee(3))
+    |> assign(:recommended_donees, random_donee)
     |> LiveView.Controller.live_render(BackerWeb.BackerzonePostLive,
       session: %{backer: backer, post: post}
     )

@@ -1,9 +1,17 @@
-
-	            <div class=" bg-white shadow p-4">
+<div class="my-6">
+				<a href="/home/timeline">
+				<div class="flex">
+					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 border-transparent font-title  cursor-pointer pb-4 ">
+						<i class="la la-arrow-left bg-white rounded-full p-2 h-8 w-8 text-center mr-2"></i>  Post </div>
+				</div>
+				</a>
+				<div class="border-b-2 -mt-px"></div>
+			</div>
+	            <div class=" bg-white shadowx p-4 rounded">
 	                <div class="flex items-center">
-	                    <img src="<%= @post.donee.backer.avatar %>" class="w-12 h-12 object-cover object-center rounded-lg border-4 border-white mr-2">
+	                   <a href="/donee/<%= @post.donee.backer.username %>"> <img src="<%= @post.donee.backer.avatar %>" class="border-2 border-transparent hover:border-orange-500 transition transition-all  w-12 h-12 object-cover object-center rounded-full border-2 mr-2"></a>
 	                    <div class="">
-	                        <div class="text-gray-600 font-semibold"><%= @post.donee.backer.display_name %></div>
+	                        <div class="text-gray-600 font-semibold transition transition-all hover:underline hover:text-orange-500"><a href="/donee/<%= @post.donee.backer.username %>"><%= @post.donee.backer.display_name %></a></div>
 	                        <div class="text-gray-500 text-xs">
 	                            <%= Stringhelper.ago @post.inserted_at %> </div>
 	                    </div>
@@ -16,24 +24,27 @@
 	
 	                <div class="text-xs text-right mt-4 text-gray-600"><%= @post.like_count %> like • <a href="#" class="hover:underline"><%= @post.comment_count %>
 	                        comments</a></div>
-	                <div class="border-b mt-2"></div>
-	                <div class="flex text-gray-600">
-	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
-	                            class="la la-thumbs-up mr-2"></i>
-	                        Like</div>
-	                    <div class="text-center w-1/2 py-2 cursor-pointer hover:bg-gray-100"><i
-	                            class="la la-comment mr-2"></i>
-	                        Comment</div>
-	                </div>
+				<div class="flex text-gray-600 bg-gray-100 rounded-b mt-2">
+
+					<button phx-click="toggle_like" phx-value-post-id="3" class="text-center text-sm w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t hover:text-orange-500">
+						<i class="la la-thumbs-up mr-2 text-xl"></i> Like</button>
+					<div class="w-1/2 py-4 cursor-pointer hover:bg-gray-100 hover:text-orange-500 border-t border-l text-center"><a href="/home/timeline/3"><button class="text-sm">
+						<i class="la la-comment mr-2 text-xl"></i> Comments</button></a></div>
+
+				</div>
+
+
 	                <div class="border-b mb-2"></div>
 	
                     <%= for comment <- @comments do %>
 	                <div class="my-1">
 	                    <div class="flex items-center">
-	                        <img src="<%= comment.backer.avatar %>" class="h-10 w-10 object-cover object-center rounded-full border-4 border-white mr-2">
+							<a href="/<%= comment.backer.username %>">
+	                        <img src="<%= comment.backer.avatar %>" class="h-10 w-10 object-cover object-center rounded-full border-2 border-transparent transition transition-all hover:border-indigo-500 mr-2">
+							</a>
 	                        <div
-	                            class="px-4 text-gray-600 py-2 text-sm align-middle focus:outline-none bg-gray-200 rounded-lg">
-	                            <a href="/<%= comment.backer.username %>"><span class="font-semibold text-indigo-500 mr-2"> <%= comment.backer.display_name %></a> </span> <%= comment.content %>
+	                            class="px-4 text-gray-600 py-2 text-sm align-middle focus:outline-none bg-gray-200 rounded-full">
+	                            <a href="/<%= comment.backer.username %>"><span class="font-semibold hover:underline hover:text-indigo-500 mr-2"> <%= comment.backer.display_name %></a> </span> <%= comment.content %>
 	                        </div>
 	                    </div>
 	                    <div class="ml-16 text-xs text-gray-600"><a href="#">Like</a> • <%= Stringhelper.ago comment.inserted_at %></div>
@@ -43,14 +54,11 @@
 	
                     <%= f = form_for @changeset_comment, "#", [phx_submit: :send_comment] %>
                         <div class="flex mt-2">
-                            <img src="<%= @backer.avatar %>" class="w-10 h-10 object-cover object-center rounded-lg border-4 border-white mr-2">
-                            <%= text_input f, :content, [value: @comment_input,placeholder: "Tulis komentar kamu...", class: "flex-grow border px-4 focus:outline-none bg-gray-200 rounded-lg"] %>
+                            <img src="<%= @backer.avatar %>" class="w-10 h-10 object-cover object-center rounded-full border-4 border-white mr-2">
+                            <%= text_input f, :content, [value: @comment_input,placeholder: "Tulis komentar kamu...", class: "flex-grow border px-4 focus:outline-none bg-gray-200 rounded-full"] %>
                             <button type="submit"
-                                class="px-6 text-indigo-500 font-semibold text-sm uppercase ml-2 rounded-lg text-white">Kirim</button>
+                                class="px-6 text-orange-500 font-semibold text-sm uppercase ml-2 rounded-lg text-white">Kirim</button>
                         </div>
                     </form>
 	            </div>
 	
-	            <div class="py-8 text-center">
-	                <button class="text-indigo-500 px-4 py-2 border rounded border-indigo-500"><i class="la la-angle-left"></i> Back</button>
-	            </div>

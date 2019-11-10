@@ -48,9 +48,9 @@
 									<div class="mr-2 text-xs px-2 pb-px">Dapat dilihat oleh</div>
 									<select name="min-tier" class=" h-8 w-40 focus:outline-none bg-white">
 										<option value="0">Semua orang</option>
-										<option value="10000">Light Backer</option>
-										<option value="100000">Ultra Backer</option>
-										<option value="50000">Heavy Backer</option>
+										<%= for tier <- Enum.reverse @donee.tier  do %>
+										<option value="<%= tier.amount %>"><%= tier.title %></option>
+										<% end %>
 									</select>
 								</div>
 								<div class="">
@@ -84,7 +84,7 @@
 						All</div>
 					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
 						Backer Only</div>
-					<% if @backer.is_donee do %>
+					<%= if @backer.is_donee do %>
 					<div class="px-4  font-bold lg:text-lg md:text-base text-sm transition-all border-b-4 hover:border-orange-500 border-transparent  font-title  cursor-pointer pb-4 ">
 						My Post</div>
 					<% end %>
@@ -92,7 +92,58 @@
 				<div class="border-b-2 -mt-px"></div>
 			</div>
 
-			<!-- post -->
+
+			<%= for post <- @posts do %>
+			<div class="rounded shadowx mb-4 bg-white">
+
+				<div class="flex justify-between items-center bg-gray-100 items-center pb-2 pt-4 px-5 rounded-t">
+					<a href="/<%= post.donee.backer.username %>" class="group">
+					<div class="flex items-center">
+						<img src="<%= post.donee.backer.avatar %>" class="w-10 h-10 object-center object-cover rounded-full border-2 border-transparent mr-2 hover:border-orange-500 group-hover:border-orange-500">
+						<div class="">
+							<div class="text-xs font-title font-semibold hover:text-orange-500"><%= post.donee.backer.display_name %></div>
+							<div class="text-gray-700 text-xs"><%= post.donee.backer_count %> Active Backer </div>
+						</div>
+					</div>
+					</a>
+
+					<div class="text-right flex-shrink-0">
+						<div class=" hover:bg-black hover:text-white hover:shadow underlinex transtition transition-all px-4 py-2 text-xs uppercasex rounded-full cursor-pointer flex items-center"><a href="/donee/<%= post.donee.backer.username %>/donate">
+							Jadi Backer <i class="la la-arrow-right text-orange-500 font-semibold lg:ml-1"></i></a></div>
+
+					</div>
+
+				</div>
+
+				<div class="px-4 pt-4 bg-white rounded-t border-t">
+					<div class="font-semibold font-title text-lg text-centerx p-2"><%= post.title %></div>
+					<div class="p-2 text-justify leading-relaxed"><%= raw post.content %></div>
+
+
+
+					<div class="flex justify-between items-center mt-4">
+						<div>
+
+						</div>
+						<div class="text-xs text-right py-2 text-gray-600"><span>
+							</span>0 like • 0 comments</div>
+					</div>
+				</div>
+
+
+				<div class="flex items-center text-gray-600 bg-gray-100 rounded-b">
+
+					<button phx-click="toggle_like" phx-value-post-id="<%= post.id %>" class="text-center text-xs w-1/2 py-4 cursor-pointer hover:bg-gray-100 border-t hover:text-orange-500">
+						<i class="la la-thumbs-up mr-1 text-lg"></i> Like</button>
+					<div class="w-1/2 py-4 cursor-pointer hover:bg-gray-100 hover:text-orange-500 border-t border-l text-center"><a href="/home/timeline/<%= post.id %>"><button class="text-xs">
+						<i class="la la-comment mr-1 text-lg"></i> Comments</button></a></div>
+
+				</div>
+			</div>
+				<!-- /post -->
+			<% end %>
+
+			<!-- 
 			<div class="rounded shadow mb-4 bg-white">
 
 				<div class="flex bg-gray-100 justify-between items-center pb-2 pt-4 px-5 rounded-t">
@@ -141,9 +192,7 @@
 				</div>
 
 			</div>
-			<!-- /post -->
 
-			<!-- post -->
 			<div class="rounded shadow mb-4 bg-white">
 
 				<div class="flex bg-gray-100 justify-between items-center pb-2 pt-4 px-5 rounded-t">
@@ -193,9 +242,7 @@
 				</div>
 
 			</div>
-			<!-- /post -->
 
-			<!-- post -->
 			<div class="rounded shadow mb-4 bg-white">
 
 				<div class="flex justify-between items-center bg-gray-100 items-center pb-2 pt-4 px-5 rounded-t">
@@ -209,8 +256,6 @@
 					</div>
 
 					<div class="text-right flex-shrink-0">
-						<!-- <div class="bg-black shadow text-white underlinex px-4 py-1 text-xs uppercasex rounded-full cursor-pointer ">
-							Jadi Backer <i class="la la-arrow-right text-orange-500"></i></div> -->
 						<div class=" bg-black shadow text-white underlinex px-4 py-2 text-xs uppercasex rounded-full cursor-pointer flex items-center">
 							Jadi Backer <i class="la la-arrow-right text-orange-500 font-semibold lg:ml-1"></i></div>
 
@@ -246,6 +291,4 @@
 						<i class="la la-comment mr-2 text-xl"></i> Comments</div>
 
 				</div>
-				<!-- /post -->
-
-			</div>
+				 -->
