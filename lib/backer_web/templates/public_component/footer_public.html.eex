@@ -50,7 +50,7 @@
                     <p class="uppercase text-gray-200 md:mb-4 font-bold ">Links</p>
                     <ul class="list-reset mb-6">
                         <li class="mt-2 ">
-                            <a href="/faq" class="text-gray-200 hover:text-blue-500">FAQ</a>
+                            <a href="/faq" class="text-gray-200 hover:text-orange-500">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -58,10 +58,10 @@
                     <p class="uppercase md:mb-4 font-bold">Legal</p>
                     <ul class=" mb-6">
                         <li class="mt-2 ">
-                            <a href="/terms" class=" hover:text-blue-500">Terms</a>
+                            <a href="/terms" class=" hover:text-orange-500">Terms</a>
                         </li>
                         <li class="mt-2 ">
-                            <a href="/privacy-policy" class="hover:text-blue-500">Privacy</a>
+                            <a href="/privacy-policy" class="hover:text-orange-500">Privacy</a>
                         </li>
                     </ul>
                 </div>
@@ -69,11 +69,11 @@
                     <p class="uppercase md:mb-4 font-bold">Company</p>
                     <ul class="list-reset mb-6">
                         <li class="mt-2 ">
-                            <a href="/about-us" class=" hover:text-blue-500">About
+                            <a href="/about-us" class=" hover:text-orange-500">About
                                 Us</a>
                         </li>
                         <li class="mt-2 ">
-                            <a href="/contact-us" class=" hover:text-blue-500">Contact</a>
+                            <a href="/contact-us" class=" hover:text-orange-500">Contact</a>
                         </li>
                     </ul>
                 </div>
