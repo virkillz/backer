@@ -186,6 +186,31 @@ defmodule BackerWeb.BackerController do
     end
   end
 
+  def home_backer_profile(conn, _params) do
+    backer = conn.assigns.current_backer
+    redirect(conn, to: "/backer/#{backer.username}")
+  end
+
+  def home_notifications(conn, _params) do
+    backer = conn.assigns.current_backer
+
+    case backer do
+      nil ->
+        redirect(conn, to: "/404")
+
+      _ ->
+        random_donees = Account.list_random_donee(3)
+        list_notifications = Content.list_notification_of(backer.id)
+
+        conn
+        |> render("private_notification.html",
+          backer: backer,
+          notifications: list_notifications,
+          layout: {BackerWeb.LayoutView, "public.html"}
+        )
+    end
+  end
+
   def home_support_my_backers(conn, _params) do
     backer = conn.assigns.current_backer
 
@@ -657,10 +682,10 @@ defmodule BackerWeb.BackerController do
 
           case notification.type do
             "invoice" ->
-              redirect(conn, to: "/backerzone/invoice/#{notification.other_ref_id}")
+              redirect(conn, to: "/home/finance/invoice/#{notification.other_ref_id}")
 
             "receive_payment" ->
-              redirect(conn, to: "/doneezone/finance")
+              redirect(conn, to: "/home/finance/invoice/#{notification.other_ref_id}")
 
             _ ->
               text(conn, "Unknown type of notification")

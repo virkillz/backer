@@ -125,6 +125,8 @@ defmodule BackerWeb.Router do
   scope "/", BackerWeb do
     pipe_through([:browser, :backer_sign_check])
 
+    get("/backerprofile", BackerController, :home_backer_profile)
+
     get("/home/timeline/all", BackerController, :home_timeline_all)
     get("/home/support/my-donees", BackerController, :home_support_my_donees)
     get("/home/support/my-backers", BackerController, :home_support_my_backers)
@@ -150,7 +152,7 @@ defmodule BackerWeb.Router do
     post("/home/settings/backer/user-link", BackerController, :home_setting_backer_link_post)
     get("/backerzone", BackerController, :backerzone_default)
     get("/home", BackerController, :home)
-    get("/notifications", BackerController, :backerzone_notifications)
+    get("/notifications", BackerController, :home_notifications)
     get("/private/notification", BackerController, :backerzone_notification_api)
     get("/private/notification/reset-counter", BackerController, :reset_counter)
 
@@ -184,6 +186,7 @@ defmodule BackerWeb.Router do
     pipe_through([:browser, :backer_sign_check, :is_donee_check])
 
     get("/doneezone", DoneeController, :doneezone_default)
+    get("/doneeprofile", DoneeController, :home_donee_profile)
 
     get("/doneezone/posts", DoneeController, :doneezone_posts)
     get("/doneezone/timeline-live", DoneeController, :doneezone_timeline_live)

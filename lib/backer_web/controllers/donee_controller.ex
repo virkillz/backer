@@ -92,6 +92,11 @@ defmodule BackerWeb.DoneeController do
     )
   end
 
+  def home_donee_profile(conn, _params) do
+    backer = conn.assigns.current_backer
+    redirect(conn, to: "/donee/#{backer.username}")
+  end
+
   def doneezone_tiers(conn, _params) do
     backer_info = conn.assigns.current_backer
     donee_info = conn.assigns.current_donee
@@ -144,16 +149,7 @@ defmodule BackerWeb.DoneeController do
 
         conn
         |> put_flash(:info, "Donee updated successfully.")
-        |> render("doneezone_setting.html",
-          backer_info: backer_info,
-          donee_info: new_donee,
-          recommended_donees: random_donee,
-          user_links: user_links,
-          script: %{wysiwyg: true},
-          style: %{wysiwyg: true},
-          changeset: changeset,
-          layout: {BackerWeb.LayoutView, "public.html"}
-        )
+        |> redirect(to: "/home/settings/donee")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
