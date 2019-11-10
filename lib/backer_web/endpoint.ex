@@ -55,7 +55,10 @@ defmodule BackerWeb.Endpoint do
       "http://alpha.backer.id",
       "http://alpha.backr.id",
       "http://localhost:4000"
-    ]
+    ],
+    allow_headers: ["accept", "content-type", "authorization"],
+    allow_credentials: true,
+    log: [rejected: :error, invalid: :warn, accepted: :debug]
 
   plug(BackerWeb.Router)
 
