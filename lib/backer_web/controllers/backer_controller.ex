@@ -153,8 +153,7 @@ defmodule BackerWeb.BackerController do
         redirect(conn, to: "/404")
 
       _ ->
-        random_donee = Account.list_random_donee(3) |> IO.inspect()
-        IO.inspect("atas sini apa")
+        random_donee = Account.list_random_donee(3)
 
         conn
         |> render("home_timeline_all.html",
@@ -223,7 +222,7 @@ defmodule BackerWeb.BackerController do
           redirect(conn, to: "/403")
         else
           random_donee = Account.list_random_donee(3)
-          my_backer_list = Aggregate.list_top_backer(backer.donee.id, 100) |> IO.inspect()
+          my_backer_list = Aggregate.list_top_backer(backer.donee.id, 100)
 
           conn
           |> render("home_support_my_backer.html",
@@ -244,7 +243,6 @@ defmodule BackerWeb.BackerController do
       redirect(conn, to: "/404")
     else
       if not my.is_donee do
-        IO.inspect("sini bang")
         redirect(conn, to: "/403")
       else
         if Finance.is_backer_have_donations_ever?(backer.id, my.donee.id) do
@@ -268,7 +266,6 @@ defmodule BackerWeb.BackerController do
             Finance.list_donations(%{"backer_id" => backer.id, "donee_id" => my.donee.id})
 
           if list_donation == [] do
-            IO.inspect("sana bang")
             redirect(conn, to: "/403")
           else
             conn
@@ -284,7 +281,6 @@ defmodule BackerWeb.BackerController do
             )
           end
         else
-          IO.inspect("situ bang")
           redirect(conn, to: "/403")
         end
       end
@@ -462,7 +458,7 @@ defmodule BackerWeb.BackerController do
         else
           donee = Account.get_donee(%{"backer_id" => my.id})
           random_donee = Account.list_random_donee(3)
-          invoices = Finance.list_incoming_payment(:donee_id, donee.id) |> IO.inspect()
+          invoices = Finance.list_incoming_payment(:donee_id, donee.id)
 
           conn
           |> render("home_finance_incoming.html",
@@ -506,7 +502,6 @@ defmodule BackerWeb.BackerController do
   end
 
   def home_finance_invoice(conn, %{"id" => invoice_id}) do
-    IO.inspect(conn)
     backer = conn.assigns.current_backer
     invoice = Finance.get_invoice_compact(invoice_id)
 

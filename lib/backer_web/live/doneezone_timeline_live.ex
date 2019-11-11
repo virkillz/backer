@@ -8,8 +8,7 @@ defmodule BackerWeb.DoneezoneTimelineLive do
   end
 
   def mount(session, socket) do
-
-    posts = Content.list_own_posts(session.donee_info.id, session.donee_info.backer.id, 10, 0) |> IO.inspect
+    posts = Content.list_own_posts(session.donee_info.id, session.donee_info.backer.id, 10, 0)
 
     new_socket =
       socket
@@ -23,9 +22,7 @@ defmodule BackerWeb.DoneezoneTimelineLive do
     {:ok, new_socket}
   end
 
-
   def handle_event("switch-mode", value, socket) do
-
     new_socket =
       socket
       |> assign(mode: value["mode"])
@@ -34,16 +31,17 @@ defmodule BackerWeb.DoneezoneTimelineLive do
   end
 
   def handle_event("toggle_like", value, socket) do
-
     is_liked? = Content.toggle_post_like(value["post-id"], socket.assigns.donee_info.backer.id)
 
-    new_socket = assign(socket, posts: like_post(socket.assigns.posts, String.to_integer(value["post-id"]) , is_liked?))
+    new_socket =
+      assign(socket,
+        posts: like_post(socket.assigns.posts, String.to_integer(value["post-id"]), is_liked?)
+      )
 
     {:noreply, new_socket}
   end
 
   def handle_event("post", value, socket) do
-
     attrs = %{
       "title" => value["title"],
       "content" => value["content"],
@@ -53,17 +51,16 @@ defmodule BackerWeb.DoneezoneTimelineLive do
     }
 
     new_posts =
-    case Content.create_post(attrs) do
-      {:ok, new_post} -> [new_post] ++ socket.assigns.posts
-      {:error, _} -> socket.assigns.posts
-    end
+      case Content.create_post(attrs) do
+        {:ok, new_post} -> [new_post] ++ socket.assigns.posts
+        {:error, _} -> socket.assigns.posts
+      end
 
     new_socket =
       socket
       |> assign(title: "")
       |> assign(content: "")
       |> assign(posts: new_posts)
-
 
     {:noreply, new_socket}
   end

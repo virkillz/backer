@@ -1394,12 +1394,12 @@ defmodule Backer.Content do
 
   def increase_post_like_count(post_id) do
     post = get_post!(post_id)
-    update_post(post, %{"like_count" => post.like_count + 1}) |> IO.inspect()
+    update_post(post, %{"like_count" => post.like_count + 1})
   end
 
   def decrease_post_like_count(post_id) do
     post = get_post!(post_id)
-    update_post(post, %{"like_count" => post.like_count - 1}) |> IO.inspect()
+    update_post(post, %{"like_count" => post.like_count - 1})
   end
 
   def toggle_post_like(post_id, backer_id) do

@@ -9,7 +9,7 @@ defmodule BackerWeb.TimelineLive do
   end
 
   def mount(session, socket) do
-    posts = Content.list_public_post(5) |> IO.inspect()
+    posts = Content.list_public_post(5)
 
     new_socket =
       socket
@@ -76,8 +76,6 @@ defmodule BackerWeb.TimelineLive do
       "donee_id" => socket.assigns.donee.id,
       "type" => socket.assigns.mode
     }
-
-    IO.inspect(attrs)
 
     new_posts =
       case Content.create_post(attrs) do

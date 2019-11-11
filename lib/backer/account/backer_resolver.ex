@@ -49,7 +49,7 @@ defmodule Backer.Account.BackerResolver do
 
   def my_post(_, _, %{context: %{my_info: backer}}) do
     if backer.is_donee do
-      {:ok, Content.list_own_posts(backer.donee.id, backer.id, 10, 0) |> IO.inspect()}
+      {:ok, Content.list_own_posts(backer.donee.id, backer.id, 10, 0)}
     else
       {:error, "Sorry you are not donee"}
     end

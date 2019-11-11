@@ -18,7 +18,7 @@ defmodule BackerWeb.PublicController do
       %{property: "og:image", content: "......"}
     ]
 
-    random_donee = Account.list_random_donee(6) |> IO.inspect()
+    random_donee = Account.list_random_donee(6)
     highlight_donee = Account.get_highlight_donee_homepage()
 
     conn

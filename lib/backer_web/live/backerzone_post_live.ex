@@ -8,7 +8,7 @@ defmodule BackerWeb.BackerzonePostLive do
   end
 
   def mount(session, socket) do
-    comments = Content.list_pcomments(%{"post_id" => session.post.id}) |> IO.inspect()
+    comments = Content.list_pcomments(%{"post_id" => session.post.id})
     changeset_comment = Content.change_post_comment(%PostComment{})
 
     new_socket =
