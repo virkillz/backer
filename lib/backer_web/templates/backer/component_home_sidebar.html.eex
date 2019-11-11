@@ -53,7 +53,7 @@
 						class="my-2 mx-px text-center lg:text-left flex lg:flex-row flex-col items-center cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
 							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-leaf text-2xl"></i></div>
+							<i class="la la-coffee text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Dukungan </div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
 							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-credit-card text-2xl"></i></div>
+							<i class="la la-wallet text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Keuangan
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 						class="my-2 mx-px text-center lg:text-left items-center flex lg:flex-row flex-col cursor-pointer py-1 tracking-wide px-4 lg:px-6 hover:text-orange-500 transition-all transition-ease   font-basex ">
 						<div
 							class="rounded-full bg-white h-10 w-10 flex items-center justify-center lg:mr-4 text-center">
-							<i class="la la-globe text-2xl"></i></div>
+							<i class="la la-binoculars text-2xl"></i></div>
 						<div class="font-title mt-1 lg:mt-0 text-xxs md:text-sm lg:text-base"> Explore</div>
 					</div>
 				</div>
