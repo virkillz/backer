@@ -263,7 +263,7 @@ defmodule BackerWeb.Router do
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: BackerWeb.Schema,
-      interface: :simple
+      interface: :advanced
   end
 
   # This route area is for public route

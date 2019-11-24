@@ -61,4 +61,13 @@ defmodule BackerWeb.Schema do
       resolve(&Backer.Account.BackerResolver.recommended_donee/3)
     end
   end
+
+  mutation do
+    field :login, :credential do
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
+
+      resolve(&Backer.Account.BackerResolver.login/3)
+    end
+  end
 end

@@ -59,6 +59,14 @@ defmodule BackerWeb.Schema.Types do
     field(:is_featured, :boolean)
   end
 
+  object :credential do
+    field(:jwt, :string)
+    field(:username, :string)
+    field(:avatar, :string)
+    field(:is_donee, :boolean)
+    field(:display_name, :string)
+  end
+
   object :invoice do
     field(:id, :id)
     field(:amount, :integer)

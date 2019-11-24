@@ -12,7 +12,7 @@ defmodule Backer.Account.BackerResolver do
     {:ok, backer}
   end
 
-  def my_info(_parent, _args, _info) do
+  def my_info(_parent, _args, info) do
     {:error, "not authorized"}
   end
 
@@ -54,6 +54,28 @@ defmodule Backer.Account.BackerResolver do
 
   def list_donee_limit(_, _, _) do
     {:ok, Account.list_random_donee(10)}
+  end
+
+  def login(_, %{email: email, password: password}, _) do
+    case Account.authenticate_backer_front(email, password) do
+      {:ok, backer} ->
+        {:ok,
+         %{
+           jwt: build_token(backer.id),
+           username: backer.username,
+           display_name: backer.display_name,
+           avatar: backer.avatar,
+           is_donee: backer.is_donee
+         }}
+
+      _ ->
+        {:error, "Invalid credentials"}
+    end
+  end
+
+  defp build_token(id) do
+    {:ok, jwt, _} = Backer.Auth.Guardian.encode_and_sign(%{id: id}) |> IO.inspect()
+    jwt
   end
 
   def recommended_donee(_, _, _) do

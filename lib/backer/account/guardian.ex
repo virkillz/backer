@@ -14,7 +14,8 @@ defmodule Backer.Auth.Guardian do
 
   def resource_from_claims(claims) do
     id = claims["sub"]
-    user = Account.get_user!(id)
+    # user = Account.get_user!(id)
+    user = Account.get_backer!(id)
     {:ok, user}
   end
 
