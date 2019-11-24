@@ -16,6 +16,16 @@ defmodule BackerWeb.Router do
     plug BackerWeb.Locale
   end
 
+  pipeline :api_dev do
+    plug(:accepts, ["json"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug Phoenix.LiveView.Flash
+    plug(:put_secure_browser_headers)
+    plug(BackerWeb.Plugs.SetCurrentUser)
+    plug(BackerWeb.Plugs.SetCurrentBacker)
+  end
+
   pipeline :api do
     plug(:accepts, ["json"])
     plug(:fetch_session)
@@ -247,7 +257,7 @@ defmodule BackerWeb.Router do
 
   # This is route for graphql endpoint
   scope "/" do
-    pipe_through([:api, :graphql])
+    pipe_through([:api_dev, :graphql])
 
     forward "/api", Absinthe.Plug, schema: BackerWeb.Schema
 

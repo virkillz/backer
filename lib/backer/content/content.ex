@@ -435,13 +435,19 @@ defmodule Backer.Content do
       when is_integer(limit) and is_integer(donee_id) and is_integer(last_id) do
     query =
       if last_id == 0 do
-        from(p in Post, where: p.donee_id == ^donee_id, order_by: [desc: p.id], limit: ^limit)
+        from(p in Post,
+          where: p.donee_id == ^donee_id,
+          order_by: [desc: p.id],
+          preload: [donee: [:backer]],
+          limit: ^limit
+        )
       else
         from(p in Post,
           where: p.donee_id == ^donee_id,
           where: p.id < ^last_id,
           limit: ^limit,
-          order_by: [desc: p.id]
+          order_by: [desc: p.id],
+          preload: [donee: [:backer]]
         )
       end
 

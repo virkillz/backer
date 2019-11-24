@@ -17,6 +17,8 @@ defmodule BackerWeb.Context do
   Return the current user context based on the authorization header
   """
   def build_context(conn) do
+    IO.inspect(conn)
+
     if conn.assigns.backer_signed_in? do
       %{my_info: conn.assigns.current_backer}
     else

@@ -35,6 +35,17 @@ defmodule BackerWeb.Schema do
       resolve(&Backer.Account.BackerResolver.list_backer_limit/3)
     end
 
+    @desc "List of all donee with limit"
+    field :list_donee, list_of(:donee) do
+      arg(:limit)
+      resolve(&Backer.Account.BackerResolver.list_donee_limit/3)
+    end
+
+    @desc "List all my_invoices"
+    field :my_outgoing_invoice, list_of(:invoice) do
+      resolve(&Backer.Account.BackerResolver.list_my_outgoing_invoices/3)
+    end
+
     @desc "List latest public post"
     field :all_post, list_of(:post) do
       arg(:limit)

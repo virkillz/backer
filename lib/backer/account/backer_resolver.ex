@@ -2,6 +2,7 @@ defmodule Backer.Account.BackerResolver do
   # import lib/graphql/accounts/accounts.ex as Accounts
   alias Backer.Account
   alias Backer.Content
+  alias Backer.Finance
 
   def list_backer(_, _args, _info) do
     {:ok, Account.list_backers()}
@@ -43,19 +44,32 @@ defmodule Backer.Account.BackerResolver do
     {:error, "not found"}
   end
 
+  def list_donee_limit(_, %{limit: limit}, _) do
+    {:ok, Account.list_random_donee(limit)}
+  end
+
+  def list_my_outgoing_invoices(_, _, %{context: %{my_info: backer}}) do
+    {:ok, Finance.list_invoices(%{"backer_id" => backer.id})}
+  end
+
+  def list_donee_limit(_, _, _) do
+    {:ok, Account.list_random_donee(10)}
+  end
+
   def recommended_donee(_, _, _) do
     {:ok, Account.list_random_donee(3)}
   end
 
   def my_post(_, _, %{context: %{my_info: backer}}) do
     if backer.is_donee do
-      {:ok, Content.list_own_posts(backer.donee.id, backer.id, 10, 0)}
+      {:ok, Content.list_own_posts(backer.donee.id, backer.id, 10, 0) |> IO.inspect()}
     else
       {:error, "Sorry you are not donee"}
     end
   end
 
-  def my_post(_, _, _) do
+  def my_post(_, _, c) do
+    # IO.inspect(c)
     {:error, "Sorry you must be logged in"}
   end
 end

@@ -1,5 +1,6 @@
 defmodule BackerWeb.Schema.Types do
   use Absinthe.Schema.Notation
+  import_types(Absinthe.Type.Custom)
 
   object :backer do
     field(:id, :id)
@@ -20,7 +21,7 @@ defmodule BackerWeb.Schema.Types do
   end
 
   object :post do
-    field(:id)
+    field(:id, :id)
     field(:content, :string)
     field(:featured_image, :string)
     field(:featured_link, :string)
@@ -36,7 +37,7 @@ defmodule BackerWeb.Schema.Types do
   end
 
   object :ownpost do
-    field(:id)
+    field(:id, :id)
     field(:content, :string)
     field(:featured_image, :string)
     field(:featured_link, :string)
@@ -56,5 +57,20 @@ defmodule BackerWeb.Schema.Types do
     field(:content, :string)
     field(:like_count, :integer)
     field(:is_featured, :boolean)
+  end
+
+  object :invoice do
+    field(:id, :id)
+    field(:amount, :integer)
+    field(:method, :string)
+    field(:status, :string)
+    field(:type, :string)
+    field(:settlement_status, :string)
+    field(:month, :integer)
+    field(:unique_amount, :integer)
+    field(:donation, :integer)
+    field(:donee, :donee)
+    field(:backer, :backer)
+    field(:inserted_at, :naive_datetime)
   end
 end
