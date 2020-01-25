@@ -22,7 +22,7 @@ defmodule BackerWeb.Schema do
       resolve(&Backer.Account.BackerResolver.list_backer/3)
     end
 
-    @desc "Get a backer from id"
+    @desc "Get a backer from id or username"
     field :backer, :backer do
       arg(:id, :integer)
       arg(:username, :string, description: "The desired username")
@@ -57,6 +57,13 @@ defmodule BackerWeb.Schema do
       resolve(&Backer.Account.BackerResolver.all_post/3)
     end
 
+    @desc "Get a donee from username"
+    field :donee, :donee do
+      arg(:username, :string, description: "The desired username")
+      resolve(&Backer.Account.BackerResolver.find_donee/3)
+    end
+
+    @desc "Get list of recommended donee"
     field :recommended_donee, list_of(:donee) do
       resolve(&Backer.Account.BackerResolver.recommended_donee/3)
     end

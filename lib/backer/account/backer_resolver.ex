@@ -40,6 +40,30 @@ defmodule Backer.Account.BackerResolver do
     end
   end
 
+  def find_backer(_parent, %{username: username}, _resolution) do
+    case Account.get_backer(%{"username" => username}) do
+      nil ->
+        {:error, "Backer with username #{username} not found"}
+
+      backer ->
+        {:ok, backer}
+    end
+  end
+
+  def find_backer(_parent, _other, _resolution) do
+    {:error, "not found"}
+  end
+
+  def find_donee(_parent, %{username: username}, _resolution) do
+    case Account.get_donee(%{"username" => username}) do
+      nil ->
+        {:error, "Backer with username #{username} not found"}
+
+      donee ->
+        {:ok, donee}
+    end
+  end
+
   def find_backer(_parent, _other, _resolution) do
     {:error, "not found"}
   end
