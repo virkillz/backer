@@ -10,6 +10,7 @@ defmodule Backer.Application do
     children = [
       # Start the Ecto repository
       supervisor(Backer.Repo, []),
+      {Phoenix.PubSub, name: Backer.PubSub},
       # Start the endpoint when the application starts
       supervisor(BackerWeb.Endpoint, []),
       worker(Backer.HourlyScheduler, []),

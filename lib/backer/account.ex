@@ -7,7 +7,6 @@ defmodule Backer.Account do
   alias Backer.Repo
 
   alias Backer.Account.User
-  alias Comeonin.Bcrypt
   alias Backer.Account.Backer, as: Backerz
   alias Backer.Account.Donee
   alias Backer.Settings
@@ -108,14 +107,14 @@ defmodule Backer.Account do
   defp check_password(nil, _), do: {:error, "Incorrect credential"}
 
   defp check_password(%User{} = user, plain_text_password) do
-    case Bcrypt.checkpw(plain_text_password, user.password_hash) do
+    case Bcrypt.verify_pass(plain_text_password, user.password_hash) do
       true -> {:ok, user}
       false -> {:error, "Incorrect credential"}
     end
   end
 
   defp check_password(%Backerz{} = backer, plain_text_password) do
-    case Bcrypt.checkpw(plain_text_password, backer.passwordhash) do
+    case Bcrypt.verify_pass(plain_text_password, backer.passwordhash) do
       true -> {:ok, backer}
       false -> {:error, "Incorrect credential"}
     end

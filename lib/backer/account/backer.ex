@@ -190,6 +190,7 @@ defmodule Backer.Account.Backer do
     |> cast(attrs, [
       :display_name,
       :email,
+      :is_agree_term,
       :password
     ])
     |> validate_required([:email, :display_name, :password])
@@ -209,7 +210,7 @@ defmodule Backer.Account.Backer do
   defp put_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        change(changeset, passwordhash: Comeonin.Bcrypt.hashpwsalt(pass))
+        change(changeset, passwordhash: Bcrypt.hash_pwd_salt(pass))
 
       _ ->
         changeset

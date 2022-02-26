@@ -77,7 +77,7 @@ defmodule Backer.Account.User do
     |> put_fullname()
     |> put_role("user")
 
-    # |> put_verificationhash()    
+    # |> put_verificationhash()
   end
 
   def validate_password(changeset) do
@@ -121,7 +121,7 @@ defmodule Backer.Account.User do
   def put_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        change(changeset, password_hash: Comeonin.Bcrypt.hashpwsalt(pass))
+        change(changeset, password_hash: Bcrypt.hash_pwd_salt(pass))
 
       _ ->
         changeset

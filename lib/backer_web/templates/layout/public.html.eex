@@ -17,36 +17,38 @@
     <link rel="stylesheet" href="/assets/css/progressive-image.css">
 
     <style>
-    .switcher:hover {
-        z-index:90;
-    }
-
+        .switcher:hover {
+            z-index: 90;
+        }
     </style>
 
-   <%= if not is_nil @conn.assigns[:recaptcha] do %> 
+    <%= if not is_nil @conn.assigns[:recaptcha] do %>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-         <script>
-       function onSubmit(token) {
-         document.getElementById("invisible-recaptcha-form").submit();
-       }
-     </script>
-    
+    <script>
+        function onSubmit(token) {
+            document.getElementById("invisible-recaptcha-form").submit();
+        }
+    </script>
+
     <% end %>
 
     <%= if not is_nil @conn.assigns[:style][:wysiwyg] && @conn.assigns[:style][:wysiwyg] do %>
-        <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
+    <%= BackerWeb.LayoutView.render "style-wysiwyg.html" %>
     <% end %>
 
 </head>
 
-<body class="text-gray-800 gradientx polkadotx font-light"><%= render @view_module, @view_template, assigns %>
+<body class="text-gray-800 gradientx polkadotx font-light">
 
- <script>
+    <%= @inner_content %>
+
+    <script>
         /*Toggle dropdown list*/
         /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
         var navMenuDiv = document.getElementById("nav-content");
         var navMenu = document.getElementById("nav-toggle");
         document.onclick = check;
+
         function check(e) {
             var target = (e && e.target) || (event && event.srcElement);
             console.log(target);
@@ -57,16 +59,21 @@
                     // click on the link
                     if (navMenuDiv.classList.contains("hidden")) {
                         navMenuDiv.classList.remove("hidden");
-                    } else { navMenuDiv.classList.add("hidden"); }
+                    } else {
+                        navMenuDiv.classList.add("hidden");
+                    }
                 } else {
                     // click both outside link and outside menu, hide menu
                     navMenuDiv.classList.add("hidden");
                 }
             }
         }
+
         function checkParent(t, elm) {
             while (t.parentNode) {
-                if (t == elm) { return true; }
+                if (t == elm) {
+                    return true;
+                }
                 t = t.parentNode;
             }
             return false;
@@ -79,8 +86,8 @@
 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
-				/* Toggle between adding and removing the "active" class,
-				to highlight the button that controls the panel */
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
                 this.classList.toggle("active");
 
                 /* Toggle between hiding and showing the active panel */
@@ -95,89 +102,89 @@
     </script>
 
     <script>
-    function adjustAmount(amount, target_id) {
-        var inputAmount = document.getElementById("amount");
-        var labelAmount = document.getElementById("labelAmount");
-        var allTiers = document.getElementsByClassName("tier");
-        var targetTier = document.getElementById(target_id);
-        var month = document.getElementById("month");
-        var total = document.getElementById("total"); 
+        function adjustAmount(amount, target_id) {
+            var inputAmount = document.getElementById("amount");
+            var labelAmount = document.getElementById("labelAmount");
+            var allTiers = document.getElementsByClassName("tier");
+            var targetTier = document.getElementById(target_id);
+            var month = document.getElementById("month");
+            var total = document.getElementById("total");
 
-        for (var i = 0; i < allTiers.length; i++) {
-            allTiers[i].classList.remove("border-orange-500");
-            // list[i] is a node with the desired class name
-        }
-       
-       labelAmount.innerHTML = amount.toLocaleString("en");;
-       inputAmount.value = amount;
-       total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
+            for (var i = 0; i < allTiers.length; i++) {
+                allTiers[i].classList.remove("border-orange-500");
+                // list[i] is a node with the desired class name
+            }
 
-       targetTier.classList.add("border-orange-500");
+            labelAmount.innerHTML = amount.toLocaleString("en");;
+            inputAmount.value = amount;
+            total.innerHTML = (month.value * inputAmount.value).toLocaleString("en");
 
-    }
+            targetTier.classList.add("border-orange-500");
 
-    function changePaymentMonth(month) {
-        var monthInput = document.getElementById("month");
-        var inputAmount = document.getElementById("amount");
-        //var labelAmount = document.getElementById("labelAmount");
-        var labelMonth = document.getElementById("labelMonth");        
-        var monthBox = document.getElementById(month + "-mth");
-        var total = document.getElementById("total");
-        var allMonths = document.getElementsByClassName("months");
-
-        monthInput.value = month;
-        labelMonth.innerHTML = month;
-        total.innerHTML = (monthInput.value * inputAmount.value).toLocaleString("en");
-
-
-        for (var x = 0; x < allMonths.length; x++) {
-            allMonths[x].classList.remove("border-orange-500");
         }
 
-        monthBox.classList.add("border-orange-500");
+        function changePaymentMonth(month) {
+            var monthInput = document.getElementById("month");
+            var inputAmount = document.getElementById("amount");
+            //var labelAmount = document.getElementById("labelAmount");
+            var labelMonth = document.getElementById("labelMonth");
+            var monthBox = document.getElementById(month + "-mth");
+            var total = document.getElementById("total");
+            var allMonths = document.getElementsByClassName("months");
 
-    }
+            monthInput.value = month;
+            labelMonth.innerHTML = month;
+            total.innerHTML = (monthInput.value * inputAmount.value).toLocaleString("en");
 
-    function changePaymentMethod(paymentMethod) {
-        var paymentMethodInput = document.getElementById("paymentMethodInput");
-        paymentMethodInput.value = paymentMethod;
-        var labelPaymentMethod = document.getElementById("labelPaymentMethod");
-        paymentMethod = paymentMethod.replace("_", " ");
-        labelPaymentMethod.innerHTML = paymentMethod[0].toUpperCase() + paymentMethod.substring(1);
 
-        // remove all border-purple-500
-        var paymentmethods = document.getElementsByClassName("payment-methods");
-        for (var i = 0; i < paymentmethods.length; i++) {
-           paymentmethods[i].classList.remove("border-orange-500");
-        } 
+            for (var x = 0; x < allMonths.length; x++) {
+                allMonths[x].classList.remove("border-orange-500");
+            }
 
-        // add border-purple-500 for selected payment methods
-        var paymentMethodSelected = document.getElementById(paymentMethod);
-        paymentMethodSelected.classList.add("border-orange-500")
+            monthBox.classList.add("border-orange-500");
 
-    }
+        }
 
-    
+        function changePaymentMethod(paymentMethod) {
+            var paymentMethodInput = document.getElementById("paymentMethodInput");
+            paymentMethodInput.value = paymentMethod;
+            var labelPaymentMethod = document.getElementById("labelPaymentMethod");
+            paymentMethod = paymentMethod.replace("_", " ");
+            labelPaymentMethod.innerHTML = paymentMethod[0].toUpperCase() + paymentMethod.substring(1);
+
+            // remove all border-purple-500
+            var paymentmethods = document.getElementsByClassName("payment-methods");
+            for (var i = 0; i < paymentmethods.length; i++) {
+                paymentmethods[i].classList.remove("border-orange-500");
+            }
+
+            // add border-purple-500 for selected payment methods
+            var paymentMethodSelected = document.getElementById(paymentMethod);
+            paymentMethodSelected.classList.add("border-orange-500")
+
+        }
     </script>
 
     <script>
-        var loadFile = function(event) {
+        var loadFile = function (event) {
             var reader = new FileReader();
-            reader.onload = function(){
-            var output = document.getElementById('output');
-            output.src = reader.result;
+            reader.onload = function () {
+                var output = document.getElementById('output');
+                output.src = reader.result;
             };
             reader.readAsDataURL(event.target.files[0]);
         };
     </script>
 
     <script>
-    function init() {
-        var vidDefer = document.getElementsByTagName('iframe');
-        for (var i=0; i<vidDefer.length; i++) {
-        if(vidDefer[i].getAttribute('data-src')) {
-        vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-        } } }
+        function init() {
+            var vidDefer = document.getElementsByTagName('iframe');
+            for (var i = 0; i < vidDefer.length; i++) {
+                if (vidDefer[i].getAttribute('data-src')) {
+                    vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+                }
+            }
+        }
         window.onload = init;
     </script>
 
@@ -185,13 +192,15 @@
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
     <script>
-    new WOW().init();
+        new WOW().init();
 
-    tippy('.tippy', {placement: 'bottom'});
+        tippy('.tippy', {
+            placement: 'bottom'
+        });
     </script>
 
     <%= if not is_nil @conn.assigns[:script][:wysiwyg] && @conn.assigns[:script][:wysiwyg] do %>
-        <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
+    <%= BackerWeb.LayoutView.render "script-wysiwyg.html" %>
     <% end %>
 
     <script src="/assets/js/progressive-image.min.js"></script>
@@ -206,22 +215,26 @@
             const domain = node.getAttribute('data-domain');
             const isDonee = (node.getAttribute('data-is-donee') == "true");
 
-            const flags = { avatar: avatar, domain: domain, notifCount: notifCount, isDonee: isDonee }
+            const flags = {
+                avatar: avatar,
+                domain: domain,
+                notifCount: notifCount,
+                isDonee: isDonee
+            }
             console.log(flags);
-            
+
             Elm.Main.init({
-            node: node,
-            flags: flags
+                node: node,
+                flags: flags
             });
 
         };
     </script>
 
-        <script>
-
+    <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");
-        
+
         document.addEventListener('scroll', function () {
 
             /*Apply classes for slide in bar*/
@@ -229,14 +242,11 @@
 
             if (scrollpos > 10) {
                 header.classList.add("shadow");
-            }
-            else {
+            } else {
                 header.classList.remove("shadow");
             }
 
         });
-
-
     </script>
 
 

@@ -18,7 +18,7 @@ config :backer, BackerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "U6rb9AJCDoSe1LtiNJOsLGzUW8+S60TApNALK1lnjems+w+yx3pcMD2d4dskTxax",
   render_errors: [view: BackerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Backer.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: Backer.PubSub
 
 config :backer, BackerWeb.Endpoint,
   live_view: [
